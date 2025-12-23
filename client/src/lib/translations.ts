@@ -488,10 +488,7 @@ export const translations = {
     "blog.tag.dataPrivacy": "Data Privacy",
     "blog.tag.chatbots": "Chatbots",
     "blog.tag.customerService": "Customer Service",
-    "blog.readMore": "Read More",
-    "blog.minRead": "min read",
-    "blog.noResults": "No articles found",
-    "blog.noResultsDescription": "Try adjusting your search or filter criteria",
+
 
     // Blog Posts
     "blog.post1.title": "The AI Revolution in Hospitality: What It Means for Your Hotel",

@@ -46,7 +46,7 @@ export class MemStorage implements IStorage {
       id,
       type: insertLead.type,
       name: insertLead.name,
-      email: insertLead.email,
+      email: insertLead.email ?? null,
       phone: insertLead.phone ?? null,
       role: insertLead.role ?? null,
       property: insertLead.property ?? null,

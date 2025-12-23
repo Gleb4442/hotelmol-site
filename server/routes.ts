@@ -116,7 +116,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
       const lead = await storage.createLeadSubmission({
         type: "integration",
-        name: validatedData.name,
+        name: validatedData.name ?? "Anonymous",
         phone: validatedData.phone,
         property: validatedData.property,
         email: null,
