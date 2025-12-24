@@ -1,11 +1,11 @@
 import type { Express, Request, Response, NextFunction } from "express";
 import { createServer, type Server } from "http";
-import { storage } from "./storage";
+import { storage } from "./storage.js";
 import { roiLeadSchema, contactLeadSchema, demoLeadSchema, cookieConsentSchema, integrationLeadSchema } from "@shared/schema";
 import { createHash } from "crypto";
 import { db } from "./db";
 
-import { sendToN8n } from "./n8n";
+import { sendToN8n } from "./n8n.js";
 
 function hashIP(ip: string): string {
   return createHash('sha256').update(ip).digest('hex');
