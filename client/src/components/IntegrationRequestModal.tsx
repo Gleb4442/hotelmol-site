@@ -25,10 +25,10 @@ export default function IntegrationRequestModal({ open, onOpenChange }: Integrat
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!formData.phone.trim()) {
       toast({
-        title: t("error.validationError"),
+        title: (t as any)("error.validationError"),
         description: t("about.integration.phoneRequired"),
         variant: "destructive",
       });
@@ -36,7 +36,7 @@ export default function IntegrationRequestModal({ open, onOpenChange }: Integrat
     }
 
     setIsSubmitting(true);
-    
+
     try {
       await apiRequest("POST", "/api/leads/integration", formData);
 
@@ -50,7 +50,7 @@ export default function IntegrationRequestModal({ open, onOpenChange }: Integrat
         phone: "",
         property: "",
       });
-      
+
       onOpenChange(false);
     } catch (error: any) {
       toast({
@@ -72,7 +72,7 @@ export default function IntegrationRequestModal({ open, onOpenChange }: Integrat
             {t("about.integration.subtitle")}
           </DialogDescription>
         </DialogHeader>
-        
+
         <form onSubmit={handleSubmit} className="space-y-6 mt-4">
           <div className="space-y-4">
             <div className="space-y-2">
@@ -111,8 +111,8 @@ export default function IntegrationRequestModal({ open, onOpenChange }: Integrat
             </div>
           </div>
 
-          <Button 
-            type="submit" 
+          <Button
+            type="submit"
             className="w-full"
             disabled={isSubmitting}
             data-testid="button-submit-integration"

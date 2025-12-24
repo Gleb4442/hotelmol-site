@@ -492,61 +492,51 @@ export const translations = {
 
     // Blog Posts
     "blog.post1.title": "The AI Revolution in Hospitality: What It Means for Your Hotel",
-    "blog.post1.excerpt": "Explore how artificial intelligence is transforming guest experiences and hotel operations in 2025.",
     "blog.post1.content": "Full article content here...",
     "blog.post1.author": "Dr. Elena Petrova",
     "blog.post1.authorRole": "Head of AI Research",
 
     "blog.post2.title": "Maximizing Direct Bookings: 7 Proven Strategies",
-    "blog.post2.excerpt": "Learn how leading hotels are reducing OTA dependency and increasing direct bookings by 40%.",
     "blog.post2.content": "Full article content here...",
     "blog.post2.author": "Marcus Chen",
     "blog.post2.authorRole": "Revenue Strategy Expert",
 
     "blog.post3.title": "Breaking Language Barriers: Multilingual Guest Communication",
-    "blog.post3.excerpt": "How AI-powered translation is enabling hotels to serve international guests seamlessly.",
     "blog.post3.content": "Full article content here...",
     "blog.post3.author": "Anna Kowalski",
     "blog.post3.authorRole": "CEO & Co-founder",
 
     "blog.post4.title": "Hotel Industry Trends 2025: What to Expect",
-    "blog.post4.excerpt": "Key predictions and emerging technologies shaping the future of hospitality.",
     "blog.post4.content": "Full article content here...",
     "blog.post4.author": "Sofia Rodriguez",
     "blog.post4.authorRole": "VP of Product",
 
     "blog.post5.title": "Introducing Roomie 2.0: New Features & Improvements",
-    "blog.post5.excerpt": "Discover the latest updates to our AI assistant, including enhanced personalization and faster responses.",
     "blog.post5.content": "Full article content here...",
     "blog.post5.author": "Dev Team",
     "blog.post5.authorRole": "Product Development",
 
     "blog.post6.title": "The Art of Automated Upselling: Best Practices",
-    "blog.post6.excerpt": "How to increase revenue without being pushy—AI techniques that actually work.",
     "blog.post6.content": "Full article content here...",
     "blog.post6.author": "Maria Schmidt",
     "blog.post6.authorRole": "Revenue Optimization Lead",
 
     "blog.post7.title": "PMS Integration Guide: Getting Started with Roomie",
-    "blog.post7.excerpt": "Step-by-step instructions for connecting Roomie to your property management system.",
     "blog.post7.content": "Full article content here...",
     "blog.post7.author": "Tech Team",
     "blog.post7.authorRole": "Integration Specialists",
 
     "blog.post8.title": "Measuring Guest Satisfaction: KPIs That Matter",
-    "blog.post8.excerpt": "Beyond star ratings—the metrics successful hotels track to improve guest experience.",
     "blog.post8.content": "Full article content here...",
     "blog.post8.author": "Dr. James Wilson",
     "blog.post8.authorRole": "Hospitality Analytics",
 
     "blog.post9.title": "Data Privacy & Security in Hotel AI: A Complete Guide",
-    "blog.post9.excerpt": "Understanding GDPR compliance, data protection, and security best practices for AI-powered hotel systems.",
     "blog.post9.content": "Full article content here...",
     "blog.post9.author": "Sarah Mitchell",
     "blog.post9.authorRole": "Security & Compliance Officer",
 
     "blog.post10.title": "AI Chatbots vs. Human Service: Finding the Perfect Balance",
-    "blog.post10.excerpt": "How to combine AI automation with human touch for exceptional customer service experiences.",
     "blog.post10.content": "Full article content here...",
     "blog.post10.author": "Anna Kowalski",
     "blog.post10.authorRole": "CEO & Co-founder",

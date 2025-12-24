@@ -159,12 +159,27 @@ export class PostgresStorage implements IStorage {
   }
 
   async getPublishedBlogPosts(): Promise<BlogPost[]> {
-    return await db.select().from(blogPosts).where(eq(blogPosts.status, 'published')).orderBy(desc(blogPosts.publishedAt));
+    console.log("Fetching published blog posts from database...");
+    try {
+      const posts = await db.select().from(blogPosts).where(eq(blogPosts.status, 'published')).orderBy(desc(blogPosts.publishedAt));
+      console.log(`Successfully fetched ${posts.length} published posts.`);
+      return posts;
+    } catch (error) {
+      console.error("Error fetching published blog posts:", error);
+      throw error;
+    }
   }
 
   async getBlogPost(slug: string): Promise<BlogPost | undefined> {
-    const [post] = await db.select().from(blogPosts).where(and(eq(blogPosts.slug, slug), eq(blogPosts.status, 'published')));
-    return post;
+    console.log(`Fetching blog post by slug: ${slug}`);
+    try {
+      const [post] = await db.select().from(blogPosts).where(and(eq(blogPosts.slug, slug), eq(blogPosts.status, 'published')));
+      console.log(post ? `Found post: ${post.title}` : "Post not found or not published.");
+      return post;
+    } catch (error) {
+      console.error(`Error fetching post by slug ${slug}:`, error);
+      throw error;
+    }
   }
 
   async getBlogPostById(id: string): Promise<BlogPost | undefined> {

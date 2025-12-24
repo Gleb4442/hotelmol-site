@@ -173,8 +173,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/api/posts", async (req, res) => {
     try {
       const posts = await storage.getPublishedBlogPosts();
+      console.log(`API response: returning ${posts.length} posts`);
       res.json({ success: true, posts });
     } catch (error) {
+      console.error("API Error in /api/posts:", error);
       res.status(500).json({ success: false, message: "Failed to fetch posts" });
     }
   });

@@ -21,7 +21,9 @@ export function TranslationProvider({ children }: { children: ReactNode }) {
   };
 
   const t = (key: TranslationKey): string => {
-    return translations[language][key] || translations.en[key] || key;
+    const dict = translations[language] as any;
+    const fallback = translations.en as any;
+    return dict[key] || fallback[key] || key;
   };
 
   useEffect(() => {

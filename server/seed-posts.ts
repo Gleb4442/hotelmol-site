@@ -24,12 +24,11 @@ AI is transforming the hotel industry by:
 
 Stay tuned for more!
         `,
-                excerpt: "Welcome to the new Hotelmol blog. Discover how AI is transforming hospitality.",
-                coverImage: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=1000",
-                keywords: ["hotel", "ai", "automation"],
-                metaTitle: "Welcome to Hotelmol Blog",
-                metaDescription: "The first post on the Hotelmol blog about hotel automation.",
-                published: true,
+                status: "published",
+                featuredImage: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=1000",
+                tags: ["hotel", "ai", "automation"],
+                seoTitle: "Welcome to Hotelmol Blog",
+                seoDescription: "The first post on the Hotelmol blog about hotel automation.",
                 publishedAt: new Date(),
             }
         ];
