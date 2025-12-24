@@ -184,18 +184,30 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   app.get("/api/debug-posts", async (req, res) => {
     try {
+      if (!process.env.DATABASE_URL) {
+        return res.status(500).json({
+          error: "DATABASE_URL_MISSING",
+          message: "The DATABASE_URL environment variable is not set on the server. Please check Vercel project settings."
+        });
+      }
+
       const allPosts = await storage.getBlogPosts();
       const publishedPosts = await storage.getPublishedBlogPosts();
       res.json({
+        success: true,
         env: process.env.NODE_ENV,
-        dbUrlSet: !!process.env.DATABASE_URL,
+        dbUrlSet: true,
         allCount: allPosts.length,
         publishedCount: publishedPosts.length,
-        all: allPosts.map(p => ({ id: p.id, title: p.title, status: p.status, slug: p.slug })),
-        published: publishedPosts.map(p => ({ id: p.id, title: p.title, status: p.status, slug: p.slug }))
+        posts: publishedPosts
       });
     } catch (error: any) {
-      res.status(500).json({ error: error.message });
+      console.error("Debug route error:", error);
+      res.status(500).json({
+        error: "SERVER_ERROR",
+        details: error.message,
+        hint: "This often happens if the database connection fails or the schema is mismatched."
+      });
     }
   });
 
