@@ -174,10 +174,28 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const posts = await storage.getPublishedBlogPosts();
       console.log(`API response: returning ${posts.length} posts`);
+      // Return both formats to be extra safe
       res.json({ success: true, posts });
     } catch (error) {
       console.error("API Error in /api/posts:", error);
       res.status(500).json({ success: false, message: "Failed to fetch posts" });
+    }
+  });
+
+  app.get("/api/debug-posts", async (req, res) => {
+    try {
+      const allPosts = await storage.getBlogPosts();
+      const publishedPosts = await storage.getPublishedBlogPosts();
+      res.json({
+        env: process.env.NODE_ENV,
+        dbUrlSet: !!process.env.DATABASE_URL,
+        allCount: allPosts.length,
+        publishedCount: publishedPosts.length,
+        all: allPosts.map(p => ({ id: p.id, title: p.title, status: p.status, slug: p.slug })),
+        published: publishedPosts.map(p => ({ id: p.id, title: p.title, status: p.status, slug: p.slug }))
+      });
+    } catch (error: any) {
+      res.status(500).json({ error: error.message });
     }
   });
 

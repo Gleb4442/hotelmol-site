@@ -11,11 +11,14 @@ import type { BlogPost } from "@shared/schema";
 export default function Blog() {
   const { t } = useTranslation();
 
-  const { data, isLoading } = useQuery<{ posts: BlogPost[] }>({
+  const { data, isLoading, error } = useQuery<{ success?: boolean; posts?: BlogPost[] } | BlogPost[]>({
     queryKey: ["/api/posts"],
   });
 
-  const posts = data?.posts || [];
+  console.log("Blog query data:", data);
+  if (error) console.error("Blog query error:", error);
+
+  const posts = Array.isArray(data) ? data : (data && typeof data === 'object' && 'posts' in data ? (data.posts || []) : []);
 
   return (
     <div className="min-h-screen bg-background">
