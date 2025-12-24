@@ -3,7 +3,7 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage.js";
 import { roiLeadSchema, contactLeadSchema, demoLeadSchema, cookieConsentSchema, integrationLeadSchema } from "../shared/schema.js";
 import { createHash } from "crypto";
-import { db } from "./db";
+import { db } from "./db.js";
 
 import { sendToN8n } from "./n8n.js";
 
