@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function HowRoomieWorks() {
   const { t } = useTranslation();
   const [ballPosition, setBallPosition] = useState(0);
+  const [isJump, setIsJump] = useState(false);
 
   const steps = [
     {
@@ -40,8 +41,15 @@ export default function HowRoomieWorks() {
     if (prefersReducedMotion) return;
 
     const interval = setInterval(() => {
-      setBallPosition((prev) => (prev + 1) % 5);
-    }, 4000); // 4 seconds cycle: ~2s movement + ~2s pause
+      setBallPosition((prev) => {
+        if (prev === 4) {
+          setIsJump(true);
+          return 0;
+        }
+        setIsJump(false);
+        return prev + 1;
+      });
+    }, 4000);
     return () => clearInterval(interval);
   }, []);
 
@@ -61,16 +69,16 @@ export default function HowRoomieWorks() {
         </div>
 
         <div className="relative max-w-7xl mx-auto">
-          <div className="hidden lg:block absolute top-32 left-16 right-16 h-0.5">
+          <div className="hidden lg:block absolute top-32 left-[10%] right-[10%] h-0.5">
             <div className="h-full bg-gradient-to-r from-primary/20 via-primary/40 to-primary/20" />
             <motion.div
-              className="absolute top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-primary z-20"
+              className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-5 h-5 rounded-full bg-primary z-20"
               animate={{
                 left: `${ballPosition * 25}%`,
               }}
               transition={{
-                duration: 2,
-                ease: [0.4, 0, 0.2, 1] // Smooth customized cubic-bezier for a more "organic" feel
+                duration: isJump ? 0 : 2,
+                ease: isJump ? "linear" : [0.4, 0, 0.2, 1]
               }}
               style={{
                 boxShadow: '0 0 20px rgba(7, 82, 160, 0.8), 0 0 40px rgba(7, 82, 160, 0.5), 0 0 60px rgba(7, 82, 160, 0.3)'
