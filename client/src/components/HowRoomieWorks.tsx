@@ -69,18 +69,19 @@ export default function HowRoomieWorks() {
           <div className="hidden lg:block absolute top-32 left-[10%] right-[10%] h-0.5">
             <div className="h-full bg-gradient-to-r from-primary/20 via-primary/40 to-primary/20" />
             <motion.div
-              className="absolute top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-primary z-20"
-              initial={false}
+              className="absolute top-1/2 w-5 h-5 rounded-full bg-primary z-30"
               animate={{
                 left: `${animState.pos * 25}%`,
-                x: "-50%"
+                x: "-50%",
+                y: "-50%"
               }}
               transition={{
                 duration: animState.jump ? 0 : 2,
                 ease: animState.jump ? "linear" : [0.4, 0, 0.2, 1]
               }}
               style={{
-                boxShadow: '0 0 20px rgba(7, 82, 160, 0.8), 0 0 40px rgba(7, 82, 160, 0.5), 0 0 60px rgba(7, 82, 160, 0.3)'
+                boxShadow: '0 0 20px rgba(7, 82, 160, 0.9), 0 0 40px rgba(7, 82, 160, 0.6), 0 0 60px rgba(7, 82, 160, 0.4)',
+                opacity: 1
               }}
             >
               <div className="absolute inset-0 rounded-full animate-ping bg-primary/40" />
