@@ -66,25 +66,32 @@ export default function HowRoomieWorks() {
         </div>
 
         <div className="relative max-w-7xl mx-auto">
-          <div className="hidden lg:block absolute top-32 left-[10%] right-[10%] h-0.5">
+          {/* Progress Line */}
+          <div className="hidden lg:block absolute top-32 left-[10%] right-[10%] h-0.5 z-20">
             <div className="h-full bg-gradient-to-r from-primary/20 via-primary/40 to-primary/20" />
+
+            {/* Animated Ball */}
             <motion.div
-              className="absolute top-1/2 w-5 h-5 rounded-full bg-primary z-30"
+              key="process-ball"
+              className="absolute bg-primary rounded-full shadow-[0_0_20px_rgba(7,82,160,1)] z-40"
+              initial={false}
               animate={{
                 left: `${animState.pos * 25}%`,
+                top: "50%",
                 x: "-50%",
-                y: "-50%"
+                y: "-50%",
+                width: 20,
+                height: 20,
               }}
               transition={{
-                duration: animState.jump ? 0 : 2,
-                ease: animState.jump ? "linear" : [0.4, 0, 0.2, 1]
+                duration: animState.jump ? 0 : 1.5,
+                ease: animState.jump ? "linear" : "easeInOut"
               }}
               style={{
-                boxShadow: '0 0 20px rgba(7, 82, 160, 0.9), 0 0 40px rgba(7, 82, 160, 0.6), 0 0 60px rgba(7, 82, 160, 0.4)',
-                opacity: 1
+                boxShadow: '0 0 15px rgba(7, 82, 160, 0.8), 0 0 30px rgba(7, 82, 160, 0.4)'
               }}
             >
-              <div className="absolute inset-0 rounded-full animate-ping bg-primary/40" />
+              <div className="absolute inset-0 rounded-full animate-ping bg-primary/30" />
             </motion.div>
           </div>
 
