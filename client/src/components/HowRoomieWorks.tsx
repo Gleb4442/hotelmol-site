@@ -5,8 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function HowRoomieWorks() {
   const { t } = useTranslation();
-  const [ballPosition, setBallPosition] = useState(0);
-  const [isJump, setIsJump] = useState(false);
+  const [animState, setAnimState] = useState({ pos: 0, jump: false });
 
   const steps = [
     {
@@ -41,13 +40,11 @@ export default function HowRoomieWorks() {
     if (prefersReducedMotion) return;
 
     const interval = setInterval(() => {
-      setBallPosition((prev) => {
-        if (prev === 4) {
-          setIsJump(true);
-          return 0;
+      setAnimState((prev) => {
+        if (prev.pos === 4) {
+          return { pos: 0, jump: true };
         }
-        setIsJump(false);
-        return prev + 1;
+        return { pos: prev.pos + 1, jump: false };
       });
     }, 4000);
     return () => clearInterval(interval);
@@ -72,13 +69,15 @@ export default function HowRoomieWorks() {
           <div className="hidden lg:block absolute top-32 left-[10%] right-[10%] h-0.5">
             <div className="h-full bg-gradient-to-r from-primary/20 via-primary/40 to-primary/20" />
             <motion.div
-              className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-5 h-5 rounded-full bg-primary z-20"
+              className="absolute top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-primary z-20"
+              initial={false}
               animate={{
-                left: `${ballPosition * 25}%`,
+                left: `${animState.pos * 25}%`,
+                x: "-50%"
               }}
               transition={{
-                duration: isJump ? 0 : 2,
-                ease: isJump ? "linear" : [0.4, 0, 0.2, 1]
+                duration: animState.jump ? 0 : 2,
+                ease: animState.jump ? "linear" : [0.4, 0, 0.2, 1]
               }}
               style={{
                 boxShadow: '0 0 20px rgba(7, 82, 160, 0.8), 0 0 40px rgba(7, 82, 160, 0.5), 0 0 60px rgba(7, 82, 160, 0.3)'
@@ -91,7 +90,7 @@ export default function HowRoomieWorks() {
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-12 lg:gap-6">
             {steps.map((step, index) => {
               const Icon = step.icon;
-              const isActive = ballPosition === index;
+              const isActive = animState.pos === index;
               return (
                 <motion.div
                   key={index}
