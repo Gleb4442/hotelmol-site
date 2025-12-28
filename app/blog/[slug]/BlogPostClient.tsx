@@ -16,10 +16,59 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
     const router = useRouter();
     const [summaryData, setSummaryData] = useState<{ summary: string; keyPoints: string[] } | null>(null);
 
+    // Выбор контента по языку с fallback на украинский
+    const getLocalizedContent = () => {
+        const langMap: Record<string, 'ua' | 'ru' | 'en' | 'pl'> = {
+            'ua': 'ua',
+            'ru': 'ru',
+            'en': 'en',
+            'pl': 'pl'
+        };
+
+        const currentLang = langMap[language] || 'ua';
+
+        if (currentLang === 'ua') {
+            return {
+                title: post.title,
+                content: post.content,
+                seoTitle: post.seoTitle || post.title,
+                seoDescription: post.seoDescription
+            };
+        }
+
+        if (currentLang === 'ru') {
+            return {
+                title: post.titleRu || post.title,
+                content: post.contentRu || post.content,
+                seoTitle: post.seoTitleRu || post.titleRu || post.seoTitle || post.title,
+                seoDescription: post.seoDescriptionRu || post.seoDescription
+            };
+        }
+
+        if (currentLang === 'en') {
+            return {
+                title: post.titleEn || post.title,
+                content: post.contentEn || post.content,
+                seoTitle: post.seoTitleEn || post.titleEn || post.seoTitle || post.title,
+                seoDescription: post.seoDescriptionEn || post.seoDescription
+            };
+        }
+
+        // Polish
+        return {
+            title: post.titlePl || post.title,
+            content: post.contentPl || post.content,
+            seoTitle: post.seoTitlePl || post.titlePl || post.seoTitle || post.title,
+            seoDescription: post.seoDescriptionPl || post.seoDescription
+        };
+    };
+
+    const localizedPost = getLocalizedContent();
+
     const summaryMutation = useMutation({
         mutationFn: async () => {
             const res = await apiRequest("POST", "/api/blog/summarize", {
-                content: post.content,
+                content: localizedPost.content,
                 language: language
             });
             return res.json();
@@ -48,7 +97,7 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
                     </div>
 
                     <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold mb-6">
-                        {post.seoTitle || post.title}
+                        {localizedPost.title}
                     </h1>
 
                     <div className="flex flex-wrap items-center gap-4">
@@ -109,7 +158,7 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
 
                 <div className="prose prose-lg max-w-none dark:prose-invert prose-headings:font-serif prose-a:text-primary">
                     <div className="whitespace-pre-wrap">
-                        {post.content}
+                        {localizedPost.content}
                     </div>
                 </div>
 

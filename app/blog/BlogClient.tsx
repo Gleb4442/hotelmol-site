@@ -8,7 +8,14 @@ import Link from "next/link";
 import type { BlogPost } from "@/shared/schema";
 
 export default function BlogClient({ initialPosts }: { initialPosts: BlogPost[] }) {
-    const { t } = useTranslation();
+    const { t, language } = useTranslation();
+
+    const getLocalizedTitle = (post: BlogPost) => {
+        if (language === 'ru' && post.titleRu) return post.titleRu;
+        if (language === 'en' && post.titleEn) return post.titleEn;
+        if (language === 'pl' && post.titlePl) return post.titlePl;
+        return post.title;
+    };
 
     return (
         <div className="max-w-4xl mx-auto">
@@ -40,7 +47,7 @@ export default function BlogClient({ initialPosts }: { initialPosts: BlogPost[] 
                                         </span>
                                     </div>
                                     <CardTitle className="text-xl md:text-2xl hover:text-primary transition-colors">
-                                        {post.seoTitle || post.title}
+                                        {getLocalizedTitle(post)}
                                     </CardTitle>
                                 </CardHeader>
                                 <CardContent>

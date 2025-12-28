@@ -170,11 +170,28 @@ export const blogPosts = pgTable("blog_posts", {
   title: varchar("title").notNull(),
   slug: varchar("slug").notNull().unique(),
   content: text("content").notNull(),
+
+  // Переводы (необязательные)
+  titleRu: text("title_ru"),
+  contentRu: text("content_ru"),
+  titleEn: text("title_en"),
+  contentEn: text("content_en"),
+  titlePl: text("title_pl"),
+  contentPl: text("content_pl"),
+
+  // SEO метаданные
+  seoTitle: varchar("seo_title"),
+  seoDescription: text("seo_description"),
+  seoTitleRu: text("seo_title_ru"),
+  seoDescriptionRu: text("seo_description_ru"),
+  seoTitleEn: text("seo_title_en"),
+  seoDescriptionEn: text("seo_description_en"),
+  seoTitlePl: text("seo_title_pl"),
+  seoDescriptionPl: text("seo_description_pl"),
+
   authorId: varchar("author_id"),
   status: varchar("status").default('draft'), // 'published' or 'draft'
   featuredImage: text("featured_image"),
-  seoTitle: varchar("seo_title"),
-  seoDescription: text("seo_description"),
   tags: jsonb("tags").default([]),
   publishedAt: timestamp("published_at"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
