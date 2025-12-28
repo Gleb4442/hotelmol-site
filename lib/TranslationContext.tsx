@@ -1,7 +1,10 @@
+```typescript
 "use client";
 
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
-import { Language, translations, TranslationKey } from "./translations";
+import { translations, TranslationKey } from "./translations";
+
+export type Language = "en" | "ru" | "ua" | "pl";
 
 interface TranslationContextType {
   language: Language;
