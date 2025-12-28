@@ -1040,7 +1040,7 @@ export const translations = {
     "blog.notFound": "Статья не найдена",
     "blog.backToBlog": "Назад к блогу",
     "blog.aiSummary": "Краткий обзор",
-    "blog.summaryTitle": "ШИ-обзор статьи",
+    "blog.summaryTitle": "ИИ-обзор статьи",
     "blog.keyPoints": "Ключевые тезисы",
 
     // Home - How Roomie Works
