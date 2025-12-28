@@ -8,6 +8,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import DemoRequestModal from "@/components/DemoRequestModal";
 import SalesAIAgentSection from "@/components/SalesAIAgentSection";
+import ConsultationForm from "@/components/ConsultationForm";
 import { useTranslation } from "@/lib/TranslationContext";
 import SEO, { productSchema } from "@/components/SEO";
 
@@ -134,6 +135,7 @@ export default function Roomie() {
             </section>
 
             <SalesAIAgentSection />
+            <ConsultationForm />
             <Footer />
             <DemoRequestModal open={demoModalOpen} onOpenChange={setDemoModalOpen} />
         </div>

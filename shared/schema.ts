@@ -103,6 +103,21 @@ export const contactLeadSchema = z.object({
   referrer: z.string().optional(),
 });
 
+export const consultationLeadSchema = z.object({
+  name: z.string().min(1, "Name is required"),
+  phone: z.string().min(1, "Phone is required"),
+  hotelSize: z.string().min(1, "Hotel size is required"),
+  dataProcessing: z.boolean().refine((val) => val === true, {
+    message: "You must agree to data processing",
+  }),
+  marketing: z.boolean().optional(),
+  language: z.string().optional(),
+  utmSource: z.string().optional(),
+  utmMedium: z.string().optional(),
+  utmCampaign: z.string().optional(),
+  referrer: z.string().optional(),
+});
+
 export const demoLeadSchema = z.object({
   name: z.string().min(1, "Name is required"),
   email: z.string().email("Valid email is required"),
@@ -139,6 +154,7 @@ export type InsertLead = z.infer<typeof insertLeadSchema>;
 export type LeadSubmission = typeof leadSubmissions.$inferSelect;
 export type ROILead = z.infer<typeof roiLeadSchema>;
 export type ContactLead = z.infer<typeof contactLeadSchema>;
+export type ConsultationLead = z.infer<typeof consultationLeadSchema>;
 export type DemoLead = z.infer<typeof demoLeadSchema>;
 export type InsertCookieConsent = z.infer<typeof insertCookieConsentSchema>;
 export type CookieConsent = typeof cookieConsents.$inferSelect;

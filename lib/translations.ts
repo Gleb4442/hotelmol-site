@@ -86,6 +86,23 @@ export const translations = {
     "roi.successTitle": "Thank you!",
     "roi.successMessage": "We'll send your personalized ROI estimate within 24 hours.",
 
+    // Consultation Form
+    "consultation.title": "Have Questions?",
+    "consultation.subtitle": "Get a free consultation from our experts",
+    "consultation.name": "Full Name",
+    "consultation.namePlaceholder": "John Doe",
+    "consultation.phone": "Phone Number",
+    "consultation.phonePlaceholder": "+1 (555) 123-4567",
+    "consultation.hotelSize": "Hotel Size",
+    "consultation.hotelSizePlaceholder": "Select hotel size",
+    "consultation.dataProcessing": "I agree to data processing",
+    "consultation.marketing": "Send me updates about hotelmol",
+    "consultation.submit": "Request Consultation",
+    "consultation.submitting": "Sending...",
+    "consultation.successTitle": "Thank you!",
+    "consultation.successMessage": "We'll contact you within 24 hours.",
+
+
     // Demo Modal
     "demo.title": "Request a Demo",
     "demo.subtitle": "See Roomie in action. Our team will show you how AI can transform your guest experience.",
@@ -908,7 +925,24 @@ export const translations = {
     "roi.submit": "Рассчитать ROI",
     "roi.submitting": "Расчет...",
     "roi.successTitle": "Спасибо!",
-    "roi.successMessage": "Мы отправим персонализированный расчет ROI в течение 24 часов.",
+    "roi.successMessage": "Мы отправим ваш индивидуальный расчет ROI в течение 24 часов.",
+
+    // Consultation Form
+    "consultation.title": "Остались вопросы?",
+    "consultation.subtitle": "Получите бесплатную консультацию наших экспертов",
+    "consultation.name": "Полное имя",
+    "consultation.namePlaceholder": "Остап Бендер",
+    "consultation.phone": "Номер телефона",
+    "consultation.phonePlaceholder": "+7 (999) 123-45-67",
+    "consultation.hotelSize": "Размер отеля",
+    "consultation.hotelSizePlaceholder": "Выберите размер отеля",
+    "consultation.dataProcessing": "Я согласен на обработку данных",
+    "consultation.marketing": "Присылайте мне новости о hotelmol",
+    "consultation.submit": "Запросить консультацию",
+    "consultation.submitting": "Отправка...",
+    "consultation.successTitle": "Спасибо!",
+    "consultation.successMessage": "Мы свяжемся с вами в течение 24 часов.",
+
 
     // Demo Modal
     "demo.title": "Запросить демо",
@@ -1575,7 +1609,24 @@ export const translations = {
     "roi.submit": "Розрахувати ROI",
     "roi.submitting": "Розрахунок...",
     "roi.successTitle": "Дякуємо!",
-    "roi.successMessage": "Ми надішлемо персоналізований розрахунок ROI протягом 24 годин.",
+    "roi.successMessage": "Ми надішлемо ваш індивідуальний розрахунок ROI протягом 24 годин.",
+
+    // Consultation Form
+    "consultation.title": "Залишились питання?",
+    "consultation.subtitle": "Отримайте безкоштовну консультацію наших експертів",
+    "consultation.name": "Повне ім'я",
+    "consultation.namePlaceholder": "Остап Бендер",
+    "consultation.phone": "Номер телефону",
+    "consultation.phonePlaceholder": "+380 93 123 45 67",
+    "consultation.hotelSize": "Розмір готелю",
+    "consultation.hotelSizePlaceholder": "Оберіть розмір готелю",
+    "consultation.dataProcessing": "Я згоден на обробку даних",
+    "consultation.marketing": "Надсилайте мені новини про hotelmol",
+    "consultation.submit": "Запросити консультацію",
+    "consultation.submitting": "Відправка...",
+    "consultation.successTitle": "Дякуємо!",
+    "consultation.successMessage": "Ми зв'яжемося з вами протягом 24 годин.",
+
 
     // Demo Modal
     "demo.title": "Запросити демо",
