@@ -1,4 +1,3 @@
-```typescript
 "use client";
 
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
@@ -34,14 +33,9 @@ export function TranslationProvider({ children }: { children: ReactNode }) {
   };
 
   const t = (key: TranslationKey): string => {
-    const dict = translations[language] as any;
-    const fallback = translations.en as any;
-    return dict[key] || fallback[key] || key;
+    const translation = translations[language]?.[key] || translations["en"]?.[key] || key;
+    return translation;
   };
-
-  useEffect(() => {
-    document.documentElement.lang = language;
-  }, [language]);
 
   return (
     <TranslationContext.Provider value={{ language, setLanguage, t }}>
