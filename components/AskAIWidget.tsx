@@ -19,11 +19,11 @@ export default function AskAIWidget() {
                         initial={{ opacity: 0, y: 20, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 20, scale: 0.95 }}
-                        className="w-[350px] h-[450px] bg-background border rounded-2xl shadow-2xl overflow-hidden flex flex-col mb-4 origin-bottom-left"
+                        className="w-[400px] h-[600px] rounded-2xl overflow-hidden flex flex-col mb-4 origin-bottom-left border border-white/20 shadow-2xl backdrop-blur-xl bg-white/30 dark:bg-black/30"
                     >
-                        <div className="p-4 bg-primary text-primary-foreground flex justify-between items-center">
-                            <div className="flex items-center gap-2">
-                                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
+                        <div className="p-4 bg-white/10 border-b border-white/10 text-foreground flex justify-between items-center backdrop-blur-md">
+                            <div className="flex items-center gap-3">
+                                <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center shadow-inner">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         xmlSpace="preserve"
@@ -31,7 +31,7 @@ export default function AskAIWidget() {
                                         height="100%"
                                         version="1.1"
                                         viewBox="0 0 203.18 203.18"
-                                        className="w-5 h-5"
+                                        className="w-6 h-6 text-foreground"
                                         style={{
                                             shapeRendering: "geometricPrecision",
                                             textRendering: "geometricPrecision",
@@ -48,28 +48,31 @@ export default function AskAIWidget() {
                                         </g>
                                     </svg>
                                 </div>
-                                <span className="font-semibold">HotelMol AI</span>
+                                <span className="font-semibold text-lg">HotelMol AI</span>
                             </div>
                             <Button
                                 variant="ghost"
                                 size="icon"
-                                className="hover:bg-white/20 text-white"
+                                className="hover:bg-white/20"
                                 onClick={() => setIsOpen(false)}
                             >
                                 <X className="h-5 w-5" />
                             </Button>
                         </div>
 
-                        <div className="flex-1 p-4 overflow-y-auto bg-muted/20">
-                            <div className="bg-muted p-3 rounded-lg rounded-tl-none max-w-[80%] text-sm mb-4">
+                        <div className="flex-1 p-4 overflow-y-auto">
+                            <div className="bg-white/60 dark:bg-black/40 backdrop-blur-sm p-4 rounded-2xl rounded-tl-none max-w-[85%] text-base shadow-sm mb-4 border border-white/10">
                                 {t("aiWidget.welcome") || "Привет! Я ИИ-ассистент. Чем могу помочь?"}
                             </div>
                         </div>
 
-                        <div className="p-4 border-t bg-background">
+                        <div className="p-4 border-t border-white/10 bg-white/20 backdrop-blur-md">
                             <div className="flex gap-2">
-                                <Input placeholder="Message..." className="flex-1" />
-                                <Button size="icon">
+                                <Input
+                                    placeholder="Message..."
+                                    className="flex-1 bg-white/40 dark:bg-black/20 border-white/20 focus-visible:ring-offset-0 focus-visible:ring-white/50 placeholder:text-muted-foreground/70"
+                                />
+                                <Button size="icon" className="bg-[#0752A0] hover:bg-[#064282] text-white shadow-lg">
                                     <Send className="h-4 w-4" />
                                 </Button>
                             </div>
@@ -82,27 +85,16 @@ export default function AskAIWidget() {
                 onClick={() => setIsOpen(!isOpen)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="group relative flex items-center gap-3 pl-2 pr-6 py-2 bg-white dark:bg-slate-900 rounded-full shadow-lg border border-slate-200 dark:border-slate-800"
+                className="group relative flex items-center gap-3 pl-3 pr-8 py-3 bg-[#0752A0] rounded-full shadow-[0_0_20px_rgba(255,255,255,0.3)] border border-white/20 hover:shadow-[0_0_25px_rgba(255,255,255,0.5)] transition-all duration-300"
             >
-                {/* Border Beam Animation */}
-                <div className="absolute inset-0 rounded-full overflow-hidden pointer-events-none">
-                    <div className="absolute inset-[-50%] bg-[conic-gradient(from_0deg,transparent_0_340deg,white_360deg)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-[spin_3s_linear_infinite]"
-                        style={{ content: '""' }}
-                    />
-                    <div className="absolute inset-[1px] rounded-full bg-white dark:bg-slate-900" />
-
-                    {/* Blue beam */}
-                    <span className="absolute top-0 left-0 h-full w-full rounded-full border-2 border-transparent border-t-blue-500 border-l-blue-500 rounded-full animate-[spin_3s_linear_infinite] shadow-[0_0_15px_rgba(59,130,246,0.5)]" />
-                </div>
-
                 {/* Content */}
-                <div className="relative z-10 flex items-center gap-3">
-                    <div className="relative w-10 h-10 rounded-full bg-[#0752A0] flex items-center justify-center text-white overflow-hidden animate-pulse-slow">
+                <div className="relative z-10 flex items-center gap-4">
+                    <div className="relative w-14 h-14 rounded-full bg-white/10 flex items-center justify-center text-white overflow-hidden shadow-inner backdrop-blur-sm">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             xmlSpace="preserve"
-                            width="24"
-                            height="24"
+                            width="40"
+                            height="40"
                             version="1.1"
                             viewBox="0 0 203.18 203.18"
                             style={{
@@ -111,6 +103,7 @@ export default function AskAIWidget() {
                                 fillRule: "evenodd",
                                 clipRule: "evenodd",
                             }}
+                            className="drop-shadow-[0_0_8px_rgba(255,255,255,0.6)]"
                         >
                             <g id="Layer_1">
                                 <circle fill="none" cx="101.59" cy="101.59" r="101.6" />
@@ -121,18 +114,8 @@ export default function AskAIWidget() {
                             </g>
                         </svg>
                     </div>
-                    <span className="font-medium text-sm text-foreground">Спросить ИИ</span>
+                    <span className="font-semibold text-lg text-white tracking-wide">Спросить ИИ</span>
                 </div>
-
-                <style jsx>{`
-            .animate-pulse-slow {
-                animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-            }
-            @keyframes pulse {
-                0%, 100% { opacity: 1; }
-                50% { opacity: .7; }
-            }
-        `}</style>
             </motion.button>
         </div>
     );

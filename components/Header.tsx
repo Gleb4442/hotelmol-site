@@ -54,7 +54,7 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
       WebkitBackdropFilter: "blur(12px)",
       boxShadow: "0 8px 32px rgba(7, 82, 160, 0.12)"
     }}>
-      <div className="flex h-[90px] md:h-[100px] items-center justify-between px-6">
+      <div className="flex h-[70px] md:h-[100px] items-center justify-between px-6">
         <div className="flex items-center gap-8">
           <Link href="/" className="flex items-center" data-testid="link-home">
             <img src="/assets/hotelmol-logo.png" alt="HotelMol" className="h-[195px]" />
