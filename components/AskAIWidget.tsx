@@ -12,7 +12,7 @@ export default function AskAIWidget() {
     const { t } = useTranslation();
 
     return (
-        <div className="hidden md:flex fixed bottom-8 left-8 z-50 flex-col items-start gap-4">
+        <div className="hidden md:flex fixed bottom-8 right-8 z-50 flex-col items-end gap-4">
             <AnimatePresence>
                 {isOpen && (
                     <motion.div

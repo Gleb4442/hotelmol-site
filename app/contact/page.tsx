@@ -71,12 +71,12 @@ export default function Contact() {
     };
 
     return (
-        <div className="min-h-screen bg-background">
+        <div className="min-h-screen bg-background overflow-x-hidden">
             <Header />
-            <main className="pt-40 pb-28">
-                <div className="container mx-auto px-4">
-                    <div className="max-w-4xl mx-auto text-center mb-16">
-                        <h1 className="font-serif text-5xl lg:text-6xl font-semibold tracking-tight mb-6">
+            <main className="pt-32 md:pt-40 pb-28">
+                <div className="container mx-auto px-4 max-w-full overflow-hidden">
+                    <div className="max-w-4xl mx-auto text-center mb-16 px-2">
+                        <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight mb-6">
                             {t("contact.title")}
                         </h1>
                         <p className="text-xl text-muted-foreground leading-relaxed">

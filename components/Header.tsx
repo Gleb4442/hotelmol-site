@@ -57,7 +57,7 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
       <div className="flex h-[70px] md:h-[100px] items-center justify-between px-6">
         <div className="flex items-center gap-8">
           <Link href="/" className="flex items-center" data-testid="link-home">
-            <img src="/assets/hotelmol-logo.png" alt="HotelMol" className="h-[195px]" />
+            <img src="/assets/hotelmol-logo.png" alt="HotelMol" className="h-[195px] mt-1 md:mt-0" />
           </Link>
 
           <nav className="hidden md:flex items-center gap-6">
@@ -136,7 +136,7 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
                 <Menu className="h-10 w-10 stroke-[3]" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+            <SheetContent side="right" className="w-[300px] sm:w-[400px] border-l border-white/20 shadow-2xl backdrop-blur-xl bg-white/30 dark:bg-black/30">
               <nav className="flex flex-col gap-4 mt-8">
                 {navigation.map((item) => {
                   const isActive = pathname === item.href;
