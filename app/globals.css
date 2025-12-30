@@ -247,6 +247,16 @@
     animation: shimmer-sweep 2.5s linear infinite;
     pointer-events: none;
   }
+
+  @keyframes border-beam {
+    100% {
+      offset-distance: 100%;
+    }
+  }
+
+  .animate-border-beam {
+    animation: border-beam calc(var(--duration)*1s) infinite linear;
+  }
 }
 
 @media (max-width: 768px) {
