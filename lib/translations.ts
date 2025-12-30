@@ -1,6 +1,6 @@
 export type Language = "en" | "ru" | "ua" | "pl";
 
-export const translations = {
+const translationsBase = {
   en: {
     // Header
     "nav.roomie": "Roomie",
@@ -2231,4 +2231,6 @@ export const translations = {
   },
 } as const;
 
-export type TranslationKey = keyof typeof translations.en;
+export type TranslationKey = keyof typeof translationsBase.en;
+
+export const translations: Record<Language, Partial<Record<TranslationKey, string>>> = translationsBase;
