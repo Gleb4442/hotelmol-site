@@ -19,7 +19,7 @@ export default function AskAIWidget() {
                         initial={{ opacity: 0, y: 20, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 20, scale: 0.95 }}
-                        className="w-[400px] h-[600px] rounded-2xl overflow-hidden flex flex-col mb-4 origin-bottom-left border border-white/20 shadow-2xl backdrop-blur-xl bg-white/30 dark:bg-black/30"
+                        className="w-[400px] h-[600px] rounded-2xl overflow-hidden flex flex-col mb-4 origin-bottom-right border border-black/5 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] backdrop-blur-3xl bg-white/70 dark:bg-black/70 ring-1 ring-black/5"
                     >
                         <div className="p-4 bg-white/10 border-b border-white/10 text-foreground flex justify-between items-center backdrop-blur-md">
                             <div className="flex items-center gap-3">

@@ -14,6 +14,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 interface HeaderProps {
   onDemoClick?: () => void;
@@ -57,7 +63,7 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
       <div className="flex h-[70px] md:h-[100px] items-center justify-between px-6">
         <div className="flex items-center gap-8">
           <Link href="/" className="flex items-center" data-testid="link-home">
-            <img src="/assets/hotelmol-logo.png" alt="HotelMol" className="h-[195px] mt-1 md:mt-0" />
+            <img src="/assets/hotelmol-logo.png" alt="HotelMol" className="h-[195px] mt-2 md:mt-0" />
           </Link>
 
           <nav className="hidden md:flex items-center gap-6">
@@ -125,8 +131,8 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
             </a>
           </Button>
 
-          <Sheet>
-            <SheetTrigger asChild>
+          <Dialog>
+            <DialogTrigger asChild>
               <Button
                 variant="ghost"
                 size="icon"
@@ -135,16 +141,19 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
               >
                 <Menu className="h-10 w-10 stroke-[3]" />
               </Button>
-            </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[400px] border-l border-white/20 shadow-2xl backdrop-blur-xl bg-white/30 dark:bg-black/30">
-              <nav className="flex flex-col gap-4 mt-8">
+            </DialogTrigger>
+            <DialogContent className="w-[90%] max-w-[350px] rounded-2xl border-white/20 shadow-2xl backdrop-blur-xl bg-white/40 dark:bg-black/40 overflow-hidden">
+              <div className="visually-hidden">
+                <DialogTitle>Navigation Menu</DialogTitle>
+              </div>
+              <nav className="flex flex-col gap-6 items-center py-8">
                 {navigation.map((item) => {
                   const isActive = pathname === item.href;
                   return (
                     <Link
                       key={item.name}
                       href={item.href}
-                      className={`text-lg font-medium transition-colors hover:text-primary flex items-center gap-2 ${isActive ? "text-primary" : ""}`}
+                      className={`text-xl font-medium transition-colors hover:text-primary flex items-center gap-2 ${isActive ? "text-primary" : "text-foreground/80"}`}
                       data-testid={`mobile-link-${item.name.toLowerCase().replace(' ', '-')}`}
                     >
                       {item.name}
@@ -157,8 +166,8 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
                   );
                 })}
               </nav>
-            </SheetContent>
-          </Sheet>
+            </DialogContent>
+          </Dialog>
         </div>
       </div>
 

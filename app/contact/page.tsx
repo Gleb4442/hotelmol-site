@@ -84,9 +84,9 @@ export default function Contact() {
                         </p>
                     </div>
 
-                    <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                    <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
                         <div>
-                            <Card className="p-8">
+                            <Card className="p-4 md:p-8">
                                 <h2 className="font-serif text-2xl font-semibold mb-6">{t("contact.formTitle")}</h2>
                                 {submitSuccess ? (
                                     <div className="text-center py-12">
@@ -98,7 +98,7 @@ export default function Contact() {
                                     </div>
                                 ) : (
                                     <Form {...form}>
-                                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 md:space-y-6">
                                             <FormField control={form.control} name="name" render={({ field }) => (
                                                 <FormItem>
                                                     <FormLabel>{t("contact.name")} *</FormLabel>
@@ -111,7 +111,7 @@ export default function Contact() {
                                                     <FormControl><Input type="email" placeholder={t("contact.emailPlaceholder")} {...field} /></FormControl>
                                                 </FormItem>
                                             )} />
-                                            <div className="grid md:grid-cols-2 gap-4">
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                                 <FormField control={form.control} name="phone" render={({ field }) => (
                                                     <FormItem>
                                                         <FormLabel>{t("contact.phone")}</FormLabel>
@@ -159,7 +159,7 @@ export default function Contact() {
                             </Card>
                         </div>
 
-                        <div className="space-y-8">
+                        <div className="space-y-6 md:space-y-8">
                             <div>
                                 <h2 className="font-serif text-2xl font-semibold mb-6">{t("contact.infoTitle")}</h2>
                                 <div className="space-y-6">
@@ -169,7 +169,7 @@ export default function Contact() {
                                         </div>
                                         <div>
                                             <h3 className="font-medium mb-1">{t("contact.emailLabel")}</h3>
-                                            <p className="text-muted-foreground"><a href="mailto:partnerships@hotelmol.com" className="hover:text-primary transition-colors">partnerships@hotelmol.com</a></p>
+                                            <p className="text-muted-foreground break-all"><a href="mailto:partnerships@hotelmol.com" className="hover:text-primary transition-colors">partnerships@hotelmol.com</a></p>
                                         </div>
                                     </div>
                                     <div className="flex items-start gap-4">
@@ -178,12 +178,12 @@ export default function Contact() {
                                         </div>
                                         <div>
                                             <h3 className="font-medium mb-1">{t("contact.phoneLabel")}</h3>
-                                            <p className="text-muted-foreground"><a href="tel:+380931603830" className="hover:text-primary transition-colors">+380 93 160 38 30</a> <span className="text-sm">{t("contact.phoneNote")}</span></p>
+                                            <p className="text-muted-foreground"><a href="tel:+380931603830" className="hover:text-primary transition-colors">+380 93 160 38 30</a> <span className="text-sm block sm:inline">{t("contact.phoneNote")}</span></p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <Card className="p-8 bg-primary/5">
+                            <Card className="p-6 md:p-8 bg-primary/5">
                                 <h3 className="font-serif text-xl font-semibold mb-4">{t("contact.officeHours")}</h3>
                                 <div className="text-center py-4">
                                     <p className="text-3xl font-bold text-primary mb-2">24/7</p>
@@ -191,7 +191,7 @@ export default function Contact() {
                                     <p className="text-muted-foreground">{t("contact.availabilityDescription")}</p>
                                 </div>
                             </Card>
-                            <Card className="p-8">
+                            <Card className="p-6 md:p-8">
                                 <h3 className="font-serif text-xl font-semibold mb-4">{t("contact.quickSupport")}</h3>
                                 <div className="flex gap-10 items-center justify-center py-4">
                                     <a href="https://t.me/hotelmolmanager" target="_blank" rel="noopener noreferrer" className="transition-transform hover:scale-110">
