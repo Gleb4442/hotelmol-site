@@ -113,8 +113,8 @@ export default function AskAIWidget() {
                         {/* Chat Header */}
                         <div className="p-4 bg-white/10 border-b border-white/10 text-foreground flex justify-between items-center backdrop-blur-md shrink-0">
                             <div className="flex items-center gap-3">
-                                {/* UI Polish: Header icon 2x size, no background */}
-                                <div className="w-12 h-12 flex items-center justify-center">
+                                {/* UI Polish: Header icon 2x size again (w-24 h-24) */}
+                                <div className="w-24 h-24 flex items-center justify-center">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         xmlSpace="preserve"
@@ -238,15 +238,15 @@ export default function AskAIWidget() {
                         onClick={() => setIsOpen(true)}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="pointer-events-auto absolute bottom-4 right-0 group flex items-center gap-2 pl-2 pr-5 py-2 bg-[#0752A0] rounded-full shadow-[0_0_20px_rgba(255,255,255,0.3)] border border-white/20 hover:shadow-[0_0_25px_rgba(255,255,255,0.5)] transition-all duration-300"
+                        className="pointer-events-auto absolute bottom-4 right-0 group flex items-center gap-2 pl-2 pr-3 py-1.5 bg-[#0752A0] rounded-full shadow-[0_0_20px_rgba(255,255,255,0.3)] border border-white/20 hover:shadow-[0_0_25px_rgba(255,255,255,0.5)] transition-all duration-300"
                     >
                         {/* Content */}
                         <div className="relative z-10 flex items-center gap-3">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 xmlSpace="preserve"
-                                width="56"
-                                height="56"
+                                width="72"
+                                height="72"
                                 version="1.1"
                                 viewBox="0 0 203.18 203.18"
                                 style={{
@@ -273,7 +273,7 @@ export default function AskAIWidget() {
                                     </g>
                                 </g>
                             </svg>
-                            <span className="font-semibold text-base text-white tracking-wide">{t("aiWidget.button") || "Ask AI"}</span>
+                            <span className="font-semibold text-lg text-white tracking-wide whitespace-nowrap">{t("aiWidget.button") || "Ask AI"}</span>
                         </div>
                     </motion.button>
                 )}
