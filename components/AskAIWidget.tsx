@@ -118,8 +118,8 @@ export default function AskAIWidget() {
                         // Mobile: Full screen when open (top-0 bottom-0 left-0 right-0 w-full h-full).
                         className="pointer-events-auto relative w-full h-full md:w-[410px] md:h-full rounded-none md:rounded-2xl overflow-hidden flex flex-col origin-bottom-right border border-black/5 shadow-2xl backdrop-blur-3xl bg-white/70 dark:bg-black/70 ring-1 ring-black/5"
                     >
-                        {/* Chat Header */}
-                        <div className="p-4 bg-white/10 border-b border-white/10 text-foreground flex justify-between items-center backdrop-blur-md shrink-0">
+                        {/* Chat Header - Reduced vertical padding exactly by 5px (32px -> 27px total padding padding height) */}
+                        <div className="py-[13.5px] px-4 bg-white/10 border-b border-white/10 text-foreground flex justify-between items-center backdrop-blur-md shrink-0">
                             <div className="flex items-center gap-3">
                                 {/* UI Polish: Header icon reduced (w-16 h-16) */}
                                 <div className="w-16 h-16 flex items-center justify-center">
@@ -247,11 +247,12 @@ export default function AskAIWidget() {
                         onClick={() => setIsOpen(true)}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        // UI Polish: Compact trigger (h-10 instead of default, py-1, tighter padding). Narrower width.
-                        className="pointer-events-auto absolute bottom-4 right-0 group hidden md:flex items-center gap-1.5 pl-1.5 pr-3 h-10 bg-[#0752A0] rounded-full shadow-[0_0_20px_rgba(255,255,255,0.3)] border border-white/20 hover:shadow-[0_0_25px_rgba(255,255,255,0.5)] transition-all duration-300"
+                        // UI Polish: Trigger height +4px (h-[44px]), narrowed gap for text exactly by 3px (gap-1.5 -> gap-[3px])
+                        // Harmonious white glow: border-white/40 and shadow-lg
+                        className="pointer-events-auto absolute bottom-4 right-0 group hidden md:flex items-center gap-[3px] pl-1.5 pr-4 h-[44px] bg-[#0752A0] rounded-full shadow-[0_0_20px_rgba(255,255,255,0.4)] border border-white/30 hover:shadow-[0_0_25px_rgba(255,255,255,0.6)] transition-all duration-300"
                     >
                         {/* Content */}
-                        <div className="relative z-10 flex items-center gap-1.5">
+                        <div className="relative z-10 flex items-center gap-[3px]">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 xmlSpace="preserve"
@@ -283,7 +284,7 @@ export default function AskAIWidget() {
                                     </g>
                                 </g>
                             </svg>
-                            <span className="font-semibold text-sm text-white tracking-wide whitespace-nowrap">{t("aiWidget.button") || "Ask AI"}</span>
+                            <span className="font-semibold text-[1.05rem] text-white tracking-wide whitespace-nowrap">{t("aiWidget.button") || "Ask AI"}</span>
                         </div>
                     </motion.button>
                 )}
