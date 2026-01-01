@@ -63,7 +63,7 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
       <div className="flex h-[70px] md:h-[100px] items-center justify-between px-6">
         <div className="flex items-center gap-8">
           <Link href="/" className="flex items-center" data-testid="link-home">
-            <img src="/assets/hotelmol-logo.png" alt="HotelMol" className="h-[195px] mt-2 md:mt-0" />
+            <img src="/assets/hotelmol-logo.png" alt="HotelMol" className="h-[195px] mt-2 md:mt-1" />
           </Link>
 
           <nav className="hidden md:flex items-center gap-6">
@@ -142,7 +142,10 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
                 <Menu className="h-10 w-10 stroke-[3]" />
               </Button>
             </DialogTrigger>
-            <DialogContent className="w-[90%] max-w-[350px] rounded-2xl border-white/20 shadow-2xl backdrop-blur-xl bg-white/40 dark:bg-black/40 overflow-hidden">
+            <DialogContent
+              overlayClassName="bg-white/10 backdrop-blur-md"
+              className="w-[90%] max-w-[350px] rounded-2xl border-white/20 shadow-2xl backdrop-blur-xl bg-white/90 dark:bg-zinc-900/90 overflow-hidden"
+            >
               <div className="visually-hidden">
                 <DialogTitle>Navigation Menu</DialogTitle>
               </div>
