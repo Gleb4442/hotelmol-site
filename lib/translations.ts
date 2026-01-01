@@ -16,6 +16,7 @@ const translationsBase = {
     "button.tryDemo": "Try the Demo",
     "button.requestDemo": "Request a Demo",
     "aiWidget.button": "Ask AI",
+    "aiWidget.headerTitle": "hotelmol assistant",
     "aiWidget.thinking": "Agent is thinking...",
     "aiWidget.inputPlaceholder": "Type your message...",
 
@@ -862,6 +863,7 @@ const translationsBase = {
     "button.tryDemo": "Попробовать демо",
     "button.requestDemo": "Запросить демо",
     "aiWidget.button": "Спросить ИИ",
+    "aiWidget.headerTitle": "hotelmol ассистент",
     "aiWidget.thinking": "Агент думает...",
     "aiWidget.inputPlaceholder": "Введите сообщение...",
 
@@ -1551,6 +1553,7 @@ const translationsBase = {
     "button.tryDemo": "Спробувати демо",
     "button.requestDemo": "Запросити демо",
     "aiWidget.button": "Запитати ШІ",
+    "aiWidget.headerTitle": "hotelmol асистент",
     "aiWidget.thinking": "Агент думає...",
     "aiWidget.inputPlaceholder": "Введіть повідомлення...",
 
