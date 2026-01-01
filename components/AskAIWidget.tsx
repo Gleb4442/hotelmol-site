@@ -118,8 +118,8 @@ export default function AskAIWidget() {
                         // Mobile: Full screen when open (top-0 bottom-0 left-0 right-0 w-full h-full).
                         className="pointer-events-auto relative w-full h-full md:w-[410px] md:h-full rounded-none md:rounded-2xl overflow-hidden flex flex-col origin-bottom-right border border-black/5 shadow-2xl backdrop-blur-3xl bg-white/70 dark:bg-black/70 ring-1 ring-black/5"
                     >
-                        {/* Chat Header - Reduced vertical padding exactly by 5px (32px -> 27px total padding padding height) */}
-                        <div className="py-[13.5px] px-4 bg-white/10 border-b border-white/10 text-foreground flex justify-between items-center backdrop-blur-md shrink-0">
+                        {/* Chat Header - Responsive vertical padding: Desktop -7px (py-[12.5px]), Mobile -5px (py-[13.5px]) */}
+                        <div className="py-[13.5px] md:py-[12.5px] px-4 bg-white/10 border-b border-white/10 text-foreground flex justify-between items-center backdrop-blur-md shrink-0">
                             <div className="flex items-center gap-3">
                                 {/* UI Polish: Header icon reduced (w-16 h-16) */}
                                 <div className="w-16 h-16 flex items-center justify-center">
@@ -191,15 +191,35 @@ export default function AskAIWidget() {
                                 </div>
                             ))}
 
-                            {/* Typing Indicator */}
+                            {/* Typing Indicator - Shimmer Effect + Sequential Dots */}
                             {isLoading && (
-                                <div className="bg-white/60 dark:bg-black/40 backdrop-blur-sm p-4 rounded-2xl rounded-tl-none max-w-[85%] w-fit self-start border border-white/10 flex items-center gap-2">
-                                    <div className="flex space-x-1">
-                                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce [animation-delay:-0.3s]"></div>
-                                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce [animation-delay:-0.15s]"></div>
-                                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                                <div className="bg-white/60 dark:bg-black/40 backdrop-blur-sm p-4 rounded-2xl rounded-tl-none max-w-[85%] w-fit self-start border border-white/10 flex items-center gap-2 overflow-hidden">
+                                    <div className="relative">
+                                        {/* Shimmering Text */}
+                                        <motion.span
+                                            className="text-sm font-medium bg-clip-text text-transparent bg-gradient-to-r from-muted-foreground via-foreground to-muted-foreground bg-[length:200%_100%]"
+                                            animate={{ backgroundPosition: ["100% 0", "-100% 0"] }}
+                                            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                                        >
+                                            {t("aiWidget.thinking") || "Agent is thinking"}
+                                        </motion.span>
+
+                                        {/* Sequential Dots */}
+                                        <span className="text-sm font-medium text-muted-foreground inline-flex w-4">
+                                            <motion.span
+                                                animate={{ opacity: [0, 1, 1, 0] }}
+                                                transition={{ duration: 1.5, repeat: Infinity, times: [0, 0.33, 0.66, 1] }}
+                                            >.</motion.span>
+                                            <motion.span
+                                                animate={{ opacity: [0, 0, 1, 0] }}
+                                                transition={{ duration: 1.5, repeat: Infinity, times: [0, 0.33, 0.66, 1] }}
+                                            >.</motion.span>
+                                            <motion.span
+                                                animate={{ opacity: [0, 0, 0, 1] }}
+                                                transition={{ duration: 1.5, repeat: Infinity, times: [0, 0.33, 0.66, 1] }}
+                                            >.</motion.span>
+                                        </span>
                                     </div>
-                                    <span className="text-xs text-muted-foreground ml-2">{t("aiWidget.thinking")}</span>
                                 </div>
                             )}
                             <div ref={messagesEndRef} />

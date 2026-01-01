@@ -57,13 +57,13 @@ export default function MobileBottomNav() {
             {/* UI Polish: Removed border and dividers for a cleaner look. Shadow provides separation. bg opacity increased. */}
             <div className="relative w-full h-14 bg-white/90 dark:bg-black/95 backdrop-blur-2xl rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] flex items-center justify-between px-2 pointer-events-auto">
 
-                {/* AI Assistant Button */}
+                {/* Language Switcher Button (Swapped with AI) */}
                 <button
-                    onClick={openAIChat}
-                    className="flex-1 flex flex-col items-center justify-center gap-0.5 h-full text-[#0752A0] active:scale-95 transition-transform"
+                    onClick={cycleLanguage}
+                    className="flex-1 flex flex-col items-center justify-center gap-0.5 h-full text-foreground/70 active:scale-95 transition-transform"
                 >
-                    <MessageCircle className="w-6 h-6" />
-                    <span className="text-[10px] font-medium uppercase tracking-tighter">AI</span>
+                    <Globe className="w-6 h-6" />
+                    <span className="text-[10px] font-bold uppercase tracking-tighter">{getLanguageLabel()}</span>
                 </button>
 
                 {/* Vertical Divider Removed */}
@@ -113,13 +113,13 @@ export default function MobileBottomNav() {
 
                 {/* Vertical Divider Removed */}
 
-                {/* Language Switcher Button */}
+                {/* AI Assistant Button (Swapped with Language) */}
                 <button
-                    onClick={cycleLanguage}
-                    className="flex-1 flex flex-col items-center justify-center gap-0.5 h-full text-foreground/70 active:scale-95 transition-transform"
+                    onClick={openAIChat}
+                    className="flex-1 flex flex-col items-center justify-center gap-0.5 h-full text-[#0752A0] active:scale-95 transition-transform"
                 >
-                    <Globe className="w-6 h-6" />
-                    <span className="text-[10px] font-bold uppercase tracking-tighter">{getLanguageLabel()}</span>
+                    <MessageCircle className="w-6 h-6" />
+                    <span className="text-[10px] font-medium uppercase tracking-tighter">AI</span>
                 </button>
             </div>
 
@@ -131,7 +131,7 @@ export default function MobileBottomNav() {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         onClick={() => setIsMenuOpen(false)}
-                        className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[55] md:hidden"
+                        className="fixed inset-0 bg-black/5 z-[55] md:hidden"
                     />
                 )}
             </AnimatePresence>
