@@ -1,27 +1,116 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useTranslation } from "@/lib/TranslationContext";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import { v4 as uuidv4 } from "uuid";
+
+interface Message {
+    role: "user" | "assistant";
+    content: string;
+}
 
 export default function AskAIWidget() {
     const [isOpen, setIsOpen] = useState(false);
     const { t } = useTranslation();
+    const [sessionId, setSessionId] = useState<string>("");
+    const [messages, setMessages] = useState<Message[]>([]);
+    const [input, setInput] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
+    const messagesEndRef = useRef<HTMLDivElement>(null);
+
+    // Initialize session ID
+    useEffect(() => {
+        let sid = localStorage.getItem("hotelmol_session_id");
+        if (!sid) {
+            sid = uuidv4();
+            localStorage.setItem("hotelmol_session_id", sid);
+        }
+        setSessionId(sid);
+    }, []);
+
+    // Auto-scroll to bottom of messages
+    useEffect(() => {
+        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    }, [messages, isLoading]);
+
+    const handleSendMessage = async () => {
+        if (!input.trim() || isLoading) return;
+
+        const userMsg = input.trim();
+        setInput("");
+        setMessages((prev) => [...prev, { role: "user", content: userMsg }]);
+        setIsLoading(true);
+
+        try {
+            const response = await fetch("https://n8n.myn8napp.online/webhook/40d5e18a-9a16-408e-b594-7d4797e085f6/chat", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    chatInput: userMsg,
+                    sessionId: sessionId,
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+
+            const data = await response.json();
+
+            // Handle various possible response formats from n8n
+            let aiResponse = "Thinking process complete.";
+
+            if (typeof data === 'string') {
+                aiResponse = data;
+            } else if (data.output) {
+                aiResponse = data.output;
+            } else if (data.response) {
+                aiResponse = data.response;
+            } else if (data.text) {
+                aiResponse = data.text;
+            } else if (Array.isArray(data) && data.length > 0) {
+                aiResponse = data[0].output || data[0].text || JSON.stringify(data[0]);
+            } else {
+                aiResponse = JSON.stringify(data);
+            }
+
+            setMessages((prev) => [...prev, { role: "assistant", content: aiResponse }]);
+
+        } catch (error) {
+            console.error("Error sending message:", error);
+            setMessages((prev) => [...prev, { role: "assistant", content: "Sorry, I encountered an error connecting to the server. Please check your connection." }]);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    const handleKeyDown = (e: React.KeyboardEvent) => {
+        if (e.key === "Enter") {
+            handleSendMessage();
+        }
+    };
 
     return (
-        <div className="hidden md:flex fixed bottom-8 right-8 z-50 flex-col items-end gap-4">
+        <div className="hidden md:flex fixed bottom-8 right-8 z-50 flex-col items-end gap-4 text-left">
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
                         initial={{ opacity: 0, y: 20, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 20, scale: 0.95 }}
-                        className="w-[400px] h-[600px] rounded-2xl overflow-hidden flex flex-col mb-4 origin-bottom-right border border-black/5 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] backdrop-blur-3xl bg-white/70 dark:bg-black/70 ring-1 ring-black/5"
+                        // Reduced height to 590px as requested
+                        className="w-[400px] h-[590px] rounded-2xl overflow-hidden flex flex-col mb-4 origin-bottom-right border border-black/5 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] backdrop-blur-3xl bg-white/70 dark:bg-black/70 ring-1 ring-black/5"
                     >
-                        <div className="p-4 bg-white/10 border-b border-white/10 text-foreground flex justify-between items-center backdrop-blur-md">
+                        {/* Chat Header */}
+                        <div className="p-4 bg-white/10 border-b border-white/10 text-foreground flex justify-between items-center backdrop-blur-md shrink-0">
                             <div className="flex items-center gap-3">
                                 <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center shadow-inner">
                                     <svg
@@ -60,19 +149,65 @@ export default function AskAIWidget() {
                             </Button>
                         </div>
 
-                        <div className="flex-1 p-4 overflow-y-auto">
-                            <div className="bg-white/60 dark:bg-black/40 backdrop-blur-sm p-4 rounded-2xl rounded-tl-none max-w-[85%] text-base shadow-sm mb-4 border border-white/10">
-                                {t("aiWidget.welcome") || "Привет! Я ИИ-ассистент. Чем могу помочь?"}
+                        {/* Chat Messages Area */}
+                        <div className="flex-1 p-4 overflow-y-auto space-y-4">
+                            {/* Welcome Message */}
+                            <div className="bg-white/60 dark:bg-black/40 backdrop-blur-sm p-4 rounded-2xl rounded-tl-none max-w-[85%] text-base shadow-sm border border-white/10 self-start">
+                                {t("aiWidget.welcome") || "Hello! How can I help you today?"}
                             </div>
+
+                            {/* Conversation History */}
+                            {messages.map((msg, idx) => (
+                                <div
+                                    key={idx}
+                                    className={`p-4 rounded-2xl text-base shadow-sm border border-white/10 max-w-[85%] ${msg.role === 'user'
+                                            ? 'bg-[#0752A0] text-white rounded-tr-none ml-auto'
+                                            : 'bg-white/60 dark:bg-black/40 backdrop-blur-sm rounded-tl-none self-start text-foreground'
+                                        }`}
+                                >
+                                    {msg.role === 'assistant' ? (
+                                        <div className="prose prose-sm dark:prose-invert max-w-none">
+                                            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                                                {msg.content}
+                                            </ReactMarkdown>
+                                        </div>
+                                    ) : (
+                                        msg.content
+                                    )}
+                                </div>
+                            ))}
+
+                            {/* Typing Indicator */}
+                            {isLoading && (
+                                <div className="bg-white/60 dark:bg-black/40 backdrop-blur-sm p-4 rounded-2xl rounded-tl-none max-w-[85%] self-start border border-white/10 flex items-center gap-2">
+                                    <div className="flex space-x-1">
+                                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce [animation-delay:-0.3s]"></div>
+                                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce [animation-delay:-0.15s]"></div>
+                                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                                    </div>
+                                    <span className="text-xs text-muted-foreground ml-2">{t("aiWidget.thinking")}</span>
+                                </div>
+                            )}
+                            <div ref={messagesEndRef} />
                         </div>
 
-                        <div className="p-4 border-t border-white/10 bg-white/20 backdrop-blur-md">
+                        {/* Input Area */}
+                        <div className="p-4 border-t border-white/10 bg-white/20 backdrop-blur-md shrink-0">
                             <div className="flex gap-2 items-center">
                                 <Input
-                                    placeholder="Message..."
+                                    value={input}
+                                    onChange={(e) => setInput(e.target.value)}
+                                    onKeyDown={handleKeyDown}
+                                    placeholder={t("aiWidget.inputPlaceholder") || "Type a message..."}
                                     className="flex-1 bg-white/60 dark:bg-black/40 border-white/30 focus-visible:ring-offset-0 focus-visible:ring-blue-500/50 placeholder:text-muted-foreground/80 shadow-inner"
+                                    disabled={isLoading}
                                 />
-                                <Button size="icon" className="h-10 w-10 rounded-xl bg-[#0752A0] hover:bg-[#064282] text-white shadow-lg transition-transform active:scale-95">
+                                <Button
+                                    size="icon"
+                                    className="h-10 w-10 rounded-xl bg-[#0752A0] hover:bg-[#064282] text-white shadow-lg transition-transform active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+                                    onClick={handleSendMessage}
+                                    disabled={isLoading || !input.trim()}
+                                >
                                     <Send className="h-5 w-5 ml-0.5" />
                                 </Button>
                             </div>
@@ -120,7 +255,7 @@ export default function AskAIWidget() {
                             </g>
                         </g>
                     </svg>
-                    <span className="font-semibold text-base text-white tracking-wide">Спросить ИИ</span>
+                    <span className="font-semibold text-base text-white tracking-wide">{t("aiWidget.button") || "Ask AI"}</span>
                 </div>
             </motion.button>
         </div>

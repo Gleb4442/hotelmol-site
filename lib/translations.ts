@@ -15,6 +15,9 @@ const translationsBase = {
     "button.pricing": "Pricing",
     "button.tryDemo": "Try the Demo",
     "button.requestDemo": "Request a Demo",
+    "aiWidget.button": "Ask AI",
+    "aiWidget.thinking": "Agent is thinking...",
+    "aiWidget.inputPlaceholder": "Type your message...",
 
     // Home Hero
     "home.hero.badge": "Trusted by 500+ hotels worldwide",
@@ -858,6 +861,9 @@ const translationsBase = {
     "button.pricing": "Цены",
     "button.tryDemo": "Попробовать демо",
     "button.requestDemo": "Запросить демо",
+    "aiWidget.button": "Спросить ИИ",
+    "aiWidget.thinking": "Агент думает...",
+    "aiWidget.inputPlaceholder": "Введите сообщение...",
 
     // Home Hero
     "home.hero.badge": "Нам доверяют более 500 отелей по всему миру",
@@ -1544,6 +1550,9 @@ const translationsBase = {
     "button.pricing": "Ціни",
     "button.tryDemo": "Спробувати демо",
     "button.requestDemo": "Запросити демо",
+    "aiWidget.button": "Запитати ШІ",
+    "aiWidget.thinking": "Агент думає...",
+    "aiWidget.inputPlaceholder": "Введіть повідомлення...",
 
     // Home Hero
     "home.hero.badge": "Нам довіряють понад 500 готелів по всьому світу",
