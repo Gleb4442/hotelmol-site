@@ -24,6 +24,7 @@ export default function AskAIWidget() {
     const [input, setInput] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const messagesEndRef = useRef<HTMLDivElement>(null);
+    const inputRef = useRef<HTMLInputElement>(null);
 
     // Initialize session ID
     useEffect(() => {
@@ -42,7 +43,13 @@ export default function AskAIWidget() {
 
     // Listen for custom event to open chat (from mobile nav)
     useEffect(() => {
-        const handleOpen = () => setIsOpen(true);
+        const handleOpen = () => {
+            setIsOpen(true);
+            // Wait for animation/render then focus
+            setTimeout(() => {
+                inputRef.current?.focus();
+            }, 100);
+        };
         window.addEventListener("open-ai-chat", handleOpen);
         return () => window.removeEventListener("open-ai-chat", handleOpen);
     }, []);
@@ -97,6 +104,10 @@ export default function AskAIWidget() {
             setMessages((prev) => [...prev, { role: "assistant", content: "Sorry, I encountered an error connecting to the server. Please check your connection." }]);
         } finally {
             setIsLoading(false);
+            // Auto-focus back to input
+            setTimeout(() => {
+                inputRef.current?.focus();
+            }, 100);
         }
     };
 
@@ -222,6 +233,7 @@ export default function AskAIWidget() {
                             {/* UI Polish: Button inside input area */}
                             <div className="relative flex items-center">
                                 <Input
+                                    ref={inputRef}
                                     value={input}
                                     onChange={(e) => setInput(e.target.value)}
                                     onKeyDown={handleKeyDown}

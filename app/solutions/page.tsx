@@ -71,13 +71,23 @@ export default function Solutions() {
                                     <p className="text-lg text-muted-foreground mb-8">
                                         {t("solutions.single.description")}
                                     </p>
-                                    <Button
-                                        size="lg"
-                                        onClick={() => setDemoModalOpen(true)}
-                                    >
-                                        {t("button.requestDemo")}
-                                        <ArrowRight className="ml-2 h-5 w-5" />
-                                    </Button>
+                                    <div className="flex flex-wrap gap-4">
+                                        <Button
+                                            size="lg"
+                                            onClick={() => setDemoModalOpen(true)}
+                                        >
+                                            {t("button.requestDemo")}
+                                            <ArrowRight className="ml-2 h-5 w-5" />
+                                        </Button>
+                                        <Button
+                                            size="lg"
+                                            variant="outline"
+                                            className="border-primary text-primary hover:bg-primary/10 hidden md:flex"
+                                            onClick={() => window.dispatchEvent(new CustomEvent("open-ai-chat"))}
+                                        >
+                                            {t("aiWidget.button") || "Ask AI"}
+                                        </Button>
+                                    </div>
                                 </div>
 
                                 <div className="relative p-3 bg-gradient-to-br from-primary/10 via-primary/5 to-primary/15 rounded-xl shadow-xl border border-primary/20">
@@ -107,13 +117,23 @@ export default function Solutions() {
                                             </div>
                                         ))}
                                     </div>
-                                    <Button
-                                        size="lg"
-                                        onClick={() => setDemoModalOpen(true)}
-                                    >
-                                        {t("button.requestDemo")}
-                                        <ArrowRight className="ml-2 h-5 w-5" />
-                                    </Button>
+                                    <div className="flex flex-wrap gap-4">
+                                        <Button
+                                            size="lg"
+                                            onClick={() => setDemoModalOpen(true)}
+                                        >
+                                            {t("button.requestDemo")}
+                                            <ArrowRight className="ml-2 h-5 w-5" />
+                                        </Button>
+                                        <Button
+                                            size="lg"
+                                            variant="outline"
+                                            className="border-primary text-primary hover:bg-primary/10 hidden md:flex"
+                                            onClick={() => window.dispatchEvent(new CustomEvent("open-ai-chat"))}
+                                        >
+                                            {t("aiWidget.button") || "Ask AI"}
+                                        </Button>
+                                    </div>
                                 </div>
 
                                 <div className="relative p-3 bg-gradient-to-br from-primary/10 via-primary/5 to-primary/15 rounded-xl shadow-xl border border-primary/20">
@@ -138,13 +158,23 @@ export default function Solutions() {
                         <p className="text-xl text-muted-foreground mb-8">
                             {t("solutions.consultation.subtitle")}
                         </p>
-                        <Button
-                            size="lg"
-                            onClick={() => setDemoModalOpen(true)}
-                        >
-                            {t("solutions.consultation.button")}
-                            <ArrowRight className="ml-2 h-5 w-5" />
-                        </Button>
+                        <div className="flex flex-wrap justify-center gap-4">
+                            <Button
+                                size="lg"
+                                onClick={() => setDemoModalOpen(true)}
+                            >
+                                {t("solutions.consultation.button")}
+                                <ArrowRight className="ml-2 h-5 w-5" />
+                            </Button>
+                            <Button
+                                size="lg"
+                                variant="outline"
+                                className="border-primary text-primary hover:bg-primary/10 hidden md:flex"
+                                onClick={() => window.dispatchEvent(new CustomEvent("open-ai-chat"))}
+                            >
+                                {t("aiWidget.button") || "Ask AI"}
+                            </Button>
+                        </div>
                     </div>
                 </div>
             </section>
