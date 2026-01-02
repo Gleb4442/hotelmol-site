@@ -69,7 +69,7 @@ export default function MobileBottomNav() {
                 {/* Vertical Divider Removed */}
 
                 {/* Menu Button (Demo/Pricing) */}
-                <div className="relative flex-1 h-full">
+                <div className="flex-1 h-full">
                     <button
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                         className={`w-full h-full flex flex-col items-center justify-center gap-0.5 transition-colors ${isMenuOpen ? 'text-[#0752A0]' : 'text-foreground/70'}`}
@@ -77,40 +77,38 @@ export default function MobileBottomNav() {
                         {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
                         <span className="text-[10px] font-medium uppercase tracking-tighter">Menu</span>
                     </button>
-
-                    {/* Dropup Menu */}
-                    <AnimatePresence>
-                        {isMenuOpen && (
-                            <motion.div
-                                initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                                animate={{ opacity: 1, y: 0, scale: 1 }}
-                                exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                                // UI Polish: Opaque background, centered above, higher offset (bottom-24).
-                                className="absolute bottom-[200%] left-1/2 -translate-x-1/2 w-48 bg-white dark:bg-black rounded-3xl shadow-[0_10px_40px_rgba(0,0,0,0.2)] border border-black/10 overflow-hidden p-2 z-[60]"
-                            >
-                                <a
-                                    href="https://demo.hotelmol.com"
-                                    target="_blank"
-                                    onClick={() => setIsMenuOpen(false)}
-                                    // UI Refinement: Text only, centered, high contrast, opaque.
-                                    className="flex items-center justify-center w-full py-5 hover:bg-black/5 dark:hover:bg-white/5 rounded-2xl transition-colors text-lg font-bold text-[#0752A0] dark:text-[#a0c4ff]"
-                                >
-                                    {t("button.tryDemo") || "Demo"}
-                                </a>
-                                <div className="h-px bg-black/5 dark:bg-white/5 mx-3" />
-                                <a
-                                    href="https://pricing.hotelmol.com/#yearly"
-                                    target="_blank"
-                                    onClick={() => setIsMenuOpen(false)}
-                                    // UI Refinement: Text only, centered, high contrast, opaque.
-                                    className="flex items-center justify-center w-full py-5 hover:bg-black/5 dark:hover:bg-white/5 rounded-2xl transition-colors text-lg font-bold text-[#0752A0] dark:text-[#a0c4ff]"
-                                >
-                                    {t("button.pricing") || "Pricing"}
-                                </a>
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
                 </div>
+
+                {/* Dropup Menu - Positioned relative to the whole bar for perfect centering */}
+                <AnimatePresence>
+                    {isMenuOpen && (
+                        <motion.div
+                            initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                            // UI Polish: Fixed width, perfectly centered on the bar, opaque.
+                            className="absolute bottom-16 left-1/2 -translate-x-1/2 w-48 bg-white dark:bg-black rounded-3xl shadow-[0_10px_40px_rgba(0,0,0,0.2)] border border-black/10 overflow-hidden p-2 z-[60]"
+                        >
+                            <a
+                                href="https://demo.hotelmol.com"
+                                target="_blank"
+                                onClick={() => setIsMenuOpen(false)}
+                                className="flex items-center justify-center w-full py-5 hover:bg-black/5 dark:hover:bg-white/5 rounded-2xl transition-colors text-lg font-bold text-[#0752A0] dark:text-[#a0c4ff]"
+                            >
+                                {t("button.tryDemo") || "Demo"}
+                            </a>
+                            <div className="h-px bg-black/5 dark:bg-white/5 mx-3" />
+                            <a
+                                href="https://pricing.hotelmol.com/#yearly"
+                                target="_blank"
+                                onClick={() => setIsMenuOpen(false)}
+                                className="flex items-center justify-center w-full py-5 hover:bg-black/5 dark:hover:bg-white/5 rounded-2xl transition-colors text-lg font-bold text-[#0752A0] dark:text-[#a0c4ff]"
+                            >
+                                {t("button.pricing") || "Pricing"}
+                            </a>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
 
                 {/* Vertical Divider Removed */}
 
