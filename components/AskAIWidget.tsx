@@ -134,7 +134,7 @@ export default function AskAIWidget() {
                         exit={{ opacity: 0, y: 20, scale: 0.95 }}
                         // UI Polish: Maximize height (h-full), increased width (410px) on desktop. 
                         // Mobile: Full screen when open (top-0 bottom-0 left-0 right-0 w-full h-full).
-                        className="pointer-events-auto relative w-full h-full md:w-[410px] md:h-full rounded-none md:rounded-2xl overflow-hidden flex flex-col origin-bottom-right border border-black/5 shadow-2xl backdrop-blur-3xl bg-white/70 dark:bg-black/70 ring-1 ring-black/5"
+                        className="pointer-events-auto relative w-full h-full md:w-[424px] md:h-full rounded-none md:rounded-2xl overflow-hidden flex flex-col origin-bottom-right border border-black/5 shadow-2xl backdrop-blur-3xl bg-white/70 dark:bg-black/70 ring-1 ring-black/5"
                     >
                         {/* Chat Header - Extreme vertical reduction: Desktop total -7px (py-[9px]), Mobile total -5px (py-[11px]) relative to Phase 4 */}
                         <div className="py-[11px] md:py-[9px] px-4 bg-white/10 border-b border-white/10 text-foreground flex justify-between items-center backdrop-blur-md shrink-0">

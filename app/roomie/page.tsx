@@ -66,15 +66,6 @@ export default function Roomie() {
                                 <Button size="lg" onClick={() => setDemoModalOpen(true)}>
                                     {t("button.requestDemo")} <ArrowRight className="ml-2 h-5 w-5" />
                                 </Button>
-                                <Button
-                                    size="lg"
-                                    variant="outline"
-                                    className="border-primary text-primary hover:bg-primary/10 hidden md:flex"
-                                    onClick={() => window.dispatchEvent(new CustomEvent("open-ai-chat"))}
-                                >
-                                    <MessageSquare className="mr-2 h-5 w-5" />
-                                    {t("aiWidget.button") || "Ask AI"}
-                                </Button>
                             </div>
                         </div>
                         <img src="/assets/Gemini_Generated_Image_borpdeborpdeborp-Photoroom_1764493985974.png" alt="Roomie AI" className="w-full h-auto rounded-xl" />

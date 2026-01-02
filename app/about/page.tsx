@@ -38,7 +38,7 @@ export default function About() {
                             {t("about.hero.subtitle")}
                         </p>
 
-                        <div className="flex flex-col sm:flex-row gap-4 sm:gap-9 justify-center items-center">
+                        <div className="flex flex-col sm:flex-row gap-9 justify-center items-center">
                             <Button
                                 size="lg"
                                 className="text-white px-8 text-lg w-full sm:w-auto"
@@ -46,15 +46,6 @@ export default function About() {
                                 onClick={() => setIntegrationModalOpen(true)}
                             >
                                 {t("about.hero.button.integration")}
-                            </Button>
-                            <Button
-                                size="lg"
-                                variant="outline"
-                                className="border-[#0752A0] text-[#0752A0] hover:bg-[#0752A0]/10 px-8 text-lg w-full sm:w-auto hidden md:flex"
-                                onClick={() => window.dispatchEvent(new CustomEvent("open-ai-chat"))}
-                            >
-                                <Bot className="mr-2 h-5 w-5" />
-                                {t("aiWidget.button") || "Ask AI"}
                             </Button>
                             <Link href="/roomie" className="w-full sm:w-auto text-center">
                                 <button className="text-slate-600 hover:text-slate-900 transition-colors text-lg font-medium">

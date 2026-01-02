@@ -79,14 +79,6 @@ export default function Solutions() {
                                             {t("button.requestDemo")}
                                             <ArrowRight className="ml-2 h-5 w-5" />
                                         </Button>
-                                        <Button
-                                            size="lg"
-                                            variant="outline"
-                                            className="border-primary text-primary hover:bg-primary/10 hidden md:flex"
-                                            onClick={() => window.dispatchEvent(new CustomEvent("open-ai-chat"))}
-                                        >
-                                            {t("aiWidget.button") || "Ask AI"}
-                                        </Button>
                                     </div>
                                 </div>
 
@@ -125,14 +117,6 @@ export default function Solutions() {
                                             {t("button.requestDemo")}
                                             <ArrowRight className="ml-2 h-5 w-5" />
                                         </Button>
-                                        <Button
-                                            size="lg"
-                                            variant="outline"
-                                            className="border-primary text-primary hover:bg-primary/10 hidden md:flex"
-                                            onClick={() => window.dispatchEvent(new CustomEvent("open-ai-chat"))}
-                                        >
-                                            {t("aiWidget.button") || "Ask AI"}
-                                        </Button>
                                     </div>
                                 </div>
 
@@ -165,14 +149,6 @@ export default function Solutions() {
                             >
                                 {t("solutions.consultation.button")}
                                 <ArrowRight className="ml-2 h-5 w-5" />
-                            </Button>
-                            <Button
-                                size="lg"
-                                variant="outline"
-                                className="border-primary text-primary hover:bg-primary/10 hidden md:flex"
-                                onClick={() => window.dispatchEvent(new CustomEvent("open-ai-chat"))}
-                            >
-                                {t("aiWidget.button") || "Ask AI"}
                             </Button>
                         </div>
                     </div>
