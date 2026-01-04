@@ -38,27 +38,25 @@ export default function ScrollToTop() {
     <>
       {isVisible && (
         <>
-          {/* Mobile version - left bottom */}
+          {/* Mobile version - left bottom - Miniature and laconic */}
           <button
             onClick={scrollToTop}
             data-testid="button-scroll-to-top-mobile"
-            className="md:hidden fixed left-4 bottom-8 z-40 p-2 rounded-full transition-all duration-300 shadow-lg"
-            style={{ backgroundColor: "#0752A0" }}
+            className="md:hidden fixed left-[18px] bottom-10 z-[45] p-2.5 rounded-full transition-all duration-300 shadow-xl border border-white/10 backdrop-blur-md bg-[#0752A0]/80 hover:bg-[#0752A0]/90 active:scale-90"
             aria-label="Scroll to top"
           >
-            <ArrowUp className="w-5 h-5 text-white" />
+            <ArrowUp className="w-4 h-4 text-white" />
           </button>
 
-          {/* Desktop version - MOVED TO LEFT to swap with AskAIWidget */}
+          {/* Desktop version - left bottom - Miniature and elegant */}
           {!isCookieBannerVisible && (
             <button
               onClick={scrollToTop}
               data-testid="button-scroll-to-top-desktop"
-              className="hidden md:flex fixed left-8 bottom-8 z-40 p-3 rounded-full transition-all duration-300 hover:scale-110 shadow-lg border border-white/20"
-              style={{ backgroundColor: "#0752A0" }}
+              className="hidden md:flex fixed left-10 bottom-10 z-[45] p-2.5 rounded-full transition-all duration-300 hover:scale-110 active:scale-95 shadow-2xl border border-white/10 backdrop-blur-md bg-[#0752A0]/80 hover:bg-[#0752A0]/90"
               aria-label="Scroll to top"
             >
-              <ArrowUp className="w-6 h-6 text-white" />
+              <ArrowUp className="w-5 h-5 text-white" />
             </button>
           )}
         </>

@@ -102,9 +102,13 @@ export default function ConsultationForm() {
                                     onClick={() => setIsExpanded(true)}
                                     className="group h-16 px-10 text-lg font-bold rounded-2xl bg-[#0752A0] hover:bg-[#0752A0]/90 text-white shadow-[0_10px_30px_rgba(7,82,160,0.3)] hover:shadow-[0_15px_40px_rgba(7,82,160,0.4)] transition-all duration-300 active:scale-95"
                                 >
-                                    {t("consultation.getConsultation")}
+                                    <span className="md:hidden">{t("consultation.getConsultationMobile")}</span>
+                                    <span className="hidden md:inline">{t("consultation.getConsultation")}</span>
                                     <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform" />
                                 </Button>
+                                <p className="mt-4 text-sm text-muted-foreground font-medium md:hidden">
+                                    {t("consultation.freeSubtext")}
+                                </p>
                             </motion.div>
                         ) : (
                             <motion.div

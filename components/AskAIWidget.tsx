@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useTranslation } from "@/lib/TranslationContext";
+import { useCookieBanner } from "@/lib/CookieBannerContext";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { v4 as uuidv4 } from "uuid";
@@ -21,6 +22,7 @@ export default function AskAIWidget() {
     const [isOpen, setIsOpen] = useState(false);
     const pathname = usePathname();
     const { t } = useTranslation();
+    const { isCookieBannerVisible } = useCookieBanner();
     const [sessionId, setSessionId] = useState<string>("");
     const [messages, setMessages] = useState<Message[]>([]);
     const [input, setInput] = useState("");
@@ -268,8 +270,9 @@ export default function AskAIWidget() {
             </AnimatePresence>
 
             {/* UI Polish: Hide trigger button when isOpen is true. Desktop ONLY trigger. */}
+            {/* Show only after cookie consent on desktop as requested in Phase 14 */}
             <AnimatePresence>
-                {!isOpen && (
+                {!isOpen && !isCookieBannerVisible && (
                     <motion.button
                         layout
                         initial={{ opacity: 0, scale: 0.8 }}

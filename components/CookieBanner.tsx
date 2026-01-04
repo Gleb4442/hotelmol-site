@@ -31,7 +31,7 @@ export default function CookieBanner() {
       analytics: true,
       marketing: true,
     };
-    
+
     await saveConsent(allAccepted);
   };
 
@@ -43,7 +43,7 @@ export default function CookieBanner() {
     try {
       // Save to localStorage
       localStorage.setItem("cookieConsent", JSON.stringify(categories));
-      
+
       // Send to backend
       const response = await fetch("/api/cookie-consents", {
         method: "POST",
@@ -55,11 +55,11 @@ export default function CookieBanner() {
           categories,
         }),
       });
-      
+
       if (!response.ok) {
         throw new Error("Failed to save consent");
       }
-      
+
       setCookieBannerVisible(false);
     } catch (error) {
       console.error("Failed to save cookie consent:", error);
@@ -71,7 +71,7 @@ export default function CookieBanner() {
   if (!isCookieBannerVisible) return null;
 
   return (
-    <div className="fixed bottom-4 right-[33px] z-50 max-w-[calc(100vw-2rem)] md:max-w-md">
+    <div className="fixed bottom-[10px] left-[10px] right-[10px] md:bottom-4 md:right-[33px] md:left-auto z-50 md:max-w-md">
       <Card className="p-3 md:p-4 shadow-lg">
         <div className="mb-2 md:mb-3">
           <h3 className="font-semibold text-sm md:text-lg">{t("cookie.banner.title")}</h3>

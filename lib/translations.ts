@@ -107,7 +107,9 @@ const translationsBase = {
     "consultation.successTitle": "Thank you!",
     "consultation.successMessage": "We'll contact you within 24 hours.",
     "consultation.getConsultation": "Get Free Consultation",
+    "consultation.getConsultationMobile": "Get Consultation",
     "consultation.getConsultationSubsc": "Get a free consultation from our experts",
+    "consultation.freeSubtext": "It's absolutely free",
 
 
 
@@ -957,7 +959,9 @@ const translationsBase = {
     "consultation.successTitle": "Спасибо!",
     "consultation.successMessage": "Мы свяжемся с вами в течение 24 часов.",
     "consultation.getConsultation": "Получить бесплатную консультацию",
+    "consultation.getConsultationMobile": "Получить консультацию",
     "consultation.getConsultationSubsc": "Получите бесплатную консультацию наших экспертов",
+    "consultation.freeSubtext": "Это абсолютно бесплатно",
 
 
 
@@ -1652,7 +1656,9 @@ const translationsBase = {
     "consultation.successTitle": "Дякуємо!",
     "consultation.successMessage": "Ми зв'яжемося з вами протягом 24 годин.",
     "consultation.getConsultation": "Отримати безкоштовну консультацію",
+    "consultation.getConsultationMobile": "Отримати консультацію",
     "consultation.getConsultationSubsc": "Отримайте безкоштовну консультацію наших експертів",
+    "consultation.freeSubtext": "Це абсолютно безкоштовно",
 
 
 
