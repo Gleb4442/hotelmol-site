@@ -22,7 +22,10 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" suppressHydrationWarning>
-            <body className={`${inter.variable} ${poppins.variable} font-sans antialiased`}>
+            <head>
+                <meta name="theme-color" content="#0752A0" />
+            </head>
+            <body className={`${inter.variable} ${poppins.variable} font-sans antialiased`} style={{ backgroundColor: "#0752A0" }}>
                 <Providers>
                     {children}
                 </Providers>

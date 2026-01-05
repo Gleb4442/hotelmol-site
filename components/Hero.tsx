@@ -68,10 +68,10 @@ export default function Hero() {
           <div className="max-w-5xl mx-auto text-center">
             <h1 className="font-serif text-[2.75rem] sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter sm:tracking-tight text-white mb-6 leading-tight pl-[3px] sm:pl-0" style={{ marginLeft: "-8px" }}>
               <span className="inline-block ml-[-7px] sm:ml-[-10px]">
-                {t("home.hero.title")}&nbsp;
+                {t("home.hero.title")}
               </span>
-              <br className="sm:hidden" />
-              <span className="bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent inline-flex items-center">
+              <br />
+              <span className="bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent inline-flex items-center min-h-[1.2em]">
                 {displayText}
                 <span className="inline-block w-[3px] h-[0.9em] bg-white ml-2 animate-pulse" style={{ verticalAlign: 'middle' }} />
               </span>
