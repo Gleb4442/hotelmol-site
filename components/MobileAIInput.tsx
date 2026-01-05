@@ -13,6 +13,7 @@ export default function MobileAIInput() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [inputValue, setInputValue] = useState("");
     const [isVisible, setIsVisible] = useState(false);
+    const [showScrollBtn, setShowScrollBtn] = useState(false);
 
     // Visibility logic: hide on blog and contact pages
     // User requested to hide on specific pages? 
@@ -33,11 +34,25 @@ export default function MobileAIInput() {
         return () => clearInterval(interval);
     }, []);
 
+    // Scroll Logic for Mobile Button
+    useEffect(() => {
+        const handleScroll = () => {
+            setShowScrollBtn(window.scrollY > 300);
+        };
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
     if (!isVisible || isHiddenPath) return null;
 
     const handleSubmit = () => {
         if (!inputValue.trim()) return;
-        window.dispatchEvent(new CustomEvent("open-ai-chat-with-message", {
+        // Trigger Fullscreen Mobile Chat
+        window.dispatchEvent(new CustomEvent("open-ai-mobile-fullscreen", {
             detail: { message: inputValue }
         }));
         setInputValue("");
@@ -76,7 +91,7 @@ export default function MobileAIInput() {
     };
 
     return (
-        <div className="md:hidden fixed bottom-6 left-0 right-0 z-[50] px-4 pointer-events-none flex justify-center items-end gap-3">
+        <div className="md:hidden fixed bottom-[20px] left-0 right-0 z-[50] px-4 pointer-events-none flex justify-center items-end gap-3">
             {/* Menu Button Container */}
             <div className="pointer-events-auto relative z-[52]">
                 {/* Floating Menu Items */}
@@ -141,8 +156,8 @@ export default function MobileAIInput() {
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 xmlSpace="preserve"
-                                width="31"
-                                height="31"
+                                width="37"
+                                height="37"
                                 version="1.1"
                                 viewBox="0 0 203.18 203.18"
                                 style={{
@@ -173,8 +188,11 @@ export default function MobileAIInput() {
                 </button>
             </div>
 
-            {/* Input Field */}
-            <div className="pointer-events-auto flex-1 h-[50px] relative mr-5">
+            {/* Input Field with Animation */}
+            {/* Base mr-2 (narrower gap), when scroll active mr-[60px] to fit button */}
+            <div
+                className={`pointer-events-auto flex-1 h-[50px] relative transition-all duration-500 ease-in-out ${showScrollBtn ? 'mr-[60px]' : 'mr-2'}`}
+            >
                 <div className="absolute inset-0 bg-white/70 backdrop-blur-md rounded-full shadow-lg border border-white/20 flex items-center pl-4 pr-1">
                     <input
                         type="text"
@@ -192,6 +210,36 @@ export default function MobileAIInput() {
                     </button>
                 </div>
             </div>
+
+            {/* Scroll To Top Button - Mobile Integrated */}
+            <AnimatePresence>
+                {showScrollBtn && (
+                    <motion.button
+                        initial={{ opacity: 0, scale: 0.5, x: 20 }}
+                        animate={{ opacity: 1, scale: 1, x: 0 }}
+                        exit={{ opacity: 0, scale: 0.5, x: 20 }}
+                        onClick={scrollToTop}
+                        className="pointer-events-auto absolute right-4 bottom-0 w-[50px] h-[50px] rounded-full bg-[#0752A0] shadow-[0_4px_20px_rgba(7,82,160,0.4)] flex items-center justify-center transition-transform active:scale-95 border border-white/20"
+                        aria-label="Scroll to top"
+                    >
+                        {/* Chevron Up "House-like" */}
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="3"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="text-white"
+                        >
+                            <path d="m18 15-6-6-6 6" />
+                        </svg>
+                    </motion.button>
+                )}
+            </AnimatePresence>
         </div>
     );
 }

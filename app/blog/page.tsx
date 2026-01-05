@@ -17,7 +17,7 @@ export default async function BlogPage() {
     return (
         <div className="min-h-screen bg-background">
             <Header />
-            <main className="pt-32 pb-20" style={{ paddingTop: 'calc(8rem + 35px)' }}>
+            <main className="pt-32 pb-20" style={{ paddingTop: 'calc(8rem + 20px)' }}>
                 <div className="container mx-auto px-4">
                     <div className="max-w-4xl mx-auto">
                         <BlogClient initialPosts={posts} />
