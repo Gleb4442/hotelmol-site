@@ -69,8 +69,11 @@ export default function About() {
                         <p className="text-lg text-slate-600 leading-relaxed mb-6">
                             {t("about.dna.description1")}
                         </p>
-                        <p className="text-lg text-slate-600 leading-relaxed">
+                        <p className="text-lg text-slate-600 leading-relaxed mb-6">
                             {t("about.dna.description2")}
+                        </p>
+                        <p className="text-lg text-slate-600 leading-relaxed">
+                            {t("about.dna.description3" as any)}
                         </p>
                     </div>
                 </div>
