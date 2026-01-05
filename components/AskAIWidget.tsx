@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 // Changed icons: ChevronDown for minimize, ArrowUp for send
-import { ChevronDown, ArrowUp } from "lucide-react";
+import { ChevronDown, ArrowUp, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
