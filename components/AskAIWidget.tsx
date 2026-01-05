@@ -49,13 +49,30 @@ export default function AskAIWidget() {
     useEffect(() => {
         const handleOpen = () => {
             setIsOpen(true);
-            // Wait for animation/render then focus
             setTimeout(() => {
                 inputRef.current?.focus();
             }, 100);
         };
+
+        const handleOpenWithMessage = (e: CustomEvent<{ message: string }>) => {
+            setIsOpen(true);
+            const msg = e.detail?.message;
+            if (msg) {
+                // Auto send
+                handleSendMessage(msg);
+            }
+            setTimeout(() => {
+                inputRef.current?.focus();
+            }, 100);
+        };
+
+        // We'll use a specific event checking for detail
         window.addEventListener("open-ai-chat", handleOpen);
-        return () => window.removeEventListener("open-ai-chat", handleOpen);
+        window.addEventListener("open-ai-chat-with-message" as any, handleOpenWithMessage as any);
+        return () => {
+            window.removeEventListener("open-ai-chat", handleOpen);
+            window.removeEventListener("open-ai-chat-with-message" as any, handleOpenWithMessage as any);
+        };
     }, []);
 
     // Visibility logic: hide on blog and contact pages
@@ -63,10 +80,14 @@ export default function AskAIWidget() {
 
     if (isHiddenPath) return null;
 
-    const handleSendMessage = async () => {
-        if (!input.trim() || isLoading) return;
+    const handleSendMessage = async (arg?: string | React.MouseEvent) => {
+        // If arg is a string, use it as override. If it's an event (object) or undefined, use current input state.
+        const textOverride = typeof arg === 'string' ? arg : undefined;
+        const textToSend = textOverride || input;
 
-        const userMsg = input.trim();
+        if (!textToSend.trim() || isLoading) return;
+
+        const userMsg = textToSend.trim();
         setInput("");
         setMessages((prev) => [...prev, { role: "user", content: userMsg }]);
         setIsLoading(true);

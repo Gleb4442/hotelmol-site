@@ -22,15 +22,22 @@ export default function ScrollToTop() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  // Only show on Blog Article pages (e.g. /blog/some-slug)
+  // Logic:
+  // 1. Hide on Contact page
+  // 2. Hide on About page
+  // 3. Hide on Blog List page (/blog), but SHOW on Blog Article (/blog/slug)
+  const isContact = pathname === "/contact";
+  const isAbout = pathname === "/about";
+  const isBlogList = pathname === "/blog";
   const isBlogArticle = pathname.startsWith("/blog/") && pathname.length > "/blog/".length;
 
-  if (!isBlogArticle) {
-    return null;
-  }
+  // If it's a blog article, allow showing (unless specifically excluded logic overrides, but here we just want to ensure it SHOWS on article)
+  // But wait, the request is: "return button on all pages EXCEPT contact, about, and blog list".
+  // So: Show if (!Contact && !About && !BlogList).
+  // Note: Blog Article passes !BlogList.
+  // Also need to consider Home, Solutions, etc. -> They pass all checks.
 
-  // Hide button on Contact page (redundant check given the blog article check, but keeping for safety if logic changes)
-  if (pathname === "/contact") {
+  if (isContact || isAbout || isBlogList) {
     return null;
   }
 
