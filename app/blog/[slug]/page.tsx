@@ -53,7 +53,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     return (
         <div className="min-h-screen bg-background">
             <Header />
-            <main className="pt-32 pb-20">
+            <main className="pt-[113px] pb-20">
                 <BlogPostClient post={post} />
             </main>
             <Footer />

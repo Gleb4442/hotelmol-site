@@ -24,7 +24,7 @@ export default function About() {
             />
             <Header />
 
-            <section className="relative bg-white py-40 md:py-48 overflow-hidden">
+            <section className="relative bg-white pt-[145px] pb-40 md:py-48 overflow-hidden">
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="max-w-4xl mx-auto text-center">
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight">

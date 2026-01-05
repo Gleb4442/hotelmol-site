@@ -39,7 +39,7 @@ export default function Roomie() {
             />
             <Header />
 
-            <section className="relative pt-36 pb-20 bg-gradient-to-br from-primary/10 via-primary/5 to-background">
+            <section className="relative pt-[129px] pb-20 bg-gradient-to-br from-primary/10 via-primary/5 to-background">
                 <div className="container mx-auto px-4">
                     <div className="max-w-4xl mx-auto text-center mb-16 mt-[25px]">
                         <h1 className="text-5xl lg:text-6xl font-bold tracking-tight mb-2">{t("roomie.title")}</h1>
