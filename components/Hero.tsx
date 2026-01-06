@@ -61,10 +61,10 @@ export default function Hero() {
 
   return (
     <>
-      <section className="relative min-h-[600px] sm:min-h-[800px] lg:min-h-[calc(85vh+100px)] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[600px] sm:min-h-[800px] lg:min-h-[calc(85vh+100px)] flex items-start lg:items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/90 to-primary/80" />
 
-        <div className="relative z-10 container mx-auto px-6 pt-[69px] pb-24 lg:py-32">
+        <div className="relative z-10 container mx-auto px-6 pt-[89px] pb-24 lg:py-32">
           <div className="max-w-5xl mx-auto text-center">
             <h1 className="font-serif text-[2.75rem] sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter sm:tracking-tight text-white mb-6 leading-tight pl-[3px] sm:pl-0 pb-2" style={{ marginLeft: "-8px" }}>
               <span className="inline-block ml-[-7px] sm:ml-[-10px]">
