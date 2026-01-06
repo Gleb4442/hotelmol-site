@@ -91,7 +91,7 @@ export default function MobileAIInput() {
     };
 
     return (
-        <div className="md:hidden fixed bottom-[15px] left-0 right-0 z-[50] px-4 pointer-events-none flex justify-center items-end gap-3">
+        <div className="md:hidden fixed bottom-[9px] left-0 right-0 z-[50] px-4 pointer-events-none flex justify-center items-end gap-3">
             {/* Menu Button Container */}
             <div className="pointer-events-auto relative z-[52]">
                 {/* Floating Menu Items */}
@@ -139,10 +139,10 @@ export default function MobileAIInput() {
                     )}
                 </AnimatePresence>
 
-                {/* Main Toggle Button */}
+                {/* Main Toggle Button - Resized to 42px */}
                 <button
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    className="w-[44px] h-[44px] rounded-full bg-[#0752A0] shadow-[0_4px_20px_rgba(7,82,160,0.4)] flex items-center justify-center transition-transform active:scale-95"
+                    className="w-[42px] h-[42px] rounded-full bg-[#0752A0] shadow-[0_4px_20px_rgba(7,82,160,0.4)] flex items-center justify-center transition-transform active:scale-95"
                     aria-label="Menu"
                 >
                     <motion.div
@@ -156,8 +156,8 @@ export default function MobileAIInput() {
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 xmlSpace="preserve"
-                                width="38"
-                                height="38"
+                                width="36"
+                                height="36"
                                 version="1.1"
                                 viewBox="0 0 203.18 203.18"
                                 style={{
@@ -188,10 +188,10 @@ export default function MobileAIInput() {
                 </button>
             </div>
 
-            {/* Input Field with Animation */}
-            {/* Base mr-2 (narrower gap), when scroll active mr-[60px] to fit button */}
+            {/* Input Field with Animation - Resized to 42px height, Font 16px to prevent zoom */}
+            {/* Base mr-2 (narrower gap), when scroll active mr-[52px] to fit 42px button + 10px gap */}
             <div
-                className={`pointer-events-auto flex-1 h-[44px] relative transition-all duration-500 ease-in-out ${showScrollBtn ? 'mr-[54px]' : 'mr-2'}`}
+                className={`pointer-events-auto flex-1 h-[42px] relative transition-all duration-500 ease-in-out ${showScrollBtn ? 'mr-[52px]' : 'mr-2'}`}
             >
                 <div className="absolute inset-0 bg-white/70 backdrop-blur-md rounded-full shadow-lg border border-white/20 flex items-center pl-4 pr-1">
                     <input
@@ -200,18 +200,19 @@ export default function MobileAIInput() {
                         onChange={(e) => setInputValue(e.target.value)}
                         onKeyDown={handleKeyDown}
                         placeholder={language === 'ru' || language === 'ua' ? "Спросите что-нибудь..." : "Ask something..."}
-                        className="flex-1 bg-transparent border-none outline-none text-[#0752A0] placeholder:text-[#0752A0]/50 text-sm font-medium"
+                        className="flex-1 bg-transparent border-none outline-none text-[#0752A0] placeholder:text-[#0752A0]/50 text-[16px] font-medium"
                     />
                     <button
                         onClick={handleSubmit}
-                        className="w-[36px] h-[36px] bg-[#0752A0] rounded-full flex items-center justify-center shadow-md active:scale-95 transition-transform"
+                        // Send Button resized to 34px, shrink-0 to prevent oval shape
+                        className="w-[34px] h-[34px] shrink-0 bg-[#0752A0] rounded-full flex items-center justify-center shadow-md active:scale-95 transition-transform"
                     >
                         <ArrowUp className="w-5 h-5 text-white" />
                     </button>
                 </div>
             </div>
 
-            {/* Scroll To Top Button - Mobile Integrated */}
+            {/* Scroll To Top Button - Mobile Integrated - Resized to 42px */}
             <AnimatePresence>
                 {showScrollBtn && (
                     <motion.button
@@ -219,7 +220,7 @@ export default function MobileAIInput() {
                         animate={{ opacity: 1, scale: 1, x: 0 }}
                         exit={{ opacity: 0, scale: 0.5, x: 20 }}
                         onClick={scrollToTop}
-                        className="pointer-events-auto absolute right-4 bottom-0 w-[44px] h-[44px] rounded-full bg-[#0752A0] shadow-[0_4px_20px_rgba(7,82,160,0.4)] flex items-center justify-center transition-transform active:scale-95 border border-white/20"
+                        className="pointer-events-auto absolute right-4 bottom-0 w-[42px] h-[42px] rounded-full bg-[#0752A0] shadow-[0_4px_20px_rgba(7,82,160,0.4)] flex items-center justify-center transition-transform active:scale-95 border border-white/20"
                         aria-label="Scroll to top"
                     >
                         {/* Chevron Up "House-like" */}

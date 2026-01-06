@@ -173,13 +173,14 @@ export default function AskAIWidget() {
     };
 
     return (
-        <div className={`fixed z-[60] flex flex-col items-end gap-4 text-left pointer-events-none inset-0 ${isMobileFullscreen ? 'p-[5px]' : 'md:right-[10px] md:bottom-[10px] md:top-[10px] md:inset-auto'}`}>
+        <div className={`fixed z-[60] flex flex-col items-end gap-4 text-left pointer-events-none inset-0 ${isMobileFullscreen ? 'p-[10px]' : 'md:right-[10px] md:bottom-[10px] md:top-[10px] md:inset-auto'}`}>
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                        initial={{ opacity: 0, y: isMobileFullscreen ? 50 : 20, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 20, scale: 0.95 }}
+                        transition={{ duration: 0.4, ease: "easeOut" }}
                         // UI Polish: Maximize height (h-full), increased width (410px) on desktop. 
                         // Mobile: Full screen when open (top-0 bottom-0 left-0 right-0 w-full h-full).
                         className={`pointer-events-auto relative w-full h-full rounded-2xl overflow-hidden flex flex-col origin-bottom-right border border-black/5 shadow-2xl backdrop-blur-3xl ${isMobileFullscreen ? 'bg-white/90 dark:bg-black/90' : 'bg-white/70 dark:bg-black/70'} ring-1 ring-black/5 ${!isMobileFullscreen ? 'md:w-[424px]' : ''}`}
@@ -311,7 +312,7 @@ export default function AskAIWidget() {
                                     onKeyDown={handleKeyDown}
                                     placeholder={t("aiWidget.inputPlaceholder") || "Type a message..."}
                                     // UI Polish: Color #20629B and thinner ring (ring-[4px] -> ring-[2.5px])
-                                    className="w-full pr-12 py-6 bg-white/60 dark:bg-black/40 border-white/30 focus-visible:ring-offset-0 focus-visible:ring-[#20629B] focus-visible:ring-[2.5px] placeholder:text-muted-foreground/80 shadow-inner rounded-full"
+                                    className="w-full pr-12 py-6 bg-white/60 dark:bg-black/40 border-white/30 focus-visible:ring-offset-0 focus-visible:ring-[#20629B] focus-visible:ring-[2.5px] placeholder:text-muted-foreground/80 shadow-inner rounded-full text-[16px] md:text-sm"
                                     disabled={isLoading}
                                 />
                                 <div className="absolute right-2 top-1/2 -translate-y-1/2">
