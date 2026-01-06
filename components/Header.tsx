@@ -137,9 +137,9 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
               className="w-[90%] max-w-[350px] rounded-2xl border-white/20 shadow-2xl backdrop-blur-xl bg-white/90 dark:bg-zinc-900/90 overflow-hidden"
             >
               <div className="text-center py-6 border-b border-white/20">
-                <DialogTitle className="text-3xl font-bold text-[#0752A0]">МЕНЮ</DialogTitle>
+                <DialogTitle className="text-3xl font-bold text-[#0752A0]">{t("menu.title")}</DialogTitle>
               </div>
-              <nav className="flex flex-col gap-4 items-stretch px-6 py-8">
+              <nav className="flex flex-col gap-4 items-stretch px-6 py-6">
                 {navigation.map((item) => {
                   const isActive = pathname === item.href;
                   return (
