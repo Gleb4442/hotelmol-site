@@ -173,7 +173,7 @@ export default function AskAIWidget() {
     };
 
     return (
-        <div className={`fixed z-[60] flex flex-col items-end gap-4 text-left pointer-events-none inset-0 ${isMobileFullscreen ? 'p-[10px]' : 'md:right-[10px] md:bottom-[10px] md:top-[10px] md:inset-auto'}`}>
+        <div className={`fixed z-[60] flex flex-col gap-4 text-left pointer-events-none ${isMobileFullscreen ? 'inset-[10px] items-stretch' : 'inset-auto md:right-[10px] md:bottom-[10px] md:top-[10px] items-end'}`}>
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
@@ -182,66 +182,62 @@ export default function AskAIWidget() {
                         exit={{ opacity: 0, y: 20, scale: 0.95 }}
                         transition={{ duration: 0.4, ease: "easeOut" }}
                         // UI Polish: Maximize height (h-full), increased width (410px) on desktop. 
-                        // Mobile: Full screen when open (top-0 bottom-0 left-0 right-0 w-full h-full).
-                        className={`pointer-events-auto relative w-full h-full rounded-2xl overflow-hidden flex flex-col origin-bottom-right border border-black/5 shadow-2xl backdrop-blur-3xl ${isMobileFullscreen ? 'bg-white/90 dark:bg-black/90' : 'bg-white/70 dark:bg-black/70'} ring-1 ring-black/5 ${!isMobileFullscreen ? 'md:w-[424px]' : ''}`}
+                        // Mobile: Full screen (inset 10px), rounded-3xl (cloud style).
+                        className={`pointer-events-auto relative w-full h-full rounded-3xl overflow-hidden flex flex-col origin-bottom-right border border-black/5 shadow-2xl backdrop-blur-3xl ${isMobileFullscreen ? 'bg-white/90 dark:bg-black/90' : 'bg-white/70 dark:bg-black/70'} ring-1 ring-black/5 ${!isMobileFullscreen ? 'md:w-[424px]' : ''}`}
                     >
-                        {/* Chat Header - Only show if NOT mobile fullscreen, or if distinct close needed. Request said "without header". But we need close. */}
-                        {/* Use a subtle close button for fullscreen */}
-                        {!isMobileFullscreen ? (
-                            <div className="py-[11px] md:py-[9px] px-4 bg-white/10 border-b border-white/10 text-foreground flex justify-between items-center backdrop-blur-md shrink-0">
-                                <div className="flex items-center gap-3">
-                                    {/* UI Polish: Header icon reduced (w-16 h-16) */}
-                                    <div className="w-16 h-16 flex items-center justify-center">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            xmlSpace="preserve"
-                                            width="100%"
-                                            height="100%"
-                                            version="1.1"
-                                            viewBox="0 0 203.18 203.18"
-                                            className="w-full h-full text-foreground"
-                                            style={{
-                                                shapeRendering: "geometricPrecision",
-                                                textRendering: "geometricPrecision",
-                                                fillRule: "evenodd",
-                                                clipRule: "evenodd",
-                                            }}
-                                        >
-                                            <g id="Слой_x0020_1">
-                                                <metadata id="CorelCorpID_0Corel-Layer" />
-                                                <g id="_2278661208240">
-                                                    <circle fill="none" cx="101.59" cy="101.59" r="101.6" />
-                                                    <path fill="currentColor" d="M106.13 53.03c22.55,2.08 40.65,19.52 43.75,41.75l-96.58 0c3.18,-22.75 22.05,-40.47 45.33,-41.87l0 -4.17 -2.36 0c-2.32,0 -4.23,-1.91 -4.23,-4.23l0 0c0,-2.33 1.91,-4.23 4.23,-4.23l12.4 0c2.33,0 4.23,1.9 4.23,4.23l0 0c0,2.32 -1.9,4.23 -4.23,4.23l-2.54 0 0 4.29zm15.16 63.75c1.5,-1.94 4.29,-2.3 6.23,-0.8 1.94,1.5 2.3,4.29 0.8,6.23 -3.14,4.07 -7.19,7.4 -11.86,9.7 -4.51,2.21 -9.56,3.46 -14.87,3.46 -5.31,0 -10.36,-1.25 -14.87,-3.46 -4.67,-2.3 -8.72,-5.63 -11.86,-9.7 -1.5,-1.94 -1.14,-4.73 0.8,-6.23 1.94,-1.5 4.73,-1.14 6.23,0.8 2.33,3.01 5.31,5.47 8.74,7.15 3.28,1.62 7,2.52 10.96,2.52 3.96,0 7.68,-0.9 10.96,-2.52 3.43,-1.68 6.41,-4.14 8.74,-7.15zm-10.04 39.85c-1.68,1.41 -4.25,2.17 -4.31,-1.17 -0.02,-0.99 -0.04,-1.26 -0.06,-2.26 -0.81,-2.45 -3.2,-2.84 -5.68,-2.84l0 -0.01c-25.76,-0.2 -46.76,-20.38 -48.29,-45.8l97.36 0c-0.71,11.75 -5.05,23.66 -13.15,30.44l-25.87 21.64z" />
-                                                </g>
-                                            </g>
-                                        </svg>
-                                    </div>
-                                    {/* UI Polish: Updates header title */}
-                                    <span className="font-semibold text-lg">{t("aiWidget.headerTitle") || "hotelmol assistant"}</span>
-                                </div>
-                                <Button
-                                    variant="ghost"
-                                    size="icon"
-                                    className="hover:bg-white/20"
-                                    onClick={() => setIsOpen(false)}
-                                >
-                                    {/* UI Polish: ChevronDown for minimize */}
-                                    <ChevronDown className="h-6 w-6" />
-                                </Button>
-                            </div>
-                        ) : (
-                            // Subtle Close Button for Mobile Fullscreen
-                            <div className="absolute top-2 right-2 z-50">
-                                <Button
-                                    variant="ghost"
-                                    size="icon"
-                                    className="hover:bg-black/10 rounded-full h-8 w-8"
-                                    onClick={() => setIsOpen(false)}
-                                >
-                                    <X className="h-5 w-5 opacity-50" />
-                                </Button>
-                            </div>
+                        {/* Mobile Close Button (Floating) - Visible only on mobile since header is hidden */}
+                        {isMobileFullscreen && (
+                            <button
+                                onClick={() => setIsOpen(false)}
+                                className="absolute top-4 right-4 z-50 p-2 bg-white/50 backdrop-blur-md rounded-full text-black/60 hover:text-black"
+                            >
+                                <X className="w-5 h-5" />
+                            </button>
                         )}
+
+                        {/* Header - Hidden on Mobile */}
+                        <div className={`py-[11px] md:py-[9px] px-4 bg-white/10 border-b border-white/10 text-foreground flex justify-between items-center backdrop-blur-md shrink-0 ${isMobileFullscreen ? 'hidden md:flex' : 'flex'}`}>
+                            <div className="flex items-center gap-3">
+                                {/* UI Polish: Header icon reduced (w-16 h-16) */}
+                                <div className="w-16 h-16 flex items-center justify-center">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        xmlSpace="preserve"
+                                        width="100%"
+                                        height="100%"
+                                        version="1.1"
+                                        viewBox="0 0 203.18 203.18"
+                                        className="w-full h-full text-foreground"
+                                        style={{
+                                            shapeRendering: "geometricPrecision",
+                                            textRendering: "geometricPrecision",
+                                            fillRule: "evenodd",
+                                            clipRule: "evenodd",
+                                        }}
+                                    >
+                                        <g id="Слой_x0020_1">
+                                            <metadata id="CorelCorpID_0Corel-Layer" />
+                                            <g id="_2278661208240">
+                                                <circle fill="none" cx="101.59" cy="101.59" r="101.6" />
+                                                <path fill="currentColor" d="M106.13 53.03c22.55,2.08 40.65,19.52 43.75,41.75l-96.58 0c3.18,-22.75 22.05,-40.47 45.33,-41.87l0 -4.17 -2.36 0c-2.32,0 -4.23,-1.91 -4.23,-4.23l0 0c0,-2.33 1.91,-4.23 4.23,-4.23l12.4 0c2.33,0 4.23,1.9 4.23,4.23l0 0c0,2.32 -1.9,4.23 -4.23,4.23l-2.54 0 0 4.29zm15.16 63.75c1.5,-1.94 4.29,-2.3 6.23,-0.8 1.94,1.5 2.3,4.29 0.8,6.23 -3.14,4.07 -7.19,7.4 -11.86,9.7 -4.51,2.21 -9.56,3.46 -14.87,3.46 -5.31,0 -10.36,-1.25 -14.87,-3.46 -4.67,-2.3 -8.72,-5.63 -11.86,-9.7 -1.5,-1.94 -1.14,-4.73 0.8,-6.23 1.94,-1.5 4.73,-1.14 6.23,0.8 2.33,3.01 5.31,5.47 8.74,7.15 3.28,1.62 7,2.52 10.96,2.52 3.96,0 7.68,-0.9 10.96,-2.52 3.43,-1.68 6.41,-4.14 8.74,-7.15zm-10.04 39.85c-1.68,1.41 -4.25,2.17 -4.31,-1.17 -0.02,-0.99 -0.04,-1.26 -0.06,-2.26 -0.81,-2.45 -3.2,-2.84 -5.68,-2.84l0 -0.01c-25.76,-0.2 -46.76,-20.38 -48.29,-45.8l97.36 0c-0.71,11.75 -5.05,23.66 -13.15,30.44l-25.87 21.64z" />
+                                            </g>
+                                        </g>
+                                    </svg>
+                                </div>
+                                {/* UI Polish: Updates header title */}
+                                <span className="font-semibold text-lg">{t("aiWidget.headerTitle") || "hotelmol assistant"}</span>
+                            </div>
+                            <Button
+                                variant="ghost"
+                                size="icon"
+                                className="hover:bg-white/20"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                {/* UI Polish: ChevronDown for minimize */}
+                                <ChevronDown className="h-6 w-6" />
+                            </Button>
+                        </div>
+
 
                         {/* Chat Messages Area */}
 
@@ -315,7 +311,7 @@ export default function AskAIWidget() {
                                     className="w-full pr-12 py-6 bg-white/60 dark:bg-black/40 border-white/30 focus-visible:ring-offset-0 focus-visible:ring-[#20629B] focus-visible:ring-[2.5px] placeholder:text-muted-foreground/80 shadow-inner rounded-full text-[16px] md:text-sm"
                                     disabled={isLoading}
                                 />
-                                <div className="absolute right-2 top-1/2 -translate-y-1/2">
+                                <div className="absolute right-4 top-1/2 -translate-y-1/2">
                                     {/* UI Polish: Minimalistic ArrowUp icon, gray background circle like image */}
                                     {/* Keeping previous blue style as per 'Оставь цвет подсветки' but adapting to minimal arrow requested */}
                                     <Button

@@ -49,7 +49,7 @@ export default function ScrollToTop() {
         <button
           onClick={scrollToTop}
           data-testid="button-scroll-to-top-desktop"
-          className="hidden md:flex fixed right-2 bottom-4 z-[45] w-[44px] h-[44px] rounded-full transition-all duration-300 hover:scale-110 active:scale-95 shadow-[0_0_20px_rgba(7,82,160,0.4)] border border-white/30 backdrop-blur-md bg-[#0752A0] hover:bg-[#0752A0]/90 items-center justify-center p-0"
+          className="fixed right-4 bottom-6 z-40 p-0 w-[44px] h-[44px] rounded-full bg-[#0752A0] text-white shadow-lg hover:bg-[#0752A0]/90 hover:scale-110 active:scale-95 transition-all duration-300 flex items-center justify-center border-white/30 backdrop-blur-md"
           aria-label="Scroll to top"
         >
           <ArrowUp className="w-5 h-5 text-white" />

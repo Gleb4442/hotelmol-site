@@ -227,17 +227,15 @@ export default function MobileAIInput() {
                         value={inputValue}
                         onChange={(e) => setInputValue(e.target.value)}
                         onKeyDown={handleKeyDown}
-                        placeholder={t("aiWidget.inputPlaceholder") || "Ask something..."} // Updated placeholder
+                        placeholder={t("button.askQuestion") || "Ask Question"}
                         className="flex-1 bg-transparent border-none outline-none text-[#0752A0] placeholder:text-[#0752A0]/50 text-[16px] font-medium"
                     />
                     <button
                         onClick={handleSubmit}
-                        // Send Button: Replaced Icon with Text "Ask Question", pill shape
-                        className="h-[36px] px-4 bg-[#0752A0] rounded-full flex items-center justify-center shadow-md active:scale-95 transition-transform shrink-0" // Updated send button styling
+                        // Send Button: Reverted to Icon
+                        className="w-[34px] h-[34px] shrink-0 bg-[#0752A0] rounded-full flex items-center justify-center shadow-md active:scale-95 transition-transform"
                     >
-                        <span className="text-white text-xs font-bold whitespace-nowrap leading-none">
-                            {t("button.askQuestion")}
-                        </span>
+                        <ArrowUp className="w-5 h-5 text-white" />
                     </button>
                 </div>
             </div>
