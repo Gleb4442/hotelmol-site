@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUp, Globe, ExternalLink, X } from "lucide-react";
+import { ArrowUp, Globe, ExternalLink, X, ArrowLeft } from "lucide-react";
 import { useTranslation } from "@/lib/TranslationContext";
 import { usePathname } from "next/navigation";
 import type { Language } from "@/lib/translations";
@@ -11,6 +11,7 @@ export default function MobileAIInput() {
     const { language, setLanguage, t } = useTranslation();
     const pathname = usePathname();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [menuView, setMenuView] = useState<'main' | 'languages'>('main');
     const [inputValue, setInputValue] = useState("");
     const [isVisible, setIsVisible] = useState(false);
     const [showScrollBtn, setShowScrollBtn] = useState(false);
