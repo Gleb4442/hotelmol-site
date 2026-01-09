@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node scripts/fix-db.js && next build",
     "start": "next start",
     "check": "tsc",
     "db:push": "drizzle-kit push"
