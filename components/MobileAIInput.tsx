@@ -23,7 +23,8 @@ export default function MobileAIInput() {
     // Original MobileBottomNav logic: if (!isVisible || isHiddenPath) return null;
     // isHiddenPath = pathname.startsWith("/blog") || pathname === "/contact";
     // Let's stick to this for consistency unless user said otherwise. User didn't specify visibility for wdiget, but implicitly "make on mobile version...".
-    const isHiddenPath = pathname.startsWith("/blog") || pathname === "/contact";
+    const isBlogArticle = pathname.startsWith("/blog/") && pathname.length > "/blog/".length;
+    const isHiddenPath = (pathname.startsWith("/blog") && !isBlogArticle) || pathname === "/contact";
 
     useEffect(() => {
         const consent = localStorage.getItem("cookieConsent");
@@ -38,7 +39,7 @@ export default function MobileAIInput() {
     // Scroll Logic for Mobile Button
     useEffect(() => {
         const handleScroll = () => {
-            setShowScrollBtn(window.scrollY > 300);
+            setShowScrollBtn(window.scrollY > 300 && isBlogArticle);
         };
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
@@ -49,7 +50,7 @@ export default function MobileAIInput() {
     };
 
     // Updated visibility check
-    if (pathname.includes('/blog') || pathname === '/contact') return null;
+    if (isHiddenPath) return null;
 
     const handleMenuToggle = () => {
         const newState = !isMenuOpen;

@@ -56,7 +56,7 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
             <img src="/assets/hotelmol-logo.png" alt="HotelMol" className="h-[180px] md:h-[195px] mt-2 md:mt-1" />
           </Link>
 
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="hidden md:flex items-center gap-[18px]">
             {navigation.map((item) => {
               const isActive = pathname === item.href;
               return (
@@ -94,6 +94,9 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
               </DropdownMenuItem>
               <DropdownMenuItem onClick={() => setLanguage("ua" as Language)} data-testid="option-ua">
                 Українська (UA) {language === "ua" && "✓"}
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setLanguage("pl" as Language)} data-testid="option-pl">
+                Polski (PL) {language === "pl" && "✓"}
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
@@ -136,10 +139,10 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
               overlayClassName="bg-white/10 backdrop-blur-md"
               className="w-[90%] max-w-[350px] rounded-2xl border-white/20 shadow-2xl backdrop-blur-xl bg-white/90 dark:bg-zinc-900/90 overflow-hidden"
             >
-              <div className="text-center py-[21px] border-b border-white/20">
+              <div className="text-center py-6 border-b border-white/20">
                 <DialogTitle className="text-3xl font-bold text-[#0752A0]">{t("menu.title")}</DialogTitle>
               </div>
-              <nav className="flex flex-col gap-4 items-stretch px-6 py-[21px]">
+              <nav className="flex flex-col gap-4 items-stretch px-6 py-6">
                 {navigation.map((item) => {
                   const isActive = pathname === item.href;
                   return (
@@ -160,6 +163,46 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
                   );
                 })}
               </nav>
+
+              <div className="px-6 py-6 border-t border-white/20">
+                <p className="text-sm font-medium text-muted-foreground mb-4 text-center">
+                  {language === "en" ? "Select Language" : language === "ru" ? "Выберите язык" : language === "ua" ? "Оберіть мову" : "Wybierz język"}
+                </p>
+                <div className="grid grid-cols-2 gap-3">
+                  <Button
+                    variant={language === "en" ? "default" : "outline"}
+                    size="sm"
+                    onClick={() => setLanguage("en")}
+                    className="w-full rounded-xl"
+                  >
+                    English
+                  </Button>
+                  <Button
+                    variant={language === "ru" ? "default" : "outline"}
+                    size="sm"
+                    onClick={() => setLanguage("ru")}
+                    className="w-full rounded-xl"
+                  >
+                    Русский
+                  </Button>
+                  <Button
+                    variant={language === "ua" ? "default" : "outline"}
+                    size="sm"
+                    onClick={() => setLanguage("ua")}
+                    className="w-full rounded-xl"
+                  >
+                    Українська
+                  </Button>
+                  <Button
+                    variant={language === "pl" ? "default" : "outline"}
+                    size="sm"
+                    onClick={() => setLanguage("pl")}
+                    className="w-full rounded-xl"
+                  >
+                    Polski
+                  </Button>
+                </div>
+              </div>
             </DialogContent>
           </Dialog>
         </div>
