@@ -2284,6 +2284,9 @@ const translationsBase = {
     "button.pricing": "Pricing",
     "button.tryDemo": "Try the Demo",
     "button.requestDemo": "Request a Demo",
+    "button.askQuestion": "Zadaj pytanie",
+    "menu.title": "MENU",
+    "aiWidget.button": "Zapytaj AI",
     "nav.languageSwitcher": "Język",
 
     // Home Hero
