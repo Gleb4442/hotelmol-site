@@ -49,6 +49,16 @@ const allIntegrations = [
   },
   { name: "WhatsApp", icon: SiWhatsapp, color: "#25d366", comingSoon: true, hideOnDesktop: false },
   { name: "Instagram", icon: SiInstagram, color: "#e4405f", comingSoon: true, hideOnDesktop: false },
+  {
+    name: "Booking", icon: () => (
+      <img src="/assets/booking-logo.png" alt="Booking.com" className="w-10 h-10 object-contain" />
+    ), color: "#003580", comingSoon: true, hideOnDesktop: false
+  },
+  {
+    name: "Expedia", icon: () => (
+      <img src="/assets/expedia-logo.png" alt="Expedia" className="w-10 h-10 object-contain" />
+    ), color: "#003580", comingSoon: true, hideOnDesktop: false
+  },
 ];
 
 const desktopIntegrations = allIntegrations.filter(i => !i.hideOnDesktop);
