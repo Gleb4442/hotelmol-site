@@ -188,16 +188,21 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
                   transition={{ duration: 0.3, ease: [0.34, 1.56, 0.64, 1] }}
                   className="absolute top-[10px] bottom-[10px] left-[25px] right-[25px] bg-white/90 dark:bg-zinc-900/90 backdrop-blur-xl rounded-2xl border border-white/20 shadow-2xl overflow-hidden flex flex-col"
                 >
-                  <div className="relative flex items-center justify-center p-6 min-h-[80px] border-b border-white/20">
-                    <h2 className="text-xl font-bold text-[#0752A0] uppercase tracking-[0.2em] font-serif">{t("menu.title")}</h2>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="absolute right-4 top-4 rounded-full bg-black/5 hover:bg-black/10 transition-colors"
-                    >
-                      <X className="h-6 w-6" />
-                    </Button>
+                  <div className="grid grid-cols-[56px_1fr_56px] items-center p-4 border-b border-white/20 min-h-[80px]">
+                    <div /> {/* Left spacer */}
+                    <h2 className="text-xl font-bold text-[#0752A0] uppercase tracking-[0.2em] font-serif text-center whitespace-nowrap">
+                      {t("menu.title")}
+                    </h2>
+                    <div className="flex justify-end">
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="rounded-full bg-black/5 hover:bg-black/10 transition-colors h-11 w-11"
+                      >
+                        <X className="h-6 w-6" />
+                      </Button>
+                    </div>
                   </div>
 
                   <div className="flex-1 overflow-y-auto">
