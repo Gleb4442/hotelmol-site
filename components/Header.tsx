@@ -188,13 +188,13 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
                   transition={{ duration: 0.3, ease: [0.34, 1.56, 0.64, 1] }}
                   className="absolute top-[10px] bottom-[10px] left-[25px] right-[25px] bg-white/90 dark:bg-zinc-900/90 backdrop-blur-xl rounded-2xl border border-white/20 shadow-2xl overflow-hidden flex flex-col"
                 >
-                  <div className="relative flex items-center justify-center px-6 pt-8 pb-6 border-b border-white/20">
-                    <h2 className="text-2xl font-bold text-[#0752A0] uppercase tracking-wider">{t("menu.title")}</h2>
+                  <div className="relative flex items-center justify-center p-6 min-h-[80px] border-b border-white/20">
+                    <h2 className="text-xl font-bold text-[#0752A0] uppercase tracking-[0.2em] font-serif">{t("menu.title")}</h2>
                     <Button
                       variant="ghost"
                       size="icon"
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="absolute right-6 rounded-full bg-black/5 hover:bg-black/10 transition-colors"
+                      className="absolute right-4 top-4 rounded-full bg-black/5 hover:bg-black/10 transition-colors"
                     >
                       <X className="h-6 w-6" />
                     </Button>
