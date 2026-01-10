@@ -79,7 +79,8 @@ export default function MobileAIInput() {
             case "en": return "English";
             case "ru": return "Русский";
             case "ua": return "Українська";
-            default: return "English"; // Default to English
+            case "pl": return "Polski";
+            default: return "English";
         }
     };
 
@@ -155,6 +156,12 @@ export default function MobileAIInput() {
                                         className={`backdrop-blur-md font-bold py-3 px-6 rounded-2xl shadow-lg border border-white/20 text-center ${language === 'ua' ? 'bg-[#0752A0] text-white' : 'bg-white/90 text-[#0752A0]'}`}
                                     >
                                         Українська
+                                    </button>
+                                    <button
+                                        onClick={() => setLanguage('pl')}
+                                        className={`backdrop-blur-md font-bold py-3 px-6 rounded-2xl shadow-lg border border-white/20 text-center ${language === 'pl' ? 'bg-[#0752A0] text-white' : 'bg-white/90 text-[#0752A0]'}`}
+                                    >
+                                        Polski
                                     </button>
                                 </>
                             )}

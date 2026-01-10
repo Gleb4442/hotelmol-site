@@ -23,24 +23,24 @@ export default function AskAIWidget() {
     const pathname = usePathname();
     const { t } = useTranslation();
     const { isCookieBannerVisible } = useCookieBanner();
-    const [sessionId, setSessionId] = useState<string>("");
+    const [sessionId, setSessionId] = useState<string>(() => {
+        if (typeof window !== "undefined") {
+            let sid = localStorage.getItem("hotelmol_session_id");
+            if (!sid) {
+                sid = uuidv4();
+                localStorage.setItem("hotelmol_session_id", sid);
+            }
+            return sid;
+        }
+        return "";
+    });
     const [messages, setMessages] = useState<Message[]>([]);
     const [input, setInput] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const messagesEndRef = useRef<HTMLDivElement>(null);
     const inputRef = useRef<HTMLInputElement>(null);
-    const [isMobileFullscreen, setIsMobileFullscreen] = useState(false); // Added isMobileFullscreen state
+    const [isMobileFullscreen, setIsMobileFullscreen] = useState(false);
     const [isShifted, setIsShifted] = useState(false);
-
-    // Initialize session ID
-    useEffect(() => {
-        let sid = localStorage.getItem("hotelmol_session_id");
-        if (!sid) {
-            sid = uuidv4();
-            localStorage.setItem("hotelmol_session_id", sid);
-        }
-        setSessionId(sid);
-    }, []);
 
     // Auto-scroll to bottom of messages
     useEffect(() => {

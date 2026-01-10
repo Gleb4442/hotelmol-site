@@ -1,5 +1,5 @@
-"use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
@@ -13,7 +13,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { X } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -29,6 +29,36 @@ interface HeaderProps {
 export default function Header({ onDemoClick }: HeaderProps = {}) {
   const pathname = usePathname();
   const { language, setLanguage, t } = useTranslation();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isMobileMenuOpen]);
+
+  useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsMobileMenuOpen(false);
+    };
+    window.addEventListener("keydown", handleEsc);
+    return () => window.removeEventListener("keydown", handleEsc);
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const { data: blogEnabledData } = useQuery<{ key: string; value: string | null }>({
     queryKey: ["/api/settings/blogEnabled"],
@@ -124,87 +154,99 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
             </a>
           </Button>
 
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="md:hidden w-[56px] h-[56px] bg-white/95 backdrop-blur-md shadow-[0_8px_32px_rgba(7,82,160,0.12)] border border-white/20 rounded-full flex items-center justify-center"
-                data-testid="button-mobile-menu"
-              >
-                <Menu className="h-7 w-7 stroke-[2.5] text-[#0752A0]" />
-              </Button>
-            </DialogTrigger>
-            <DialogContent
-              overlayClassName="bg-white/10 backdrop-blur-md"
-              className="w-[90%] max-w-[350px] rounded-2xl border-white/20 shadow-2xl backdrop-blur-xl bg-white/90 dark:bg-zinc-900/90 overflow-hidden"
-            >
-              <div className="text-center py-6 border-b border-white/20">
-                <DialogTitle className="text-3xl font-bold text-[#0752A0]">{t("menu.title")}</DialogTitle>
-              </div>
-              <nav className="flex flex-col gap-4 items-stretch px-6 py-6">
-                {navigation.map((item) => {
-                  const isActive = pathname === item.href;
-                  return (
-                    <DialogClose asChild key={item.name}>
-                      <Link
-                        href={item.href}
-                        className={`w-full py-3 px-4 rounded-xl text-center font-bold shadow-md transition-transform active:scale-95 flex items-center justify-center gap-2 ${isActive ? "bg-[#0752A0] text-white ring-2 ring-white/50" : "bg-[#0752A0] text-white"}`}
-                        data-testid={`mobile-link-${item.name.toLowerCase().replace(' ', '-')}`}
-                      >
-                        {item.name}
-                        {item.badge && (
-                          <span className="inline-block px-2 py-0.5 text-[10px] font-semibold text-[#0752A0] bg-white rounded-full ml-1">
-                            {item.badge}
-                          </span>
-                        )}
-                      </Link>
-                    </DialogClose>
-                  );
-                })}
-              </nav>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="md:hidden w-[56px] h-[56px] bg-white/95 backdrop-blur-md shadow-[0_8px_32px_rgba(7,82,160,0.12)] border border-white/20 rounded-full flex items-center justify-center active:scale-95 transition-transform"
+            onClick={() => setIsMobileMenuOpen(true)}
+            data-testid="button-mobile-menu"
+          >
+            <Menu className="h-7 w-7 stroke-[2.5] text-[#0752A0]" />
+          </Button>
 
-              <div className="px-6 py-6 border-t border-white/20">
-                <p className="text-sm font-medium text-muted-foreground mb-4 text-center">
-                  {language === "en" ? "Select Language" : language === "ru" ? "Выберите язык" : language === "ua" ? "Оберіть мову" : "Wybierz język"}
-                </p>
-                <div className="grid grid-cols-2 gap-3">
-                  <Button
-                    variant={language === "en" ? "default" : "outline"}
-                    size="sm"
-                    onClick={() => setLanguage("en")}
-                    className="w-full rounded-xl"
-                  >
-                    English
-                  </Button>
-                  <Button
-                    variant={language === "ru" ? "default" : "outline"}
-                    size="sm"
-                    onClick={() => setLanguage("ru")}
-                    className="w-full rounded-xl"
-                  >
-                    Русский
-                  </Button>
-                  <Button
-                    variant={language === "ua" ? "default" : "outline"}
-                    size="sm"
-                    onClick={() => setLanguage("ua")}
-                    className="w-full rounded-xl"
-                  >
-                    Українська
-                  </Button>
-                  <Button
-                    variant={language === "pl" ? "default" : "outline"}
-                    size="sm"
-                    onClick={() => setLanguage("pl")}
-                    className="w-full rounded-xl"
-                  >
-                    Polski
-                  </Button>
-                </div>
+          <AnimatePresence>
+            {isMobileMenuOpen && (
+              <div className="fixed inset-0 z-[100] md:hidden">
+                {/* Overlay */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="absolute inset-0 bg-black/20 backdrop-blur-sm"
+                />
+
+                {/* Menu Content */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95, y: -20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95, y: -20 }}
+                  transition={{ duration: 0.3, ease: [0.34, 1.56, 0.64, 1] }}
+                  className="absolute inset-[10px] bg-white/90 dark:bg-zinc-900/90 backdrop-blur-xl rounded-2xl border border-white/20 shadow-2xl overflow-hidden flex flex-col"
+                >
+                  {/* Close button inside although Header is visible? User said margins 10px. 
+                      I'll add a title and close button for clarity. */}
+                  <div className="flex justify-between items-center px-6 pt-6 pb-4 border-b border-white/20">
+                    <h2 className="text-2xl font-bold text-[#0752A0]">{t("menu.title")}</h2>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="rounded-full bg-black/5"
+                    >
+                      <X className="h-5 w-5" />
+                    </Button>
+                  </div>
+
+                  <div className="flex-1 overflow-y-auto">
+                    <nav className="flex flex-col gap-3 items-stretch px-6 py-6">
+                      {navigation.map((item) => {
+                        const isActive = pathname === item.href;
+                        return (
+                          <Link
+                            key={item.name}
+                            href={item.href}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className={`w-full py-4 px-6 rounded-xl text-center font-bold shadow-sm transition-transform active:scale-95 flex items-center justify-center gap-2 ${isActive ? "bg-[#0752A0] text-white ring-2 ring-white/50" : "bg-[#0752A0] text-white"}`}
+                          >
+                            {item.name}
+                            {item.badge && (
+                              <span className="inline-block px-2 py-0.5 text-[10px] font-semibold text-[#0752A0] bg-white rounded-full ml-1">
+                                {item.badge}
+                              </span>
+                            )}
+                          </Link>
+                        );
+                      })}
+                    </nav>
+
+                    <div className="px-6 py-6 border-t border-white/20">
+                      <p className="text-sm font-medium text-muted-foreground mb-4 text-center">
+                        {language === "en" ? "Select Language" : language === "ru" ? "Выберите язык" : language === "ua" ? "Оберіть мову" : "Wybierz język"}
+                      </p>
+                      <div className="grid grid-cols-2 gap-3 pb-6">
+                        {(["en", "ru", "ua", "pl"] as const).map((lang) => (
+                          <Button
+                            key={lang}
+                            variant={language === lang ? "default" : "outline"}
+                            size="sm"
+                            onClick={() => {
+                              setLanguage(lang);
+                              // Keep menu open for language feedback or close? User didn't specify. 
+                              // Usually better to keep open for a moment.
+                            }}
+                            className="w-full rounded-xl h-11 font-medium"
+                          >
+                            {lang === "en" ? "English" : lang === "ru" ? "Русский" : lang === "ua" ? "Українська" : "Polski"}
+                          </Button>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
               </div>
-            </DialogContent>
-          </Dialog>
+            )}
+          </AnimatePresence>
         </div>
       </div>
 
