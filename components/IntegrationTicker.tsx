@@ -56,7 +56,7 @@ const allIntegrations = [
   },
   {
     name: "Expedia", icon: () => (
-      <img src="/assets/expedia-logo.png" alt="Expedia" className="w-10 h-10 object-contain" />
+      <img src="/assets/expedia-logo.png" alt="Expedia" className="w-12 h-12 object-contain" />
     ), color: "#FFCC29", comingSoon: true, hideOnDesktop: false
   },
 ];
