@@ -18,11 +18,13 @@ export function Providers({ children }: { children: React.ReactNode }) {
                 <TranslationProvider>
                     <TooltipProvider>
                         {children}
-                        <Toaster />
-                        <CookieBanner />
-                        <MobileAIInput />
-                        <AskAIWidget />
-                        <ScrollToTop />
+                        <div className="hide-on-menu-open">
+                            <Toaster />
+                            <CookieBanner />
+                            <MobileAIInput />
+                            <AskAIWidget />
+                            <ScrollToTop />
+                        </div>
                     </TooltipProvider>
                 </TranslationProvider>
             </QueryClientProvider>

@@ -257,6 +257,16 @@
   .animate-border-beam {
     animation: border-beam calc(var(--duration)*1s) infinite linear;
   }
+
+  .hide-on-menu-open {
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+  }
+
+  body.mobile-menu-open .hide-on-menu-open {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
 }
 
 @media (max-width: 768px) {

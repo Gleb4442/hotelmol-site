@@ -35,11 +35,14 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = "hidden";
+      document.body.classList.add("mobile-menu-open");
     } else {
       document.body.style.overflow = "unset";
+      document.body.classList.remove("mobile-menu-open");
     }
     return () => {
       document.body.style.overflow = "unset";
+      document.body.classList.remove("mobile-menu-open");
     };
   }, [isMobileMenuOpen]);
 
@@ -82,7 +85,7 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 w-full max-w-[1280px] mx-auto mt-2 md:mt-4 px-4 md:px-0">
       <div className="flex h-[68px] md:h-[87px] items-center justify-between md:px-6 md:rounded-[20px] md:bg-white/95 md:backdrop-blur-md md:shadow-[0_8px_32px_rgba(7,82,160,0.12)] md:border md:border-white/20">
-        <div className="flex items-center gap-8 bg-white/95 backdrop-blur-md shadow-[0_8px_32px_rgba(7,82,160,0.12)] border border-white/20 rounded-full px-5 h-[56px] md:h-auto md:bg-transparent md:backdrop-blur-none md:shadow-none md:border-none md:rounded-none md:px-0">
+        <div className="flex items-center gap-8 bg-white/95 backdrop-blur-md shadow-[0_8px_32px_rgba(7,82,160,0.12)] border border-white/20 rounded-full px-5 h-[56px] md:h-auto md:bg-transparent md:backdrop-blur-none md:shadow-none md:border-none md:rounded-none md:px-0 hide-on-menu-open">
           <Link href="/" className="flex items-center h-full" data-testid="link-home">
             <img src="/assets/hotelmol-logo.png" alt="HotelMol" className="h-[140px] md:h-[195px] mt-1.5 md:mt-1 object-contain" />
           </Link>
@@ -158,7 +161,7 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden w-[56px] h-[56px] bg-white/95 backdrop-blur-md shadow-[0_8px_32px_rgba(7,82,160,0.12)] border border-white/20 rounded-full flex items-center justify-center active:scale-95 transition-transform"
+            className="md:hidden w-[56px] h-[56px] bg-white/95 backdrop-blur-md shadow-[0_8px_32px_rgba(7,82,160,0.12)] border border-white/20 rounded-full flex items-center justify-center active:scale-95 transition-transform hide-on-menu-open"
             onClick={() => setIsMobileMenuOpen(true)}
             data-testid="button-mobile-menu"
           >
@@ -183,19 +186,17 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.95, y: -20 }}
                   transition={{ duration: 0.3, ease: [0.34, 1.56, 0.64, 1] }}
-                  className="absolute inset-[10px] bg-white/90 dark:bg-zinc-900/90 backdrop-blur-xl rounded-2xl border border-white/20 shadow-2xl overflow-hidden flex flex-col"
+                  className="absolute top-[10px] bottom-[10px] left-[25px] right-[25px] bg-white/90 dark:bg-zinc-900/90 backdrop-blur-xl rounded-2xl border border-white/20 shadow-2xl overflow-hidden flex flex-col"
                 >
-                  {/* Close button inside although Header is visible? User said margins 10px. 
-                      I'll add a title and close button for clarity. */}
-                  <div className="flex justify-between items-center px-6 pt-6 pb-4 border-b border-white/20">
-                    <h2 className="text-2xl font-bold text-[#0752A0]">{t("menu.title")}</h2>
+                  <div className="relative flex items-center justify-center px-6 pt-8 pb-6 border-b border-white/20">
+                    <h2 className="text-2xl font-bold text-[#0752A0] uppercase tracking-wider">{t("menu.title")}</h2>
                     <Button
                       variant="ghost"
                       size="icon"
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="rounded-full bg-black/5"
+                      className="absolute right-6 rounded-full bg-black/5 hover:bg-black/10 transition-colors"
                     >
-                      <X className="h-5 w-5" />
+                      <X className="h-6 w-6" />
                     </Button>
                   </div>
 
