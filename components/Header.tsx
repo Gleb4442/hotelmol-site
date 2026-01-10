@@ -49,11 +49,11 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
   );
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 w-[calc(100%-2rem)] max-w-[1280px] mx-auto mt-2 md:mt-4 rounded-[20px] bg-white/95 backdrop-blur-md shadow-[0_8px_32px_rgba(7,82,160,0.12)] border border-white/20">
-      <div className="flex h-[68px] md:h-[87px] items-center justify-between px-6">
-        <div className="flex items-center gap-8">
-          <Link href="/" className="flex items-center" data-testid="link-home">
-            <img src="/assets/hotelmol-logo.png" alt="HotelMol" className="h-[180px] md:h-[195px] mt-2 md:mt-1" />
+    <header className="fixed top-0 left-0 right-0 z-50 w-full max-w-[1280px] mx-auto mt-2 md:mt-4 px-4 md:px-0">
+      <div className="flex h-[68px] md:h-[87px] items-center justify-between md:px-6 md:rounded-[20px] md:bg-white/95 md:backdrop-blur-md md:shadow-[0_8px_32px_rgba(7,82,160,0.12)] md:border md:border-white/20">
+        <div className="flex items-center gap-8 bg-white/95 backdrop-blur-md shadow-[0_8px_32px_rgba(7,82,160,0.12)] border border-white/20 rounded-full px-5 h-[56px] md:h-auto md:bg-transparent md:backdrop-blur-none md:shadow-none md:border-none md:rounded-none md:px-0">
+          <Link href="/" className="flex items-center h-full" data-testid="link-home">
+            <img src="/assets/hotelmol-logo.png" alt="HotelMol" className="h-[140px] md:h-[195px] mt-1.5 md:mt-1 object-contain" />
           </Link>
 
           <nav className="hidden md:flex items-center gap-[18px]">
@@ -129,10 +129,10 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
               <Button
                 variant="ghost"
                 size="icon"
-                className="md:hidden w-16 h-16"
+                className="md:hidden w-[56px] h-[56px] bg-white/95 backdrop-blur-md shadow-[0_8px_32px_rgba(7,82,160,0.12)] border border-white/20 rounded-full flex items-center justify-center"
                 data-testid="button-mobile-menu"
               >
-                <Menu className="h-10 w-10 stroke-[3]" />
+                <Menu className="h-7 w-7 stroke-[2.5] text-[#0752A0]" />
               </Button>
             </DialogTrigger>
             <DialogContent
@@ -220,12 +220,10 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
 
         @keyframes shimmer-glow {
           0%, 100% {
-            box-shadow: 0 0 0 0 rgba(173, 216, 230, 0.2);
-            filter: brightness(1);
+            box-shadow: 0 0 8px 2px rgba(173, 216, 230, 0.1);
           }
           50% {
-            box-shadow: 0 0 12px 4px rgba(173, 216, 230, 0.4);
-            filter: brightness(1.1);
+            box-shadow: 0 0 16px 6px rgba(173, 216, 230, 0.25);
           }
         }
 
