@@ -9,6 +9,7 @@ import Link from "next/link";
 import SEO, { organizationSchema } from "@/components/SEO";
 import { useTranslation } from "@/lib/TranslationContext";
 import IntegrationRequestModal from "@/components/IntegrationRequestModal";
+import AiReviewSection from "@/components/AiReviewSection";
 import Image from "next/image";
 
 export default function About() {
@@ -24,7 +25,7 @@ export default function About() {
             />
             <Header />
 
-            <section className="relative bg-white pt-[130px] pb-40 md:py-48 overflow-hidden">
+            <section className="relative bg-white pt-[130px] pb-[110px] md:pt-48 md:pb-[132px] overflow-hidden">
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="max-w-4xl mx-auto text-center">
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight">
@@ -53,6 +54,7 @@ export default function About() {
                                 </button>
                             </Link>
                         </div>
+                        <AiReviewSection />
                     </div>
                 </div>
             </section>
