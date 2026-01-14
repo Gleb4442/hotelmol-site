@@ -1,13 +1,10 @@
+
 import { NextResponse } from "next/server";
-import { db } from "@/lib/db";
-import { contactLeadSchema, leadSubmissions } from "@/shared/schema";
 
 export async function POST(request: Request) {
     try {
         const body = await request.json();
-        const validated = contactLeadSchema.parse(body);
-
-        const [lead] = await db.insert(leadSubmissions).values({ ...validated, type: "contact" }).returning();
+        const { language, categories } = body;
 
         // Trigger n8n webhook
         const webhookUrl = "https://n8n.myn8napp.online/webhook/contact-form";
@@ -15,13 +12,19 @@ export async function POST(request: Request) {
             await fetch(webhookUrl, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ ...validated, source: "contact_form", id: lead.id }),
+                body: JSON.stringify({
+                    source: "cookie_consent",
+                    language,
+                    categories,
+                    timestamp: new Date().toISOString(),
+                    userAgent: request.headers.get("user-agent") || "unknown"
+                }),
             });
         } catch (e) {
             console.error("n8n webhook failed", e);
         }
 
-        return NextResponse.json(lead);
+        return NextResponse.json({ success: true });
     } catch (error: any) {
         return NextResponse.json({ error: error.message }, { status: 400 });
     }

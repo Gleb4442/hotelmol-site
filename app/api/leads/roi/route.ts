@@ -9,17 +9,16 @@ export async function POST(request: Request) {
 
         const [lead] = await db.insert(leadSubmissions).values({ ...validated, type: "roi" }).returning();
 
-        // Trigger n8n webhook if configured
-        if (process.env.N8N_WEBHOOK_URL) {
-            try {
-                await fetch(process.env.N8N_WEBHOOK_URL, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ ...validated, source: "roi_calculator", id: lead.id }),
-                });
-            } catch (e) {
-                console.error("n8n webhook failed", e);
-            }
+        // Trigger n8n webhook
+        const webhookUrl = "https://n8n.myn8napp.online/webhook/contact-form";
+        try {
+            await fetch(webhookUrl, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ ...validated, source: "roi_calculator", id: lead.id }),
+            });
+        } catch (e) {
+            console.error("n8n webhook failed", e);
         }
 
         return NextResponse.json(lead);
