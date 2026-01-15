@@ -11,6 +11,7 @@ import ROIEstimate from "@/components/ROIEstimate";
 import PresentationSection from "@/components/PresentationSection";
 import Footer from "@/components/Footer";
 import DemoRequestModal from "@/components/DemoRequestModal";
+import ChatFAQSection from "@/components/ChatFAQSection";
 import LLMSummary from "@/components/LLMSummary";
 import SEO, { organizationSchema } from "@/components/SEO";
 
@@ -32,6 +33,7 @@ export default function Home() {
                 <IntegrationTicker />
                 <BenefitsSection />
                 <AIDashboardSection />
+                <ChatFAQSection />
                 <ROIEstimate />
                 <PresentationSection />
             </main>
