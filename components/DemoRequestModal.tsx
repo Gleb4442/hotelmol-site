@@ -29,7 +29,7 @@ export default function DemoRequestModal({ open, onOpenChange }: DemoRequestModa
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!formData.dataProcessing) {
       toast({
         title: t("error.agreementRequired"),
@@ -40,9 +40,9 @@ export default function DemoRequestModal({ open, onOpenChange }: DemoRequestModa
     }
 
     setIsSubmitting(true);
-    
+
     try {
-      await apiRequest("POST", "/api/leads/demo", formData);
+      await apiRequest("POST", "/api/leads/demo-request", formData);
 
       toast({
         title: t("demo.successTitle"),
@@ -56,7 +56,7 @@ export default function DemoRequestModal({ open, onOpenChange }: DemoRequestModa
         dataProcessing: false,
         marketing: false,
       });
-      
+
       onOpenChange(false);
     } catch (error: any) {
       toast({
@@ -78,7 +78,7 @@ export default function DemoRequestModal({ open, onOpenChange }: DemoRequestModa
             {t("demo.subtitle")}
           </DialogDescription>
         </DialogHeader>
-        
+
         <form onSubmit={handleSubmit} className="space-y-6 mt-4">
           <div className="space-y-4">
             <div className="space-y-2">
@@ -123,7 +123,7 @@ export default function DemoRequestModal({ open, onOpenChange }: DemoRequestModa
               <Checkbox
                 id="demo-processing"
                 checked={formData.dataProcessing}
-                onCheckedChange={(checked) => 
+                onCheckedChange={(checked) =>
                   setFormData({ ...formData, dataProcessing: checked as boolean })
                 }
                 data-testid="checkbox-demo-processing"
@@ -136,7 +136,7 @@ export default function DemoRequestModal({ open, onOpenChange }: DemoRequestModa
               <Checkbox
                 id="demo-marketing"
                 checked={formData.marketing}
-                onCheckedChange={(checked) => 
+                onCheckedChange={(checked) =>
                   setFormData({ ...formData, marketing: checked as boolean })
                 }
                 data-testid="checkbox-demo-marketing"
@@ -147,8 +147,8 @@ export default function DemoRequestModal({ open, onOpenChange }: DemoRequestModa
             </div>
           </div>
 
-          <Button 
-            type="submit" 
+          <Button
+            type="submit"
             className="w-full"
             disabled={isSubmitting}
             data-testid="button-submit-demo"

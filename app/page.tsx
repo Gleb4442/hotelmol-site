@@ -11,6 +11,7 @@ import ROIEstimate from "@/components/ROIEstimate";
 import PresentationSection from "@/components/PresentationSection";
 import Footer from "@/components/Footer";
 import DemoRequestModal from "@/components/DemoRequestModal";
+import LLMSummary from "@/components/LLMSummary";
 import SEO, { organizationSchema } from "@/components/SEO";
 
 export default function Home() {
@@ -26,6 +27,7 @@ export default function Home() {
             <Header onDemoClick={() => setDemoModalOpen(true)} />
             <main className="flex-grow">
                 <Hero />
+                <LLMSummary />
                 <HowRoomieWorks />
                 <IntegrationTicker />
                 <BenefitsSection />

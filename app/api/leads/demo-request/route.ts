@@ -1,14 +1,14 @@
+
 import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
-import { contactLeadSchema, leadSubmissions } from "@/shared/schema";
+import { demoLeadSchema, leadSubmissions } from "@/shared/schema";
 
 export async function POST(request: Request) {
-    console.log("Contact API POST hit");
     try {
         const body = await request.json();
-        const validated = contactLeadSchema.parse(body);
+        const validated = demoLeadSchema.parse(body);
 
-        const [lead] = await db.insert(leadSubmissions).values({ ...validated, type: "contact" }).returning();
+        const [lead] = await db.insert(leadSubmissions).values({ ...validated, type: "demo" }).returning();
 
         // Trigger n8n webhook
         const webhookUrl = "https://n8n.myn8napp.online/webhook/contact-form";
@@ -16,7 +16,7 @@ export async function POST(request: Request) {
             await fetch(webhookUrl, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ ...validated, source: "contact_form", id: lead.id }),
+                body: JSON.stringify({ ...validated, source: "demo_request", id: lead.id }),
             });
         } catch (e) {
             console.error("n8n webhook failed", e);
