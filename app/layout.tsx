@@ -11,8 +11,23 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-    title: "Hotelmol - AI Solutions for Hotels",
+    title: "Hotelmol - Ai Solutions for Hotels",
     description: "Advanced AI solutions for the hospitality industry.",
+    openGraph: {
+        title: "Hotelmol - Ai Solutions for Hotels",
+        description: "Advanced AI solutions for the hospitality industry.",
+        url: "https://hotelmol.com",
+        siteName: "Hotelmol",
+        images: [
+            {
+                url: "/assets/hotelmol-logo.png",
+                width: 800,
+                height: 600,
+                alt: "Hotelmol Logo",
+            },
+        ],
+        type: "website",
+    },
     appleWebApp: {
         capable: true,
         statusBarStyle: "black-translucent",

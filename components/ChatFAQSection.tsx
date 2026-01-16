@@ -106,7 +106,27 @@ export default function ChatFAQSection() {
                                                     "text-sm md:text-base text-slate-700 leading-relaxed transition-all duration-700 whitespace-pre-line",
                                                     !isRevealed && "opacity-40 blur-[2px] select-none"
                                                 )}>
-                                                    {faq.answer}
+                                                    {faq.answer.includes("[PRICING_BTN]") ? (
+                                                        faq.answer.split(/\[PRICING_BTN\](.*?)\[\/PRICING_BTN\]/g).map((part, i) => {
+                                                            if (i % 2 === 1) {
+                                                                return (
+                                                                    <a
+                                                                        key={i}
+                                                                        href="https://pricing.hotelmol.com"
+                                                                        target="_blank"
+                                                                        rel="noopener noreferrer"
+                                                                        className="inline-flex items-center justify-center bg-blue-600 text-white px-4 py-1.5 rounded-full text-sm font-medium hover:bg-blue-700 transition-colors mx-1 shadow-sm transform hover:scale-105 active:scale-95 duration-200"
+                                                                        onClick={(e) => e.stopPropagation()}
+                                                                    >
+                                                                        {part}
+                                                                    </a>
+                                                                );
+                                                            }
+                                                            return part;
+                                                        })
+                                                    ) : (
+                                                        faq.answer
+                                                    )}
                                                 </p>
                                             </div>
                                         </motion.div>

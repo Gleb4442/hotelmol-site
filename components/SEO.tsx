@@ -11,10 +11,10 @@ interface SEOProps {
   noindex?: boolean;
 }
 
-export default function SEO({ 
-  title, 
-  description, 
-  ogImage = "/og-image.jpg",
+export default function SEO({
+  title,
+  description,
+  ogImage = "/assets/hotelmol-logo.png",
   ogType = "website",
   structuredData,
   noindex = false
@@ -24,7 +24,7 @@ export default function SEO({
   useEffect(() => {
     // Update document title
     document.title = `${title} | hotelmol`;
-    
+
     // Update HTML lang attribute
     document.documentElement.lang = language;
 
@@ -32,7 +32,7 @@ export default function SEO({
     const updateMetaTag = (property: string, content: string, isProperty = false) => {
       const attribute = isProperty ? 'property' : 'name';
       let element = document.querySelector(`meta[${attribute}="${property}"]`) as HTMLMetaElement;
-      
+
       if (!element) {
         element = document.createElement('meta');
         element.setAttribute(attribute, property);
@@ -43,17 +43,17 @@ export default function SEO({
 
     // Standard meta tags
     updateMetaTag('description', description);
-    
+
     // Robots meta tag - always set to ensure proper value
     updateMetaTag('robots', noindex ? 'noindex, nofollow' : 'index, follow');
-    
+
     // Open Graph tags
     updateMetaTag('og:title', title, true);
     updateMetaTag('og:description', description, true);
     updateMetaTag('og:type', ogType, true);
     updateMetaTag('og:image', ogImage, true);
     updateMetaTag('og:locale', language === 'ru' ? 'ru_RU' : language === 'ua' ? 'uk_UA' : 'en_US', true);
-    
+
     // Twitter Card tags
     updateMetaTag('twitter:card', 'summary_large_image');
     updateMetaTag('twitter:title', title);
@@ -63,7 +63,7 @@ export default function SEO({
     // Add structured data if provided
     if (structuredData) {
       let scriptElement = document.querySelector('script[type="application/ld+json"][data-page-schema]') as HTMLScriptElement;
-      
+
       if (!scriptElement) {
         scriptElement = document.createElement('script');
         scriptElement.type = 'application/ld+json';
