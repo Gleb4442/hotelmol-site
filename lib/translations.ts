@@ -149,9 +149,7 @@ const translationsBase = {
     "home.faq.q2": "What languages does Roomie AI speak?",
     "home.faq.a2": "The system is fully multilingual. AI automatically detects the guest's language and replies in it, ensuring comfortable communication without language barriers.",
 
-    // Pricing
-    "home.faq.q3": "What is the cost of the service?",
-    "home.faq.a3": "You can check the pricing [PRICING_BTN]here[/PRICING_BTN]",
+
 
     "home.faq.q4": "Are there discounts for long-term payments?",
     "home.faq.a4": "Yes, you save 20% with an annual contract.\n\nAlso, if you represent a hotel chain or group, we offer special conditions approved individually. In the worst case, you get an additional 10% discount on top of the selected plan cost.",
@@ -1007,9 +1005,7 @@ const translationsBase = {
     "home.faq.q2": "На каких языках общается Roomie AI?",
     "home.faq.a2": "Система полностью мультиязычна. ИИ автоматически распознает язык гостя и отвечает на нем, обеспечивая комфортное общение без языковых барьеров.",
 
-    // Pricing
-    "home.faq.q3": "Какова стоимость использования сервиса?",
-    "home.faq.a3": "Вы можете посмотреть цена [PRICING_BTN]тут[/PRICING_BTN]",
+
 
     "home.faq.q4": "Предусмотрены ли скидки при долгосрочной оплате?",
     "home.faq.a4": "Да, при выборе годового контракта вы экономите 20%.\n\nТакже если вы представляете сеть или группу отелей мы предоставляем специальные условия которые утверждаются индивидуально. В худшем случае вы получите дополнительую скидку в размере 10% сверху от стоимости выбранного тарифа",
@@ -1749,9 +1745,7 @@ const translationsBase = {
     "home.faq.q2": "Якими мовами спілкується Roomie AI?",
     "home.faq.a2": "Система повністю багатомовна. ШІ автоматично розпізнає мову гостя та відповідає нею, забезпечуючи комфортне спілкування без мовних бар'єрів.",
 
-    // Pricing
-    "home.faq.q3": "Яка вартість використання сервісу?",
-    "home.faq.a3": "Ви можете переглянути ціну [PRICING_BTN]тут[/PRICING_BTN]",
+
 
     "home.faq.q4": "Чи передбачені знижки при довгостроковій оплаті?",
     "home.faq.a4": "Так, при виборі річного контракту ви економите 20%.\n\nТакож, якщо ви представляєте мережу або групу готелів, ми надаємо спеціальні умови, які затверджуються індивідуально. У гіршому випадку ви отримаєте додаткову знижку у розмірі 10% зверху від вартості обраного тарифу.",
@@ -2488,9 +2482,7 @@ const translationsBase = {
     "home.faq.q2": "W jakich językach komunikuje się Roomie AI?",
     "home.faq.a2": "System jest w pełni wielojęzyczny. AI automatycznie rozpoznaje język gościa i odpowiada w nim, zapewniając komfortową komunikację bez barier językowych.",
 
-    // Pricing
-    "home.faq.q3": "Jaki jest koszt korzystania z usługi?",
-    "home.faq.a3": "Możesz sprawdzić cenę [PRICING_BTN]tutaj[/PRICING_BTN]",
+
 
     "home.faq.q4": "Czy przewidziane są zniżki przy płatnościach długoterminowych?",
     "home.faq.a4": "Tak, przy wyborze umowy rocznej oszczędzasz 20%.\n\nPonadto, jeśli reprezentujesz sieć lub grupę hoteli, oferujemy specjalne warunki zatwierdzane indywidualnie. W najgorszym przypadku otrzymasz dodatkową zniżkę w wysokości 10% od ceny wybranego planu.",

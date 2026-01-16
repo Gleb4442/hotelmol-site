@@ -20,7 +20,7 @@ export default function ChatFAQSection() {
     const faqs: FAQItem[] = [
         { question: t("home.faq.q1"), answer: t("home.faq.a1") },
         { question: t("home.faq.q2"), answer: t("home.faq.a2") },
-        { question: t("home.faq.q3"), answer: t("home.faq.a3") },
+
         { question: t("home.faq.q4"), answer: t("home.faq.a4") },
         { question: t("home.faq.q5"), answer: t("home.faq.a5") },
         { question: t("home.faq.q6"), answer: t("home.faq.a6") },
@@ -58,8 +58,19 @@ export default function ChatFAQSection() {
                                 {/* User Question (Right) */}
                                 <div className="flex justify-end">
                                     <div className="flex gap-3 max-w-[85%] md:max-w-[75%] flex-row-reverse">
-                                        <div className="flex-shrink-0 w-[34px] h-[34px] rounded-full bg-primary flex items-center justify-center mt-1 text-white shadow-sm">
-                                            <HelpCircle className="w-5 h-5" strokeWidth={2.5} />
+                                        <div className="flex-shrink-0 w-[38px] h-[38px] rounded-full bg-primary flex items-center justify-center mt-1 text-white shadow-sm">
+                                            <svg
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                strokeWidth="3"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                className="w-7 h-7"
+                                            >
+                                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                                                <path d="M12 17h.01" />
+                                            </svg>
                                         </div>
                                         <div className="bg-primary text-white px-5 py-3 rounded-2xl rounded-tr-none shadow-md">
                                             <p className="font-medium text-sm md:text-base leading-relaxed">{faq.question}</p>
@@ -70,10 +81,10 @@ export default function ChatFAQSection() {
                                 {/* System Answer (Left) */}
                                 <div className="flex justify-start">
                                     <div className="flex gap-3 max-w-[85%] md:max-w-[75%]">
-                                        <div className="flex-shrink-0 w-[34px] h-[34px] rounded-full bg-primary flex items-center justify-center mt-1 text-white shadow-sm">
+                                        <div className="flex-shrink-0 w-[38px] h-[38px] rounded-full bg-primary flex items-center justify-center mt-1 text-white shadow-sm">
                                             <svg
                                                 viewBox="0 0 203.18 203.18"
-                                                className="w-5 h-5 fill-current"
+                                                className="w-7 h-7 fill-current"
                                                 shapeRendering="geometricPrecision"
                                                 textRendering="geometricPrecision"
                                                 fillRule="evenodd"
