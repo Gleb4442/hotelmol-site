@@ -74,7 +74,10 @@ export default function ChatFAQSection() {
                                             <svg
                                                 viewBox="0 0 203.18 203.18"
                                                 className="w-5 h-5 fill-current"
-                                                style={{ shapeRendering: "geometricPrecision", textRendering: "geometricPrecision", imageRendering: "optimizeQuality", fillRule: "evenodd", clipRule: "evenodd" }}
+                                                shapeRendering="geometricPrecision"
+                                                textRendering="geometricPrecision"
+                                                fillRule="evenodd"
+                                                clipRule="evenodd"
                                             >
                                                 <defs>
                                                     <style type="text/css">
