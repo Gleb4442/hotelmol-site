@@ -138,39 +138,40 @@ const translationsBase = {
     "demo.successMessage": "We'll contact you within 24 hours to schedule your personalized demo.",
 
     // FAQ Section
-    "home.faq.title": "FAQ: Roomie AI от HotelMol",
-    "home.faq.subtitle": "Общие вопросы, тарифы, интеграция и безопасность",
+    // FAQ Section
+    "home.faq.title": "FAQ: Roomie AI by hotelmol",
+    "home.faq.subtitle": "General questions, pricing, integration, and security",
 
     // General
-    "home.faq.q1": "Что такое Roomie AI и как он помогает отелю?",
-    "home.faq.a1": "Roomie AI — это интеллектуальный ассистент, который берет на себя общение с гостями 24/7. Система автоматизирует ответы на повторяющиеся вопросы, помогает с бронированием и предлагает дополнительные услуги. Это позволяет разгрузить рецепцию и увеличить количество прямых продаж через сайт и мессенджеры.",
+    "home.faq.q1": "What is Roomie AI and how does it help the hotel?",
+    "home.faq.a1": "Roomie AI is an intelligent assistant that handles guest communication 24/7. The system automates answers to repetitive questions, helps with bookings, and suggests additional services. This relieves the reception and increases direct sales via the website and messengers.",
 
-    "home.faq.q2": "На каких языках общается Roomie AI?",
-    "home.faq.a2": "Система полностью мультиязычна. ИИ автоматически распознает язык гостя и отвечает на нем, обеспечивая комфортное общение без языковых барьеров.",
+    "home.faq.q2": "What languages does Roomie AI speak?",
+    "home.faq.a2": "The system is fully multilingual. AI automatically detects the guest's language and replies in it, ensuring comfortable communication without language barriers.",
 
     // Pricing
-    "home.faq.q3": "Какова стоимость использования сервиса?",
-    "home.faq.a3": "Вы можете посмотреть цена [PRICING_BTN]тут[/PRICING_BTN]",
+    "home.faq.q3": "What is the cost of the service?",
+    "home.faq.a3": "You can check the pricing [PRICING_BTN]here[/PRICING_BTN]",
 
-    "home.faq.q4": "Предусмотрены ли скидки при долгосрочной оплате?",
-    "home.faq.a4": "Да, при выборе годового контракта вы экономите 20%.\n\nТакже если вы представляете сеть или группу отелей мы предоставляем специальные условия которые утверждаются индивидуально. В худшем случае вы получите дополнительую скидку в размере 10% сверху от стоимости выбранного тарифа",
+    "home.faq.q4": "Are there discounts for long-term payments?",
+    "home.faq.a4": "Yes, you save 20% with an annual contract.\n\nAlso, if you represent a hotel chain or group, we offer special conditions approved individually. In the worst case, you get an additional 10% discount on top of the selected plan cost.",
 
-    "home.faq.q5": "Что произойдет, если лимит сообщений в моем тарифе закончится?",
-    "home.faq.a5": "Работа системы не прервется. При превышении лимита (1500 или 3000 сообщений) аккаунт автоматически переходит на тарификацию Pay-as-you-go по цене $0.05 за сообщение до конца расчетного месяца.",
+    "home.faq.q5": "What happens if I run out of message credits?",
+    "home.faq.a5": "The system will not stop working. Upon exceeding the limit (1500 or 3000 messages), the account automatically switches to Pay-as-you-go pricing at $0.05 per message until the end of the billing month.",
 
     // Integration
-    "home.faq.q6": "С какими мессенджерами и системами работает Roomie?",
-    "home.faq.a6": "Roomie AI интегрируется в экосистему отеля через популярные каналы и PMS.\n\n• Каналы: Сайт, Telegram, WhatsApp, Instagram.\n• PMS: Servio, Protel, Exely, EasyMS, Mews, Cloudbeds и другие.\n• Срок внедрения: Полный запуск занимает менее 24 часов.",
+    "home.faq.q6": "Which messengers and systems does Roomie work with?",
+    "home.faq.a6": "Roomie AI integrates into the hotel ecosystem via popular channels and PMS.\n\n• Channels: Website, Telegram, WhatsApp, Instagram.\n• PMS: Servio, Protel, Exely, EasyMS, Mews, Cloudbeds, and others.\n• Implementation time: Full launch takes less than 24 hours.",
 
-    "home.faq.q7": "Как происходит обучение и настройка ИИ под мой отель?",
-    "home.faq.a7": "Вы можете выбрать ту информацию которую ваш агент будет использовать в качестве своей базы знаний о вашем отеле. Отель может самостоятельно задать все необходимые инструкции и правила или полностью доверить настройку и ведение базы знаний нашему менеджеру. Вы имеете 100% контроль над построением регламентов роботы и полномочиями вашего агента",
+    "home.faq.q7": "How is the AI trained and configured for my hotel?",
+    "home.faq.a7": "You choose the information your agent will use as its knowledge base. The hotel can set all instructions and rules independently or fully trust our manager with the setup. You have 100% control over the regulations and powers of your agent.",
 
     // Security
-    "home.faq.q8": "Как защищены данные отеля и гостей?",
-    "home.faq.a8": "Безопасность данных является нашим приоритетом. Мы используем шифрованные протоколы передачи данных (SSL/TLS) и работаем через официальные API. Система запрашивает только минимально необходимую информацию для обработки запроса, обеспечивая конфиденциальность личных данных гостей.",
+    "home.faq.q8": "How are hotel and guest data protected?",
+    "home.faq.a8": "Data security is our priority. We use encrypted data transfer protocols (SSL/TLS) and work via official APIs. The system requests only the minimum necessary information to process the request, ensuring the confidentiality of guests' personal data.",
 
-    "home.faq.q9": "Что делать, если ИИ не знает ответа на сложный запрос?",
-    "home.faq.a9": "В системе предусмотрен гибридный режим работы. Если ИИ сталкивается с нестандартной ситуацией, он мгновенно передает диалог живому администратору, который может продолжить общение в том же окне чата.",
+    "home.faq.q9": "What if the AI doesn't know the answer to a complex request?",
+    "home.faq.a9": "The system features a hybrid operation mode. If the AI encounters a non-standard situation, it instantly transfers the dialogue to human administrator who can continue the conversation in the same chat window.",
 
     // Hotels Interact
     "interact.title": "Content Factory For Hotels",
@@ -995,6 +996,41 @@ const translationsBase = {
     "roi.successTitle": "Спасибо!",
     "roi.successMessage": "Мы отправим ваш индивидуальный расчет ROI в течение 24 часов.",
 
+    // FAQ Section
+    "home.faq.title": "FAQ: Roomie AI от hotelmol",
+    "home.faq.subtitle": "Общие вопросы, тарифы, интеграция и безопасность",
+
+    // General
+    "home.faq.q1": "Что такое Roomie AI и как он помогает отелю?",
+    "home.faq.a1": "Roomie AI — это интеллектуальный ассистент, который берет на себя общение с гостями 24/7. Система автоматизирует ответы на повторяющиеся вопросы, помогает с бронированием и предлагает дополнительные услуги. Это позволяет разгрузить рецепцию и увеличить количество прямых продаж через сайт и мессенджеры.",
+
+    "home.faq.q2": "На каких языках общается Roomie AI?",
+    "home.faq.a2": "Система полностью мультиязычна. ИИ автоматически распознает язык гостя и отвечает на нем, обеспечивая комфортное общение без языковых барьеров.",
+
+    // Pricing
+    "home.faq.q3": "Какова стоимость использования сервиса?",
+    "home.faq.a3": "Вы можете посмотреть цена [PRICING_BTN]тут[/PRICING_BTN]",
+
+    "home.faq.q4": "Предусмотрены ли скидки при долгосрочной оплате?",
+    "home.faq.a4": "Да, при выборе годового контракта вы экономите 20%.\n\nТакже если вы представляете сеть или группу отелей мы предоставляем специальные условия которые утверждаются индивидуально. В худшем случае вы получите дополнительую скидку в размере 10% сверху от стоимости выбранного тарифа",
+
+    "home.faq.q5": "Что произойдет, если лимит сообщений в моем тарифе закончится?",
+    "home.faq.a5": "Работа системы не прервется. При превышении лимита (1500 или 3000 сообщений) аккаунт автоматически переходит на тарификацию Pay-as-you-go по цене $0.05 за сообщение до конца расчетного месяца.",
+
+    // Integration
+    "home.faq.q6": "С какими мессенджерами и системами работает Roomie?",
+    "home.faq.a6": "Roomie AI интегрируется в экосистему отеля через популярные каналы и PMS.\n\n• Каналы: Сайт, Telegram, WhatsApp, Instagram.\n• PMS: Servio, Protel, Exely, EasyMS, Mews, Cloudbeds и другие.\n• Срок внедрения: Полный запуск занимает менее 24 часов.",
+
+    "home.faq.q7": "Как происходит обучение и настройка ИИ под мой отель?",
+    "home.faq.a7": "Вы можете выбрать ту информацию которую ваш агент будет использовать в качестве своей базы знаний о вашем отеле. Отель может самостоятельно задать все необходимые инструкции и правила или полностью доверить настройку и ведение базы знаний нашему менеджеру. Вы имеете 100% контроль над построением регламентов роботы и полномочиями вашего агента",
+
+    // Security
+    "home.faq.q8": "Как защищены данные отеля и гостей?",
+    "home.faq.a8": "Безопасность данных является нашим приоритетом. Мы используем шифрованные протоколы передачи данных (SSL/TLS) и работаем через официальные API. Система запрашивает только минимально необходимую информацию для обработки запроса, обеспечивая конфиденциальность личных данных гостей.",
+
+    "home.faq.q9": "Что делать, если ИИ не знает ответа на сложный запрос?",
+    "home.faq.a9": "В системе предусмотрен гибридный режим работы. Если ИИ сталкивается с нестандартной ситуацией, он мгновенно передает диалог живому администратору, который может продолжить общение в том же окне чата.",
+
     // Consultation Form
     "consultation.title": "Остались вопросы?",
     "consultation.subtitle": "Получите бесплатную консультацию наших экспертов",
@@ -1702,6 +1738,41 @@ const translationsBase = {
     "roi.successTitle": "Дякуємо!",
     "roi.successMessage": "Ми надішлемо ваш індивідуальний розрахунок ROI протягом 24 годин.",
 
+    // FAQ Section
+    "home.faq.title": "FAQ: Roomie AI від hotelmol",
+    "home.faq.subtitle": "Загальні питання, ціни, інтеграція та безпека",
+
+    // General
+    "home.faq.q1": "Що таке Roomie AI та як він допомагає готелю?",
+    "home.faq.a1": "Roomie AI — це інтелектуальний помічник, який бере на себе спілкування з гостями 24/7. Система автоматизує відповіді на повторювані питання, допомагає з бронюванням та пропонує додаткові послуги. Це дозволяє розвантажити рецепцію та збільшити кількість прямих продажів через сайт та месенджери.",
+
+    "home.faq.q2": "Якими мовами спілкується Roomie AI?",
+    "home.faq.a2": "Система повністю багатомовна. ШІ автоматично розпізнає мову гостя та відповідає нею, забезпечуючи комфортне спілкування без мовних бар'єрів.",
+
+    // Pricing
+    "home.faq.q3": "Яка вартість використання сервісу?",
+    "home.faq.a3": "Ви можете переглянути ціну [PRICING_BTN]тут[/PRICING_BTN]",
+
+    "home.faq.q4": "Чи передбачені знижки при довгостроковій оплаті?",
+    "home.faq.a4": "Так, при виборі річного контракту ви економите 20%.\n\nТакож, якщо ви представляєте мережу або групу готелів, ми надаємо спеціальні умови, які затверджуються індивідуально. У гіршому випадку ви отримаєте додаткову знижку у розмірі 10% зверху від вартості обраного тарифу.",
+
+    "home.faq.q5": "Що станеться, якщо ліміт повідомлень у моєму тарифі закінчиться?",
+    "home.faq.a5": "Робота системи не перерветься. При перевищенні ліміту (1500 або 3000 повідомлень) акаунт автоматично переходить на тарифікацію Pay-as-you-go за ціною $0.05 за повідомлення до кінця розрахункового місяця.",
+
+    // Integration
+    "home.faq.q6": "З якими месенджерами та системами працює Roomie?",
+    "home.faq.a6": "Roomie AI інтегрується в екосистему готелю через популярні канали та PMS.\n\n• Канали: Сайт, Telegram, WhatsApp, Instagram.\n• PMS: Servio, Protel, Exely, EasyMS, Mews, Cloudbeds та інші.\n• Термін впровадження: Повний запуск займає менше 24 годин.",
+
+    "home.faq.q7": "Як відбувається навчання та налаштування ШІ під мій готель?",
+    "home.faq.a7": "Ви можете обрати ту інформацію, яку ваш агент використовуватиме як свою базу знань про ваш готель. Готель може самостійно задати всі необхідні інструкції та правила або повністю довірити налаштування та ведення бази знань нашому менеджеру. Ви маєте 100% контроль над побудовою регламентів роботи та повноваженнями вашого агента.",
+
+    // Security
+    "home.faq.q8": "Як захищені дані готелю та гостей?",
+    "home.faq.a8": "Безпека даних є нашим пріоритетом. Ми використовуємо шифровані протоколи передачі даних (SSL/TLS) і працюємо через офіційні API. Система запитує лише мінімально необхідну інформацію для обробки запиту, забезпечуючи конфіденційність особистих даних гостей.",
+
+    "home.faq.q9": "Що робити, якщо ШІ не знає відповіді на складний запит?",
+    "home.faq.a9": "У системі передбачено гібридний режим роботи. Якщо ШІ стикається з нестандартною ситуацією, він миттєво передає діалог живому адміністратору, який може продовжити спілкування в тому ж вікні чату.",
+
     // Consultation Form
     "consultation.title": "Залишились питання?",
     "consultation.subtitle": "Отримайте безкоштовну консультацію наших експертів",
@@ -2405,6 +2476,41 @@ const translationsBase = {
     "roi.submitting": "Calculating...",
     "roi.successTitle": "Thank you!",
     "roi.successMessage": "We'll send your personalized ROI estimate within 24 hours.",
+
+    // FAQ Section
+    "home.faq.title": "FAQ: Roomie AI od hotelmol",
+    "home.faq.subtitle": "Pytania ogólne, ceny, integracja i bezpieczeństwo",
+
+    // General
+    "home.faq.q1": "Czym jest Roomie AI i jak pomaga hotelowi?",
+    "home.faq.a1": "Roomie AI to inteligentny asystent, który przejmuje komunikację z gośćmi 24/7. System automatyzuje odpowiedzi na powtarzające się pytania, pomaga w rezerwacjach i sugeruje dodatkowe usługi. Pozwala to odciążyć recepcję i zwiększyć liczbę bezpośrednich rezerwacji przez stronę internetową i komunikatory.",
+
+    "home.faq.q2": "W jakich językach komunikuje się Roomie AI?",
+    "home.faq.a2": "System jest w pełni wielojęzyczny. AI automatycznie rozpoznaje język gościa i odpowiada w nim, zapewniając komfortową komunikację bez barier językowych.",
+
+    // Pricing
+    "home.faq.q3": "Jaki jest koszt korzystania z usługi?",
+    "home.faq.a3": "Możesz sprawdzić cenę [PRICING_BTN]tutaj[/PRICING_BTN]",
+
+    "home.faq.q4": "Czy przewidziane są zniżki przy płatnościach długoterminowych?",
+    "home.faq.a4": "Tak, przy wyborze umowy rocznej oszczędzasz 20%.\n\nPonadto, jeśli reprezentujesz sieć lub grupę hoteli, oferujemy specjalne warunki zatwierdzane indywidualnie. W najgorszym przypadku otrzymasz dodatkową zniżkę w wysokości 10% od ceny wybranego planu.",
+
+    "home.faq.q5": "Co się stanie, jeśli skończy się limit wiadomości w moim planie?",
+    "home.faq.a5": "System nie przestanie działać. Po przekroczeniu limitu (1500 lub 3000 wiadomości) konto automatycznie przechodzi na taryfikację Pay-as-you-go w cenie 0,05 USD za wiadomość do końca miesiąca rozliczeniowego.",
+
+    // Integration
+    "home.faq.q6": "Z jakimi komunikatorami i systemami współpracuje Roomie?",
+    "home.faq.a6": "Roomie AI integruje się z ekosystemem hotelowym poprzez popularne kanały i PMS.\n\n• Kanały: Strona www, Telegram, WhatsApp, Instagram.\n• PMS: Servio, Protel, Exely, EasyMS, Mews, Cloudbeds i inne.\n• Czas wdrożenia: Pełne uruchomienie zajmuje mniej niż 24 godziny.",
+
+    "home.faq.q7": "Jak przebiega szkolenie i konfiguracja AI dla mojego hotelu?",
+    "home.faq.a7": "Możesz wybrać informacje, których Twój agent będzie używał jako swojej bazy wiedzy o hotelu. Hotel może samodzielnie ustalić wszystkie niezbędne instrukcje i zasady lub w pełni powierzyć konfigurację i prowadzenie bazy wiedzy naszemu menedżerowi. Masz 100% kontroli nad regulaminem pracy i uprawnieniami swojego agenta.",
+
+    // Security
+    "home.faq.q8": "Jak chronione są dane hotelu i gości?",
+    "home.faq.a8": "Bezpieczeństwo danych jest naszym priorytetem. Używamy szyfrowanych protokołów transmisji danych (SSL/TLS) i pracujemy przez oficjalne API. System żąda tylko minimalnie niezbędnych informacji do przetworzenia zapytania, zapewniając poufność danych osobowych gości.",
+
+    "home.faq.q9": "Co zrobić, jeśli AI nie zna odpowiedzi na skomplikowane zapytanie?",
+    "home.faq.a9": "System posiada hybrydowy tryb pracy. Jeśli AI napotka niestandardową sytuację, natychmiast przekazuje dialog żywemu administratorowi, który może kontynuować rozmowę w tym samym oknie czatu.",
 
     // Consultation Form
     "consultation.title": "Have Questions?",
