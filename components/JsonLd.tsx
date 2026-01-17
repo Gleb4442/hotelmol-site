@@ -21,65 +21,48 @@ type JsonLdProps = {
 const JsonLd = ({ post, localizedPost }: JsonLdProps) => {
   const articleSchema = {
     '@context': 'https://schema.org',
-    '@type': 'Article',
+    '@type': 'BlogPosting',
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': `https://hotelmol.com/blog/${post.slug}`,
     },
     headline: localizedPost.seoTitle || localizedPost.title,
     description: localizedPost.seoDescription || '',
-    image: post.featuredImage || 'https://hotelmol.com/default-og-image.png', // Fallback image
+    image: post.featuredImage || 'https://hotelmol.com/assets/hotelmol-logo.png',
     author: {
       '@type': 'Person',
-      name: post.author?.name,
+      name: post.author?.name || 'Hotelmol Team',
       image: post.author?.photo_url,
+      sameAs: [
+        "https://linkedin.com/company/hotelmol",
+        "https://twitter.com/hotelmol"
+      ]
+    },
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["h1", ".prose p"]
     },
     publisher: {
       '@type': 'Organization',
       name: 'Hotelmol',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://hotelmol.com/logo-url.png', // IMPORTANT: Replace with your actual logo URL
+        url: 'https://hotelmol.com/assets/hotelmol-logo.png',
       },
+      sameAs: [
+        "https://linkedin.com/company/hotelmol",
+        "https://twitter.com/hotelmol"
+      ]
     },
-    datePublished: post.publishedAt ? new Date(post.publishedAt).toISOString() : '',
-    dateModified: post.updatedAt ? new Date(post.updatedAt).toISOString() : '',
-  };
-
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [
-      {
-        '@type': 'Question',
-        name: 'Как Hotelmol помогает отелям?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Hotelmol предоставляет комплексные решения для автоматизации управления отелем, включая Channel Manager, Booking Engine и PMS. Это помогает увеличить доход, оптимизировать рабочие процессы и улучшить качество обслуживания гостей.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Что такое Channel Manager и зачем он нужен?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Channel Manager — это инструмент, который автоматически синхронизирует цены и доступность номеров на всех онлайн-площадках (таких как Booking.com, Expedia). Это исключает овербукинг и экономит время персонала.',
-        },
-      },
-    ],
+    datePublished: post.publishedAt ? new Date(post.publishedAt).toISOString() : new Date().toISOString(),
+    dateModified: post.updatedAt ? new Date(post.updatedAt).toISOString() : new Date().toISOString(),
   };
 
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema, null, 2) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema, null, 2) }}
-      />
-    </>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema, null, 2) }}
+    />
   );
 };
 
