@@ -324,9 +324,7 @@ const translationsBase = {
     "home.benefits.multilingual.title": "Multilingual Support",
     "home.benefits.multilingual.stat": "50+",
     "home.benefits.multilingual.description": "Language barriers are erased. Let every guest feel at home",
-    "home.benefits.speed.title": "Lightning Fast",
-    "home.benefits.speed.stat": "15 sec",
-    "home.benefits.speed.description": "Every minute of waiting reduces booking probability — hotels with fast responses convert 62% better",
+
     "home.benefits.upsells.title": "Smart Upsells",
     "home.benefits.upsells.stat": "+35%",
     "home.benefits.upsells.description": "Roomie knows every guest like no one else. Therefore, it can sell relevant services to the guest as effectively as possible. IMPORTANT: it's a win-win for the guest",
@@ -1218,9 +1216,7 @@ const translationsBase = {
     "home.benefits.multilingual.title": "Многоязычная поддержка",
     "home.benefits.multilingual.stat": "50+",
     "home.benefits.multilingual.description": "Языковые барьеры стираются. Пусть каждый гость чувствует себя как дома",
-    "home.benefits.speed.title": "Молниеносная скорость",
-    "home.benefits.speed.stat": "15 sec",
-    "home.benefits.speed.description": "Каждая минута ожидания снижает вероятность бронирования — отели с быстрым ответом конвертируют на 62% лучше",
+
     "home.benefits.upsells.title": "Умные допродажи",
     "home.benefits.upsells.stat": "+35%",
     "home.benefits.upsells.description": "Roomie знает каждого гостя как никто другой. Поэтому может максимально эффективно продать релевантные услуги гостю. ВАЖНО: для гостя это win win",
@@ -1958,9 +1954,7 @@ const translationsBase = {
     "home.benefits.multilingual.title": "Багатомовна підтримка",
     "home.benefits.multilingual.stat": "50+",
     "home.benefits.multilingual.description": "Мовні бар'єри стираються. Нехай кожен гість відчуває себе як вдома",
-    "home.benefits.speed.title": "Блискавична швидкість",
-    "home.benefits.speed.stat": "15 sec",
-    "home.benefits.speed.description": "Кожна хвилина очікування знижує ймовірність бронювання — готелі зі швидкою відповіддю конвертують на 62% краще",
+
     "home.benefits.upsells.title": "Розумні допродажі",
     "home.benefits.upsells.stat": "+35%",
     "home.benefits.upsells.description": "Roomie знає кожного гостя як ніхто інший. Тому може максимально ефективно продати релевантні послуги гостю. ВАЖЛИВО: для гостя це win win",
@@ -2689,9 +2683,7 @@ const translationsBase = {
     "home.benefits.multilingual.title": "Multilingual Support",
     "home.benefits.multilingual.stat": "50+",
     "home.benefits.multilingual.description": "Language barriers are erased. Let every guest feel at home",
-    "home.benefits.speed.title": "Lightning Fast",
-    "home.benefits.speed.stat": "15 sec",
-    "home.benefits.speed.description": "Every minute of waiting reduces booking probability — hotels with fast responses convert 62% better",
+
     "home.benefits.upsells.title": "Smart Upsells",
     "home.benefits.upsells.stat": "+35%",
     "home.benefits.upsells.description": "Roomie knows every guest like no one else. Therefore, it can sell relevant services to the guest as effectively as possible. IMPORTANT: it's a win-win for the guest",
