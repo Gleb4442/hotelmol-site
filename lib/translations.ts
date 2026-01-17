@@ -2413,9 +2413,9 @@ const translationsBase = {
     "home.aiDashboard.upsells.item1": "Upgrade Pokoju",
     "home.aiDashboard.upsells.item2": "Późne Wymeldowanie",
     "home.aiDashboard.upsells.item3": "SPA i Masaż",
-    "home.aiDashboard.upsells.value1": "148 zł",
-    "home.aiDashboard.upsells.value2": "56 zł",
-    "home.aiDashboard.upsells.value3": "98 zł",
+    "home.aiDashboard.upsells.value1": "148 $",
+    "home.aiDashboard.upsells.value2": "56 $",
+    "home.aiDashboard.upsells.value3": "98 $",
     "home.aiDashboard.upsells.status": "Sprzedane",
     "home.aiDashboard.upsells.total": "Całkowity przychód",
 
