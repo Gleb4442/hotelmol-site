@@ -7,7 +7,7 @@ export async function POST(request: Request) {
         const { language, categories } = body;
 
         // Trigger n8n webhook
-        const webhookUrl = "https://n8n.myn8napp.online/webhook/contact-form";
+        const webhookUrl = "https://n8n.myn8napp.online/webhook/cookie-consent";
         try {
             await fetch(webhookUrl, {
                 method: "POST",
