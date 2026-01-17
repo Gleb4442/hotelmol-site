@@ -83,7 +83,7 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
   );
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 w-full max-w-[1280px] mx-auto mt-2 md:mt-4 px-4 md:px-0">
+    <header className="fixed top-0 left-0 right-0 z-50 w-full max-w-[1280px] mx-auto mt-2 md:mt-4 px-4 md:px-6">
       <div className="flex h-[68px] md:h-[87px] items-center justify-between md:px-6 md:rounded-[20px] md:bg-white/95 md:backdrop-blur-md md:shadow-[0_8px_32px_rgba(7,82,160,0.12)] md:border md:border-white/20">
         <div className="flex items-center gap-8 bg-white/95 backdrop-blur-md shadow-[0_8px_32px_rgba(7,82,160,0.12)] border border-white/20 rounded-full px-5 h-[56px] md:h-auto md:bg-transparent md:backdrop-blur-none md:shadow-none md:border-none md:rounded-none md:px-0 hide-on-menu-open">
           <Link href="/" className="flex items-center h-full" data-testid="link-home">

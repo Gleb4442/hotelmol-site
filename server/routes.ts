@@ -1,7 +1,7 @@
 import type { Express, Request, Response, NextFunction } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage.js";
-import { roiLeadSchema, contactLeadSchema, demoLeadSchema, cookieConsentSchema, integrationLeadSchema } from "../shared/schema.js";
+import { roiLeadSchema, contactLeadSchema, demoLeadSchema, cookieConsentSchema, integrationLeadSchema, consultationLeadSchema } from "../shared/schema.js";
 import { createHash } from "crypto";
 import { db } from "./db.js";
 
@@ -75,6 +75,38 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error: any) {
       if (error.errors) return res.status(400).json({ success: false, errors: error.errors });
       res.status(500).json({ success: false, message: "Failed to submit contact form" });
+    }
+  });
+
+  app.post("/api/leads/consultation", async (req, res) => {
+    try {
+      const validatedData = consultationLeadSchema.parse(req.body);
+
+      const lead = await storage.createLeadSubmission({
+        type: "consultation",
+        name: validatedData.name,
+        phone: validatedData.phone,
+        propertySize: validatedData.hotelSize, // Map hotelSize to propertySize
+        dataProcessing: validatedData.dataProcessing,
+        marketing: validatedData.marketing || false,
+        language: validatedData.language || "en",
+        email: null,
+        role: null,
+        property: null,
+        comment: null,
+        utmSource: validatedData.utmSource,
+        utmMedium: validatedData.utmMedium,
+        utmCampaign: validatedData.utmCampaign,
+        referrer: validatedData.referrer,
+        mailchimpStatus: "skipped",
+      });
+      // Fire and forget n8n webhook (lead)
+      void sendToN8n(lead, "lead", "consultation");
+
+      res.json({ success: true, message: "Consultation request submitted successfully", leadId: lead.id });
+    } catch (error: any) {
+      if (error.errors) return res.status(400).json({ success: false, errors: error.errors });
+      res.status(500).json({ success: false, message: "Failed to submit consultation request" });
     }
   });
 
