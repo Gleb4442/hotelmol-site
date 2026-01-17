@@ -66,7 +66,7 @@ export default function ChatFAQSection() {
                                                 strokeWidth="3"
                                                 strokeLinecap="round"
                                                 strokeLinejoin="round"
-                                                className="w-7 h-7"
+                                                className="w-9 h-9"
                                             >
                                                 <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
                                                 <path d="M12 17h.01" />
@@ -84,7 +84,7 @@ export default function ChatFAQSection() {
                                         <div className="flex-shrink-0 w-[38px] h-[38px] rounded-full bg-primary flex items-center justify-center mt-1 text-white shadow-sm">
                                             <svg
                                                 viewBox="0 0 203.18 203.18"
-                                                className="w-7 h-7 fill-current"
+                                                className="w-9 h-9 fill-current"
                                                 shapeRendering="geometricPrecision"
                                                 textRendering="geometricPrecision"
                                                 fillRule="evenodd"
