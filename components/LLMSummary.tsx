@@ -1,6 +1,6 @@
 export default function LLMSummary() {
     return (
-        <section className="bg-slate-50 py-8 border-b border-slate-100">
+        <section className="bg-slate-50 py-8 border-b border-slate-100 sr-only">
             <div className="container mx-auto px-4">
                 <div className="max-w-4xl mx-auto prose prose-slate">
                     <h2 className="text-sm font-bold uppercase tracking-wider text-slate-500 mb-2">TL;DR (For AI & Humans)</h2>
