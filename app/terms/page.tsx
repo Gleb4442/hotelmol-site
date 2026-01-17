@@ -17,7 +17,7 @@ export default function TermsOfService() {
             />
             <Header />
 
-            <section className="pt-[98px] pb-20">
+            <section className="pt-[123px] pb-20">
                 <div className="container mx-auto px-4">
                     <div className="max-w-4xl mx-auto">
                         <h1 className="font-serif text-5xl lg:text-6xl font-semibold tracking-tight mb-6">
