@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { TrendingUp, Users, Globe, Clock, BarChart3, Zap } from "lucide-react";
 import { useTranslation } from "@/lib/TranslationContext";
+import { cn } from "@/lib/utils";
 
 function AnimatedCounter({ value }: { value: string }) {
   const [count, setCount] = useState(0);
@@ -81,12 +82,16 @@ export default function BenefitsSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-6 lg:gap-8 mb-8">
           {benefits.map((benefit, index) => {
             return (
               <Card
                 key={index}
-                className="group relative p-8 lg:p-10 hover-elevate transition-all duration-300 border-border/50 bg-card/50 backdrop-blur-sm overflow-hidden"
+                className={cn(
+                  "group relative p-8 lg:p-10 hover-elevate transition-all duration-300 border-border/50 bg-card/50 backdrop-blur-sm overflow-hidden col-span-1 md:col-span-2 lg:col-span-2",
+                  index === 3 && "lg:col-start-2",
+                  index === 4 && "md:col-start-2 lg:col-start-auto"
+                )}
                 data-testid={`card-benefit-${index}`}
               >
                 <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors" />
