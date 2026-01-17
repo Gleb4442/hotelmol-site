@@ -159,7 +159,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       });
 
       // Fire and forget n8n webhook (cookie)
-      void sendToN8n(consent, "cookie");
+      void sendToN8n({ ...consent, consent_status: 'accepted' }, "cookie");
 
       res.json({ success: true, message: "Cookie consent saved successfully", consentId: consent.id });
     } catch (error: any) {

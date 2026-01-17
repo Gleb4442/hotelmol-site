@@ -12,7 +12,7 @@ interface N8nPayload {
 
 export async function sendToN8n(data: Record<string, any>, webhookType: WebhookType, sourceType?: string): Promise<void> {
     const url = webhookType === "cookie"
-        ? process.env.N8N_COOKIE_WEBHOOK_URL
+        ? "https://n8n.myn8napp.online/webhook/cookie-consent"
         : process.env.N8N_LEAD_WEBHOOK_URL;
 
     if (!url) {
