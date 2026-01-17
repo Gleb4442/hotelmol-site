@@ -1,14 +1,45 @@
+# Robots.txt для https://hotelmol.com/
+# Назначение: Оптимизация для Next.js и максимальная видимость в ИИ (GEO)
+
+User-agent: *
+Allow: /
+
+# --- Специфические настройки для Next.js ---
+# Блокируем служебные файлы сборки, но разрешаем статику для рендеринга
+Disallow: /_next/
+Allow: /_next/static/
+Allow: /_next/image/
+
+# --- Защита административных и технических разделов ---
+Disallow: /admin/
+Disallow: /login/
+Disallow: /signin/
+Disallow: /dashboard/
+Disallow: /api/
+Disallow: /private/
+Disallow: /tmp/
+
+# --- Управление дублями ---
+Disallow: /search/
+Disallow: /*?sort=
+Disallow: /*?filter=
+
+# --- ГРУППА: ИИ и GEO Оптимизация ---
+# Явно разрешаем доступ всем основным ИИ-ботам
 User-agent: GPTBot
 Allow: /
 
-User-agent: Google-Extended
-Allow: /
-
-User-agent: PerplexityBot
+User-agent: ChatGPT-User
 Allow: /
 
 User-agent: ClaudeBot
 Allow: /
 
-User-agent: *
+User-agent: OAI-SearchBot
 Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# Ссылка на карту сайта
+Sitemap: https://hotelmol.com/sitemap.xml
