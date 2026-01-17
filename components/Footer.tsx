@@ -17,8 +17,8 @@ export default function Footer() {
   ];
 
   const legal = [
-    { nameKey: "footer.privacy" as const, href: "https://docs.google.com/document/d/1Ejy6rwEZinKKrt26F2ShF6yBL6VZSyK8DDaNj4xKOms/edit?usp=sharing", external: true },
-    { nameKey: "footer.cookies" as const, href: "https://docs.google.com/document/d/1e-Qf_fqJuANZ6nGuhyXyh9I_WyullsyBgvnhSnWO5Ts/edit?usp=sharing", external: true },
+    { nameKey: "footer.terms" as const, href: "/terms", external: false },
+    { nameKey: "footer.cookies" as const, href: "/cookies", external: false },
   ];
 
   return (
