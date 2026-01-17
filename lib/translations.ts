@@ -76,7 +76,7 @@ const translationsBase = {
 
     // Presentation Section
     "presentation.title": "Roomie Presentation",
-    "presentation.description": "Download our detailed presentation to learn how Roomie AI can transform your hotel operations and boost guest satisfaction.",
+
     "presentation.download": "Download Presentation",
 
     // ROI Estimate
@@ -969,7 +969,7 @@ const translationsBase = {
 
     // Presentation Section
     "presentation.title": "Презентация Roomie",
-    "presentation.description": "Скачайте нашу подробную презентацию, чтобы узнать, как Roomie AI может трансформировать работу вашего отеля и повысить удовлетворенность гостей.",
+
     "presentation.download": "Скачать презентацию",
 
     // ROI Estimate
@@ -1707,7 +1707,7 @@ const translationsBase = {
 
     // Presentation Section
     "presentation.title": "Презентація Roomie",
-    "presentation.description": "Завантажте нашу детальну презентацію, щоб дізнатися, як Roomie AI може трансформувати роботу вашого готелю та підвищити задоволеність гостей.",
+
     "presentation.download": "Завантажити презентацію",
 
     // ROI Estimate
@@ -2442,7 +2442,7 @@ const translationsBase = {
 
     // Presentation Section
     "presentation.title": "Roomie Presentation",
-    "presentation.description": "Download our detailed presentation to learn how Roomie AI can transform your hotel operations and boost guest satisfaction.",
+
     "presentation.download": "Download Presentation",
 
     // ROI Estimate
