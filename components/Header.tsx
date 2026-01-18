@@ -87,7 +87,7 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 w-full max-w-[1440px] mx-auto mt-2 md:mt-4 px-4 md:px-6 pointer-events-none">
       <div className="flex items-center justify-between">
-        
+
         {/* 1. Left Cloud: Logo */}
         <div className={`pointer-events-auto flex items-center justify-center px-6 h-[56px] md:h-[72px] ${cloudStyle} hide-on-menu-open`}>
           <Link href="/" className="flex items-center h-full" data-testid="link-home">
@@ -105,8 +105,8 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
                   key={item.name}
                   href={item.href}
                   className={`relative px-5 py-2.5 rounded-full text-base font-medium transition-all duration-300 flex items-center gap-2
-                    ${isActive 
-                      ? "bg-[#0752A0] text-white shadow-md" 
+                    ${isActive
+                      ? "bg-[#0752A0] text-white shadow-md"
                       : "text-slate-600 hover:text-[#0752A0] hover:bg-slate-100/50"
                     }
                     ${item.href === "/roomie" && !isActive ? "shimmer-button" : ""}
@@ -116,8 +116,8 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
                   {item.name}
                   {item.badge && (
                     <span className={`inline-block px-2 py-0.5 text-[10px] uppercase font-bold tracking-wide rounded-full ml-1
-                      ${isActive 
-                        ? "bg-white text-[#0752A0]" 
+                      ${isActive
+                        ? "bg-white text-[#0752A0]"
                         : "bg-[#0752A0] text-white animate-gradient bg-gradient-to-r from-[#0752A0] via-blue-500 to-[#0752A0] bg-[length:200%_100%]"
                       }
                     `}>
@@ -194,7 +194,7 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-           <div className="fixed inset-0 z-[100] md:hidden pointer-events-auto">
+          <div className="fixed inset-0 z-[100] md:hidden pointer-events-auto">
             {/* Overlay */}
             <motion.div
               initial={{ opacity: 0 }}
@@ -213,7 +213,7 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
               className="absolute top-[10px] bottom-[10px] left-[16px] right-[16px] bg-white/95 dark:bg-zinc-900/95 backdrop-blur-2xl rounded-[32px] border border-white/20 shadow-2xl overflow-hidden flex flex-col"
             >
               <div className="grid grid-cols-[56px_1fr_56px] items-center p-4 border-b border-white/10 min-h-[80px]">
-                <div /> 
+                <div />
                 <h2 className="text-2xl font-extrabold text-[#0752A0] uppercase tracking-[0.2em] font-serif text-center whitespace-nowrap">
                   {t("menu.title")}
                 </h2>
@@ -252,14 +252,14 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
                 </nav>
 
                 <div className="px-6 py-6 mt-auto">
-                   <div className="grid grid-cols-2 gap-3 mb-4">
-                      <Button variant="outline" className="w-full rounded-xl border-[#0752A0]/20 text-[#0752A0]" asChild>
-                          <a href="https://pricing.hotelmol.com" target="_blank">{t("button.pricing")}</a>
-                      </Button>
-                       <Button className="w-full rounded-xl bg-[#0752A0]" asChild>
-                          <a href="https://demo.hotelmol.com" target="_blank">{t("button.tryDemo")}</a>
-                      </Button>
-                   </div>
+                  <div className="grid grid-cols-2 gap-3 mb-4">
+                    <Button variant="outline" className="w-full rounded-xl border-[#0752A0]/20 text-[#0752A0]" asChild>
+                      <a href="https://pricing.hotelmol.com" target="_blank">{t("button.pricing")}</a>
+                    </Button>
+                    <Button className="w-full rounded-xl bg-[#0752A0]" asChild>
+                      <a href="https://demo.hotelmol.com" target="_blank">{t("button.tryDemo")}</a>
+                    </Button>
+                  </div>
 
                   <p className="text-sm font-medium text-muted-foreground mb-4 text-center opacity-60">
                     {language === "en" ? "Select Language" : language === "ru" ? "Выберите язык" : language === "ua" ? "Оберіть мову" : "Wybierz język"}
@@ -285,9 +285,9 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
           </div>
         )}
       </AnimatePresence>
-     </div>
 
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         @keyframes gradient {
           0% { background-position: 0% 50%; }
           50% { background-position: 100% 50%; }
@@ -310,6 +310,6 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
           animation: shimmer-glow 4s ease-in-out infinite;
         }
       `}} />
-    </header >
+    </header>
   );
 }
