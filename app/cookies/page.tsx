@@ -37,7 +37,7 @@ export default function CookiePolicy() {
                             {[1, 2, 3, 4, 5, 6].map(i => (
                                 <Card key={i} className="p-8">
                                     <h2 className="font-serif text-2xl font-semibold mb-4">{t(`cookies.section${i}` as any)}</h2>
-                                    <p className="text-muted-foreground leading-relaxed">{t(`cookies.section${i}.text` as any)}</p>
+                                    <p className="text-muted-foreground leading-relaxed whitespace-pre-line">{t(`cookies.section${i}.text` as any)}</p>
                                 </Card>
                             ))}
 
