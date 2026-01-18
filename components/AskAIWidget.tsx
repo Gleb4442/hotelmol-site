@@ -114,18 +114,23 @@ export default function AskAIWidget() {
 
         const userMsg = textToSend.trim();
         setInput("");
-        setMessages((prev) => [...prev, { role: "user", content: userMsg }]);
+
+        // Add user message immediately
+        const newMessages = [...messages, { role: "user", content: userMsg } as Message];
+        setMessages(newMessages);
         setIsLoading(true);
 
         try {
-            const response = await fetch("https://n8n.myn8napp.online/webhook/40d5e18a-9a16-408e-b594-7d4797e085f6/chat", {
+            // Add placeholder for assistant message
+            setMessages((prev) => [...prev, { role: "assistant", content: "" }]);
+
+            const response = await fetch("/api/chat", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    chatInput: userMsg,
-                    sessionId: sessionId,
+                    messages: newMessages,
                 }),
             });
 
@@ -133,30 +138,41 @@ export default function AskAIWidget() {
                 throw new Error("Network response was not ok");
             }
 
-            const data = await response.json();
-
-            // Handle various possible response formats from n8n
-            let aiResponse = "Thinking process complete.";
-
-            if (typeof data === 'string') {
-                aiResponse = data;
-            } else if (data.output) {
-                aiResponse = data.output;
-            } else if (data.response) {
-                aiResponse = data.response;
-            } else if (data.text) {
-                aiResponse = data.text;
-            } else if (Array.isArray(data) && data.length > 0) {
-                aiResponse = data[0].output || data[0].text || JSON.stringify(data[0]);
-            } else {
-                aiResponse = JSON.stringify(data);
+            if (!response.body) {
+                throw new Error("No response body");
             }
 
-            setMessages((prev) => [...prev, { role: "assistant", content: aiResponse }]);
+            const reader = response.body.getReader();
+            const decoder = new TextDecoder();
+            let aiResponse = "";
+
+            while (true) {
+                const { done, value } = await reader.read();
+                if (done) break;
+
+                const text = decoder.decode(value, { stream: true });
+                aiResponse += text;
+
+                setMessages((prev) => {
+                    const updated = [...prev];
+                    const lastMsg = updated[updated.length - 1];
+                    if (lastMsg && lastMsg.role === "assistant") {
+                        lastMsg.content = aiResponse;
+                    }
+                    return updated;
+                });
+            }
 
         } catch (error) {
             console.error("Error sending message:", error);
-            setMessages((prev) => [...prev, { role: "assistant", content: "Sorry, I encountered an error connecting to the server. Please check your connection." }]);
+            // Remove the empty assistant message if it failed or erroneous
+            setMessages((prev) => {
+                const last = prev[prev.length - 1];
+                if (last.role === 'assistant' && !last.content) {
+                    return prev.slice(0, -1).concat({ role: "assistant", content: "Sorry, I encountered an error. Please try again." });
+                }
+                return prev;
+            });
         } finally {
             setIsLoading(false);
             // Auto-focus back to input
