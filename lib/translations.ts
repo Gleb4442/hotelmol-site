@@ -758,7 +758,7 @@ const translationsBase = {
     "privacy.section3": "3. Data Sharing and Transfers",
     "privacy.section3.text": "We do not sell your personal information to third parties. We may share your data with trusted service providers who help us operate our business, with legal authorities when required by law, and with business successors in case of merger or acquisition.",
     "privacy.section4": "4. Your Rights (GDPR)",
-    "privacy.section4.text": "If you are in the EEA, you have the following rights: access to your personal data, correction of inaccurate information, deletion of your data (right to be forgotten), restriction of processing, data portability, and objection to processing. To exercise these rights, contact us at hello@hotelmind.ai.",
+    "privacy.section4.text": "If you are in the EEA, you have the following rights: access to your personal data, correction of inaccurate information, deletion of your data (right to be forgotten), restriction of processing, data portability, and objection to processing. To exercise these rights, contact us at legal@hotelmol.com.",
     "privacy.section5": "5. Data Security",
     "privacy.section5.text": "We implement industry-standard security measures to protect your data, including encryption in transit and at rest, regular security audits, access controls, and staff training. However, no method of transmission over the Internet is completely secure.",
     "privacy.section6": "6. Cookies and Tracking Technologies",
@@ -773,7 +773,7 @@ const translationsBase = {
     "privacy.section10.text": "We may update this Privacy Policy from time to time. We will notify you of material changes via email or platform notification.",
     "privacy.contact.title": "Contact Us",
     "privacy.contact.text": "If you have questions about this Privacy Policy, contact us:",
-    "privacy.contact.email": "Email: hello@hotelmind.ai",
+    "privacy.contact.email": "Email: legal@hotelmol.com",
     "privacy.contact.address": "Address: hotelmol, 123 Tech Avenue, Suite 456, San Francisco, CA 94105",
 
     // Terms of Service
@@ -800,7 +800,7 @@ const translationsBase = {
     "terms.section9.text": "These Terms are governed by the laws of California, USA. Disputes shall be resolved through arbitration in San Francisco, California, under AAA rules.",
     "terms.section10": "10. Changes to Terms",
     "terms.section10.text": "We may update these Terms from time to time. Material changes will take effect 30 days after notice. Continued use of the Service constitutes acceptance of updated Terms.",
-    "terms.contact": "Questions about these Terms? Contact us: hello@hotelmind.ai",
+    "terms.contact": "Questions about these Terms? Contact us: legal@hotelmol.com",
 
     // Cookie Policy
     "cookies.title": "Cookie Policy",
@@ -828,7 +828,7 @@ const translationsBase = {
     "cookies.section5.text": "When you first visit our website, you'll see a cookie banner requesting your consent for non-essential cookies. You can update your preferences at any time.",
     "cookies.section6": "6. Changes to This Policy",
     "cookies.section6.text": "We may update this Cookie Policy. We will notify you of material changes through our website.",
-    "cookies.contact": "Questions about cookies? Contact us: hello@hotelmind.ai",
+    "cookies.contact": "Questions about cookies? Contact us: legal@hotelmol.com",
 
     // Data Processing Agreement
     "dpa.title": "Data Processing Agreement",
@@ -869,7 +869,7 @@ const translationsBase = {
     "dpa.section9.text": "In the event of a Personal Data Breach, hotelmol will notify Controller within 72 hours and provide necessary information for Controller to meet notification obligations under GDPR.",
     "dpa.section10": "10. Audit and Compliance",
     "dpa.section10.text": "hotelmol will make available to Controller information necessary to demonstrate compliance, including SOC 2 Type II audit reports and GDPR compliance documentation.",
-    "dpa.contact": "Questions about this DPA? Contact us: hello@hotelmind.ai",
+    "dpa.contact": "Questions about this DPA? Contact us: legal@hotelmol.com",
 
     // Cookie Banner
     "cookie.banner.title": "We use cookies",
@@ -1493,7 +1493,7 @@ const translationsBase = {
     "privacy.section3": "3. Обмен данными и передача",
     "privacy.section3.text": "Мы не продаем вашу личную информацию третьим лицам. Мы можем делиться вашими данными с доверенными поставщиками услуг, которые помогают нам управлять нашим бизнесом, с юридическими органами при необходимости по закону и с бизнес-преемниками в случае слияния или приобретения.",
     "privacy.section4": "4. Ваши права (GDPR)",
-    "privacy.section4.text": "Если вы находитесь в ЕЭЗ, у вас есть следующие права: доступ к вашим личным данным, исправление неточной информации, удаление ваших данных (право на забвение), ограничение обработки, переносимость данных и возражение против обработки. Чтобы воспользоваться этими правами, свяжитесь с нами по адресу hello@hotelmind.ai.",
+    "privacy.section4.text": "Если вы находитесь в ЕЭЗ, у вас есть следующие права: доступ к вашим личным данным, исправление неточной информации, удаление ваших данных (право на забвение), ограничение обработки, переносимость данных и возражение против обработки. Чтобы воспользоваться этими правами, свяжитесь с нами по адресу legal@hotelmol.com.",
     "privacy.section5": "5. Безопасность данных",
     "privacy.section5.text": "Мы применяем отраслевые стандарты безопасности для защиты ваших данных, включая шифрование при передаче и хранении, регулярные аудиты безопасности, контроль доступа и обучение персонала. Однако ни один метод передачи через интернет не является абсолютно безопасным.",
     "privacy.section6": "6. Файлы cookie и технологии отслеживания",
@@ -1508,7 +1508,7 @@ const translationsBase = {
     "privacy.section10.text": "Мы можем обновить эту Политику конфиденциальности время от времени. Мы уведомим вас о существенных изменениях по электронной почте или через уведомление на нашей платформе.",
     "privacy.contact.title": "Свяжитесь с нами",
     "privacy.contact.text": "Если у вас есть вопросы об этой Политике конфиденциальности, свяжитесь с нами:",
-    "privacy.contact.email": "Email: hello@hotelmind.ai",
+    "privacy.contact.email": "Email: legal@hotelmol.com",
     "privacy.contact.address": "Адрес: hotelmol, 123 Tech Avenue, Suite 456, San Francisco, CA 94105",
 
     // Terms of Service
@@ -1604,7 +1604,7 @@ const translationsBase = {
     "dpa.section9.text": "В случае нарушения персональных данных hotelmol уведомит Контролера в течение 72 часов и предоставит необходимую информацию для соблюдения обязательств по уведомлению в соответствии с GDPR.",
     "dpa.section10": "10. Аудит и соблюдение",
     "dpa.section10.text": "hotelmol предоставит Контролеру информацию, необходимую для демонстрации дотримання, включая аудиторские отчеты SOC 2 Type II и документацию о соответствии GDPR.",
-    "dpa.contact": "Вопросы об этом DPA? Свяжитесь с нами: hello@hotelmind.ai",
+    "dpa.contact": "Вопросы об этом DPA? Свяжитесь с нами: legal@hotelmol.com",
 
 
 
@@ -2231,7 +2231,7 @@ const translationsBase = {
     "privacy.section3": "3. Обмін даними та передача",
     "privacy.section3.text": "Ми не продаємо вашу особисту інформацію третім особам. Ми можемо ділитися вашими даними з довіреними постачальниками послуг, які допомагають нам керувати нашим бізнесом, з юридичними органами при необхідності згідно із законом та з бізнес-наступниками у разі злиття або придбання.",
     "privacy.section4": "4. Ваші права (GDPR)",
-    "privacy.section4.text": "Якщо ви перебуваєте в ЄЕЗ, у вас є наступні права: доступ до ваших особистих даних, виправлення неточної інформації, видалення ваших даних (право на забуття), обмеження обробки, переносимість даних та заперечення проти обробки. Щоб скористатися цими правами, зв'яжіться з нами за адресою hello@hotelmind.ai.",
+    "privacy.section4.text": "Якщо ви перебуваєте в ЄЕЗ, у вас є наступні права: доступ до ваших особистих даних, виправлення неточної інформації, видалення ваших даних (право на забуття), обмеження обробки, переносимість даних та заперечення проти обробки. Щоб скористатися цими правами, зв'яжіться з нами за адресою legal@hotelmol.com.",
     "privacy.section5": "5. Безпека даних",
     "privacy.section5.text": "Ми застосовуємо галузеві стандарти безпеки для захисту ваших даних, включаючи шифрування при передачі та зберіганні, регулярні аудити безпеки, контроль доступу та навчання персоналу. Однак жоден метод передачі через Інтернет не є абсолютно безпечним.",
     "privacy.section6": "6. Файли cookie та технології відстеження",
@@ -2246,7 +2246,7 @@ const translationsBase = {
     "privacy.section10.text": "Ми можемо оновлювати цю Політику конфіденційності час від часу. Ми повідомимо вас про суттєві зміни електронною поштою або через повідомлення на нашій платформі.",
     "privacy.contact.title": "Зв'яжіться з нами",
     "privacy.contact.text": "Якщо у вас є питання щодо цієї Політики конфіденційності, зв'яжіться з нами:",
-    "privacy.contact.email": "Email: hello@hotelmind.ai",
+    "privacy.contact.email": "Email: legal@hotelmol.com",
     "privacy.contact.address": "Адреса: hotelmol, 123 Tech Avenue, Suite 456, Сан-Франциско, CA 94105",
 
     // Terms of Service
@@ -2273,7 +2273,7 @@ const translationsBase = {
     "terms.section9.text": "Ці Умови регулюються законами штату Каліфорнія, США. Спори повинні бути вирішені шляхом арбітражу в Сан-Франциско, штат Каліфорнія, відповідно до правил AAA.",
     "terms.section10": "10. Зміни в Умовах",
     "terms.section10.text": "Ми можемо оновлювати ці Умови час від часу. Суттєві зміни набудуть чинності через 30 днів після повідомлення. Продовження використання Сервісу означає згоду з оновленими Умовами.",
-    "terms.contact": "Питання щодо цих Умов? Зв'яжіться з нами: hello@hotelmind.ai",
+    "terms.contact": "Питання щодо цих Умов? Зв'яжіться з нами: legal@hotelmol.com",
 
     // Cookie Policy
     "cookies.title": "Політика використання файлів cookie",
@@ -2301,7 +2301,7 @@ const translationsBase = {
     "cookies.section5.text": "При першому відвідуванні нашого веб-сайту ви побачите банер з файлами cookie, що запитує вашу згоду на несуттєві файли cookie. Ви можете оновити свої налаштування в будь-який час.",
     "cookies.section6": "6. Зміни в цій політиці",
     "cookies.section6.text": "Ми можемо оновлювати цю Політику використання файлів cookie. Ми повідомимо вас про суттєві зміни через наш веб-сайт.",
-    "cookies.contact": "Питання про файли cookie? Зв'яжіться з нами: hello@hotelmind.ai",
+    "cookies.contact": "Питання про файли cookie? Зв'яжіться з нами: legal@hotelmol.com",
 
     // Data Processing Agreement
     "dpa.title": "Угода про обробку даних",
@@ -2342,7 +2342,7 @@ const translationsBase = {
     "dpa.section9.text": "У разі порушення персональних даних hotelmol повідомить Контролера протягом 72 годин та надасть необхідну інформацію для дотримання зобов'язань з повідомлення відповідно до GDPR.",
     "dpa.section10": "10. Аудит та дотримання",
     "dpa.section10.text": "hotelmol надасть Контролеру інформацію, необхідну для демонстрації дотримання, включаючи аудиторські звіти SOC 2 Type II та документацію про відповідність GDPR.",
-    "dpa.contact": "Питання щодо цієї DPA? Зв'яжіться з нами: hello@hotelmind.ai",
+    "dpa.contact": "Питання щодо цієї DPA? Зв'яжіться з нами: legal@hotelmol.com",
 
     // Cookie Banner
     "cookie.banner.title": "Ми використовуємо файли cookie",
@@ -3116,7 +3116,7 @@ const translationsBase = {
     "privacy.section3": "3. Udostępnianie i Przekazywanie Danych",
     "privacy.section3.text": "Nie sprzedajemy Twoich danych osobowych osobom trzecim. Możemy udostępniać Twoje dane zaufanym dostawcom usług, którzy pomagają nam prowadzić naszą działalność, organom prawnym, gdy wymaga tego prawo, oraz następcom prawnym w przypadku fuzji lub przejęcia.",
     "privacy.section4": "4. Twoje Prawa (RODO)",
-    "privacy.section4.text": "Jeśli znajdujesz się w EOG, masz następujące prawa: dostęp do swoich danych osobowych, sprostowanie nieprawidłowych informacji, usunięcie danych (prawo do bycia zapomnianym), ograniczenie przetwarzania, przenoszenie danych i sprzeciw wobec przetwarzania. Aby skorzystać z tych praw, skontaktuj się z nami pod adresem hello@hotelmind.ai.",
+    "privacy.section4.text": "Jeśli znajdujesz się w EOG, masz następujące prawa: dostęp do swoich danych osobowych, sprostowanie nieprawidłowych informacji, usunięcie danych (prawo do bycia zapomnianym), ograniczenie przetwarzania, przenoszenie danych i sprzeciw wobec przetwarzania. Aby skorzystać z tych praw, skontaktuj się z nami pod adresem legal@hotelmol.com.",
     "privacy.section5": "5. Bezpieczeństwo Danych",
     "privacy.section5.text": "Wdrażamy standardowe środki bezpieczeństwa, aby chronić Twoje dane, w tym szyfrowanie w transporcie i spoczynku, regularne audyty bezpieczeństwa, krole dostępu i szkolenia personelu. Jednak żadna metoda transmisji przez Internet nie jest całkowicie bezpieczna.",
     "privacy.section6": "6. Pliki Cookie i Technologie Śledzące",
@@ -3131,7 +3131,7 @@ const translationsBase = {
     "privacy.section10.text": "Możemy od czasu do czasu aktualizować niniejszą Politykę Prywatności. Powiadomimy Cię o istotnych zmianach za pośrednictwem e-maila lub powiadomienia na platformie.",
     "privacy.contact.title": "Skontaktuj się z Nami",
     "privacy.contact.text": "Jeśli masz pytania dotyczące tej Polityki Prywatności, skontaktuj się z nami:",
-    "privacy.contact.email": "Email: hello@hotelmind.ai",
+    "privacy.contact.email": "Email: legal@hotelmol.com",
     "privacy.contact.address": "Adres: hotelmol, 123 Tech Avenue, Suite 456, San Francisco, CA 94105",
 
     // Terms of Service
@@ -3158,7 +3158,7 @@ const translationsBase = {
     "terms.section9.text": "Niniejsze Warunki podlegają prawu stanu Kalifornia, USA. Spory będą rozstrzygane w drodze arbitrażu w San Francisco, Kalifornia, zgodnie z zasadami AAA.",
     "terms.section10": "10. Zmiany Warunków",
     "terms.section10.text": "Możemy od czasu do czasu aktualizować niniejsze Warunki. Istotne zmiany wejdą w życie 30 dni po powiadomieniu. Dalsze korzystanie z Usługi stanowi akceptację zaktualizowanych Warunków.",
-    "terms.contact": "Pytania dotyczące tych Warunków? Skontaktuj się z nami: hello@hotelmind.ai",
+    "terms.contact": "Pytania dotyczące tych Warunków? Skontaktuj się z nami: legal@hotelmol.com",
 
     // Cookie Policy
     "cookies.title": "Polityka Plików Cookie",
@@ -3186,7 +3186,7 @@ const translationsBase = {
     "cookies.section5.text": "Kiedy po raz pierwszy odwiedzasz naszą stronę, zobaczysz baner cookie z prośbą o zgodę na pliki cookie, które nie są niezbędne. Możesz zaktualizować swoje preferencje w dowolnym momencie.",
     "cookies.section6": "6. Zmiany w Tej Polityce",
     "cookies.section6.text": "Możemy aktualizować niniejszą Politykę Plików Cookie. Powiadomimy Cię o istotnych zmianach za pośrednictwem naszej strony internetowej.",
-    "cookies.contact": "Pytania o pliki cookie? Skontaktuj się z nami: hello@hotelmind.ai",
+    "cookies.contact": "Pytania o pliki cookie? Skontaktuj się z nami: legal@hotelmol.com",
 
     // Data Processing Agreement
     "dpa.title": "Umowa Powierzenia Przetwarzania Danych",
@@ -3227,7 +3227,7 @@ const translationsBase = {
     "dpa.section9.text": "W przypadku Naruszenia Ochrony Danych Osobowych, hotelmol powiadomi Administratora w ciągu 72 godzin i dostarczy niezbędne informacje, aby Administrator mógł spełnić obowiązki powiadomienia zgodnie z RODO.",
     "dpa.section10": "10. Audyt i Zgodność",
     "dpa.section10.text": "hotelmol udostępni Administratorowi informacje niezbędne do wykazania zgodności, w tym raporty z audytu SOC 2 Type II i dokumentację zgodności z RODO.",
-    "dpa.contact": "Pytania dotyczące tej DPA? Skontaktuj się z nami: hello@hotelmind.ai",
+    "dpa.contact": "Pytania dotyczące tej DPA? Skontaktuj się z nami: legal@hotelmol.com",
 
     // Cookie Banner
     "cookie.banner.title": "Używamy plików cookie",

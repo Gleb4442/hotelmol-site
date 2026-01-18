@@ -109,7 +109,6 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
                       ? "bg-[#0752A0] text-white shadow-md"
                       : "text-slate-600 hover:text-[#0752A0] hover:bg-slate-100/50"
                     }
-                    ${item.href === "/roomie" && !isActive ? "shimmer-button" : ""}
                   `}
                   data-testid={`link-${item.name.toLowerCase().replace(' ', '-')}`}
                 >
@@ -295,19 +294,6 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
         }
         .animate-gradient {
           animation: gradient 3s ease infinite;
-        }
-
-        @keyframes shimmer-glow {
-          0%, 100% {
-            box-shadow: 0 0 8px 2px rgba(173, 216, 230, 0.1);
-          }
-          50% {
-            box-shadow: 0 0 16px 6px rgba(173, 216, 230, 0.25);
-          }
-        }
-
-        .shimmer-button {
-          animation: shimmer-glow 4s ease-in-out infinite;
         }
       `}} />
     </header>
