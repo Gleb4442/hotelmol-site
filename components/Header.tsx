@@ -89,7 +89,7 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
       <div className="flex items-center justify-between">
 
         {/* 1. Left Cloud: Logo */}
-        <div className={`pointer-events-auto flex items-center justify-center px-6 h-[56px] md:h-[72px] ${cloudStyle} hide-on-menu-open`}>
+        <div className={`pointer-events-auto flex items-center justify-center px-4 md:px-6 h-[56px] md:h-[72px] ${cloudStyle} hide-on-menu-open`}>
           <Link href="/" className="flex items-center h-full" data-testid="link-home">
             <img src="/assets/hotelmol-logo.png" alt="HotelMol" className="h-[120px] md:h-[180px] mt-1 object-contain" />
           </Link>
@@ -106,23 +106,32 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
                   href={item.href}
                   className={`relative px-5 py-2.5 rounded-full text-base font-medium transition-all duration-300 flex items-center gap-2
                     ${isActive
-                      ? "bg-[#0752A0] text-white shadow-md"
+                      ? "text-[#0752A0]"
                       : "text-slate-600 hover:text-[#0752A0] hover:bg-slate-100/50"
                     }
                   `}
                   data-testid={`link-${item.name.toLowerCase().replace(' ', '-')}`}
                 >
-                  {item.name}
-                  {item.badge && (
-                    <span className={`inline-block px-2 py-0.5 text-[10px] uppercase font-bold tracking-wide rounded-full ml-1
-                      ${isActive
-                        ? "bg-white text-[#0752A0]"
-                        : "bg-[#0752A0] text-white animate-gradient bg-gradient-to-r from-[#0752A0] via-blue-500 to-[#0752A0] bg-[length:200%_100%]"
-                      }
-                    `}>
-                      {item.badge}
-                    </span>
+                  {isActive && (
+                    <motion.span
+                      layoutId="active-nav-pill"
+                      className="absolute inset-0 bg-white shadow-sm rounded-full -z-10"
+                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                    />
                   )}
+                  <span className="relative z-10 flex items-center gap-2">
+                    {item.name}
+                    {item.badge && (
+                      <span className={`inline-block px-2 py-0.5 text-[10px] uppercase font-bold tracking-wide rounded-full ml-1
+                      ${isActive
+                          ? "bg-[#0752A0]/10 text-[#0752A0]"
+                          : "bg-[#0752A0] text-white animate-gradient bg-gradient-to-r from-[#0752A0] via-blue-500 to-[#0752A0] bg-[length:200%_100%]"
+                        }
+                    `}>
+                        {item.badge}
+                      </span>
+                    )}
+                  </span>
                 </Link>
               );
             })}
