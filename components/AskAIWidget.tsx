@@ -19,7 +19,7 @@ interface Message {
 
 export default function AskAIWidget() {
     const [isOpen, setIsOpen] = useState(false);
-    // const [isClosing, setIsClosing] = useState(false); // Removed in favor of AnimatePresence
+    const [isClosing, setIsClosing] = useState(false);
     const pathname = usePathname();
     const { t } = useTranslation();
     const { isCookieBannerVisible } = useCookieBanner();
@@ -173,165 +173,164 @@ export default function AskAIWidget() {
     };
 
     const handleClose = () => {
-        setIsOpen(false);
+        setIsClosing(true);
     };
 
-    // Removed onAnimationEnd as AnimatePresence handles this
+    const onAnimationEnd = (e: React.AnimationEvent) => {
+        // Check if it's the window closing animation
+        if (e.animationName.includes('windowClose')) {
+            setIsOpen(false);
+            setIsClosing(false);
+        }
+    };
 
     return (
-        <div className={`fixed z-[60] pointer-events-none ${isOpen ? 'inset-0' : 'inset-auto bottom-0 right-0 p-4'}`}>
+        <div className={`fixed z-[60] pointer-events-none ${isOpen || isClosing ? 'inset-0' : 'inset-auto bottom-0 right-0 p-4'}`}>
 
             {/* Main Chat Window */}
-            {/* Main Chat Window */}
-            <AnimatePresence>
-                {isOpen && (
-                    <motion.div
-                        initial={{ y: "120%", opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        exit={{ y: "120%", opacity: 0 }}
-                        transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                        className={`chat-window pointer-events-auto flex flex-col ${isMobileFullscreen ? 'fixed !inset-[10px] !w-auto !h-auto !bottom-[10px] !right-[10px] !top-[10px] !left-[10px]' : 'absolute bottom-[100px] right-[28px]'}`}
-                    >
-                        {/* Animated Clouds Background */}
-                        <div className="clouds-layer">
-                            <div className="cloud cloud-1"></div>
-                            <div className="cloud cloud-2"></div>
-                            <div className="cloud cloud-3"></div>
+            {(isOpen || isClosing) && (
+                <div
+                    className={`chat-window pointer-events-auto flex flex-col ${isClosing ? 'closing' : 'opening'} ${isMobileFullscreen ? 'fixed !inset-[10px] !w-auto !h-auto !bottom-[10px] !right-[10px] !top-[10px] !left-[10px]' : 'absolute bottom-[100px] right-[28px]'}`}
+                    onAnimationEnd={onAnimationEnd}
+                >
+                    {/* Animated Clouds Background */}
+                    <div className="clouds-layer">
+                        <div className="cloud cloud-1"></div>
+                        <div className="cloud cloud-2"></div>
+                        <div className="cloud cloud-3"></div>
+                    </div>
+
+                    {/* Header: "Glass Layer" */}
+                    <div className="chat-header relative z-10 flex items-center justify-between px-6 py-4 border-b border-white/20 backdrop-blur-md shrink-0">
+                        <div className="flex items-center gap-4">
+                            {/* Avatar Bubble */}
+                            <div className="w-12 h-12 rounded-full glass-bubble flex items-center justify-center p-2 shadow-sm">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 203.18 203.18"
+                                    className="w-full h-full text-foreground/80"
+                                    fill="currentColor"
+                                >
+                                    <path d="M106.13 53.03c22.55,2.08 40.65,19.52 43.75,41.75l-96.58 0c3.18,-22.75 22.05,-40.47 45.33,-41.87l0 -4.17 -2.36 0c-2.32,0 -4.23,-1.91 -4.23,-4.23l0 0c0,-2.33 1.91,-4.23 4.23,-4.23l12.4 0c2.33,0 4.23,1.9 4.23,4.23l0 0c0,2.32 -1.9,4.23 -4.23,4.23l-2.54 0 0 4.29zm15.16 63.75c1.5,-1.94 4.29,-2.3 6.23,-0.8 1.94,1.5 2.3,4.29 0.8,6.23 -3.14,4.07 -7.19,7.4 -11.86,9.7 -4.51,2.21 -9.56,3.46 -14.87,3.46 -5.31,0 -10.36,-1.25 -14.87,-3.46 -4.67,-2.3 -8.72,-5.63 -11.86,-9.7 -1.5,-1.94 -1.14,-4.73 0.8,-6.23 1.94,-1.5 4.73,-1.14 6.23,0.8 2.33,3.01 5.31,5.47 8.74,7.15 3.28,1.62 7,2.52 10.96,2.52 3.96,0 7.68,-0.9 10.96,-2.52 3.43,-1.68 6.41,-4.14 8.74,-7.15zm-10.04 39.85c-1.68,1.41 -4.25,2.17 -4.31,-1.17 -0.02,-0.99 -0.04,-1.26 -0.06,-2.26 -0.81,-2.45 -3.2,-2.84 -5.68,-2.84l0 -0.01c-25.76,-0.2 -46.76,-20.38 -48.29,-45.8l97.36 0c-0.71,11.75 -5.05,23.66 -13.15,30.44l-25.87 21.64z" />
+                                </svg>
+                            </div>
+                            <div className="flex flex-col">
+                                <span className="font-semibold text-lg text-foreground/90">{t("aiWidget.headerTitle") || "Hotelmol Assistant"}</span>
+                                <span className="text-xs text-foreground/60 flex items-center gap-1">
+                                    <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                                    Online
+                                </span>
+                            </div>
                         </div>
 
-                        {/* Header: "Glass Layer" */}
-                        <div className="chat-header relative z-10 flex items-center justify-between px-6 py-4 border-b border-white/20 backdrop-blur-md shrink-0">
-                            <div className="flex items-center gap-4">
-                                {/* Avatar Bubble */}
-                                <div className="w-12 h-12 rounded-full glass-bubble flex items-center justify-center p-2 shadow-sm">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 203.18 203.18"
-                                        className="w-full h-full text-foreground/80"
-                                        fill="currentColor"
-                                    >
-                                        <path d="M106.13 53.03c22.55,2.08 40.65,19.52 43.75,41.75l-96.58 0c3.18,-22.75 22.05,-40.47 45.33,-41.87l0 -4.17 -2.36 0c-2.32,0 -4.23,-1.91 -4.23,-4.23l0 0c0,-2.33 1.91,-4.23 4.23,-4.23l12.4 0c2.33,0 4.23,1.9 4.23,4.23l0 0c0,2.32 -1.9,4.23 -4.23,4.23l-2.54 0 0 4.29zm15.16 63.75c1.5,-1.94 4.29,-2.3 6.23,-0.8 1.94,1.5 2.3,4.29 0.8,6.23 -3.14,4.07 -7.19,7.4 -11.86,9.7 -4.51,2.21 -9.56,3.46 -14.87,3.46 -5.31,0 -10.36,-1.25 -14.87,-3.46 -4.67,-2.3 -8.72,-5.63 -11.86,-9.7 -1.5,-1.94 -1.14,-4.73 0.8,-6.23 1.94,-1.5 4.73,-1.14 6.23,0.8 2.33,3.01 5.31,5.47 8.74,7.15 3.28,1.62 7,2.52 10.96,2.52 3.96,0 7.68,-0.9 10.96,-2.52 3.43,-1.68 6.41,-4.14 8.74,-7.15zm-10.04 39.85c-1.68,1.41 -4.25,2.17 -4.31,-1.17 -0.02,-0.99 -0.04,-1.26 -0.06,-2.26 -0.81,-2.45 -3.2,-2.84 -5.68,-2.84l0 -0.01c-25.76,-0.2 -46.76,-20.38 -48.29,-45.8l97.36 0c-0.71,11.75 -5.05,23.66 -13.15,30.44l-25.87 21.64z" />
-                                    </svg>
-                                </div>
-                                <div className="flex flex-col">
-                                    <span className="font-semibold text-lg text-foreground/90">{t("aiWidget.headerTitle") || "Hotelmol Assistant"}</span>
-                                    <span className="text-xs text-foreground/60 flex items-center gap-1">
-                                        <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-                                        Online
-                                    </span>
-                                </div>
-                            </div>
+                        {/* Close Button: Glass Bubble */}
+                        <button
+                            onClick={handleClose}
+                            className="w-10 h-10 rounded-full glass-bubble flex items-center justify-center hover:scale-110 transition-transform active:scale-95 text-foreground/70 hover:text-foreground"
+                        >
+                            <ChevronDown className="w-6 h-6" />
+                        </button>
+                    </div>
 
-                            {/* Close Button: Glass Bubble */}
-                            <button
-                                onClick={handleClose}
-                                className="w-10 h-10 rounded-full glass-bubble flex items-center justify-center hover:scale-110 transition-transform active:scale-95 text-foreground/70 hover:text-foreground"
-                            >
-                                <ChevronDown className="w-6 h-6" />
-                            </button>
+                    {/* Messages Area */}
+                    <div className="chat-messages relative z-10 flex-1 p-6 overflow-y-auto space-y-6">
+                        {/* Welcome Message */}
+                        <div className="flex items-end gap-3">
+                            <div className="w-8 h-8 rounded-full glass-bubble flex-shrink-0 flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 opacity-70">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z" />
+                                </svg>
+                            </div>
+                            <div className="glass-bubble p-4 text-[15px] leading-relaxed text-foreground/90 rounded-bl-sm max-w-[85%] animate-in fade-in slide-in-from-bottom-2 duration-500">
+                                {t("aiWidget.welcome") || "Hello! How can I help you today?"}
+                            </div>
                         </div>
 
-                        {/* Messages Area */}
-                        <div className="chat-messages relative z-10 flex-1 p-6 overflow-y-auto space-y-6">
-                            {/* Welcome Message */}
-                            <div className="flex items-end gap-3">
-                                <div className="w-8 h-8 rounded-full glass-bubble flex-shrink-0 flex items-center justify-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 opacity-70">
-                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z" />
-                                    </svg>
-                                </div>
-                                <div className="glass-bubble p-4 text-[15px] leading-relaxed text-foreground/90 rounded-bl-sm max-w-[85%] animate-in fade-in slide-in-from-bottom-2 duration-500">
-                                    {t("aiWidget.welcome") || "Hello! How can I help you today?"}
-                                </div>
-                            </div>
+                        {/* Conversation History */}
+                        {messages.map((msg, idx) => (
+                            <div key={idx} className={`flex items-end gap-3 ${msg.role === 'user' ? 'justify-end' : ''}`}>
+                                {msg.role === 'assistant' && (
+                                    <div className="w-8 h-8 rounded-full glass-bubble flex-shrink-0 flex items-center justify-center mb-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 opacity-70">
+                                            <path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 110-16 8 8 0 010 16zm-1-13h2v6h-2zm0 8h2v2h-2z" />
+                                            {/* Using simple placeholder icon for internal messages to avoid SVG clutter, can be replaced */}
+                                            <circle cx="12" cy="12" r="5" />
+                                        </svg>
+                                    </div>
+                                )}
 
-                            {/* Conversation History */}
-                            {messages.map((msg, idx) => (
-                                <div key={idx} className={`flex items-end gap-3 ${msg.role === 'user' ? 'justify-end' : ''}`}>
-                                    {msg.role === 'assistant' && (
-                                        <div className="w-8 h-8 rounded-full glass-bubble flex-shrink-0 flex items-center justify-center mb-1">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 opacity-70">
-                                                <path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 110-16 8 8 0 010 16zm-1-13h2v6h-2zm0 8h2v2h-2z" />
-                                                {/* Using simple placeholder icon for internal messages to avoid SVG clutter, can be replaced */}
-                                                <circle cx="12" cy="12" r="5" />
-                                            </svg>
-                                        </div>
-                                    )}
-
-                                    <div
-                                        className={`
+                                <div
+                                    className={`
                                         p-4 text-[15px] leading-relaxed max-w-[85%] shadow-sm
                                         ${msg.role === 'user'
-                                                ? 'message-user rounded-2xl rounded-br-sm text-white'
-                                                : 'glass-bubble rounded-2xl rounded-bl-sm text-foreground/90'
-                                            }
+                                            ? 'message-user rounded-2xl rounded-br-sm text-white'
+                                            : 'glass-bubble rounded-2xl rounded-bl-sm text-foreground/90'
+                                        }
                                     `}
-                                    >
-                                        {msg.role === 'assistant' ? (
-                                            <div className="prose prose-sm dark:prose-invert max-w-none bg-transparent">
-                                                <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                                                    {msg.content}
-                                                </ReactMarkdown>
-                                            </div>
-                                        ) : (
-                                            msg.content
-                                        )}
-                                    </div>
+                                >
+                                    {msg.role === 'assistant' ? (
+                                        <div className="prose prose-sm dark:prose-invert max-w-none bg-transparent">
+                                            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                                                {msg.content}
+                                            </ReactMarkdown>
+                                        </div>
+                                    ) : (
+                                        msg.content
+                                    )}
                                 </div>
-                            ))}
+                            </div>
+                        ))}
 
-                            {/* Loading Indicator */}
-                            {isLoading && (
-                                <div className="flex items-end gap-3">
-                                    <div className="w-8 h-8 rounded-full glass-bubble flex-shrink-0 flex items-center justify-center mb-1">
-                                        <div className="w-4 h-4 rounded-full border-2 border-t-transparent border-foreground/30 animate-spin"></div>
-                                    </div>
-                                    <div className="glass-bubble p-4 rounded-2xl rounded-bl-sm flex items-center gap-2">
-                                        <span className="w-2 h-2 bg-foreground/40 rounded-full animate-bounce"></span>
-                                        <span className="w-2 h-2 bg-foreground/40 rounded-full animate-bounce [animation-delay:0.2s]"></span>
-                                        <span className="w-2 h-2 bg-foreground/40 rounded-full animate-bounce [animation-delay:0.4s]"></span>
-                                    </div>
+                        {/* Loading Indicator */}
+                        {isLoading && (
+                            <div className="flex items-end gap-3">
+                                <div className="w-8 h-8 rounded-full glass-bubble flex-shrink-0 flex items-center justify-center mb-1">
+                                    <div className="w-4 h-4 rounded-full border-2 border-t-transparent border-foreground/30 animate-spin"></div>
                                 </div>
-                            )}
-                            <div ref={messagesEndRef} />
-                        </div>
+                                <div className="glass-bubble p-4 rounded-2xl rounded-bl-sm flex items-center gap-2">
+                                    <span className="w-2 h-2 bg-foreground/40 rounded-full animate-bounce"></span>
+                                    <span className="w-2 h-2 bg-foreground/40 rounded-full animate-bounce [animation-delay:0.2s]"></span>
+                                    <span className="w-2 h-2 bg-foreground/40 rounded-full animate-bounce [animation-delay:0.4s]"></span>
+                                </div>
+                            </div>
+                        )}
+                        <div ref={messagesEndRef} />
+                    </div>
 
-                        {/* Input Area: Floating Bubble */}
-                        <div className="chat-input relative z-10 p-6 pt-2">
-                            <div className="glass-bubble p-1.5 pl-5 pr-1.5 flex items-center gap-2 transition-all duration-300 focus-within:ring-2 focus-within:ring-white/40 focus-within:shadow-[0_0_20px_rgba(255,255,255,0.3)]">
-                                <Input
-                                    ref={inputRef}
-                                    value={input}
-                                    onChange={(e) => setInput(e.target.value)}
-                                    onKeyDown={handleKeyDown}
-                                    placeholder={t("aiWidget.inputPlaceholder") || "Type a message..."}
-                                    className="border-none bg-transparent shadow-none focus-visible:ring-0 p-0 text-base placeholder:text-foreground/50 h-auto"
-                                    disabled={isLoading}
-                                />
-                                <Button
-                                    size="icon"
-                                    className={`
+                    {/* Input Area: Floating Bubble */}
+                    <div className="chat-input relative z-10 p-6 pt-2">
+                        <div className="glass-bubble p-1.5 pl-5 pr-1.5 flex items-center gap-2 transition-all duration-300 focus-within:ring-2 focus-within:ring-white/40 focus-within:shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+                            <Input
+                                ref={inputRef}
+                                value={input}
+                                onChange={(e) => setInput(e.target.value)}
+                                onKeyDown={handleKeyDown}
+                                placeholder={t("aiWidget.inputPlaceholder") || "Type a message..."}
+                                className="border-none bg-transparent shadow-none focus-visible:ring-0 p-0 text-base placeholder:text-foreground/50 h-auto"
+                                disabled={isLoading}
+                            />
+                            <Button
+                                size="icon"
+                                className={`
                                     h-11 w-11 rounded-full shadow-md transition-all duration-300
                                     ${input.trim()
-                                            ? 'bg-gradient-to-tr from-blue-500 to-purple-500 text-white hover:scale-110 hover:shadow-lg'
-                                            : 'bg-black/5 dark:bg-white/10 text-foreground/40'
-                                        }
+                                        ? 'bg-gradient-to-tr from-blue-500 to-purple-500 text-white hover:scale-110 hover:shadow-lg'
+                                        : 'bg-black/5 dark:bg-white/10 text-foreground/40'
+                                    }
                                 `}
-                                    onClick={handleSendMessage}
-                                    disabled={isLoading || !input.trim()}
-                                >
-                                    <ArrowUp className="h-5 w-5" />
-                                </Button>
-                            </div>
+                                onClick={handleSendMessage}
+                                disabled={isLoading || !input.trim()}
+                            >
+                                <ArrowUp className="h-5 w-5" />
+                            </Button>
                         </div>
-
-                    </motion.div>
-                )}
-            </AnimatePresence>
+                    </div>
+                </div>
+            )}
 
             {/* Trigger Button (Unchanged logic, just ensure safe rendering) */}
             <AnimatePresence>
-                {!isOpen && !isCookieBannerVisible && (
+                {!isOpen && !isClosing && !isCookieBannerVisible && (
                     <motion.button
                         layout
                         initial={{ opacity: 0, scale: 0.8 }}
