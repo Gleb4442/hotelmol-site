@@ -1,13 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play } from "lucide-react";
 import { useTranslation } from "@/lib/TranslationContext";
 import DemoRequestModal from "./DemoRequestModal";
 import { translations } from "@/lib/translations";
+import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
 export default function Hero() {
   const [demoModalOpen, setDemoModalOpen] = useState(false);
   const { t, language } = useTranslation();
+
+  // Ref for intersection observer
+  const [heroRef, isVisible] = useIntersectionObserver<HTMLElement>({
+    threshold: 0.1, // Trigger when 10% of the component is visible
+  });
 
   const typewriterKeys = (translations[language] as any)?.["home.hero.typewriterKeys"] ||
     (translations["en"] as any)?.["home.hero.typewriterKeys"] || [
@@ -23,6 +29,9 @@ export default function Hero() {
   const [speed, setSpeed] = useState(150);
 
   useEffect(() => {
+    // If not visible, do not run the animation loop
+    if (!isVisible) return;
+
     const handleType = () => {
       const currentWord = typewriterKeys[wordIndex % typewriterKeys.length];
       const isFinishing = !isDeleting && displayText === currentWord;
@@ -57,11 +66,11 @@ export default function Hero() {
 
     const timer = setTimeout(handleType, speed);
     return () => clearTimeout(timer);
-  }, [displayText, isDeleting, wordIndex, typewriterKeys, speed]);
+  }, [displayText, isDeleting, wordIndex, typewriterKeys, speed, isVisible]);
 
   return (
     <>
-      <section className="relative min-h-[600px] sm:min-h-[800px] lg:min-h-[calc(85vh+100px)] flex items-start lg:items-center justify-center overflow-hidden">
+      <section ref={heroRef} className="relative min-h-[600px] sm:min-h-[800px] lg:min-h-[calc(85vh+100px)] flex items-start lg:items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/90 to-primary/80" />
 
         <div className="relative z-10 container mx-auto px-6 pt-[144px] pb-24 lg:py-32">
