@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, ArrowUp } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { Button } from "@/components/ui/button";
 import { useTranslation } from "@/lib/TranslationContext";
 import { useCookieBanner } from "@/lib/CookieBannerContext";
 import ReactMarkdown from "react-markdown";
