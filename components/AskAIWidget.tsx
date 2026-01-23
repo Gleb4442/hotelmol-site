@@ -196,26 +196,23 @@ export default function AskAIWidget() {
                         animate={isMobile ? "visible" : "visible"}
                         exit={isMobile ? "exit" : "exit"}
                         variants={isMobile ? mobileVariants : widgetVariants}
-                        className={`pointer-events-auto flex flex-col bg-white shadow-2xl overflow-hidden
+                        className={`pointer-events-auto flex flex-col overflow-hidden
                             ${isMobile
-                                ? 'fixed inset-[10px] w-[calc(100%-20px)] h-[calc(100%-20px)] rounded-[24px]'
-                                : 'fixed bottom-[100px] right-[28px] w-[420px] max-h-[700px] h-[calc(100vh-140px)] rounded-[24px]'
+                                ? 'fixed inset-[10px] w-[calc(100%-20px)] h-[calc(100%-20px)] bg-transparent shadow-none pointer-events-none'
+                                : 'fixed bottom-[100px] right-[28px] w-[420px] max-h-[700px] h-[calc(100vh-140px)] rounded-[24px] bg-white shadow-2xl pointer-events-auto'
                             }
                         `}
                     >
-                        {/* 3. Header */}
-                        <div className={`flex items-center justify-between px-6 py-4 shrink-0 relative ${isMobile ? 'bg-transparent pt-2' : 'bg-[#0752A0]'}`}>
-                            {isMobile ? (
-                                <>
-                                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none top-5">
-                                        <div className="bg-[#0752A0] text-white font-bold text-sm px-6 py-2 rounded-full shadow-md z-20">
-                                            hotelmol
-                                        </div>
-                                    </div>
-                                    <div /> {/* Spacer */}
-                                </>
-                            ) : (
-                                <div className="flex items-center gap-3 text-white">
+                        {/* 3. Header - Mobile Overlay Pill or Desktop Bar */}
+                        {isMobile ? (
+                            <div className="absolute top-4 left-0 right-0 flex justify-center z-50 pointer-events-none">
+                                <div className="bg-[#0752A0] text-white font-bold text-sm px-6 py-2 rounded-full shadow-lg">
+                                    hotelmol
+                                </div>
+                            </div>
+                        ) : (
+                            <div className="flex items-center justify-between px-6 py-4 bg-[#0752A0] text-white shrink-0 relative">
+                                <div className="flex items-center gap-3">
                                     <div className="relative">
                                         <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
                                             <img src="/assets/hotelmol-logo.png" alt="Logo" className="w-8 h-8 object-contain brightness-0 invert" />
@@ -227,17 +224,27 @@ export default function AskAIWidget() {
                                         <span className="textxs text-white/80 font-medium">Assistant</span>
                                     </div>
                                 </div>
-                            )}
+                                <button
+                                    onClick={() => setIsOpen(false)}
+                                    className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors z-10"
+                                >
+                                    <ChevronDown className="w-6 h-6 text-white" />
+                                </button>
+                            </div>
+                        )}
+
+                        {/* Mobile Close Button (Absolute) */}
+                        {isMobile && (
                             <button
                                 onClick={() => setIsOpen(false)}
-                                className={`w-8 h-8 flex items-center justify-center rounded-full transition-colors z-30 ${isMobile ? 'bg-gray-100/50 hover:bg-gray-200 text-gray-600' : 'hover:bg-white/10 text-white'}`}
+                                className="absolute top-4 right-2 w-8 h-8 flex items-center justify-center rounded-full bg-white/80 shadow-sm z-50 text-gray-600 pointer-events-auto"
                             >
                                 <ChevronDown className="w-6 h-6" />
                             </button>
-                        </div>
+                        )}
 
                         {/* 4. Messages Area */}
-                        <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-white scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-transparent">
+                        <div className={`flex-1 overflow-y-auto p-4 space-y-4 scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-transparent pointer-events-auto ${isMobile ? 'bg-white rounded-3xl mb-2 pt-16 shadow-lg' : 'bg-white'}`}>
                             {/* Welcome Bubble */}
                             <div className="flex flex-col items-start max-w-[85%]">
                                 <div className="px-5 py-3 rounded-t-[18px] rounded-br-[18px] rounded-bl-[4px] bg-[#f3f4f6] text-slate-800 text-[15px] leading-relaxed shadow-sm">
@@ -280,10 +287,10 @@ export default function AskAIWidget() {
 
                             {isLoading && (
                                 <div className="flex flex-col items-start max-w-[85%]">
-                                    <div className="px-4 py-3 rounded-t-[18px] rounded-br-[18px] rounded-bl-[4px] bg-[#f3f4f6] shadow-sm flex items-center gap-1.5 min-w-[60px] justify-center h-[46px]">
-                                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce [animation-delay:-0.3s]"></div>
-                                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce [animation-delay:-0.15s]"></div>
-                                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                                    <div className="px-3 py-2 rounded-t-[14px] rounded-br-[14px] rounded-bl-[4px] bg-[#f3f4f6] shadow-sm flex items-center gap-1 min-w-[40px] justify-center h-[32px]">
+                                        <div className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce [animation-delay:-0.3s]"></div>
+                                        <div className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce [animation-delay:-0.15s]"></div>
+                                        <div className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce"></div>
                                     </div>
                                 </div>
                             )}
@@ -291,7 +298,7 @@ export default function AskAIWidget() {
                         </div>
 
                         {/* 5. Footer (Input) */}
-                        <div className={`shrink-0 transition-all ${isMobile ? 'p-2 bg-transparent' : 'p-4 bg-white border-t border-gray-100'}`}>
+                        <div className={`shrink-0 transition-all pointer-events-auto ${isMobile ? 'p-2 bg-transparent' : 'p-4 bg-white border-t border-gray-100'}`}>
                             <div className={`flex items-end gap-2 bg-[#f3f4f6] rounded-[24px] transition-all focus-within:ring-2 focus-within:ring-[#0752A0]/20 ${isMobile ? 'shadow-md mx-2 mb-2 p-1.5 pl-4' : 'p-1.5 pl-4'}`}>
                                 <textarea
                                     ref={textareaRef}
