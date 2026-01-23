@@ -20,7 +20,12 @@ export default function HotelTrendsBanner() {
     useEffect(() => {
         const checkVisibility = () => {
             // We no longer check for 'hotelTrendsBannerClosed' so it shows on every page load/refresh
-            const alreadySubscribed = localStorage.getItem('hotelTrendsSubscribed');
+            let alreadySubscribed = null;
+            try {
+                alreadySubscribed = localStorage.getItem('hotelTrendsSubscribed');
+            } catch (e) {
+                console.error("Local storage access denied", e);
+            }
 
             if (alreadySubscribed) {
                 return;

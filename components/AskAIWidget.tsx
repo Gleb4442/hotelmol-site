@@ -24,17 +24,22 @@ export default function AskAIWidget() {
     const { isCookieBannerVisible } = useCookieBanner();
 
     // Session & Message State
-    const [sessionId] = useState<string>(() => {
-        if (typeof window !== "undefined") {
+    // Session & Message State
+    const [sessionId, setSessionId] = useState<string>("");
+
+    useEffect(() => {
+        try {
             let sid = localStorage.getItem("hotelmol_session_id");
             if (!sid) {
                 sid = uuidv4();
                 localStorage.setItem("hotelmol_session_id", sid);
             }
-            return sid;
+            setSessionId(sid);
+        } catch (e) {
+            console.error("Local storage access error:", e);
+            setSessionId(uuidv4()); // Fallback session id in memory
         }
-        return "";
-    });
+    }, []);
     const [messages, setMessages] = useState<Message[]>([]);
     const [input, setInput] = useState("");
     const [isLoading, setIsLoading] = useState(false);
