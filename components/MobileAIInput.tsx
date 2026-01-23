@@ -95,7 +95,7 @@ export default function MobileAIInput() {
     };
 
     return (
-        <div className="md:hidden fixed bottom-[9px] left-0 right-0 z-[50] px-4 pointer-events-none flex justify-center items-end gap-3 transition-opacity duration-300" style={{ opacity: isWidgetOpen ? 0 : 1, pointerEvents: isWidgetOpen ? 'none' : 'auto' }}>
+        <div className={`md:hidden fixed bottom-[9px] left-0 right-0 z-[50] px-4 flex justify-center items-end gap-3 transition-all duration-300 ${isWidgetOpen ? 'opacity-0 invisible pointer-events-none' : 'opacity-100 visible pointer-events-auto'}`}>
             {!shouldHideInputMenu && (
                 <>
                     {/* Menu Button Container */}
