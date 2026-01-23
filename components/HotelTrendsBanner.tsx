@@ -54,6 +54,17 @@ export default function HotelTrendsBanner() {
 
     }, [isCookieBannerVisible]);
 
+    // Dispatch visibility state for other components (e.g. MobileAIInput)
+    useEffect(() => {
+        const checkMobile = () => window.matchMedia('(max-width: 768px)').matches;
+        // Only dispatch if on mobile, or just dispatch always and let receiver decide
+        // Dispatching always is safer.
+        const event = new CustomEvent('hotel-trends-banner-state', {
+            detail: { visible: isOpen && !isModalOpen }
+        });
+        window.dispatchEvent(event);
+    }, [isOpen, isModalOpen]);
+
     const handleClose = () => {
         setIsOpen(false);
         // We do not save 'hotelTrendsBannerClosed' to localStorage anymore

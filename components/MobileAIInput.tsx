@@ -56,16 +56,31 @@ export default function MobileAIInput() {
         }
     };
 
-    const [isWidgetOpen, setIsWidgetOpen] = useState(false);
 
-    // Sync with main widget state to avoid overlap/highlight
+
+    // RETRY REPLACEMENT
+    const [isAiWidgetOpen, setIsAiWidgetOpen] = useState(false);
+    const [isTrendsBannerVisible, setIsTrendsBannerVisible] = useState(false);
+
     useEffect(() => {
         const handleWidgetState = (e: CustomEvent<{ open: boolean }>) => {
-            setIsWidgetOpen(e.detail?.open);
+            setIsAiWidgetOpen(e.detail?.open);
         };
+
+        const handleBannerState = (e: CustomEvent<{ visible: boolean }>) => {
+            setIsTrendsBannerVisible(e.detail?.visible);
+        };
+
         window.addEventListener("ai-widget-state" as any, handleWidgetState as any);
-        return () => window.removeEventListener("ai-widget-state" as any, handleWidgetState as any);
+        window.addEventListener("hotel-trends-banner-state" as any, handleBannerState as any);
+
+        return () => {
+            window.removeEventListener("ai-widget-state" as any, handleWidgetState as any);
+            window.removeEventListener("hotel-trends-banner-state" as any, handleBannerState as any);
+        };
     }, []);
+
+    const isHidden = isAiWidgetOpen || isTrendsBannerVisible;
 
     const handleSubmit = () => {
         if (!inputValue.trim()) return;
@@ -95,7 +110,7 @@ export default function MobileAIInput() {
     };
 
     return (
-        <div className={`md:hidden fixed bottom-[9px] left-0 right-0 z-[50] px-4 flex justify-center items-end gap-3 transition-all duration-300 ${isWidgetOpen ? 'opacity-0 invisible pointer-events-none' : 'opacity-100 visible pointer-events-auto'}`}>
+        <div className={`md:hidden fixed bottom-[9px] left-0 right-0 z-[50] px-4 flex justify-center items-end gap-3 transition-all duration-300 ${isHidden ? 'opacity-0 invisible pointer-events-none' : 'opacity-100 visible pointer-events-auto'}`}>
             {!shouldHideInputMenu && (
                 <>
                     {/* Menu Button Container */}
