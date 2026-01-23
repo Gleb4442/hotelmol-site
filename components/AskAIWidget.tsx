@@ -199,7 +199,7 @@ export default function AskAIWidget() {
                         className={`pointer-events-auto flex flex-col overflow-hidden
                             ${isMobile
                                 ? 'fixed inset-[10px] w-[calc(100%-20px)] h-[calc(100%-20px)] bg-transparent shadow-none pointer-events-none'
-                                : 'fixed top-[90px] bottom-[10px] right-[10px] w-[25vw] min-w-[350px] bg-transparent shadow-none pointer-events-none'
+                                : 'fixed top-[120px] bottom-[10px] right-[10px] w-[25vw] min-w-[350px] bg-transparent shadow-none pointer-events-none'
                             }
                         `}
                     >
