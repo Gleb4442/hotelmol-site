@@ -57,10 +57,10 @@ export default function MobileAIInput() {
     };
 
 
-
     // RETRY REPLACEMENT
     const [isAiWidgetOpen, setIsAiWidgetOpen] = useState(false);
     const [isTrendsBannerVisible, setIsTrendsBannerVisible] = useState(false);
+    const [hasActiveChat, setHasActiveChat] = useState(false);
 
     useEffect(() => {
         const handleWidgetState = (e: CustomEvent<{ open: boolean }>) => {
@@ -71,12 +71,18 @@ export default function MobileAIInput() {
             setIsTrendsBannerVisible(e.detail?.visible);
         };
 
+        const handleChatStatus = (e: CustomEvent<{ hasMessages: boolean }>) => {
+            setHasActiveChat(e.detail?.hasMessages);
+        };
+
         window.addEventListener("ai-widget-state" as any, handleWidgetState as any);
         window.addEventListener("hotel-trends-banner-state" as any, handleBannerState as any);
+        window.addEventListener("ai-chat-status" as any, handleChatStatus as any);
 
         return () => {
             window.removeEventListener("ai-widget-state" as any, handleWidgetState as any);
             window.removeEventListener("hotel-trends-banner-state" as any, handleBannerState as any);
+            window.removeEventListener("ai-chat-status" as any, handleChatStatus as any);
         };
     }, []);
 
@@ -247,26 +253,35 @@ export default function MobileAIInput() {
 
                     {/* Input Field with Animation - Reverted to 44px height, Font 16px */}
                     {/* Base mr-2, when scroll active mr-[54px] (44 + 10) */}
+                    {/* Input Field or Continue Button */}
                     <div
                         className={`pointer-events-auto flex-1 h-[44px] relative transition-[margin] duration-300 ease-out ${showScrollBtn ? 'mr-[54px]' : 'mr-2'}`}
                     >
-                        <div className="absolute inset-0 bg-white/70 backdrop-blur-md rounded-full shadow-lg border border-white/20 flex items-center pl-4 pr-2 transition-none">
-                            <input
-                                type="text"
-                                value={inputValue}
-                                onChange={(e) => setInputValue(e.target.value)}
-                                onKeyDown={handleKeyDown}
-                                placeholder={t("button.askQuestion") || "Ask Question"}
-                                className="flex-1 bg-transparent border-none outline-none text-[#0752A0] placeholder:text-[#0752A0]/50 text-[16px] font-medium"
-                            />
+                        {hasActiveChat ? (
                             <button
-                                onClick={handleSubmit}
-                                // Send Button: Reverted to Icon
-                                className="w-[34px] h-[34px] shrink-0 bg-[#0752A0] rounded-full flex items-center justify-center shadow-md active:scale-95 transition-transform"
+                                onClick={() => window.dispatchEvent(new CustomEvent("open-ai-chat"))}
+                                className="absolute inset-0 w-full bg-[#0752A0] text-white rounded-full shadow-lg border border-white/20 flex items-center justify-center font-bold text-[15px] active:scale-95 transition-transform"
                             >
-                                <ArrowUp className="w-5 h-5 text-white" />
+                                {t("aiWidget.continue") || "Continue Conversation"}
                             </button>
-                        </div>
+                        ) : (
+                            <div className="absolute inset-0 bg-white/70 backdrop-blur-md rounded-full shadow-lg border border-white/20 flex items-center pl-4 pr-2 transition-none">
+                                <input
+                                    type="text"
+                                    value={inputValue}
+                                    onChange={(e) => setInputValue(e.target.value)}
+                                    onKeyDown={handleKeyDown}
+                                    placeholder={t("button.askQuestion") || "Ask Question"}
+                                    className="flex-1 bg-transparent border-none outline-none text-[#0752A0] placeholder:text-[#0752A0]/50 text-[16px] font-medium"
+                                />
+                                <button
+                                    onClick={handleSubmit}
+                                    className="w-[34px] h-[34px] shrink-0 bg-[#0752A0] rounded-full flex items-center justify-center shadow-md active:scale-95 transition-transform"
+                                >
+                                    <ArrowUp className="w-5 h-5 text-white" />
+                                </button>
+                            </div>
+                        )}
                     </div>
 
                     {/* Scroll To Top Button - Mobile Integrated - Reverted to 44px */}

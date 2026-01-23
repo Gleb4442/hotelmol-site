@@ -66,6 +66,12 @@ export default function AskAIWidget() {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
     }, [messages, isLoading, isOpen]);
 
+    // Broadcast chat status
+    useEffect(() => {
+        const hasHistory = messages.length > 0;
+        window.dispatchEvent(new CustomEvent("ai-chat-status", { detail: { hasMessages: hasHistory } }));
+    }, [messages]);
+
     // Auto-resize textarea
     useEffect(() => {
         if (textareaRef.current) {
@@ -138,7 +144,9 @@ export default function AskAIWidget() {
             else aiResponse = JSON.stringify(data);
 
             setMessages((prev) => [...prev, { role: "assistant", content: aiResponse, timestamp: new Date() }]);
-
+            // Dispatch event for other components to know there's chat history
+            // We use setTimeout to ensure state (if we were using it) is updated, but here we just signal.
+            // Ideally we'd watch 'messages' effect, but here is fine for now.
         } catch (error) {
             console.error("Error sending message:", error);
             setMessages((prev) => [...prev, { role: "assistant", content: "Connection error. Please try again.", timestamp: new Date() }]);

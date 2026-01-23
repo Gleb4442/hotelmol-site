@@ -769,7 +769,7 @@ const translationsBase = {
     "trends.button.download": "Download PDF",
     "trends.error.email": "Please enter a valid email",
     "trends.error.general": "Something went wrong. Please try again.",
-
+    "aiWidget.continue": "Continue Conversation",
     "privacy.title": "Privacy Policy",
     "privacy.lastUpdated": "Last Updated: October 2025",
     "privacy.intro": "hotelmol (\"we,\" \"us,\" or \"our\") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your personal information when you use our AI guest communication platform.",
@@ -1518,6 +1518,7 @@ const translationsBase = {
     "trends.error.email": "Пожалуйста, введите корректный email",
     "trends.error.general": "Что-то пошло не так. Попробуйте еще раз.",
 
+    "aiWidget.continue": "Продолжить диалог",
     "privacy.title": "Политика конфиденциальности",
     "privacy.lastUpdated": "Последнее обновление: октябрь 2025",
     "privacy.intro": "hotelmol («мы», «нас» или «наш») обязуется защищать вашу конфиденциальность. Настоящая Политика конфиденциальности объясняет, как мы собираем, используем и защищаем вашу личную информацию при использовании нашей AI-платформы для коммуникации с гостями.",
@@ -2269,6 +2270,7 @@ const translationsBase = {
     "trends.error.email": "Будь ласка, введіть коректний email",
     "trends.error.general": "Щось пішло не так. Спробуйте ще раз.",
 
+    "aiWidget.continue": "Продовжити розмову",
     "privacy.title": "Політика конфіденційності",
     "privacy.lastUpdated": "Останнє оновлення: жовтень 2025",
     "privacy.intro": "hotelmol (\"ми\", \"нас\" або \"наш\") зобов'язується захищати вашу конфіденційність. Ця Політика конфіденційності пояснює, як ми збираємо, використовуємо та захищаємо вашу особисту інформацію при використанні нашої AI-платформи для комунікації з гостями.",
@@ -3177,6 +3179,7 @@ const translationsBase = {
     "trends.error.email": "Proszę wprowadzić poprawny adres email",
     "trends.error.general": "Coś poszło nie tak. Spróbuj ponownie.",
 
+    "aiWidget.continue": "Kontynuuj rozmowę",
     "privacy.title": "Polityka Prywatności",
     "privacy.lastUpdated": "Ostatnia Aktualizacja: Październik 2025",
     "privacy.intro": "hotelmol (\"my,\" \"nas,\" lub \"nasze\") zobowiązuje się do ochrony Twojej prywatności. Niniejsza Polityka Prywatności wyjaśnia, w jaki sposób zbieramy, wykorzystujemy i chronimy Twoje dane osobowe, gdy korzystasz z naszej platformy komunikacji z gośćmi AI.",
