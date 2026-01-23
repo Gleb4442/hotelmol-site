@@ -143,7 +143,7 @@ export default function HotelTrendsBanner() {
                         transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                         className="fixed bottom-0 left-0 right-0 md:right-auto md:bottom-4 md:left-4 z-40 w-full md:w-[400px] p-4 md:p-0"
                     >
-                        <div className="relative overflow-hidden rounded-t-2xl md:rounded-2xl bg-gradient-to-br from-[#1E4B8E] to-[#4A90D9] shadow-2xl">
+                        <div className="relative overflow-hidden rounded-2xl md:rounded-2xl bg-gradient-to-br from-[#1E4B8E] to-[#4A90D9] shadow-2xl">
                             {/* Background Decoration */}
                             <div className="absolute -top-20 -right-20 w-[300px] h-[300px] bg-[radial-gradient(circle,rgba(255,255,255,0.08)_0%,transparent_70%)] pointer-events-none" />
 
