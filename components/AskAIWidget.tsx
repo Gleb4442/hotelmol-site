@@ -189,7 +189,7 @@ export default function AskAIWidget() {
                         variants={isMobile ? mobileVariants : widgetVariants}
                         className={`pointer-events-auto flex flex-col bg-white shadow-2xl overflow-hidden
                             ${isMobile
-                                ? 'fixed inset-0 w-full h-full rounded-none'
+                                ? 'fixed inset-[15px] w-[calc(100%-30px)] h-[calc(100%-30px)] rounded-[24px]'
                                 : 'fixed bottom-[100px] right-[28px] w-[420px] max-h-[700px] h-[calc(100vh-140px)] rounded-[24px]'
                             }
                         `}
@@ -272,7 +272,7 @@ export default function AskAIWidget() {
 
                         {/* 5. Footer (Input) */}
                         <div className="p-4 bg-white border-t border-gray-100">
-                            <div className="flex items-end gap-2 bg-[#f3f4f6] rounded-[24px] p-2 pl-4 transition-all focus-within:ring-2 focus-within:ring-[#0752A0]/20">
+                            <div className="flex items-end gap-2 bg-[#f3f4f6] rounded-[24px] p-1.5 pl-4 transition-all focus-within:ring-2 focus-within:ring-[#0752A0]/20">
                                 <textarea
                                     ref={textareaRef}
                                     value={input}
@@ -280,7 +280,7 @@ export default function AskAIWidget() {
                                     onKeyDown={handleKeyDown}
                                     placeholder={t("aiWidget.inputPlaceholder") || "Type a message..."}
                                     rows={1}
-                                    className="flex-1 bg-transparent border-none outline-none resize-none py-3 max-h-[120px] text-[15px] placeholder:text-gray-400 leading-normal scrollbar-hide"
+                                    className="flex-1 bg-transparent border-none outline-none resize-none py-2 max-h-[120px] text-[16px] placeholder:text-gray-400 leading-normal scrollbar-hide"
                                     disabled={isLoading}
                                 />
                                 <Button
@@ -303,7 +303,7 @@ export default function AskAIWidget() {
                                 </Button>
                             </div>
                             <div className="text-center mt-2">
-                                <span className="text-[10px] text-gray-400 font-medium">Powered by AI Agent</span>
+                                <span className="text-[10px] text-gray-400 font-medium">powered by hotelmol team</span>
                             </div>
                         </div>
                     </motion.div>
