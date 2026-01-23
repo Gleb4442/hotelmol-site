@@ -89,7 +89,7 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
       <div className="flex items-center justify-between">
 
         {/* 1. Left Cloud: Logo */}
-        <div className={`pointer-events-auto flex items-center justify-center px-4 md:px-6 h-[56px] md:h-[72px] ${cloudStyle} hide-on-menu-open`}>
+        <div className={`pointer-events-auto flex items-center justify-center px-3 md:px-6 h-[56px] md:h-[72px] ${cloudStyle} hide-on-menu-open`}>
           <Link href="/" className="flex items-center h-full" data-testid="link-home">
             <img src="/assets/hotelmol-logo-vector.svg" alt="HotelMol" className="h-[130px] md:h-[150px] mt-1 object-contain" />
           </Link>
@@ -193,7 +193,7 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
             onClick={() => setIsMobileMenuOpen(true)}
             data-testid="button-mobile-menu"
           >
-            <Menu className="h-[40px] w-[40px] stroke-[3] text-[#0752A0]" />
+            <Menu className="h-[60px] w-[60px] stroke-[3] text-[#0752A0]" />
           </Button>
         </div>
 
