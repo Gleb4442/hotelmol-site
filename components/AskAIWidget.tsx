@@ -223,9 +223,9 @@ export default function AskAIWidget() {
                         </button>
 
                         {/* 4. Messages Area */}
-                        <div className="flex-1 overflow-y-auto space-y-4 scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-transparent pointer-events-auto bg-white rounded-3xl mb-2 pt-16 shadow-[0px_4px_24px_rgba(0,0,0,0.15)] pl-4 pr-0 pb-2">
+                        <div className="flex-1 overflow-y-auto space-y-4 scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-transparent pointer-events-auto bg-white rounded-3xl mb-2 pt-16 shadow-lg pl-5 pr-0 pb-2">
                             {/* Welcome Bubble */}
-                            <div className="flex flex-col items-start max-w-[85%]">
+                            <div className="flex flex-col items-start max-w-[85%] pr-5">
                                 <div className="px-5 py-3 rounded-t-[18px] rounded-br-[18px] rounded-bl-[4px] bg-[#f3f4f6] text-slate-800 text-[15px] leading-relaxed shadow-sm">
                                     {t("aiWidget.welcome") || "Hello! How can I help you today?"}
                                 </div>
@@ -234,7 +234,7 @@ export default function AskAIWidget() {
                             {messages.map((msg, idx) => (
                                 <div
                                     key={idx}
-                                    className={`flex flex-col max-w-[85%] ${msg.role === 'user' ? 'self-end items-end' : 'self-start items-start'}`}
+                                    className={`flex flex-col ${msg.role === 'user' ? 'max-w-[85%] self-end items-end' : 'max-w-[85%] self-start items-start pr-5'}`}
                                 >
                                     <div
                                         className={`
