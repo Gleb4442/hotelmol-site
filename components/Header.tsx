@@ -91,7 +91,7 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
         {/* 1. Left Cloud: Logo */}
         <div className={`pointer-events-auto flex items-center justify-center px-4 md:px-6 h-[56px] md:h-[72px] ${cloudStyle} hide-on-menu-open`}>
           <Link href="/" className="flex items-center h-full" data-testid="link-home">
-            <img src="/assets/hotelmol-logo.png" alt="HotelMol" className="h-[170px] md:h-[180px] mt-1 object-contain" />
+            <img src="/assets/hotelmol-logo-vector.svg" alt="HotelMol" className="h-[170px] md:h-[180px] mt-1 object-contain" />
           </Link>
         </div>
 
