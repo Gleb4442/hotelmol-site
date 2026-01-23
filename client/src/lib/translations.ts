@@ -729,6 +729,30 @@ export const translations = {
     "terms.section10.text": "We may update these Terms from time to time. Material changes will take effect 30 days after notice. Continued use of the Service constitutes acceptance of updated Terms.",
     "terms.contact": "Questions about these Terms? Contact us: hello@hotelmind.ai",
 
+
+    // Hotel Trends Banner
+    "trends.badge": "Analytical Report",
+    "trends.title": "Hotel Industry",
+    "trends.titleHighlight": "Trends 2026",
+    "trends.description": "Market analysis, forecasts, and strategic recommendations for hoteliers",
+    "trends.stats.pages": "Pages",
+    "trends.stats.chapters": "Chapters",
+    "trends.stats.charts": "Charts",
+    "trends.button.get": "Get Free Report",
+    "trends.modal.title.get": "Get the Report",
+    "trends.modal.text": "Enter your email to receive the 2026 Hotel Industry Trends Report",
+    "trends.placeholder.email": "your@email.com",
+    "trends.button.submit": "Get Report",
+    "trends.button.sending": "Sending...",
+    "trends.privacy": "By clicking, you agree to our",
+    "trends.privacyLink": "privacy policy",
+    "trends.success.title": "Done!",
+    "trends.success.text": "The report has been sent to your email. You can also download it right now.",
+    "trends.button.close": "Close",
+    "trends.button.download": "Download PDF",
+    "trends.error.email": "Please enter a valid email",
+    "trends.error.general": "Something went wrong. Please try again.",
+
     // Cookie Policy
     "cookies.title": "Cookie Policy",
     "cookies.lastUpdated": "Last Updated: October 2025",
@@ -1392,6 +1416,30 @@ export const translations = {
     "terms.section10.text": "Мы можем обновить эти Условия время от времени. Существенные изменения вступят в силу через 30 дней после уведомления. Продолжение использования Сервиса означает согласие с обновленными Условиями.",
     "terms.contact": "Вопросы об этих Условиях? Свяжитесь с нами: hello@hotelmind.ai",
 
+
+    // Hotel Trends Banner
+    "trends.badge": "Аналитический отчёт",
+    "trends.title": "Тренды гостиничной",
+    "trends.titleHighlight": "индустрии 2026",
+    "trends.description": "Глубокий анализ рынка, прогнозы развития и стратегические рекомендации для отельеров",
+    "trends.stats.pages": "Страниц",
+    "trends.stats.chapters": "Глав",
+    "trends.stats.charts": "Графиков",
+    "trends.button.get": "Получить отчёт бесплатно",
+    "trends.modal.title.get": "Получите отчёт",
+    "trends.modal.text": "Введите email для получения отчёта о трендах гостиничной индустрии 2026",
+    "trends.placeholder.email": "your@email.com",
+    "trends.button.submit": "Получить отчёт",
+    "trends.button.sending": "Отправка...",
+    "trends.privacy": "Нажимая кнопку, вы соглашаетесь с",
+    "trends.privacyLink": "политикой конфиденциальности",
+    "trends.success.title": "Готово!",
+    "trends.success.text": "Отчёт отправлен на ваш email. Также вы можете скачать его прямо сейчас.",
+    "trends.button.close": "Закрыть",
+    "trends.button.download": "Скачать PDF",
+    "trends.error.email": "Пожалуйста, введите корректный email",
+    "trends.error.general": "Что-то пошло не так. Попробуйте еще раз.",
+
     // Cookie Policy
     "cookies.title": "Политика использования файлов cookie",
     "cookies.lastUpdated": "Последнее обновление: октябрь 2025",
@@ -2054,6 +2102,30 @@ export const translations = {
     "terms.section10": "10. Зміни в Умовах",
     "terms.section10.text": "Ми можемо оновлювати ці Умови час від часу. Суттєві зміни набудуть чинності через 30 днів після повідомлення. Продовження використання Сервісу означає згоду з оновленими Умовами.",
     "terms.contact": "Питання щодо цих Умов? Зв'яжіться з нами: hello@hotelmind.ai",
+
+
+    // Hotel Trends Banner
+    "trends.badge": "Аналітичний звіт",
+    "trends.title": "Тренди готельної",
+    "trends.titleHighlight": "індустрії 2026",
+    "trends.description": "Глибокий аналіз ринку, прогнози розвитку та стратегічні рекомендації для готельєрів",
+    "trends.stats.pages": "Сторінок",
+    "trends.stats.chapters": "Глав",
+    "trends.stats.charts": "Графіків",
+    "trends.button.get": "Отримати звіт безкоштовно",
+    "trends.modal.title.get": "Отримайте звіт",
+    "trends.modal.text": "Введіть email для отримання звіту про тренди готельної індустрії 2026",
+    "trends.placeholder.email": "your@email.com",
+    "trends.button.submit": "Отримати звіт",
+    "trends.button.sending": "Відправка...",
+    "trends.privacy": "Натискаючи кнопку, ви погоджуєтесь з",
+    "trends.privacyLink": "політикою конфіденційності",
+    "trends.success.title": "Готово!",
+    "trends.success.text": "Звіт відправлено на ваш email. Також ви можете завантажити його прямо зараз.",
+    "trends.button.close": "Закрити",
+    "trends.button.download": "Завантажити PDF",
+    "trends.error.email": "Будь ласка, введіть коректний email",
+    "trends.error.general": "Щось пішло не так. Спробуйте ще раз.",
 
     // Cookie Policy
     "cookies.title": "Політика використання файлів cookie",
@@ -2872,6 +2944,30 @@ export const translations = {
     "terms.section10": "10. Zmiany w Warunkach",
     "terms.section10.text": "Od czasu do czasu możemy aktualizować niniejsze Warunki. Istotne zmiany wejdą w życie 30 dni po powiadomieniu. Dalsze korzystanie z Usługi oznacza akceptację zaktualizowanych Warunków.",
     "terms.contact": "Pytania dotyczące niniejszych Warunków? Skontaktuj się z nami: hello@hotelmind.ai",
+
+
+    // Hotel Trends Banner
+    "trends.badge": "Raport analityczny",
+    "trends.title": "Trendy w branży",
+    "trends.titleHighlight": "hotelarskiej 2026",
+    "trends.description": "Analiza rynku, prognozy i rekomendacje strategiczne dla hotelarzy",
+    "trends.stats.pages": "Stron",
+    "trends.stats.chapters": "Rozdziałów",
+    "trends.stats.charts": "Wykresów",
+    "trends.button.get": "Pobierz raport za darmo",
+    "trends.modal.title.get": "Pobierz raport",
+    "trends.modal.text": "Wpisz swój email, aby otrzymać raport Trendy w branży hotelarskiej 2026",
+    "trends.placeholder.email": "your@email.com",
+    "trends.button.submit": "Pobierz raport",
+    "trends.button.sending": "Wysyłanie...",
+    "trends.privacy": "Klikając, zgadzasz się z naszą",
+    "trends.privacyLink": "polityką prywatności",
+    "trends.success.title": "Gotowe!",
+    "trends.success.text": "Raport został wysłany na Twój email. Możesz go również pobrać teraz.",
+    "trends.button.close": "Zamknij",
+    "trends.button.download": "Pobierz PDF",
+    "trends.error.email": "Proszę wprowadzić poprawny adres email",
+    "trends.error.general": "Coś poszło nie tak. Spróbuj ponownie.",
 
     // Cookie Policy
     "cookies.title": "Polityka plików cookie",

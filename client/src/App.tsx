@@ -7,6 +7,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { TranslationProvider } from "@/lib/TranslationContext";
 import { CookieBannerProvider } from "@/lib/CookieBannerContext";
 import CookieBanner from "@/components/CookieBanner";
+import HotelTrendsBanner from "@/components/HotelTrendsBanner";
 import FloatingButtons from "@/components/FloatingButtons";
 import ScrollToTop from "@/components/ScrollToTop";
 import ScrollToTopOnNavigation from "@/components/ScrollToTopOnNavigation";
@@ -63,6 +64,7 @@ function App() {
             <Toaster />
             <Router />
             <CookieBanner />
+            <HotelTrendsBanner />
             <FloatingButtons />
             <ScrollToTop />
           </TooltipProvider>
