@@ -82,7 +82,7 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
     item.href !== "/blog" || blogEnabled
   );
 
-  const cloudStyle = "bg-white/95 backdrop-blur-md shadow-[0_8px_32px_rgba(7,82,160,0.12)] border border-white/20 rounded-full transition-all duration-300";
+  const cloudStyle = "bg-white/95 backdrop-blur-md shadow-[0_4px_24px_rgba(7,82,160,0.4)] border border-white/20 rounded-full transition-all duration-300";
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 w-full max-w-[1440px] mx-auto mt-2 md:mt-4 px-4 md:px-6 pointer-events-none">
@@ -193,7 +193,7 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
             onClick={() => setIsMobileMenuOpen(true)}
             data-testid="button-mobile-menu"
           >
-            <Menu className="h-[110px] w-[110px] stroke-[3] text-[#0752A0]" />
+            <Menu className="!h-[110px] !w-[110px] stroke-[3] text-[#0752A0]" />
           </Button>
         </div>
 

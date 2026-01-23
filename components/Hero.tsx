@@ -72,6 +72,8 @@ export default function Hero() {
     <>
       <section ref={heroRef} className="relative min-h-[600px] sm:min-h-[800px] lg:min-h-[calc(85vh+100px)] flex items-start lg:items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/90 to-primary/80" />
+        {/* Mobile top white gradient fade */}
+        <div className="absolute top-0 left-0 right-0 h-[180px] bg-gradient-to-b from-white via-white/80 to-transparent z-[1] md:hidden" />
 
         <div className="relative z-10 container mx-auto px-6 pt-[144px] pb-24 lg:py-32">
           <div className="max-w-5xl mx-auto text-center">
