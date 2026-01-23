@@ -273,7 +273,7 @@ export default function AskAIWidget() {
 
                         {/* 5. Footer (Input) */}
                         <div className="shrink-0 transition-all pointer-events-auto p-2 bg-transparent">
-                            <div className="flex items-end gap-2 bg-[#f3f4f6] rounded-[24px] transition-all focus-within:ring-2 focus-within:ring-[#0752A0]/20 shadow-md mx-2 mb-2 p-1.5 pl-4">
+                            <div className="flex items-end gap-2 bg-white/70 backdrop-blur-md rounded-[26px] shadow-lg border border-white/20 transition-all focus-within:ring-2 focus-within:ring-[#0752A0]/20 mx-2 mb-2 p-1.5 pl-4">
                                 <textarea
                                     ref={textareaRef}
                                     value={input}
@@ -281,7 +281,7 @@ export default function AskAIWidget() {
                                     onKeyDown={handleKeyDown}
                                     placeholder={t("aiWidget.inputPlaceholder") || "Type a message..."}
                                     rows={1}
-                                    className="flex-1 bg-transparent border-none outline-none resize-none py-1.5 max-h-[100px] text-[16px] placeholder:text-gray-400 leading-normal scrollbar-hide"
+                                    className="flex-1 bg-transparent border-none outline-none resize-none py-2 max-h-[100px] text-[16px] text-[#0752A0] placeholder:text-[#0752A0]/50 font-medium leading-normal scrollbar-hide"
                                     disabled={isLoading}
                                 />
                                 <Button
@@ -289,15 +289,15 @@ export default function AskAIWidget() {
                                     onClick={handleSendMessage}
                                     disabled={!input.trim() || isLoading}
                                     className={`
-                                        h-10 w-10 shrink-0 rounded-full mb-0.5 transition-all duration-300
+                                        h-[34px] w-[34px] shrink-0 rounded-full mb-1 transition-all duration-300
                                         ${input.trim()
                                             ? 'bg-[#0752A0] hover:bg-[#064080] text-white shadow-md hover:scale-105'
-                                            : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                                            : 'bg-[#0752A0]/50 text-white/50 cursor-not-allowed'
                                         }
                                     `}
                                 >
                                     {isLoading ? (
-                                        <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                                        <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                                     ) : (
                                         <ArrowUp className="w-5 h-5 stroke-[2.5]" />
                                     )}
