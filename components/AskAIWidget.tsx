@@ -233,13 +233,12 @@ export default function AskAIWidget() {
                             </div>
                         )}
 
-                        {/* Mobile Close Button (Absolute) */}
                         {isMobile && (
                             <button
                                 onClick={() => setIsOpen(false)}
-                                className="absolute top-4 right-2 w-8 h-8 flex items-center justify-center rounded-full bg-white/80 shadow-sm z-50 text-gray-600 pointer-events-auto"
+                                className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full bg-white/80 shadow-md z-50 text-gray-600 pointer-events-auto hover:bg-white transition-colors"
                             >
-                                <ChevronDown className="w-6 h-6" />
+                                <ChevronDown className="w-6 h-6 stroke-[2.5]" />
                             </button>
                         )}
 
@@ -307,7 +306,7 @@ export default function AskAIWidget() {
                                     onKeyDown={handleKeyDown}
                                     placeholder={t("aiWidget.inputPlaceholder") || "Type a message..."}
                                     rows={1}
-                                    className="flex-1 bg-transparent border-none outline-none resize-none py-2 max-h-[120px] text-[16px] placeholder:text-gray-400 leading-normal scrollbar-hide"
+                                    className="flex-1 bg-transparent border-none outline-none resize-none py-1.5 max-h-[100px] text-[16px] placeholder:text-gray-400 leading-normal scrollbar-hide"
                                     disabled={isLoading}
                                 />
                                 <Button
