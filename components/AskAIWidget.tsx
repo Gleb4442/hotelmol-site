@@ -189,28 +189,37 @@ export default function AskAIWidget() {
                         variants={isMobile ? mobileVariants : widgetVariants}
                         className={`pointer-events-auto flex flex-col bg-white shadow-2xl overflow-hidden
                             ${isMobile
-                                ? 'fixed inset-[15px] w-[calc(100%-30px)] h-[calc(100%-30px)] rounded-[24px]'
+                                ? 'fixed inset-[10px] w-[calc(100%-20px)] h-[calc(100%-20px)] rounded-[24px]'
                                 : 'fixed bottom-[100px] right-[28px] w-[420px] max-h-[700px] h-[calc(100vh-140px)] rounded-[24px]'
                             }
                         `}
                     >
                         {/* 3. Header */}
-                        <div className="flex items-center justify-between px-6 py-4 bg-[#0752A0] text-white shrink-0">
-                            <div className="flex items-center gap-3">
-                                <div className="relative">
-                                    <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
-                                        <img src="/assets/hotelmol-logo.png" alt="Logo" className="w-8 h-8 object-contain brightness-0 invert" />
+                        <div className="flex items-center justify-between px-6 py-4 bg-[#0752A0] text-white shrink-0 relative">
+                            {isMobile ? (
+                                <>
+                                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                        <h3 className="font-bold text-lg leading-tight">hotelmol</h3>
                                     </div>
-                                    <span className="absolute -top-0.5 -right-0.5 w-3 h-3 bg-green-400 border-[2px] border-[#0752A0] rounded-full"></span>
+                                    <div /> {/* Spacer for flex-between */}
+                                </>
+                            ) : (
+                                <div className="flex items-center gap-3">
+                                    <div className="relative">
+                                        <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
+                                            <img src="/assets/hotelmol-logo.png" alt="Logo" className="w-8 h-8 object-contain brightness-0 invert" />
+                                        </div>
+                                        <span className="absolute -top-0.5 -right-0.5 w-3 h-3 bg-green-400 border-[2px] border-[#0752A0] rounded-full"></span>
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <h3 className="font-bold text-lg leading-tight">hotelmol</h3>
+                                        <span className="textxs text-white/80 font-medium">Assistant</span>
+                                    </div>
                                 </div>
-                                <div className="flex flex-col">
-                                    <h3 className="font-bold text-lg leading-tight">hotelmol</h3>
-                                    <span className="textxs text-white/80 font-medium">Assistant</span>
-                                </div>
-                            </div>
+                            )}
                             <button
                                 onClick={() => setIsOpen(false)}
-                                className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors"
+                                className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors z-10"
                             >
                                 <ChevronDown className="w-6 h-6 text-white" />
                             </button>
@@ -303,7 +312,7 @@ export default function AskAIWidget() {
                                 </Button>
                             </div>
                             <div className="text-center mt-2">
-                                <span className="text-[10px] text-gray-400 font-medium">powered by hotelmol team</span>
+                                {/* Powered by removed */}
                             </div>
                         </div>
                     </motion.div>
