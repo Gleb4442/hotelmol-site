@@ -21,13 +21,16 @@ export default function HotelTrendsBanner() {
         const checkVisibility = () => {
             // We no longer check for 'hotelTrendsBannerClosed' so it shows on every page load/refresh
             let alreadySubscribed = null;
+            let dismissCount = 0;
             try {
                 alreadySubscribed = localStorage.getItem('hotelTrendsSubscribed');
+                const count = localStorage.getItem('hotelTrendsDismissCount');
+                dismissCount = count ? parseInt(count, 10) : 0;
             } catch (e) {
                 console.error("Local storage access denied", e);
             }
 
-            if (alreadySubscribed) {
+            if (alreadySubscribed || dismissCount >= 2) {
                 return;
             }
 
@@ -67,7 +70,12 @@ export default function HotelTrendsBanner() {
 
     const handleClose = () => {
         setIsOpen(false);
-        // We do not save 'hotelTrendsBannerClosed' to localStorage anymore
+        try {
+            const currentCount = parseInt(localStorage.getItem('hotelTrendsDismissCount') || '0', 10);
+            localStorage.setItem('hotelTrendsDismissCount', (currentCount + 1).toString());
+        } catch (e) {
+            console.error("Local storage access denied", e);
+        }
     };
 
     const closeModal = () => {
