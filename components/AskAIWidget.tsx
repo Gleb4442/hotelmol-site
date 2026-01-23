@@ -204,16 +204,18 @@ export default function AskAIWidget() {
                         `}
                     >
                         {/* 3. Header */}
-                        <div className="flex items-center justify-between px-6 py-4 bg-[#0752A0] text-white shrink-0 relative">
+                        <div className={`flex items-center justify-between px-6 py-4 shrink-0 relative ${isMobile ? 'bg-transparent pt-2' : 'bg-[#0752A0]'}`}>
                             {isMobile ? (
                                 <>
-                                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                                        <h3 className="font-bold text-lg leading-tight">hotelmol</h3>
+                                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none top-5">
+                                        <div className="bg-[#0752A0] text-white font-bold text-sm px-6 py-2 rounded-full shadow-md z-20">
+                                            hotelmol
+                                        </div>
                                     </div>
-                                    <div /> {/* Spacer for flex-between */}
+                                    <div /> {/* Spacer */}
                                 </>
                             ) : (
-                                <div className="flex items-center gap-3">
+                                <div className="flex items-center gap-3 text-white">
                                     <div className="relative">
                                         <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
                                             <img src="/assets/hotelmol-logo.png" alt="Logo" className="w-8 h-8 object-contain brightness-0 invert" />
@@ -228,9 +230,9 @@ export default function AskAIWidget() {
                             )}
                             <button
                                 onClick={() => setIsOpen(false)}
-                                className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors z-10"
+                                className={`w-8 h-8 flex items-center justify-center rounded-full transition-colors z-30 ${isMobile ? 'bg-gray-100/50 hover:bg-gray-200 text-gray-600' : 'hover:bg-white/10 text-white'}`}
                             >
-                                <ChevronDown className="w-6 h-6 text-white" />
+                                <ChevronDown className="w-6 h-6" />
                             </button>
                         </div>
 
@@ -289,8 +291,8 @@ export default function AskAIWidget() {
                         </div>
 
                         {/* 5. Footer (Input) */}
-                        <div className="p-4 bg-white border-t border-gray-100">
-                            <div className="flex items-end gap-2 bg-[#f3f4f6] rounded-[24px] p-1.5 pl-4 transition-all focus-within:ring-2 focus-within:ring-[#0752A0]/20">
+                        <div className={`shrink-0 transition-all ${isMobile ? 'p-2 bg-transparent' : 'p-4 bg-white border-t border-gray-100'}`}>
+                            <div className={`flex items-end gap-2 bg-[#f3f4f6] rounded-[24px] transition-all focus-within:ring-2 focus-within:ring-[#0752A0]/20 ${isMobile ? 'shadow-md mx-2 mb-2 p-1.5 pl-4' : 'p-1.5 pl-4'}`}>
                                 <textarea
                                     ref={textareaRef}
                                     value={input}
