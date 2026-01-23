@@ -18,22 +18,35 @@ export default function HotelTrendsBanner() {
 
     // Check if banner should be shown
     useEffect(() => {
-        // Show only if:
-        // 1. Cookie consent is accepted (isCookieBannerVisible is false)
-        // 2. User has NOT closed this banner previously
-        // 3. User has NOT already subscribed
         const checkVisibility = () => {
             const bannerClosed = localStorage.getItem('hotelTrendsBannerClosed');
             const alreadySubscribed = localStorage.getItem('hotelTrendsSubscribed');
 
-            // Delay slightly to ensure smooth transition after cookie banner closes
-            if (!isCookieBannerVisible && !bannerClosed && !alreadySubscribed) {
+            if (bannerClosed || alreadySubscribed) {
+                return;
+            }
+
+            // Using 768px breakpoint to distinguish mobile from desktop
+            const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
+            // Desktop: Show always (regardless of cookie banner)
+            if (!isMobile) {
+                setIsOpen(true);
+            }
+            // Mobile: Show only if cookie banner is NOT visible (meaning consent is given)
+            else if (!isCookieBannerVisible) {
+                // Delay slightly on mobile to ensure smooth transition after cookie banner closes
                 const timer = setTimeout(() => setIsOpen(true), 1000);
                 return () => clearTimeout(timer);
             }
         };
 
         checkVisibility();
+
+        // Add resize listener to handle orientation changes
+        window.addEventListener('resize', checkVisibility);
+        return () => window.removeEventListener('resize', checkVisibility);
+
     }, [isCookieBannerVisible]);
 
     const handleClose = () => {
