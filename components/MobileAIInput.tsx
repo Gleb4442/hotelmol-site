@@ -59,7 +59,7 @@ export default function MobileAIInput() {
     const handleSubmit = () => {
         if (!inputValue.trim()) return;
         // Trigger Fullscreen Mobile Chat
-        window.dispatchEvent(new CustomEvent("open-ai-mobile-fullscreen", {
+        window.dispatchEvent(new CustomEvent("open-ai-chat-with-message", {
             detail: { message: inputValue }
         }));
         setInputValue("");
