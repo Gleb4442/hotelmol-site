@@ -193,7 +193,7 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
             onClick={() => setIsMobileMenuOpen(true)}
             data-testid="button-mobile-menu"
           >
-            <Menu className="!h-[44px] !w-[44px] stroke-[3] text-[#0752A0]" />
+            <Menu className="!h-[28px] !w-[28px] stroke-[3] text-[#0752A0]" />
           </Button>
         </div>
 
