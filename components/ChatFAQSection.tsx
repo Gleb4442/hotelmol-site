@@ -127,7 +127,7 @@ export default function ChatFAQSection() {
                                                 "group relative overflow-hidden bg-white px-5 py-3 rounded-2xl rounded-tl-none shadow-sm border border-slate-100 cursor-pointer transition-all duration-300",
                                                 !isRevealed && "hover:shadow-md hover:border-primary/20"
                                             )}
-                                            onClick={() => !isRevealed && toggleReveal(index)}
+                                            onClick={() => toggleReveal(index)}
                                         >
                                             <div className="relative">
                                                 {/* Blurred Overlay */}
@@ -153,7 +153,7 @@ export default function ChatFAQSection() {
                                                 {/* Actual Content */}
                                                 <p className={cn(
                                                     "text-sm md:text-base text-slate-700 leading-relaxed transition-all duration-700 whitespace-pre-line",
-                                                    !isRevealed && "opacity-40 blur-[2px] select-none"
+                                                    !isRevealed && "opacity-40 blur-[2px] select-none line-clamp-2 md:line-clamp-none"
                                                 )}>
                                                     {faq.answer.includes("[PRICING_BTN]") ? (
                                                         faq.answer.split(/\[PRICING_BTN\](.*?)\[\/PRICING_BTN\]/g).map((part, i) => {
