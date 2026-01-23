@@ -19,10 +19,10 @@ export default function HotelTrendsBanner() {
     // Check if banner should be shown
     useEffect(() => {
         const checkVisibility = () => {
-            const bannerClosed = localStorage.getItem('hotelTrendsBannerClosed');
+            // We no longer check for 'hotelTrendsBannerClosed' so it shows on every page load/refresh
             const alreadySubscribed = localStorage.getItem('hotelTrendsSubscribed');
 
-            if (bannerClosed || alreadySubscribed) {
+            if (alreadySubscribed) {
                 return;
             }
 
@@ -51,7 +51,7 @@ export default function HotelTrendsBanner() {
 
     const handleClose = () => {
         setIsOpen(false);
-        localStorage.setItem('hotelTrendsBannerClosed', 'true');
+        // We do not save 'hotelTrendsBannerClosed' to localStorage anymore
     };
 
     const closeModal = () => {
