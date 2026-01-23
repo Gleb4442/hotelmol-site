@@ -199,7 +199,7 @@ export default function AskAIWidget() {
                         className={`pointer-events-auto flex flex-col overflow-hidden
                             ${isMobile
                                 ? 'fixed inset-[10px] w-[calc(100%-20px)] h-[calc(100%-20px)] bg-transparent shadow-none pointer-events-none'
-                                : 'fixed top-[10px] bottom-[10px] right-[10px] w-[25vw] min-w-[350px] bg-transparent shadow-none pointer-events-none'
+                                : 'fixed top-[70px] bottom-[10px] right-[10px] w-[25vw] min-w-[350px] bg-transparent shadow-none pointer-events-none'
                             }
                         `}
                     >
@@ -218,7 +218,7 @@ export default function AskAIWidget() {
                         </button>
 
                         {/* 4. Messages Area */}
-                        <div className="flex-1 overflow-y-auto space-y-4 scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-transparent pointer-events-auto bg-white rounded-3xl mb-2 pt-16 shadow-lg px-2 pb-2">
+                        <div className="flex-1 overflow-y-auto space-y-4 scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-transparent pointer-events-auto bg-white rounded-3xl mb-2 pt-16 shadow-lg px-5 pb-2">
                             {/* Welcome Bubble */}
                             <div className="flex flex-col items-start max-w-[85%]">
                                 <div className="px-5 py-3 rounded-t-[18px] rounded-br-[18px] rounded-bl-[4px] bg-[#f3f4f6] text-slate-800 text-[15px] leading-relaxed shadow-sm">

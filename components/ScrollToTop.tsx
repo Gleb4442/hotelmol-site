@@ -6,8 +6,17 @@ import { useCookieBanner } from "@/lib/CookieBannerContext";
 
 export default function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false);
+  const [isChatOpen, setIsChatOpen] = useState(false);
   const pathname = usePathname();
   const { isCookieBannerVisible } = useCookieBanner();
+
+  useEffect(() => {
+    const handleChatState = (e: CustomEvent<{ open: boolean }>) => {
+      setIsChatOpen(e.detail.open);
+    };
+    window.addEventListener("ai-widget-state" as any, handleChatState as any);
+    return () => window.removeEventListener("ai-widget-state" as any, handleChatState as any);
+  }, []);
 
   useEffect(() => {
     const toggleVisibility = () => {
@@ -43,7 +52,7 @@ export default function ScrollToTop() {
 
   return (
     <>
-      {isVisible && !isCookieBannerVisible && (
+      {isVisible && !isCookieBannerVisible && !isChatOpen && (
         <button
           onClick={scrollToTop}
           data-testid="button-scroll-to-top-desktop"
