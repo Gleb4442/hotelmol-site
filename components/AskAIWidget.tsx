@@ -273,7 +273,7 @@ export default function AskAIWidget() {
 
                         {/* 5. Footer (Input) */}
                         <div className="shrink-0 transition-all pointer-events-auto p-2 bg-transparent">
-                            <div className="flex items-end gap-2 bg-white/70 backdrop-blur-md rounded-[26px] shadow-lg border border-white/20 transition-all focus-within:ring-2 focus-within:ring-[#0752A0]/20 mx-2 mb-2 p-1.5 pl-4">
+                            <div className="flex items-end bg-white/70 backdrop-blur-md rounded-[22px] shadow-lg border border-white/20 transition-all focus-within:ring-2 focus-within:ring-[#0752A0]/20 mx-2 mb-2 pl-4 pr-1 py-[5px] min-h-[44px]">
                                 <textarea
                                     ref={textareaRef}
                                     value={input}
@@ -281,7 +281,7 @@ export default function AskAIWidget() {
                                     onKeyDown={handleKeyDown}
                                     placeholder={t("aiWidget.inputPlaceholder") || "Type a message..."}
                                     rows={1}
-                                    className="flex-1 bg-transparent border-none outline-none resize-none py-2 max-h-[100px] text-[16px] text-[#0752A0] placeholder:text-[#0752A0]/50 font-medium leading-normal scrollbar-hide"
+                                    className="flex-1 bg-transparent border-none outline-none resize-none py-[5px] max-h-[100px] text-[16px] text-[#0752A0] placeholder:text-[#0752A0]/50 font-medium leading-[24px] scrollbar-hide mb-0"
                                     disabled={isLoading}
                                 />
                                 <Button
@@ -289,7 +289,7 @@ export default function AskAIWidget() {
                                     onClick={handleSendMessage}
                                     disabled={!input.trim() || isLoading}
                                     className={`
-                                        h-[34px] w-[34px] shrink-0 rounded-full mb-1 transition-all duration-300
+                                        h-[34px] w-[34px] shrink-0 rounded-full transition-all duration-300 ml-2
                                         ${input.trim()
                                             ? 'bg-[#0752A0] hover:bg-[#064080] text-white shadow-md hover:scale-105'
                                             : 'bg-[#0752A0]/50 text-white/50 cursor-not-allowed'
