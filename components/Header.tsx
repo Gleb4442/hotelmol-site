@@ -96,7 +96,7 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
         </div>
 
         {/* 2. Center Cloud: Navigation (Desktop Only) */}
-        <div className={`hidden md:flex pointer-events-auto items-center justify-center px-6 h-[72px] ${cloudStyle}`}>
+        <div className={`hidden md:flex pointer-events-auto items-center justify-center px-[18px] h-[72px] ${cloudStyle}`}>
           <nav className="flex items-center gap-1">
             {navigation.map((item) => {
               const isActive = pathname === item.href;
