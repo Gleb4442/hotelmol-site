@@ -56,6 +56,17 @@ export default function MobileAIInput() {
         }
     };
 
+    const [isWidgetOpen, setIsWidgetOpen] = useState(false);
+
+    // Sync with main widget state to avoid overlap/highlight
+    useEffect(() => {
+        const handleWidgetState = (e: CustomEvent<{ open: boolean }>) => {
+            setIsWidgetOpen(e.detail?.open);
+        };
+        window.addEventListener("ai-widget-state" as any, handleWidgetState as any);
+        return () => window.removeEventListener("ai-widget-state" as any, handleWidgetState as any);
+    }, []);
+
     const handleSubmit = () => {
         if (!inputValue.trim()) return;
         // Trigger Fullscreen Mobile Chat
@@ -84,7 +95,7 @@ export default function MobileAIInput() {
     };
 
     return (
-        <div className="md:hidden fixed bottom-[9px] left-0 right-0 z-[50] px-4 pointer-events-none flex justify-center items-end gap-3">
+        <div className="md:hidden fixed bottom-[9px] left-0 right-0 z-[50] px-4 pointer-events-none flex justify-center items-end gap-3 transition-opacity duration-300" style={{ opacity: isWidgetOpen ? 0 : 1, pointerEvents: isWidgetOpen ? 'none' : 'auto' }}>
             {!shouldHideInputMenu && (
                 <>
                     {/* Menu Button Container */}

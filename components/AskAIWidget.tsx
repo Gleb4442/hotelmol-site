@@ -173,10 +173,19 @@ export default function AskAIWidget() {
     };
 
     const mobileVariants = {
-        hidden: { y: "100%" },
-        visible: { y: 0, transition: { type: "spring", damping: 25, stiffness: 200 } },
-        exit: { y: "100%" }
+        hidden: { y: "110%" },
+        visible: { y: 0, transition: { type: "spring", damping: 30, stiffness: 300 } },
+        exit: { y: "110%", transition: { duration: 0.3, ease: "easeInOut" } }
     };
+
+    // Dispatch open/close events for other components (e.g. MobileAIInput)
+    useEffect(() => {
+        if (isOpen) {
+            window.dispatchEvent(new CustomEvent("ai-widget-state", { detail: { open: true } }));
+        } else {
+            window.dispatchEvent(new CustomEvent("ai-widget-state", { detail: { open: false } }));
+        }
+    }, [isOpen]);
 
     return (
         <div className="fixed z-[9999] pointer-events-none inset-0 flex flex-col items-end justify-end sm:p-0">
