@@ -175,28 +175,9 @@ export default function HotelTrendsBanner() {
                                     {t('trends.description')}
                                 </p>
 
-                                <div className="flex gap-6 mb-6 pb-6 border-b border-white/15">
-                                    <div>
-                                        <div className="text-2xl font-bold text-white">87</div>
-                                        <div className="text-[10px] font-semibold text-blue-200 uppercase tracking-wide">{t('trends.stats.pages')}</div>
-                                    </div>
-                                    <div>
-                                        <div className="text-2xl font-bold text-white">12</div>
-                                        <div className="text-[10px] font-semibold text-blue-200 uppercase tracking-wide">{t('trends.stats.chapters')}</div>
-                                    </div>
-                                    <div>
-                                        <div className="text-2xl font-bold text-white">50+</div>
-                                        <div className="text-[10px] font-semibold text-blue-200 uppercase tracking-wide">{t('trends.stats.charts')}</div>
-                                    </div>
-                                </div>
+                                {/* Statistics section removed */}
 
-                                <button
-                                    onClick={() => setIsModalOpen(true)}
-                                    className="w-full flex items-center justify-center gap-2.5 py-3.5 px-6 bg-white text-[#1E4B8E] rounded-full font-bold text-[15px] hover:translate-y-[-2px] hover:shadow-lg transition-all duration-200"
-                                >
-                                    {t('trends.button.get')}
-                                    <Download size={18} />
-                                </button>
+                                {/* Button removed */}
                             </div>
                         </div>
                     </motion.div>
