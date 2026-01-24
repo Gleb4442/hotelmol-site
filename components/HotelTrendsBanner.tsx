@@ -281,7 +281,7 @@ export default function HotelTrendsBanner() {
                                     </form>
 
                                     <p className="text-center text-xs text-slate-400 mt-4 leading-normal">
-                                        {t('trends.privacy')} <a href="/privacy" className="text-blue-600 hover:underline font-medium">{t('trends.privacyLink')}</a>
+                                        {t('trends.privacy')} <a href="/terms" className="text-blue-600 hover:underline font-medium">{t('trends.privacyLink')}</a>
                                     </p>
                                 </>
                             )}

@@ -745,7 +745,7 @@ export const translations = {
     "trends.button.submit": "Get Report",
     "trends.button.sending": "Sending...",
     "trends.privacy": "By clicking, you agree to our",
-    "trends.privacyLink": "privacy policy",
+    "trends.privacyLink": "Terms of Service",
     "trends.success.title": "Done!",
     "trends.success.text": "The report has been sent to your email. You can also download it right now.",
     "trends.button.close": "Close",
