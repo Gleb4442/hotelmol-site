@@ -124,10 +124,17 @@ export default function AskAIWidget() {
         if (textareaRef.current) textareaRef.current.style.height = "auto";
 
         try {
+            // Retrieve session ID directly to ensure freshness (avoids stale closure issues in event listeners)
+            const currentSessionId = sessionId || localStorage.getItem("hotelmol_session_id") || uuidv4();
+
+            // Should we update state if it is different? Maybe, but not strictly necessary for the request logic.
+            // If we generated a new one fallback, might want to save it? 
+            // The useEffect logic usually handles this on mount/update, but strictly for this request, this is safe.
+
             const response = await fetch("https://n8n.myn8napp.online/webhook/40d5e18a-9a16-408e-b594-7d4797e085f6/chat", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ chatInput: userMsg, sessionId: sessionId }),
+                body: JSON.stringify({ chatInput: userMsg, sessionId: currentSessionId }),
             });
 
             if (!response.ok) throw new Error("Network response was not ok");
