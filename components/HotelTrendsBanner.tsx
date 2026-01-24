@@ -157,12 +157,7 @@ export default function HotelTrendsBanner() {
                             </button>
 
                             <div className="p-6">
-                                <div className="inline-flex items-center gap-2 px-4 py-2 mb-4 rounded-full bg-white/15 backdrop-blur-sm border border-white/20">
-                                    <Download size={14} className="text-white" />
-                                    <span className="text-[11px] font-bold tracking-widest text-white uppercase">
-                                        {t('trends.badge')}
-                                    </span>
-                                </div>
+                                {/* Badge removed */}
 
                                 <h2 className="text-[24px] font-extrabold text-white leading-tight mb-3">
                                     {t('trends.title')} <br />
@@ -178,6 +173,13 @@ export default function HotelTrendsBanner() {
                                 {/* Statistics section removed */}
 
                                 {/* Button removed */}
+                                <button
+                                    onClick={() => setIsModalOpen(true)}
+                                    className="w-full flex items-center justify-center gap-2.5 py-3.5 px-6 bg-white text-[#1E4B8E] rounded-full font-bold text-[15px] hover:translate-y-[-2px] hover:shadow-lg transition-all duration-200"
+                                >
+                                    {t('trends.button.get')}
+                                    <Download size={18} />
+                                </button>
                             </div>
                         </div>
                     </motion.div>
