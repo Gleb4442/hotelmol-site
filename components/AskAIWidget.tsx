@@ -246,7 +246,7 @@ export default function AskAIWidget() {
                         </button>
 
                         {/* 4. Messages Area */}
-                        <div className="flex flex-col flex-1 overflow-y-auto space-y-4 scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-transparent pointer-events-auto bg-white rounded-3xl mb-2 pt-16 px-5 pb-2 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.5),0_0_40px_-5px_rgba(0,0,0,0.2)]">
+                        <div className="flex flex-col flex-1 overflow-y-auto space-y-4 scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-transparent pointer-events-auto bg-white rounded-3xl mb-2 pt-16 px-5 pb-2 shadow-[0_0_30px_-5px_rgba(0,0,0,0.2),0_0_0_1px_rgba(0,0,0,0.05)]">
                             {/* Welcome Bubble */}
                             <div className="flex flex-col items-start self-start max-w-[85%]">
                                 <div className="px-5 py-3 rounded-t-[18px] rounded-br-[18px] rounded-bl-[4px] bg-[#f3f4f6] text-slate-800 text-[15px] leading-relaxed shadow-sm">
