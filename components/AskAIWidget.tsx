@@ -348,7 +348,7 @@ export default function AskAIWidget() {
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             xmlSpace="preserve"
-                            className="w-9 h-9"
+                            className="w-11 h-11"
                             version="1.1"
                             viewBox="0 0 203.18 203.18"
                             style={{
