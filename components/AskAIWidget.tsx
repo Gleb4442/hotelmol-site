@@ -346,7 +346,7 @@ export default function AskAIWidget() {
                         className="pointer-events-auto fixed bottom-6 z-[46] hidden md:flex items-center gap-2 pl-1.5 pr-5 h-[48px] bg-[#0752A0] rounded-full shadow-[0_8px_24px_rgba(7,82,160,0.25)] border border-white/10 hover:shadow-[0_12px_32px_rgba(7,82,160,0.35)] transition-shadow"
                     >
                         <div className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center">
-                            <img src="/assets/hotelmol-logo.png" alt="Logo" className="w-6 h-6 object-contain brightness-0 invert" />
+                            <span className="text-white/30 text-xs font-light">h</span>
                         </div>
                         <span className="font-semibold text-[15px] text-white tracking-wide whitespace-nowrap">{t("aiWidget.button") || "Ask AI"}</span>
                     </motion.button>
