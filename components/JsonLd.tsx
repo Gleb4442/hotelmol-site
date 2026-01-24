@@ -1,7 +1,7 @@
 "use client";
 
 import type { BlogPost, authors } from '@/shared/schema';
-import Script from 'next/script';
+
 
 type Author = typeof authors.$inferSelect;
 type PostWithAuthor = BlogPost & { author: Author | null };
@@ -54,14 +54,15 @@ const JsonLd = ({ post, localizedPost }: JsonLdProps) => {
         "https://twitter.com/hotelmol"
       ]
     },
-    datePublished: post.publishedAt ? new Date(post.publishedAt).toISOString() : new Date().toISOString(),
-    dateModified: post.updatedAt ? new Date(post.updatedAt).toISOString() : new Date().toISOString(),
+    datePublished: post.publishedAt ? new Date(post.publishedAt).toISOString() : undefined,
+    dateModified: post.updatedAt ? new Date(post.updatedAt).toISOString() : undefined,
   };
 
   return (
     <script
       type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema, null, 2) }}
+      suppressHydrationWarning
     />
   );
 };

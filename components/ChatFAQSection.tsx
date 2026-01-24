@@ -2,7 +2,7 @@
 "use client";
 
 import { useState } from "react";
-import Script from "next/script";
+
 import { useTranslation } from "@/lib/TranslationContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, HelpCircle } from "lucide-react";
@@ -53,10 +53,11 @@ export default function ChatFAQSection() {
 
     return (
         <section className="py-16 md:py-24 bg-slate-50/50">
-            <Script
+            <script
                 id="faq-schema"
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+                suppressHydrationWarning
             />
             <div className="container mx-auto px-4">
                 <div className="text-center mb-16">
