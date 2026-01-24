@@ -246,7 +246,7 @@ export default function AskAIWidget() {
                         </button>
 
                         {/* 4. Messages Area */}
-                        <div className="flex flex-col flex-1 overflow-y-auto space-y-4 scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-transparent pointer-events-auto bg-white rounded-3xl mb-2 pt-16 shadow-lg px-5 pb-2">
+                        <div className="flex flex-col flex-1 overflow-y-auto space-y-4 scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-transparent pointer-events-auto bg-white rounded-3xl mb-2 pt-16 px-5 pb-2 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.5),0_0_40px_-5px_rgba(0,0,0,0.2)]">
                             {/* Welcome Bubble */}
                             <div className="flex flex-col items-start self-start max-w-[85%]">
                                 <div className="px-5 py-3 rounded-t-[18px] rounded-br-[18px] rounded-bl-[4px] bg-[#f3f4f6] text-slate-800 text-[15px] leading-relaxed shadow-sm">
@@ -351,7 +351,7 @@ export default function AskAIWidget() {
                         onClick={() => setIsOpen(true)}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="pointer-events-auto fixed bottom-6 z-[46] hidden md:flex items-center gap-2 pl-1.5 pr-5 h-[48px] bg-[#0752A0] rounded-full shadow-[0_8px_24px_rgba(7,82,160,0.25)] border border-white/10 hover:shadow-[0_12px_32px_rgba(7,82,160,0.35)] transition-shadow"
+                        className="pointer-events-auto fixed bottom-6 z-[46] hidden md:flex items-center gap-2 pl-1.5 pr-5 h-[48px] bg-[#0752A0] rounded-full border border-white/10 transition-shadow shadow-[0_8px_24px_rgba(7,82,160,0.25),0_0_20px_rgba(255,255,255,0.5)] hover:shadow-[0_12px_32px_rgba(7,82,160,0.35),0_0_30px_rgba(255,255,255,0.6)]"
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
