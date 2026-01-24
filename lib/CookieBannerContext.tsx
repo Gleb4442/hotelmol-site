@@ -15,8 +15,13 @@ export function CookieBannerProvider({ children }: { children: React.ReactNode }
   useEffect(() => {
     // Check if user has already given consent
     if (typeof window !== "undefined") {
-      const consent = localStorage.getItem("cookieConsent");
-      setIsCookieBannerVisible(!consent);
+      try {
+        const consent = localStorage.getItem("cookieConsent");
+        setIsCookieBannerVisible(!consent);
+      } catch (e) {
+        console.error("Local storage access denied", e);
+        setIsCookieBannerVisible(true); // Default to showing banner if access fails
+      }
     }
   }, []);
 

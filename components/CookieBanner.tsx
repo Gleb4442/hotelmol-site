@@ -19,8 +19,17 @@ export default function CookieBanner() {
 
   useEffect(() => {
     // Check if user has already given consent
-    const consent = localStorage.getItem("cookieConsent");
-    if (!consent) {
+    try {
+      const consent = localStorage.getItem("cookieConsent");
+      if (!consent) {
+        setCookieBannerVisible(true);
+      }
+    } catch (e) {
+      console.error("Local storage access denied", e);
+      // If we can't read consent, assume no consent -> show banner? Or assume consent? Safer to show banner or default to hidden to avoid annoyance?
+      // Usually if storage is disabled, persistence is impossible. Showing banner every time is annoying.
+      // But hiding it means no consent collected.
+      // Let's show it to be compliant, or handle gracefully.
       setCookieBannerVisible(true);
     }
   }, [setCookieBannerVisible]);

@@ -125,7 +125,15 @@ export default function AskAIWidget() {
 
         try {
             // Retrieve session ID directly to ensure freshness (avoids stale closure issues in event listeners)
-            const currentSessionId = sessionId || localStorage.getItem("hotelmol_session_id") || uuidv4();
+            let currentSessionId = sessionId;
+            if (!currentSessionId) {
+                try {
+                    currentSessionId = localStorage.getItem("hotelmol_session_id") || "";
+                } catch (e) {
+                    console.error("Local storage access denied", e);
+                }
+            }
+            if (!currentSessionId) currentSessionId = uuidv4();
 
             // Should we update state if it is different? Maybe, but not strictly necessary for the request logic.
             // If we generated a new one fallback, might want to save it? 

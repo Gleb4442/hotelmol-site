@@ -18,9 +18,13 @@ export function TranslationProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const stored = localStorage.getItem("language");
-      if (stored && (stored as Language) !== language) {
-        setLanguageState(stored as Language);
+      try {
+        const stored = localStorage.getItem("language");
+        if (stored && (stored as Language) !== language) {
+          setLanguageState(stored as Language);
+        }
+      } catch (e) {
+        console.error("Local storage access denied", e);
       }
     }
   }, []);
@@ -28,7 +32,11 @@ export function TranslationProvider({ children }: { children: ReactNode }) {
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
     if (typeof window !== "undefined") {
-      localStorage.setItem("language", lang);
+      try {
+        localStorage.setItem("language", lang);
+      } catch (e) {
+        console.error("Local storage access denied", e);
+      }
     }
   };
 
