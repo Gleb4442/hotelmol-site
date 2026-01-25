@@ -35,7 +35,7 @@ export default function HotelTrendsBanner() {
                 return;
             }
 
-            const isMobile = window.matchMedia('(max-width: 768px)').matches;
+            const isMobile = window.matchMedia('(max-width: 1023px)').matches;
 
             if (!isMobile) {
                 setIsOpen(true);
@@ -137,7 +137,7 @@ export default function HotelTrendsBanner() {
                         animate={{ y: 0, opacity: 1, scale: 1 }}
                         exit={{ y: 100, opacity: 0, scale: 0.95 }}
                         transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                        className="fixed bottom-4 left-4 right-4 md:right-auto md:left-8 z-40 w-auto max-w-[420px]"
+                        className="fixed bottom-4 left-4 right-4 lg:right-auto lg:left-8 z-40 w-auto max-w-[420px]"
                     >
                         <div className="relative overflow-hidden rounded-3xl bg-white/90 backdrop-blur-xl border border-blue-100 shadow-2xl ring-1 ring-blue-50 group">
 
