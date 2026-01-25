@@ -7,7 +7,9 @@ import { TranslationProvider } from "@/lib/TranslationContext";
 import { CookieBannerProvider } from "@/lib/CookieBannerContext";
 import { Toaster } from "@/components/ui/toaster";
 import CookieBanner from "@/components/CookieBanner";
-import HotelTrendsBanner from "@/components/HotelTrendsBanner";
+// Dynamically import HotelTrendsBanner to avoid hydration mismatch and SSR issues
+import dynamic from 'next/dynamic';
+const HotelTrendsBanner = dynamic(() => import("@/components/HotelTrendsBanner"), { ssr: false });
 import MobileAIInput from "@/components/MobileAIInput";
 import ScrollToTop from "@/components/ScrollToTop";
 import AskAIWidget from "@/components/AskAIWidget";
