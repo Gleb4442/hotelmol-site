@@ -89,14 +89,14 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
       <div className="flex items-center justify-between">
 
         {/* 1. Left Cloud: Logo */}
-        <div className={`pointer-events-auto flex items-center justify-center px-3 md:px-6 h-[56px] md:h-[72px] ${cloudStyle} hide-on-menu-open`}>
+        <div className={`pointer-events-auto flex items-center justify-center px-3 md:px-4 xl:px-6 h-[56px] md:h-[72px] ${cloudStyle} hide-on-menu-open`}>
           <Link href="/" className="flex items-center h-full" data-testid="link-home">
             <img src="/assets/hotelmol-logo-vector.svg" alt="HotelMol" className="h-[130px] md:h-[150px] mt-1 object-contain" />
           </Link>
         </div>
 
         {/* 2. Center Cloud: Navigation (Desktop Only) */}
-        <div className={`hidden md:flex pointer-events-auto items-center justify-center px-[18px] h-[72px] ${cloudStyle}`}>
+        <div className={`hidden md:flex pointer-events-auto items-center justify-center px-2 lg:px-4 xl:px-[18px] h-[72px] ${cloudStyle}`}>
           <nav className="flex items-center gap-1">
             {navigation.map((item) => {
               const isActive = pathname === item.href;
@@ -104,7 +104,7 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`relative px-5 py-2.5 rounded-full text-base font-medium transition-all duration-300 flex items-center gap-2
+                  className={`relative px-2 lg:px-3 xl:px-5 py-2.5 rounded-full text-sm xl:text-base font-medium transition-all duration-300 flex items-center gap-2
                     ${isActive
                       ? "text-white"
                       : "text-slate-600 hover:text-[#0752A0] hover:bg-slate-100/50"
@@ -139,7 +139,7 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
         </div>
 
         {/* 3. Right Cloud: Actions & Mobile Menu */}
-        <div className={`pointer-events-auto flex items-center gap-3 px-3 md:px-5 h-[56px] md:h-[72px] ${cloudStyle} hide-on-menu-open`}>
+        <div className={`pointer-events-auto flex items-center gap-3 md:gap-2 xl:gap-3 px-3 md:px-3 xl:px-5 h-[56px] md:h-[72px] ${cloudStyle} hide-on-menu-open`}>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" size="icon" className="hidden md:inline-flex rounded-full hover:bg-slate-100" data-testid="button-language">
