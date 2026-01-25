@@ -19,11 +19,20 @@ export default function MobileBottomNav() {
 
     useEffect(() => {
         // Show after cookie consent or initial load
-        const consent = localStorage.getItem("cookieConsent");
-        if (consent) setIsVisible(true);
+        try {
+            const consent = localStorage.getItem("cookieConsent");
+            if (consent) setIsVisible(true);
+        } catch (e) {
+            console.error("Local storage access denied", e);
+            setIsVisible(true); // Show anyway if storage inaccessible
+        }
 
         const checkConsent = () => {
-            if (localStorage.getItem("cookieConsent")) setIsVisible(true);
+            try {
+                if (localStorage.getItem("cookieConsent")) setIsVisible(true);
+            } catch (e) {
+                // Silent fail - already tried on mount
+            }
         };
         const interval = setInterval(checkConsent, 1000);
         return () => clearInterval(interval);

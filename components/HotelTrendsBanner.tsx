@@ -108,7 +108,11 @@ export default function HotelTrendsBanner() {
             if (data.success || response.ok) {
                 setStatus('success');
                 setDownloadUrl(data.download_url || '#');
-                localStorage.setItem('hotelTrendsSubscribed', 'true');
+                try {
+                    localStorage.setItem('hotelTrendsSubscribed', 'true');
+                } catch (e) {
+                    console.error("Local storage access denied", e);
+                }
             } else {
                 setStatus('error');
                 setErrorMessage(data.message || t('trends.error.general'));
