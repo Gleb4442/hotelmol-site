@@ -11,7 +11,7 @@ export async function POST(request: Request) {
         const [lead] = await db.insert(leadSubmissions).values({ ...validated, type: "demo" }).returning();
 
         // Trigger n8n webhook
-        const webhookUrl = "https://n8n.myn8napp.online/webhook/contact-form";
+        const webhookUrl = process.env.N8N_LEAD_WEBHOOK_URL || "https://n8n.myn8napp.online/webhook/contact-form";
         try {
             await fetch(webhookUrl, {
                 method: "POST",

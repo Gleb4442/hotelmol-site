@@ -139,7 +139,8 @@ export default function AskAIWidget() {
             // If we generated a new one fallback, might want to save it? 
             // The useEffect logic usually handles this on mount/update, but strictly for this request, this is safe.
 
-            const response = await fetch("https://n8n.myn8napp.online/webhook/40d5e18a-9a16-408e-b594-7d4797e085f6/chat", {
+            const webhookUrl = process.env.NEXT_PUBLIC_N8N_CHAT_WEBHOOK_URL || 'https://n8n.myn8napp.online/webhook/40d5e18a-9a16-408e-b594-7d4797e085f6/chat';
+            const response = await fetch(webhookUrl, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ chatInput: userMsg, sessionId: currentSessionId }),

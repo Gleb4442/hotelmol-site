@@ -137,19 +137,19 @@ export default function HotelTrendsBanner() {
                         animate={{ y: 0, opacity: 1, scale: 1 }}
                         exit={{ y: 100, opacity: 0, scale: 0.95 }}
                         transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                        className="fixed bottom-4 left-4 right-4 md:left-auto md:right-8 z-40 w-auto max-w-[420px]"
+                        className="fixed bottom-4 left-4 right-4 md:right-auto md:left-8 z-40 w-auto max-w-[420px]"
                     >
-                        <div className="relative overflow-hidden rounded-3xl bg-[#0F172A]/80 backdrop-blur-xl border border-white/10 shadow-2xl ring-1 ring-white/5 group">
+                        <div className="relative overflow-hidden rounded-3xl bg-white/90 backdrop-blur-xl border border-blue-100 shadow-2xl ring-1 ring-blue-50 group">
 
-                            {/* Animated Background Gradients */}
-                            <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-blue-500/50 to-transparent opacity-50" />
-                            <div className="absolute -top-24 -right-24 w-48 h-48 bg-blue-500/20 rounded-full blur-3xl group-hover:bg-blue-500/30 transition-colors duration-500" />
-                            <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-purple-500/20 rounded-full blur-3xl group-hover:bg-purple-500/30 transition-colors duration-500" />
+                            {/* Animated Background Gradients - Light Theme */}
+                            <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-blue-400/30 to-transparent opacity-50" />
+                            <div className="absolute -top-24 -right-24 w-48 h-48 bg-blue-100/50 rounded-full blur-3xl group-hover:bg-blue-200/50 transition-colors duration-500" />
+                            <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-cyan-100/50 rounded-full blur-3xl group-hover:bg-cyan-200/50 transition-colors duration-500" />
 
                             {/* Close Button */}
                             <button
                                 onClick={handleClose}
-                                className="absolute top-3 right-3 p-1.5 rounded-full text-slate-400 hover:text-white hover:bg-white/10 transition-all z-10"
+                                className="absolute top-3 right-3 p-1.5 rounded-full text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-all z-10"
                             >
                                 <X size={14} />
                             </button>
@@ -160,16 +160,16 @@ export default function HotelTrendsBanner() {
                                     <div className="p-1 rounded-md bg-gradient-to-br from-blue-500 to-purple-600">
                                         <Sparkles size={12} className="text-white" />
                                     </div>
-                                    <span className="text-xs font-semibold text-blue-200 uppercase tracking-widest">{t('trends.title')}</span>
+                                    <span className="text-xs font-semibold text-blue-600 uppercase tracking-widest">{t('trends.title')}</span>
                                 </div>
 
-                                <h2 className="text-xl md:text-2xl font-bold text-white leading-tight mb-2 tracking-tight">
-                                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-100 to-blue-200">
+                                <h2 className="text-xl md:text-2xl font-bold text-slate-900 leading-tight mb-2 tracking-tight">
+                                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600">
                                         {t('trends.titleHighlight')}
                                     </span>
                                 </h2>
 
-                                <p className="text-sm text-slate-300 leading-relaxed mb-6 font-light">
+                                <p className="text-sm text-slate-600 leading-relaxed mb-6 font-light">
                                     {t('trends.description')}
                                 </p>
 
@@ -177,7 +177,7 @@ export default function HotelTrendsBanner() {
                                     onClick={() => setIsModalOpen(true)}
                                     className="w-full group relative flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl font-semibold text-sm text-white overflow-hidden transition-all hover:shadow-lg hover:shadow-blue-500/25"
                                 >
-                                    <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 transition-transform duration-300 group-hover:scale-105" />
+                                    <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-500 animate-shimmer bg-[length:200%_100%] transition-transform duration-300 group-hover:scale-105" />
                                     <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity" />
 
                                     <span className="relative flex items-center gap-2">
