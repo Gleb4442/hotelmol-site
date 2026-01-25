@@ -90,7 +90,8 @@ export default function HotelTrendsBanner() {
         setErrorMessage('');
 
         try {
-            const response = await fetch('https://n8n.myn8napp.online/webhook/hotel-report-signup', {
+            const webhookUrl = process.env.NEXT_PUBLIC_HOTEL_TRENDS_WEBHOOK_URL || 'https://n8n.myn8napp.online/webhook/hotel-report-signup';
+            const response = await fetch(webhookUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
