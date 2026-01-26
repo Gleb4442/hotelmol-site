@@ -195,7 +195,7 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
 
         {/* Mobile Left: Logo */}
         <Link href="/" className="flex items-center h-full" data-testid="link-home-mobile">
-          <img src="/assets/hotelmol-logo-vector.svg" alt="HotelMol" className="h-[28px] object-contain" />
+          <img src="/assets/hotelmol-logo-vector.svg" alt="HotelMol" className="h-[50px] object-contain" />
         </Link>
 
         {/* Mobile Center title/placeholder if needed (optional) */}
