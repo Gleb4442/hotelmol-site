@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play } from "lucide-react";
 import { useTranslation } from "@/lib/TranslationContext";
@@ -74,6 +75,13 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/90 to-primary/80" />
         {/* Mobile top white gradient fade */}
         <div className="absolute top-0 left-0 right-0 h-[180px] bg-gradient-to-b from-white via-white/80 to-transparent z-[1] md:hidden" />
+
+        {/* Mobile pulsing AI glow */}
+        <motion.div
+          className="absolute top-0 left-0 right-0 h-[180px] bg-gradient-to-b from-[#0752A0] via-[#0752A0]/50 to-transparent z-[2] md:hidden pointer-events-none"
+          animate={{ opacity: [0, 0.5, 0.2, 0.7, 0.3, 0.8, 0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        />
 
         <div className="relative z-10 container mx-auto px-6 pt-[144px] pb-24 lg:py-32">
           <div className="max-w-5xl mx-auto text-center">
