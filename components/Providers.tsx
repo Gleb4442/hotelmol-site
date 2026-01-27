@@ -11,6 +11,7 @@ import CookieBanner from "@/components/CookieBanner";
 import dynamic from 'next/dynamic';
 const HotelTrendsBanner = dynamic(() => import("@/components/HotelTrendsBanner"), { ssr: false });
 import ScrollToTop from "@/components/ScrollToTop";
+import MobileBottomNav from "@/components/MobileBottomNav";
 
 export function Providers({ children }: { children: React.ReactNode }) {
     return (
@@ -23,6 +24,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
                             <Toaster />
                             <CookieBanner />
                             <HotelTrendsBanner />
+                            <MobileBottomNav />
                             <ScrollToTop />
                         </div>
                     </TooltipProvider>

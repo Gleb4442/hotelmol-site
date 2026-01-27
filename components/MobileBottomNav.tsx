@@ -1,152 +1,119 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, Menu, Globe, ExternalLink, X, ChevronUp } from "lucide-react";
+import { Plus, DollarSign, Play } from "lucide-react";
 import { useTranslation } from "@/lib/TranslationContext";
 import { usePathname } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import type { Language } from "@/lib/translations";
 
 export default function MobileBottomNav() {
     const { language, setLanguage, t } = useTranslation();
     const pathname = usePathname();
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [isVisible, setIsVisible] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
 
-    // Visibility logic: hide on contact page
-    const isHiddenPath = pathname === "/contact";
+    // Hide on contact page if needed
+    if (pathname === "/contact") return null;
 
-    useEffect(() => {
-        // Show after cookie consent or initial load
-        try {
-            const consent = localStorage.getItem("cookieConsent");
-            if (consent) setIsVisible(true);
-        } catch (e) {
-            console.error("Local storage access denied", e);
-            setIsVisible(true); // Show anyway if storage inaccessible
-        }
-
-        const checkConsent = () => {
-            try {
-                if (localStorage.getItem("cookieConsent")) setIsVisible(true);
-            } catch (e) {
-                // Silent fail - already tried on mount
-            }
-        };
-        const interval = setInterval(checkConsent, 1000);
-        return () => clearInterval(interval);
-    }, []);
-
-    if (!isVisible || isHiddenPath) return null;
-
-    const cycleLanguage = () => {
-        const languages: Language[] = ["en", "ru", "ua"];
-        const currentIndex = languages.indexOf(language);
-        const nextIndex = (currentIndex + 1) % languages.length;
-        setLanguage(languages[nextIndex]);
-    };
-
-    const getLanguageLabel = () => {
-        switch (language) {
-            case "en": return "EN";
-            case "ru": return "RU";
-            case "ua": return "UA";
-            default: return "UA";
-        }
-    };
-
-    const openAIChat = () => {
-        // Dispatch custom event to open the widget
-        window.dispatchEvent(new CustomEvent("open-ai-chat"));
-    };
+    const languages = [
+        { code: "en", label: "English" },
+        { code: "ru", label: "Русский" },
+        { code: "ua", label: "Українська" },
+        { code: "pl", label: "Polski" },
+    ] as const;
 
     return (
-        <div className="md:hidden fixed bottom-2 left-2 right-2 z-50 pointer-events-none">
-            {/* UI Polish: Removed border and dividers for a cleaner look. Shadow provides separation. bg opacity increased. */}
-            <div className="relative w-full h-14 bg-white/90 dark:bg-black/95 backdrop-blur-2xl rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] flex items-center justify-between px-2 pointer-events-auto">
-
-                {/* Language Switcher Button (Swapped with AI) */}
-                <button
-                    onClick={cycleLanguage}
-                    className="flex-1 flex flex-col items-center justify-center gap-0.5 h-full text-foreground/70 active:scale-95 transition-transform"
-                >
-                    <Globe className="w-6 h-6" />
-                    <span className="text-[10px] font-bold uppercase tracking-tighter">{getLanguageLabel()}</span>
-                </button>
-
-                {/* Vertical Divider Removed */}
-
-                {/* Menu Button (Demo/Pricing) */}
-                <div className="flex-1 h-full">
-                    <button
-                        onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        className={`w-full h-full flex flex-col items-center justify-center gap-0.5 transition-colors ${isMenuOpen ? 'text-[#0752A0]' : 'text-foreground/70'}`}
-                    >
-                        {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-                        <span className="text-[10px] font-medium uppercase tracking-tighter">Menu</span>
-                    </button>
-                </div>
-
-                {/* Dropup Menu - Perfectly Centered relative to the whole bar */}
-                <AnimatePresence>
-                    {isMenuOpen && (
-                        <motion.div
-                            initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                            animate={{ opacity: 1, y: 0, scale: 1 }}
-                            exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                            // UI Polish: Perfectly centered horizontally, stable offset above the nav bar.
-                            // Shifting 55px to the left as requested.
-                            className="absolute bottom-[76px] left-1/2 -translate-x-1/2 -ml-[55px] w-[90vw] max-w-[280px] bg-white dark:bg-black rounded-3xl shadow-[0_10px_50px_rgba(0,0,0,0.4)] border border-black/10 overflow-hidden p-3 z-[60]"
-                        >
-                            <div className="flex flex-col gap-1">
-                                <a
-                                    href="https://demo.hotelmol.com"
-                                    target="_blank"
-                                    onClick={() => setIsMenuOpen(false)}
-                                    className="flex items-center justify-center w-full py-5 hover:bg-black/5 dark:hover:bg-white/5 rounded-2xl transition-colors text-xl font-bold text-[#0752A0] dark:text-[#a0c4ff]"
-                                >
-                                    {t("button.tryDemo") || "Demo"}
-                                </a>
-                                <div className="h-px bg-black/5 dark:bg-white/5 mx-6" />
-                                <a
-                                    href="https://pricing.hotelmol.com/#yearly"
-                                    target="_blank"
-                                    onClick={() => setIsMenuOpen(false)}
-                                    className="flex items-center justify-center w-full py-5 hover:bg-black/5 dark:hover:bg-white/5 rounded-2xl transition-colors text-xl font-bold text-[#0752A0] dark:text-[#a0c4ff]"
-                                >
-                                    {t("button.pricing") || "Pricing"}
-                                </a>
-                            </div>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
-
-                {/* Vertical Divider Removed */}
-
-                {/* AI Assistant Button (Swapped with Language) */}
-                <button
-                    onClick={openAIChat}
-                    className="flex-1 flex flex-col items-center justify-center gap-0.5 h-full text-[#0752A0] active:scale-95 transition-transform"
-                >
-                    {/* UI Polish: Original orientation (reverted mirroring) */}
-                    <MessageCircle className="w-6 h-6" />
-                    <span className="text-[10px] font-medium uppercase tracking-tighter">AI</span>
-                </button>
-            </div>
+        <div className="md:hidden fixed bottom-6 right-4 z-50 pointer-events-auto flex flex-col items-end gap-3">
 
             {/* Backdrop for Menu */}
             <AnimatePresence>
-                {isMenuOpen && (
+                {isOpen && (
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        onClick={() => setIsMenuOpen(false)}
-                        className="fixed inset-0 bg-black/5 z-[55] md:hidden"
+                        onClick={() => setIsOpen(false)}
+                        className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40"
                     />
                 )}
             </AnimatePresence>
+
+            {/* Menu Items */}
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.8, y: 10 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.8, y: 10 }}
+                        className="flex flex-col gap-3 items-end mb-2 z-50 relative"
+                    >
+                        {/* Pricing */}
+                        <motion.a
+                            href="https://pricing.hotelmol.com/#yearly"
+                            target="_blank"
+                            initial={{ x: 20, opacity: 0 }}
+                            animate={{ x: 0, opacity: 1 }}
+                            transition={{ delay: 0.1 }}
+                            className="flex items-center gap-2 bg-white text-[#0752A0] pr-4 pl-3 py-2 rounded-full shadow-lg border border-[#0752A0]/10 font-bold"
+                        >
+                            <span className="text-sm">{t("button.pricing")}</span>
+                            <div className="bg-[#0752A0]/10 p-1.5 rounded-full">
+                                <DollarSign className="w-4 h-4" />
+                            </div>
+                        </motion.a>
+
+                        {/* Demo */}
+                        <motion.a
+                            href="https://demo.hotelmol.com"
+                            target="_blank"
+                            initial={{ x: 20, opacity: 0 }}
+                            animate={{ x: 0, opacity: 1 }}
+                            transition={{ delay: 0.05 }}
+                            className="flex items-center gap-2 bg-[#0752A0] text-white pr-4 pl-3 py-2 rounded-full shadow-lg border border-[#0752A0]/10 font-bold"
+                        >
+                            <span className="text-sm">{t("button.tryDemo")}</span>
+                            <div className="bg-white/20 p-1.5 rounded-full">
+                                <Play className="w-4 h-4" />
+                            </div>
+                        </motion.a>
+
+                        {/* Language Selector (Mini Menu) */}
+                        <motion.div
+                            initial={{ x: 20, opacity: 0 }}
+                            animate={{ x: 0, opacity: 1 }}
+                            className="bg-white rounded-2xl shadow-xl border border-black/5 overflow-hidden p-1 flex flex-col gap-1 w-32"
+                        >
+                            {languages.map((lang) => (
+                                <button
+                                    key={lang.code}
+                                    onClick={() => {
+                                        setLanguage(lang.code);
+                                    }}
+                                    className={`text-xs font-bold py-2 px-3 rounded-xl text-left transition-colors flex items-center justify-between ${language === lang.code
+                                            ? "bg-[#0752A0] text-white"
+                                            : "hover:bg-slate-100 text-slate-600"
+                                        }`}
+                                >
+                                    {lang.label}
+                                    {language === lang.code && "✓"}
+                                </button>
+                            ))}
+                        </motion.div>
+
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
+            {/* FAB Trigger */}
+            <button
+                onClick={() => setIsOpen(!isOpen)}
+                className={`relative z-50 w-14 h-14 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 active:scale-95 ${isOpen
+                        ? "bg-white text-[#0752A0] rotate-45 border-2 border-[#0752A0]"
+                        : "bg-[#0752A0] text-white"
+                    }`}
+                aria-label="Toggle Menu"
+            >
+                <Plus className="w-8 h-8 stroke-[3px]" />
+            </button>
         </div>
     );
 }
