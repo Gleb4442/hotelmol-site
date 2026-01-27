@@ -45,7 +45,6 @@ export default function MobileAIInput() {
     };
 
     // Global hide if cookie banner is visible
-    if (isCookieBannerVisible) return null;
 
     const handleMenuToggle = () => {
         const newState = !isMenuOpen;
@@ -85,7 +84,7 @@ export default function MobileAIInput() {
             window.removeEventListener("ai-chat-status" as any, handleChatStatus as any);
         };
     }, []);
-
+    if (isCookieBannerVisible) return null;
     const isHidden = isAiWidgetOpen || isTrendsBannerVisible;
 
     const handleSubmit = () => {
