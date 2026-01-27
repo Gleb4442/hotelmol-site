@@ -77,7 +77,7 @@ export default function ChatFAQSection() {
                             <div key={index} className="space-y-4">
                                 {/* User Question (Right) */}
                                 <div className="flex justify-end">
-                                    <div className="flex gap-3 max-w-[85%] md:max-w-[75%] flex-row-reverse">
+                                    <div className="flex gap-3 w-full flex-row-reverse">
                                         <div className="flex-shrink-0 w-[38px] h-[38px] rounded-full bg-primary flex items-center justify-center mt-1 text-white shadow-sm">
                                             <svg
                                                 viewBox="0 0 24 24"
@@ -92,7 +92,7 @@ export default function ChatFAQSection() {
                                                 <path d="M12 17h.01" />
                                             </svg>
                                         </div>
-                                        <div className="bg-primary text-white px-5 py-3 rounded-2xl rounded-tr-none shadow-md">
+                                        <div className="bg-primary text-white px-5 py-3 rounded-2xl rounded-tr-none shadow-md w-full md:w-auto md:min-w-[40%] text-right">
                                             <p className="font-medium text-sm md:text-base leading-relaxed">{faq.question}</p>
                                         </div>
                                     </div>
@@ -100,7 +100,7 @@ export default function ChatFAQSection() {
 
                                 {/* System Answer (Left) */}
                                 <div className="flex justify-start">
-                                    <div className="flex gap-3 max-w-[85%] md:max-w-[75%]">
+                                    <div className="flex gap-3 w-full">
                                         <div className="flex-shrink-0 w-[38px] h-[38px] rounded-full bg-primary flex items-center justify-center mt-1 text-white shadow-sm">
                                             <svg
                                                 viewBox="0 0 203.18 203.18"
@@ -125,7 +125,7 @@ export default function ChatFAQSection() {
                                         </div>
                                         <motion.div
                                             className={cn(
-                                                "group relative overflow-hidden bg-white px-5 py-3 rounded-2xl rounded-tl-none shadow-sm border border-slate-100 cursor-pointer transition-all duration-300",
+                                                "group relative overflow-hidden bg-white px-5 py-3 rounded-2xl rounded-tl-none shadow-sm border border-slate-100 cursor-pointer transition-all duration-300 w-full",
                                                 !isRevealed && "hover:shadow-md hover:border-primary/20"
                                             )}
                                             onClick={() => toggleReveal(index)}

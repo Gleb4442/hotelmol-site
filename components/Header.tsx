@@ -105,7 +105,7 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
                 >
                   {isActive && (
                     <motion.span
-                      layoutId="active-nav-pill"
+                      layoutId="active-nav-pill-desktop"
                       className="absolute inset-0 bg-[#0752A0] shadow-sm rounded-full -z-10"
                       transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                     />
