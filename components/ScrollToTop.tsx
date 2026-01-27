@@ -6,33 +6,13 @@ import { useCookieBanner } from "@/lib/CookieBannerContext";
 
 export default function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false);
-  const [isChatOpen, setIsChatOpen] = useState(false);
   const pathname = usePathname();
   const { isCookieBannerVisible } = useCookieBanner();
 
   useEffect(() => {
-    const handleChatState = (e: CustomEvent<{ open: boolean }>) => {
-      setIsChatOpen(e.detail.open);
-    };
-    window.addEventListener("ai-widget-state" as any, handleChatState as any);
-    return () => window.removeEventListener("ai-widget-state" as any, handleChatState as any);
-  }, []);
-
-  useEffect(() => {
     const toggleVisibility = () => {
       const shouldBeVisible = window.scrollY > 300;
-
-      // Dispatch event for other components (like AskAIWidget) to react
-      window.dispatchEvent(new CustomEvent("desktop-scroll-visible", {
-        detail: { visible: shouldBeVisible }
-      }));
-
-      if (shouldBeVisible) {
-        // Delay showing button slightly to allow Ask AI widget to shift out of the way first
-        setTimeout(() => setIsVisible(true), 150);
-      } else {
-        setIsVisible(false);
-      }
+      setIsVisible(shouldBeVisible);
     };
 
     window.addEventListener("scroll", toggleVisibility);
@@ -52,7 +32,7 @@ export default function ScrollToTop() {
 
   return (
     <>
-      {isVisible && !isCookieBannerVisible && !isChatOpen && (
+      {isVisible && !isCookieBannerVisible && (
         <button
           onClick={scrollToTop}
           data-testid="button-scroll-to-top-desktop"
