@@ -20,41 +20,15 @@ export default function Contact() {
                         <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight mb-6">
                             {t("contact.title")}
                         </h1>
-                        <p className="text-xl text-muted-foreground leading-relaxed">
-                            {t("contact.subtitle")}
-                        </p>
                     </div>
 
                     <div className="max-w-3xl mx-auto">
                         <div className="space-y-6 md:space-y-8">
-                            <div>
-                                <h2 className="font-serif text-2xl font-semibold mb-6 text-center">{t("contact.infoTitle")}</h2>
-                                <div className="space-y-6 flex flex-col items-center">
-                                    <div className="flex items-start gap-4 max-w-md w-full">
-                                        <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                                            <Mail className="w-6 h-6 text-primary" />
-                                        </div>
-                                        <div>
-                                            <h3 className="font-medium mb-1">{t("contact.emailLabel")}</h3>
-                                            <p className="text-muted-foreground break-all"><a href="mailto:partnerships@hotelmol.com" className="hover:text-primary transition-colors">partnerships@hotelmol.com</a></p>
-                                        </div>
-                                    </div>
-                                    <div className="flex items-start gap-4 max-w-md w-full">
-                                        <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                                            <Phone className="w-6 h-6 text-primary" />
-                                        </div>
-                                        <div>
-                                            <h3 className="font-medium mb-1">{t("contact.phoneLabel")}</h3>
-                                            <p className="text-muted-foreground"><a href="tel:+380931603830" className="hover:text-primary transition-colors">+380 93 160 38 30</a> <span className="text-sm block sm:inline">{t("contact.phoneNote")}</span></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <Card className="p-6 md:p-8 bg-primary/5">
                                 <h3 className="font-serif text-xl font-semibold mb-4 text-center">{t("contact.officeHours")}</h3>
                                 <div className="text-center py-4">
                                     <p className="text-3xl font-bold text-primary mb-2">24/7</p>
-                                    <p className="text-3xl font-bold text-primary mb-4">365 {t("contact.daysPerYear")}</p>
+                                    <p className="text-3xl font-bold text-primary mb-4">365 {t("contact.daysPerYear")} </p>
                                     <p className="text-muted-foreground">{t("contact.availabilityDescription")}</p>
                                 </div>
                             </Card>
@@ -82,6 +56,29 @@ export default function Contact() {
                                     </a>
                                 </div>
                             </Card>
+                            <div>
+                                <h2 className="font-serif text-2xl font-semibold mb-6 text-center">{t("contact.infoTitle")}</h2>
+                                <div className="space-y-6 flex flex-col items-center">
+                                    <div className="flex items-start gap-4 max-w-md w-full">
+                                        <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                                            <Mail className="w-6 h-6 text-primary" />
+                                        </div>
+                                        <div>
+                                            <h3 className="font-medium mb-1">{t("contact.emailLabel")}</h3>
+                                            <p className="text-muted-foreground break-all"><a href="mailto:partnerships@hotelmol.com" className="hover:text-primary transition-colors">partnerships@hotelmol.com</a></p>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-start gap-4 max-w-md w-full">
+                                        <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                                            <Phone className="w-6 h-6 text-primary" />
+                                        </div>
+                                        <div>
+                                            <h3 className="font-medium mb-1">{t("contact.phoneLabel")}</h3>
+                                            <p className="text-muted-foreground"><a href="tel:+380931603830" className="hover:text-primary transition-colors">+380 93 160 38 30</a> <span className="text-sm block sm:inline">{t("contact.phoneNote")}</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
