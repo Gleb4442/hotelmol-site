@@ -163,77 +163,7 @@ export type WaitlistSubmission = typeof waitlistSubmissions.$inferSelect;
 export type InsertWaitlist = z.infer<typeof insertWaitlistSchema>;
 export type Waitlist = z.infer<typeof waitlistSchema>;
 
-// Blog Posts table for SEO-optimized blog
-// Blog Posts table aligned with existing DB structure
-export const authors = pgTable("authors", {
-  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
-  name: varchar("name").notNull(),
-  photo_url: text("photo_url"),
-  bio: text("bio"),
-  location: varchar("location", { length: 100 }),
-  createdAt: timestamp("created_at").defaultNow().notNull(),
-  updatedAt: timestamp("updated_at").defaultNow().notNull(),
-});
 
-export const blogPosts = pgTable("blog_posts", {
-  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
-  title: varchar("title").notNull(),
-  slug: varchar("slug").notNull().unique(),
-  content: text("content").notNull(),
-
-  // Existing columns in DB
-  category: text("category"),
-  excerpt: text("excerpt"),
-  keywords: text("keywords"),
-
-  // Переводы (необязательные)
-  titleRu: text("title_ru"),
-  contentRu: text("content_ru"),
-  titleEn: text("title_en"),
-  contentEn: text("content_en"),
-  titlePl: text("title_pl"),
-  contentPl: text("content_pl"),
-
-  // SEO метаданные
-  seoTitle: varchar("seo_title"),
-  seoDescription: text("seo_description"),
-  seoTitleRu: text("seo_title_ru"),
-  seoDescriptionRu: text("seo_description_ru"),
-  seoTitleEn: text("seo_title_en"),
-  seoDescriptionEn: text("seo_description_en"),
-  seoTitlePl: text("seo_title_pl"),
-  seoDescriptionPl: text("seo_description_pl"),
-
-  authorId: varchar("author_id").references(() => authors.id),
-  status: varchar("status").default('draft'), // 'published' or 'draft'
-  featuredImage: text("featured_image"),
-  tags: jsonb("tags").default([]),
-  publishedAt: timestamp("published_at"),
-  createdAt: timestamp("created_at").defaultNow().notNull(),
-  updatedAt: timestamp("updated_at").defaultNow().notNull(),
-});
-
-export const insertBlogPostSchema = createInsertSchema(blogPosts).omit({
-  id: true,
-  createdAt: true,
-  updatedAt: true,
-});
-
-import { relations } from "drizzle-orm";
-
-export const authorRelations = relations(authors, ({ many }) => ({
-  posts: many(blogPosts),
-}));
-
-export const blogPostRelations = relations(blogPosts, ({ one }) => ({
-  author: one(authors, {
-    fields: [blogPosts.authorId],
-    references: [authors.id],
-  }),
-}));
-
-export type BlogPost = typeof blogPosts.$inferSelect;
-export type InsertBlogPost = z.infer<typeof insertBlogPostSchema>;
 
 // Site Settings table for global configuration
 export const siteSettings = pgTable("site_settings", {

@@ -106,7 +106,7 @@ export default function AskAIWidget() {
         };
     }, []);
 
-    const isHiddenPath = pathname.startsWith("/blog") || pathname === "/contact";
+    const isHiddenPath = pathname === "/contact";
     if (isHiddenPath) return null;
 
     const handleSendMessage = async (arg?: string | React.MouseEvent) => {

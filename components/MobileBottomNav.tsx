@@ -14,8 +14,8 @@ export default function MobileBottomNav() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
 
-    // Visibility logic: hide on blog and contact pages
-    const isHiddenPath = pathname.startsWith("/blog") || pathname === "/contact";
+    // Visibility logic: hide on contact page
+    const isHiddenPath = pathname === "/contact";
 
     useEffect(() => {
         // Show after cookie consent or initial load

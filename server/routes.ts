@@ -200,60 +200,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // --- Blog Posts (Public Read-Only) ---
 
-  app.get("/api/posts", async (req, res) => {
-    try {
-      const posts = await storage.getPublishedBlogPosts();
-      console.log(`API response: returning ${posts.length} posts`);
-      // Return both formats to be extra safe
-      res.json({ success: true, posts });
-    } catch (error) {
-      console.error("API Error in /api/posts:", error);
-      res.status(500).json({ success: false, message: "Failed to fetch posts" });
-    }
-  });
-
-  app.get("/api/debug-posts", async (req, res) => {
-    try {
-      if (!process.env.DATABASE_URL) {
-        return res.status(500).json({
-          error: "DATABASE_URL_MISSING",
-          message: "The DATABASE_URL environment variable is not set on the server. Please check Vercel project settings."
-        });
-      }
-
-      const allPosts = await storage.getBlogPosts();
-      const publishedPosts = await storage.getPublishedBlogPosts();
-      res.json({
-        success: true,
-        env: process.env.NODE_ENV,
-        dbUrlSet: true,
-        allCount: allPosts.length,
-        publishedCount: publishedPosts.length,
-        posts: publishedPosts
-      });
-    } catch (error: any) {
-      console.error("Debug route error:", error);
-      res.status(500).json({
-        error: "SERVER_ERROR",
-        details: error.message,
-        hint: "This often happens if the database connection fails or the schema is mismatched."
-      });
-    }
-  });
-
-  app.get("/api/posts/:slug", async (req, res) => {
-    try {
-      const post = await storage.getBlogPost(req.params.slug);
-      if (!post) {
-        return res.status(404).json({ success: false, message: "Post not found" });
-      }
-      res.json({ success: true, post });
-    } catch (error) {
-      res.status(500).json({ success: false, message: "Failed to fetch post" });
-    }
-  });
 
   // --- Health ---
   app.get("/api/health", (req, res) => {

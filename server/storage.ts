@@ -1,4 +1,4 @@
-import { type LeadSubmission, type InsertLead, type CookieConsent, type InsertCookieConsent, type WaitlistSubmission, type InsertWaitlist, type BlogPost, type InsertBlogPost, type SiteSetting, leadSubmissions, cookieConsents, waitlistSubmissions, blogPosts, siteSettings } from "../shared/schema.js";
+import { type LeadSubmission, type InsertLead, type CookieConsent, type InsertCookieConsent, type WaitlistSubmission, type InsertWaitlist, type SiteSetting, leadSubmissions, cookieConsents, waitlistSubmissions, siteSettings } from "../shared/schema.js";
 import { randomUUID } from "crypto";
 import { db } from "./db.js";
 import { desc, eq, and } from "drizzle-orm";
@@ -16,12 +16,7 @@ export interface IStorage {
   createWaitlistSubmission(waitlist: InsertWaitlist): Promise<WaitlistSubmission>;
   getWaitlistSubmissions(): Promise<WaitlistSubmission[]>;
 
-  // Blog posts
 
-  getBlogPosts(): Promise<BlogPost[]>;
-  getPublishedBlogPosts(): Promise<BlogPost[]>;
-  getBlogPostById(id: string): Promise<BlogPost | undefined>;
-  getBlogPost(slug: string): Promise<BlogPost | undefined>;
 
 
   // Site settings
@@ -92,21 +87,7 @@ export class MemStorage implements IStorage {
 
 
 
-  async getBlogPosts(): Promise<BlogPost[]> {
-    return [];
-  }
 
-  async getPublishedBlogPosts(): Promise<BlogPost[]> {
-    return [];
-  }
-
-  async getBlogPostById(): Promise<BlogPost | undefined> {
-    return undefined;
-  }
-
-  async getBlogPost(slug: string): Promise<BlogPost | undefined> {
-    return undefined;
-  }
 
 
 
@@ -154,43 +135,7 @@ export class PostgresStorage implements IStorage {
 
 
 
-  async getBlogPosts(): Promise<BlogPost[]> {
-    return await db.select().from(blogPosts).orderBy(desc(blogPosts.createdAt));
-  }
 
-  async getPublishedBlogPosts(): Promise<BlogPost[]> {
-    console.log("Fetching published blog posts from database...");
-    try {
-      const posts = await db.select().from(blogPosts).where(eq(blogPosts.status, 'published')).orderBy(desc(blogPosts.publishedAt));
-      console.log(`Successfully fetched ${posts.length} published posts.`);
-      return posts;
-    } catch (error) {
-      console.error("Error fetching published blog posts:", error);
-      throw error;
-    }
-  }
-
-  async getBlogPost(slug: string): Promise<BlogPost | undefined> {
-    console.log(`Fetching blog post by slug: ${slug}`);
-    try {
-      const [post] = await db.select().from(blogPosts).where(and(eq(blogPosts.slug, slug), eq(blogPosts.status, 'published')));
-      console.log(post ? `Found post: ${post.title}` : "Post not found or not published.");
-      return post;
-    } catch (error) {
-      console.error(`Error fetching post by slug ${slug}:`, error);
-      throw error;
-    }
-  }
-
-  async getBlogPostById(id: string): Promise<BlogPost | undefined> {
-    const [post] = await db.select().from(blogPosts).where(eq(blogPosts.id, id));
-    return post || undefined;
-  }
-
-  async getBlogPostBySlug(slug: string): Promise<BlogPost | undefined> {
-    const [post] = await db.select().from(blogPosts).where(eq(blogPosts.slug, slug));
-    return post || undefined;
-  }
 
 
 

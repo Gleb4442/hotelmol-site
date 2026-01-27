@@ -64,23 +64,12 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const { data: blogEnabledData } = useQuery<{ key: string; value: string | null }>({
-    queryKey: ["/api/settings/blogEnabled"],
-  });
-
-  const blogEnabled = blogEnabledData?.value !== "false";
-
-  const allNavigation: Array<{ name: string; href: string; badge?: string }> = [
+  const navigation: Array<{ name: string; href: string; badge?: string }> = [
     { name: t("nav.roomie"), href: "/roomie" },
     { name: t("nav.solutions"), href: "/solutions" },
     { name: t("nav.about"), href: "/about" },
-    { name: t("nav.blog"), href: "/blog" },
     { name: t("nav.contact"), href: "/contact" },
   ];
-
-  const navigation = allNavigation.filter(item =>
-    item.href !== "/blog" || blogEnabled
-  );
 
   const cloudStyle = "bg-white/95 backdrop-blur-md shadow-[0_4px_24px_rgba(7,82,160,0.4)] border border-white/20 rounded-full transition-all duration-300";
 

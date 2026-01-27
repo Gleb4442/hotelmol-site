@@ -6,7 +6,7 @@ const translationsBase = {
     "nav.roomie": "Roomie",
     "nav.solutions": "Solutions",
     "nav.caseStudies": "Case Studies",
-    "nav.blog": "Blog",
+
     "nav.about": "About",
     "nav.contact": "Contact",
     "aiWidget.welcome": "Hello! I am your AI assistant. How can I help you?",
@@ -259,7 +259,7 @@ const translationsBase = {
     "footer.company": "Company",
     "footer.aboutUs": "About Us",
     "footer.caseStudies": "Case Studies",
-    "footer.blog": "Blog",
+
     "footer.contact": "Contact",
     "footer.legal": "Legal",
     "footer.privacy": "Privacy Policy",
@@ -280,16 +280,7 @@ const translationsBase = {
     "success.messageSent": "Message sent!",
     "success.messageReceived": "We'll get back to you within 24 hours.",
 
-    // Blog
 
-    "blog.empty": "No articles published yet",
-    "blog.readMore": "Read More",
-    "blog.notFound": "Article not found",
-    "blog.backToBlog": "Back to Blog",
-    "blog.aiSummary": "Brief Summary",
-    "blog.summaryTitle": "AI Article Overview",
-    "blog.keyPoints": "Key Takeaways",
-    "blog.share": "Share",
 
     // Home - How Roomie Works
     "home.howWorks.badge": "The Process",
@@ -523,96 +514,7 @@ const translationsBase = {
     "about.mascot.subtitle": "The AI Face of hotelmol",
     "about.mascot.quote": "Additional services bring hotels 50% of revenue, But in no hotel we worked with did we find an established system for selling these extra services. We analyzed the entire guest journey from booking to checkout and created a stable system for increasing sales conversion and average check.",
 
-    // Blog Page
-    "blog.title": "hotelmol Blog",
-    "blog.subtitle": "Insights, trends, and best practices for modern hoteliers",
-    "blog.search": "Search articles...",
-    "blog.categoriesHeading": "Categories",
-    "blog.tagsHeading": "Tags",
-    "blog.allCategories": "All Categories",
-    "blog.allTags": "All Tags",
-    "blog.category.technology": "Technology",
-    "blog.category.bestPractices": "Best Practices",
-    "blog.category.industryNews": "Industry News",
-    "blog.category.productUpdates": "Product Updates",
-    "blog.tag.ai": "AI",
-    "blog.tag.innovation": "Innovation",
-    "blog.tag.guestExperience": "Guest Experience",
-    "blog.tag.directBookings": "Direct Bookings",
-    "blog.tag.revenue": "Revenue",
-    "blog.tag.strategy": "Strategy",
-    "blog.tag.multilingual": "Multilingual",
-    "blog.tag.communication": "Communication",
-    "blog.tag.trends": "Trends",
-    "blog.tag.2025": "2025",
-    "blog.tag.hospitality": "Hospitality",
-    "blog.tag.roomie": "Roomie",
-    "blog.tag.features": "Features",
-    "blog.tag.update": "Update",
-    "blog.tag.upselling": "Upselling",
-    "blog.tag.automation": "Automation",
-    "blog.tag.integration": "Integration",
-    "blog.tag.pms": "PMS",
-    "blog.tag.techStack": "Tech Stack",
-    "blog.tag.metrics": "Metrics",
-    "blog.tag.guestSatisfaction": "Guest Satisfaction",
-    "blog.tag.analytics": "Analytics",
-    "blog.tag.security": "Security",
-    "blog.tag.dataPrivacy": "Data Privacy",
-    "blog.tag.chatbots": "Chatbots",
-    "blog.tag.customerService": "Customer Service",
 
-
-    // Blog Posts
-    "blog.post1.title": "The AI Revolution in Hospitality: What It Means for Your Hotel",
-    "blog.post1.content": "Full article content here...",
-    "blog.post1.author": "Dr. Elena Petrova",
-    "blog.post1.authorRole": "Head of AI Research",
-
-    "blog.post2.title": "Maximizing Direct Bookings: 7 Proven Strategies",
-    "blog.post2.content": "Full article content here...",
-    "blog.post2.author": "Marcus Chen",
-    "blog.post2.authorRole": "Revenue Strategy Expert",
-
-    "blog.post3.title": "Breaking Language Barriers: Multilingual Guest Communication",
-    "blog.post3.content": "Full article content here...",
-    "blog.post3.author": "Anna Kowalski",
-    "blog.post3.authorRole": "CEO & Co-founder",
-
-    "blog.post4.title": "Hotel Industry Trends 2025: What to Expect",
-    "blog.post4.content": "Full article content here...",
-    "blog.post4.author": "Sofia Rodriguez",
-    "blog.post4.authorRole": "VP of Product",
-
-    "blog.post5.title": "Introducing Roomie 2.0: New Features & Improvements",
-    "blog.post5.content": "Full article content here...",
-    "blog.post5.author": "Dev Team",
-    "blog.post5.authorRole": "Product Development",
-
-    "blog.post6.title": "The Art of Automated Upselling: Best Practices",
-    "blog.post6.content": "Full article content here...",
-    "blog.post6.author": "Maria Schmidt",
-    "blog.post6.authorRole": "Revenue Optimization Lead",
-
-    "blog.post7.title": "PMS Integration Guide: Getting Started with Roomie",
-    "blog.post7.content": "Full article content here...",
-    "blog.post7.author": "Tech Team",
-    "blog.post7.authorRole": "Integration Specialists",
-
-    "blog.post8.title": "Measuring Guest Satisfaction: KPIs That Matter",
-    "blog.post8.content": "Full article content here...",
-    "blog.post8.author": "Dr. James Wilson",
-    "blog.post8.authorRole": "Hospitality Analytics",
-
-    "blog.post9.title": "Data Privacy & Security in Hotel AI: A Complete Guide",
-    "blog.post9.content": "Full article content here...",
-    "blog.post9.author": "Sarah Mitchell",
-    "blog.post9.authorRole": "Security & Compliance Officer",
-
-    "blog.post10.title": "AI Chatbots vs. Human Service: Finding the Perfect Balance",
-    "blog.post10.content": "Full article content here...",
-    "blog.post10.author": "Anna Kowalski",
-    "blog.post10.authorRole": "CEO & Co-founder",
 
     // Case Studies Page
     "cases.title": "Success Stories",

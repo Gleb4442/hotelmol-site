@@ -17,24 +17,7 @@ const pool = new Pool({ connectionString: databaseUrl });
 
 async function run() {
     const queries = [
-        'ALTER TABLE "blog_posts" ADD COLUMN IF NOT EXISTS "category" text',
-        'ALTER TABLE "blog_posts" ADD COLUMN IF NOT EXISTS "excerpt" text',
-        'ALTER TABLE "blog_posts" ADD COLUMN IF NOT EXISTS "keywords" text',
-        'ALTER TABLE "blog_posts" ADD COLUMN IF NOT EXISTS "title_ru" text',
-        'ALTER TABLE "blog_posts" ADD COLUMN IF NOT EXISTS "content_ru" text',
-        'ALTER TABLE "blog_posts" ADD COLUMN IF NOT EXISTS "title_en" text',
-        'ALTER TABLE "blog_posts" ADD COLUMN IF NOT EXISTS "content_en" text',
-        'ALTER TABLE "blog_posts" ADD COLUMN IF NOT EXISTS "title_pl" text',
-        'ALTER TABLE "blog_posts" ADD COLUMN IF NOT EXISTS "content_pl" text',
-        'ALTER TABLE "blog_posts" ADD COLUMN IF NOT EXISTS "seo_title" varchar',
-        'ALTER TABLE "blog_posts" ADD COLUMN IF NOT EXISTS "seo_description" text',
-        'ALTER TABLE "blog_posts" ADD COLUMN IF NOT EXISTS "seo_title_ru" text',
-        'ALTER TABLE "blog_posts" ADD COLUMN IF NOT EXISTS "seo_description_ru" text',
-        'ALTER TABLE "blog_posts" ADD COLUMN IF NOT EXISTS "seo_title_en" text',
-        'ALTER TABLE "blog_posts" ADD COLUMN IF NOT EXISTS "seo_description_en" text',
-        'ALTER TABLE "blog_posts" ADD COLUMN IF NOT EXISTS "seo_title_pl" text',
-        'ALTER TABLE "blog_posts" ADD COLUMN IF NOT EXISTS "seo_description_pl" text',
-        'ALTER TABLE "blog_posts" ADD COLUMN IF NOT EXISTS "published_at" timestamp',
+
         'ALTER TABLE "cookie_consents" ADD COLUMN IF NOT EXISTS "consented_at" timestamp DEFAULT now()',
         'ALTER TABLE "cookie_consents" ADD COLUMN IF NOT EXISTS "language" text DEFAULT \'en\'',
         'ALTER TABLE "cookie_consents" ADD COLUMN IF NOT EXISTS "categories" jsonb DEFAULT \'{}\'::jsonb',

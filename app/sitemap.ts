@@ -1,7 +1,5 @@
 import { MetadataRoute } from "next";
-import { db } from "@/lib/db";
-import { blogPosts } from "@/shared/schema";
-import { desc, eq } from "drizzle-orm";
+
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const baseUrl = "https://hotelmol.com";
@@ -32,12 +30,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             changeFrequency: "monthly",
             priority: 0.8,
         },
-        {
-            url: `${baseUrl}/blog`,
-            lastModified: new Date(),
-            changeFrequency: "weekly",
-            priority: 0.8,
-        },
+
         {
             url: `${baseUrl}/contact`,
             lastModified: new Date(),
@@ -58,19 +51,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         },
     ];
 
-    // Dynamic routes: Blog Posts
-    // Fetch all published posts
-    const posts = await db.query.blogPosts.findMany({
-        where: eq(blogPosts.status, "published"),
-        orderBy: [desc(blogPosts.publishedAt)],
-    });
-
-    const blogRoutes: MetadataRoute.Sitemap = posts.map((post: any) => ({
-        url: `${baseUrl}/blog/${post.slug}`,
-        lastModified: post.updatedAt || post.publishedAt || new Date(),
-        changeFrequency: "weekly",
-        priority: 0.7,
-    }));
-
-    return [...staticRoutes, ...blogRoutes];
+    return staticRoutes;
 }
