@@ -204,95 +204,56 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <div className="fixed inset-0 z-[100] md:hidden pointer-events-auto">
-            {/* Overlay */}
+          <>
+            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="absolute inset-0 bg-black/20 backdrop-blur-sm"
+              className="fixed inset-0 z-[100] bg-black/20 backdrop-blur-sm md:hidden"
             />
 
-            {/* Menu Content */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: -20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: -20 }}
-              transition={{ duration: 0.3, ease: [0.34, 1.56, 0.64, 1] }}
-              className="absolute top-[10px] bottom-[10px] left-[16px] right-[16px] bg-white/95 dark:bg-zinc-900/95 backdrop-blur-2xl rounded-[32px] border border-white/20 shadow-2xl overflow-hidden flex flex-col"
-            >
-              <div className="grid grid-cols-[56px_1fr_56px] items-center p-4 border-b border-white/10 min-h-[80px]">
-                <div />
-                <h2 className="text-2xl font-extrabold text-[#0752A0] uppercase tracking-[0.2em] font-serif text-center whitespace-nowrap">
-                  {t("menu.title")}
-                </h2>
-                <div className="flex justify-end">
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="rounded-full bg-black/5 hover:bg-black/10 transition-colors h-11 w-11"
-                  >
-                    <X className="h-6 w-6" />
-                  </Button>
-                </div>
-              </div>
+            {/* Menu Content (Bottom Sheet Style) */}
+            <div className="fixed bottom-24 left-0 right-0 z-[101] flex flex-col items-end px-4 gap-3 md:hidden pointer-events-none">
+              {/* Close Button (Optional, maybe not needed if backdrop closes, but good for accessibility/visuals) 
+                    The user said "exactly like contact button", contact button turns into a close button.
+                    The hamburger is at the top. Moving the close button to the bottom might be confusing or helpful.
+                    For now, I'll rely on backdrop click to close, similar to standard bottom sheets, OR add a specific close pill at the bottom?
+                    The contact menu has a trigger button in the same place that toggles.
+                    The hamburger is far away.
+                    Let's just show the links.
+                */}
 
-              <div className="flex-1 overflow-y-auto">
-                <nav className="flex flex-col gap-3 items-stretch px-6 py-6">
-                  {navigation.map((item) => {
-                    const isActive = pathname === item.href;
-                    return (
+              <div className="flex flex-col gap-3 items-end w-full pointer-events-auto">
+                {navigation.map((item, idx) => {
+                  const isActive = pathname === item.href;
+                  return (
+                    <motion.div
+                      key={item.name}
+                      initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 20, scale: 0.9 }}
+                      transition={{ delay: 0.05 * (navigation.length - 1 - idx) }} // Stagger from bottom? Or top? Let's stagger appearance.
+                      className="w-full flex justify-end"
+                    >
                       <Link
-                        key={item.name}
                         href={item.href}
                         onClick={() => setIsMobileMenuOpen(false)}
-                        className={`w-full py-4 px-6 rounded-2xl text-center font-bold shadow-sm transition-transform active:scale-95 flex items-center justify-center gap-2 ${isActive ? "bg-[#0752A0] text-white ring-2 ring-white/50" : "bg-white text-[#0752A0] border border-slate-100"}`}
+                        className={`flex items-center gap-3 pr-6 pl-6 py-3 rounded-full shadow-lg border font-bold text-sm transition-transform active:scale-95
+                                    ${isActive
+                            ? "bg-[#0752A0] text-white border-[#0752A0]/20"
+                            : "bg-white text-[#0752A0] border-white/20"
+                          }`}
                       >
                         {item.name}
-                        {item.badge && (
-                          <span className="inline-block px-2 py-0.5 text-[10px] font-semibold text-[#0752A0] bg-slate-100 rounded-full ml-1">
-                            {item.badge}
-                          </span>
-                        )}
                       </Link>
-                    );
-                  })}
-                </nav>
-
-                <div className="px-6 py-6 mt-auto">
-                  <div className="grid grid-cols-2 gap-3 mb-4">
-                    <Button variant="outline" className="w-full rounded-xl border-[#0752A0]/20 text-[#0752A0]" asChild>
-                      <a href="https://pricing.hotelmol.com" target="_blank">{t("button.pricing")}</a>
-                    </Button>
-                    <Button className="w-full rounded-xl bg-[#0752A0]" asChild>
-                      <a href="https://demo.hotelmol.com" target="_blank">{t("button.tryDemo")}</a>
-                    </Button>
-                  </div>
-
-                  <p className="text-sm font-medium text-muted-foreground mb-4 text-center opacity-60">
-                    {language === "en" ? "Select Language" : language === "ru" ? "Выберите язык" : language === "ua" ? "Оберіть мову" : "Wybierz język"}
-                  </p>
-                  <div className="grid grid-cols-4 gap-2 pb-6">
-                    {(["en", "ru", "ua", "pl"] as const).map((lang) => (
-                      <Button
-                        key={lang}
-                        variant={language === lang ? "default" : "ghost"}
-                        size="sm"
-                        onClick={() => {
-                          setLanguage(lang);
-                        }}
-                        className={`w-full rounded-xl h-10 font-medium ${language === lang ? "bg-[#0752A0]" : "bg-slate-50"}`}
-                      >
-                        {lang.toUpperCase()}
-                      </Button>
-                    ))}
-                  </div>
-                </div>
+                    </motion.div>
+                  );
+                })}
               </div>
-            </motion.div>
-          </div>
+            </div>
+          </>
         )}
       </AnimatePresence>
 
