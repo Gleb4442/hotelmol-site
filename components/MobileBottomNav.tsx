@@ -142,22 +142,22 @@ export default function MobileBottomNav() {
 
 
                 {/* Main Button */}
-                <div className={`w-20 h-20 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.12)] flex items-center justify-center transition-all duration-500 border border-[#0752A0]/10 ${isOpen
+                <div className={`w-[60px] h-[60px] rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.12)] flex items-center justify-center transition-all duration-500 border border-[#0752A0]/10 ${isOpen
                     ? "bg-white text-[#0752A0] rotate-[360deg]"
                     : "bg-[#0752A0] text-white"
                     }`}>
                     {isOpen ? (
-                        <Plus className="w-10 h-10 rotate-45" />
+                        <Plus className="w-8 h-8 rotate-45" />
                     ) : (
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             xmlSpace="preserve"
-                            width="60px"
-                            height="60px"
+                            width="50px"
+                            height="50px"
                             version="1.1"
                             style={{ shapeRendering: "geometricPrecision", textRendering: "geometricPrecision", fillRule: "evenodd", clipRule: "evenodd" }}
                             viewBox="0 0 203.18 203.18"
-                            className="w-[60px] h-[60px] fill-current"
+                            className="w-[50px] h-[50px] fill-current"
                         >
                             <defs>
                                 <style type="text/css">
