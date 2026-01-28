@@ -139,20 +139,7 @@ export default function MobileBottomNav() {
                 aria-label="Contact Menu"
             >
                 {/* Overlapping Icons */}
-                <div className="flex items-center flex-row-reverse">
-                    {/* Reverse row to make the right-most on top? Or normal row with negative margins? 
-                        User said "icons to the side of button". Button is in bottom right. So icons to the LEFT.
-                        They should overlap.
-                    */}
-                    {messengers.map((app, idx) => (
-                        <div
-                            key={app.name}
-                            className={`w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center shadow-sm -mr-3 last:mr-0 z-[${10 - idx}] transition-colors duration-300 ${isOpen ? '' : 'filter grayscale'}`}
-                        >
-                            <app.icon className={`w-4 h-4 ${isOpen ? '' : 'text-slate-500'}`} style={{ color: isOpen ? app.color : undefined }} />
-                        </div>
-                    ))}
-                </div>
+
 
                 {/* Main Button */}
                 <div className={`w-14 h-14 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.12)] flex items-center justify-center transition-all duration-500 border border-[#0752A0]/10 ${isOpen

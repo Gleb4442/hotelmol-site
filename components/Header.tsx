@@ -252,7 +252,20 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
                   );
                 })}
               </div>
+
+              {/* Close Button */}
+              <motion.button
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ delay: 0.3 }}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="w-12 h-12 rounded-full bg-white shadow-lg border border-black/5 flex items-center justify-center mt-2 active:scale-95 transition-transform"
+              >
+                <X className="w-6 h-6 text-slate-400" />
+              </motion.button>
             </div>
+
           </>
         )}
       </AnimatePresence>
@@ -268,6 +281,6 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
           animation: gradient 3s ease infinite;
         }
       `}} />
-    </header>
+    </header >
   );
 }
