@@ -71,9 +71,7 @@ export default function BenefitsSection() {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-20">
-          <div className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
-            {t("home.benefits.badge")}
-          </div>
+
           <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">
             {t("home.benefits.title")}
           </h2>

@@ -3,7 +3,9 @@
 import { useState } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import HowRoomieWorks from "@/components/HowRoomieWorks";
 import IntegrationTicker from "@/components/IntegrationTicker";
+import BenefitsSection from "@/components/BenefitsSection";
 import AIDashboardSection from "@/components/AIDashboardSection";
 import ROIEstimate from "@/components/ROIEstimate";
 import PresentationSection from "@/components/PresentationSection";
@@ -27,7 +29,9 @@ export default function Home() {
             <main className="flex-grow">
                 <Hero />
                 <LLMSummary />
+                <HowRoomieWorks />
                 <IntegrationTicker />
+                <BenefitsSection />
                 <AIDashboardSection />
                 <ChatFAQSection />
                 <ROIEstimate />

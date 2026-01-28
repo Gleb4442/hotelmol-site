@@ -92,7 +92,7 @@ export default function ChatFAQSection() {
                                                 <path d="M12 17h.01" />
                                             </svg>
                                         </div>
-                                        <div className="bg-primary text-white px-5 py-3 rounded-2xl rounded-tr-none shadow-md max-w-[85%] md:max-w-[60%] text-right self-center">
+                                        <div className="bg-primary text-white px-5 py-3 rounded-2xl rounded-tr-none shadow-md w-full md:w-auto md:min-w-[40%] text-right">
                                             <p className="font-medium text-sm md:text-base leading-relaxed">{faq.question}</p>
                                         </div>
                                     </div>
@@ -125,7 +125,7 @@ export default function ChatFAQSection() {
                                         </div>
                                         <motion.div
                                             className={cn(
-                                                "group relative overflow-hidden bg-white px-5 py-3 rounded-2xl rounded-tl-none shadow-sm border border-slate-100 cursor-pointer transition-all duration-300 max-w-[90%] md:max-w-[70%]",
+                                                "group relative overflow-hidden bg-white px-5 py-3 rounded-2xl rounded-tl-none shadow-sm border border-slate-100 cursor-pointer transition-all duration-300 w-full",
                                                 !isRevealed && "hover:shadow-md hover:border-primary/20"
                                             )}
                                             onClick={() => toggleReveal(index)}
