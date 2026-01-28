@@ -184,7 +184,7 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
 
         {/* Mobile Left: Logo */}
         <Link href="/" className="flex items-center h-full relative w-[160px]" data-testid="link-home-mobile">
-          <img src="/assets/hotelmol-logo-vector.svg" alt="HotelMol" className="h-[120px] object-contain absolute top-0 left-0" />
+          <img src="/assets/hotelmol-logo-vector.svg" alt="HotelMol" className="h-[120px] object-contain absolute top-[-30px] left-0" />
         </Link>
 
         {/* Mobile Center title/placeholder if needed (optional) */}
@@ -259,8 +259,12 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ delay: 0.3 }}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="w-12 h-12 rounded-full bg-white shadow-lg border border-black/5 flex items-center justify-center mt-2 active:scale-95 transition-transform"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsMobileMenuOpen(false);
+                }}
+                className="w-12 h-12 rounded-full bg-white shadow-lg border border-black/5 flex items-center justify-center mt-2 active:scale-95 transition-transform z-[102] cursor-pointer"
+                style={{ pointerEvents: 'auto' }}
               >
                 <X className="w-6 h-6 text-slate-400" />
               </motion.button>
