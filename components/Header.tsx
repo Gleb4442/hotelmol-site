@@ -183,8 +183,8 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
       <div className="md:hidden pointer-events-auto fixed top-0 left-0 right-0 h-[50px] bg-white/95 backdrop-blur-md border-b border-black/5 shadow-sm flex items-center justify-between px-4 z-[60]">
 
         {/* Mobile Left: Logo */}
-        <Link href="/" className="flex items-center h-full py-2" data-testid="link-home-mobile">
-          <img src="/assets/hotelmol-logo-vector.svg" alt="HotelMol" className="h-full object-contain" />
+        <Link href="/" className="flex items-center h-full" data-testid="link-home-mobile">
+          <img src="/assets/hotelmol-logo-vector.svg" alt="HotelMol" className="h-[40px] object-contain" />
         </Link>
 
         {/* Mobile Center title/placeholder if needed (optional) */}
