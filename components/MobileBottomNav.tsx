@@ -3,9 +3,21 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, DollarSign, Play } from "lucide-react";
-import { FaTelegram, FaWhatsapp, FaViber } from "react-icons/fa";
+import { FaWhatsapp, FaViber, FaFacebookMessenger } from "react-icons/fa";
 import { useTranslation } from "@/lib/TranslationContext";
 import { usePathname } from "next/navigation";
+
+// Custom Telegram Icon from Contact Page
+const TelegramIcon = ({ className }: { className?: string }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 240.1 240.1">
+        <linearGradient id="Oval_1_" gradientUnits="userSpaceOnUse" x1="-838.041" y1="660.581" x2="-838.041" y2="660.3427" gradientTransform="matrix(1000 0 0 -1000 838161 660581)">
+            <stop offset="0" style={{ stopColor: "#2AABEE" }} />
+            <stop offset="1" style={{ stopColor: "#229ED9" }} />
+        </linearGradient>
+        <circle fillRule="evenodd" clipRule="evenodd" fill="url(#Oval_1_)" cx="120.1" cy="120.1" r="120.1" />
+        <path fillRule="evenodd" clipRule="evenodd" fill="#FFFFFF" d="M54.3,118.8c35-15.2,58.3-25.3,70-30.2 c33.3-13.9,40.3-16.3,44.8-16.4c1,0,3.2,0.2,4.7,1.4c1.2,1,1.5,2.3,1.7,3.3s0.4,3.1,0.2,4.7c-1.8,19-9.6,65.1-13.6,86.3 c-1.7,9-5,12-8.2,12.3c-7,0.6-12.3-4.6-19-9c-10.6-6.9-16.5-11.2-26.8-18c-11.9-7.8-4.2-12.1,2.6-19.1c1.8-1.8,32.5-29.8,33.1-32.3 c0.1-0.3,0.1-1.5-0.6-2.1c-0.7-0.6-1.7-0.4-2.5-0.2c-1.1,0.2-17.9,11.4-50.6,33.5c-4.8,3.3-9.1,4.9-13,4.8 c-4.3-0.1-12.5-2.4-18.7-4.4c-7.5-2.4-13.5-3.7-13-7.9C45.7,123.3,48.7,121.1,54.3,118.8z" />
+    </svg>
+);
 
 export default function MobileBottomNav() {
     const { language, setLanguage, t } = useTranslation();
@@ -23,9 +35,10 @@ export default function MobileBottomNav() {
     ] as const;
 
     const messengers = [
-        { name: "Telegram", icon: FaTelegram, color: "#2AABEE", href: "https://t.me/hotelmolmanager" },
+        { name: "Telegram", icon: TelegramIcon, color: undefined, href: "https://t.me/hotelmolmanager" },
         { name: "WhatsApp", icon: FaWhatsapp, color: "#25D366", href: "https://wa.me/380931603830" },
         { name: "Viber", icon: FaViber, color: "#7360f2", href: "viber://chat?number=%2B380931603830" },
+        { name: "Messenger", icon: FaFacebookMessenger, color: "#0084FF", href: "https://m.me/hotelmolmanager" },
     ];
 
     return (
@@ -67,7 +80,7 @@ export default function MobileBottomNav() {
                                     className="flex items-center gap-3 bg-white pr-4 pl-3 py-2 rounded-full shadow-lg border border-black/5"
                                 >
                                     <span className="text-sm font-medium text-slate-700">{app.name}</span>
-                                    <app.icon className="w-5 h-5" style={{ color: app.color }} />
+                                    <app.icon className="w-6 h-6" style={{ color: app.color }} />
                                 </motion.a>
                             ))}
                         </div>
@@ -142,7 +155,7 @@ export default function MobileBottomNav() {
 
 
                 {/* Main Button */}
-                <div className={`w-[60px] h-[60px] rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.12)] flex items-center justify-center transition-all duration-500 border border-[#0752A0]/10 ${isOpen
+                <div className={`w-[50px] h-[50px] rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.12)] flex items-center justify-center transition-all duration-500 border border-[#0752A0]/10 ${isOpen
                     ? "bg-white text-[#0752A0] rotate-[360deg]"
                     : "bg-[#0752A0] text-white"
                     }`}>
