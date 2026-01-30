@@ -4,8 +4,7 @@ import { Mail, Phone } from "lucide-react";
 import { FaTelegram, FaWhatsapp, FaViber, FaFacebookMessenger } from "react-icons/fa";
 import { Card } from "@/components/ui/card";
 import { useTranslation } from "@/lib/TranslationContext";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+
 import SEO, { organizationSchema } from "@/components/SEO";
 
 export default function Contact() {
@@ -13,7 +12,7 @@ export default function Contact() {
 
     return (
         <div className="min-h-screen bg-background overflow-x-hidden">
-            <Header />
+
             <main className="pt-32 md:pt-40 pb-28">
                 <div className="container mx-auto px-4 max-w-full overflow-hidden">
                     <div className="max-w-4xl mx-auto text-center mb-16 px-2">
@@ -83,7 +82,7 @@ export default function Contact() {
                     </div>
                 </div>
             </main>
-            <Footer />
+
         </div>
     );
 }

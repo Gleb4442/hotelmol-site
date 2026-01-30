@@ -4,8 +4,6 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { CheckCircle, MessageSquare, Brain, Zap, Shield, BarChart3, Globe2, ArrowRight } from "lucide-react";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import DemoRequestModal from "@/components/DemoRequestModal";
 import SalesAIAgentSection from "@/components/SalesAIAgentSection";
 import ConsultationForm from "@/components/ConsultationForm";
@@ -14,6 +12,24 @@ import SEO, { productSchema } from "@/components/SEO";
 
 export default function Roomie() {
     const { t } = useTranslation();
+    // const [demoModalOpen, setDemoModalOpen] = useState(false); // No longer needed locally if handled by layout, but wait.
+    // The ClientLayout has its own demoModal.
+    // But this page triggers it via a button in the content: <Button size="lg" onClick={() => setDemoModalOpen(true)}>
+    // This button needs to open the modal.
+    // The ClientLayout manages the modal for the Header button.
+    // The page content buttons also need to open a modal.
+    // We can either:
+    // 1. Move the state to Context (best for sharing)
+    // 2. Keep a local modal for page content (simplest, duplicates modal but works)
+    // 3. Expose the layout's modal via context?
+    // Let's look at the plan. The plan says "ClientLayout... Manages the demoModalOpen state".
+    // If I keep a local modal here, it will work for the page button.
+    // The ClientLayout modal is for the Header button.
+    // So for now, I will keep the local state and modal in this page for the page's own button.
+    // But checking the file, it imports DemoRequestModal.
+    // So I will KEEP DemoRequestModal and state here for the "Request Demo" button in the Hero/Content.
+    // I will ONLY remove Header and Footer.
+
     const [demoModalOpen, setDemoModalOpen] = useState(false);
 
     const features = [
@@ -37,7 +53,6 @@ export default function Roomie() {
                 description="Meet Roomie, the AI-powered assistant that automates hotel guest communication."
                 structuredData={productSchema}
             />
-            <Header />
 
             <section className="relative pt-[106px] pb-20 bg-gradient-to-br from-primary/10 via-primary/5 to-background">
                 <div className="container mx-auto px-4">
@@ -138,7 +153,6 @@ export default function Roomie() {
 
             <SalesAIAgentSection />
             <ConsultationForm />
-            <Footer />
             <DemoRequestModal open={demoModalOpen} onOpenChange={setDemoModalOpen} />
         </div>
     );

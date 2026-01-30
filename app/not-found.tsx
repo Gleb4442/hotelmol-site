@@ -5,8 +5,7 @@ import { Home, Mail, Search } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "@/lib/TranslationContext";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+
 import SEO from "@/components/SEO";
 
 export default function NotFound() {
@@ -19,7 +18,7 @@ export default function NotFound() {
                 description="Page not found."
                 noindex={true}
             />
-            <Header />
+
 
             <section className="pt-32 pb-20">
                 <div className="container mx-auto px-4">
@@ -40,7 +39,7 @@ export default function NotFound() {
                 </div>
             </section>
 
-            <Footer />
+
         </div>
     );
 }

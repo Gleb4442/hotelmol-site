@@ -23,6 +23,86 @@ import {
   DialogClose,
 } from "@/components/ui/dialog";
 
+const NavPill = ({ navigation, pathname }: { navigation: Array<{ name: string; href: string; badge?: string }>; pathname: string }) => {
+  const [activeRect, setActiveRect] = useState({ left: 0, width: 0, opacity: 0 });
+  const navRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const updatePill = () => {
+      if (!navRef.current) return;
+      const activeLink = navRef.current.querySelector<HTMLAnchorElement>(`a[href="${pathname}"]`);
+      if (activeLink) {
+        setActiveRect({
+          left: activeLink.offsetLeft,
+          width: activeLink.offsetWidth,
+          opacity: 1
+        });
+      } else {
+        setActiveRect(prev => ({ ...prev, opacity: 0 }));
+      }
+    };
+
+    // Initial update
+    updatePill();
+
+    // Update on resize
+    window.addEventListener('resize', updatePill);
+
+    // Tiny timeout to catch layout shifts if any (optional but safe)
+    const timeout = setTimeout(updatePill, 50);
+
+    return () => {
+      window.removeEventListener('resize', updatePill);
+      clearTimeout(timeout);
+    };
+  }, [pathname, navigation]);
+
+  return (
+    <nav className="relative flex items-center gap-1" ref={navRef}>
+      <motion.span
+        className="absolute top-0 bottom-0 bg-[#0752A0] shadow-sm rounded-full -z-10"
+        initial={false}
+        animate={{
+          left: activeRect.left,
+          width: activeRect.width,
+          opacity: activeRect.opacity
+        }}
+        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+      />
+      {navigation.map((item) => {
+        const isActive = pathname === item.href;
+        return (
+          <Link
+            key={item.name}
+            href={item.href}
+            className={`relative px-2 lg:px-3 xl:px-5 py-2.5 rounded-full text-sm xl:text-base font-medium transition-all duration-300 flex items-center gap-2
+              ${isActive
+                ? "text-white"
+                : "text-slate-600 hover:text-[#0752A0] hover:bg-slate-100/50"
+              }
+            `}
+            data-testid={`link-${item.name.toLowerCase().replace(' ', '-')}`}
+          >
+            <span className="relative z-10 flex items-center gap-2">
+              {item.name}
+              {item.badge && (
+                <span className={`inline-block px-2 py-0.5 text-[10px] uppercase font-bold tracking-wide rounded-full ml-1
+                      ${isActive
+                    ? "bg-white text-[#0752A0]"
+                    : "bg-[#0752A0] text-white animate-gradient bg-gradient-to-r from-[#0752A0] via-blue-500 to-[#0752A0] bg-[length:200%_100%]"
+                  }
+                    `}>
+                  {item.badge}
+                </span>
+              )}
+            </span>
+          </Link>
+        );
+      })}
+    </nav>
+  );
+};
+
 interface HeaderProps {
   onDemoClick?: () => void;
 }
@@ -88,45 +168,7 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
 
         {/* 2. Center Cloud: Navigation (Desktop Only) */}
         <div className={`hidden md:flex pointer-events-auto items-center justify-center px-2 lg:px-4 xl:px-[18px] h-[72px] ${cloudStyle}`}>
-          <nav className="flex items-center gap-1">
-            {navigation.map((item) => {
-              const isActive = pathname === item.href;
-              return (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className={`relative px-2 lg:px-3 xl:px-5 py-2.5 rounded-full text-sm xl:text-base font-medium transition-all duration-300 flex items-center gap-2
-                    ${isActive
-                      ? "text-white"
-                      : "text-slate-600 hover:text-[#0752A0] hover:bg-slate-100/50"
-                    }
-                  `}
-                  data-testid={`link-${item.name.toLowerCase().replace(' ', '-')}`}
-                >
-                  {isActive && (
-                    <motion.span
-                      layoutId="active-nav-pill-desktop"
-                      className="absolute inset-0 bg-[#0752A0] shadow-sm rounded-full -z-10"
-                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                    />
-                  )}
-                  <span className="relative z-10 flex items-center gap-2">
-                    {item.name}
-                    {item.badge && (
-                      <span className={`inline-block px-2 py-0.5 text-[10px] uppercase font-bold tracking-wide rounded-full ml-1
-                      ${isActive
-                          ? "bg-white text-[#0752A0]"
-                          : "bg-[#0752A0] text-white animate-gradient bg-gradient-to-r from-[#0752A0] via-blue-500 to-[#0752A0] bg-[length:200%_100%]"
-                        }
-                    `}>
-                        {item.badge}
-                      </span>
-                    )}
-                  </span>
-                </Link>
-              );
-            })}
-          </nav>
+          <NavPill navigation={navigation} pathname={pathname} />
         </div>
 
         {/* 3. Right Cloud: Actions */}

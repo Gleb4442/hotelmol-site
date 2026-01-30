@@ -3,8 +3,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Bot } from "lucide-react";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+
 import Link from "next/link";
 import SEO, { organizationSchema } from "@/components/SEO";
 import { useTranslation } from "@/lib/TranslationContext";
@@ -23,7 +22,7 @@ export default function About() {
                 description={t("about.seo.description")}
                 structuredData={organizationSchema}
             />
-            <Header />
+
 
             <section className="relative bg-white pt-[130px] pb-[110px] md:pt-48 md:pb-[132px] overflow-hidden">
                 <div className="container mx-auto px-4 relative z-10">
@@ -111,7 +110,7 @@ export default function About() {
                 </div>
             </section>
 
-            <Footer />
+
             <IntegrationRequestModal open={integrationModalOpen} onOpenChange={setIntegrationModalOpen} />
         </div>
     );

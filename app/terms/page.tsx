@@ -2,8 +2,7 @@
 
 import { Card } from "@/components/ui/card";
 import { useTranslation } from "@/lib/TranslationContext";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+
 import SEO from "@/components/SEO";
 
 export default function TermsOfService() {
@@ -15,7 +14,7 @@ export default function TermsOfService() {
                 title={t("terms.title")}
                 description="Read our Terms of Service to understand the rules and regulations for using hotelmol's services."
             />
-            <Header />
+
 
             <section className="pt-[148px] pb-20">
                 <div className="container mx-auto px-4">
@@ -51,7 +50,7 @@ export default function TermsOfService() {
                 </div>
             </section>
 
-            <Footer />
+
         </div>
     );
 }

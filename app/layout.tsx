@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/Providers";
+import ClientLayout from "@/components/ClientLayout";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const poppins = Poppins({
@@ -53,7 +54,9 @@ export default function RootLayout({
             </head>
             <body className={`${inter.variable} ${poppins.variable} font-sans antialiased`}>
                 <Providers>
-                    {children}
+                    <ClientLayout>
+                        {children}
+                    </ClientLayout>
                 </Providers>
             </body>
         </html>

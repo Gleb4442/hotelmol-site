@@ -4,8 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Building2, Network, CheckCircle, ArrowRight } from "lucide-react";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+
 import DemoRequestModal from "@/components/DemoRequestModal";
 import { useTranslation } from "@/lib/TranslationContext";
 import SEO, { organizationSchema } from "@/components/SEO";
@@ -39,7 +38,7 @@ export default function Solutions() {
                 description="Tailored AI communication solutions for single hotels, hotel chains, and hostels."
                 structuredData={organizationSchema}
             />
-            <Header />
+
 
             <section className="pt-[147px] pb-36">
                 <div className="container mx-auto px-4">
@@ -155,7 +154,7 @@ export default function Solutions() {
                 </div>
             </section>
 
-            <Footer />
+
             <DemoRequestModal open={demoModalOpen} onOpenChange={setDemoModalOpen} />
         </div>
     );

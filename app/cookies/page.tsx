@@ -2,8 +2,7 @@
 
 import { Card } from "@/components/ui/card";
 import { useTranslation } from "@/lib/TranslationContext";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+
 import SEO from "@/components/SEO";
 
 export default function CookiePolicy() {
@@ -15,7 +14,7 @@ export default function CookiePolicy() {
                 title={t("cookies.title")}
                 description="Learn about how hotelmol uses cookies and tracking technologies to improve your experience on our platform."
             />
-            <Header />
+
 
             <section className="pt-[148px] pb-20">
                 <div className="container mx-auto px-4">
@@ -51,7 +50,7 @@ export default function CookiePolicy() {
                 </div>
             </section>
 
-            <Footer />
+
         </div>
     );
 }
