@@ -42,7 +42,7 @@ export default function MobileBottomNav() {
     ];
 
     return (
-        <div className="md:hidden fixed bottom-6 right-4 z-50 pointer-events-auto flex flex-col items-end gap-3">
+        <div className="md:hidden fixed bottom-6 right-4 z-50 pointer-events-auto flex flex-col items-end gap-3 transition-all duration-300">
 
             {/* Backdrop for Menu */}
             <AnimatePresence>
@@ -103,8 +103,8 @@ export default function MobileBottomNav() {
                                  language === "pl" ? "Opinia ChatGPT" :
                                  "ChatGPT Opinion"}
                             </span>
-                            <div className="bg-slate-100 p-1.5 rounded-full">
-                                <Bot className="w-4 h-4" />
+                            <div className="bg-slate-100 p-1.5 rounded-full w-8 h-8 relative flex items-center justify-center">
+                                <img src="/assets/chatgpt-logo.png" alt="ChatGPT" className="w-5 h-5 object-contain" />
                             </div>
                         </motion.a>
 
