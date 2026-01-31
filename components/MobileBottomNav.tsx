@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, DollarSign, Play, Bot } from "lucide-react";
+import { Plus, DollarSign, Play, Bot, ChevronDown, ChevronUp } from "lucide-react";
 import { FaWhatsapp, FaViber, FaFacebookMessenger } from "react-icons/fa";
 import { useTranslation } from "@/lib/TranslationContext";
 import { usePathname } from "next/navigation";
@@ -23,6 +23,7 @@ export default function MobileBottomNav() {
     const { language, setLanguage, t } = useTranslation();
     const pathname = usePathname();
     const [isOpen, setIsOpen] = useState(false);
+    const [isLangOpen, setIsLangOpen] = useState(false);
 
     // Hide on contact page if needed
     if (pathname === "/contact") return null;
@@ -40,6 +41,8 @@ export default function MobileBottomNav() {
         { name: "Viber", icon: FaViber, color: "#7360f2", href: "viber://chat?number=%2B380931603830" },
         { name: "Messenger", icon: FaFacebookMessenger, color: "#0084FF", href: "https://m.me/hotelmolmanager" },
     ];
+
+    const currentLangLabel = languages.find(l => l.code === language)?.label || "English";
 
     return (
         <div className="md:hidden fixed bottom-6 right-4 z-50 pointer-events-auto flex flex-col items-end gap-3 transition-all duration-300">
@@ -138,28 +141,46 @@ export default function MobileBottomNav() {
                             </div>
                         </motion.a>
 
-                        {/* Language Selector (Mini Menu) */}
+                        {/* Collapsible Language Selector */}
                         <motion.div
                             initial={{ x: 20, opacity: 0 }}
                             animate={{ x: 0, opacity: 1 }}
                             transition={{ delay: 0.3 }}
-                            className="bg-white rounded-2xl shadow-xl border border-black/5 overflow-hidden p-1 flex flex-col gap-1 w-32"
+                            className="bg-white rounded-2xl shadow-xl border border-black/5 overflow-hidden w-32 flex flex-col"
                         >
-                            {languages.map((lang) => (
-                                <button
-                                    key={lang.code}
-                                    onClick={() => {
-                                        setLanguage(lang.code);
-                                    }}
-                                    className={`text-xs font-bold py-2 px-3 rounded-xl text-left transition-colors flex items-center justify-between ${language === lang.code
-                                        ? "bg-[#0752A0] text-white"
-                                        : "hover:bg-slate-100 text-slate-600"
-                                        }`}
-                                >
-                                    {lang.label}
-                                    {language === lang.code && "✓"}
-                                </button>
-                            ))}
+                            {/* Selected Language Header */}
+                            <button
+                                onClick={() => setIsLangOpen(!isLangOpen)}
+                                className="flex items-center justify-between w-full px-3 py-2 bg-[#0752A0] text-white text-xs font-bold"
+                            >
+                                <span>{currentLangLabel}</span>
+                                {isLangOpen ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
+                            </button>
+
+                            {/* Dropdown Options */}
+                            <AnimatePresence>
+                                {isLangOpen && (
+                                    <motion.div
+                                        initial={{ height: 0, opacity: 0 }}
+                                        animate={{ height: "auto", opacity: 1 }}
+                                        exit={{ height: 0, opacity: 0 }}
+                                        className="flex flex-col bg-white"
+                                    >
+                                        {languages.filter(l => l.code !== language).map((lang) => (
+                                            <button
+                                                key={lang.code}
+                                                onClick={() => {
+                                                    setLanguage(lang.code);
+                                                    setIsLangOpen(false);
+                                                }}
+                                                className="text-xs font-bold py-2 px-3 text-left text-slate-600 hover:bg-slate-100 transition-colors border-t border-slate-100"
+                                            >
+                                                {lang.label}
+                                            </button>
+                                        ))}
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
                         </motion.div>
 
                     </motion.div>
