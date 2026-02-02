@@ -32,9 +32,9 @@ export default function ChatFAQSection() {
 
     const toggleReveal = (index: number) => {
         if (revealedAnswers.includes(index)) {
-            setRevealedAnswers(prev => prev.filter(i => i !== index));
+            setRevealedAnswers((prev: number[]) => prev.filter((i: number) => i !== index));
         } else {
-            setRevealedAnswers(prev => [...prev, index]);
+            setRevealedAnswers((prev: number[]) => [...prev, index]);
         }
     };
 
@@ -77,8 +77,8 @@ export default function ChatFAQSection() {
                             <div key={index} className="space-y-4">
                                 {/* User Question (Right) */}
                                 <div className="flex justify-end">
-                                    <div className="flex gap-3 w-full flex-row-reverse">
-                                        <div className="flex-shrink-0 w-[38px] h-[38px] rounded-full bg-primary flex items-center justify-center mt-1 text-white shadow-sm">
+                                    <div className="flex gap-3 w-full flex-row-reverse items-start">
+                                        <div className="flex-shrink-0 w-[42px] h-[42px] rounded-full bg-primary flex items-center justify-center text-white shadow-sm ring-4 ring-white relative z-10">
                                             <svg
                                                 viewBox="0 0 24 24"
                                                 fill="none"
@@ -92,7 +92,7 @@ export default function ChatFAQSection() {
                                                 <path d="M12 17h.01" />
                                             </svg>
                                         </div>
-                                        <div className="bg-primary text-white px-5 py-3 rounded-2xl rounded-tr-none shadow-md w-fit max-w-[85%] break-words md:w-auto md:min-w-[40%] text-right">
+                                        <div className="bg-primary text-white px-5 py-3.5 rounded-[22px] rounded-tr-[4px] shadow-lg shadow-primary/10 w-fit max-w-[82%] break-words md:w-auto md:min-w-[40%] text-right border border-primary/10">
                                             <p className="font-medium text-sm md:text-base leading-relaxed">{faq.question}</p>
                                         </div>
                                     </div>
@@ -100,8 +100,8 @@ export default function ChatFAQSection() {
 
                                 {/* System Answer (Left) */}
                                 <div className="flex justify-start">
-                                    <div className="flex gap-3 w-full">
-                                        <div className="flex-shrink-0 w-[38px] h-[38px] rounded-full bg-primary flex items-center justify-center mt-1 text-white shadow-sm">
+                                    <div className="flex gap-3 w-full items-start">
+                                        <div className="flex-shrink-0 w-[42px] h-[42px] rounded-full bg-white flex items-center justify-center text-primary shadow-sm border border-slate-200 ring-4 ring-slate-50 relative z-10">
                                             <svg
                                                 viewBox="0 0 203.18 203.18"
                                                 className="w-9 h-9 fill-current"
@@ -125,7 +125,7 @@ export default function ChatFAQSection() {
                                         </div>
                                         <motion.div
                                             className={cn(
-                                                "group relative overflow-hidden bg-white px-5 py-3 rounded-2xl rounded-tl-none shadow-sm border border-slate-100 cursor-pointer transition-all duration-300 w-fit max-w-[85%] break-words",
+                                                "group relative overflow-hidden bg-white px-5 py-3.5 rounded-[22px] rounded-tl-[4px] shadow-md border border-slate-200/60 cursor-pointer transition-all duration-300 w-fit max-w-[82%] break-words",
                                                 !isRevealed && "hover:shadow-md hover:border-primary/20"
                                             )}
                                             onClick={() => toggleReveal(index)}
