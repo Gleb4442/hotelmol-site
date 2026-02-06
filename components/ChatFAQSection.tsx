@@ -154,7 +154,7 @@ export default function ChatFAQSection() {
                                                 {/* Actual Content */}
                                                 <p className={cn(
                                                     "text-sm md:text-base text-slate-700 leading-relaxed transition-all duration-700 whitespace-pre-line",
-                                                    !isRevealed && "opacity-40 blur-[2px] select-none line-clamp-2 md:line-clamp-none"
+                                                    !isRevealed && "opacity-40 blur-[2px] select-none line-clamp-2"
                                                 )}>
                                                     {faq.answer.includes("[PRICING_BTN]") ? (
                                                         faq.answer.split(/\[PRICING_BTN\](.*?)\[\/PRICING_BTN\]/g).map((part, i) => {

@@ -1,6 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { Calculator, ArrowRight } from "lucide-react";
+import { Calculator } from "lucide-react";
 import { useTranslation } from "@/lib/TranslationContext";
 
 export default function ROIEstimate() {
@@ -29,30 +29,18 @@ export default function ROIEstimate() {
           </div>
 
           <div className="flex flex-col items-center justify-center relative">
-            {/* Arrow pointing to button - hidden on mobile, visible on lg screens */}
-            <div className="hidden lg:block absolute left-[calc(50%+180px)] top-1/2 -translate-y-1/2">
-              <svg width="100" height="40" viewBox="0 0 100 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white fill-current opacity-80 rotate-12">
-                <path d="M10 20 Q 50 5, 90 20" stroke="currentColor" strokeWidth="2" fill="none" />
-                <path d="M85 15 L90 20 L85 25" stroke="currentColor" strokeWidth="2" fill="none" />
-              </svg>
-            </div>
-
             <Button
               size="lg"
               asChild
               className="w-full sm:w-auto h-16 px-8 bg-white text-primary hover:bg-white/90 text-lg font-semibold shadow-xl rounded-full"
             >
               <a href="https://cal.com/gleb.gosha/30min" target="_blank" rel="noopener noreferrer">
-                {t("button.bookWebCall")} {t("button.talkToHuman")}
-                <ArrowRight className="ml-2 h-6 w-6" />
+                Talk to a Human
               </a>
             </Button>
 
             <p className="mt-4 text-white/80 text-sm font-medium">
               {t("text.callFree")}
-              <span className="hidden lg:inline-block ml-2 absolute left-[calc(50%+140px)] top-[-20px] -rotate-12 text-xs opacity-70">
-                ←
-              </span>
             </p>
           </div>
         </div>

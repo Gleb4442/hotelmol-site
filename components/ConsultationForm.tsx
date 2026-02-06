@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { ArrowRight, MessageSquare } from "lucide-react";
+import { MessageSquare } from "lucide-react";
 import { useTranslation } from "@/lib/TranslationContext";
 
 export default function ConsultationForm() {
@@ -28,14 +28,6 @@ export default function ConsultationForm() {
                     </p>
 
                     <div className="flex flex-col items-center justify-center relative">
-                        {/* Decorative Arrow */}
-                        <div className="hidden lg:block absolute left-[calc(50%+160px)] top-1/2 -translate-y-1/2">
-                            <svg width="100" height="40" viewBox="0 0 100 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-primary/40 rotate-12">
-                                <path d="M10 20 Q 50 5, 90 20" stroke="currentColor" strokeWidth="2" fill="none" />
-                                <path d="M85 15 L90 20 L85 25" stroke="currentColor" strokeWidth="2" fill="none" />
-                            </svg>
-                        </div>
-
                         <Button
                             size="lg"
                             asChild
@@ -43,7 +35,6 @@ export default function ConsultationForm() {
                         >
                             <a href="https://cal.com/gleb.gosha/30min" target="_blank" rel="noopener noreferrer">
                                 {t("button.talkToHuman")}
-                                <ArrowRight className="ml-3 h-6 w-6" />
                             </a>
                         </Button>
 

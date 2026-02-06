@@ -23,6 +23,7 @@ const translationsBase = {
     "aiWidget.inputPlaceholder": "Type your message...",
 
     "button.talkToHuman": "Talk to a human",
+    "contact.bookVideoCall": "Book a free Video Call",
     "button.bookWebCall": "Talk to a Human",
     "text.callFree": "This call is absolutely free",
 

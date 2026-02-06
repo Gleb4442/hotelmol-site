@@ -33,7 +33,7 @@ export default function Contact() {
                             </Card>
 
                             <Card className="p-6 md:p-8 bg-gradient-to-br from-[#0752A0]/10 to-[#0752A0]/5 border-[#0752A0]/20">
-                                <h3 className="font-serif text-xl font-semibold mb-6 text-center">{t("button.talkToHuman")}</h3>
+                                <h3 className="font-serif text-xl font-semibold mb-6 text-center">{t("contact.bookVideoCall")}</h3>
                                 <div className="flex flex-col items-center justify-center py-2">
                                     <a
                                         href="https://cal.com/gleb.gosha/30min"
