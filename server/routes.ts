@@ -5,7 +5,7 @@ import { roiLeadSchema, contactLeadSchema, demoLeadSchema, cookieConsentSchema, 
 import { createHash } from "crypto";
 import { db } from "./db.js";
 
-import { sendToN8n } from "./n8n.js";
+
 
 function hashIP(ip: string): string {
   return createHash('sha256').update(ip).digest('hex');
@@ -36,8 +36,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         comment: null,
         mailchimpStatus: "skipped",
       });
-      // Fire and forget n8n webhook (lead)
-      void sendToN8n(lead, "lead", "roi");
+
 
       res.json({ success: true, message: "ROI estimate request submitted successfully", leadId: lead.id });
     } catch (error: any) {
@@ -68,8 +67,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         propertySize: null,
         mailchimpStatus: "skipped",
       });
-      // Fire and forget n8n webhook (lead)
-      void sendToN8n(lead, "lead", "contact");
+
 
       res.json({ success: true, message: "Contact form submitted successfully", leadId: lead.id });
     } catch (error: any) {
@@ -100,8 +98,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         referrer: validatedData.referrer,
         mailchimpStatus: "skipped",
       });
-      // Fire and forget n8n webhook (lead)
-      void sendToN8n(lead, "lead", "consultation");
+
 
       res.json({ success: true, message: "Consultation request submitted successfully", leadId: lead.id });
     } catch (error: any) {
@@ -132,8 +129,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         referrer: null,
         mailchimpStatus: null,
       });
-      // Fire and forget n8n webhook (lead)
-      void sendToN8n(lead, "lead", "demo");
+
 
       res.json({ success: true, message: "Demo request submitted successfully", leadId: lead.id });
     } catch (error: any) {
@@ -164,8 +160,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         propertySize: null,
         mailchimpStatus: "skipped",
       });
-      // Fire and forget n8n webhook (lead)
-      void sendToN8n(lead, "lead", "integration");
+
 
       res.json({ success: true, message: "Integration request submitted successfully", leadId: lead.id });
     } catch (error: any) {
@@ -190,8 +185,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         userAgent: userAgent,
       });
 
-      // Fire and forget n8n webhook (cookie)
-      void sendToN8n({ ...consent, consent_status: 'accepted' }, "cookie");
+
 
       res.json({ success: true, message: "Cookie consent saved successfully", consentId: consent.id });
     } catch (error: any) {

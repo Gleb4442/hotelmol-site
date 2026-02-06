@@ -769,7 +769,7 @@ const translationsBase = {
     "dpa.section5": "5. Sub-processors",
     "dpa.section5.text": "hotelmol may engage the following sub-processors:",
     "dpa.section5.aws": "Amazon Web Services (AWS) — hosting and data storage",
-    "dpa.section5.openai": "OpenAI — AI processing",
+
     "dpa.section5.sendgrid": "SendGrid — email delivery",
     "dpa.section5.stripe": "Stripe — payment processing",
     "dpa.section5.approval": "Controller provides general authorization for sub-processors with 30 days' notice of any changes.",

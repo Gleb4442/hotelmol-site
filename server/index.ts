@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// CORS setup for frontend and n8n
+// CORS setup for frontend
 app.use(cors({
   origin: [process.env.FRONTEND_URL || "http://localhost:5000", "http://localhost:3000"],
   credentials: true

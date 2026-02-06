@@ -9,17 +9,7 @@ export async function POST(request: Request) {
 
         const [lead] = await db.insert(leadSubmissions).values({ ...validated, type: "consultation" }).returning();
 
-        // Trigger n8n webhook
-        const webhookUrl = process.env.N8N_LEAD_WEBHOOK_URL || "https://n8n.myn8napp.online/webhook/contact-form";
-        try {
-            await fetch(webhookUrl, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ ...validated, source: "consultation_form", id: lead.id }),
-            });
-        } catch (e) {
-            console.error("n8n webhook failed", e);
-        }
+
 
         return NextResponse.json(lead);
     } catch (error: any) {
