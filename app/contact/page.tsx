@@ -31,6 +31,24 @@ export default function Contact() {
                                     <p className="text-muted-foreground">{t("contact.availabilityDescription")}</p>
                                 </div>
                             </Card>
+
+                            <Card className="p-6 md:p-8 bg-gradient-to-br from-[#0752A0]/10 to-[#0752A0]/5 border-[#0752A0]/20">
+                                <h3 className="font-serif text-xl font-semibold mb-6 text-center">{t("button.talkToHuman")}</h3>
+                                <div className="flex flex-col items-center justify-center py-2">
+                                    <a
+                                        href="https://cal.com/gleb.gosha/30min"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center justify-center px-8 py-4 bg-[#0752A0] text-white text-lg font-semibold rounded-full hover:bg-[#064080] transition-all shadow-lg hover:shadow-xl group"
+                                    >
+                                        {t("button.bookWebCall")}
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-2 group-hover:translate-x-1 transition-transform">
+                                            <path d="M5 12h14" />
+                                            <path d="m12 5 7 7-7 7" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </Card>
                             <Card className="p-6 md:p-8">
                                 <h3 className="font-serif text-xl font-semibold mb-4 text-center">{t("contact.quickSupport")}</h3>
                                 <div className="flex gap-[35px] items-center justify-center py-4">

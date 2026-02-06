@@ -5,13 +5,13 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Building2, Network, CheckCircle, ArrowRight } from "lucide-react";
 
-import DemoRequestModal from "@/components/DemoRequestModal";
+
 import { useTranslation } from "@/lib/TranslationContext";
 import SEO, { organizationSchema } from "@/components/SEO";
 
 export default function Solutions() {
     const { t } = useTranslation();
-    const [demoModalOpen, setDemoModalOpen] = useState(false);
+
 
     const singleHotelFeatures = [
         t("solutions.single.feature1"),
@@ -73,10 +73,12 @@ export default function Solutions() {
                                     <div className="flex flex-wrap gap-4">
                                         <Button
                                             size="lg"
-                                            onClick={() => setDemoModalOpen(true)}
+                                            asChild
                                         >
-                                            {t("button.requestDemo")}
-                                            <ArrowRight className="ml-2 h-5 w-5" />
+                                            <a href="https://cal.com/gleb.gosha/30min" target="_blank" rel="noopener noreferrer">
+                                                {t("button.requestDemo")}
+                                                <ArrowRight className="ml-2 h-5 w-5" />
+                                            </a>
                                         </Button>
                                     </div>
                                 </div>
@@ -111,10 +113,12 @@ export default function Solutions() {
                                     <div className="flex flex-wrap gap-4">
                                         <Button
                                             size="lg"
-                                            onClick={() => setDemoModalOpen(true)}
+                                            asChild
                                         >
-                                            {t("button.requestDemo")}
-                                            <ArrowRight className="ml-2 h-5 w-5" />
+                                            <a href="https://cal.com/gleb.gosha/30min" target="_blank" rel="noopener noreferrer">
+                                                {t("button.requestDemo")}
+                                                <ArrowRight className="ml-2 h-5 w-5" />
+                                            </a>
                                         </Button>
                                     </div>
                                 </div>
@@ -144,10 +148,12 @@ export default function Solutions() {
                         <div className="flex flex-wrap justify-center gap-4">
                             <Button
                                 size="lg"
-                                onClick={() => setDemoModalOpen(true)}
+                                asChild
                             >
-                                {t("solutions.consultation.button")}
-                                <ArrowRight className="ml-2 h-5 w-5" />
+                                <a href="https://cal.com/gleb.gosha/30min" target="_blank" rel="noopener noreferrer">
+                                    {t("solutions.consultation.button")}
+                                    <ArrowRight className="ml-2 h-5 w-5" />
+                                </a>
                             </Button>
                         </div>
                     </div>
@@ -155,7 +161,7 @@ export default function Solutions() {
             </section>
 
 
-            <DemoRequestModal open={demoModalOpen} onOpenChange={setDemoModalOpen} />
+            {/* <DemoRequestModal open={demoModalOpen} onOpenChange={setDemoModalOpen} /> */}
         </div>
     );
 }

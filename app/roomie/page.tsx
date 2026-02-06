@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { CheckCircle, MessageSquare, Brain, Zap, Shield, BarChart3, Globe2, ArrowRight } from "lucide-react";
-import DemoRequestModal from "@/components/DemoRequestModal";
+
 import SalesAIAgentSection from "@/components/SalesAIAgentSection";
 import ConsultationForm from "@/components/ConsultationForm";
 import { useTranslation } from "@/lib/TranslationContext";
@@ -30,7 +30,7 @@ export default function Roomie() {
     // So I will KEEP DemoRequestModal and state here for the "Request Demo" button in the Hero/Content.
     // I will ONLY remove Header and Footer.
 
-    const [demoModalOpen, setDemoModalOpen] = useState(false);
+
 
     const features = [
         { icon: <MessageSquare className="w-6 h-6 text-primary" />, title: t("roomie.features.conversations.title"), description: t("roomie.features.conversations.description") },
@@ -78,8 +78,10 @@ export default function Roomie() {
                                 ))}
                             </div>
                             <div className="flex flex-wrap gap-4 mt-8">
-                                <Button size="lg" onClick={() => setDemoModalOpen(true)}>
-                                    {t("button.requestDemo")} <ArrowRight className="ml-2 h-5 w-5" />
+                                <Button size="lg" asChild>
+                                    <a href="https://cal.com/gleb.gosha/30min" target="_blank" rel="noopener noreferrer">
+                                        {t("button.requestDemo")} <ArrowRight className="ml-2 h-5 w-5" />
+                                    </a>
                                 </Button>
                             </div>
                         </div>
@@ -153,7 +155,7 @@ export default function Roomie() {
 
             <SalesAIAgentSection />
             <ConsultationForm />
-            <DemoRequestModal open={demoModalOpen} onOpenChange={setDemoModalOpen} />
+            {/* <DemoRequestModal open={demoModalOpen} onOpenChange={setDemoModalOpen} /> */}
         </div>
     );
 }

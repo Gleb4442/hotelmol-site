@@ -276,7 +276,7 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
                       initial={{ opacity: 0, y: 20, scale: 0.9 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 20, scale: 0.9 }}
-                      transition={{ delay: 0.05 * (navigation.length - 1 - idx) }} // Stagger from bottom? Or top? Let's stagger appearance.
+                      transition={{ delay: 0.05 * (navigation.length - 1 - idx) }}
                       className="w-full flex justify-end"
                     >
                       <Link
@@ -293,6 +293,25 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
                     </motion.div>
                   );
                 })}
+
+                {/* Talk to a human button */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 20, scale: 0.9 }}
+                  transition={{ delay: 0.05 * navigation.length }}
+                  className="w-full flex justify-end"
+                >
+                  <a
+                    href="https://cal.com/gleb.gosha/30min"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="flex items-center gap-3 pr-6 pl-6 py-3 rounded-full shadow-lg border font-bold text-sm transition-transform active:scale-95 bg-[#0752A0] text-white border-[#0752A0]/20"
+                  >
+                    {t("button.talkToHuman")}
+                  </a>
+                </motion.div>
               </div>
 
               {/* Close Button */}

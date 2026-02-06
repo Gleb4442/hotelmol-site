@@ -1,73 +1,10 @@
 "use client";
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Checkbox } from "@/components/ui/checkbox";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Calculator, ArrowRight } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
 import { useTranslation } from "@/lib/TranslationContext";
-import { apiRequest } from "@/lib/queryClient";
 
 export default function ROIEstimate() {
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    propertySize: "",
-    dataProcessing: false,
-    marketing: false,
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const { toast } = useToast();
   const { t } = useTranslation();
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!formData.dataProcessing) {
-      toast({
-        title: t("error.agreementRequired"),
-        description: t("error.agreeToDataProcessing"),
-        variant: "destructive",
-      });
-      return;
-    }
-
-    setIsSubmitting(true);
-    
-    try {
-      await apiRequest("POST", "/api/leads/roi", formData);
-
-      toast({
-        title: t("roi.successTitle"),
-        description: t("roi.successMessage"),
-      });
-
-      // Reset form
-      setFormData({
-        name: "",
-        phone: "",
-        propertySize: "",
-        dataProcessing: false,
-        marketing: false,
-      });
-    } catch (error: any) {
-      toast({
-        title: t("error.submissionFailed"),
-        description: error.message || t("error.tryAgainLater"),
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
 
   return (
     <section className="py-11 lg:py-28 relative overflow-hidden">
@@ -76,10 +13,10 @@ export default function ROIEstimate() {
         <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl" />
       </div>
-      
+
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16">
+        <div className="max-w-5xl mx-auto text-center">
+          <div className="text-center mb-12">
             <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-white/10 backdrop-blur-md mb-6">
               <Calculator className="h-10 w-10 text-white" />
             </div>
@@ -91,95 +28,33 @@ export default function ROIEstimate() {
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="bg-white/10 backdrop-blur-xl rounded-2xl p-8 lg:p-12 border border-white/20 shadow-2xl">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-              <div className="space-y-3">
-                <Label htmlFor="name" className="text-white text-base font-medium">{t("roi.name")}</Label>
-                <Input
-                  id="name"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="bg-white/95 border-0 h-12 text-base"
-                  placeholder={t("roi.namePlaceholder")}
-                  data-testid="input-name"
-                />
-              </div>
-              <div className="space-y-3">
-                <Label htmlFor="phone" className="text-white text-base font-medium">{t("roi.phone")}</Label>
-                <Input
-                  id="phone"
-                  type="tel"
-                  value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  className="bg-white/95 border-0 h-12 text-base"
-                  placeholder={t("roi.phonePlaceholder")}
-                  data-testid="input-phone"
-                />
-              </div>
-              <div className="space-y-3">
-                <Label htmlFor="propertySize" className="text-white text-base font-medium">{t("roi.propertySize")}</Label>
-                <Select
-                  value={formData.propertySize}
-                  onValueChange={(value) => setFormData({ ...formData, propertySize: value })}
-                >
-                  <SelectTrigger 
-                    className="bg-white/95 border-0 h-12 text-base" 
-                    data-testid="select-property-size"
-                  >
-                    <SelectValue placeholder={t("roi.propertySizePlaceholder")} />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="upTo30">{t("roi.size.upTo30")}</SelectItem>
-                    <SelectItem value="upTo100">{t("roi.size.upTo100")}</SelectItem>
-                    <SelectItem value="upTo300">{t("roi.size.upTo300")}</SelectItem>
-                    <SelectItem value="over300">{t("roi.size.over300")}</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
+          <div className="flex flex-col items-center justify-center relative">
+            {/* Arrow pointing to button - hidden on mobile, visible on lg screens */}
+            <div className="hidden lg:block absolute left-[calc(50%+180px)] top-1/2 -translate-y-1/2">
+              <svg width="100" height="40" viewBox="0 0 100 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white fill-current opacity-80 rotate-12">
+                <path d="M10 20 Q 50 5, 90 20" stroke="currentColor" strokeWidth="2" fill="none" />
+                <path d="M85 15 L90 20 L85 25" stroke="currentColor" strokeWidth="2" fill="none" />
+              </svg>
             </div>
 
-            <div className="space-y-4 mb-8 p-6 bg-white/5 rounded-xl">
-              <div className="flex items-start space-x-3">
-                <Checkbox
-                  id="dataProcessing"
-                  checked={formData.dataProcessing}
-                  onCheckedChange={(checked) => 
-                    setFormData({ ...formData, dataProcessing: checked as boolean })
-                  }
-                  className="mt-1 border-white/40 data-[state=checked]:bg-white data-[state=checked]:text-primary"
-                  data-testid="checkbox-data-processing"
-                />
-                <Label htmlFor="dataProcessing" className="text-sm text-white/95 leading-relaxed cursor-pointer">
-                  {t("roi.dataProcessing")}
-                </Label>
-              </div>
-              <div className="flex items-start space-x-3">
-                <Checkbox
-                  id="marketing"
-                  checked={formData.marketing}
-                  onCheckedChange={(checked) => 
-                    setFormData({ ...formData, marketing: checked as boolean })
-                  }
-                  className="mt-1 border-white/40 data-[state=checked]:bg-white data-[state=checked]:text-primary"
-                  data-testid="checkbox-marketing"
-                />
-                <Label htmlFor="marketing" className="text-sm text-white/95 leading-relaxed cursor-pointer">
-                  {t("roi.marketing")}
-                </Label>
-              </div>
-            </div>
-
-            <Button 
-              type="submit" 
-              size="lg" 
-              className="w-full h-14 bg-white text-primary hover:bg-white/90 text-base font-semibold shadow-xl"
-              disabled={isSubmitting}
-              data-testid="button-get-estimate"
+            <Button
+              size="lg"
+              asChild
+              className="w-full sm:w-auto h-16 px-8 bg-white text-primary hover:bg-white/90 text-lg font-semibold shadow-xl rounded-full"
             >
-              {isSubmitting ? t("roi.submitting") : t("roi.submit")}
-              {!isSubmitting && <ArrowRight className="ml-2 h-5 w-5" />}
+              <a href="https://cal.com/gleb.gosha/30min" target="_blank" rel="noopener noreferrer">
+                {t("button.bookWebCall")} {t("button.talkToHuman")}
+                <ArrowRight className="ml-2 h-6 w-6" />
+              </a>
             </Button>
-          </form>
+
+            <p className="mt-4 text-white/80 text-sm font-medium">
+              {t("text.callFree")}
+              <span className="hidden lg:inline-block ml-2 absolute left-[calc(50%+140px)] top-[-20px] -rotate-12 text-xs opacity-70">
+                ←
+              </span>
+            </p>
+          </div>
         </div>
       </div>
     </section>

@@ -95,12 +95,14 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button
                 size="lg"
+                asChild
                 className="text-base px-8 h-14 bg-white text-primary hover:bg-white/90 shadow-xl"
-                onClick={() => setDemoModalOpen(true)}
                 data-testid="button-request-demo"
               >
-                {t("button.requestDemo")}
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <a href="https://cal.com/gleb.gosha/30min" target="_blank" rel="noopener noreferrer">
+                  {t("button.bookWebCall")}
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </a>
               </Button>
               <Button
                 size="lg"

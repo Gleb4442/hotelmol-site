@@ -22,6 +22,10 @@ const translationsBase = {
     "aiWidget.thinking": "Agent is thinking...",
     "aiWidget.inputPlaceholder": "Type your message...",
 
+    "button.talkToHuman": "Talk to a human",
+    "button.bookWebCall": "Book a video call with your manager",
+    "text.callFree": "This call is absolutely free",
+
     // Home Hero
     "home.hero.badge": "Trusted by 500+ hotels worldwide",
     "home.hero.title": "AI that",

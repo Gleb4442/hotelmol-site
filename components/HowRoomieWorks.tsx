@@ -47,7 +47,7 @@ export default function HowRoomieWorks() {
         }
         return { pos: prev.pos + 1, jump: false };
       });
-    }, 4000);
+    }, 1000);
     return () => clearInterval(interval);
   }, []);
 
@@ -83,7 +83,7 @@ export default function HowRoomieWorks() {
                 height: 20,
               }}
               transition={{
-                duration: animState.jump ? 0 : 1.5,
+                duration: animState.jump ? 0 : 0.5,
                 ease: animState.jump ? "linear" : "easeInOut"
               }}
               style={{
