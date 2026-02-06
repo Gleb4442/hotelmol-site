@@ -42,10 +42,6 @@ export default function Contact() {
                                         className="inline-flex items-center justify-center px-8 py-4 bg-[#0752A0] text-white text-lg font-semibold rounded-full hover:bg-[#064080] transition-all shadow-lg hover:shadow-xl group"
                                     >
                                         {t("button.bookWebCall")}
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-2 group-hover:translate-x-1 transition-transform">
-                                            <path d="M5 12h14" />
-                                            <path d="m12 5 7 7-7 7" />
-                                        </svg>
                                     </a>
                                 </div>
                             </Card>

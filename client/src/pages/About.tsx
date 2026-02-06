@@ -16,13 +16,13 @@ export default function About() {
 
   return (
     <div className="min-h-screen bg-background">
-      <SEO 
+      <SEO
         title={t("about.seo.title")}
         description={t("about.seo.description")}
         structuredData={organizationSchema}
       />
       <Header />
-      
+
       {/* HERO SECTION */}
       <section className="relative bg-white py-40 md:py-48 overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
@@ -34,23 +34,24 @@ export default function About() {
                 {t("about.hero.titleAccent")}
               </span>
             </h1>
-            
+
             {/* Subheadline */}
             <p className="text-lg md:text-xl text-slate-600 mb-10 max-w-3xl mx-auto leading-relaxed">
               {t("about.hero.subtitle")}
             </p>
-            
+
             {/* Actions */}
             <div className="flex flex-col sm:flex-row gap-9 justify-center items-center">
-              <Button 
-                size="lg" 
-                className="text-white px-8 text-lg" 
-                style={{ backgroundColor: "#0752A0" }} 
-                onClick={() => setIntegrationModalOpen(true)}
-                data-testid="button-discuss-integration"
-              >
-                {t("about.hero.button.integration")}
-              </Button>
+              <Link href="/contact">
+                <Button
+                  size="lg"
+                  className="text-white px-8 text-lg"
+                  style={{ backgroundColor: "#0752A0" }}
+                  data-testid="button-discuss-integration"
+                >
+                  {t("about.hero.button.integration")}
+                </Button>
+              </Link>
               <Link href="/roomie">
                 <button className="text-slate-600 hover:text-slate-900 transition-colors text-lg font-medium" data-testid="button-meet-roomie">
                   {t("about.hero.button.meetRoomie")}
@@ -88,9 +89,9 @@ export default function About() {
             {/* Visual - Robot Image */}
             <div className="flex justify-center lg:justify-start">
               <div className="w-full max-w-[320px]">
-                <img 
-                  src={robotImage} 
-                  alt="Roomie - AI Assistant" 
+                <img
+                  src={robotImage}
+                  alt="Roomie - AI Assistant"
                   className="w-full h-auto rounded-2xl"
                   style={{
                     boxShadow: "0 0 40px rgba(115, 189, 255, 0.6), 0 0 80px rgba(7, 82, 160, 0.4), inset 0 0 30px rgba(115, 189, 255, 0.2)"
@@ -99,7 +100,7 @@ export default function About() {
                 />
               </div>
             </div>
-            
+
             {/* Content */}
             <div className="text-center lg:text-left px-2" style={{ marginLeft: "0", marginInlineStart: "0", marginInlineEnd: "0" }}>
               <div className="flex items-center gap-3 mb-4 justify-center lg:justify-start">
