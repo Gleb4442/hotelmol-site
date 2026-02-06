@@ -9,8 +9,8 @@ neonConfig.webSocketConstructor = ws;
 const databaseUrl = process.env.DATABASE_URL;
 
 if (!databaseUrl) {
-    console.error("DATABASE_URL is not set.");
-    process.exit(1);
+    console.warn("DATABASE_URL is not set. Skipping DB migrations.");
+    process.exit(0);
 }
 
 const pool = new Pool({ connectionString: databaseUrl });
