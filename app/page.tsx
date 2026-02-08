@@ -4,6 +4,7 @@ import Hero from "@/components/Hero";
 import HowRoomieWorks from "@/components/HowRoomieWorks";
 import IntegrationTicker from "@/components/IntegrationTicker";
 import BenefitsSection from "@/components/BenefitsSection";
+import ValueProposition from "@/components/ValueProposition";
 import AIDashboardSection from "@/components/AIDashboardSection";
 import ROIEstimate from "@/components/ROIEstimate";
 import PresentationSection from "@/components/PresentationSection";
@@ -23,6 +24,7 @@ export default function Home() {
             <LLMSummary />
             <HowRoomieWorks />
             <IntegrationTicker />
+            <ValueProposition />
             <BenefitsSection />
             <AIDashboardSection />
             <ChatFAQSection />
