@@ -10,6 +10,7 @@ import { MessageIntegrationIcon } from "./MessageIntegrationIcon";
 import cloudbedsLogo from "@assets/cloudbeds-logo.png";
 import exelyLogo from "@assets/image_1764952906072.png";
 import easymsLogo from "@assets/image_1764952914052.png";
+import messengerLogo from "@assets/messenger-logo.png";
 
 const allIntegrations = [
   { name: "Telegram", icon: SiTelegram, color: "#0088cc", comingSoon: false, hideOnDesktop: false },
@@ -25,7 +26,11 @@ const allIntegrations = [
   },
   { name: "WordPress", icon: SiWordpress, color: "#21759b", comingSoon: false, hideOnDesktop: true },
   { name: "Wix", icon: SiWix, color: "#0c6ebd", comingSoon: false, hideOnDesktop: true },
-  { name: "Messenger", icon: MessageIntegrationIcon, color: "#0cbd2a", comingSoon: false, hideOnDesktop: false },
+  {
+    name: "Messenger", icon: () => (
+      <img src={messengerLogo} alt="Messenger" className="w-10 h-10 object-contain" />
+    ), color: "#0084FF", comingSoon: false, hideOnDesktop: false
+  },
   {
     name: "Protel", icon: () => (
       <img src={protelLogo} alt="Protel" className="w-10 h-10 object-contain" />
@@ -53,6 +58,7 @@ const allIntegrations = [
   },
   { name: "WhatsApp", icon: SiWhatsapp, color: "#25d366", comingSoon: true, hideOnDesktop: false },
   { name: "Instagram", icon: SiInstagram, color: "#e4405f", comingSoon: true, hideOnDesktop: false },
+  { name: "Messages", icon: MessageIntegrationIcon, color: "#34C759", comingSoon: true, hideOnDesktop: false },
 ];
 
 const desktopIntegrations = allIntegrations.filter(i => !i.hideOnDesktop);

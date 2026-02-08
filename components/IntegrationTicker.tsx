@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 import { Badge } from "@/components/ui/badge";
 import { SiTelegram, SiWordpress, SiInstagram, SiWhatsapp, SiWix } from "react-icons/si";
 import { useTranslation } from "@/lib/TranslationContext";
+import { MessageIntegrationIcon } from "@/client/src/components/MessageIntegrationIcon";
 const allIntegrations = [
   { name: "Telegram", icon: SiTelegram, color: "#0088cc", comingSoon: false, hideOnDesktop: false },
   {
@@ -50,9 +51,7 @@ const allIntegrations = [
   { name: "WhatsApp", icon: SiWhatsapp, color: "#25d366", comingSoon: true, hideOnDesktop: false },
   { name: "Instagram", icon: SiInstagram, color: "#e4405f", comingSoon: true, hideOnDesktop: false },
   {
-    name: "Messages", icon: () => (
-      <img src="/assets/messages-icon.png" alt="Messages" className="w-10 h-10 object-contain" />
-    ), color: "#34C759", comingSoon: true, hideOnDesktop: false
+    name: "Messages", icon: MessageIntegrationIcon, color: "#34C759", comingSoon: true, hideOnDesktop: false
   },
 ];
 
