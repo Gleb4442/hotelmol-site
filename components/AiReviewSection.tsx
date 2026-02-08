@@ -25,15 +25,15 @@ export default function AiReviewSection() {
                     rel="noopener noreferrer"
                     className="group flex flex-col items-center gap-3 transition-transform hover:scale-105"
                 >
-                    <div className="relative w-16 h-16 rounded-2xl bg-white shadow-sm border p-3 group-hover:shadow-md transition-all">
+                    <div className="relative w-16 h-16 rounded-2xl bg-white shadow-sm border p-3 group-hover:shadow-md transition-all grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100">
                         <Image
-                            src="/assets/perplexity-logo.png"
+                            src="/assets/perplexity-logo.svg"
                             alt="Perplexity AI"
                             fill
                             className="object-contain p-2"
                         />
                     </div>
-                    <span className="text-sm font-medium text-slate-600 group-hover:text-[#0752A0] transition-colors">Perplexity</span>
+                    <span className="text-sm font-medium text-slate-400 group-hover:text-[#0752A0] transition-colors">Perplexity</span>
                 </a>
 
                 {/* ChatGPT - Center */}
@@ -43,7 +43,7 @@ export default function AiReviewSection() {
                     rel="noopener noreferrer"
                     className="group flex flex-col items-center gap-3 transition-transform hover:scale-105"
                 >
-                    <div className="relative w-16 h-16 rounded-2xl bg-white shadow-sm border p-3 group-hover:shadow-md transition-all">
+                    <div className="relative w-16 h-16 rounded-2xl bg-white shadow-sm border p-3 group-hover:shadow-md transition-all grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100">
                         <Image
                             src="/assets/chatgpt-logo.png"
                             alt="ChatGPT"
@@ -51,7 +51,7 @@ export default function AiReviewSection() {
                             className="object-contain p-2"
                         />
                     </div>
-                    <span className="text-sm font-medium text-slate-600 group-hover:text-[#0752A0] transition-colors">ChatGPT</span>
+                    <span className="text-sm font-medium text-slate-400 group-hover:text-[#0752A0] transition-colors">ChatGPT</span>
                 </a>
 
                 {/* Gemini - Right */}
@@ -61,7 +61,7 @@ export default function AiReviewSection() {
                     rel="noopener noreferrer"
                     className="group flex flex-col items-center gap-3 transition-transform hover:scale-105"
                 >
-                    <div className="relative w-16 h-16 rounded-2xl bg-white shadow-sm border p-3 group-hover:shadow-md transition-all">
+                    <div className="relative w-16 h-16 rounded-2xl bg-white shadow-sm border p-3 group-hover:shadow-md transition-all grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100">
                         <Image
                             src="/assets/gemini-logo.png"
                             alt="Gemini"
@@ -69,7 +69,7 @@ export default function AiReviewSection() {
                             className="object-contain p-2"
                         />
                     </div>
-                    <span className="text-sm font-medium text-slate-600 group-hover:text-[#0752A0] transition-colors">Gemini</span>
+                    <span className="text-sm font-medium text-slate-400 group-hover:text-[#0752A0] transition-colors">Gemini</span>
                 </a>
 
             </div>
