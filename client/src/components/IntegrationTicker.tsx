@@ -58,7 +58,7 @@ const allIntegrations = [
   },
   { name: "WhatsApp", icon: SiWhatsapp, color: "#25d366", comingSoon: true, hideOnDesktop: false },
   { name: "Instagram", icon: SiInstagram, color: "#e4405f", comingSoon: true, hideOnDesktop: false },
-  { name: "Messages", icon: MessageIntegrationIcon, color: "#34C759", comingSoon: true, hideOnDesktop: false },
+  { name: "SMS", icon: MessageIntegrationIcon, color: "#34C759", comingSoon: true, hideOnDesktop: false },
 ];
 
 const desktopIntegrations = allIntegrations.filter(i => !i.hideOnDesktop);
