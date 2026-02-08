@@ -57,19 +57,19 @@ export default function ValueProposition() {
     const activeItem = valueItems.find(item => item.id === activeTab) || valueItems[0];
 
     return (
-        <section className="py-24 relative overflow-hidden bg-zinc-950">
+        <section className="py-24 relative overflow-hidden bg-white dark:bg-zinc-950">
             {/* Background gradients/blobs */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-                <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] bg-blue-500/20 rounded-full blur-[120px]" />
-                <div className="absolute bottom-[0%] right-[0%] w-[40%] h-[40%] bg-purple-500/20 rounded-full blur-[100px]" />
+                <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] bg-blue-500/10 rounded-full blur-[120px]" />
+                <div className="absolute bottom-[0%] right-[0%] w-[40%] h-[40%] bg-purple-500/10 rounded-full blur-[100px]" />
             </div>
 
             <div className="container mx-auto px-4 relative z-10">
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60 mb-6">
+                    <h2 className="text-3xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-zinc-900 to-zinc-500 dark:from-white dark:to-white/60 mb-6">
                         Какую ценность мы даем
                     </h2>
-                    <p className="text-lg text-white/60 max-w-2xl mx-auto">
+                    <p className="text-lg text-zinc-600 dark:text-white/60 max-w-2xl mx-auto">
                         Технологии, которые превращают расходы в инвестиции
                     </p>
                 </div>
@@ -82,31 +82,25 @@ export default function ValueProposition() {
                                 key={item.id}
                                 onClick={() => setActiveTab(item.id)}
                                 className={cn(
-                                    "relative group min-w-[280px] lg:min-w-0 flex-shrink-0 text-left p-4 rounded-xl transition-all duration-300 border backdrop-blur-md overflow-hidden snap-center",
+                                    "relative group min-w-[280px] lg:min-w-0 flex-shrink-0 text-center p-4 rounded-xl transition-all duration-300 border backdrop-blur-md overflow-hidden snap-center",
                                     activeTab === item.id
-                                        ? "bg-white/10 border-white/20 shadow-[0_0_30px_-5px_rgba(255,255,255,0.1)]"
-                                        : "bg-white/5 border-white/5 hover:bg-white/10 hover:border-white/10"
+                                        ? "bg-white dark:bg-white/10 border-blue-500/20 shadow-lg dark:shadow-[0_0_30px_-5px_rgba(255,255,255,0.1)]"
+                                        : "bg-white/50 dark:bg-white/5 border-zinc-200 dark:border-white/5 hover:bg-white dark:hover:bg-white/10 hover:border-zinc-300 dark:hover:border-white/10"
                                 )}
                             >
                                 {activeTab === item.id && (
                                     <motion.div
                                         layoutId="active-glow"
-                                        className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10"
+                                        className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 dark:from-blue-500/10 dark:to-purple-500/10"
                                         initial={false}
                                         transition={{ duration: 0.3 }}
                                     />
                                 )}
 
-                                <div className="relative flex items-center gap-4">
-                                    <div className={cn(
-                                        "p-2 rounded-lg transition-colors duration-300",
-                                        activeTab === item.id ? "bg-white/10" : "bg-white/5"
-                                    )}>
-                                        {item.icon}
-                                    </div>
+                                <div className="relative flex items-center justify-center gap-4">
                                     <span className={cn(
-                                        "font-medium transition-colors duration-300 whitespace-nowrap lg:whitespace-normal",
-                                        activeTab === item.id ? "text-white" : "text-white/60 group-hover:text-white/80"
+                                        "font-bold text-lg transition-colors duration-300 whitespace-nowrap lg:whitespace-normal",
+                                        activeTab === item.id ? "text-blue-600 dark:text-white" : "text-zinc-600 dark:text-white/60 group-hover:text-zinc-900 dark:group-hover:text-white/80"
                                     )}>
                                         {item.title}
                                     </span>
