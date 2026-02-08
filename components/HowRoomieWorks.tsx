@@ -1,7 +1,7 @@
 "use client";
 import { MessageSquare, Brain, Sparkles, TrendingUp, CheckCircle } from "lucide-react";
 import { useTranslation } from "@/lib/TranslationContext";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function HowRoomieWorks() {
@@ -36,19 +36,63 @@ export default function HowRoomieWorks() {
     },
   ];
 
+  const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
+
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) return;
 
-    const interval = setInterval(() => {
-      setAnimState((prev) => {
-        if (prev.pos === 4) {
-          return { pos: 0, jump: true };
-        }
-        return { pos: prev.pos + 1, jump: false };
+    const mediaQuery = window.matchMedia('(min-width: 1024px)');
+
+    const handleDesktop = () => {
+      const interval = setInterval(() => {
+        setAnimState((prev) => {
+          if (prev.pos === 4) {
+            return { pos: 0, jump: true };
+          }
+          return { pos: prev.pos + 1, jump: false };
+        });
+      }, 2000);
+      return () => clearInterval(interval);
+    };
+
+    const handleMobile = () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = stepRefs.current.findIndex((ref) => ref === entry.target);
+            if (index !== -1) {
+              setAnimState((prev) => ({ ...prev, pos: index, jump: false }));
+            }
+          }
+        });
+      }, { threshold: 0.6, rootMargin: "-10% 0px -10% 0px" });
+
+      stepRefs.current.forEach((step) => {
+        if (step) observer.observe(step);
       });
-    }, 1000);
-    return () => clearInterval(interval);
+
+      return () => observer.disconnect();
+    };
+
+    let cleanup: (() => void) | undefined;
+
+    const init = () => {
+      if (cleanup) cleanup();
+      if (mediaQuery.matches) {
+        cleanup = handleDesktop();
+      } else {
+        cleanup = handleMobile();
+      }
+    };
+
+    init();
+    mediaQuery.addEventListener('change', init);
+
+    return () => {
+      if (cleanup) cleanup();
+      mediaQuery.removeEventListener('change', init);
+    };
   }, []);
 
   return (
@@ -107,6 +151,7 @@ export default function HowRoomieWorks() {
                     opacity: isActive ? 1 : 0.7
                   }}
                   className="relative flex flex-col items-center text-center group"
+                  ref={(el) => { stepRefs.current[index] = el; }}
                 >
                   <div className={`relative z-10 mb-6 lg:mb-12 flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-primary/80 text-primary-foreground shadow-xl transition-all duration-700 ${isActive ? 'shadow-[0_20px_50px_rgba(7,82,160,0.4)] ring-4 ring-primary/20' : 'group-hover:shadow-2xl'}`}>
                     <Icon className={`h-9 w-9 transition-all duration-700 ${isActive ? 'scale-110' : ''}`} />
