@@ -96,7 +96,7 @@ export default function Hero() {
               <Button
                 size="lg"
                 asChild
-                className="text-base px-8 h-14 bg-white text-primary hover:bg-white/90 shadow-xl"
+                className="text-base px-8 h-14 bg-white text-primary hover:bg-white/90 shadow-xl rounded-2xl"
                 data-testid="button-request-demo"
               >
                 <a href="https://cal.com/gleb.gosha/30min" target="_blank" rel="noopener noreferrer">
@@ -107,7 +107,7 @@ export default function Hero() {
               <Button
                 size="lg"
                 variant="ghost"
-                className="text-base px-8 h-14 backdrop-blur-md bg-white/5 border border-white/20 text-white hover:bg-white/10"
+                className="text-base px-8 h-14 backdrop-blur-md bg-white/5 border border-white/20 text-white hover:bg-white/10 rounded-2xl"
                 asChild
                 data-testid="button-watch-demo"
               >
