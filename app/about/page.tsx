@@ -7,13 +7,11 @@ import { Bot } from "lucide-react";
 import Link from "next/link";
 import SEO, { organizationSchema } from "@/components/SEO";
 import { useTranslation } from "@/lib/TranslationContext";
-import IntegrationRequestModal from "@/components/IntegrationRequestModal";
 import AiReviewSection from "@/components/AiReviewSection";
 import Image from "next/image";
 
 export default function About() {
     const { t } = useTranslation();
-    const [integrationModalOpen, setIntegrationModalOpen] = useState(false);
 
     return (
         <div className="min-h-screen bg-background">
@@ -39,14 +37,14 @@ export default function About() {
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-9 justify-center items-center">
-                            <Button
-                                size="lg"
-                                className="text-white px-8 text-lg w-full sm:w-auto"
-                                style={{ backgroundColor: "#0752A0" }}
-                                onClick={() => setIntegrationModalOpen(true)}
+                            <a
+                                href="https://cal.com/gleb.gosha/30min"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center justify-center px-8 py-4 bg-[#0752A0] text-white text-lg font-semibold rounded-full hover:bg-[#064080] transition-all shadow-lg hover:shadow-xl w-full sm:w-auto"
                             >
                                 {t("about.hero.button.integration")}
-                            </Button>
+                            </a>
                             <Link href="/roomie" className="w-full sm:w-auto text-center">
                                 <button className="text-slate-600 hover:text-slate-900 transition-colors text-lg font-medium">
                                     {t("about.hero.button.meetRoomie")}
@@ -110,8 +108,6 @@ export default function About() {
                 </div>
             </section>
 
-
-            <IntegrationRequestModal open={integrationModalOpen} onOpenChange={setIntegrationModalOpen} />
         </div>
     );
 }
