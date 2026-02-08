@@ -10,7 +10,7 @@ function AnimatedCounter({ value }: { value: string }) {
 
   useEffect(() => {
     if (!isNumber) return;
-    
+
     const interval = setInterval(() => {
       setCount((prev) => {
         if (prev >= numericValue) {
@@ -25,7 +25,7 @@ function AnimatedCounter({ value }: { value: string }) {
   }, [isNumber, numericValue]);
 
   if (!isNumber) return <>{value}</>;
-  
+
   return <>{value.replace(/\d+/, count.toString())}</>;
 }
 
@@ -73,8 +73,8 @@ export default function BenefitsSection() {
 
   return (
     <section className="py-24 lg:py-40 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-background" />
-      
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-background to-background" />
+
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-20">
           <div className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
@@ -92,22 +92,22 @@ export default function BenefitsSection() {
           {benefits.map((benefit, index) => {
             const Icon = benefit.icon;
             return (
-              <Card 
-                key={index} 
-                className="group relative p-8 lg:p-10 hover-elevate transition-all duration-300 border-border/50 bg-card/50 backdrop-blur-sm overflow-hidden"
+              <Card
+                key={index}
+                className="group relative p-8 lg:p-10 hover-elevate transition-all duration-300 border-blue-200/60 dark:border-border/50 bg-blue-50/40 dark:bg-card/50 backdrop-blur-md overflow-hidden"
                 data-testid={`card-benefit-${index}`}
               >
-                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors" />
-                
+                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full blur-3xl group-hover:bg-blue-500/10 transition-colors" />
+
                 <div className="relative">
-                  <div className="inline-flex p-3 rounded-xl bg-primary/10 mb-6 group-hover:bg-primary/20 transition-colors">
+                  <div className="inline-flex p-3 rounded-xl bg-blue-100/50 dark:bg-primary/10 mb-6 group-hover:bg-blue-100 dark:group-hover:bg-primary/20 transition-colors">
                     <Icon className="h-7 w-7 text-primary" />
                   </div>
-                  <div className="text-5xl lg:text-6xl font-bold bg-gradient-to-br from-primary to-primary/60 bg-clip-text text-transparent mb-3">
+                  <div className="text-5xl lg:text-6xl font-bold text-primary mb-3">
                     <AnimatedCounter value={benefit.stat} />
                   </div>
-                  <h3 className="font-semibold text-xl lg:text-2xl mb-3">{benefit.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{benefit.description}</p>
+                  <h3 className="font-semibold text-xl lg:text-2xl mb-3 text-slate-900 dark:text-foreground">{benefit.title}</h3>
+                  <p className="text-slate-700 dark:text-muted-foreground leading-relaxed">{benefit.description}</p>
                 </div>
               </Card>
             );
