@@ -24,7 +24,7 @@ export default function About() {
             />
 
 
-            <section className="relative bg-white pt-[130px] pb-[110px] md:pt-48 md:pb-[132px] overflow-hidden">
+            <section className="relative bg-background pt-[130px] pb-[110px] md:pt-48 md:pb-[132px] overflow-hidden">
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="max-w-4xl mx-auto text-center">
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight">
@@ -58,7 +58,7 @@ export default function About() {
                 </div>
             </section>
 
-            <section className="py-24 md:pb-12 min-h-[600px] flex flex-col justify-center" style={{ backgroundColor: "#f8fafc" }}>
+            <section className="py-24 md:pb-12 min-h-[600px] flex flex-col justify-center" style={{ backgroundColor: "#F7F5F1" }}>
                 <div className="container mx-auto px-4">
                     <div className="max-w-6xl mx-auto">
                         <span className="text-lg font-semibold uppercase tracking-widest mb-4 block" style={{ color: "#0752A0" }}>

@@ -151,7 +151,7 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
     { name: t("nav.contact"), href: "/contact" },
   ];
 
-  const cloudStyle = "bg-white/95 backdrop-blur-md shadow-[0_4px_24px_rgba(7,82,160,0.4)] border border-white/20 rounded-full transition-all duration-300";
+  const cloudStyle = "bg-[#F7F5F1]/95 backdrop-blur-md shadow-[0_4px_24px_rgba(7,82,160,0.4)] border border-white/20 rounded-full transition-all duration-300";
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 w-full pointer-events-none md:max-w-[1440px] md:mx-auto md:mt-4 md:px-6">
@@ -222,7 +222,7 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
       </div>
 
       {/* --- MOBILE VIEW (Fixed Top Bar) --- */}
-      <div className="md:hidden pointer-events-auto fixed top-0 left-0 right-0 h-[60px] bg-white/95 backdrop-blur-md border-b border-black/5 shadow-sm flex items-center justify-between px-4 z-[60] overflow-visible">
+      <div className="md:hidden pointer-events-auto fixed top-0 left-0 right-0 h-[60px] bg-[#F7F5F1]/95 backdrop-blur-md border-b border-black/5 shadow-sm flex items-center justify-between px-4 z-[60] overflow-visible">
 
         {/* Mobile Left: Logo */}
         <Link href="/" className="flex items-center h-full relative w-[160px]" data-testid="link-home-mobile">
@@ -285,7 +285,7 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
                         className={`flex items-center gap-3 pr-6 pl-6 py-3 rounded-full shadow-lg border font-bold text-sm transition-transform active:scale-95
                                     ${isActive
                             ? "bg-[#0752A0] text-white border-[#0752A0]/20"
-                            : "bg-white text-[#0752A0] border-white/20"
+                            : "bg-[#F7F5F1] text-[#0752A0] border-white/20"
                           }`}
                       >
                         {item.name}
@@ -324,7 +324,7 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
                   e.stopPropagation();
                   setIsMobileMenuOpen(false);
                 }}
-                className="w-12 h-12 rounded-full bg-white shadow-lg border border-black/5 flex items-center justify-center mt-2 active:scale-95 transition-transform z-[102] cursor-pointer"
+                className="w-12 h-12 rounded-full bg-[#F7F5F1] shadow-lg border border-black/5 flex items-center justify-center mt-2 active:scale-95 transition-transform z-[102] cursor-pointer"
                 style={{ pointerEvents: 'auto' }}
               >
                 <X className="w-6 h-6 text-slate-400" />
