@@ -57,19 +57,13 @@ export default function ValueProposition() {
     const activeItem = valueItems.find(item => item.id === activeTab) || valueItems[0];
 
     return (
-        <section className="py-24 relative overflow-hidden bg-white dark:bg-zinc-950">
-            {/* Background gradients/blobs */}
-            <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-                <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] bg-blue-500/10 rounded-full blur-[120px]" />
-                <div className="absolute bottom-[0%] right-[0%] w-[40%] h-[40%] bg-purple-500/10 rounded-full blur-[100px]" />
-            </div>
-
+        <section className="py-24 relative overflow-hidden bg-zinc-50 dark:bg-zinc-950">
             <div className="container mx-auto px-4 relative z-10">
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-zinc-900 to-zinc-500 dark:from-white dark:to-white/60 mb-6">
+                    <h2 className="text-3xl md:text-5xl font-bold text-zinc-900 dark:text-white mb-6">
                         Какую ценность мы даем
                     </h2>
-                    <p className="text-lg text-zinc-600 dark:text-white/60 max-w-2xl mx-auto">
+                    <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
                         Технологии, которые превращают расходы в инвестиции
                     </p>
                 </div>
@@ -82,16 +76,16 @@ export default function ValueProposition() {
                                 key={item.id}
                                 onClick={() => setActiveTab(item.id)}
                                 className={cn(
-                                    "relative group min-w-[280px] lg:min-w-0 flex-shrink-0 text-center p-4 rounded-xl transition-all duration-300 border backdrop-blur-md overflow-hidden snap-center",
+                                    "relative group min-w-[280px] lg:min-w-0 flex-shrink-0 text-center p-4 rounded-xl transition-all duration-300 border snap-center",
                                     activeTab === item.id
-                                        ? "bg-white dark:bg-white/10 border-blue-500/20 shadow-lg dark:shadow-[0_0_30px_-5px_rgba(255,255,255,0.1)]"
-                                        : "bg-white/50 dark:bg-white/5 border-zinc-200 dark:border-white/5 hover:bg-white dark:hover:bg-white/10 hover:border-zinc-300 dark:hover:border-white/10"
+                                        ? "bg-white dark:bg-zinc-900 border-blue-500/30 shadow-sm"
+                                        : "bg-white/50 dark:bg-zinc-900/50 border-zinc-200 dark:border-zinc-800 hover:bg-white dark:hover:bg-zinc-900 hover:border-zinc-300 dark:hover:border-zinc-700"
                                 )}
                             >
                                 {activeTab === item.id && (
                                     <motion.div
                                         layoutId="active-glow"
-                                        className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 dark:from-blue-500/10 dark:to-purple-500/10"
+                                        className="absolute inset-0 bg-blue-500/5 dark:bg-blue-500/10"
                                         initial={false}
                                         transition={{ duration: 0.3 }}
                                     />
@@ -100,7 +94,7 @@ export default function ValueProposition() {
                                 <div className="relative flex items-center justify-center gap-4">
                                     <span className={cn(
                                         "font-bold text-lg transition-colors duration-300 whitespace-nowrap lg:whitespace-normal",
-                                        activeTab === item.id ? "text-blue-600 dark:text-white" : "text-zinc-600 dark:text-white/60 group-hover:text-zinc-900 dark:group-hover:text-white/80"
+                                        activeTab === item.id ? "text-blue-600 dark:text-blue-400" : "text-zinc-500 dark:text-zinc-500 group-hover:text-zinc-900 dark:group-hover:text-zinc-300"
                                     )}>
                                         {item.title}
                                     </span>
@@ -114,45 +108,45 @@ export default function ValueProposition() {
                         <AnimatePresence mode="wait">
                             <motion.div
                                 key={activeTab}
-                                initial={{ opacity: 0, x: 20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                exit={{ opacity: 0, x: -20 }}
-                                transition={{ duration: 0.3 }}
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -10 }}
+                                transition={{ duration: 0.2 }}
                                 className="grid grid-cols-1 gap-6 h-full"
                             >
                                 {/* Logic Card */}
-                                <div className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 md:p-8 overflow-hidden">
-                                    <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                                        <Lightbulb className="w-24 h-24 text-white" />
+                                <div className="group relative bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-6 md:p-8 overflow-hidden">
+                                    <div className="absolute top-0 right-0 p-4 opacity-[0.03] dark:opacity-[0.05] pointer-events-none">
+                                        <Lightbulb className="w-24 h-24 text-blue-600 dark:text-blue-400" />
                                     </div>
 
                                     <div className="relative z-10">
                                         <div className="flex items-center gap-3 mb-4">
-                                            <div className="p-2 bg-blue-500/20 rounded-lg">
-                                                <Lightbulb className="w-5 h-5 text-blue-400" />
+                                            <div className="p-2 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                                                <Lightbulb className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                                             </div>
-                                            <h3 className="text-xl font-semibold text-white/90">Логика</h3>
+                                            <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">Логика</h3>
                                         </div>
-                                        <p className="text-lg text-white/70 leading-relaxed">
+                                        <p className="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">
                                             {activeItem.logic}
                                         </p>
                                     </div>
                                 </div>
 
                                 {/* Implementation Card */}
-                                <div className="group relative bg-gradient-to-br from-blue-500/10 to-purple-500/10 backdrop-blur-xl border border-white/10 rounded-2xl p-6 md:p-8 overflow-hidden">
-                                    <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                                        <Rocket className="w-24 h-24 text-white" />
+                                <div className="group relative bg-blue-50/30 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20 rounded-2xl p-6 md:p-8 overflow-hidden">
+                                    <div className="absolute top-0 right-0 p-4 opacity-[0.03] dark:opacity-[0.05] pointer-events-none">
+                                        <Rocket className="w-24 h-24 text-blue-600 dark:text-blue-400" />
                                     </div>
 
                                     <div className="relative z-10">
                                         <div className="flex items-center gap-3 mb-4">
-                                            <div className="p-2 bg-purple-500/20 rounded-lg">
-                                                <Rocket className="w-5 h-5 text-purple-400" />
+                                            <div className="p-2 bg-blue-100 dark:bg-blue-400/10 rounded-lg">
+                                                <Rocket className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                                             </div>
-                                            <h3 className="text-xl font-semibold text-white/90">Реализация</h3>
+                                            <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">Реализация</h3>
                                         </div>
-                                        <p className="text-lg text-white/80 leading-relaxed">
+                                        <p className="text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed">
                                             {activeItem.implementation}
                                         </p>
                                     </div>
