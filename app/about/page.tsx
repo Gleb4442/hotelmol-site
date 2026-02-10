@@ -56,7 +56,7 @@ export default function About() {
                 </div>
             </section>
 
-            <section className="py-24 md:pb-12 min-h-[600px] flex flex-col justify-center" style={{ backgroundColor: "#F7F5F1" }}>
+            <section className="pt-[46px] pb-24 md:pb-12 min-h-[600px] flex flex-col justify-center" style={{ backgroundColor: "#F7F5F1" }}>
                 <div className="container mx-auto px-4">
                     <div className="max-w-6xl mx-auto">
                         <span className="text-lg font-semibold uppercase tracking-widest mb-4 block" style={{ color: "#0752A0" }}>
