@@ -15,9 +15,6 @@ export default function ConsultationForm() {
 
             <div className="container mx-auto px-4 relative z-10">
                 <div className="max-w-3xl mx-auto text-center">
-                    <div className="w-20 h-20 rounded-2xl bg-primary/10 mx-auto mb-8 flex items-center justify-center">
-                        <MessageSquare className="w-10 h-10 text-primary" />
-                    </div>
 
                     <h2 className="font-serif text-3xl lg:text-5xl font-bold mb-6 tracking-tight">
                         {t("consultation.title")}
