@@ -77,7 +77,7 @@ export default function ChatFAQSection() {
                             <div key={index} className="space-y-4">
                                 {/* User Question (Right) */}
                                 <div className="flex justify-end">
-                                    <div className="flex gap-3 w-full flex-row-reverse items-start">
+                                    <div className="flex gap-3 flex-row-reverse items-start">
                                         <div className="flex-shrink-0 w-[42px] h-[42px] rounded-full bg-primary flex items-center justify-center text-white shadow-sm ring-4 ring-white relative z-10">
                                             <svg
                                                 viewBox="0 0 24 24"
@@ -92,7 +92,7 @@ export default function ChatFAQSection() {
                                                 <path d="M12 17h.01" />
                                             </svg>
                                         </div>
-                                        <div className="bg-primary text-white px-5 py-3.5 rounded-[22px] rounded-tr-[4px] shadow-lg shadow-primary/10 w-fit max-w-[82%] break-words md:w-auto md:min-w-[40%] text-right border border-primary/10">
+                                        <div className="bg-primary text-white px-5 py-3.5 rounded-[22px] rounded-tr-[4px] shadow-lg shadow-primary/10 w-fit max-w-[85%] break-words border border-primary/10">
                                             <p className="font-medium text-sm md:text-base leading-relaxed">{faq.question}</p>
                                         </div>
                                     </div>
@@ -100,7 +100,7 @@ export default function ChatFAQSection() {
 
                                 {/* System Answer (Left) */}
                                 <div className="flex justify-start">
-                                    <div className="flex gap-3 w-full items-start">
+                                    <div className="flex gap-3 items-start">
                                         <div className="flex-shrink-0 w-[42px] h-[42px] rounded-full bg-white flex items-center justify-center text-primary shadow-sm border border-slate-200 ring-4 ring-slate-50 relative z-10">
                                             <svg
                                                 viewBox="0 0 203.18 203.18"
