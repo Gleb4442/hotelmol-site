@@ -27,7 +27,7 @@ export default function AiReviewSection() {
                 >
                     <div className="relative w-16 h-16 rounded-2xl bg-white shadow-sm border p-3 group-hover:shadow-md transition-all grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100">
                         <Image
-                            src="/assets/perplexity-logo.svg"
+                            src="/assets/perplexity-new-logo.svg"
                             alt="Perplexity AI"
                             fill
                             className="object-contain p-2"
