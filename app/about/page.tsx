@@ -1,5 +1,8 @@
 "use client";
 
+// Force static generation for better caching
+export const dynamic = 'force-static';
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Bot } from "lucide-react";

@@ -1,5 +1,8 @@
 "use client";
 
+// Force static generation for better caching
+export const dynamic = 'force-static';
+
 import Hero from "@/components/Hero";
 import HowRoomieWorks from "@/components/HowRoomieWorks";
 import IntegrationTicker from "@/components/IntegrationTicker";
