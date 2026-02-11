@@ -40,17 +40,16 @@ export default function AiReviewSection() {
                     href={AI_LINKS.chatgpt}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex flex-col items-center gap-3 transition-transform hover:scale-105"
+                    className="group transition-transform hover:scale-110"
                 >
-                    <div className="relative w-16 h-16 rounded-2xl bg-white shadow-sm border p-3 group-hover:shadow-md transition-all grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100">
+                    <div className="relative w-16 h-16 transition-all">
                         <Image
                             src="/assets/chatgpt-logo.png"
                             alt="ChatGPT"
                             fill
-                            className="object-contain p-2"
+                            className="object-contain"
                         />
                     </div>
-                    <span className="text-sm font-medium text-slate-400 group-hover:text-[#0752A0] transition-colors">ChatGPT</span>
                 </a>
 
                 {/* Gemini - Right */}
@@ -58,17 +57,16 @@ export default function AiReviewSection() {
                     href={AI_LINKS.gemini}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex flex-col items-center gap-3 transition-transform hover:scale-105"
+                    className="group transition-transform hover:scale-110"
                 >
-                    <div className="relative w-16 h-16 rounded-2xl bg-white shadow-sm border p-3 group-hover:shadow-md transition-all grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100">
+                    <div className="relative w-16 h-16 transition-all">
                         <Image
                             src="/assets/gemini-logo.png"
                             alt="Gemini"
                             fill
-                            className="object-contain p-2"
+                            className="object-contain"
                         />
                     </div>
-                    <span className="text-sm font-medium text-slate-400 group-hover:text-[#0752A0] transition-colors">Gemini</span>
                 </a>
 
             </div>
