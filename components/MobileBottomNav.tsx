@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, DollarSign, Play, Bot, ChevronDown, ChevronUp } from "lucide-react";
+import { Plus, DollarSign, Play, Bot, ChevronDown, ChevronUp, Globe } from "lucide-react";
 import { FaWhatsapp, FaViber, FaFacebookMessenger } from "react-icons/fa";
 import { useTranslation } from "@/lib/TranslationContext";
 import { usePathname } from "next/navigation";
@@ -102,9 +102,9 @@ export default function MobileBottomNav() {
                         >
                             <span className="text-sm">
                                 {language === "ru" ? "Мнение ChatGPT" :
-                                 language === "ua" ? "Думка ChatGPT" :
-                                 language === "pl" ? "Opinia ChatGPT" :
-                                 "ChatGPT Opinion"}
+                                    language === "ua" ? "Думка ChatGPT" :
+                                        language === "pl" ? "Opinia ChatGPT" :
+                                            "ChatGPT Opinion"}
                             </span>
                             <div className="bg-slate-100 p-1.5 rounded-full w-8 h-8 relative flex items-center justify-center">
                                 <img src="/assets/chatgpt-logo.png" alt="ChatGPT" className="w-5 h-5 object-contain" />
@@ -151,10 +151,13 @@ export default function MobileBottomNav() {
                             {/* Selected Language Header */}
                             <button
                                 onClick={() => setIsLangOpen(!isLangOpen)}
-                                className="flex items-center justify-between w-full px-3 py-2 bg-[#0752A0] text-white text-xs font-bold"
+                                className="flex items-center justify-between w-full px-3 py-2 bg-[#0752A0] text-white text-xs font-bold gap-2"
                             >
-                                <span>{currentLangLabel}</span>
-                                {isLangOpen ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
+                                <div className="flex items-center gap-1.5 flex-1">
+                                    <Globe className="w-3.5 h-3.5 stroke-[2]" />
+                                    <span>{currentLangLabel}</span>
+                                </div>
+                                {isLangOpen ? <ChevronUp className="w-3 h-3 flex-shrink-0" /> : <ChevronDown className="w-3 h-3 flex-shrink-0" />}
                             </button>
 
                             {/* Dropdown Options */}
