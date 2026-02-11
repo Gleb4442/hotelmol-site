@@ -42,7 +42,7 @@ export default function AiReviewSection() {
                     rel="noopener noreferrer"
                     className="group transition-transform hover:scale-110"
                 >
-                    <div className="relative w-14 h-14 transition-all">
+                    <div className="relative w-13 h-13 transition-all">
                         <Image
                             src="/assets/chatgpt-logo.png"
                             alt="ChatGPT"
@@ -59,7 +59,7 @@ export default function AiReviewSection() {
                     rel="noopener noreferrer"
                     className="group transition-transform hover:scale-110"
                 >
-                    <div className="relative w-14 h-14 transition-all">
+                    <div className="relative w-13 h-13 transition-all">
                         <Image
                             src="/assets/gemini-logo.png"
                             alt="Gemini"
