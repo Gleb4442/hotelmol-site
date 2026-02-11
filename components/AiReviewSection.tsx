@@ -27,7 +27,7 @@ export default function AiReviewSection() {
                 >
                     <div className="relative w-16 h-16 transition-all">
                         <Image
-                            src="/assets/perplexity-new-logo.svg"
+                            src="/assets/perplexity-star-teal.png"
                             alt="Perplexity AI"
                             fill
                             className="object-contain"
