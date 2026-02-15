@@ -116,11 +116,11 @@ export default function ValueProposition() {
                                                     {/* Logic Card */}
                                                     <div className="bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-800 p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
                                                         <div className="flex flex-col gap-4">
-                                                            <div className="w-12 h-12 rounded-full bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center">
-                                                                <MdLightbulbOutline className="w-6 h-6 text-blue-500 dark:text-blue-400" />
+                                                            <div className="w-12 h-12 rounded-full bg-blue-600 dark:bg-blue-500 shadow-lg shadow-blue-600/30 flex items-center justify-center">
+                                                                <div className="w-6 h-1 bg-white rounded-sm" />
                                                             </div>
                                                             <div>
-                                                                <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 mb-2">Логика</h3>
+                                                                <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 mb-2">Проблема</h3>
                                                                 <p className="text-[15px] leading-relaxed text-zinc-600 dark:text-zinc-400">
                                                                     {item.logic}
                                                                 </p>
@@ -131,11 +131,12 @@ export default function ValueProposition() {
                                                     {/* Implementation Card */}
                                                     <div className="bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-800 p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
                                                         <div className="flex flex-col gap-4">
-                                                            <div className="w-12 h-12 rounded-full bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center">
-                                                                <MdLightbulbOutline className="w-6 h-6 text-blue-500 dark:text-blue-400" />
+                                                            <div className="w-12 h-12 rounded-full bg-blue-600 dark:bg-blue-500 shadow-lg shadow-blue-600/30 flex items-center justify-center relative">
+                                                                <div className="w-6 h-1 bg-white rounded-sm absolute" />
+                                                                <div className="h-6 w-1 bg-white rounded-sm absolute" />
                                                             </div>
                                                             <div>
-                                                                <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 mb-2">Реализация</h3>
+                                                                <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 mb-2">Решение</h3>
                                                                 <p className="text-[15px] leading-relaxed text-zinc-600 dark:text-zinc-400">
                                                                     {item.implementation}
                                                                 </p>
