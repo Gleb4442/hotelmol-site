@@ -23,7 +23,7 @@ const valueItems: ValueItem[] = [
     },
     {
         id: "efficiency",
-        title: "Операционная эффективность",
+        title: "Комиссии OTA",
         icon: <Zap className="w-5 h-5 text-yellow-400" />,
         logic: "Рутинные запросы отнимают до 40% времени персонала, снижая качество обслуживания важных гостей. Человеческий фактор приводит к ошибкам и потере информации.",
         implementation: "Автоматизация обработки 80% типовых запросов через AI. Мгновенные ответы 24/7 без перерывов и выходных. Персонал фокусируется на живом общении и решении нестандартных задач."
@@ -44,7 +44,7 @@ const valueItems: ValueItem[] = [
     },
     {
         id: "implementation",
-        title: "Быстрый запуск",
+        title: "Перевод на direct bookings",
         icon: <Rocket className="w-5 h-5 text-red-400" />,
         logic: "Внедрение новых технологий обычно ассоциируется с долгими настройками, обучением персонала и сложной интеграцией.",
         implementation: "Запуск за 1 день без участия IT-специалистов. Простая интеграция с существующими системами. Интуитивно понятный интерфейс, не требующий долгого обучения."
@@ -57,7 +57,7 @@ export default function ValueProposition() {
     const activeItem = valueItems.find(item => item.id === activeTab) || valueItems[0];
 
     return (
-        <section className="py-24 relative overflow-hidden bg-zinc-50 dark:bg-zinc-950">
+        <section className="py-24 relative overflow-hidden bg-background">
             <div className="container mx-auto px-4 relative z-10">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-5xl font-bold text-zinc-900 dark:text-white mb-6">
@@ -76,7 +76,7 @@ export default function ValueProposition() {
                                 key={item.id}
                                 onClick={() => setActiveTab(item.id)}
                                 className={cn(
-                                    "relative group min-w-[280px] lg:min-w-0 flex-shrink-0 text-center p-4 rounded-xl transition-all duration-300 border snap-center",
+                                    "relative group min-w-[280px] lg:min-w-0 flex-shrink-0 text-center p-4 rounded-xl transition-all duration-300 border snap-center hover:scale-[1.02]",
                                     activeTab === item.id
                                         ? "bg-white dark:bg-zinc-900 border-blue-500/30 shadow-sm"
                                         : "bg-white/50 dark:bg-zinc-900/50 border-zinc-200 dark:border-zinc-800 hover:bg-white dark:hover:bg-zinc-900 hover:border-zinc-300 dark:hover:border-zinc-700"
