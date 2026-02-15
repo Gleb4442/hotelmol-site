@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { Lightbulb, Rocket, Users, BarChart3, ShieldCheck, Zap } from "lucide-react";
+import { Lightbulb, Rocket, Users, BarChart3, ShieldCheck, Zap, ChevronDown } from "lucide-react";
 
 interface ValueItem {
     id: string;
@@ -52,12 +52,10 @@ const valueItems: ValueItem[] = [
 ];
 
 export default function ValueProposition() {
-    const [activeTab, setActiveTab] = useState(valueItems[0].id);
-
-    const activeItem = valueItems.find(item => item.id === activeTab) || valueItems[0];
+    const [activeTab, setActiveTab] = useState<string | null>(valueItems[0].id);
 
     return (
-        <section className="py-24 relative overflow-hidden bg-background">
+        <section className="py-24 relative overflow-hidden bg-zinc-50 dark:bg-zinc-950/50">
             <div className="container mx-auto px-4 relative z-10">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-5xl font-bold text-zinc-900 dark:text-white mb-6">
@@ -68,94 +66,91 @@ export default function ValueProposition() {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
-                    {/* Left Column: Navigation (Switchers) */}
-                    <div className="lg:col-span-4 flex lg:flex-col gap-3 overflow-x-auto pb-4 lg:pb-0 scrollbar-hide snap-x">
-                        {valueItems.map((item) => (
-                            <button
-                                key={item.id}
-                                onClick={() => setActiveTab(item.id)}
-                                className={cn(
-                                    "relative group min-w-[280px] lg:min-w-0 flex-shrink-0 text-center p-4 rounded-xl transition-all duration-300 border snap-center hover:scale-[1.02]",
-                                    activeTab === item.id
-                                        ? "bg-white dark:bg-zinc-900 border-blue-500/30 shadow-sm"
-                                        : "bg-white/50 dark:bg-zinc-900/50 border-zinc-200 dark:border-zinc-800 hover:bg-white dark:hover:bg-zinc-900 hover:border-zinc-300 dark:hover:border-zinc-700"
+                <div className="max-w-4xl mx-auto bg-white dark:bg-zinc-900 rounded-2xl shadow-sm border border-zinc-200 dark:border-zinc-800 overflow-hidden divide-y divide-zinc-200 dark:divide-zinc-800">
+                    {valueItems.map((item) => {
+                        const isActive = activeTab === item.id;
+                        return (
+                            <div key={item.id} className="group relative">
+                                {isActive && (
+                                    <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-blue-600 dark:bg-blue-500 z-10" />
                                 )}
-                            >
-                                {activeTab === item.id && (
-                                    <motion.div
-                                        layoutId="active-glow"
-                                        className="absolute inset-0 bg-blue-500/5 dark:bg-blue-500/10"
-                                        initial={false}
-                                        transition={{ duration: 0.3 }}
-                                    />
-                                )}
-
-                                <div className="relative flex items-center justify-center gap-4">
+                                <button
+                                    onClick={() => setActiveTab(isActive ? null : item.id)}
+                                    className={cn(
+                                        "w-full flex items-center justify-between p-6 text-left transition-colors duration-200 focus:outline-none",
+                                        isActive
+                                            ? "bg-white dark:bg-zinc-900"
+                                            : "bg-white dark:bg-zinc-900 hover:bg-zinc-50 dark:hover:bg-zinc-800/50"
+                                    )}
+                                >
                                     <span className={cn(
-                                        "font-bold text-lg transition-colors duration-300 whitespace-nowrap lg:whitespace-normal",
-                                        activeTab === item.id ? "text-blue-600 dark:text-blue-400" : "text-zinc-500 dark:text-zinc-500 group-hover:text-zinc-900 dark:group-hover:text-zinc-300"
+                                        "text-lg transition-colors",
+                                        isActive
+                                            ? "font-bold text-zinc-900 dark:text-zinc-100"
+                                            : "font-semibold text-zinc-600 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-200"
                                     )}>
                                         {item.title}
                                     </span>
-                                </div>
-                            </button>
-                        ))}
-                    </div>
+                                    <ChevronDown
+                                        className={cn(
+                                            "w-6 h-6 transition-transform duration-300",
+                                            isActive
+                                                ? "text-blue-600 dark:text-blue-500 rotate-180"
+                                                : "text-zinc-400 group-hover:text-blue-600 dark:group-hover:text-blue-400"
+                                        )}
+                                    />
+                                </button>
 
-                    {/* Right Column: Content Area */}
-                    <div className="lg:col-span-8 flex flex-col gap-6">
-                        <AnimatePresence mode="wait">
-                            <motion.div
-                                key={activeTab}
-                                initial={{ opacity: 0, y: 10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -10 }}
-                                transition={{ duration: 0.2 }}
-                                className="grid grid-cols-1 gap-6 h-full"
-                            >
-                                {/* Logic Card */}
-                                <div className="group relative bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-6 md:p-8 overflow-hidden">
-                                    <div className="absolute top-0 right-0 p-4 opacity-[0.03] dark:opacity-[0.05] pointer-events-none">
-                                        <Lightbulb className="w-24 h-24 text-blue-600 dark:text-blue-400" />
-                                    </div>
+                                <AnimatePresence initial={false}>
+                                    {isActive && (
+                                        <motion.div
+                                            initial={{ height: 0, opacity: 0 }}
+                                            animate={{ height: "auto", opacity: 1 }}
+                                            exit={{ height: 0, opacity: 0 }}
+                                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                                            className="overflow-hidden"
+                                        >
+                                            <div className="bg-zinc-50 dark:bg-zinc-950/30 p-6 md:p-8 border-t border-zinc-100 dark:border-zinc-800">
+                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                                    {/* Logic Card */}
+                                                    <div className="bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-800 p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+                                                        <div className="flex flex-col gap-4">
+                                                            <div className="w-12 h-12 rounded-full bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center">
+                                                                <Lightbulb className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                                                            </div>
+                                                            <div>
+                                                                <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 mb-2">Логика</h3>
+                                                                <p className="text-[15px] leading-relaxed text-zinc-600 dark:text-zinc-400">
+                                                                    {item.logic}
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
-                                    <div className="relative z-10">
-                                        <div className="flex items-center gap-3 mb-4">
-                                            <div className="p-2 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-                                                <Lightbulb className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                                                    {/* Implementation Card */}
+                                                    <div className="bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-800 p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+                                                        <div className="flex flex-col gap-4">
+                                                            <div className="w-12 h-12 rounded-full bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center">
+                                                                <Rocket className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                                                            </div>
+                                                            <div>
+                                                                <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 mb-2">Реализация</h3>
+                                                                <p className="text-[15px] leading-relaxed text-zinc-600 dark:text-zinc-400">
+                                                                    {item.implementation}
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">Логика</h3>
-                                        </div>
-                                        <p className="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                                            {activeItem.logic}
-                                        </p>
-                                    </div>
-                                </div>
-
-                                {/* Implementation Card */}
-                                <div className="group relative bg-blue-50/30 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20 rounded-2xl p-6 md:p-8 overflow-hidden">
-                                    <div className="absolute top-0 right-0 p-4 opacity-[0.03] dark:opacity-[0.05] pointer-events-none">
-                                        <Rocket className="w-24 h-24 text-blue-600 dark:text-blue-400" />
-                                    </div>
-
-                                    <div className="relative z-10">
-                                        <div className="flex items-center gap-3 mb-4">
-                                            <div className="p-2 bg-blue-100 dark:bg-blue-400/10 rounded-lg">
-                                                <Rocket className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-                                            </div>
-                                            <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">Реализация</h3>
-                                        </div>
-                                        <p className="text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed">
-                                            {activeItem.implementation}
-                                        </p>
-                                    </div>
-                                </div>
-                            </motion.div>
-                        </AnimatePresence>
-                    </div>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
-        </section>
+        </section >
     );
 }
