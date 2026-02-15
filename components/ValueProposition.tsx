@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Users, BarChart3, ShieldCheck, Zap, ChevronDown } from "lucide-react";
-import { MdLightbulbOutline, MdRocketLaunch } from "react-icons/md";
+import { MdLightbulbOutline } from "react-icons/md";
 
 interface ValueItem {
     id: string;
@@ -46,7 +46,7 @@ const valueItems: ValueItem[] = [
     {
         id: "implementation",
         title: "Перевод на direct bookings",
-        icon: <MdRocketLaunch className="w-5 h-5 text-red-400" />,
+        icon: <MdLightbulbOutline className="w-5 h-5 text-red-400" />,
         logic: "Внедрение новых технологий обычно ассоциируется с долгими настройками, обучением персонала и сложной интеграцией.",
         implementation: "Запуск за 1 день без участия IT-специалистов. Простая интеграция с существующими системами. Интуитивно понятный интерфейс, не требующий долгого обучения."
     }
@@ -132,7 +132,7 @@ export default function ValueProposition() {
                                                     <div className="bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-800 p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
                                                         <div className="flex flex-col gap-4">
                                                             <div className="w-12 h-12 rounded-full bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center">
-                                                                <MdRocketLaunch className="w-6 h-6 text-blue-500 dark:text-blue-400" />
+                                                                <MdLightbulbOutline className="w-6 h-6 text-blue-500 dark:text-blue-400" />
                                                             </div>
                                                             <div>
                                                                 <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 mb-2">Реализация</h3>
