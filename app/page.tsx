@@ -14,10 +14,12 @@ import PresentationSection from "@/components/PresentationSection";
 import ChatFAQSection from "@/components/ChatFAQSection";
 import LLMSummary from "@/components/LLMSummary";
 import SEO, { organizationSchema } from "@/components/SEO";
+import Onboarding from "@/components/Onboarding";
 
 export default function Home() {
     return (
         <>
+            <Onboarding />
             <SEO
                 title="AI-Powered Hotel Guest Communication"
                 description="Transform your hotel operations with Roomie, the AI assistant that handles guest communications 24/7 in 100+ languages. Boost efficiency and guest satisfaction."
