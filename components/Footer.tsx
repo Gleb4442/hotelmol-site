@@ -97,7 +97,7 @@ export default function Footer() {
 
         <div
           className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-8 mb-12"
-          style={{ transform: "translate(50px, -30px)" }}
+          style={{ transform: "translate(50px, -20px)" }}
         >
           <span className="text-2xl font-bold" style={{ color: "#044B93" }}>
             Coming Soon!
