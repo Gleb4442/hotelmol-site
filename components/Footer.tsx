@@ -95,6 +95,16 @@ export default function Footer() {
           </div>
         </div>
 
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-8 mb-12">
+          <span className="text-2xl font-bold text-purple-600">
+            Coming Soon!
+          </span>
+          <div className="flex items-center gap-4">
+            <img src="/assets/app-store.svg" alt="Download on the App Store" className="h-[42px] hover:opacity-80 transition-opacity cursor-pointer" />
+            <img src="/assets/google-play.svg" alt="Get it on Google Play" className="h-[42px] hover:opacity-80 transition-opacity cursor-pointer" />
+          </div>
+        </div>
+
         <div className="border-t pt-8">
           <p className="text-center text-sm text-muted-foreground">
             {t("footer.rights")}

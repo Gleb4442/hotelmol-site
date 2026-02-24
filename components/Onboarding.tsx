@@ -76,7 +76,7 @@ export default function Onboarding() {
                 </div>
 
                 {/* Header */}
-                <header class="relative z-50 flex items-center justify-end px-8 py-6 max-w-[1440px] mx-auto space-x-6">
+                <header className="relative z-50 flex items-center justify-end px-8 py-6 max-w-[1440px] mx-auto space-x-6">
                     <button className="flex items-center justify-center w-10 h-10 rounded-full bg-white/70 backdrop-blur-2xl border border-white/80 shadow-sm hover:bg-white transition-all group">
                         <Languages className="w-5 h-5 text-slate-600 group-hover:text-blue-700 transition-colors" />
                     </button>
