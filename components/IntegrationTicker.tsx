@@ -29,6 +29,11 @@ const allIntegrations = [
     ), color: "#E63946", comingSoon: false, hideOnDesktop: false
   },
   {
+    name: "Poster", icon: () => (
+      <img src="/assets/poster-logo.png" alt="Poster" className="w-10 h-10 object-contain rounded-[8px]" />
+    ), color: "#E6A869", comingSoon: false, hideOnDesktop: false
+  },
+  {
     name: "Exely", icon: () => (
       <img src="/assets/image_1764952906072.png" alt="Exely" className="w-10 h-10 object-contain" />
     ), color: "#7C3AED", comingSoon: true, hideOnDesktop: false
