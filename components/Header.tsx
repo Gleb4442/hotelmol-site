@@ -14,7 +14,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { X } from "lucide-react";
+import { ChevronDown, X } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -23,7 +23,14 @@ import {
   DialogClose,
 } from "@/components/ui/dialog";
 
-const NavPill = ({ navigation, pathname }: { navigation: Array<{ name: string; href: string; badge?: string }>; pathname: string }) => {
+type NavItem = {
+  name: string;
+  href: string;
+  badge?: string;
+  children?: { name: string; href: string; isApp?: boolean }[];
+};
+
+const NavPill = ({ navigation, pathname }: { navigation: Array<NavItem>; pathname: string }) => {
   const [activeRect, setActiveRect] = useState({ left: 0, width: 0, opacity: 0 });
   const navRef = useRef<HTMLElement>(null);
 
@@ -70,33 +77,71 @@ const NavPill = ({ navigation, pathname }: { navigation: Array<{ name: string; h
         transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
       />
       {navigation.map((item) => {
-        const isActive = pathname === item.href;
+        const isActive = pathname.startsWith(item.href) && item.href !== "/" || pathname === item.href;
+
         return (
-          <Link
-            key={item.name}
-            href={item.href}
-            className={`relative px-2 lg:px-3 xl:px-5 py-2.5 rounded-full text-sm xl:text-base font-medium transition-all duration-300 flex items-center gap-2
-              ${isActive
-                ? "text-white"
-                : "text-slate-600 hover:text-[#0752A0] hover:bg-slate-100/50"
-              }
-            `}
-            data-testid={`link-${item.name.toLowerCase().replace(' ', '-')}`}
-          >
-            <span className="relative z-10 flex items-center gap-2">
-              {item.name}
-              {item.badge && (
-                <span className={`inline-block px-2 py-0.5 text-[10px] uppercase font-bold tracking-wide rounded-full ml-1
-                      ${isActive
-                    ? "bg-white text-[#0752A0]"
-                    : "bg-[#0752A0] text-white animate-gradient bg-gradient-to-r from-[#0752A0] via-blue-500 to-[#0752A0] bg-[length:200%_100%]"
-                  }
-                    `}>
-                  {item.badge}
-                </span>
-              )}
-            </span>
-          </Link>
+          <div key={item.name} className="relative group flex items-center h-full">
+            <Link
+              href={item.href}
+              className={`relative px-2 lg:px-3 xl:px-5 py-2.5 rounded-full text-sm xl:text-base font-medium transition-all duration-300 flex items-center gap-1.5
+                ${isActive
+                  ? "text-white"
+                  : "text-slate-600 hover:text-[#0752A0] hover:bg-slate-100/50"
+                }
+              `}
+              data-testid={`link-${item.name.toLowerCase().replace(' ', '-')}`}
+            >
+              <span className="relative z-10 flex items-center gap-1.5">
+                {item.name}
+                {item.badge && (
+                  <span className={`inline-block px-2 py-0.5 text-[10px] uppercase font-bold tracking-wide rounded-full ml-1
+                        ${isActive
+                      ? "bg-white text-[#0752A0]"
+                      : "bg-[#0752A0] text-white animate-gradient bg-gradient-to-r from-[#0752A0] via-blue-500 to-[#0752A0] bg-[length:200%_100%]"
+                    }
+                      `}>
+                    {item.badge}
+                  </span>
+                )}
+                {item.children && (
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 group-hover:rotate-180 ${isActive ? 'text-white/80' : 'text-slate-400'}`} />
+                )}
+              </span>
+            </Link>
+
+            {/* Dropdown Menu */}
+            {item.children && (
+              <div
+                className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 ease-out z-50 pointer-events-none group-hover:pointer-events-auto"
+              >
+                <div className="bg-white rounded-2xl shadow-xl border border-slate-100 p-2 min-w-[240px] relative overflow-hidden">
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -mt-[5px] w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-b-[6px] border-white drop-shadow-sm"></div>
+
+                  <div className="flex flex-col gap-1">
+                    {item.children.map((child) => (
+                      <Link
+                        key={child.name}
+                        href={child.href}
+                        className="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-50 hover:text-[#0752A0] transition-colors font-medium group/child"
+                      >
+                        {child.isApp ? (
+                          <div className="flex flex-col w-full gap-2">
+                            <span>{child.name}</span>
+                            <div className="flex items-center gap-2 mt-1">
+                              <img src="/assets/app-store.svg" alt="App Store" className="h-[28px] opacity-80 group-hover/child:opacity-100 transition-opacity" />
+                              <img src="/assets/google-play.svg" alt="Google Play" className="h-[28px] opacity-80 group-hover/child:opacity-100 transition-opacity" />
+                            </div>
+                          </div>
+                        ) : (
+                          <span>{child.name}</span>
+                        )}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
         );
       })}
     </nav>
@@ -144,9 +189,17 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const navigation: Array<{ name: string; href: string; badge?: string }> = [
+  const navigation: Array<NavItem> = [
     { name: t("nav.roomie"), href: "/roomie" },
-    { name: t("nav.solutions"), href: "/solutions" },
+    {
+      name: t("nav.solutions"),
+      href: "/solutions",
+      children: [
+        { name: "Ai CRM", href: "#" },
+        { name: "App", href: "#", isApp: true },
+        { name: "Task Management", href: "#" },
+      ]
+    },
     { name: t("nav.about"), href: "/about" },
     { name: t("nav.contact"), href: "/contact" },
   ];
@@ -277,7 +330,7 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 20, scale: 0.9 }}
                       transition={{ delay: 0.05 * (navigation.length - 1 - idx) }}
-                      className="w-full flex justify-end"
+                      className="w-full flex flex-col items-end gap-2"
                     >
                       <Link
                         href={item.href}
@@ -290,6 +343,28 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
                       >
                         {item.name}
                       </Link>
+
+                      {/* Mobile Sub-items */}
+                      {item.children && (
+                        <div className="flex flex-col items-end gap-2 pr-4 mt-1">
+                          {item.children.map((child) => (
+                            <Link
+                              key={child.name}
+                              href={child.href}
+                              onClick={() => setIsMobileMenuOpen(false)}
+                              className="px-5 py-2 rounded-full bg-white/60 border border-white/40 text-slate-600 text-sm font-medium flex flex-col items-end gap-2"
+                            >
+                              <span>{child.name}</span>
+                              {child.isApp && (
+                                <div className="flex items-center gap-2 mt-1 -mr-1">
+                                  <img src="/assets/app-store.svg" alt="App Store" className="h-[24px]" />
+                                  <img src="/assets/google-play.svg" alt="Google Play" className="h-[24px]" />
+                                </div>
+                              )}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
                     </motion.div>
                   );
                 })}
