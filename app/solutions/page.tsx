@@ -13,6 +13,8 @@ import { useTranslation } from "@/lib/TranslationContext";
 import SEO, { organizationSchema } from "@/components/SEO";
 import AiCDP_App from "@/components/AiCDP_bar/AiCDP_App";
 import RoomieArchitecture from "@/components/RoomieArchitecture";
+import Link from "next/link";
+import { ChevronDown } from "lucide-react";
 
 export default function Solutions() {
     const { t } = useTranslation();
@@ -43,6 +45,34 @@ export default function Solutions() {
                 description="Tailored AI communication solutions for single hotels, hotel chains, and hostels."
                 structuredData={organizationSchema}
             />
+
+            {/* Top Right Dropdown Menu */}
+            <div className="fixed top-24 right-4 md:right-8 z-40">
+                <div className="relative group">
+                    <button className="flex items-center gap-2 px-4 py-2.5 bg-white text-slate-800 rounded-full shadow-lg border border-slate-200 hover:border-[#0752A0]/50 transition-all font-medium text-sm">
+                        {t("nav.solutions")}
+                        <ChevronDown className="w-4 h-4 text-slate-400 group-hover:rotate-180 transition-transform duration-200" />
+                    </button>
+
+                    <div className="absolute top-full right-0 pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 min-w-[200px]">
+                        <div className="bg-white rounded-2xl shadow-xl border border-slate-100 p-2 overflow-hidden">
+                            <Link href="#" className="flex items-center px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-50 hover:text-[#0752A0] transition-colors font-medium">
+                                Ai CRM
+                            </Link>
+                            <Link href="#" className="flex flex-col px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-50 hover:text-[#0752A0] transition-colors font-medium">
+                                <span>App</span>
+                                <div className="flex items-center gap-2 mt-2">
+                                    <img src="/assets/app-store.svg" alt="App Store" className="h-[28px] opacity-80 hover:opacity-100 transition-opacity" />
+                                    <img src="/assets/google-play.svg" alt="Google Play" className="h-[28px] opacity-80 hover:opacity-100 transition-opacity" />
+                                </div>
+                            </Link>
+                            <Link href="#" className="flex items-center px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-50 hover:text-[#0752A0] transition-colors font-medium">
+                                Task Management
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <RoomieArchitecture />
 
