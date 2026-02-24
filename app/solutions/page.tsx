@@ -12,6 +12,7 @@ import { Building2, Network, CheckCircle, ArrowRight } from "lucide-react";
 import { useTranslation } from "@/lib/TranslationContext";
 import SEO, { organizationSchema } from "@/components/SEO";
 import AiCDP_App from "@/components/AiCDP_bar/AiCDP_App";
+import RoomieArchitecture from "@/components/RoomieArchitecture";
 
 export default function Solutions() {
     const { t } = useTranslation();
@@ -43,8 +44,9 @@ export default function Solutions() {
                 structuredData={organizationSchema}
             />
 
+            <RoomieArchitecture />
 
-            <section className="pt-[147px] pb-36">
+            <section className="py-24">
                 <div className="container mx-auto px-4">
                     <div className="max-w-4xl mx-auto text-center mb-16">
                         <h1 className="font-serif text-5xl lg:text-6xl font-semibold tracking-tight mb-6">
