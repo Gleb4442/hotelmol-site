@@ -93,7 +93,7 @@ export default function Footer() {
               ))}
             </ul>
 
-            <div className="mt-[15px] flex items-center gap-3 flex-nowrap whitespace-nowrap">
+            <div className="mt-[45px] -ml-[30px] flex items-center gap-3 flex-nowrap whitespace-nowrap">
               <span className="text-lg font-bold" style={{ color: "#044B93" }}>
                 Coming Soon!
               </span>
