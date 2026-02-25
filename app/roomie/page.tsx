@@ -78,7 +78,7 @@ export default function Roomie() {
                                 ))}
                             </div>
                             <div className="flex flex-wrap gap-4 mt-8">
-                                <Button size="lg" asChild>
+                                <Button size="lg" asChild className="rounded-full">
                                     <a href="https://cal.com/gleb.gosha/30min" target="_blank" rel="noopener noreferrer">
                                         {t("button.requestDemo")} <ArrowRight className="ml-2 h-5 w-5" />
                                     </a>
