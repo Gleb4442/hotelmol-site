@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { 
-  Smartphone, 
-  Bot, 
-  LayoutDashboard, 
-  KeyRound, 
-  QrCode, 
-  MessageSquare, 
+import {
+  Smartphone,
+  Bot,
+  LayoutDashboard,
+  KeyRound,
+  QrCode,
+  MessageSquare,
   Clock,
   Sparkles
 } from 'lucide-react';
@@ -60,7 +60,7 @@ export default function RoomieArchitecture() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full">
         {/* Header */}
         <div className="mb-20 max-w-3xl">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6"
@@ -70,7 +70,7 @@ export default function RoomieArchitecture() {
               Трехуровневая архитектура продукта
             </span>
           </motion.h2>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
@@ -80,27 +80,7 @@ export default function RoomieArchitecture() {
           </motion.p>
         </div>
 
-        <div className="mb-12">
-          <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2 }}
-            className="inline-flex items-center space-x-3 bg-white/80 border border-slate-200 rounded-full px-5 py-2.5 backdrop-blur-sm shadow-sm"
-          >
-            <span className="flex h-2.5 w-2.5 rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.4)] animate-pulse"></span>
-            <span className="text-sm font-semibold tracking-wider uppercase text-slate-700">Уровень 1: B2C</span>
-          </motion.div>
-          
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.3 }}
-            className="mt-6"
-          >
-            <h3 className="text-3xl font-semibold mb-3">Цифровой консьерж</h3>
-            <p className="text-slate-600 text-lg">Гостевое приложение</p>
-          </motion.div>
-        </div>
+
 
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-start">
           {/* Left Column: List */}
@@ -108,7 +88,7 @@ export default function RoomieArchitecture() {
             <div className="space-y-4 relative">
               {/* Vertical line connecting items */}
               <div className="absolute left-6 top-8 bottom-8 w-px bg-slate-200 z-0 hidden md:block"></div>
-              
+
               {features.map((feature, index) => {
                 const isActive = activeFeature === feature.id;
                 const Icon = feature.icon;
@@ -119,11 +99,10 @@ export default function RoomieArchitecture() {
                     transition={{ delay: 0.4 + index * 0.1 }}
                     key={feature.id}
                     onClick={() => setActiveFeature(feature.id)}
-                    className={`w-full text-left p-5 rounded-2xl transition-all duration-300 relative z-10 group ${
-                      isActive 
-                        ? '' 
+                    className={`w-full text-left p-5 rounded-2xl transition-all duration-300 relative z-10 group ${isActive
+                        ? ''
                         : 'bg-transparent border border-transparent hover:bg-slate-100/50'
-                    }`}
+                      }`}
                   >
                     {isActive && (
                       <motion.div
@@ -134,11 +113,10 @@ export default function RoomieArchitecture() {
                       />
                     )}
                     <div className="relative z-10 flex items-center space-x-5">
-                      <div className={`relative flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 ${
-                        isActive 
-                          ? `bg-gradient-to-br ${feature.gradient} shadow-md` 
+                      <div className={`relative flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 ${isActive
+                          ? `bg-gradient-to-br ${feature.gradient} shadow-md`
                           : 'bg-slate-100 group-hover:bg-slate-200'
-                      }`}>
+                        }`}>
                         <Icon className={`w-6 h-6 ${isActive ? 'text-white' : 'text-slate-500 group-hover:text-slate-700'}`} />
                       </div>
                       <div>
@@ -155,25 +133,25 @@ export default function RoomieArchitecture() {
 
           {/* Right Column: Interactive Display */}
           <div className="lg:col-span-7 relative lg:sticky lg:top-24">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.5, duration: 0.5 }}
               className="aspect-square md:aspect-[4/3] bg-white border border-slate-200 rounded-[2.5rem] overflow-hidden relative p-8 md:p-12 flex flex-col justify-center items-center text-center shadow-xl"
             >
               {/* Dynamic Background Glow */}
-              <div 
+              <div
                 className="absolute inset-0 transition-colors duration-1000 ease-in-out"
                 style={{
                   background: `radial-gradient(circle at center, ${activeFeatureData?.glowColor} 0%, transparent 70%)`
                 }}
               />
-              
+
               {/* Grid Pattern Overlay */}
-              <div className="absolute inset-0 opacity-[0.03]" 
-                   style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '32px 32px' }}>
+              <div className="absolute inset-0 opacity-[0.03]"
+                style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '32px 32px' }}>
               </div>
-              
+
               <AnimatePresence mode="wait">
                 {features.map((feature) => (
                   feature.id === activeFeature && (
@@ -190,7 +168,7 @@ export default function RoomieArchitecture() {
                           <feature.icon className="w-12 h-12 text-slate-800" />
                         </div>
                       </div>
-                      
+
                       <h3 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight text-slate-900">{feature.title}</h3>
                       <p className="text-xl text-slate-600 leading-relaxed">
                         {feature.description}
@@ -198,7 +176,7 @@ export default function RoomieArchitecture() {
 
                       <div className="mt-12 flex justify-center gap-6">
                         {feature.details.map((DetailIcon, idx) => (
-                          <motion.div 
+                          <motion.div
                             key={idx}
                             initial={{ opacity: 0, y: 10, scale: 0.8 }}
                             animate={{ opacity: 1, y: 0, scale: 1 }}
