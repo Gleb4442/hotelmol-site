@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Search, Bell, Menu, X } from "lucide-react";
 
 interface HeaderProps {
@@ -12,6 +12,7 @@ export const Header: React.FC<HeaderProps> = ({
   isMobileMenuOpen,
   setIsMobileMenuOpen,
 }) => {
+  const [isAutonomous, setIsAutonomous] = useState(true);
   return (
     <>
       {/* Мобильный хедер */}
@@ -41,13 +42,16 @@ export const Header: React.FC<HeaderProps> = ({
             {activeTab === "guests" && "Профили Гостей (CDP)"}
             {activeTab === "rooms" && "Управление Инвентарем"}
           </h1>
-          <p className="text-sm text-gray-500 font-medium flex items-center gap-2">
+          <button
+            onClick={() => setIsAutonomous(!isAutonomous)}
+            className="text-sm text-gray-500 font-medium flex items-center gap-2 cursor-pointer hover:text-gray-700 transition-colors text-left"
+          >
             <span className="relative flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+              {isAutonomous && <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>}
+              <span className={`relative inline-flex rounded-full h-2.5 w-2.5 ${isAutonomous ? "bg-green-500" : "bg-amber-500"}`}></span>
             </span>
-            Уровень 3: Автономный режим активен
-          </p>
+            {isAutonomous ? "Уровень 3: Автономный режим активен" : "Ручной режим активен"}
+          </button>
         </div>
         <div className="flex items-center gap-4">
           <div className="relative hidden md:block">
