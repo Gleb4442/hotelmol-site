@@ -1284,7 +1284,7 @@ export const translations = {
     "about.seo.description": "hotelmol — AI-экосистема для отелей. Превращаем гостиничный сервис в безупречный алгоритм.",
     "about.hero.title": "Превращаем гостиничный сервис в",
     "about.hero.titleAccent": "безупречный алгоритм",
-    "about.hero.subtitle": "hotelmol — это AI-экосистема, которая возвращает отелям потерянную прибыль и дарит гостям мгновенное внимание, пока вы спите.",
+    "about.hero.subtitle": "hotelmol — это AI-экосистема, которая превращает каждого гостя в постоянного и дает вам контроль над контактом с вашими гостями",
     "about.hero.button.integration": "Обсудить интеграцию",
     "about.hero.button.meetRoomie": "Познакомиться с Roomie",
     "about.dna.label": "НАШЕ ДНК",
