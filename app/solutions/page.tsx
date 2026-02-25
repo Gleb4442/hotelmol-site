@@ -11,7 +11,7 @@ import { Building2, Network, CheckCircle, ArrowRight } from "lucide-react";
 
 import { useTranslation } from "@/lib/TranslationContext";
 import SEO, { organizationSchema } from "@/components/SEO";
-import AiCDP_App from "@/components/AiCDP_bar/AiCDP_App";
+
 import RoomieArchitecture from "@/components/RoomieArchitecture";
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
@@ -168,19 +168,7 @@ export default function Solutions() {
                 </div>
             </section>
 
-            <section className="py-20 bg-background border-t border-border/50">
-                <div className="container mx-auto px-4 max-w-7xl">
-                    <div className="max-w-4xl mx-auto text-center mb-12">
-                        <h2 className="font-serif text-4xl font-semibold mb-6">Interactive AI Concierge</h2>
-                        <p className="text-xl text-muted-foreground">
-                            Try our hotel dashboard directly to see how our AI communication solutions work in practice.
-                        </p>
-                    </div>
-                    <div className="rounded-xl overflow-hidden border border-border shadow-2xl h-[800px]">
-                        <AiCDP_App />
-                    </div>
-                </div>
-            </section>
+
 
             <section className="py-20 bg-muted/30">
                 <div className="container mx-auto px-4">
