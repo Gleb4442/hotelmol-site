@@ -10,13 +10,13 @@ const HotelQRBenefits = () => {
     const tableData = [
         {
             id: 1,
-            caseName: "PlumQR",
-            usage: "Отели с QR-меню в номерах",
-            orders: "+45%",
-            ordersDesc: "заказов в номерах",
-            revenue: "+15%",
-            revenueDesc: "к размеру заказа",
-            effect: "78% гостей предпочли онлайн-заказ",
+            caseName: "Hilton Fugu (Китай)",
+            usage: "Развернуто в 160+ отелях",
+            orders: "4.8/5.0",
+            ordersDesc: "рейтинг удовлетворенности",
+            revenue: "+30%",
+            revenueDesc: "y/o/y рост выручки In-Room",
+            effect: "Рост чека визуальным апселлом",
             icon: <QrCode className="w-6 h-6 text-blue-600" />,
             glowColor: "from-blue-200/60 to-indigo-100/60"
         },
