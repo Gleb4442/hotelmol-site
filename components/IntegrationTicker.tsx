@@ -30,7 +30,7 @@ const allIntegrations = [
   },
   {
     name: "Poster", icon: () => (
-      <img src="/assets/poster-logo.png" alt="Poster" className="w-[60px] h-[60px] object-contain rounded-[8px]" />
+      <img src="/assets/poster-logo.png" alt="Poster" className="w-10 h-10 object-contain rounded-[8px] scale-150" />
     ), color: "#E6A869", comingSoon: false, hideOnDesktop: false
   },
   {

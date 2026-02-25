@@ -59,12 +59,8 @@ export default function Solutions() {
                             <Link href="#" className="flex items-center px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-50 hover:text-[#0752A0] transition-colors font-medium">
                                 Ai CRM
                             </Link>
-                            <Link href="#" className="flex flex-col px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-50 hover:text-[#0752A0] transition-colors font-medium">
-                                <span>App</span>
-                                <div className="flex items-center gap-2 mt-2">
-                                    <img src="/assets/app-store.svg" alt="App Store" className="h-[28px] opacity-80 hover:opacity-100 transition-opacity" />
-                                    <img src="/assets/google-play.svg" alt="Google Play" className="h-[28px] opacity-80 hover:opacity-100 transition-opacity" />
-                                </div>
+                            <Link href="#" className="flex items-center px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-50 hover:text-[#0752A0] transition-colors font-medium">
+                                Mobile App
                             </Link>
                             <Link href="#" className="flex items-center px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-50 hover:text-[#0752A0] transition-colors font-medium">
                                 Task Management
