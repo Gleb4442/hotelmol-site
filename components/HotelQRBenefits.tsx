@@ -1,6 +1,6 @@
 "use client";
 import React from 'react';
-import { QrCode, Smartphone, Award, UtensilsCrossed, MousePointerClick, Wallet, Zap } from 'lucide-react';
+import { QrCode, Smartphone, Award, UtensilsCrossed, MousePointerClick, Wallet, Zap, Users } from 'lucide-react';
 
 const HotelQRBenefits = () => {
     const tableData = [
@@ -11,6 +11,7 @@ const HotelQRBenefits = () => {
             orders: "4.8/5.0",
             ordersDesc: "рейтинг удовлетворенности",
             revenueLabel: "Выручка",
+            revenueIcon: <Wallet className="w-4 h-4" />,
             revenue: "+30%",
             revenueDesc: "y/o/y рост выручки In-Room",
             effect: "Рост чека визуальным апселлом",
@@ -24,6 +25,7 @@ const HotelQRBenefits = () => {
             orders: "+20%",
             ordersDesc: "рост продаж после внедрения",
             revenueLabel: "Персонал",
+            revenueIcon: <Users className="w-4 h-4" />,
             revenue: "Снижение",
             revenueDesc: "ошибок в заказах и ускорение обработки",
             effect: "Больше времени на персонализированный сервис",
@@ -37,6 +39,7 @@ const HotelQRBenefits = () => {
             orders: "+78.6%",
             ordersDesc: "к объёму заказов",
             revenueLabel: "Выручка",
+            revenueIcon: <Wallet className="w-4 h-4" />,
             revenue: "+72.5%",
             revenueDesc: "к выручке in-room",
             effect: "23–32% заказов через цифру",
@@ -50,6 +53,7 @@ const HotelQRBenefits = () => {
             orders: "До 30%",
             ordersDesc: "рост выручки",
             revenueLabel: "Выручка",
+            revenueIcon: <Wallet className="w-4 h-4" />,
             revenue: "Upsell",
             revenueDesc: "рост среднего чека",
             effect: "Повышение оборачиваемости, нет очередей",
@@ -125,7 +129,7 @@ const HotelQRBenefits = () => {
                                         <div className={`absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/80 to-transparent skew-x-[-25deg] pointer-events-none -translate-x-[150%]`}></div>
                                         <div className="relative z-10">
                                             <div className={`flex items-center gap-2 mb-2 text-slate-400`}>
-                                                <Wallet className="w-4 h-4" />
+                                                {row.revenueIcon}
                                                 <span className="text-xs uppercase tracking-widest font-bold">{row.revenueLabel}</span>
                                             </div>
                                             <div className={`text-2xl font-black mb-1 text-slate-800`}>
