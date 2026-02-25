@@ -23,7 +23,7 @@ const HotelQRBenefits = () => {
             orders: "+20%",
             ordersDesc: "рост продаж после внедрения",
             revenue: "Снижение",
-            revenueDesc: "ошибок и ускорение обработки",
+            revenueDesc: "ошибок в заказах и ускорение обработки",
             effect: "Больше времени на персонализированный сервис",
             icon: <Smartphone className="w-6 h-6 text-cyan-600" />,
             glowColor: "from-cyan-200/60 to-blue-100/60"
