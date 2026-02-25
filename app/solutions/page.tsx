@@ -46,26 +46,22 @@ export default function Solutions() {
                 structuredData={organizationSchema}
             />
 
-            {/* Top Right Dropdown Menu */}
+            {/* Top Right Menu */}
             <div className="fixed top-24 right-4 md:right-8 z-40">
-                <div className="relative group">
-                    <button className="flex items-center gap-2 px-4 py-2.5 bg-white text-slate-800 rounded-full shadow-lg border border-slate-200 hover:border-[#0752A0]/50 transition-all font-medium text-sm">
-                        {t("nav.solutions")}
-                        <ChevronDown className="w-4 h-4 text-slate-400 group-hover:rotate-180 transition-transform duration-200" />
-                    </button>
-
-                    <div className="absolute top-full right-0 pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 min-w-[200px]">
-                        <div className="bg-white rounded-2xl shadow-xl border border-slate-100 p-2 overflow-hidden">
-                            <Link href="#" className="flex items-center px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-50 hover:text-[#0752A0] transition-colors font-medium">
-                                Ai CRM
-                            </Link>
-                            <Link href="#" className="flex items-center px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-50 hover:text-[#0752A0] transition-colors font-medium">
-                                Mobile App
-                            </Link>
-                            <Link href="#" className="flex items-center px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-50 hover:text-[#0752A0] transition-colors font-medium">
-                                Task Management
-                            </Link>
-                        </div>
+                <div className="flex flex-col items-end">
+                    <div className="text-sm font-medium text-slate-600 mb-2 px-2">
+                        Solutions toggle list
+                    </div>
+                    <div className="bg-white rounded-2xl shadow-xl border border-slate-100 p-2 min-w-[200px]">
+                        <Link href="#" className="flex items-center px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-50 hover:text-[#0752A0] transition-colors font-medium">
+                            Ai CRM
+                        </Link>
+                        <Link href="#" className="flex items-center px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-50 hover:text-[#0752A0] transition-colors font-medium">
+                            mobile app
+                        </Link>
+                        <Link href="#" className="flex items-center px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-50 hover:text-[#0752A0] transition-colors font-medium">
+                            Task Management
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -106,6 +102,7 @@ export default function Solutions() {
                                         <Button
                                             size="lg"
                                             asChild
+                                            className="rounded-full"
                                         >
                                             <a href="https://cal.com/gleb.gosha/30min" target="_blank" rel="noopener noreferrer">
                                                 {t("button.requestDemo")}
@@ -146,6 +143,7 @@ export default function Solutions() {
                                         <Button
                                             size="lg"
                                             asChild
+                                            className="rounded-full"
                                         >
                                             <a href="https://cal.com/gleb.gosha/30min" target="_blank" rel="noopener noreferrer">
                                                 {t("button.requestDemo")}
@@ -195,6 +193,7 @@ export default function Solutions() {
                             <Button
                                 size="lg"
                                 asChild
+                                className="rounded-full"
                             >
                                 <a href="https://cal.com/gleb.gosha/30min" target="_blank" rel="noopener noreferrer">
                                     {t("solutions.consultation.button")}

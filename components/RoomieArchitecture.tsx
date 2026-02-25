@@ -80,27 +80,7 @@ export default function RoomieArchitecture() {
           </motion.p>
         </div>
 
-        <div className="mb-12">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2 }}
-            className="inline-flex items-center space-x-3 bg-white/80 border border-slate-200 rounded-full px-5 py-2.5 backdrop-blur-sm shadow-sm"
-          >
-            <span className="flex h-2.5 w-2.5 rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.4)] animate-pulse"></span>
-            <span className="text-sm font-semibold tracking-wider uppercase text-slate-700">Уровень 1: B2C</span>
-          </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.3 }}
-            className="mt-6"
-          >
-            <h3 className="text-3xl font-semibold mb-3">Цифровой консьерж</h3>
-            <p className="text-slate-600 text-lg">Гостевое приложение</p>
-          </motion.div>
-        </div>
 
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-start">
           {/* Left Column: List */}
@@ -120,8 +100,8 @@ export default function RoomieArchitecture() {
                     key={feature.id}
                     onClick={() => setActiveFeature(feature.id)}
                     className={`w-full text-left p-5 rounded-2xl transition-all duration-300 relative z-10 group ${isActive
-                        ? ''
-                        : 'bg-transparent border border-transparent hover:bg-slate-100/50'
+                      ? ''
+                      : 'bg-transparent border border-transparent hover:bg-slate-100/50'
                       }`}
                   >
                     {isActive && (
@@ -134,8 +114,8 @@ export default function RoomieArchitecture() {
                     )}
                     <div className="relative z-10 flex items-center space-x-5">
                       <div className={`relative flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 ${isActive
-                          ? `bg-gradient-to-br ${feature.gradient} shadow-md`
-                          : 'bg-slate-100 group-hover:bg-slate-200'
+                        ? `bg-gradient-to-br ${feature.gradient} shadow-md`
+                        : 'bg-slate-100 group-hover:bg-slate-200'
                         }`}>
                         <Icon className={`w-6 h-6 ${isActive ? 'text-white' : 'text-slate-500 group-hover:text-slate-700'}`} />
                       </div>
