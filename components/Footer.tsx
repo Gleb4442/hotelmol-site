@@ -92,14 +92,17 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
+          </div>
+        </div>
 
-            <div className="mt-[45px] -ml-[55px] flex items-center gap-3 flex-nowrap whitespace-nowrap">
-              <span className="text-lg font-bold" style={{ color: "#044B93" }}>
-                Coming Soon!
-              </span>
-              <img src="/assets/app-store.svg" alt="Download on the App Store" className="h-[40px] hover:opacity-80 transition-opacity cursor-pointer shrink-0" />
-              <img src="/assets/google-play.svg" alt="Get it on Google Play" className="h-[40px] hover:opacity-80 transition-opacity cursor-pointer shrink-0" />
-            </div>
+        {/* Coming Soon Badges - Positioned outside the grid to align further left and down */}
+        <div className="flex justify-start mb-6 -ml-4 md:-ml-12 lg:-ml-24">
+          <div className="flex items-center gap-3 flex-nowrap whitespace-nowrap">
+            <span className="text-lg font-bold" style={{ color: "#044B93" }}>
+              Coming Soon!
+            </span>
+            <img src="/assets/app-store.svg" alt="Download on the App Store" className="h-[40px] hover:opacity-80 transition-opacity cursor-pointer shrink-0" />
+            <img src="/assets/google-play.svg" alt="Get it on Google Play" className="h-[40px] hover:opacity-80 transition-opacity cursor-pointer shrink-0" />
           </div>
         </div>
 
