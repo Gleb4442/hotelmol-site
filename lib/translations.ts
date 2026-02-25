@@ -1128,7 +1128,7 @@ const translationsBase = {
     "home.benefits.subtitle": "Измеримые результаты, которые трансформируют опыт гостей и прибыль",
     "home.benefits.directBookings.title": "Больше прямых бронирований",
     "home.benefits.directBookings.stat": "+25%",
-    "home.benefits.directBookings.description": "Доля прямых броней увеличивается за счет повышения конверсии сайта",
+    "home.benefits.directBookings.description": "Доля прямых броней увеличивается за счет большей возвращаемости гостей, персонализации, а также глубокому вовлечению в интерфейсы приложения",
     "home.benefits.workload.title": "Снижение нагрузки",
     "home.benefits.workload.stat": "24/7",
     "home.benefits.workload.description": "ИИ обрабатывает рутинные запросы круглосуточно, 365 дней в году. Ваша команда сможет уделять больше времени гостям",
