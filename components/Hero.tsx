@@ -116,6 +116,24 @@ export default function Hero() {
                   {t("home.hero.watchDemo")}
                 </a>
               </Button>
+              <Button
+                size="lg"
+                variant="ghost"
+                className="relative text-base pl-8 pr-12 h-14 backdrop-blur-md bg-blue-500/10 border border-blue-400/30 text-white hover:bg-blue-500/20 rounded-2xl shadow-[0_0_15px_rgba(59,130,246,0.3)] transition-all overflow-hidden group"
+                asChild
+                data-testid="button-app-tour"
+              >
+                <a href="https://tour.hotelmol.com" target="_blank" rel="noopener noreferrer">
+                  App tour
+                  <div className="absolute top-0 right-0 h-full flex items-center pr-3">
+                    <span className="bg-blue-500 text-white text-[10px] uppercase font-bold px-2 py-0.5 rounded-full shadow-[0_0_10px_rgba(59,130,246,0.8)]">
+                      new
+                    </span>
+                  </div>
+                  {/* Subtle sweep effect on hover */}
+                  <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-[-25deg] translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-700 pointer-events-none"></div>
+                </a>
+              </Button>
             </div>
           </div>
         </div>
