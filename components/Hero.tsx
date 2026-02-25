@@ -57,11 +57,11 @@ export default function Hero() {
 
       // Human-like speed logic
       if (isDeleting) {
-        // Deleting speed: variable but generally faster and snappy
-        setSpeed(50 + Math.random() * 50);
+        // Deleting: 17 chars per second -> ~58ms per character
+        setSpeed(58);
       } else {
-        // Typing speed: more variable to feel human
-        setSpeed(100 + Math.random() * 150);
+        // Typing: 10 chars per second -> 100ms per character
+        setSpeed(100);
       }
     };
 
