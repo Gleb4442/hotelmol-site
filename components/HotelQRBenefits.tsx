@@ -10,6 +10,7 @@ const HotelQRBenefits = () => {
             usage: "Развернуто в 160+ отелях",
             orders: "4.8/5.0",
             ordersDesc: "рейтинг удовлетворенности",
+            revenueLabel: "Выручка",
             revenue: "+30%",
             revenueDesc: "y/o/y рост выручки In-Room",
             effect: "Рост чека визуальным апселлом",
@@ -22,6 +23,7 @@ const HotelQRBenefits = () => {
             usage: "Интеграция заказа и оплаты в номерах",
             orders: "+20%",
             ordersDesc: "рост продаж после внедрения",
+            revenueLabel: "Персонал",
             revenue: "Снижение",
             revenueDesc: "ошибок в заказах и ускорение обработки",
             effect: "Больше времени на персонализированный сервис",
@@ -34,6 +36,7 @@ const HotelQRBenefits = () => {
             usage: "5* отель, in-room dining",
             orders: "+78.6%",
             ordersDesc: "к объёму заказов",
+            revenueLabel: "Выручка",
             revenue: "+72.5%",
             revenueDesc: "к выручке in-room",
             effect: "23–32% заказов через цифру",
@@ -46,6 +49,7 @@ const HotelQRBenefits = () => {
             usage: "Рестораны и F&B-зоны",
             orders: "До 30%",
             ordersDesc: "рост выручки",
+            revenueLabel: "Выручка",
             revenue: "Upsell",
             revenueDesc: "рост среднего чека",
             effect: "Повышение оборачиваемости, нет очередей",
@@ -122,7 +126,7 @@ const HotelQRBenefits = () => {
                                         <div className="relative z-10">
                                             <div className={`flex items-center gap-2 mb-2 text-slate-400`}>
                                                 <Wallet className="w-4 h-4" />
-                                                <span className="text-xs uppercase tracking-widest font-bold">Выручка</span>
+                                                <span className="text-xs uppercase tracking-widest font-bold">{row.revenueLabel}</span>
                                             </div>
                                             <div className={`text-2xl font-black mb-1 text-slate-800`}>
                                                 {row.revenue}
