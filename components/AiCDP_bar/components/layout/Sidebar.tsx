@@ -67,13 +67,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             {item.label}
           </button>
         ))}
-        <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4 mt-8 px-2">
-          Настройки
-        </div>
-        <button className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-all">
-          <Settings size={20} className="text-gray-400" />
-          Интеграция PMS
-        </button>
+
       </div>
 
       <div className="p-4 border-t border-gray-100">
