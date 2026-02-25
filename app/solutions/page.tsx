@@ -102,7 +102,8 @@ export default function Solutions() {
                                         <Button
                                             size="lg"
                                             asChild
-                                            className="rounded-full"
+                                            className="!rounded-full"
+                                            style={{ borderRadius: "9999px" }}
                                         >
                                             <a href="https://cal.com/gleb.gosha/30min" target="_blank" rel="noopener noreferrer">
                                                 {t("button.requestDemo")}
@@ -143,7 +144,8 @@ export default function Solutions() {
                                         <Button
                                             size="lg"
                                             asChild
-                                            className="rounded-full"
+                                            className="!rounded-full"
+                                            style={{ borderRadius: "9999px" }}
                                         >
                                             <a href="https://cal.com/gleb.gosha/30min" target="_blank" rel="noopener noreferrer">
                                                 {t("button.requestDemo")}
@@ -181,7 +183,8 @@ export default function Solutions() {
                             <Button
                                 size="lg"
                                 asChild
-                                className="rounded-full"
+                                className="!rounded-full"
+                                style={{ borderRadius: "9999px" }}
                             >
                                 <a href="https://cal.com/gleb.gosha/30min" target="_blank" rel="noopener noreferrer">
                                     {t("solutions.consultation.button")}
