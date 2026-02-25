@@ -15,7 +15,7 @@ const features = [
   {
     id: 'entry',
     title: 'Точка входа',
-    description: 'Максимально простая (SMS, QR).',
+    description: 'Максимально простая (SMS, QR, Чат на сайте отеля).',
     icon: Smartphone,
     gradient: 'from-blue-500 to-cyan-400',
     glowColor: 'rgba(59, 130, 246, 0.15)',
@@ -100,8 +100,8 @@ export default function RoomieArchitecture() {
                     key={feature.id}
                     onClick={() => setActiveFeature(feature.id)}
                     className={`w-full text-left p-5 rounded-2xl transition-all duration-300 relative z-10 group ${isActive
-                        ? ''
-                        : 'bg-transparent border border-transparent hover:bg-slate-100/50'
+                      ? ''
+                      : 'bg-transparent border border-transparent hover:bg-slate-100/50'
                       }`}
                   >
                     {isActive && (
@@ -114,8 +114,8 @@ export default function RoomieArchitecture() {
                     )}
                     <div className="relative z-10 flex items-center space-x-5">
                       <div className={`relative flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 ${isActive
-                          ? `bg-gradient-to-br ${feature.gradient} shadow-md`
-                          : 'bg-slate-100 group-hover:bg-slate-200'
+                        ? `bg-gradient-to-br ${feature.gradient} shadow-md`
+                        : 'bg-slate-100 group-hover:bg-slate-200'
                         }`}>
                         <Icon className={`w-6 h-6 ${isActive ? 'text-white' : 'text-slate-500 group-hover:text-slate-700'}`} />
                       </div>

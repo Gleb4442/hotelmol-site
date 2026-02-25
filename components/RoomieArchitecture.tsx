@@ -15,7 +15,7 @@ const features = [
   {
     id: 'entry',
     title: 'Точка входа',
-    description: 'Максимально простая (SMS, QR).',
+    description: 'Максимально простая (SMS, QR, Чат на сайте отеля).',
     icon: Smartphone,
     gradient: 'from-blue-500 to-cyan-400',
     glowColor: 'rgba(59, 130, 246, 0.15)',
