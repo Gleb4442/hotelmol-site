@@ -218,22 +218,22 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
             </a>
           </Button>
 
-          <Button
-            size="default"
-            variant="ghost"
-            className="hidden lg:inline-flex relative rounded-full pl-4 pr-10 backdrop-blur-md bg-blue-500/10 border border-blue-400/30 text-[#0752A0] hover:bg-blue-500/20 shadow-[0_0_10px_rgba(59,130,246,0.2)] transition-all overflow-hidden group"
-            asChild
-            data-testid="button-app-tour-header"
-          >
-            <a href="https://tour.hotelmol.com" target="_blank" rel="noopener noreferrer">
-              App tour
-              <div className="absolute top-0 right-0 h-full flex items-center pr-2">
-                <span className="bg-blue-500 text-white text-[8px] uppercase font-bold px-1.5 py-0.5 rounded-full shadow-[0_0_8px_rgba(59,130,246,0.6)]">
-                  new
-                </span>
-              </div>
-            </a>
-          </Button>
+          <div className="relative hidden lg:inline-flex">
+            <Button
+              size="default"
+              variant="ghost"
+              className="relative rounded-full px-4 backdrop-blur-md bg-blue-500/10 border border-blue-400/30 text-[#0752A0] hover:bg-blue-500/20 shadow-[0_0_10px_rgba(59,130,246,0.2)] transition-all overflow-hidden group"
+              asChild
+              data-testid="button-app-tour-header"
+            >
+              <a href="https://tour.hotelmol.com" target="_blank" rel="noopener noreferrer">
+                App tour
+              </a>
+            </Button>
+            <span className="absolute -top-2 -right-2 z-10 bg-blue-500 text-white text-[9px] uppercase font-bold px-1.5 py-0.5 rounded-full shadow-[0_0_8px_rgba(59,130,246,0.6)]">
+              new
+            </span>
+          </div>
 
         </div>
       </div>
