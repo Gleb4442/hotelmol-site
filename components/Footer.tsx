@@ -93,7 +93,7 @@ export default function Footer() {
               ))}
             </ul>
 
-            <div className="mt-[15px] flex flex-col gap-4">
+            <div className="mt-[15px] flex flex-wrap items-center gap-4">
               <span className="text-xl font-bold" style={{ color: "#044B93" }}>
                 Coming Soon!
               </span>
