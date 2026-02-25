@@ -845,7 +845,7 @@ const translationsBase = {
       "увеличивает средний чек", "продает ваши доп услуги",
       "берет рутину на себя"
     ],
-    "home.hero.subtitle": "Люди для людей, для остального есть Roomie AI",
+    "home.hero.subtitle": "hotelmol, чтобы гости возвращались",
     "home.hero.watchDemo": "Смотреть демо",
 
     // AI Dashboard Section
@@ -1596,7 +1596,7 @@ const translationsBase = {
       "продає ваші доп послуги",
       "бере рутину на себе"
     ],
-    "home.hero.subtitle": "Люди для людей, для всього іншого є Roomie AI",
+    "home.hero.subtitle": "hotelmol, щоб гості поверталися",
     "home.hero.watchDemo": "Дивитися демо",
 
     // AI Dashboard Section

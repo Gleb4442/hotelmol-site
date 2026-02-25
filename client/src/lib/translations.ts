@@ -863,7 +863,7 @@ export const translations = {
     "home.hero.badge": "Нам доверяют более 500 отелей по всему миру",
     "home.hero.title": "ИИ, который трансформирует",
     "home.hero.titleAccent": "опыт гостей",
-    "home.hero.subtitle": "Люди для людей, для остального есть Roomie AI",
+    "home.hero.subtitle": "hotelmol, чтобы гости возвращались",
     "home.hero.watchDemo": "Смотреть демо",
 
     // AI Dashboard Section
@@ -1550,7 +1550,7 @@ export const translations = {
     "home.hero.badge": "Нам довіряють понад 500 готелів по всьому світу",
     "home.hero.title": "ШІ, який трансформує",
     "home.hero.titleAccent": "досвід гостей",
-    "home.hero.subtitle": "Люди для людей, для всього іншого є Roomie AI",
+    "home.hero.subtitle": "hotelmol, щоб гості поверталися",
     "home.hero.watchDemo": "Дивитися демо",
 
     // AI Dashboard Section
