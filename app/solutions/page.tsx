@@ -46,25 +46,7 @@ export default function Solutions() {
                 structuredData={organizationSchema}
             />
 
-            {/* Top Right Menu */}
-            <div className="fixed top-24 right-4 md:right-8 z-40">
-                <div className="flex flex-col items-end">
-                    <div className="text-sm font-medium text-slate-600 mb-2 px-2">
-                        Solutions toggle list
-                    </div>
-                    <div className="bg-white rounded-2xl shadow-xl border border-slate-100 p-2 min-w-[200px]">
-                        <Link href="#" className="flex items-center px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-50 hover:text-[#0752A0] transition-colors font-medium">
-                            Ai CRM
-                        </Link>
-                        <Link href="#" className="flex items-center px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-50 hover:text-[#0752A0] transition-colors font-medium">
-                            mobile app
-                        </Link>
-                        <Link href="#" className="flex items-center px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-50 hover:text-[#0752A0] transition-colors font-medium">
-                            Task Management
-                        </Link>
-                    </div>
-                </div>
-            </div>
+
 
             <RoomieArchitecture />
 
