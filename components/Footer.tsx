@@ -93,14 +93,12 @@ export default function Footer() {
               ))}
             </ul>
 
-            <div className="mt-[15px] flex flex-wrap items-center gap-4">
-              <span className="text-xl font-bold" style={{ color: "#044B93" }}>
+            <div className="mt-[15px] flex items-center gap-3 flex-nowrap whitespace-nowrap">
+              <span className="text-lg font-bold" style={{ color: "#044B93" }}>
                 Coming Soon!
               </span>
-              <div className="flex flex-wrap items-center gap-3">
-                <img src="/assets/app-store.svg" alt="Download on the App Store" className="h-[42px] hover:opacity-80 transition-opacity cursor-pointer" />
-                <img src="/assets/google-play.svg" alt="Get it on Google Play" className="h-[42px] hover:opacity-80 transition-opacity cursor-pointer" />
-              </div>
+              <img src="/assets/app-store.svg" alt="Download on the App Store" className="h-[40px] hover:opacity-80 transition-opacity cursor-pointer shrink-0" />
+              <img src="/assets/google-play.svg" alt="Get it on Google Play" className="h-[40px] hover:opacity-80 transition-opacity cursor-pointer shrink-0" />
             </div>
           </div>
         </div>
