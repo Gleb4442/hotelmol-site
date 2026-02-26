@@ -15,6 +15,7 @@ import ChatFAQSection from "@/components/ChatFAQSection";
 import LLMSummary from "@/components/LLMSummary";
 import SEO, { organizationSchema } from "@/components/SEO";
 import Onboarding from "@/components/Onboarding";
+import PropertySolutionsSection from "@/components/PropertySolutionsSection";
 
 export default function Home() {
     return (
@@ -32,6 +33,7 @@ export default function Home() {
             <ValueProposition />
             <BenefitsSection />
             <AIDashboardSection />
+            <PropertySolutionsSection />
             <ChatFAQSection />
             <ROIEstimate />
             <PresentationSection />
