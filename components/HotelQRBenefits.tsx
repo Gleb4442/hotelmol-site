@@ -86,8 +86,7 @@ const HotelQRBenefits = () => {
                         <div key={row.id}
                             className={`group relative rounded-3xl p-6 md:p-8 backdrop-blur-xl bg-white/70 border border-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] opacity-100`}
                         >
-                            {/* Эффект общего свечения карточки при наведении */}
-                            <div className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${row.glowColor} opacity-0 pointer-events-none transition-opacity duration-300 group-hover:opacity-100`}></div>
+                            {/* Эффект общего свечения карточки при наведении удален по запросу */}
 
                             <div className="relative z-10 flex flex-col h-full">
 
@@ -107,10 +106,8 @@ const HotelQRBenefits = () => {
                                 {/* Метрики (Заказы и Выручка) */}
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6 flex-grow">
 
-                                    {/* Эффект 1: ЗАКАЗЫ (вспыхивает первым) */}
-                                    <div className={`relative overflow-hidden rounded-2xl p-4 ease-out border backdrop-blur-sm bg-white/80 border-slate-100 translate-y-0 shadow-sm transition-all duration-300 group-hover:border-blue-100 group-hover:bg-white`}>
-                                        {/* Световой блик */}
-                                        <div className={`absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-blue-50/50 to-transparent skew-x-[-25deg] pointer-events-none -translate-x-[150%] transition-transform duration-700 ease-out group-hover:translate-x-[150%]`}></div>
+                                    {/* Эффект 1: ЗАКАЗЫ (стационарный) */}
+                                    <div className={`relative overflow-hidden rounded-2xl p-4 ease-out border backdrop-blur-sm bg-white/80 border-slate-100 translate-y-0 shadow-sm transition-all duration-300`}>
                                         <div className="relative z-10">
                                             <div className={`flex items-center gap-2 mb-2 text-slate-400`}>
                                                 <MousePointerClick className="w-4 h-4" />
@@ -123,10 +120,8 @@ const HotelQRBenefits = () => {
                                         </div>
                                     </div>
 
-                                    {/* Эффект 2: ВЫРУЧКА (вспыхивает вторым) */}
-                                    <div className={`relative overflow-hidden rounded-2xl p-4 ease-out border backdrop-blur-sm bg-white/80 border-slate-100 translate-y-0 shadow-sm transition-all duration-300 group-hover:border-blue-100 group-hover:bg-white delay-75`}>
-                                        {/* Световой блик */}
-                                        <div className={`absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-blue-50/50 to-transparent skew-x-[-25deg] pointer-events-none -translate-x-[150%] transition-transform duration-700 ease-out group-hover:translate-x-[150%]`}></div>
+                                    {/* Эффект 2: ВЫРУЧКА (стационарный) */}
+                                    <div className={`relative overflow-hidden rounded-2xl p-4 ease-out border backdrop-blur-sm bg-white/80 border-slate-100 translate-y-0 shadow-sm transition-all duration-300`}>
                                         <div className="relative z-10">
                                             <div className={`flex items-center gap-2 mb-2 text-slate-400`}>
                                                 {row.revenueIcon}
@@ -141,10 +136,8 @@ const HotelQRBenefits = () => {
 
                                 </div>
 
-                                {/* Эффект 3: ДОП. ЭФФЕКТ (вспыхивает третьим) */}
-                                <div className={`relative overflow-hidden rounded-2xl p-4 mt-auto ease-out border backdrop-blur-sm bg-white/80 border-slate-100 translate-y-0 shadow-sm transition-all duration-300 group-hover:border-blue-100 group-hover:bg-white delay-150`}>
-                                    {/* Световой блик */}
-                                    <div className={`absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-blue-50/50 to-transparent skew-x-[-25deg] pointer-events-none -translate-x-[150%] transition-transform duration-700 ease-out group-hover:translate-x-[150%]`}></div>
+                                {/* Эффект 3: ДОП. ЭФФЕКТ (стационарный) */}
+                                <div className={`relative overflow-hidden rounded-2xl p-4 mt-auto ease-out border backdrop-blur-sm bg-white/80 border-slate-100 translate-y-0 shadow-sm transition-all duration-300`}>
                                     <div className="relative z-10">
                                         <div className={`flex items-center gap-2 mb-2 text-slate-400`}>
                                             <Zap className="w-4 h-4" />
