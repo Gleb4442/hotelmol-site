@@ -57,7 +57,7 @@ const HotelQRBenefits = () => {
             revenue: "Upsell",
             revenueDesc: "рост среднего чека",
             effect: "Повышение оборачиваемости, нет очередей",
-            icon: <UtensilsCrossed className="w-6 h-6 text-indigo-600 transition-colors duration-300 group-hover:text-indigo-800" />,
+            icon: <UtensilsCrossed className="w-6 h-6 text-slate-400 transition-colors duration-300 group-hover:text-indigo-600" />,
             glowColor: "from-indigo-200/60 to-purple-100/60"
         }
     ];
