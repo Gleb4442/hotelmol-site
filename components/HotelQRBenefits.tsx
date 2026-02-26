@@ -15,7 +15,7 @@ const HotelQRBenefits = () => {
             revenue: "+30%",
             revenueDesc: "y/o/y рост выручки In-Room",
             effect: "Рост чека визуальным апселлом",
-            icon: <QrCode className="w-6 h-6 text-blue-600" />,
+            icon: <img src="/assets/hilton-logo.png" alt="Hilton logo" className="w-auto h-8 max-h-[32px] object-contain filter grayscale opacity-70 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100" />,
             glowColor: "from-blue-200/60 to-indigo-100/60"
         },
         {
@@ -29,7 +29,7 @@ const HotelQRBenefits = () => {
             revenue: "Снижение",
             revenueDesc: "ошибок в заказах и ускорение обработки",
             effect: "Больше времени на персонализированный сервис",
-            icon: <Smartphone className="w-6 h-6 text-cyan-600" />,
+            icon: <img src="/assets/radisson-logo.png" alt="Radisson logo" className="w-auto h-8 max-h-[32px] object-contain filter grayscale opacity-70 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100" />,
             glowColor: "from-cyan-200/60 to-blue-100/60"
         },
         {
@@ -43,7 +43,7 @@ const HotelQRBenefits = () => {
             revenue: "+72.5%",
             revenueDesc: "к выручке in-room",
             effect: "23–32% заказов через цифру",
-            icon: <Award className="w-6 h-6 text-sky-500" />,
+            icon: <img src="/assets/fairmont-logo.png" alt="Fairmont logo" className="w-auto h-8 max-h-[32px] object-contain filter grayscale opacity-70 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100" />,
             glowColor: "from-sky-200/60 to-blue-100/60"
         },
         {
@@ -57,7 +57,7 @@ const HotelQRBenefits = () => {
             revenue: "Upsell",
             revenueDesc: "рост среднего чека",
             effect: "Повышение оборачиваемости, нет очередей",
-            icon: <UtensilsCrossed className="w-6 h-6 text-indigo-600" />,
+            icon: <UtensilsCrossed className="w-6 h-6 text-indigo-600 transition-colors duration-300 group-hover:text-indigo-800" />,
             glowColor: "from-indigo-200/60 to-purple-100/60"
         }
     ];
@@ -84,20 +84,20 @@ const HotelQRBenefits = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {tableData.map((row) => (
                         <div key={row.id}
-                            className={`relative rounded-3xl p-6 md:p-8 backdrop-blur-xl bg-white/70 border border-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] opacity-100`}
+                            className={`group relative rounded-3xl p-6 md:p-8 backdrop-blur-xl bg-white/70 border border-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] opacity-100`}
                         >
                             {/* Эффект общего свечения карточки при наведении */}
-                            <div className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${row.glowColor} opacity-0 pointer-events-none`}></div>
+                            <div className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${row.glowColor} opacity-0 pointer-events-none transition-opacity duration-300 group-hover:opacity-100`}></div>
 
                             <div className="relative z-10 flex flex-col h-full">
 
                                 {/* Шапка карточки */}
                                 <div className="flex items-center gap-4 mb-6">
-                                    <div className="p-4 bg-white rounded-2xl shadow-sm border border-slate-100">
+                                    <div className="p-4 bg-white rounded-2xl shadow-sm border border-slate-100 flex items-center justify-center min-w-[64px] min-h-[64px]">
                                         {row.icon}
                                     </div>
                                     <div>
-                                        <h3 className="text-2xl font-bold text-slate-800 tracking-wide">
+                                        <h3 className="text-2xl font-bold text-slate-800 tracking-wide transition-colors duration-300 group-hover:text-blue-900">
                                             {row.caseName}
                                         </h3>
                                         <p className="text-slate-500 text-sm font-medium mt-1">{row.usage}</p>
@@ -108,15 +108,15 @@ const HotelQRBenefits = () => {
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6 flex-grow">
 
                                     {/* Эффект 1: ЗАКАЗЫ (вспыхивает первым) */}
-                                    <div className={`relative overflow-hidden rounded-2xl p-4 ease-out border backdrop-blur-sm bg-white/80 border-slate-100 translate-y-0 shadow-sm`}>
+                                    <div className={`relative overflow-hidden rounded-2xl p-4 ease-out border backdrop-blur-sm bg-white/80 border-slate-100 translate-y-0 shadow-sm transition-all duration-300 group-hover:border-blue-100 group-hover:bg-white`}>
                                         {/* Световой блик */}
-                                        <div className={`absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/80 to-transparent skew-x-[-25deg] pointer-events-none -translate-x-[150%]`}></div>
+                                        <div className={`absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-blue-50/50 to-transparent skew-x-[-25deg] pointer-events-none -translate-x-[150%] transition-transform duration-700 ease-out group-hover:translate-x-[150%]`}></div>
                                         <div className="relative z-10">
                                             <div className={`flex items-center gap-2 mb-2 text-slate-400`}>
                                                 <MousePointerClick className="w-4 h-4" />
                                                 <span className="text-xs uppercase tracking-widest font-bold">Заказы</span>
                                             </div>
-                                            <div className={`text-2xl font-black mb-1 text-slate-800`}>
+                                            <div className={`text-2xl font-black mb-1 text-slate-800 transition-colors duration-300 group-hover:text-blue-600`}>
                                                 {row.orders}
                                             </div>
                                             <div className={`text-xs leading-snug text-slate-500`}>{row.ordersDesc}</div>
@@ -124,15 +124,15 @@ const HotelQRBenefits = () => {
                                     </div>
 
                                     {/* Эффект 2: ВЫРУЧКА (вспыхивает вторым) */}
-                                    <div className={`relative overflow-hidden rounded-2xl p-4 ease-out border backdrop-blur-sm bg-white/80 border-slate-100 translate-y-0 shadow-sm`}>
+                                    <div className={`relative overflow-hidden rounded-2xl p-4 ease-out border backdrop-blur-sm bg-white/80 border-slate-100 translate-y-0 shadow-sm transition-all duration-300 group-hover:border-blue-100 group-hover:bg-white delay-75`}>
                                         {/* Световой блик */}
-                                        <div className={`absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/80 to-transparent skew-x-[-25deg] pointer-events-none -translate-x-[150%]`}></div>
+                                        <div className={`absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-blue-50/50 to-transparent skew-x-[-25deg] pointer-events-none -translate-x-[150%] transition-transform duration-700 ease-out group-hover:translate-x-[150%]`}></div>
                                         <div className="relative z-10">
                                             <div className={`flex items-center gap-2 mb-2 text-slate-400`}>
                                                 {row.revenueIcon}
                                                 <span className="text-xs uppercase tracking-widest font-bold">{row.revenueLabel}</span>
                                             </div>
-                                            <div className={`text-2xl font-black mb-1 text-slate-800`}>
+                                            <div className={`text-2xl font-black mb-1 text-slate-800 transition-colors duration-300 group-hover:text-blue-600`}>
                                                 {row.revenue}
                                             </div>
                                             <div className={`text-xs leading-snug text-slate-500`}>{row.revenueDesc}</div>
@@ -142,15 +142,15 @@ const HotelQRBenefits = () => {
                                 </div>
 
                                 {/* Эффект 3: ДОП. ЭФФЕКТ (вспыхивает третьим) */}
-                                <div className={`relative overflow-hidden rounded-2xl p-4 mt-auto ease-out border backdrop-blur-sm bg-white/80 border-slate-100 translate-y-0 shadow-sm`}>
+                                <div className={`relative overflow-hidden rounded-2xl p-4 mt-auto ease-out border backdrop-blur-sm bg-white/80 border-slate-100 translate-y-0 shadow-sm transition-all duration-300 group-hover:border-blue-100 group-hover:bg-white delay-150`}>
                                     {/* Световой блик */}
-                                    <div className={`absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/80 to-transparent skew-x-[-25deg] pointer-events-none -translate-x-[150%]`}></div>
+                                    <div className={`absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-blue-50/50 to-transparent skew-x-[-25deg] pointer-events-none -translate-x-[150%] transition-transform duration-700 ease-out group-hover:translate-x-[150%]`}></div>
                                     <div className="relative z-10">
                                         <div className={`flex items-center gap-2 mb-2 text-slate-400`}>
                                             <Zap className="w-4 h-4" />
                                             <span className="text-xs uppercase tracking-widest font-bold">Эффект</span>
                                         </div>
-                                        <div className={`text-sm font-medium text-slate-600`}>
+                                        <div className={`text-sm font-medium text-slate-600 transition-colors duration-300 group-hover:text-blue-800`}>
                                             {row.effect}
                                         </div>
                                     </div>
