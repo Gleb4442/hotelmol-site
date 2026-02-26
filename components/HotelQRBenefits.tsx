@@ -29,7 +29,7 @@ const HotelQRBenefits = () => {
             revenue: "Снижение",
             revenueDesc: "ошибок в заказах и ускорение обработки",
             effect: "Больше времени на персонализированный сервис",
-            icon: <img src="/assets/radisson-logo.png" alt="Radisson logo" className="w-auto h-8 max-h-[32px] object-contain filter grayscale opacity-70 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100" />,
+            icon: <img src="/assets/radisson-blu-logo.svg" alt="Radisson Blu logo" className="w-auto h-8 max-h-[32px] object-contain filter grayscale opacity-70 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100" />,
             glowColor: "from-cyan-200/60 to-blue-100/60"
         },
         {
