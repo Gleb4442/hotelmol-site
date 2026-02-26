@@ -8,7 +8,10 @@ import {
   QrCode,
   MessageSquare,
   Clock,
-  Sparkles
+  Sparkles,
+  Globe,
+  Instagram,
+  MessageCircle
 } from 'lucide-react';
 
 const features = [
@@ -16,10 +19,10 @@ const features = [
     id: 'entry',
     title: 'Точка входа',
     description: 'Максимально простая (SMS, QR в номере, Чат на сайте отеля, Instagram).',
-    icon: Smartphone,
+    icon: Globe,
     gradient: 'from-blue-500 to-cyan-400',
     glowColor: 'rgba(59, 130, 246, 0.15)',
-    details: [QrCode, Smartphone]
+    details: [Globe, Instagram, MessageCircle, QrCode]
   },
   {
     id: 'ai',
