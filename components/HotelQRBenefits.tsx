@@ -43,7 +43,7 @@ const HotelQRBenefits = () => {
             revenue: "+72.5%",
             revenueDesc: "к выручке in-room",
             effect: "23–32% заказов через цифру",
-            icon: <img src="/assets/fairmont-logo.png" alt="Fairmont logo" className="w-auto h-8 max-h-[32px] object-contain filter grayscale opacity-70 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100" />,
+            icon: <img src="/assets/fairmont-logo.svg" alt="Fairmont logo" className="w-auto h-8 max-h-[32px] object-contain filter grayscale opacity-70 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100" />,
             glowColor: "from-sky-200/60 to-blue-100/60"
         },
         {
