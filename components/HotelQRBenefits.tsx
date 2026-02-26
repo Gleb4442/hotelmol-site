@@ -15,7 +15,7 @@ const HotelQRBenefits = () => {
             revenue: "+30%",
             revenueDesc: "y/o/y рост выручки In-Room",
             effect: "Рост чека визуальным апселлом",
-            icon: <img src="/assets/hilton-logo.png" alt="Hilton logo" className="w-auto h-8 max-h-[32px] object-contain filter grayscale opacity-70 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100" />,
+            icon: <img src="/assets/hilton-logo.svg" alt="Hilton logo" className="w-auto h-8 max-h-[32px] object-contain filter grayscale opacity-70 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100" />,
             glowColor: "from-blue-200/60 to-indigo-100/60"
         },
         {
