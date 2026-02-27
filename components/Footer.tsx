@@ -75,37 +75,40 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div>
-            <h3 className="font-semibold mb-4">{t("footer.legal")}</h3>
-            <ul className="space-y-2">
-              {legal.map((item) => (
-                <li key={item.nameKey}>
-                  {item.external ? (
-                    <a href={item.href} target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground">
-                      {t(item.nameKey)}
-                    </a>
-                  ) : (
-                    <Link href={item.href} className="text-sm text-muted-foreground hover:text-foreground">
-                      {t(item.nameKey)}
-                    </Link>
-                  )}
-                </li>
-              ))}
-            </ul>
+          <div className="flex flex-col h-full">
+            <div>
+              <h3 className="font-semibold mb-4">{t("footer.legal")}</h3>
+              <ul className="space-y-2">
+                {legal.map((item) => (
+                  <li key={item.nameKey}>
+                    {item.external ? (
+                      <a href={item.href} target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground">
+                        {t(item.nameKey)}
+                      </a>
+                    ) : (
+                      <Link href={item.href} className="text-sm text-muted-foreground hover:text-foreground">
+                        {t(item.nameKey)}
+                      </Link>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="mt-12 lg:mt-auto pt-4">
+              <span className="block text-xl font-bold tracking-tight mb-4" style={{ color: '#044B93' }}>Coming Soon!</span>
+              <div className="flex flex-wrap gap-3">
+                <img src="/assets/app-store.svg" alt="Download on the App Store" className="h-10 w-auto" />
+                <img src="/assets/google-play.svg" alt="Get it on Google Play" className="h-10 w-auto" />
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="border-t pt-8 flex flex-col md:flex-row items-center justify-between gap-6">
-          <p className="text-center md:text-left text-sm text-muted-foreground">
+        <div className="border-t pt-8">
+          <p className="text-center text-sm text-muted-foreground">
             {t("footer.rights")}
           </p>
-          <div className="flex items-center gap-4">
-            <span className="text-xl font-bold tracking-tight" style={{ color: '#044B93' }}>Coming Soon!</span>
-            <div className="flex gap-3">
-              <img src="/assets/app-store.svg" alt="Download on the App Store" className="h-10 w-auto" />
-              <img src="/assets/google-play.svg" alt="Get it on Google Play" className="h-10 w-auto" />
-            </div>
-          </div>
         </div>
       </div>
     </footer>
