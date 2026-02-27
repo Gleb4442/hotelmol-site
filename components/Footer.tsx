@@ -95,10 +95,17 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t pt-8">
-          <p className="text-center text-sm text-muted-foreground">
+        <div className="border-t pt-8 flex flex-col md:flex-row items-center justify-between gap-6">
+          <p className="text-center md:text-left text-sm text-muted-foreground">
             {t("footer.rights")}
           </p>
+          <div className="flex items-center gap-4">
+            <span className="text-xl font-bold tracking-tight" style={{ color: '#044B93' }}>Coming Soon!</span>
+            <div className="flex gap-3">
+              <img src="/assets/app-store.svg" alt="Download on the App Store" className="h-10 w-auto" />
+              <img src="/assets/google-play.svg" alt="Get it on Google Play" className="h-10 w-auto" />
+            </div>
+          </div>
         </div>
       </div>
     </footer>
