@@ -74,8 +74,11 @@ export default function About() {
                         <p className="text-lg text-slate-600 leading-relaxed mb-6">
                             {t("about.dna.description2")}
                         </p>
-                        <p className="text-lg text-slate-600 leading-relaxed md:mb-[15px]">
+                        <p className="text-lg text-slate-600 leading-relaxed mb-6">
                             {t("about.dna.description3")}
+                        </p>
+                        <p className="text-lg text-slate-600 leading-relaxed md:mb-[15px]">
+                            {t("about.dna.description4")}
                         </p>
                     </div>
                 </div>
@@ -103,8 +106,8 @@ export default function About() {
                                 <h3 className="text-3xl font-bold text-white">Roomie</h3>
                             </div>
                             <p className="text-base md:text-lg mb-6" style={{ color: "rgba(255, 255, 255, 0.8)" }}>{t("about.mascot.subtitle")}</p>
-                            <blockquote className="text-base md:text-lg lg:text-[21.6px] text-slate-300 leading-relaxed italic border-l-4 border-white pl-4 md:pl-6 break-words">
-                                "{t("about.mascot.quote")}"
+                            <blockquote className="text-base md:text-lg lg:text-[21.6px] text-slate-300 leading-relaxed border-l-4 border-white pl-4 md:pl-6 break-words whitespace-pre-wrap">
+                                {t("about.mascot.quote")}
                             </blockquote>
                         </div>
                     </div>

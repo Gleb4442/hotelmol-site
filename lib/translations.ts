@@ -517,7 +517,8 @@ const translationsBase = {
     "about.dna.description2": "Our agents fully accompany the guest both before check-in and during their stay, and even tell them about new features in the hotel and offer good discounts to regular guests after check-out so they return to you again.",
     "about.dna.description3": "Our list of agents also includes voice assistants who solve quick questions over the phone or can make a booking.",
     "about.mascot.subtitle": "The AI Face of hotelmol",
-    "about.mascot.quote": "Additional services bring hotels 50% of revenue, But in no hotel we worked with did we find an established system for selling these extra services. We analyzed the entire guest journey from booking to checkout and created a stable system for increasing sales conversion and average check.",
+    "about.dna.description4": "Additional services bring hotels 50% of revenue, But in no hotel we worked with did we find an established system for selling these extra services. We analyzed the entire guest journey from booking to checkout and created a stable system for increasing sales conversion and average check.",
+    "about.mascot.quote": "Mission\nMake every casual guest in the hotel a regular — to their benefit — without discounts or lowering the price. Any fool can give a discount.\n\nRooomie - an AI-remote for guests to order services in the hotel, making the stay so personalized and seamless that the guest returns on their own — without OTA, without advertising, without commissions.",
 
 
 
@@ -1333,7 +1334,8 @@ const translationsBase = {
     "about.dna.description2": "Наши агенты полностью сопровождают гостя как до заселения так и во время и даже рассказывают о нововвдениях в отеле и предлагают хорошие скидки постоянным гостям после выселения чтобы они возвращались к вам снова.",
     "about.dna.description3": "Наш список агентов также включает в себя также голосовых ассистентов которые решают быстрые вопросы по телефону или могут внести бронирование.",
     "about.mascot.subtitle": "Цифровое Лицо hotelmol",
-    "about.mascot.quote": "Доп. услуги приносят отелям 50% выручки, Но ни в одном отеле с которым мы работали мы не обнаружили налаженной системы продаж этих самых доп услуг. Мы проанализировали весь путь гостя от бронирования до выезда и создали стабильную систему повышения конверсии продаж и среднего чека",
+    "about.dna.description4": "Доп. услуги приносят отелям 50% выручки, Но ни в одном отеле с которым мы работали мы не обнаружили налаженной системы продаж этих самых доп услуг. Мы проанализировали весь путь гостя от бронирования до выезда и создали стабильную систему повышения конверсии продаж и среднего чека",
+    "about.mascot.quote": "Миссия\nСделать каждого случайного гостя в отеле постоянным — в плюс ему — без скидок и снижения стоимости. Дать скидку каждый дурак может.\n\nRooomie- Ai-пульт гостя для заказа услуг в отеле, который делает пребывание в отеле настолько персонализированным и бесшовным, что гость возвращается сам — без OTA, без рекламы, без комиссий",
 
     "about.leadership.ceo.description": "15+ лет в отельных операциях",
     "about.leadership.cto.name": "Маркус Чен",
@@ -2085,7 +2087,8 @@ const translationsBase = {
     "about.dna.description2": "Наші агенти повністю супроводжують гостя як до заселення так і під час, і навіть розповідають про нововведення в готелі та пропонують хороші знижки постійним гостям після виселення, щоб вони поверталися до вас знову.",
     "about.dna.description3": "Наш список агентів також включає в себе голосових асистентів, які вирішують швидкі питання по телефону або можуть внести бронювання.",
     "about.mascot.subtitle": "Цифрове Обличчя hotelmol",
-    "about.mascot.quote": "Дод. послуги приносять готелям 50% виручки, Але ні в одному готелі з яким ми працювали ми не виявили налагодженої системи продажів цих самих дод послуг. Ми проаналізували весь шлях гостя від бронювання до виїзду і створили стабільну систему підвищення конверсії продажів і середнього чека",
+    "about.dna.description4": "Дод. послуги приносять готелям 50% виручки, Але ні в одному готелі з яким ми працювали ми не виявили налагодженої системи продажів цих самих дод послуг. Ми проаналізували весь шлях гостя від бронювання до виїзду і створили стабільну систему підвищення конверсії продажів і середнього чека",
+    "about.mascot.quote": "Місія\nЗробити кожного випадкового гостя в готелі постійним — у плюс йому — без знижок і зниження вартості. Дати знижку кожен дурень може.\n\nRooomie- Ai-пульт гостя для замовлення послуг в готелі, який робить перебування в готелі настільки персоналізованим і безшовним, що гість повертається сам — без OTA, без реклами, без комісій",
 
     "about.leadership.ceo.description": "15+ років в готельних операціях",
     "about.leadership.cto.name": "Маркус Чен",
@@ -2837,7 +2840,8 @@ const translationsBase = {
     "about.dna.description2": "Nasi agenci w pełni towarzyszą gościowi zarówno przed zameldowaniem, jak i podczas pobytu, a nawet informują o nowych funkcjach w hotelu i oferują dobre zniżki stałym gościom po wymeldowaniu, aby do Ciebie wrócili.",
     "about.dna.description3": "Nasza lista agentów obejmuje również asystentów głosowych, którzy rozwiązują szybkie pytania przez telefon lub mogą dokonać rezerwacji.",
     "about.mascot.subtitle": "Twarz AI hotelmol",
-    "about.mascot.quote": "Usługi dodatkowe przynoszą hotelom 50% przychodów, Ale w żadnym hotelu, z którym współpracowaliśmy, nie znaleźliśmy ustalonego systemu sprzedaży tych dodatkowych usług. Przeanalizowaliśmy całą podróż gościa od rezerwacji do wymeldowania i stworzyliśmy stabilny system zwiększania konwersji sprzedaży i średniego czeku.",
+    "about.dna.description4": "Usługi dodatkowe przynoszą hotelom 50% przychodów, Ale w żadnym hotelu, z którym współpracowaliśmy, nie znaleźliśmy ustalonego systemu sprzedaży tych dodatkowych usług. Przeanalizowaliśmy całą podróż gościa od rezerwacji do wymeldowania i stworzyliśmy stabilny system zwiększania konwersji sprzedaży i średniego czeku.",
+    "about.mascot.quote": "Misja\nUczyń każdego przypadkowego gościa w hotelu stałym bywalcem — na jego korzyść — bez zniżek i obniżania ceny. Zniżkę może dać każdy głupiec.\n\nRooomie - pilot AI dla gości do zamawiania usług w hotelu, sprawiający, że pobyt jest tak spersonalizowany i bezproblemowy, że gość wraca sam — bez OTA, bez reklam, bez prowizji.",
 
     // Blog Page
     "blog.title": "Blog hotelmol",
