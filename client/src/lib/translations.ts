@@ -871,7 +871,7 @@ export const translations = {
     "home.hero.title": "ИИ, который трансформирует",
     "home.hero.titleAccent": "опыт гостей",
     "home.hero.subtitle": "hotelmol, чтобы гости возвращались",
-    "home.hero.watchDemo": "Смотреть демо",
+    "home.hero.watchDemo": "Смотреть обзор",
 
     // AI Dashboard Section
     "home.aiDashboard.title": "Централизованный AI-дашборд по всей сети",

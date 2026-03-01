@@ -854,7 +854,7 @@ const translationsBase = {
       "берет рутину на себя"
     ],
     "home.hero.subtitle": "hotelmol, чтобы гости возвращались",
-    "home.hero.watchDemo": "Смотреть демо",
+    "home.hero.watchDemo": "Смотреть обзор",
 
     // AI Dashboard Section
     "home.aiDashboard.title": "Централизованный AI-дашборд по всей сети",
