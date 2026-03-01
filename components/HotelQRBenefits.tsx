@@ -15,7 +15,7 @@ const HotelQRBenefits = () => {
             revenue: "+30%",
             revenueDesc: "y/o/y рост выручки In-Room",
             effect: "Рост чека визуальным апселлом",
-            icon: <img src="/assets/hilton-logo.svg" alt="Hilton logo" className="w-auto h-8 max-h-[32px] object-contain filter grayscale opacity-70 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100" />,
+            icon: <img src="/assets/hilton-logo.svg" alt="Hilton logo" className="w-auto h-8 max-h-[32px] object-contain filter grayscale opacity-70" />,
             glowColor: "from-blue-200/60 to-indigo-100/60"
         },
         {
@@ -29,7 +29,7 @@ const HotelQRBenefits = () => {
             revenue: "Снижение",
             revenueDesc: "ошибок в заказах и ускорение обработки",
             effect: "Больше времени на персонализированный сервис",
-            icon: <img src="/assets/radisson-blu-logo.svg" alt="Radisson Blu logo" className="w-auto h-8 max-h-[32px] object-contain filter grayscale opacity-70 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100" />,
+            icon: <img src="/assets/radisson-blu-logo.svg" alt="Radisson Blu logo" className="w-auto h-8 max-h-[32px] object-contain filter grayscale opacity-70" />,
             glowColor: "from-cyan-200/60 to-blue-100/60"
         },
         {
@@ -43,7 +43,7 @@ const HotelQRBenefits = () => {
             revenue: "+72.5%",
             revenueDesc: "к выручке in-room",
             effect: "23–32% заказов через цифру",
-            icon: <img src="/assets/fairmont-logo.svg" alt="Fairmont logo" className="w-auto h-8 max-h-[32px] object-contain filter grayscale opacity-70 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100" />,
+            icon: <img src="/assets/fairmont-logo.svg" alt="Fairmont logo" className="w-auto h-8 max-h-[32px] object-contain filter grayscale opacity-70" />,
             glowColor: "from-sky-200/60 to-blue-100/60"
         },
         {
@@ -57,7 +57,7 @@ const HotelQRBenefits = () => {
             revenue: "Upsell",
             revenueDesc: "рост среднего чека",
             effect: "Повышение оборачиваемости, нет очередей",
-            icon: <UtensilsCrossed className="w-6 h-6 text-slate-400 transition-colors duration-300 group-hover:text-indigo-600" />,
+            icon: <UtensilsCrossed className="w-6 h-6 text-slate-400" />,
             glowColor: "from-indigo-200/60 to-purple-100/60"
         }
     ];
@@ -84,7 +84,7 @@ const HotelQRBenefits = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {tableData.map((row) => (
                         <div key={row.id}
-                            className={`group relative rounded-3xl p-6 md:p-8 backdrop-blur-xl bg-white/70 border border-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] opacity-100`}
+                            className={`relative rounded-3xl p-6 md:p-8 backdrop-blur-xl bg-white/70 border border-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] opacity-100`}
                         >
                             {/* Эффект общего свечения карточки при наведении удален по запросу */}
 
@@ -96,7 +96,7 @@ const HotelQRBenefits = () => {
                                         {row.icon}
                                     </div>
                                     <div>
-                                        <h3 className="text-2xl font-bold text-slate-800 tracking-wide transition-colors duration-300 group-hover:text-blue-900">
+                                        <h3 className="text-2xl font-bold text-slate-800 tracking-wide">
                                             {row.caseName}
                                         </h3>
                                         <p className="text-slate-500 text-sm font-medium mt-1">{row.usage}</p>
@@ -107,13 +107,13 @@ const HotelQRBenefits = () => {
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6 flex-grow">
 
                                     {/* Эффект 1: ЗАКАЗЫ (стационарный) */}
-                                    <div className={`relative overflow-hidden rounded-2xl p-4 ease-out border backdrop-blur-sm bg-white/80 border-slate-100 translate-y-0 shadow-sm transition-all duration-300`}>
+                                    <div className={`relative overflow-hidden rounded-2xl p-4 ease-out border backdrop-blur-sm bg-white/80 border-slate-100 translate-y-0 shadow-sm`}>
                                         <div className="relative z-10">
                                             <div className={`flex items-center gap-2 mb-2 text-slate-400`}>
                                                 <MousePointerClick className="w-4 h-4" />
                                                 <span className="text-xs uppercase tracking-widest font-bold">Заказы</span>
                                             </div>
-                                            <div className={`text-2xl font-black mb-1 text-slate-800 transition-colors duration-300 group-hover:text-blue-600`}>
+                                            <div className={`text-2xl font-black mb-1 text-slate-800`}>
                                                 {row.orders}
                                             </div>
                                             <div className={`text-xs leading-snug text-slate-500`}>{row.ordersDesc}</div>
@@ -121,13 +121,13 @@ const HotelQRBenefits = () => {
                                     </div>
 
                                     {/* Эффект 2: ВЫРУЧКА (стационарный) */}
-                                    <div className={`relative overflow-hidden rounded-2xl p-4 ease-out border backdrop-blur-sm bg-white/80 border-slate-100 translate-y-0 shadow-sm transition-all duration-300`}>
+                                    <div className={`relative overflow-hidden rounded-2xl p-4 ease-out border backdrop-blur-sm bg-white/80 border-slate-100 translate-y-0 shadow-sm`}>
                                         <div className="relative z-10">
                                             <div className={`flex items-center gap-2 mb-2 text-slate-400`}>
                                                 {row.revenueIcon}
                                                 <span className="text-xs uppercase tracking-widest font-bold">{row.revenueLabel}</span>
                                             </div>
-                                            <div className={`text-2xl font-black mb-1 text-slate-800 transition-colors duration-300 group-hover:text-blue-600`}>
+                                            <div className={`text-2xl font-black mb-1 text-slate-800`}>
                                                 {row.revenue}
                                             </div>
                                             <div className={`text-xs leading-snug text-slate-500`}>{row.revenueDesc}</div>
@@ -137,13 +137,13 @@ const HotelQRBenefits = () => {
                                 </div>
 
                                 {/* Эффект 3: ДОП. ЭФФЕКТ (стационарный) */}
-                                <div className={`relative overflow-hidden rounded-2xl p-4 mt-auto ease-out border backdrop-blur-sm bg-white/80 border-slate-100 translate-y-0 shadow-sm transition-all duration-300`}>
+                                <div className={`relative overflow-hidden rounded-2xl p-4 mt-auto ease-out border backdrop-blur-sm bg-white/80 border-slate-100 translate-y-0 shadow-sm`}>
                                     <div className="relative z-10">
                                         <div className={`flex items-center gap-2 mb-2 text-slate-400`}>
                                             <Zap className="w-4 h-4" />
                                             <span className="text-xs uppercase tracking-widest font-bold">Эффект</span>
                                         </div>
-                                        <div className={`text-sm font-medium text-slate-600 transition-colors duration-300 group-hover:text-blue-800`}>
+                                        <div className={`text-sm font-medium text-slate-600`}>
                                             {row.effect}
                                         </div>
                                     </div>
