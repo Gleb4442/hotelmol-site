@@ -15,7 +15,6 @@ import RoomieArchitecture from "@/components/RoomieArchitecture";
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
-import HotelQRBenefits from "@/components/HotelQRBenefits";
 
 export default function Solutions() {
     const { t } = useTranslation();
@@ -35,7 +34,6 @@ export default function Solutions() {
 
 
             {/* Online Menu Stats Section */}
-            <HotelQRBenefits />
 
             <section className="py-20 bg-muted/30">
                 <div className="container mx-auto px-4">

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Breakdown - Soft &amp; Human Blue</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1f80db",
+                        "primary-light": "#E1F0FF",
+                        "primary-text": "#0e151b",
+                        "secondary-text": "#507495",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111921",
+                        "surface": "#FFFFFF",
+                        "soft-red": "#FF8F8F",
+                        "accent": "#88C0D0",
+                    },
+                    fontFamily: {
+                        "display": ["Spline Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem", 
+                        "lg": "1.5rem", 
+                        "xl": "2rem", 
+                        "2xl": "3rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        "soft": "0 20px 40px -12px rgba(31, 128, 219, 0.12)",
+                        "inner-light": "inset 0 2px 4px 0 rgba(0, 0, 0, 0.02)",
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        /* Zig-zag bottom edge for the receipt */
+        .receipt-edge {
+            background: 
+                linear-gradient(-45deg, transparent 16px, #ffffff 16px), 
+                linear-gradient(45deg, transparent 16px, #ffffff 16px);
+            background-repeat: repeat-x;
+            background-size: 32px 32px;
+            height: 32px;
+            width: 100%;
+            position: absolute;
+            bottom: -32px;
+            left: 0;
+            filter: drop-shadow(0px 20px 20px rgba(31, 128, 219, 0.05));
+        }
+
+        /* Custom range slider styling */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 24px;
+            width: 24px;
+            border-radius: 50%;
+            background: #ffffff;
+            cursor: pointer;
+            margin-top: -8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            border: 2px solid #1f80db;
+        }
+
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 8px;
+            cursor: pointer;
+            background: #E1F0FF;
+            border-radius: 999px;
+        }
+        
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display min-h-screen flex flex-col overflow-x-hidden selection:bg-primary/20 selection:text-primary">
+<main class="flex-grow flex flex-col lg:flex-row w-full max-w-[1440px] mx-auto p-6 lg:p-12 gap-8 lg:gap-16 items-start relative">
+<!-- Background Decorations -->
+<div class="absolute top-20 left-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+<div class="absolute bottom-20 right-10 w-[500px] h-[500px] bg-accent/10 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+<!-- Left Panel: Controls -->
+<div class="flex flex-col flex-1 w-full gap-8 animate-fade-in-up">
+<div class="flex flex-col gap-2">
+<h1 class="text-primary-text text-4xl font-bold tracking-tight">Точки роста</h1>
+<p class="text-secondary-text text-lg font-normal leading-relaxed max-w-lg">
+                    Настройте показатели дополнительных продаж и сэкономленных комиссий, чтобы увидеть ваш потенциал увеличения выручки.
+                </p>
+</div>
+<!-- Expense Inputs Group -->
+<div class="flex flex-col gap-6 mt-4">
+<!-- Input Item: OTA Savings -->
+<div class="group bg-white rounded-[2rem] p-6 shadow-sm hover:shadow-md transition-all duration-300 border border-slate-100">
+<div class="flex items-start justify-between">
+<div class="flex items-start gap-3">
+<div class="bg-primary-light w-10 h-10 flex items-center justify-center rounded-full text-primary shrink-0 mt-0.5">
+<span class="material-symbols-outlined leading-none">savings</span>
+</div>
+<div>
+<label class="text-primary-text font-bold text-lg cursor-pointer" for="ota-savings">Экономия OTA-комиссий</label>
+<p class="text-secondary-text text-xs mt-1 max-w-[220px] leading-tight">Сумма, сэкономленная за счет прямых бронирований (минуя Booking.com и др.)</p>
+</div>
+</div>
+<div class="flex items-center bg-background-light rounded-full px-4 py-2 border border-transparent focus-within:border-primary/30 focus-within:bg-white transition-colors">
+<span class="text-secondary-text font-medium mr-1">$</span>
+<input class="bg-transparent border-none p-0 w-16 text-right font-bold text-primary-text focus:ring-0 text-lg placeholder:text-gray-300" id="ota-savings" placeholder="0" type="number" value="140"/>
+<span class="text-secondary-text text-xs ml-2 font-medium whitespace-nowrap">/ номер</span>
+</div>
+</div>
+</div>
+<!-- Input Item: F&B Revenue -->
+<div class="group bg-white rounded-[2rem] p-6 shadow-sm hover:shadow-md transition-all duration-300 border border-slate-100">
+<div class="flex items-start justify-between">
+<div class="flex items-start gap-3">
+<div class="bg-primary-light w-10 h-10 flex items-center justify-center rounded-full text-primary shrink-0 mt-0.5">
+<span class="material-symbols-outlined leading-none">restaurant_menu</span>
+</div>
+<div>
+<label class="text-primary-text font-bold text-lg cursor-pointer" for="fnb-revenue">F&B через онлайн-меню</label>
+<p class="text-secondary-text text-xs mt-1 max-w-[220px] leading-tight">Доход от продажи еды и напитков через цифровое меню отеля</p>
+</div>
+</div>
+<div class="flex items-center bg-background-light rounded-full px-4 py-2 border border-transparent focus-within:border-primary/30 focus-within:bg-white transition-colors">
+<span class="text-secondary-text font-medium mr-1">$</span>
+<input class="bg-transparent border-none p-0 w-16 text-right font-bold text-primary-text focus:ring-0 text-lg placeholder:text-gray-300" id="fnb-revenue" placeholder="0" type="number" value="208"/>
+<span class="text-secondary-text text-xs ml-2 font-medium whitespace-nowrap">/ номер</span>
+</div>
+</div>
+</div>
+<!-- Input Item: Upsell -->
+<div class="group bg-white rounded-[2rem] p-6 shadow-sm hover:shadow-md transition-all duration-300 border border-slate-100">
+<div class="flex items-start justify-between">
+<div class="flex items-start gap-3">
+<div class="bg-primary-light w-10 h-10 flex items-center justify-center rounded-full text-primary shrink-0 mt-0.5">
+<span class="material-symbols-outlined leading-none">hotel_class</span>
+</div>
+<div>
+<label class="text-primary-text font-bold text-lg cursor-pointer" for="upsell-revenue">Upsell услуги</label>
+<p class="text-secondary-text text-xs mt-1 max-w-[220px] leading-tight">Повышение категории номера, парковка, ранний заезд и др.</p>
+</div>
+</div>
+<div class="flex items-center bg-background-light rounded-full px-4 py-2 border border-transparent focus-within:border-primary/30 focus-within:bg-white transition-colors">
+<span class="text-secondary-text font-medium mr-1">$</span>
+<input class="bg-transparent border-none p-0 w-16 text-right font-bold text-primary-text focus:ring-0 text-lg placeholder:text-gray-300" id="upsell-revenue" placeholder="0" type="number" value="84"/>
+<span class="text-secondary-text text-xs ml-2 font-medium whitespace-nowrap">/ номер</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Panel: Live Receipt -->
+<div class="flex-1 w-full flex justify-center lg:justify-end lg:pt-12 relative z-10">
+<!-- Receipt Container -->
+<div class="relative w-full max-w-md">
+<!-- Receipt Paper -->
+<div class="bg-white rounded-t-[2rem] shadow-soft relative z-20 pb-8">
+<!-- Receipt Header -->
+<div class="bg-[#fafbfc] rounded-t-[2rem] p-8 border-b border-dashed border-gray-200 text-center">
+<div class="mx-auto size-12 bg-primary/10 rounded-full flex items-center justify-center mb-4 text-primary">
+<span class="material-symbols-outlined">trending_up</span>
+</div>
+<h3 class="text-xl font-bold text-primary-text">Потенциал выручки</h3>
+<p class="text-sm text-secondary-text mt-1">С учетом внедрения доп. услуг</p>
+</div>
+<!-- Receipt Body -->
+<div class="p-8 flex flex-col gap-4">
+<!-- Revenue Line -->
+<div class="flex justify-between items-center text-primary-text">
+<span class="text-secondary-text">Базовая выручка</span>
+<span class="font-bold font-mono tracking-tight">$84,000.00</span>
+</div>
+<div class="h-px bg-gray-100 my-2"></div>
+<!-- Extra Income Lines -->
+<div class="flex justify-between items-center text-sm">
+<span class="text-secondary-text flex items-center gap-2">
+<span class="size-1.5 rounded-full bg-emerald-400"></span>
+                                Экономия OTA
+                            </span>
+<span id="receipt-ota" class="font-medium text-emerald-600 font-mono">+$3,500.00</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-secondary-text flex items-center gap-2">
+<span class="size-1.5 rounded-full bg-teal-400"></span>
+                                F&amp;B меню
+                            </span>
+<span id="receipt-fnb" class="font-medium text-emerald-600 font-mono">+$5,200.00</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-secondary-text flex items-center gap-2">
+<span class="size-1.5 rounded-full bg-cyan-400"></span>
+                                Upsell
+                            </span>
+<span id="receipt-upsell" class="font-medium text-emerald-600 font-mono">+$2,100.00</span>
+</div>
+<!-- Divider -->
+<div class="border-b-2 border-dashed border-gray-200 my-4 relative">
+<!-- Cutout circles for receipt effect -->
+<div class="absolute -left-[42px] -top-3 size-6 bg-background-light dark:bg-background-dark rounded-full"></div>
+<div class="absolute -right-[42px] -top-3 size-6 bg-background-light dark:bg-background-dark rounded-full"></div>
+</div>
+<!-- Total Profit -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-end">
+<span class="text-sm font-bold uppercase tracking-widest text-secondary-text">Итоговая сумма</span>
+<span id="receipt-total" class="text-3xl font-bold text-primary tracking-tight font-mono">$94,800.00</span>
+</div>
+<p class="text-xs text-secondary-text text-right mt-1">
+                                Рост выручки: <span id="receipt-margin" class="font-bold text-emerald-500">+12.9%</span>
+</p>
+</div>
+</div>
+<!-- Receipt Footer & Action -->
+<div class="px-8 pb-4 pt-2">
+<button onclick="shareReceipt(this)" class="w-full py-4 bg-primary-light hover:bg-primary/20 text-primary font-bold rounded-xl transition-all flex items-center justify-center gap-2 group">
+<span class="material-symbols-outlined text-[20px] transition-transform group-hover:-translate-y-0.5">share</span>
+                             Поделиться
+                         </button>
+</div>
+</div>
+<!-- Zig Zag Bottom -->
+<div class="receipt-edge"></div>
+<!-- Receipt Shadow/Depth Element -->
+<div class="absolute -bottom-4 left-4 right-4 h-8 bg-black/5 blur-xl rounded-full -z-10"></div>
+</div>
+</div>
+</main>
+<script>
+        // Formatting helper
+        const formatCurrency = (num) => `+$${num.toLocaleString('en-US')}.00`;
+        const baseRevenue = 84000;
+        const numberOfRooms = 25; // Расчет ведется исходя из 25 номеров
+
+        // Update the receipt calculation
+        function updateReceipt() {
+            const otaPerRoom = parseInt(document.getElementById('ota-savings').value) || 0;
+            const fnbPerRoom = parseInt(document.getElementById('fnb-revenue').value) || 0;
+            const upsellPerRoom = parseInt(document.getElementById('upsell-revenue').value) || 0;
+            
+            // Умножаем доход на номер на количество номеров
+            const ota = otaPerRoom * numberOfRooms;
+            const fnb = fnbPerRoom * numberOfRooms;
+            const upsell = upsellPerRoom * numberOfRooms;
+            
+            document.getElementById('receipt-ota').innerText = formatCurrency(ota);
+            document.getElementById('receipt-fnb').innerText = formatCurrency(fnb);
+            document.getElementById('receipt-upsell').innerText = formatCurrency(upsell);
+            
+            const total = baseRevenue + ota + fnb + upsell;
+            document.getElementById('receipt-total').innerText = `$${total.toLocaleString('en-US')}.00`;
+            
+            const margin = (((ota + fnb + upsell) / baseRevenue) * 100).toFixed(1);
+            document.getElementById('receipt-margin').innerText = `+${margin}%`;
+        }
+        
+        document.querySelectorAll('input[type="number"]').forEach(num => {
+            num.addEventListener('input', updateReceipt);
+        });
+
+        // Share functionality logic
+        function shareReceipt(btn) {
+            const originalContent = btn.innerHTML;
+            
+            // Function to show success message inside the button briefly
+            const showSuccess = () => {
+                btn.innerHTML = `<span class="material-symbols-outlined text-[20px]">check</span> Скопировано!`;
+                setTimeout(() => { btn.innerHTML = originalContent; }, 2000);
+            };
+
+            // Check if native Web Share API is available (usually on mobile devices)
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Потенциал выручки отеля',
+                    text: 'Посмотри этот расчет дополнительных продаж!',
+                    url: window.location.href,
+                }).catch((error) => {
+                    console.log('Error sharing:', error);
+                });
+            } else {
+                // Fallback: Copy current URL to clipboard
+                const tempInput = document.createElement('input');
+                document.body.appendChild(tempInput);
+                tempInput.value = window.location.href;
+                tempInput.select();
+                document.execCommand('copy');
+                document.body.removeChild(tempInput);
+                showSuccess();
+            }
+        }
+        
+        // Initial calculation on load
+        updateReceipt();
+    </script>
+</body></html>
