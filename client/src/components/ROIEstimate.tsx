@@ -15,172 +15,159 @@ import { useToast } from "@/hooks/use-toast";
 import { useTranslation } from "@/lib/TranslationContext";
 import { apiRequest } from "@/lib/queryClient";
 
+"use client";
+import { useState, useMemo } from "react";
+import { Calculator, ArrowRight, TrendingUp, Utensils, BedDouble } from "lucide-react";
+import { useTranslation } from "@/lib/TranslationContext";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+
 export default function ROIEstimate() {
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    propertySize: "",
-    dataProcessing: false,
-    marketing: false,
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const { toast } = useToast();
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
+  const [rooms, setRooms] = useState<number>(50);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!formData.dataProcessing) {
-      toast({
-        title: t("error.agreementRequired"),
-        description: t("error.agreeToDataProcessing"),
-        variant: "destructive",
-      });
-      return;
-    }
+  // Parse rooms from input
+  const parsedRooms = isNaN(rooms) || rooms < 1 ? 0 : rooms;
 
-    setIsSubmitting(true);
-    
-    try {
-      await apiRequest("POST", "/api/leads/roi", formData);
+  // Base values from CSV
+  const OTA_SAVINGS_PER_ROOM = 53;
+  const FB_ONLINE_PER_ROOM = 80;
+  const UPSELL_PER_ROOM = 50;
+  const TOTAL_PER_ROOM = OTA_SAVINGS_PER_ROOM + FB_ONLINE_PER_ROOM + UPSELL_PER_ROOM;
 
-      toast({
-        title: t("roi.successTitle"),
-        description: t("roi.successMessage"),
-      });
+  const monthlyIncome = parsedRooms * TOTAL_PER_ROOM;
+  const annualIncome = monthlyIncome * 12;
 
-      // Reset form
-      setFormData({
-        name: "",
-        phone: "",
-        propertySize: "",
-        dataProcessing: false,
-        marketing: false,
-      });
-    } catch (error: any) {
-      toast({
-        title: t("error.submissionFailed"),
-        description: error.message || t("error.tryAgainLater"),
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
+  // Formatter for currency
+  const formatCurrency = (value: number) => {
+    return new Intl.NumberFormat(language === 'en' ? 'en-US' : 'ru-RU', {
+      style: 'currency',
+      currency: 'EUR',
+      maximumFractionDigits: 0,
+    }).format(value);
   };
 
   return (
-    <section className="py-11 lg:py-28 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-primary/90" />
+    <section className="py-16 lg:py-28 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-primary/95" />
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl" />
       </div>
-      
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-white/10 backdrop-blur-md mb-6">
-              <Calculator className="h-10 w-10 text-white" />
+
+      <div className="container mx-auto px-4 relative z-10 w-full max-w-6xl">
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-white/10 backdrop-blur-md mb-6 shadow-xl">
+            <Calculator className="h-10 w-10 text-white" />
+          </div>
+          <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-white tracking-tight">
+            {t("roi.title")}
+          </h2>
+          <p className="text-xl text-white/90 max-w-2xl mx-auto">
+            {t("roi.subtitle")}
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start mt-12 bg-white/5 p-6 lg:p-10 rounded-3xl backdrop-blur-sm border border-white/10 shadow-2xl">
+          {/* Input Section */}
+          <div className="col-span-1 lg:col-span-5 flex flex-col justify-center h-full space-y-6">
+            <div className="bg-white/10 p-6 rounded-2xl border border-white/20">
+              <label htmlFor="roomsInput" className="block text-xl font-medium text-white mb-4">
+                {t("roi.calculator.roomsLabel")}
+              </label>
+              <div className="relative">
+                <Input
+                  id="roomsInput"
+                  type="number"
+                  min="1"
+                  value={rooms || ""}
+                  onChange={(e) => setRooms(parseInt(e.target.value) || 0)}
+                  className="w-full text-3xl font-bold h-16 bg-white/10 border-white/30 text-white placeholder:text-white/40 focus:ring-white rounded-xl ps-6"
+                  placeholder="50"
+                  style={{ fontSize: '1.5rem' }}
+                />
+              </div>
             </div>
-            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-white tracking-tight">
-              {t("roi.title")}
-            </h2>
-            <p className="text-xl text-white/90 max-w-2xl mx-auto">
-              {t("roi.subtitle")}
-            </p>
+
+            <div className="bg-gradient-to-br from-white/10 to-white/5 p-6 rounded-2xl border border-white/10 flex flex-col space-y-2">
+              <span className="text-white/80 text-lg uppercase tracking-wider font-semibold text-center mt-2">{t("roi.calculator.annualIncome")}</span>
+              <span className="text-5xl lg:text-6xl font-bold text-white text-center drop-shadow-md py-4">
+                {formatCurrency(annualIncome)}
+              </span>
+              <span className="text-white text-center font-medium bg-white/20 py-2 rounded-lg mx-4">
+                {t("roi.calculator.monthlyIncome")}: {formatCurrency(monthlyIncome)}
+              </span>
+            </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="bg-white/10 backdrop-blur-xl rounded-2xl p-8 lg:p-12 border border-white/20 shadow-2xl">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-              <div className="space-y-3">
-                <Label htmlFor="name" className="text-white text-base font-medium">{t("roi.name")}</Label>
-                <Input
-                  id="name"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="bg-white/95 border-0 h-12 text-base"
-                  placeholder={t("roi.namePlaceholder")}
-                  data-testid="input-name"
-                />
+          {/* Breakdown Section */}
+          <div className="col-span-1 lg:col-span-7 flex flex-col space-y-4">
+            <h3 className="text-2xl text-white font-serif font-bold mb-2 ml-2">Breakdown</h3>
+
+            {/* Source 1 */}
+            <div className="bg-white/10 hover:bg-white/15 transition-colors p-5 rounded-2xl border border-white/10 flex items-center shadow-lg">
+              <div className="bg-white/20 p-4 rounded-xl mr-5">
+                <TrendingUp className="w-8 h-8 text-white" />
               </div>
-              <div className="space-y-3">
-                <Label htmlFor="phone" className="text-white text-base font-medium">{t("roi.phone")}</Label>
-                <Input
-                  id="phone"
-                  type="tel"
-                  value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  className="bg-white/95 border-0 h-12 text-base"
-                  placeholder={t("roi.phonePlaceholder")}
-                  data-testid="input-phone"
-                />
+              <div className="flex-1">
+                <h4 className="text-xl text-white font-semibold">{t("roi.calculator.source1")}</h4>
+                <p className="text-white/70">{t("roi.calculator.perRoom")}: €{OTA_SAVINGS_PER_ROOM}</p>
               </div>
-              <div className="space-y-3">
-                <Label htmlFor="propertySize" className="text-white text-base font-medium">{t("roi.propertySize")}</Label>
-                <Select
-                  value={formData.propertySize}
-                  onValueChange={(value) => setFormData({ ...formData, propertySize: value })}
-                >
-                  <SelectTrigger 
-                    className="bg-white/95 border-0 h-12 text-base" 
-                    data-testid="select-property-size"
-                  >
-                    <SelectValue placeholder={t("roi.propertySizePlaceholder")} />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="upTo30">{t("roi.size.upTo30")}</SelectItem>
-                    <SelectItem value="upTo100">{t("roi.size.upTo100")}</SelectItem>
-                    <SelectItem value="upTo300">{t("roi.size.upTo300")}</SelectItem>
-                    <SelectItem value="over300">{t("roi.size.over300")}</SelectItem>
-                  </SelectContent>
-                </Select>
+              <div className="text-right">
+                <span className="text-2xl text-white font-bold block">{formatCurrency(OTA_SAVINGS_PER_ROOM * parsedRooms)}</span>
+                <span className="text-white/60 text-sm">/ mo</span>
               </div>
             </div>
 
-            <div className="space-y-4 mb-8 p-6 bg-white/5 rounded-xl">
-              <div className="flex items-start space-x-3">
-                <Checkbox
-                  id="dataProcessing"
-                  checked={formData.dataProcessing}
-                  onCheckedChange={(checked) => 
-                    setFormData({ ...formData, dataProcessing: checked as boolean })
-                  }
-                  className="mt-1 border-white/40 data-[state=checked]:bg-white data-[state=checked]:text-primary"
-                  data-testid="checkbox-data-processing"
-                />
-                <Label htmlFor="dataProcessing" className="text-sm text-white/95 leading-relaxed cursor-pointer">
-                  {t("roi.dataProcessing")}
-                </Label>
+            {/* Source 2 */}
+            <div className="bg-white/10 hover:bg-white/15 transition-colors p-5 rounded-2xl border border-white/10 flex items-center shadow-lg">
+              <div className="bg-white/20 p-4 rounded-xl mr-5">
+                <Utensils className="w-8 h-8 text-white" />
               </div>
-              <div className="flex items-start space-x-3">
-                <Checkbox
-                  id="marketing"
-                  checked={formData.marketing}
-                  onCheckedChange={(checked) => 
-                    setFormData({ ...formData, marketing: checked as boolean })
-                  }
-                  className="mt-1 border-white/40 data-[state=checked]:bg-white data-[state=checked]:text-primary"
-                  data-testid="checkbox-marketing"
-                />
-                <Label htmlFor="marketing" className="text-sm text-white/95 leading-relaxed cursor-pointer">
-                  {t("roi.marketing")}
-                </Label>
+              <div className="flex-1">
+                <h4 className="text-xl text-white font-semibold">{t("roi.calculator.source2")}</h4>
+                <p className="text-white/70">{t("roi.calculator.perRoom")}: €{FB_ONLINE_PER_ROOM}</p>
+              </div>
+              <div className="text-right">
+                <span className="text-2xl text-white font-bold block">{formatCurrency(FB_ONLINE_PER_ROOM * parsedRooms)}</span>
+                <span className="text-white/60 text-sm">/ mo</span>
               </div>
             </div>
 
-            <Button 
-              type="submit" 
-              size="lg" 
-              className="w-full h-14 bg-white text-primary hover:bg-white/90 text-base font-semibold shadow-xl"
-              disabled={isSubmitting}
-              data-testid="button-get-estimate"
-            >
-              {isSubmitting ? t("roi.submitting") : t("roi.submit")}
-              {!isSubmitting && <ArrowRight className="ml-2 h-5 w-5" />}
-            </Button>
-          </form>
+            {/* Source 3 */}
+            <div className="bg-white/10 hover:bg-white/15 transition-colors p-5 rounded-2xl border border-white/10 flex items-center shadow-lg">
+              <div className="bg-white/20 p-4 rounded-xl mr-5">
+                <BedDouble className="w-8 h-8 text-white" />
+              </div>
+              <div className="flex-1">
+                <h4 className="text-xl text-white font-semibold">{t("roi.calculator.source3")}</h4>
+                <p className="text-white/70">{t("roi.calculator.perRoom")}: €{UPSELL_PER_ROOM}</p>
+              </div>
+              <div className="text-right">
+                <span className="text-2xl text-white font-bold block">{formatCurrency(UPSELL_PER_ROOM * parsedRooms)}</span>
+                <span className="text-white/60 text-sm">/ mo</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col items-center justify-center relative mt-16 pt-8 border-t border-white/10">
+          <p className="text-white/90 text-xl font-medium mb-6 mt-4">Ready to unlock your potential revenue?</p>
+          <Button
+            size="lg"
+            asChild
+            className="w-full sm:w-auto h-16 px-10 bg-white text-primary hover:bg-white/90 text-xl font-bold shadow-2xl rounded-full transform hover:scale-105 transition-all duration-300"
+          >
+            <a href="https://cal.com/gleb.gosha/30min" target="_blank" rel="noopener noreferrer" className="flex items-center">
+              Talk to a Human <ArrowRight className="ml-3 w-6 h-6" />
+            </a>
+          </Button>
+          <p className="mt-4 text-white/70 text-sm font-medium">
+            {t("text.callFree")}
+          </p>
         </div>
       </div>
     </section>
   );
 }
+
