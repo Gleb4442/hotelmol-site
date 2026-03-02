@@ -7,7 +7,6 @@ import Hero from "@/components/Hero";
 import HowRoomieWorks from "@/components/HowRoomieWorks";
 import IntegrationTicker from "@/components/IntegrationTicker";
 import HotelQRBenefits from "@/components/HotelQRBenefits";
-import BenefitsSection from "@/components/BenefitsSection";
 import ValueProposition from "@/components/ValueProposition";
 import AIDashboardSection from "@/components/AIDashboardSection";
 import ROIEstimate from "@/components/ROIEstimate";
@@ -33,7 +32,6 @@ export default function Home() {
             <IntegrationTicker />
             <HotelQRBenefits />
             <ValueProposition />
-            <BenefitsSection />
             <AIDashboardSection />
             <PropertySolutionsSection />
             <ChatFAQSection />
