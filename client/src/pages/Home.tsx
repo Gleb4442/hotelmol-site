@@ -3,7 +3,6 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import HowRoomieWorks from "@/components/HowRoomieWorks";
 import IntegrationTicker from "@/components/IntegrationTicker";
-import BenefitsSection from "@/components/BenefitsSection";
 import AIDashboardSection from "@/components/AIDashboardSection";
 import ROIEstimate from "@/components/ROIEstimate";
 import PresentationSection from "@/components/PresentationSection";
@@ -16,7 +15,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <SEO 
+      <SEO
         title="AI-Powered Hotel Guest Communication"
         description="Transform your hotel operations with Roomie, the AI assistant that handles guest communications 24/7 in 100+ languages. Boost efficiency and guest satisfaction."
         structuredData={organizationSchema}
@@ -26,7 +25,6 @@ export default function Home() {
         <Hero />
         <HowRoomieWorks />
         <IntegrationTicker />
-        <BenefitsSection />
         <AIDashboardSection />
         <ROIEstimate />
         <PresentationSection />
