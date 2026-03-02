@@ -188,8 +188,8 @@ export default function ROIEstimate() {
                 <div className="text-slate-500 dark:text-slate-400 text-sm mt-4 font-medium max-w-2xl mx-auto flex items-center justify-center gap-2 flex-wrap">
                   {txt("Основано на", "Based on your")}
                   <div className="relative inline-flex items-center">
-                    <input 
-                      type="number" 
+                    <input
+                      type="number"
                       value={rooms || ""}
                       onChange={(e) => setRooms(parseInt(e.target.value) || 0)}
                       className="w-16 h-8 text-center font-bold text-[#1f80db] bg-[#1f80db]/10 border-none rounded-md focus:ring-2 focus:ring-[#1f80db]/50 text-base sm:text-sm p-0 m-0"
@@ -213,31 +213,31 @@ export default function ROIEstimate() {
             {/* Middle Block: 3 Detail Cards (Step 2) */}
             {step === 2 && (
               <section className="grid grid-cols-1 sm:grid-cols-3 gap-6 animate-in slide-in-from-bottom-4 duration-500 fade-in">
-                <DetailCard 
-                  icon={<Calculator className="w-8 h-8" />} 
-                  bg="bg-[#E1F0FF] dark:bg-[#1f80db]/20" 
-                  iconColor="text-[#1f80db]" 
-                  title={t("roi.calculator.source1")} 
+                <DetailCard
+                  icon={<Calculator className="w-8 h-8" />}
+                  bg="bg-[#E1F0FF] dark:bg-[#1f80db]/20"
+                  iconColor="text-[#1f80db]"
+                  title={t("roi.calculator.source1")}
                   value={otaPerRoom * parsedRooms}
                   perRoom={otaPerRoom}
                   txt={txt}
                   language={language}
                 />
-                <DetailCard 
-                  icon={<Utensils className="w-8 h-8" />} 
-                  bg="bg-purple-50 dark:bg-purple-900/30" 
-                  iconColor="text-purple-500" 
-                  title={t("roi.calculator.source2")} 
+                <DetailCard
+                  icon={<Utensils className="w-8 h-8" />}
+                  bg="bg-purple-50 dark:bg-purple-900/30"
+                  iconColor="text-purple-500"
+                  title={t("roi.calculator.source2")}
                   value={fnbPerRoom * parsedRooms}
                   perRoom={fnbPerRoom}
                   txt={txt}
                   language={language}
                 />
-                <DetailCard 
-                  icon={<TrendingUp className="w-8 h-8" />} 
-                  bg="bg-emerald-50 dark:bg-emerald-900/30" 
-                  iconColor="text-emerald-500" 
-                  title={t("roi.calculator.source3")} 
+                <DetailCard
+                  icon={<TrendingUp className="w-8 h-8" />}
+                  bg="bg-emerald-50 dark:bg-emerald-900/30"
+                  iconColor="text-emerald-500"
+                  title={t("roi.calculator.source3")}
                   value={upsellPerRoom * parsedRooms}
                   perRoom={upsellPerRoom}
                   txt={txt}
@@ -262,18 +262,18 @@ export default function ROIEstimate() {
                   {optimism}%
                 </div>
               </div>
-              
+
               <div className="relative w-full h-12 flex items-center px-2">
-                <input 
-                  className="w-full appearance-none bg-transparent z-20 focus:outline-none custom-range" 
-                  max="100" 
-                  min="0" 
-                  type="range" 
+                <input
+                  className="w-full appearance-none bg-transparent z-20 focus:outline-none custom-range"
+                  max="100"
+                  min="0"
+                  type="range"
                   value={optimism}
                   onChange={(e) => setOptimism(parseInt(e.target.value))}
                 />
                 <div className="absolute left-0 right-0 h-2 bg-slate-100 dark:bg-slate-700 rounded-full mx-2 -z-10 overflow-hidden">
-                  <div className="h-full bg-gradient-to-r from-[#1f80db] to-[#88C0D0] rounded-full" style={{ width: \`\${optimism}%\` }}></div>
+                  <div className="h-full bg-gradient-to-r from-[#1f80db] to-[#88C0D0] rounded-full" style={{ width: `${optimism}%` }}></div>
                 </div>
               </div>
               <div className="flex justify-between px-2 mt-2 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
@@ -282,136 +282,133 @@ export default function ROIEstimate() {
               </div>
 
               {step === 2 && (
-          <div className="mt-8 flex justify-center animate-in fade-in duration-300">
-            <button
-              onClick={goToStep3}
-              className="flex items-center gap-2 px-8 py-3 rounded-full bg-slate-900 text-white dark:bg-white dark:text-slate-900 text-sm font-bold transition-all hover:scale-105 active:scale-95 shadow-md"
-            >
-              {txt("Калькулятор точек роста", "Custom Revenue Calculator")}
-              <ArrowRight className="w-5 h-5" />
-            </button>
+                <div className="mt-8 flex justify-center animate-in fade-in duration-300">
+                  <button
+                    onClick={goToStep3}
+                    className="flex items-center gap-2 px-8 py-3 rounded-full bg-slate-900 text-white dark:bg-white dark:text-slate-900 text-sm font-bold transition-all hover:scale-105 active:scale-95 shadow-md"
+                  >
+                    {txt("Калькулятор точек роста", "Custom Revenue Calculator")}
+                    <ArrowRight className="w-5 h-5" />
+                  </button>
+                </div>
+              )}
+            </section>
           </div>
         )}
-      </section>
-    </div>
-  )
-}
 
-{/* --- Step 3: Breakdown receipt --- */ }
-{
-  step === 3 && (
-    <main className="flex flex-col lg:flex-row w-full gap-8 lg:gap-16 items-start relative animate-in slide-in-from-right-8 duration-500">
-      {/* Left Panel: Controls */}
-      <div className="flex flex-col flex-1 w-full gap-8">
-        <div className="flex flex-col gap-2 relative">
-          <button
-            onClick={() => setStep(2)}
-            className="absolute -top-10 left-0 flex items-center gap-1 text-sm font-bold text-[#1f80db] hover:text-[#1f80db]/80 transition-colors"
-          >
-            <ArrowLeft className="w-4 h-4" /> {txt("Назад", "Back")}
-          </button>
-          <h1 className="text-slate-900 dark:text-white text-4xl font-bold tracking-tight">{txt("Точки роста", "Revenue Growth Sources")}</h1>
-          <p className="text-slate-500 dark:text-slate-400 text-lg font-normal leading-relaxed max-w-lg">
-            {txt("Настройте показатели дополнительных продаж и сэкономленных комиссий, чтобы увидеть ваш потенциал увеличения выручки.", "Adjust the additional sales and saved commissions to see your potential revenue growth.")}
-          </p>
-        </div>
-
-        {/* Expense Inputs Group */}
-        <div className="flex flex-col gap-6 mt-4">
-          <CustomInputRow
-            icon={<Calculator className="w-5 h-5 leading-none" />}
-            title={t("roi.calculator.source1")}
-            desc={txt("Сумма, сэкономленная за счет прямых бронирований (минуя Booking.com и др.)", "Amount saved through direct bookings (bypassing OTAs)")}
-            value={customOta}
-            onChange={setCustomOta}
-            txt={txt}
-          />
-          <CustomInputRow
-            icon={<Utensils className="w-5 h-5 leading-none" />}
-            title={t("roi.calculator.source2")}
-            desc={txt("Доход от продажи еды и напитков через цифровое меню отеля", "Revenue from food and beverage via the digital hotel menu")}
-            value={customFnb}
-            onChange={setCustomFnb}
-            txt={txt}
-          />
-          <CustomInputRow
-            icon={<TrendingUp className="w-5 h-5 leading-none" />}
-            title={t("roi.calculator.source3")}
-            desc={txt("Повышение категории номера, парковка, ранний заезд и др.", "Room upgrades, parking, early check-in, etc.")}
-            value={customUpsell}
-            onChange={setCustomUpsell}
-            txt={txt}
-          />
-        </div>
-      </div>
-
-      {/* Right Panel: Live Receipt */}
-      <div className="flex-1 w-full flex justify-center lg:justify-end lg:pt-12 relative z-10 sm:px-6 md:px-0">
-        <div className="relative w-full max-w-md">
-          {/* Receipt Paper */}
-          <div className="bg-white dark:bg-slate-800 rounded-t-[2rem] shadow-xl border border-slate-100 dark:border-slate-700 relative z-20 pb-8">
-            {/* Header */}
-            <div className="bg-[#fafbfc] dark:bg-slate-900 rounded-t-[2rem] p-8 border-b border-dashed border-gray-200 dark:border-slate-700 text-center">
-              <div className="mx-auto w-12 h-12 bg-[#1f80db]/10 rounded-full flex items-center justify-center mb-4 text-[#1f80db]">
-                <TrendingUp className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white">{txt("Потенциал выручки", "Revenue Potential")}</h3>
-              <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">{txt("С учетом внедрения доп. услуг", "Including new additional services")}</p>
-            </div>
-
-            {/* Body */}
-            <div className="p-8 flex flex-col gap-4">
-              <div className="flex justify-between items-center text-slate-900 dark:text-slate-200">
-                <span className="text-slate-500 dark:text-slate-400">{txt("Базовая выручка", "Base Revenue")}</span>
-                <span className="font-bold font-mono tracking-tight text-lg">€{formatCurrency(baseRevenue)}</span>
-              </div>
-              <div className="h-px bg-gray-100 dark:bg-slate-700 my-2"></div>
-
-              <ReceiptRow dotColor="bg-emerald-400" title={txt("Экономия OTA", "OTA Savings")} value={otaTotal} formatCurrency={formatCurrency} />
-              <ReceiptRow dotColor="bg-teal-400" title={txt("F&B меню", "F&B Menu")} value={fnbTotal} formatCurrency={formatCurrency} />
-              <ReceiptRow dotColor="bg-cyan-400" title={txt("Upsell", "Upsell")} value={upsellTotal} formatCurrency={formatCurrency} />
-
-              <div className="border-b-2 border-dashed border-gray-200 dark:border-slate-700 my-4 relative">
-                <div className="absolute -left-[42px] -top-3 w-6 h-6 bg-slate-50 dark:bg-[#111921] rounded-full"></div>
-                <div className="absolute -right-[42px] -top-3 w-6 h-6 bg-slate-50 dark:bg-[#111921] rounded-full"></div>
-              </div>
-
-              <div className="flex flex-col gap-1">
-                <div className="flex justify-between items-end">
-                  <span className="text-sm font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">{txt("Итоговая сумма", "Total Revenue")}</span>
-                  <span className="text-3xl font-bold text-[#1f80db] tracking-tight font-mono">€{formatCurrency(totalCombined)}</span>
-                </div>
-                <p className="text-xs text-slate-500 dark:text-slate-400 text-right mt-1">
-                  {txt("Рост выручки", "Revenue Growth")}: <span className="font-bold text-emerald-500">+{marginIncrease}%</span>
+        {/* --- Step 3: Breakdown receipt --- */}
+        {step === 3 && (
+          <main className="flex flex-col lg:flex-row w-full gap-8 lg:gap-16 items-start relative animate-in slide-in-from-right-8 duration-500">
+            {/* Left Panel: Controls */}
+            <div className="flex flex-col flex-1 w-full gap-8">
+              <div className="flex flex-col gap-2 relative">
+                <button
+                  onClick={() => setStep(2)}
+                  className="absolute -top-10 left-0 flex items-center gap-1 text-sm font-bold text-[#1f80db] hover:text-[#1f80db]/80 transition-colors"
+                >
+                  <ArrowLeft className="w-4 h-4" /> {txt("Назад", "Back")}
+                </button>
+                <h1 className="text-slate-900 dark:text-white text-4xl font-bold tracking-tight">{txt("Точки роста", "Revenue Growth Sources")}</h1>
+                <p className="text-slate-500 dark:text-slate-400 text-lg font-normal leading-relaxed max-w-lg">
+                  {txt("Настройте показатели дополнительных продаж и сэкономленных комиссий, чтобы увидеть ваш потенциал увеличения выручки.", "Adjust the additional sales and saved commissions to see your potential revenue growth.")}
                 </p>
               </div>
+
+              {/* Expense Inputs Group */}
+              <div className="flex flex-col gap-6 mt-4">
+                <CustomInputRow
+                  icon={<Calculator className="w-5 h-5 leading-none" />}
+                  title={t("roi.calculator.source1")}
+                  desc={txt("Сумма, сэкономленная за счет прямых бронирований (минуя Booking.com и др.)", "Amount saved through direct bookings (bypassing OTAs)")}
+                  value={customOta}
+                  onChange={setCustomOta}
+                  txt={txt}
+                />
+                <CustomInputRow
+                  icon={<Utensils className="w-5 h-5 leading-none" />}
+                  title={t("roi.calculator.source2")}
+                  desc={txt("Доход от продажи еды и напитков через цифровое меню отеля", "Revenue from food and beverage via the digital hotel menu")}
+                  value={customFnb}
+                  onChange={setCustomFnb}
+                  txt={txt}
+                />
+                <CustomInputRow
+                  icon={<TrendingUp className="w-5 h-5 leading-none" />}
+                  title={t("roi.calculator.source3")}
+                  desc={txt("Повышение категории номера, парковка, ранний заезд и др.", "Room upgrades, parking, early check-in, etc.")}
+                  value={customUpsell}
+                  onChange={setCustomUpsell}
+                  txt={txt}
+                />
+              </div>
             </div>
 
-            {/* Share Action */}
-            <div className="px-8 pb-4 pt-2">
-              <button
-                onClick={handleShare}
-                className="w-full py-4 bg-[#E1F0FF] hover:bg-[#1f80db]/20 dark:bg-[#1f80db]/20 dark:hover:bg-[#1f80db]/30 text-[#1f80db] font-bold rounded-xl transition-all flex items-center justify-center gap-2 group"
-              >
-                {shareStatus === 'copied' ? (
-                  <><Check className="w-5 h-5 text-emerald-500" /> {txt("Скопировано!", "Copied!")}</>
-                ) : (
-                  <><Share2 className="w-5 h-5 transition-transform group-hover:-translate-y-0.5" /> {txt("Поделиться", "Share Result")}</>
-                )}
-              </button>
+            {/* Right Panel: Live Receipt */}
+            <div className="flex-1 w-full flex justify-center lg:justify-end lg:pt-12 relative z-10 sm:px-6 md:px-0">
+              <div className="relative w-full max-w-md">
+                {/* Receipt Paper */}
+                <div className="bg-white dark:bg-slate-800 rounded-t-[2rem] shadow-xl border border-slate-100 dark:border-slate-700 relative z-20 pb-8">
+                  {/* Header */}
+                  <div className="bg-[#fafbfc] dark:bg-slate-900 rounded-t-[2rem] p-8 border-b border-dashed border-gray-200 dark:border-slate-700 text-center">
+                    <div className="mx-auto w-12 h-12 bg-[#1f80db]/10 rounded-full flex items-center justify-center mb-4 text-[#1f80db]">
+                      <TrendingUp className="w-6 h-6" />
+                    </div>
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-white">{txt("Потенциал выручки", "Revenue Potential")}</h3>
+                    <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">{txt("С учетом внедрения доп. услуг", "Including new additional services")}</p>
+                  </div>
+
+                  {/* Body */}
+                  <div className="p-8 flex flex-col gap-4">
+                    <div className="flex justify-between items-center text-slate-900 dark:text-slate-200">
+                      <span className="text-slate-500 dark:text-slate-400">{txt("Базовая выручка", "Base Revenue")}</span>
+                      <span className="font-bold font-mono tracking-tight text-lg">€{formatCurrency(baseRevenue)}</span>
+                    </div>
+                    <div className="h-px bg-gray-100 dark:bg-slate-700 my-2"></div>
+
+                    <ReceiptRow dotColor="bg-emerald-400" title={txt("Экономия OTA", "OTA Savings")} value={otaTotal} formatCurrency={formatCurrency} />
+                    <ReceiptRow dotColor="bg-teal-400" title={txt("F&B меню", "F&B Menu")} value={fnbTotal} formatCurrency={formatCurrency} />
+                    <ReceiptRow dotColor="bg-cyan-400" title={txt("Upsell", "Upsell")} value={upsellTotal} formatCurrency={formatCurrency} />
+
+                    <div className="border-b-2 border-dashed border-gray-200 dark:border-slate-700 my-4 relative">
+                      <div className="absolute -left-[42px] -top-3 w-6 h-6 bg-slate-50 dark:bg-[#111921] rounded-full"></div>
+                      <div className="absolute -right-[42px] -top-3 w-6 h-6 bg-slate-50 dark:bg-[#111921] rounded-full"></div>
+                    </div>
+
+                    <div className="flex flex-col gap-1">
+                      <div className="flex justify-between items-end">
+                        <span className="text-sm font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">{txt("Итоговая сумма", "Total Revenue")}</span>
+                        <span className="text-3xl font-bold text-[#1f80db] tracking-tight font-mono">€{formatCurrency(totalCombined)}</span>
+                      </div>
+                      <p className="text-xs text-slate-500 dark:text-slate-400 text-right mt-1">
+                        {txt("Рост выручки", "Revenue Growth")}: <span className="font-bold text-emerald-500">+{marginIncrease}%</span>
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Share Action */}
+                  <div className="px-8 pb-4 pt-2">
+                    <button
+                      onClick={handleShare}
+                      className="w-full py-4 bg-[#E1F0FF] hover:bg-[#1f80db]/20 dark:bg-[#1f80db]/20 dark:hover:bg-[#1f80db]/30 text-[#1f80db] font-bold rounded-xl transition-all flex items-center justify-center gap-2 group"
+                    >
+                      {shareStatus === 'copied' ? (
+                        <><Check className="w-5 h-5 text-emerald-500" /> {txt("Скопировано!", "Copied!")}</>
+                      ) : (
+                        <><Share2 className="w-5 h-5 transition-transform group-hover:-translate-y-0.5" /> {txt("Поделиться", "Share Result")}</>
+                      )}
+                    </button>
+                  </div>
+                </div>
+                {/* Zig Zag Bottom */}
+                <div className="absolute bottom-[-32px] left-0 w-full h-[32px] receipt-edge-light dark:receipt-edge-dark"></div>
+                {/* Receipt Shadow/Depth Element */}
+                <div className="absolute -bottom-4 left-4 right-4 h-8 bg-black/5 dark:bg-black/20 blur-xl rounded-full -z-10"></div>
+              </div>
             </div>
-          </div>
-          {/* Zig Zag Bottom */}
-          <div className="absolute bottom-[-32px] left-0 w-full h-[32px] receipt-edge-light dark:receipt-edge-dark"></div>
-          {/* Receipt Shadow/Depth Element */}
-          <div className="absolute -bottom-4 left-4 right-4 h-8 bg-black/5 dark:bg-black/20 blur-xl rounded-full -z-10"></div>
-        </div>
+          </main>
+        )}
       </div>
-    </main>
-  )
-}
-      </div >
-    </div >
+    </div>
   );
 }
 
@@ -421,7 +418,7 @@ function DetailCard({ icon, bg, iconColor, title, value, perRoom, txt, language 
 
   return (
     <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 dark:border-slate-700 flex flex-col gap-6 cursor-default group">
-      <div className={\`w-14 h-14 rounded-2xl \${bg} flex items-center justify-center \${iconColor} group-hover:scale-110 transition-transform duration-300\`}>
+      <div className={`w-14 h-14 rounded-2xl ${bg} flex items-center justify-center ${iconColor} group-hover:scale-110 transition-transform duration-300`}>
         {icon}
       </div>
       <div className="flex-grow">
@@ -432,11 +429,11 @@ function DetailCard({ icon, bg, iconColor, title, value, perRoom, txt, language 
             <span className="text-base font-medium text-slate-500 dark:text-slate-400 ml-1">/ mo</span>
           </span>
           <span className="text-slate-500 dark:text-slate-400 text-sm mt-1">
-            {txt(\`за номер/мес: €\${perRoom}\`, \`per room/mo: €\${perRoom}\`)}
+            {txt(`за номер/мес: €${perRoom}`, `per room/mo: €${perRoom}`)}
           </span>
         </div>
       </div>
-    </div >
+    </div>
   );
 }
 
@@ -474,12 +471,12 @@ function ReceiptRow({ dotColor, title, value, formatCurrency }: any) {
   return (
     <div className="flex justify-between items-center text-sm">
       <span className="text-slate-500 dark:text-slate-400 flex items-center gap-2">
-        <span className={\`w-1.5 h-1.5 rounded-full \${dotColor}\`}></span>
+        <span className={`w-1.5 h-1.5 rounded-full ${dotColor}`}></span>
         {title}
       </span>
       <span className="font-medium text-emerald-600 dark:text-emerald-400 font-mono text-base">
         +€{formatCurrency(value)}
       </span>
-    </div >
+    </div>
   );
 }
