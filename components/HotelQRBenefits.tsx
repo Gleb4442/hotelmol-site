@@ -63,7 +63,7 @@ const HotelQRBenefits = () => {
     ];
 
     return (
-        <div className="relative min-h-[80vh] bg-slate-50 overflow-hidden flex items-center justify-center p-4 md:p-8 font-sans selection:bg-blue-200 selection:text-blue-900 border-y border-slate-200/50 -mb-6">
+        <div className="relative min-h-[80vh] bg-[#F7F6F2] overflow-hidden flex items-center justify-center p-4 md:p-8 font-sans selection:bg-blue-200 selection:text-blue-900 border-y border-slate-200/50 -mb-6">
             {/* Анимированный фон (Светлые акварельные сферы) */}
             <div className="absolute top-1/4 left-1/4 w-72 md:w-96 h-72 md:h-96 bg-blue-300/40 rounded-full mix-blend-multiply filter blur-[80px] md:blur-[120px] opacity-70"></div>
             <div className="absolute top-1/3 right-1/4 w-72 md:w-96 h-72 md:h-96 bg-cyan-300/40 rounded-full mix-blend-multiply filter blur-[80px] md:blur-[120px] opacity-70"></div>
