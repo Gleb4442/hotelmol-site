@@ -110,6 +110,7 @@ const translationsBase = {
     "roi.calculator.source2": "F&B via online menu",
     "roi.calculator.source3": "Upsell (upgrades, parking, etc.)",
     "roi.calculator.perRoom": "per room/month",
+    "roi.calculator.downloadExplanation": "Download Calculation Explanation",
 
     // Consultation Form
     "consultation.title": "Have Questions?",
@@ -926,6 +927,7 @@ const translationsBase = {
     "roi.calculator.source2": "F&B через онлайн-меню",
     "roi.calculator.source3": "Upsell (апгрейды, парковка и др.)",
     "roi.calculator.perRoom": "за номер/мес",
+    "roi.calculator.downloadExplanation": "Скачать пояснение расчетов",
 
     // FAQ Section
     "home.faq.title": "FAQ: Roomie AI от hotelmol",
@@ -1685,6 +1687,7 @@ const translationsBase = {
     "roi.calculator.source2": "F&B через онлайн-меню",
     "roi.calculator.source3": "Upsell (апгрейди, паркування тощо)",
     "roi.calculator.perRoom": "за номер/міс",
+    "roi.calculator.downloadExplanation": "Завантажити пояснення розрахунків",
 
     // FAQ Section
     "home.faq.title": "FAQ: Roomie AI від hotelmol",
@@ -2452,6 +2455,7 @@ const translationsBase = {
     "roi.calculator.source2": "F&B przez menu online",
     "roi.calculator.source3": "Upsell (upgrade, parking itp.)",
     "roi.calculator.perRoom": "za pokój/miesiąc",
+    "roi.calculator.downloadExplanation": "Pobierz wyjaśnienie obliczeń",
 
     // FAQ Section
     "home.faq.title": "FAQ: Roomie AI od hotelmol",
