@@ -92,6 +92,7 @@ export const translations = {
     "roi.calculator.source2": "F&B via online menu",
     "roi.calculator.source3": "Upsell (upgrades, parking, etc.)",
     "roi.calculator.perRoom": "per room/month",
+    "roi.calculator.downloadExplanation": "Download Calculation Explanation",
 
     // Demo Modal
     "demo.title": "Request a Demo",
@@ -943,6 +944,7 @@ export const translations = {
     "roi.calculator.source2": "F&B через онлайн-меню",
     "roi.calculator.source3": "Upsell (апгрейды, парковка и др.)",
     "roi.calculator.perRoom": "за номер/мес",
+    "roi.calculator.downloadExplanation": "Скачать пояснение расчетов",
 
     // Demo Modal
     "demo.title": "Запросить демо",
@@ -1636,7 +1638,8 @@ export const translations = {
     "roi.calculator.source1": "Економія OTA-комісій",
     "roi.calculator.source2": "F&B через онлайн-меню",
     "roi.calculator.source3": "Upsell (апгрейди, паркування тощо)",
-    "roi.calculator.perRoom": "за номер/міс",
+    "roi.calculator.perRoom": "на номер/місяць",
+    "roi.calculator.downloadExplanation": "Завантажити пояснення розрахунків",
 
     // Demo Modal
     "demo.title": "Запросити демо",
@@ -2331,6 +2334,7 @@ export const translations = {
     "roi.calculator.source2": "F&B przez menu online",
     "roi.calculator.source3": "Upsell (upgrade, parking itp.)",
     "roi.calculator.perRoom": "za pokój/miesiąc",
+    "roi.calculator.downloadExplanation": "Pobierz wyjaśnienie obliczeń",
 
     // Demo Modal
     "demo.title": "Poproś o demo",

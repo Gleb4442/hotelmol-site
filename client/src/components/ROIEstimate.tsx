@@ -148,16 +148,28 @@ export default function ROIEstimate() {
 
       <div className="flex flex-col items-center justify-center relative mt-16 pt-8 border-t border-white/10">
         <p className="text-white/90 text-xl font-medium mb-6 mt-4">Ready to unlock your potential revenue?</p>
-        <Button
-          size="lg"
-          asChild
-          className="w-full sm:w-auto h-16 px-10 bg-white text-primary hover:bg-white/90 text-xl font-bold shadow-2xl rounded-full transform hover:scale-105 transition-all duration-300"
-        >
-          <a href="https://cal.com/gleb.gosha/30min" target="_blank" rel="noopener noreferrer" className="flex items-center">
-            Talk to a Human <ArrowRight className="ml-3 w-6 h-6" />
-          </a>
-        </Button>
-        <p className="mt-4 text-white/70 text-sm font-medium">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
+          <Button
+            size="lg"
+            asChild
+            className="w-full sm:w-auto h-16 px-10 bg-white text-primary hover:bg-white/90 text-xl font-bold shadow-2xl rounded-full transform hover:scale-105 transition-all duration-300"
+          >
+            <a href="https://cal.com/gleb.gosha/30min" target="_blank" rel="noopener noreferrer" className="flex items-center">
+              Talk to a Human <ArrowRight className="ml-3 w-6 h-6" />
+            </a>
+          </Button>
+          <Button
+            size="lg"
+            variant="outline"
+            asChild
+            className="w-full sm:w-auto h-16 px-10 bg-white/10 text-white border-white/20 hover:bg-white/20 text-lg font-bold shadow-2xl rounded-full transform hover:scale-105 transition-all duration-300"
+          >
+            <a href="/explanation.pdf" download className="flex items-center">
+              {t("roi.calculator.downloadExplanation")}
+            </a>
+          </Button>
+        </div>
+        <p className="mt-4 text-white/70 text-sm font-medium text-center">
           {t("text.callFree")}
         </p>
       </div>
