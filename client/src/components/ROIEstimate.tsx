@@ -56,7 +56,7 @@ export default function ROIEstimate() {
           <a
             href="/explanation.pdf"
             download
-            className="absolute top-4 right-4 lg:top-8 lg:right-8 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white/70 hover:text-white transition-all duration-300 z-20 group"
+            className="absolute top-4 right-4 lg:top-8 lg:right-8 p-3 rounded-full bg-white/20 hover:bg-white/30 text-white shadow-xl border border-white/20 transition-all duration-300 z-50 group"
             title={language === 'ru' ? "Скачать пояснение расчетов" : language === 'ua' ? "Завантажити пояснення розрахунків" : language === 'pl' ? "Pobierz wyjaśnienie obliczeń" : "Download calculation explanation"}
           >
             <Info className="w-6 h-6" />
