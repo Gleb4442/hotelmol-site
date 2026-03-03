@@ -15,7 +15,6 @@ import ChatFAQSection from "@/components/ChatFAQSection";
 import LLMSummary from "@/components/LLMSummary";
 import SEO, { organizationSchema } from "@/components/SEO";
 import Onboarding from "@/components/Onboarding";
-import PropertySolutionsSection from "@/components/PropertySolutionsSection";
 
 export default function Home() {
     return (
@@ -33,7 +32,6 @@ export default function Home() {
             <HotelQRBenefits />
             <ValueProposition />
             <AIDashboardSection />
-            <PropertySolutionsSection />
             <ChatFAQSection />
             <ROIEstimate />
             <PresentationSection />

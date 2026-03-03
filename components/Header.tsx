@@ -146,7 +146,6 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
 
   const navigation: Array<{ name: string; href: string; badge?: string }> = [
     { name: t("nav.roomie"), href: "/roomie" },
-    { name: t("nav.solutions"), href: "/solutions" },
     { name: t("nav.about"), href: "/about" },
     { name: t("nav.contact"), href: "/contact" },
   ];

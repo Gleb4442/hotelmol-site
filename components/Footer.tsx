@@ -6,10 +6,6 @@ import { useTranslation } from "@/lib/TranslationContext";
 export default function Footer() {
   const { t } = useTranslation();
 
-  const solutions = [
-    { nameKey: "footer.singleHotels" as const, href: "/solutions" },
-    { nameKey: "footer.hotelChains" as const, href: "/solutions" },
-  ];
 
   const company = [
     { nameKey: "footer.aboutUs" as const, href: "/about" },
@@ -49,18 +45,6 @@ export default function Footer() {
             </div>
           </div>
 
-          <div>
-            <h3 className="font-semibold mb-4">{t("footer.solutions")}</h3>
-            <ul className="space-y-2">
-              {solutions.map((item) => (
-                <li key={item.nameKey}>
-                  <Link href={item.href} className="text-sm text-muted-foreground hover:text-foreground">
-                    {t(item.nameKey)}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
 
           <div>
             <h3 className="font-semibold mb-4">{t("footer.company")}</h3>
