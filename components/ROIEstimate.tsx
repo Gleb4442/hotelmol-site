@@ -1,6 +1,6 @@
 "use client";
 import { useState, useMemo } from "react";
-import { Calculator, ArrowRight, TrendingUp, Utensils, BedDouble } from "lucide-react";
+import { Calculator, ArrowRight, TrendingUp, Utensils, BedDouble, Info } from "lucide-react";
 import { useTranslation } from "@/lib/TranslationContext";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -52,7 +52,18 @@ export default function ROIEstimate() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start mt-12 bg-white/5 p-6 lg:p-10 rounded-3xl backdrop-blur-sm border border-white/10 shadow-2xl">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start mt-12 bg-white/5 p-6 lg:p-10 rounded-3xl backdrop-blur-sm border border-white/10 shadow-2xl relative">
+          <a
+            href="/explanation.pdf"
+            download
+            className="absolute top-4 right-4 lg:top-8 lg:right-8 p-3 rounded-full bg-white/20 hover:bg-white/30 text-white shadow-xl border border-white/20 transition-all duration-300 z-50 group"
+            title={language === 'ru' ? "Скачать пояснение расчетов" : language === 'ua' ? "Завантажити пояснення розрахунків" : language === 'pl' ? "Pobierz wyjaśнение obliczeń" : "Download calculation explanation"}
+          >
+            <Info className="w-6 h-6" />
+            <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-white/90 text-primary px-3 py-1.5 rounded-lg text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-xl">
+              {t("roi.calculator.downloadExplanation")}
+            </span>
+          </a>
           {/* Input Section */}
           <div className="col-span-1 lg:col-span-5 flex flex-col justify-center h-full space-y-6">
             <div className="bg-white/10 p-6 rounded-2xl border border-white/20">
