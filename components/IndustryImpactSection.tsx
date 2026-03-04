@@ -38,11 +38,7 @@ const hotelConfig: HotelData[] = [
         nameKey: "industryImpact.hilton.name",
         logo: "/assets/neutral/hilton.png",
         sections: [
-            { key: "scale", icon: Building2 },
-            { key: "results", icon: CheckCircle2 },
-            { key: "financials", icon: Wallet },
-            { key: "conversion", icon: Target },
-            { key: "messaging", icon: MessageSquare },
+            { key: "metrics", icon: TrendingUp },
         ]
     },
     {
@@ -50,11 +46,7 @@ const hotelConfig: HotelData[] = [
         nameKey: "industryImpact.marriott.name",
         logo: "/assets/neutral/marriott.png",
         sections: [
-            { key: "scale", icon: Building2 },
-            { key: "regional", icon: Globe },
-            { key: "channels", icon: Smartphone },
-            { key: "operational", icon: Zap },
-            { key: "strategic", icon: Award },
+            { key: "metrics", icon: TrendingUp },
         ]
     },
     {
@@ -62,21 +54,7 @@ const hotelConfig: HotelData[] = [
         nameKey: "industryImpact.hyatt.name",
         logo: "/assets/neutral/hyatt.png",
         sections: [
-            { key: "scale", icon: Building2 },
-            { key: "influence", icon: TrendingUp },
-            { key: "case", icon: Target },
-            { key: "channels", icon: Smartphone },
-            { key: "digitalKey", icon: Zap },
-        ]
-    },
-    {
-        id: "hyattInclusive",
-        nameKey: "industryImpact.hyattInclusive.name",
-        logo: "/assets/neutral/hyatt.png", // Reusing Hyatt logo
-        sections: [
-            { key: "adaptation", icon: Building2 },
-            { key: "results", icon: Wallet },
-            { key: "efficiency", icon: Zap },
+            { key: "metrics", icon: TrendingUp },
         ]
     },
     {
@@ -84,11 +62,7 @@ const hotelConfig: HotelData[] = [
         nameKey: "industryImpact.accor.name",
         logo: "/assets/neutral/accor.png",
         sections: [
-            { key: "scale", icon: Building2 },
-            { key: "financials", icon: Wallet },
-            { key: "loyalty", icon: Award },
-            { key: "ecosystem", icon: Globe },
-            { key: "lifecycle", icon: Zap },
+            { key: "metrics", icon: TrendingUp },
         ]
     },
     {
@@ -96,10 +70,7 @@ const hotelConfig: HotelData[] = [
         nameKey: "industryImpact.fourSeasons.name",
         logo: "/assets/neutral/fourseasons.png",
         sections: [
-            { key: "app", icon: Smartphone },
-            { key: "features", icon: Zap },
-            { key: "covid", icon: Globe },
-            { key: "residential", icon: Building2 },
+            { key: "metrics", icon: TrendingUp },
         ]
     },
 ];
@@ -157,17 +128,17 @@ export default function IndustryImpactSection() {
                 </div>
 
                 {/* Content Area */}
-                <div className="relative min-h-[500px]">
+                <div className="relative min-h-[400px]">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={activeHotel.id}
-                            initial={{ opacity: 0, x: 20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 0, x: -20 }}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
                             transition={{ duration: 0.4, ease: "easeInOut" }}
-                            className="bg-slate-50/50 rounded-[2.5rem] p-8 md:p-12 lg:p-16 border border-slate-100"
+                            className="max-w-3xl mx-auto"
                         >
-                            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 lg:gap-12">
+                            <div className="bg-slate-50/50 rounded-[2.5rem] p-8 md:p-12 lg:p-16 border border-slate-100 shadow-sm">
                                 {activeHotel.sections.map((section, idx) => {
                                     const title = t(`industryImpact.${activeHotel.id}.${section.key}.title` as any);
                                     const items = t(`industryImpact.${activeHotel.id}.${section.key}.items` as any) as unknown as string[];
@@ -176,29 +147,32 @@ export default function IndustryImpactSection() {
                                     if (!items || !Array.isArray(items)) return null;
 
                                     return (
-                                        <motion.div
+                                        <div
                                             key={section.key}
-                                            initial={{ opacity: 0, y: 20 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            transition={{ delay: idx * 0.1 }}
-                                            className="space-y-6"
+                                            className="space-y-8"
                                         >
-                                            <div className="flex items-center gap-4">
-                                                <div className="w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center text-primary border border-slate-100">
-                                                    <Icon size={24} />
+                                            <div className="flex items-center gap-5">
+                                                <div className="w-14 h-14 rounded-2xl bg-white shadow-md flex items-center justify-center text-primary border border-slate-100">
+                                                    <Icon size={28} />
                                                 </div>
-                                                <h3 className="text-xl font-bold font-serif">{title}</h3>
+                                                <h3 className="text-2xl md:text-3xl font-bold font-serif">{title}</h3>
                                             </div>
 
-                                            <ul className="space-y-4">
+                                            <ul className="space-y-5">
                                                 {items.map((item, i) => (
-                                                    <li key={i} className="flex gap-3 text-slate-600 leading-relaxed group">
-                                                        <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary/40 shrink-0 group-hover:bg-primary transition-colors" />
-                                                        <span className="text-[15px] md:text-base">{item}</span>
-                                                    </li>
+                                                    <motion.li
+                                                        key={i}
+                                                        initial={{ opacity: 0, x: -10 }}
+                                                        animate={{ opacity: 1, x: 0 }}
+                                                        transition={{ delay: 0.2 + i * 0.1 }}
+                                                        className="flex gap-4 text-slate-600 leading-relaxed group"
+                                                    >
+                                                        <div className="mt-2.5 w-2 h-2 rounded-full bg-primary/40 shrink-0 group-hover:bg-primary transition-colors" />
+                                                        <span className="text-lg md:text-xl font-medium text-slate-700">{item}</span>
+                                                    </motion.li>
                                                 ))}
                                             </ul>
-                                        </motion.div>
+                                        </div>
                                     );
                                 })}
                             </div>

@@ -825,177 +825,41 @@ const translationsBase = {
     "industryImpact.title": "Industry Leaders Performance",
     "industryImpact.subtitle": "How global brands leverage digital transformation for growth",
     "industryImpact.hilton.name": "Hilton Honors",
-    "industryImpact.hilton.scale.title": "Program Scale (2024-2025)",
-    "industryImpact.hilton.scale.items": [
-      "243 million Hilton Honors members",
-      "220+ million guests in 2024",
-      "7,000+ hotels worldwide",
-      "11,600+ app downloads daily"
-    ],
-    "industryImpact.hilton.results.title": "Digital Key Key Results",
-    "industryImpact.hilton.results.items": [
-      "12.3m Digital Key downloads in 2023 alone",
-      "135,000+ tech-enabled rooms with Connected Room Experience",
-      "17+ million guests used Connected Room in 2023",
-      "80% of travelers expect personal device integration with hotel tech"
-    ],
-    "industryImpact.hilton.financials.title": "Financial Indicators (2024)",
-    "industryImpact.hilton.financials.items": [
-      "$1.539 billion net profit for the year",
-      "$3.429 billion Adjusted EBITDA",
-      "+3.5% RevPAR growth in Q4 2024",
-      "63% direct bookings (vs 40% before mobile app launch)",
-      "+90% registration growth after Digital Key launch (2016)"
-    ],
-    "industryImpact.hilton.conversion.title": "Conversion & Monetization",
-    "industryImpact.hilton.conversion.items": [
-      "34% conversion rate among early users with exclusive rates",
-      "+41% award redemption growth after personalization implementation"
-    ],
-    "industryImpact.hilton.messaging.title": "Messaging Platform",
-    "industryImpact.hilton.messaging.items": [
-      "Expansion of mobile messenger to all 7,000+ hotels by end of 2024",
-      "80% of guests expect easy integration of personal devices"
+    "industryImpact.hilton.metrics.title": "Hilton Honors App",
+    "industryImpact.hilton.metrics.items": [
+      "Mobile menu engagement +25% in 3 months",
+      "Bounce rate −18%",
+      "Growth in conversion and repeat bookings"
     ],
     "industryImpact.marriott.name": "Marriott Bonvoy",
-    "industryImpact.marriott.scale.title": "Program Scale (2024-2025)",
-    "industryImpact.marriott.scale.items": [
-      "228 million program members",
-      "+31 million new members in 2024",
-      "+30% YoY app download growth (2024)",
-      "73% loyalty program penetration in the US",
-      "66% penetration globally"
-    ],
-    "industryImpact.marriott.regional.title": "Regional Growth (APAC 2024)",
-    "industryImpact.marriott.regional.items": [
-      "+78% mobile app downloads in APAC",
-      "+20% active users"
-    ],
-    "industryImpact.marriott.channels.title": "Digital Channels",
-    "industryImpact.marriott.channels.items": [
-      "60.3% revenue via direct channels (Marriott.com/app, call centers)",
-      "39.7% revenue via indirect channels (GDS, OTA)",
-      "Mobile check-in and Mobile key are key drivers of direct bookings"
-    ],
-    "industryImpact.marriott.operational.title": "Operational Results",
-    "industryImpact.marriott.operational.items": [
-      "+40% monthly active users (2016-2024)",
-      "+75% mobile check-ins",
-      "+500% mobile requests via app"
-    ],
-    "industryImpact.marriott.strategic.title": "Strategic Partnerships",
-    "industryImpact.marriott.strategic.items": [
-      "Integration with Uber Technologies and Starbucks",
-      "Personalized offers through partnerships",
-      "Co-brand credit cards for travel integration into daily life"
+    "industryImpact.marriott.metrics.title": "Marriott Bonvoy App",
+    "industryImpact.marriott.metrics.items": [
+      "MAU +40% (up to 2.8M)",
+      "Mobile check-ins +75% (260,000/week)",
+      "Chat usage +500%",
+      "ROI 4.1x, booking conversion +39%",
+      "#1 Travel in iTunes on launch day, 500k downloads in 3 months"
     ],
     "industryImpact.hyatt.name": "Hyatt (World of Hyatt)",
-    "industryImpact.hyatt.scale.title": "Program Scale (2026)",
-    "industryImpact.hyatt.scale.items": [
-      "63 million World of Hyatt members",
-      "+19% YoY membership growth",
-      "+7.3% room count growth",
-      "+2.9% RevPAR growth"
-    ],
-    "industryImpact.hyatt.influence.title": "Program Financial Influence",
-    "industryImpact.hyatt.influence.items": [
-      "+80% booking revenue since app launch",
-      "90% guest engagement via app",
-      "+6% revenue growth in Q1 2024",
-      "+15% growth in business properties"
-    ],
-    "industryImpact.hyatt.case.title": "Hyatt Place — Deep Integration Case",
-    "industryImpact.hyatt.case.items": [
-      "51% of revenue comes from World of Hyatt members",
-      "42.4% of room nights occupied by program members",
-      "≈15,331 nights per hotel per year from members"
-    ],
-    "industryImpact.hyatt.channels.title": "Digital Channels & Fees",
-    "industryImpact.hyatt.channels.items": [
-      "60.3% revenue via direct channels (Hyatt.com/app)",
-      "1.35% Digital Acquisition Fee on digital bookings",
-      "~$8.50 per GDS booking"
-    ],
-    "industryImpact.hyatt.digitalKey.title": "Digital Key",
-    "industryImpact.hyatt.digitalKey.items": [
-      "60+ hotels with Digital Key technology",
-      "18 app releases in 12 months",
-      "Apple Wallet integration for digital keys"
-    ],
-    "industryImpact.hyattInclusive.name": "Hyatt Inclusive Collection",
-    "industryImpact.hyattInclusive.adaptation.title": "Adaptation Level",
-    "industryImpact.hyattInclusive.adaptation.items": [
-      "80-90% of guests use the app",
-      "One of the highest adoption rates in the industry"
-    ],
-    "industryImpact.hyattInclusive.results.title": "Financial Results",
-    "industryImpact.hyattInclusive.results.items": [
-      "Significant corporate revenue increase",
-      "\"The app pays for itself and brings more\"",
-      "Sales growth for spa, gourmet dining, wine tastings, etc."
-    ],
-    "industryImpact.hyattInclusive.efficiency.title": "Operational Efficiency",
-    "industryImpact.hyattInclusive.efficiency.items": [
-      "Simple and fast integration into new hotels",
-      "High guest and staff satisfaction"
+    "industryImpact.hyatt.metrics.title": "World of Hyatt App",
+    "industryImpact.hyatt.metrics.items": [
+      "Mobile booking revenue +80% since launch",
+      "New monthly revenue record in the first month after release",
+      "18 releases in 12 months"
     ],
     "industryImpact.accor.name": "Accor ALL",
-    "industryImpact.accor.scale.title": "Program Scale (2024-2025)",
-    "industryImpact.accor.scale.items": [
-      "100 million members globally (reached May 2025)",
-      "Membership doubled in 5 years (since 2019)",
-      "+11 million new members in 2024 alone"
-    ],
-    "industryImpact.accor.financials.title": "Financial Indicators",
-    "industryImpact.accor.financials.items": [
-      "Members spend 2x+ more vs non-members",
-      "+45% business volume growth via ALL app (2024 vs 2023)",
-      "10x faster growth vs OTA"
-    ],
-    "industryImpact.accor.loyalty.title": "Loyalty & Engagement",
-    "industryImpact.accor.loyalty.items": [
-      "7.8/10 brand love score (5,300+ participant survey)",
-      "Mobile app is Accor's fastest-growing segment"
-    ],
-    "industryImpact.accor.ecosystem.title": "Ecosystem",
-    "industryImpact.accor.ecosystem.items": [
-      "7,700+ \"Limitless Experiences\" packages",
-      "110+ partnerships in travel, finance, shopping, etc.",
-      "+15 new partnerships planned for 2025"
-    ],
-    "industryImpact.accor.lifecycle.title": "Guest Integration",
-    "industryImpact.accor.lifecycle.items": [
-      "Accor Arena (Paris), Accor Stadium (Sydney)",
-      "Local cultural activities, sports, music",
-      "All-in-one global booking platform"
+    "industryImpact.accor.metrics.title": "Accor ALL App",
+    "industryImpact.accor.metrics.items": [
+      "Growth in direct bookings and guest satisfaction",
+      "First hotel brand with ChatGPT integration (January 2026)",
+      "Reduced dependence on OTA"
     ],
     "industryImpact.fourSeasons.name": "Four Seasons",
-    "industryImpact.fourSeasons.app.title": "Mobile App",
-    "industryImpact.fourSeasons.app.items": [
-      "First version launched in 2015",
-      "Major update with personalization in 2019",
-      "Hotel Visionary Award 2018 from Hospitality Technology"
-    ],
-    "industryImpact.fourSeasons.features.title": "App Functionality",
-    "industryImpact.fourSeasons.features.items": [
-      "Global booking for all Four Seasons",
-      "Trip planning for travelers",
-      "Room service, transfers, spa, and tour bookings",
-      "Four Seasons Chat with 100+ language translation",
-      "Best-in-class response time"
-    ],
-    "industryImpact.fourSeasons.covid.title": "Digital Transformation (COVID focus)",
-    "industryImpact.fourSeasons.covid.items": [
-      "Online wellness classes and cooking demos",
-      "Delivery app partnerships",
-      "Flexible cancellation policy via digital channels",
-      "Wait-free check-in/check-out"
-    ],
-    "industryImpact.fourSeasons.residential.title": "Residential Expansion (2025)",
-    "industryImpact.fourSeasons.residential.items": [
-      "App and Chat integration for residence owners",
-      "Home management via smartphone",
-      "Contactless service for residents"
+    "industryImpact.fourSeasons.metrics.title": "Four Seasons App + Chat",
+    "industryImpact.fourSeasons.metrics.items": [
+      "80% of responses in less than 90 seconds",
+      "Chat recognized as the brand's most successful innovation in several years",
+      "Contactless service during COVID without loss of standards"
     ],
   },
 
@@ -1755,178 +1619,42 @@ const translationsBase = {
     "notFound.solutions": "Посмотреть решения",
     "industryImpact.title": "Показатели лидеров индустрии",
     "industryImpact.subtitle": "Как мировые отельные группы используют цифровую трансформацию для роста",
-    "industryImpact.hilton.name": "Hilton Honors 🏨",
-    "industryImpact.hilton.scale.title": "Масштаб программы (2024-2025)",
-    "industryImpact.hilton.scale.items": [
-      "243 миллиона участников Hilton Honors",
-      "220+ миллионов гостей в 2024 году",
-      "7,000+ отелей по всему миру",
-      "11,600+ загрузок приложения ежедневно"
+    "industryImpact.hilton.name": "Hilton Honors",
+    "industryImpact.hilton.metrics.title": "Hilton Honors App",
+    "industryImpact.hilton.metrics.items": [
+      "Вовлечённость в мобильное меню +25% за 3 месяца",
+      "Показатель отказов −18%",
+      "Рост конверсии и повторных бронирований"
     ],
-    "industryImpact.hilton.results.title": "Ключевые результаты Digital Key",
-    "industryImpact.hilton.results.items": [
-      "12.3 млн загрузок Digital Key только за 2023 год",
-      "135,000+ технологичных номеров с Connected Room Experience",
-      "17+ миллионов гостей использовали Connected Room в 2023",
-      "80% путешественников ожидают интеграцию личных устройств с технологиями отеля"
+    "industryImpact.marriott.name": "Marriott Bonvoy",
+    "industryImpact.marriott.metrics.title": "Marriott Bonvoy App",
+    "industryImpact.marriott.metrics.items": [
+      "MAU +40% (до 2,8 млн)",
+      "Мобильные чекины +75% (260 000/нед)",
+      "Использование чата +500%",
+      "ROI 4,1x, конверсия бронирований +39%",
+      "#1 Travel в iTunes в день запуска, 500k скачиваний за 3 месяца"
     ],
-    "industryImpact.hilton.financials.title": "Финансовые показатели (2024)",
-    "industryImpact.hilton.financials.items": [
-      "$1.539 млрд чистая прибыль за год",
-      "$3.429 млрд Adjusted EBITDA",
-      "+3.5% рост RevPAR в Q4 2024",
-      "63% direct bookings (vs 40% до запуска мобильного приложения)",
-      "+90% регистраций в программе после запуска Digital Key (2016)"
+    "industryImpact.hyatt.name": "Hyatt (World of Hyatt)",
+    "industryImpact.hyatt.metrics.title": "World of Hyatt App",
+    "industryImpact.hyatt.metrics.items": [
+      "Выручка с мобильных бронирований +80% с момента запуска",
+      "Новый месячный рекорд по выручке в первый месяц после релиза",
+      "18 релизов за 12 месяцев"
     ],
-    "industryImpact.hilton.conversion.title": "Конверсия и монетизация",
-    "industryImpact.hilton.conversion.items": [
-      "34% conversion rate среди первых пользователей с эксклюзивными тарифами",
-      "+41% рост погашения наград после внедрения персонализации"
+    "industryImpact.accor.name": "Accor ALL",
+    "industryImpact.accor.metrics.title": "Accor ALL App",
+    "industryImpact.accor.metrics.items": [
+      "Рост прямых бронирований и удовлетворённости гостей",
+      "Первый отельный бренд с интеграцией в ChatGPT (январь 2026)",
+      "Снижение зависимости от OTA"
     ],
-    "industryImpact.hilton.messaging.title": "Messaging Platform",
-    "industryImpact.hilton.messaging.items": [
-      "Расширение мобильного мессенджера на все 7,000+ отелей к концу 2024",
-      "80% гостей ожидают возможность легко интегрировать личные устройства"
-    ],
-    "industryImpact.marriott.name": "Marriott Bonvoy 📱",
-    "industryImpact.marriott.scale.title": "Масштаб программы (2024-2025)",
-    "industryImpact.marriott.scale.items": [
-      "228 миллионов участников программы",
-      "+31 миллион новых участников за 2024 год",
-      "+30% YoY рост загрузок приложения (2024)",
-      "73% проникновение программы лояльности в США",
-      "66% проникновение глобально"
-    ],
-    "industryImpact.marriott.regional.title": "Региональный рост (APAC 2024)",
-    "industryImpact.marriott.regional.items": [
-      "+78% загрузок мобильного приложения в APAC",
-      "+20% активных пользователей"
-    ],
-    "industryImpact.marriott.channels.title": "Цифровые каналы",
-    "industryImpact.marriott.channels.items": [
-      "60.3% выручки через прямые каналы (Marriott.com/app, колл-центры)",
-      "39.7% выручки через непрямые каналы (GDS, OTA)",
-      "Mobile check-in и Mobile key — ключевые драйверы прямых бронирований"
-    ],
-    "industryImpact.marriott.operational.title": "Оперативные результаты",
-    "industryImpact.marriott.operational.items": [
-      "+40% monthly active users (2016-2024)",
-      "+75% mobile check-ins",
-      "+500% mobile requests через приложение"
-    ],
-    "industryImpact.marriott.strategic.title": "Стратегические партнёрства",
-    "industryImpact.marriott.strategic.items": [
-      "Интеграция с Uber Technologies и Starbucks",
-      "Персонализированные предложения через партнёрства",
-      "Co-brand кредитные карты для интеграции путешествий в повседневную жизнь"
-    ],
-    "industryImpact.hyatt.name": "Hyatt (World of Hyatt) 🌍",
-    "industryImpact.hyatt.scale.title": "Масштаб программы (2026)",
-    "industryImpact.hyatt.scale.items": [
-      "63 миллиона World of Hyatt members",
-      "+19% YoY рост членства",
-      "+7.3% рост количества номеров",
-      "+2.9% рост RevPAR"
-    ],
-    "industryImpact.hyatt.influence.title": "Финансовое влияние программы",
-    "industryImpact.hyatt.influence.items": [
-      "+80% booking revenue с момента запуска приложения",
-      "90% guest engagement через приложение",
-      "+6% рост выручки в Q1 2024",
-      "+15% рост бизнес-объектов"
-    ],
-    "industryImpact.hyatt.case.title": "Hyatt Place — кейс глубокой интеграции",
-    "industryImpact.hyatt.case.items": [
-      "51% выручки приходит от участников World of Hyatt",
-      "42.4% room nights занимают участники программы",
-      "≈15,331 ночей на отель в год от участников программы"
-    ],
-    "industryImpact.hyatt.channels.title": "Цифровые каналы и комиссии",
-    "industryImpact.hyatt.channels.items": [
-      "60.3% выручки через прямые каналы (Hyatt.com/app)",
-      "1.35% Digital Acquisition Fee на бронирования через цифровые каналы",
-      "~$8.50 за бронирование через GDS"
-    ],
-    "industryImpact.hyatt.digitalKey.title": "Digital Key",
-    "industryImpact.hyatt.digitalKey.items": [
-      "60+ отелей с технологией Digital Key",
-      "18 релизов приложения за 12 месяцев",
-      "Интеграция с Apple Wallet для цифровых ключей"
-    ],
-    "industryImpact.hyattInclusive.name": "Hyatt Inclusive Collection",
-    "industryImpact.hyattInclusive.adaptation.title": "Уровень адаптации",
-    "industryImpact.hyattInclusive.adaptation.items": [
-      "80-90% гостей используют приложение",
-      "Один из самых высоких показателей адаптации в индустрии"
-    ],
-    "industryImpact.hyattInclusive.results.title": "Финансовые результаты",
-    "industryImpact.hyattInclusive.results.items": [
-      "Значительное увеличение выручки на корпоративном уровне",
-      "\"Приложение окупает себя и приносит больше\"",
-      "Рост продаж spa-услуг, gourmet-ужинов, дегустаций вин и других премиальных сервисов"
-    ],
-    "industryImpact.hyattInclusive.efficiency.title": "Операционная эффективность",
-    "industryImpact.hyattInclusive.efficiency.items": [
-      "Простая и быстрая интеграция в новые отели",
-      "Высокая удовлетворённость гостей и персонала"
-    ],
-    "industryImpact.accor.name": "Accor ALL ⭐",
-    "industryImpact.accor.scale.title": "Масштаб программы (2024-2025)",
-    "industryImpact.accor.scale.items": [
-      "100 миллионов участников глобально (достигнуто в мае 2025)",
-      "Удвоение членства за 5 лет (с 2019)",
-      "+11 миллионов новых участников только в 2024"
-    ],
-    "industryImpact.accor.financials.title": "Финансовые показатели",
-    "industryImpact.accor.financials.items": [
-      "В 2+ раза больше тратят участники программы vs не-участники",
-      "+45% рост бизнес-объёма через ALL app (2024 vs 2023)",
-      "10x быстрее рост vs OTA"
-    ],
-    "industryImpact.accor.loyalty.title": "Лояльность и вовлечённость",
-    "industryImpact.accor.loyalty.items": [
-      "7.8/10 brand love score (опрос 5,300+ участников)",
-      "Mobile app — самый быстрорастущий сегмент для Accor"
-    ],
-    "industryImpact.accor.ecosystem.title": "Экосистема",
-    "industryImpact.accor.ecosystem.items": [
-      "7,700+ \"Limitless Experiences\" пакетов",
-      "110+ партнёрств в сферах travel, finance, shopping",
-      "+15 новых партнёрств запланировано на 2025"
-    ],
-    "industryImpact.accor.lifecycle.title": "Интеграция в жизнь гостей",
-    "industryImpact.accor.lifecycle.items": [
-      "Accor Arena (Париж), Accor Stadium (Сидней)",
-      "Локальные культурные активности, спорт, музыка",
-      "Глобальная платформа бронирования \"всё в одном\""
-    ],
-    "industryImpact.fourSeasons.name": "Four Seasons 🏆",
-    "industryImpact.fourSeasons.app.title": "Мобильное приложение",
-    "industryImpact.fourSeasons.app.items": [
-      "Запуск первой версии — 2015 год",
-      "Крупное обновление — 2019 год с персонализацией",
-      "Hotel Visionary Award 2018 от Hospitality Technology"
-    ],
-    "industryImpact.fourSeasons.features.title": "Функционал приложения",
-    "industryImpact.fourSeasons.features.items": [
-      "Бронирование во всех Four Seasons по миру",
-      "Trip planning для путешественников",
-      "Заказ room service, трансфера, spa, туров",
-      "Four Seasons Chat с переводом 100+ языков",
-      "Лучшее в индустрии время ответа"
-    ],
-    "industryImpact.fourSeasons.covid.title": "Цифровая трансформация (COVID)",
-    "industryImpact.fourSeasons.covid.items": [
-      "Онлайн wellness-классы и кулинарные демонстрации",
-      "Партнёрства с delivery-приложениями",
-      "Гибкая политика отмены через цифровые каналы",
-      "Wait-free check-in/check-out"
-    ],
-    "industryImpact.fourSeasons.residential.title": "Расширение на резиденции (2025)",
-    "industryImpact.fourSeasons.residential.items": [
-      "Интеграция Four Seasons App и Chat для владельцев резиденций",
-      "Управление домом через смартфон",
-      "Contactless service для резидентов"
+    "industryImpact.fourSeasons.name": "Four Seasons",
+    "industryImpact.fourSeasons.metrics.title": "Four Seasons App + Chat",
+    "industryImpact.fourSeasons.metrics.items": [
+      "80% ответов менее чем за 90 секунд",
+      "Chat признан самой успешной инновацией бренда за несколько лет",
+      "Бесконтактный сервис во время COVID без потери стандартов"
     ],
   },
 
