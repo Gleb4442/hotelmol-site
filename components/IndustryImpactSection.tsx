@@ -112,7 +112,7 @@ export default function IndustryImpactSection() {
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
                             className={cn(
-                                "relative px-8 md:px-12 py-4 md:py-6 rounded-full flex items-center justify-center transition-all duration-500 border min-w-[200px] md:min-w-[240px] h-[80px] md:h-[100px]",
+                                "relative px-8 md:px-12 py-4 md:py-6 rounded-full flex items-center justify-center transition-all duration-500 border min-w-[200px] md:min-w-[240px] h-[72px] md:h-[90px]",
                                 activeHotel.id === hotel.id
                                     ? "bg-[#F7F5F1] border-[#0752A0]/20 shadow-[0_20px_40px_rgba(7,82,160,0.12)] grayscale-0 opacity-100"
                                     : "bg-white border-slate-100 hover:border-slate-200 shadow-[0_4px_20px_rgba(0,0,0,0.03)] grayscale opacity-60 hover:opacity-100 hover:grayscale-0"
@@ -121,7 +121,7 @@ export default function IndustryImpactSection() {
                             <img
                                 src={hotel.logo}
                                 alt={t(hotel.nameKey as any)}
-                                className="w-[45%] md:w-[50%] h-auto object-contain relative z-10 mix-blend-multiply"
+                                className="w-[32%] md:w-[38%] h-auto object-contain relative z-10"
                             />
                             {activeHotel.id === hotel.id && (
                                 <motion.div
