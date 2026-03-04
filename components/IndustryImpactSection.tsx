@@ -109,10 +109,10 @@ export default function IndustryImpactSection() {
                         <motion.button
                             key={hotel.id}
                             onClick={() => setActiveHotel(hotel)}
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
                             className={cn(
-                                "relative px-8 md:px-12 py-4 md:py-6 rounded-full flex items-center justify-center transition-all duration-500 border min-w-[200px] md:min-w-[240px] h-[72px] md:h-[90px]",
+                                "relative w-24 h-24 md:w-32 md:h-32 rounded-full flex items-center justify-center transition-all duration-500 border overflow-hidden",
                                 activeHotel.id === hotel.id
                                     ? "bg-[#F7F5F1] border-[#0752A0]/20 shadow-[0_20px_40px_rgba(7,82,160,0.12)] grayscale-0 opacity-100"
                                     : "bg-white border-slate-100 hover:border-slate-200 shadow-[0_4px_20px_rgba(0,0,0,0.03)] grayscale opacity-60 hover:opacity-100 hover:grayscale-0"
@@ -121,12 +121,12 @@ export default function IndustryImpactSection() {
                             <img
                                 src={hotel.logo}
                                 alt={t(hotel.nameKey as any)}
-                                className="w-[32%] md:w-[38%] h-auto object-contain relative z-10"
+                                className="w-[50%] md:w-[60%] h-auto object-contain relative z-10 mix-blend-multiply"
                             />
                             {activeHotel.id === hotel.id && (
                                 <motion.div
                                     layoutId="active-pill-shadow"
-                                    className="absolute inset-0 rounded-full bg-gradient-to-b from-white/50 to-transparent pointer-events-none"
+                                    className="absolute inset-0 rounded-full bg-gradient-to-b from-white/20 to-transparent pointer-events-none"
                                 />
                             )}
                         </motion.button>
