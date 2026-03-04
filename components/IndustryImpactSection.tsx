@@ -104,25 +104,31 @@ export default function IndustryImpactSection() {
                 </div>
 
                 {/* Logo Navigation */}
-                <div className="flex flex-wrap justify-center gap-4 md:gap-8 mb-16 lg:mb-24">
+                <div className="flex flex-wrap justify-center gap-4 md:gap-6 mb-16 lg:mb-24">
                     {hotelConfig.map((hotel) => (
                         <motion.button
                             key={hotel.id}
                             onClick={() => setActiveHotel(hotel)}
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
                             className={cn(
-                                "p-4 md:p-6 rounded-2xl flex items-center justify-center transition-all duration-300 border-2 grayscale hover:grayscale-0",
+                                "relative px-8 md:px-12 py-4 md:py-5 rounded-full flex items-center justify-center transition-all duration-500 border min-w-[160px] md:min-w-[200px]",
                                 activeHotel.id === hotel.id
-                                    ? "bg-slate-50 border-primary grayscale-0 shadow-lg shadow-primary/5 opacity-100"
-                                    : "bg-white border-transparent hover:bg-slate-50/50 opacity-50 hover:opacity-100"
+                                    ? "bg-[#F7F5F1] border-[#0752A0]/20 shadow-[0_20px_40px_rgba(7,82,160,0.12)] grayscale-0 opacity-100"
+                                    : "bg-white border-slate-100 hover:border-slate-200 shadow-[0_4px_20px_rgba(0,0,0,0.03)] grayscale opacity-60 hover:opacity-100 hover:grayscale-0"
                             )}
                         >
                             <img
                                 src={hotel.logo}
                                 alt={t(hotel.nameKey as any)}
-                                className="h-8 md:h-12 w-auto object-contain"
+                                className="h-6 md:h-8 w-auto object-contain relative z-10"
                             />
+                            {activeHotel.id === hotel.id && (
+                                <motion.div
+                                    layoutId="active-pill-shadow"
+                                    className="absolute inset-0 rounded-full bg-gradient-to-b from-white/50 to-transparent pointer-events-none"
+                                />
+                            )}
                         </motion.button>
                     ))}
                 </div>
