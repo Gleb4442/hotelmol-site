@@ -36,7 +36,7 @@ const hotelConfig: HotelData[] = [
     {
         id: "hilton",
         nameKey: "industryImpact.hilton.name",
-        logo: "/assets/hilton-logo.svg",
+        logo: "/assets/neutral/hilton.png",
         sections: [
             { key: "scale", icon: Building2 },
             { key: "results", icon: CheckCircle2 },
@@ -48,7 +48,7 @@ const hotelConfig: HotelData[] = [
     {
         id: "marriott",
         nameKey: "industryImpact.marriott.name",
-        logo: "/assets/marriott-logo.png",
+        logo: "/assets/neutral/marriott.png",
         sections: [
             { key: "scale", icon: Building2 },
             { key: "regional", icon: Globe },
@@ -60,7 +60,7 @@ const hotelConfig: HotelData[] = [
     {
         id: "hyatt",
         nameKey: "industryImpact.hyatt.name",
-        logo: "/assets/hyatt-logo.png",
+        logo: "/assets/neutral/hyatt.png",
         sections: [
             { key: "scale", icon: Building2 },
             { key: "influence", icon: TrendingUp },
@@ -72,7 +72,7 @@ const hotelConfig: HotelData[] = [
     {
         id: "hyattInclusive",
         nameKey: "industryImpact.hyattInclusive.name",
-        logo: "/assets/hyatt-logo.png", // Reusing Hyatt logo
+        logo: "/assets/neutral/hyatt.png", // Reusing Hyatt logo
         sections: [
             { key: "adaptation", icon: Building2 },
             { key: "results", icon: Wallet },
@@ -82,7 +82,7 @@ const hotelConfig: HotelData[] = [
     {
         id: "accor",
         nameKey: "industryImpact.accor.name",
-        logo: "/assets/accor-logo.png",
+        logo: "/assets/neutral/accor.png",
         sections: [
             { key: "scale", icon: Building2 },
             { key: "financials", icon: Wallet },
@@ -94,7 +94,7 @@ const hotelConfig: HotelData[] = [
     {
         id: "fourSeasons",
         nameKey: "industryImpact.fourSeasons.name",
-        logo: "/assets/fourseasons-logo.png",
+        logo: "/assets/neutral/fourseasons.png",
         sections: [
             { key: "app", icon: Smartphone },
             { key: "features", icon: Zap },
@@ -143,8 +143,8 @@ export default function IndustryImpactSection() {
                             className={cn(
                                 "p-4 md:p-6 rounded-2xl flex items-center justify-center transition-all duration-300 border-2 grayscale hover:grayscale-0",
                                 activeHotel.id === hotel.id
-                                    ? "bg-slate-50 border-primary grayscale-0 shadow-lg shadow-primary/5"
-                                    : "bg-white border-transparent hover:bg-slate-50/50"
+                                    ? "bg-slate-50 border-primary grayscale-0 shadow-lg shadow-primary/5 opacity-100"
+                                    : "bg-white border-transparent hover:bg-slate-50/50 opacity-50 hover:opacity-100"
                             )}
                         >
                             <img
