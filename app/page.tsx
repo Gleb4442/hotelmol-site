@@ -6,6 +6,7 @@ export const dynamic = 'force-static';
 import Hero from "@/components/Hero";
 import HowRoomieWorks from "@/components/HowRoomieWorks";
 import IntegrationTicker from "@/components/IntegrationTicker";
+import IndustryImpactSection from "@/components/IndustryImpactSection";
 import HotelQRBenefits from "@/components/HotelQRBenefits";
 import ValueProposition from "@/components/ValueProposition";
 import AIDashboardSection from "@/components/AIDashboardSection";
@@ -29,6 +30,7 @@ export default function Home() {
             <LLMSummary />
             <HowRoomieWorks />
             <IntegrationTicker />
+            <IndustryImpactSection />
             <HotelQRBenefits />
             <ValueProposition />
             <AIDashboardSection />
