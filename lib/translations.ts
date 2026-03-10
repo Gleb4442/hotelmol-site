@@ -22,6 +22,17 @@ const translationsBase = {
     "aiWidget.thinking": "Agent is thinking...",
     "aiWidget.inputPlaceholder": "Type your message...",
 
+    // Onboarding
+    "onboarding.welcome": "Hi! I am Roomie, an AI agent for hoteliers and travelers. One question and we'll continue.",
+    "onboarding.role.guest": "Guest",
+    "onboarding.role.manager": "Manager",
+    "onboarding.role.marketer": "Marketer",
+    "onboarding.role.owner": "Owner",
+    "onboarding.role.company": "Company",
+    "onboarding.skip": "Skip",
+    "onboarding.whoAreYou": "YOU:",
+    "onboarding.agentName": "Roomie AI Agent",
+
     "button.talkToHuman": "Talk to a human",
     "contact.bookVideoCall": "Book a free Video Call",
     "button.bookWebCall": "Talk to a Human",
@@ -884,6 +895,17 @@ const translationsBase = {
     "aiWidget.thinking": "Агент думает...",
     "aiWidget.inputPlaceholder": "Введите сообщение...",
 
+    // Onboarding
+    "onboarding.welcome": "Привет! Я Roomie, AI-агент для отельеров и путешественников. Один вопрос и продолжим.",
+    "onboarding.role.guest": "Гость",
+    "onboarding.role.manager": "Управляющий",
+    "onboarding.role.marketer": "Маркетолог",
+    "onboarding.role.owner": "Владелец",
+    "onboarding.role.company": "Компания",
+    "onboarding.skip": "Пропустить",
+    "onboarding.whoAreYou": "ВЫ:",
+    "onboarding.agentName": "ИИ-агент Roomie",
+
     // Home Hero
     "home.hero.badge": "Нам доверяют более 500 отелей по всему миру",
     "home.hero.title": "ИИ, который",
@@ -1679,6 +1701,17 @@ const translationsBase = {
     "aiWidget.thinking": "Агент думає...",
     "aiWidget.inputPlaceholder": "Введіть повідомлення...",
 
+    // Onboarding
+    "onboarding.welcome": "Привіт! Я Roomie, AI-агент для готельєрів та мандрівників. Одне запитання і продовжимо.",
+    "onboarding.role.guest": "Гість",
+    "onboarding.role.manager": "Управляючий",
+    "onboarding.role.marketer": "Маркетолог",
+    "onboarding.role.owner": "Власник",
+    "onboarding.role.company": "Компанія",
+    "onboarding.skip": "Пропустити",
+    "onboarding.whoAreYou": "ВИ:",
+    "onboarding.agentName": "ІІ-агент Roomie",
+
     // Home Hero
     "home.hero.badge": "Нам довіряють понад 500 готелів по всьому світу",
     "home.hero.title": "ШІ, який",
@@ -2447,6 +2480,17 @@ const translationsBase = {
     "aiWidget.headerTitle": "Asystent HotelMol",
     "aiWidget.inputPlaceholder": "Zadaj pytanie...",
     "aiWidget.welcome": "Cześć! W czym mogę Ci dzisiaj pomóc?",
+
+    // Onboarding
+    "onboarding.welcome": "Cześć! Jestem Roomie, agent AI dla hotelarzy i podróżnych. Jedno pytanie i kontynuujemy.",
+    "onboarding.role.guest": "Gość",
+    "onboarding.role.manager": "Menedżer",
+    "onboarding.role.marketer": "Marketer",
+    "onboarding.role.owner": "Właściciel",
+    "onboarding.role.company": "Firma",
+    "onboarding.skip": "Pomiń",
+    "onboarding.whoAreYou": "TY:",
+    "onboarding.agentName": "Agent AI Roomie",
 
     // Home Hero
     "home.hero.badge": "Zaufany przez 500+ hoteli na całym świecie",
@@ -3339,6 +3383,56 @@ const translationsBase = {
     "common.getStarted": "Rozpocznij",
     "common.contactUs": "Skontaktuj się z nami",
     "about.aiReview.title": "Zobacz, co AI myśli o naszej firmie",
+  },
+
+  de: {
+    // Header
+    "nav.roomie": "Roomie",
+    "nav.solutions": "Lösungen",
+    "nav.caseStudies": "Fallbeispiele",
+    "nav.about": "Über uns",
+    "nav.contact": "Kontakt",
+    "aiWidget.welcome": "Hallo! Ich bin dein KI-Assistent. Wie kann ich dir helfen?",
+    "nav.hotelsInteract": "Hotels Interagieren",
+    "nav.comingSoon": "Demnächst",
+    "button.pricing": "Preise",
+    "button.tryDemo": "Demo ausprobieren",
+    "button.requestDemo": "Demo anfordern",
+    "button.askQuestion": "Frage stellen",
+    "menu.title": "MENÜ",
+    "aiWidget.button": "KI fragen",
+    "aiWidget.headerTitle": "hotelmol Assistent",
+    "aiWidget.thinking": "Agent denkt nach...",
+    "aiWidget.inputPlaceholder": "Schreibe deine Nachricht...",
+
+    // Onboarding
+    "onboarding.welcome": "Hallo! Ich bin Roomie, ein KI-Agent für Hoteliers und Reisende. Eine Frage und wir machen weiter.",
+    "onboarding.role.guest": "Gast",
+    "onboarding.role.manager": "Manager",
+    "onboarding.role.marketer": "Marketer",
+    "onboarding.role.owner": "Eigentümer",
+    "onboarding.role.company": "Unternehmen",
+    "onboarding.skip": "Überspringen",
+    "onboarding.whoAreYou": "SIE:",
+    "onboarding.agentName": "Roomie KI-Agent",
+
+    "button.talkToHuman": "Mit einem Menschen sprechen",
+    "contact.bookVideoCall": "Kostenlosen Videoanruf buchen",
+    "button.bookWebCall": "Mit einem Menschen sprechen",
+    "text.callFree": "Dieser Anruf ist absolut kostenlos",
+
+    // Home Hero
+    "home.hero.badge": "Weltweit vertrauen mehr als 500 Hotels auf uns",
+    "home.hero.title": "KI, die",
+    "home.hero.titleAccent": "",
+    "home.hero.typewriterKeys": [
+      "zu Buchungen führt",
+      "den Durchschnittscheck erhöht",
+      "Ihre Zusatzleistungen verkauft",
+      "die Routine übernimmt"
+    ],
+    "home.hero.subtitle": "Menschen für Menschen, für alles andere gibt es Roomie KI",
+    "home.hero.watchDemo": "Demo ansehen",
   },
 } as const;
 

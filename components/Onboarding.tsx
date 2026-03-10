@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslation } from "@/lib/TranslationContext";
 import {
     Languages,
     ChevronRight,
@@ -13,20 +14,30 @@ import {
     Handshake
 } from "lucide-react";
 
-const roles = [
-    { id: "guest", label: "Гость", icon: User },
-    { id: "manager", label: "Управляющий", icon: ShieldCheck },
-    { id: "marketer", label: "Маркетолог", icon: TrendingUp },
-    { id: "owner", label: "Владелец", icon: Building2 },
-    { id: "company", label: "Компания", icon: Handshake },
-];
-
-const fullText = "Привет! Я Roomie, AI-агент для отельеров и путешественников. Один вопрос и продолжим.";
-
 export default function Onboarding() {
+    const { t, language, setLanguage } = useTranslation();
     const [isVisible, setIsVisible] = useState(false);
     const [displayedText, setDisplayedText] = useState("");
     const [isTypingComplete, setIsTypingComplete] = useState(false);
+    const [isLangOpen, setIsLangOpen] = useState(false);
+
+    const languages = [
+        { code: "en", label: "English" },
+        { code: "ru", label: "Русский" },
+        { code: "ua", label: "Українська" },
+        { code: "pl", label: "Polski" },
+        { code: "de", label: "Deutsch" },
+    ] as const;
+
+    const roles = [
+        { id: "guest", label: t("onboarding.role.guest"), icon: User },
+        { id: "manager", label: t("onboarding.role.manager"), icon: ShieldCheck },
+        { id: "marketer", label: t("onboarding.role.marketer"), icon: TrendingUp },
+        { id: "owner", label: t("onboarding.role.owner"), icon: Building2 },
+        { id: "company", label: t("onboarding.role.company"), icon: Handshake },
+    ];
+
+    const fullText = t("onboarding.welcome");
 
     useEffect(() => {
         const hasCompleted = localStorage.getItem("onboarding_completed");
@@ -40,7 +51,7 @@ export default function Onboarding() {
 
         let index = 0;
         const interval = setInterval(() => {
-            if (index < fullText.length) {
+            if (index < (fullText?.length || 0)) {
                 setDisplayedText(fullText.slice(0, index + 1));
                 index++;
             } else {
@@ -50,9 +61,30 @@ export default function Onboarding() {
         }, 30);
 
         return () => clearInterval(interval);
-    }, [isVisible]);
+    }, [isVisible, fullText]);
 
-    const handleComplete = () => {
+    const trackOnboarding = async (roleId: string, isSkip: boolean = false) => {
+        try {
+            const role = roles.find(r => r.id === roleId)?.label || roleId;
+            await fetch("/api/analytics", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    role,
+                    language,
+                    userAgent: navigator.userAgent,
+                    referrer: document.referrer,
+                    path: window.location.pathname,
+                    isSkip
+                }),
+            });
+        } catch (e) {
+            console.error("Failed to track onboarding", e);
+        }
+    };
+
+    const handleComplete = (roleId: string, isSkip: boolean = false) => {
+        trackOnboarding(roleId, isSkip);
         localStorage.setItem("onboarding_completed", "true");
         setIsVisible(false);
     };
@@ -76,15 +108,54 @@ export default function Onboarding() {
                 </div>
 
                 {/* Header */}
-                <header className="relative z-50 flex items-center justify-end px-8 py-6 max-w-[1440px] mx-auto space-x-6">
-                    <button className="flex items-center justify-center w-10 h-10 rounded-full bg-white/70 backdrop-blur-2xl border border-white/80 shadow-sm hover:bg-white transition-all group">
-                        <Languages className="w-5 h-5 text-slate-600 group-hover:text-blue-700 transition-colors" />
-                    </button>
+                <header className="relative z-[110] flex items-center justify-end px-8 py-6 max-w-[1440px] mx-auto space-x-6">
+                    <div className="relative">
+                        <button
+                            onClick={() => setIsLangOpen(!isLangOpen)}
+                            className="flex items-center justify-center w-10 h-10 rounded-full bg-white/70 backdrop-blur-2xl border border-white/80 shadow-sm hover:bg-white transition-all group"
+                        >
+                            <Languages className="w-5 h-5 text-slate-600 group-hover:text-blue-700 transition-colors" />
+                        </button>
+                        
+                        <AnimatePresence>
+                            {isLangOpen && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                                    className="absolute right-0 mt-3 w-40 bg-white/90 backdrop-blur-3xl border border-white/90 rounded-2xl shadow-2xl shadow-blue-900/10 overflow-hidden"
+                                >
+                                    <div className="py-2">
+                                        {languages.map((lang) => (
+                                            <button
+                                                key={lang.code}
+                                                onClick={() => {
+                                                    setLanguage(lang.code as any);
+                                                    setIsLangOpen(false);
+                                                    setDisplayedText("");
+                                                    setIsTypingComplete(false);
+                                                }}
+                                                className={`w-full px-5 py-3 text-left text-sm font-bold transition-colors flex items-center justify-between ${
+                                                    language === lang.code 
+                                                    ? "text-blue-700 bg-blue-50/50" 
+                                                    : "text-slate-600 hover:bg-blue-50/30 hover:text-blue-700"
+                                                }`}
+                                            >
+                                                {lang.label}
+                                                {language === lang.code && <div className="w-1.5 h-1.5 rounded-full bg-blue-700" />}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                    </div>
+
                     <button
-                        onClick={handleComplete}
+                        onClick={() => handleComplete("skip", true)}
                         className="text-[10px] font-bold text-slate-500 hover:text-blue-700 transition-colors uppercase tracking-[0.15em] flex items-center group bg-white/70 backdrop-blur-2xl border border-white/80 shadow-sm px-5 py-2.5 rounded-full"
                     >
-                        Пропустить
+                        {t("onboarding.skip")}
                         <ChevronRight className="w-4 h-4 ml-1.5 group-hover:translate-x-0.5 transition-transform" />
                     </button>
                 </header>
@@ -109,7 +180,7 @@ export default function Onboarding() {
                                         </div>
                                     </div>
                                     <div className="space-y-3">
-                                        <h2 className="text-[10px] font-black uppercase tracking-[0.4em] text-blue-900/70">ИИ-агент Roomie</h2>
+                                        <h2 className="text-[10px] font-black uppercase tracking-[0.4em] text-blue-900/70">{t("onboarding.agentName")}</h2>
                                         <p className="text-xl md:text-2xl leading-relaxed font-semibold text-slate-800">
                                             {displayedText.split("Roomie").map((part, i, arr) => (
                                                 <span key={i}>
@@ -133,7 +204,7 @@ export default function Onboarding() {
                         >
                             <div className="flex items-center justify-center space-x-8">
                                 <div className="h-[1px] w-12 bg-slate-200"></div>
-                                <span className="text-xl font-black text-slate-900 tracking-[0.6em] uppercase">Вы:</span>
+                                <span className="text-xl font-black text-slate-900 tracking-[0.6em] uppercase">{t("onboarding.whoAreYou")}</span>
                                 <div className="h-[1px] w-12 bg-slate-200"></div>
                             </div>
 
@@ -141,7 +212,7 @@ export default function Onboarding() {
                                 {roles.map((role) => (
                                     <button
                                         key={role.id}
-                                        onClick={handleComplete}
+                                        onClick={() => handleComplete(role.id)}
                                         className="group p-8 md:p-10 rounded-[1.5rem] bg-white/40 backdrop-blur-2xl hover:bg-white transition-all duration-300 border border-white/60 hover:shadow-xl hover:shadow-blue-900/5 hover:-translate-y-1.5 flex flex-col items-center space-y-6"
                                     >
                                         <div className="w-20 h-20 rounded-2xl bg-white shadow-sm flex items-center justify-center group-hover:bg-[#044B93] group-hover:shadow-blue-900/20 transition-all duration-300">
