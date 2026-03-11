@@ -1,17 +1,26 @@
 import { NextResponse } from "next/server";
 
+export function formatTelegramMessage(data: any, geoInfo: string, ip: string) {
+  const { role, language, userAgent, referrer, path, isSkip } = data;
+  const emoji = isSkip ? "⏩" : "👤";
+  const status = isSkip ? "Пропустил выбор" : `Выбрал роль: *${role}*`;
+  
+  return `
+🚀 *Новый визит на Hotelmol!*
+
+${emoji} *Статус:* ${status}
+🌐 *Язык:* ${language.toUpperCase()}
+🌍 *Гео:* ${geoInfo}
+📱 *Устройство:* ${userAgent}
+🔗 *Источник:* ${referrer || "Прямой заход"}
+📍 *Страница:* ${path}
+🔑 *IP:* \`${ip}\`
+  `.trim();
+}
+
 export async function POST(req: Request) {
   try {
     const data = await req.json();
-    const { 
-      role, 
-      language, 
-      userAgent, 
-      referrer, 
-      path,
-      isSkip 
-    } = data;
-
     const token = process.env.TELEGRAM_BOT_TOKEN;
     const chatId = process.env.TELEGRAM_CHAT_ID;
 
@@ -20,8 +29,6 @@ export async function POST(req: Request) {
       return NextResponse.json({ success: false }, { status: 500 });
     }
 
-    // Attempt to get IP and Geo data
-    // Using x-forwarded-for or remoteAddress
     const forwarded = req.headers.get("x-forwarded-for");
     const ip = forwarded ? forwarded.split(",")[0] : "Unknown";
     
@@ -38,23 +45,8 @@ export async function POST(req: Request) {
       console.error("Geo lookup failed", e);
     }
 
-    // Format Message
-    const emoji = isSkip ? "⏩" : "👤";
-    const status = isSkip ? "Пропустил выбор" : `Выбрал роль: *${role}*`;
-    
-    const message = `
-🚀 *Новый визит на Hotelmol!*
+    const message = formatTelegramMessage(data, geoInfo, ip);
 
-${emoji} *Статус:* ${status}
-🌐 *Язык:* ${language.toUpperCase()}
-🌍 *Гео:* ${geoInfo}
-📱 *Устройство:* ${userAgent}
-🔗 *Источник:* ${referrer || "Прямой заход"}
-📍 *Страница:* ${path}
-🔑 *IP:* \`${ip}\`
-    `.trim();
-
-    // Send to Telegram
     const url = `https://api.telegram.org/bot${token}/sendMessage`;
     const response = await fetch(url, {
       method: "POST",
