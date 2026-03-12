@@ -69,24 +69,34 @@ export default function ProblemSection() {
                   key={index}
                   initial={false}
                   animate={{
-                    x: position * 200, // Distance between cards
-                    scale: isActive ? 1.15 : 0.85,
+                    x: position * 220, 
+                    scale: isActive ? 1.2 : 0.85,
                     zIndex: isActive ? 20 : 10,
-                    opacity: isActive ? 1 : 0.5,
-                    backgroundColor: isActive ? "#EF4444" : "#FFFFFF",
-                    color: isActive ? "#FFFFFF" : "#1F2937",
+                    opacity: isActive ? 1 : 0.4,
+                    background: isActive 
+                      ? "linear-gradient(135deg, rgba(239, 68, 68, 0.98) 0%, rgba(220, 38, 38, 0.95) 100%)" 
+                      : "rgba(255, 255, 255, 0.7)",
+                    color: isActive ? "#FFFFFF" : "#475569",
+                    boxShadow: isActive 
+                      ? "0 30px 60px -12px rgba(220, 38, 38, 0.35), inset 0 0 0 1px rgba(255, 255, 255, 0.25)" 
+                      : "0 10px 25px -5px rgba(0, 0, 0, 0.05), inset 0 0 0 1px rgba(255, 255, 255, 0.3)",
                   }}
                   transition={{ 
-                    duration: 0.6, 
+                    duration: 0.7, 
                     ease: [0.32, 0.72, 0, 1] 
                   }}
-                  className={`absolute w-full max-w-[340px] p-10 rounded-[2.5rem] shadow-2xl border border-black/5 flex flex-col items-center text-center cursor-pointer`}
+                  className={`absolute w-full max-w-[340px] p-10 rounded-[2.5rem] backdrop-blur-xl border border-white/40 flex flex-col items-center text-center cursor-pointer overflow-hidden group`}
                   onClick={() => setActiveIndex(index)}
                 >
-                  <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-colors duration-500 ${isActive ? "bg-white/20" : "bg-red-50"}`}>
-                    <problem.icon className={`w-8 h-8 ${isActive ? "text-white" : "text-red-500"}`} />
+                  {/* Subtle inner glow for active card */}
+                  {isActive && (
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent pointer-events-none" />
+                  )}
+                  
+                  <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-all duration-500 ${isActive ? "bg-white/20 shadow-inner" : "bg-red-500/10 shadow-sm"}`}>
+                    <problem.icon className={`w-8 h-8 transition-transform duration-500 group-hover:scale-110 ${isActive ? "text-white" : "text-red-500"}`} />
                   </div>
-                  <p className="text-xl lg:text-2xl font-serif font-bold leading-tight">
+                  <p className="text-xl lg:text-2xl font-serif font-bold leading-tight relative z-10">
                     {problem.text}
                   </p>
                 </motion.div>
