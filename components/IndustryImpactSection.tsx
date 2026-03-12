@@ -26,6 +26,7 @@ interface HotelData {
     id: string;
     nameKey: string;
     logo: string;
+    logoScale?: string;
     sections: {
         key: string;
         icon: any;
@@ -45,6 +46,7 @@ const hotelConfig: HotelData[] = [
         id: "marriott",
         nameKey: "industryImpact.marriott.name",
         logo: "/assets/neutral/marriott.png",
+        logoScale: "w-[75%] md:w-[85%]",
         sections: [
             { key: "metrics", icon: TrendingUp },
         ]
@@ -53,6 +55,7 @@ const hotelConfig: HotelData[] = [
         id: "hyatt",
         nameKey: "industryImpact.hyatt.name",
         logo: "/assets/neutral/hyatt.png",
+        logoScale: "w-[75%] md:w-[85%]",
         sections: [
             { key: "metrics", icon: TrendingUp },
         ]
@@ -69,6 +72,7 @@ const hotelConfig: HotelData[] = [
         id: "fourSeasons",
         nameKey: "industryImpact.fourSeasons.name",
         logo: "/assets/neutral/fourseasons.png",
+        logoScale: "w-[75%] md:w-[85%]",
         sections: [
             { key: "metrics", icon: TrendingUp },
         ]
@@ -104,15 +108,18 @@ export default function IndustryImpactSection() {
                 </div>
 
                 {/* Logo Navigation */}
-                <div className="flex flex-wrap justify-center gap-4 md:gap-6 mb-16 lg:mb-24">
-                    {hotelConfig.map((hotel) => (
+                <div className="grid grid-cols-6 md:flex md:flex-wrap justify-center gap-4 md:gap-6 mb-16 lg:mb-24">
+                    {hotelConfig.map((hotel, index) => (
                         <motion.button
                             key={hotel.id}
                             onClick={() => setActiveHotel(hotel)}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             className={cn(
-                                "relative w-20 h-20 md:w-28 md:h-28 rounded-full flex items-center justify-center transition-all duration-500 border overflow-hidden",
+                                "relative w-20 h-20 md:w-28 md:h-28 rounded-full flex items-center justify-center transition-all duration-500 border overflow-hidden mx-auto md:mx-0",
+                                // Forced 3-2 grid logic for mobile
+                                index < 3 ? "col-span-2" : "col-span-2",
+                                index === 3 ? "col-start-2" : "",
                                 activeHotel.id === hotel.id
                                     ? "bg-[#F7F5F1] border-[#0752A0]/20 shadow-[0_20px_40px_rgba(7,82,160,0.12)] opacity-100"
                                     : "bg-white border-slate-100 hover:border-slate-200 shadow-[0_4px_20px_rgba(0,0,0,0.03)] opacity-60 hover:opacity-100"
@@ -121,7 +128,10 @@ export default function IndustryImpactSection() {
                             <img
                                 src={hotel.logo}
                                 alt={t(hotel.nameKey as any)}
-                                className="w-[50%] md:w-[60%] h-auto object-contain relative z-10 mix-blend-multiply grayscale brightness-0 opacity-80"
+                                className={cn(
+                                    "h-auto object-contain relative z-10 mix-blend-multiply grayscale brightness-0 opacity-80",
+                                    hotel.logoScale || "w-[50%] md:w-[60%]"
+                                )}
                             />
                             {activeHotel.id === hotel.id && (
                                 <motion.div
