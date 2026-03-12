@@ -96,21 +96,21 @@ export default function HowRoomieWorks() {
   }, []);
 
   return (
-    <section className="py-16 md:py-24 lg:py-40">
+    <section className="py-12 md:py-20 lg:py-28">
       <div className="container mx-auto px-4">
         <div className="text-center mb-20">
 
-          <h2 className="font-serif text-[2.5625rem] sm:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold mb-5 tracking-tight">
             {t("home.howWorks.title")}
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             {t("home.howWorks.subtitle")}
           </p>
         </div>
 
         <div className="relative max-w-7xl mx-auto">
           {/* Progress Line */}
-          <div className="hidden lg:block absolute top-32 left-[10%] right-[10%] h-0.5 z-20">
+          <div className="hidden lg:block absolute top-24 left-[10%] right-[10%] h-0.5 z-20">
             <div className="h-full bg-gradient-to-r from-primary/20 via-primary/40 to-primary/20" />
 
             {/* Animated Ball */}
@@ -153,7 +153,7 @@ export default function HowRoomieWorks() {
                   className="relative flex flex-col items-center text-center group"
                   ref={(el) => { stepRefs.current[index] = el; }}
                 >
-                  <div className={`relative z-10 mb-6 lg:mb-12 flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-primary/80 text-primary-foreground shadow-xl transition-all duration-700 ${isActive ? 'shadow-[0_20px_50px_rgba(7,82,160,0.4)] ring-4 ring-primary/20' : 'group-hover:shadow-2xl'}`}>
+                  <div className={`relative z-10 mb-4 lg:mb-8 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-primary/80 text-primary-foreground shadow-xl transition-all duration-700 ${isActive ? 'shadow-[0_20px_50px_rgba(7,82,160,0.4)] ring-4 ring-primary/20' : 'group-hover:shadow-2xl'}`}>
                     <Icon className={`h-9 w-9 transition-all duration-700 ${isActive ? 'scale-110' : ''}`} />
                     <AnimatePresence>
                       {isActive && (
@@ -173,7 +173,7 @@ export default function HowRoomieWorks() {
                     >
                       {t("home.howWorks.step")} {index + 1}
                     </motion.div>
-                    <h3 className="font-semibold text-lg lg:text-xl">{step.title}</h3>
+                    <h3 className="font-semibold text-base lg:text-lg">{step.title}</h3>
                     <p className="text-sm text-muted-foreground leading-relaxed transition-opacity duration-500">{step.description}</p>
                   </div>
                 </motion.div>

@@ -75,7 +75,7 @@ const NavPill = ({ navigation, pathname }: { navigation: Array<{ name: string; h
           <Link
             key={item.name}
             href={item.href}
-            className={`relative px-2 lg:px-3 xl:px-5 py-2.5 rounded-full text-sm xl:text-base font-medium transition-all duration-300 flex items-center gap-2
+            className={`relative px-2 lg:px-2.5 xl:px-4 py-2 rounded-full text-sm xl:text-[15px] font-medium transition-all duration-300 flex items-center gap-2
               ${isActive
                 ? "text-white"
                 : "text-slate-600 hover:text-[#0752A0] hover:bg-slate-100/50"
@@ -206,16 +206,6 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
             </a>
           </Button>
 
-          <Button
-            size="default"
-            asChild
-            className="hidden md:inline-flex rounded-full bg-[#0752A0] hover:bg-[#064080] shadow-md hover:shadow-lg transition-all"
-            data-testid="button-try-demo"
-          >
-            <a href="https://demo.hotelmol.com" target="_blank" rel="noopener noreferrer">
-              {t("button.tryDemo")}
-            </a>
-          </Button>
 
           <div className="relative hidden lg:inline-flex">
             <Button

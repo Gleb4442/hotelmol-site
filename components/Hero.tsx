@@ -71,13 +71,13 @@ export default function Hero() {
 
   return (
     <>
-      <section ref={heroRef} className="relative min-h-[600px] sm:min-h-[800px] lg:min-h-[calc(85vh+100px)] flex items-start lg:items-center justify-center overflow-hidden">
+      <section ref={heroRef} className="relative min-h-[500px] sm:min-h-[700px] lg:min-h-[calc(80vh+80px)] flex items-start lg:items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/90 to-primary/80" />
 
 
-        <div className="relative z-10 container mx-auto px-6 pt-[144px] pb-24 lg:py-32">
+        <div className="relative z-10 container mx-auto px-6 pt-32 pb-20 lg:py-24">
           <div className="max-w-5xl mx-auto text-center">
-            <h1 className="font-serif text-[2.75rem] sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter sm:tracking-tight text-white mb-6 leading-tight pl-[3px] sm:pl-0 pb-2" style={{ marginLeft: "-8px" }}>
+            <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-[4.75rem] font-bold tracking-tighter sm:tracking-tight text-white mb-6 leading-tight pl-[3px] sm:pl-0 pb-2" style={{ marginLeft: "-8px" }}>
               <span className="inline-block ml-[-7px] sm:ml-[-10px]">
                 {t("home.hero.title")}&nbsp;
               </span>
@@ -88,7 +88,7 @@ export default function Hero() {
               </span>
             </h1>
 
-            <p className="text-xl sm:text-2xl text-white/95 max-w-3xl mx-auto mb-12 leading-relaxed font-light">
+            <p className="text-lg sm:text-xl text-white/95 max-w-3xl mx-auto mb-10 leading-relaxed font-light">
               {t("home.hero.subtitle")}
             </p>
 
@@ -96,7 +96,7 @@ export default function Hero() {
               <Button
                 size="lg"
                 asChild
-                className="text-base px-8 h-14 bg-white text-primary hover:bg-white/90 shadow-xl rounded-2xl"
+                className="text-base px-7 h-12 bg-white text-primary hover:bg-white/90 shadow-xl rounded-2xl"
                 data-testid="button-request-demo"
               >
                 <a href="https://cal.com/gleb.gosha/30min" target="_blank" rel="noopener noreferrer">
@@ -107,7 +107,7 @@ export default function Hero() {
               <Button
                 size="lg"
                 variant="ghost"
-                className="text-base px-8 h-14 backdrop-blur-md bg-white/5 border border-white/20 text-white hover:bg-white/10 rounded-2xl"
+                className="text-base px-7 h-12 backdrop-blur-md bg-white/5 border border-white/20 text-white hover:bg-white/10 rounded-2xl"
                 asChild
                 data-testid="button-watch-demo"
               >

@@ -89,8 +89,11 @@
   --shadow-lg: 0px 10px 15px -3px hsl(0 0% 7% / 0.10), 0px 4px 6px -4px hsl(0 0% 7% / 0.10);
   --shadow-xl: 0px 20px 25px -5px hsl(0 0% 7% / 0.10), 0px 8px 10px -6px hsl(0 0% 7% / 0.10);
   --shadow-2xl: 0px 25px 50px -12px hsl(0 0% 7% / 0.25);
-  --tracking-normal: 0em;
-  --spacing: 0.25rem;
+  --spacing: 0.225rem;
+}
+
+html {
+  font-size: 15px;
 }
 
 .dark {

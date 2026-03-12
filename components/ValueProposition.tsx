@@ -56,13 +56,13 @@ export default function ValueProposition() {
     const [activeTab, setActiveTab] = useState<string | null>(valueItems[0].id);
 
     return (
-        <section className="py-24 relative overflow-hidden bg-[#F7F6F2] dark:bg-zinc-950/50">
+        <section className="py-16 relative overflow-hidden bg-[#F7F6F2] dark:bg-zinc-950/50">
             <div className="container mx-auto px-4 relative z-10">
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-5xl font-bold text-zinc-900 dark:text-white mb-6">
+                    <h2 className="text-2xl md:text-4xl font-bold text-zinc-900 dark:text-white mb-5">
                         Какую ценность мы даем
                     </h2>
-                    <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
+                    <p className="text-base text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
                         Технологии, которые превращают расходы в инвестиции
                     </p>
                 </div>
@@ -78,14 +78,14 @@ export default function ValueProposition() {
                                 <button
                                     onClick={() => setActiveTab(isActive ? null : item.id)}
                                     className={cn(
-                                        "w-full flex items-center justify-between p-6 text-left transition-colors duration-200 focus:outline-none",
+                                        "w-full flex items-center justify-between p-5 text-left transition-colors duration-200 focus:outline-none",
                                         isActive
                                             ? "bg-white dark:bg-zinc-900"
                                             : "bg-white dark:bg-zinc-900 hover:bg-zinc-50 dark:hover:bg-zinc-800/50"
                                     )}
                                 >
                                     <span className={cn(
-                                        "text-lg transition-colors",
+                                        "text-base transition-colors",
                                         isActive
                                             ? "font-bold text-zinc-900 dark:text-zinc-100"
                                             : "font-semibold text-zinc-600 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-200"
@@ -111,16 +111,16 @@ export default function ValueProposition() {
                                             transition={{ duration: 0.3, ease: "easeInOut" }}
                                             className="overflow-hidden"
                                         >
-                                            <div className="bg-zinc-50 dark:bg-zinc-950/30 p-6 md:p-8 border-t border-zinc-100 dark:border-zinc-800">
+                                            <div className="bg-zinc-50 dark:bg-zinc-950/30 p-5 md:p-7 border-t border-zinc-100 dark:border-zinc-800">
                                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                                     {/* Logic Card */}
-                                                    <div className="bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-800 p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+                                                    <div className="bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-800 p-5 shadow-sm hover:shadow-md transition-shadow duration-300">
                                                         <div className="flex flex-col gap-4">
-                                                            <div className="w-12 h-12 rounded-full bg-blue-600 dark:bg-blue-500 shadow-lg shadow-blue-600/30 flex items-center justify-center">
-                                                                <div className="w-6 h-1 bg-white rounded-sm" />
+                                                            <div className="w-10 h-10 rounded-full bg-blue-600 dark:bg-blue-500 shadow-lg shadow-blue-600/30 flex items-center justify-center">
+                                                                <div className="w-5 h-1 bg-white rounded-sm" />
                                                             </div>
                                                             <div>
-                                                                <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 mb-2">Проблема</h3>
+                                                                <h3 className="text-base font-bold text-zinc-900 dark:text-zinc-100 mb-2">Проблема</h3>
                                                                 <p className="text-[15px] leading-relaxed text-zinc-600 dark:text-zinc-400">
                                                                     {item.logic}
                                                                 </p>
@@ -129,14 +129,14 @@ export default function ValueProposition() {
                                                     </div>
 
                                                     {/* Implementation Card */}
-                                                    <div className="bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-800 p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+                                                    <div className="bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-800 p-5 shadow-sm hover:shadow-md transition-shadow duration-300">
                                                         <div className="flex flex-col gap-4">
-                                                            <div className="w-12 h-12 rounded-full bg-blue-600 dark:bg-blue-500 shadow-lg shadow-blue-600/30 flex items-center justify-center relative">
-                                                                <div className="w-6 h-1 bg-white rounded-sm absolute" />
-                                                                <div className="h-6 w-1 bg-white rounded-sm absolute" />
+                                                            <div className="w-10 h-10 rounded-full bg-blue-600 dark:bg-blue-500 shadow-lg shadow-blue-600/30 flex items-center justify-center relative">
+                                                                <div className="w-5 h-1 bg-white rounded-sm absolute" />
+                                                                <div className="h-5 w-1 bg-white rounded-sm absolute" />
                                                             </div>
                                                             <div>
-                                                                <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 mb-2">Решение</h3>
+                                                                <h3 className="text-base font-bold text-zinc-900 dark:text-zinc-100 mb-2">Решение</h3>
                                                                 <p className="text-[15px] leading-relaxed text-zinc-600 dark:text-zinc-400">
                                                                     {item.implementation}
                                                                 </p>

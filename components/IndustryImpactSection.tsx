@@ -80,7 +80,7 @@ export default function IndustryImpactSection() {
     const [activeHotel, setActiveHotel] = useState<HotelData>(hotelConfig[0]);
 
     return (
-        <section className="py-20 md:py-32 bg-white overflow-hidden">
+        <section className="py-16 md:py-24 bg-white overflow-hidden">
             <div className="container mx-auto px-4">
                 {/* Header */}
                 <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
@@ -88,7 +88,7 @@ export default function IndustryImpactSection() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="font-serif text-3xl md:text-5xl font-bold tracking-tight mb-6"
+                        className="font-serif text-2xl md:text-4xl font-bold tracking-tight mb-5"
                     >
                         {t("industryImpact.title")}
                     </motion.h2>
@@ -97,7 +97,7 @@ export default function IndustryImpactSection() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="text-lg md:text-xl text-muted-foreground leading-relaxed"
+                        className="text-base md:text-lg text-muted-foreground leading-relaxed"
                     >
                         {t("industryImpact.subtitle")}
                     </motion.p>
@@ -112,16 +112,16 @@ export default function IndustryImpactSection() {
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             className={cn(
-                                "relative w-24 h-24 md:w-32 md:h-32 rounded-full flex items-center justify-center transition-all duration-500 border overflow-hidden",
+                                "relative w-20 h-20 md:w-28 md:h-28 rounded-full flex items-center justify-center transition-all duration-500 border overflow-hidden",
                                 activeHotel.id === hotel.id
-                                    ? "bg-[#F7F5F1] border-[#0752A0]/20 shadow-[0_20px_40px_rgba(7,82,160,0.12)] grayscale-0 opacity-100"
-                                    : "bg-white border-slate-100 hover:border-slate-200 shadow-[0_4px_20px_rgba(0,0,0,0.03)] grayscale opacity-60 hover:opacity-100 hover:grayscale-0"
+                                    ? "bg-[#F7F5F1] border-[#0752A0]/20 shadow-[0_20px_40px_rgba(7,82,160,0.12)] opacity-100"
+                                    : "bg-white border-slate-100 hover:border-slate-200 shadow-[0_4px_20px_rgba(0,0,0,0.03)] opacity-60 hover:opacity-100"
                             )}
                         >
                             <img
                                 src={hotel.logo}
                                 alt={t(hotel.nameKey as any)}
-                                className="w-[50%] md:w-[60%] h-auto object-contain relative z-10 mix-blend-multiply"
+                                className="w-[50%] md:w-[60%] h-auto object-contain relative z-10 mix-blend-multiply grayscale brightness-0 opacity-80"
                             />
                             {activeHotel.id === hotel.id && (
                                 <motion.div
@@ -144,7 +144,7 @@ export default function IndustryImpactSection() {
                             transition={{ duration: 0.4, ease: "easeInOut" }}
                             className="max-w-3xl mx-auto"
                         >
-                            <div className="bg-slate-50/50 rounded-[2.5rem] p-8 md:p-12 lg:p-16 border border-slate-100 shadow-sm">
+                            <div className="bg-slate-50/50 rounded-3xl p-7 md:p-10 lg:p-12 border border-slate-100 shadow-sm">
                                 {activeHotel.sections.map((section, idx) => {
                                     const title = t(`industryImpact.${activeHotel.id}.${section.key}.title` as any);
                                     const items = t(`industryImpact.${activeHotel.id}.${section.key}.items` as any) as unknown as string[];
@@ -161,7 +161,7 @@ export default function IndustryImpactSection() {
                                                 <div className="w-14 h-14 rounded-2xl bg-white shadow-md flex items-center justify-center text-primary border border-slate-100">
                                                     <Icon size={28} />
                                                 </div>
-                                                <h3 className="text-2xl md:text-3xl font-bold font-serif">{title}</h3>
+                                                <h3 className="text-xl md:text-2xl font-bold font-serif">{title}</h3>
                                             </div>
 
                                             <ul className="space-y-5">
@@ -174,7 +174,7 @@ export default function IndustryImpactSection() {
                                                         className="flex gap-4 text-slate-600 leading-relaxed group"
                                                     >
                                                         <div className="mt-2.5 w-2 h-2 rounded-full bg-primary/40 shrink-0 group-hover:bg-primary transition-colors" />
-                                                        <span className="text-lg md:text-xl font-medium text-slate-700">{item}</span>
+                                                        <span className="text-base md:text-lg font-medium text-slate-700">{item}</span>
                                                     </motion.li>
                                                 ))}
                                             </ul>

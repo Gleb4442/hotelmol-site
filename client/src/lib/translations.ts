@@ -230,6 +230,13 @@ export const translations = {
     "home.howWorks.title": "How Roomie Works",
     "home.howWorks.subtitle": "Roomie ensures a complete booking cycle",
     "home.howWorks.step": "Step",
+
+    // Home - Problem Section
+    "home.problem.title": "The Problem",
+    "home.problem.point1": "High Booking commissions",
+    "home.problem.point2": "Less than 15% repeat guests",
+    "home.problem.point3": "The hotel doesn't know its guest",
+
     "home.howWorks.step1.title": "Guest Question",
     "home.howWorks.step1.description": "Guest reaches out via website, Telegram, or WhatsApp with a question or request",
     "home.howWorks.step2.title": "AI Understanding",
@@ -1082,6 +1089,13 @@ export const translations = {
     "home.howWorks.title": "Как работает Roomie",
     "home.howWorks.subtitle": "Roomie обеспечивает полный цикл бронирования",
     "home.howWorks.step": "Шаг",
+
+    // Home - Problem Section
+    "home.problem.title": "Проблема",
+    "home.problem.point1": "Высокие комиссии Booking",
+    "home.problem.point2": "менее 15% постоянных гостей",
+    "home.problem.point3": "Отель не знает своего гостя",
+
     "home.howWorks.step1.title": "Точка входа",
     "home.howWorks.step1.description": "Происходит через SMS оповещение, QR-код в номере, Instagram, или чат на сайте вашего отеля",
     "home.howWorks.step2.title": "Понимание ИИ",
@@ -1777,6 +1791,13 @@ export const translations = {
     "home.howWorks.title": "Як працює Roomie",
     "home.howWorks.subtitle": "Roomie забезпечує повний цикл бронювання",
     "home.howWorks.step": "Крок",
+
+    // Home - Problem Section
+    "home.problem.title": "Проблема",
+    "home.problem.point1": "Високі комісії Booking",
+    "home.problem.point2": "менше 15% постійних гостей",
+    "home.problem.point3": "Готель не знає свого гостя",
+
     "home.howWorks.step1.title": "Питання гостя",
     "home.howWorks.step1.description": "Гість звертається через сайт, Telegram або WhatsApp з питанням або запитом",
     "home.howWorks.step2.title": "Розуміння ШІ",
@@ -2471,6 +2492,13 @@ export const translations = {
     "home.howWorks.title": "Jak działa Roomie",
     "home.howWorks.subtitle": "Roomie zapewnia pełny cykl rezerwacji",
     "home.howWorks.step": "Krok",
+
+    // Home - Problem Section
+    "home.problem.title": "Problem",
+    "home.problem.point1": "Wysokie prowizje Booking",
+    "home.problem.point2": "Mniej niż 15% stałych gości",
+    "home.problem.point3": "Hotel nie zna swojego gościa",
+
     "home.howWorks.step1.title": "Pytanie gościa",
     "home.howWorks.step1.description": "Gość kontaktuje się przez stronę internetową, Telegram lub WhatsApp z pytaniem lub prośbą",
     "home.howWorks.step2.title": "Zrozumienie przez AI",

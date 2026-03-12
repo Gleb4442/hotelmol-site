@@ -11,7 +11,7 @@ export default function AIDashboardSection() {
 
   return (
     <section
-      className="py-16 md:py-20 lg:py-28 bg-background"
+      className="py-12 md:py-16 lg:py-20 bg-background"
       data-testid="section-ai-dashboard"
     >
       <div className="container mx-auto px-4">
@@ -22,10 +22,10 @@ export default function AIDashboardSection() {
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="font-serif text-4xl lg:text-5xl font-bold text-foreground mb-4">
+          <h2 className="font-serif text-3xl lg:text-4xl font-bold text-foreground mb-4">
             {t("home.aiDashboard.title")}
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-base text-muted-foreground max-w-3xl mx-auto">
             {t("home.aiDashboard.description")}
           </p>
         </motion.div>
@@ -121,17 +121,17 @@ function BookingsWidget() {
   }, [isInView, startAnimation]);
 
   return (
-    <Card ref={widgetRef} className="h-full flex flex-col p-6 bg-card border" data-testid="widget-bookings">
+    <Card ref={widgetRef} className="h-full flex flex-col p-5 bg-card border" data-testid="widget-bookings">
       <div className="flex items-center gap-3 mb-6">
         <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
           <Calendar className="h-5 w-5 text-primary-foreground" />
         </div>
-        <h3 className="text-lg font-semibold text-foreground">{t("home.aiDashboard.bookings.title")}</h3>
+        <h3 className="text-base font-semibold text-foreground">{t("home.aiDashboard.bookings.title")}</h3>
       </div>
 
       <div className="flex-1 flex flex-col">
         <div className="text-center mb-6">
-          <span className="text-5xl font-bold text-primary" data-testid="bookings-count">
+          <span className="text-4xl font-bold text-primary" data-testid="bookings-count">
             {displayCount}
           </span>
           <p className="text-sm text-muted-foreground mt-1">{t("home.aiDashboard.bookings.thisMonth")}</p>
@@ -174,12 +174,12 @@ function UpsellsWidget() {
   ];
 
   return (
-    <Card ref={widgetRef} className="h-full flex flex-col p-6 bg-card border" data-testid="widget-upsells">
+    <Card ref={widgetRef} className="h-full flex flex-col p-5 bg-card border" data-testid="widget-upsells">
       <div className="flex items-center gap-3 mb-6">
         <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
           <DollarSign className="h-5 w-5 text-primary-foreground" />
         </div>
-        <h3 className="text-lg font-semibold text-foreground">{t("home.aiDashboard.upsells.title")}</h3>
+        <h3 className="text-base font-semibold text-foreground">{t("home.aiDashboard.upsells.title")}</h3>
       </div>
 
       <div className="space-y-3 flex-1">
@@ -228,7 +228,7 @@ function ReviewsWidget() {
   const widgetRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(widgetRef, { once: true, amount: 0.3 });
   const percentage = 92;
-  const radius = 50;
+  const radius = 40;
   const circumference = 2 * Math.PI * radius;
 
   const [displayCount, setDisplayCount] = useState(0);
@@ -257,21 +257,21 @@ function ReviewsWidget() {
   }, [isInView, circumference]);
 
   return (
-    <Card ref={widgetRef} className="h-full flex flex-col p-6 bg-card border" data-testid="widget-reviews">
-      <div className="flex items-center gap-3 mb-6">
-        <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-          <Star className="h-5 w-5 text-primary-foreground" />
+    <Card ref={widgetRef} className="h-full flex flex-col p-5 bg-card border" data-testid="widget-reviews">
+      <div className="flex items-center gap-3 mb-5">
+        <div className="w-9 h-9 rounded-lg bg-primary flex items-center justify-center">
+          <Star className="h-4 w-4 text-primary-foreground" />
         </div>
-        <h3 className="text-lg font-semibold text-foreground">{t("home.aiDashboard.reviews.title")}</h3>
+        <h3 className="text-base font-semibold text-foreground">{t("home.aiDashboard.reviews.title")}</h3>
       </div>
 
       <div className="flex items-center justify-center flex-1 py-4">
-        <div className="relative w-40 h-40">
+        <div className="relative w-32 h-32">
           <svg
             className="transform -rotate-90"
-            width="160"
-            height="160"
-            viewBox="0 0 160 160"
+            width="128"
+            height="128"
+            viewBox="0 0 128 128"
             data-testid="reviews-progress-ring"
           >
             <defs>
@@ -281,19 +281,19 @@ function ReviewsWidget() {
               </linearGradient>
             </defs>
             <circle
-              cx="80"
-              cy="80"
+              cx="64"
+              cy="64"
               r={radius}
               stroke="hsl(var(--muted))"
-              strokeWidth="10"
+              strokeWidth="8"
               fill="none"
             />
             <circle
-              cx="80"
-              cy="80"
+              cx="64"
+              cy="64"
               r={radius}
               stroke="url(#reviewsGradient)"
-              strokeWidth="10"
+              strokeWidth="8"
               fill="none"
               strokeLinecap="round"
               strokeDasharray={circumference}
@@ -301,10 +301,10 @@ function ReviewsWidget() {
             />
           </svg>
           <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <span className="text-4xl font-bold text-foreground" data-testid="reviews-percentage">
+            <span className="text-3xl font-bold text-foreground" data-testid="reviews-percentage">
               {displayCount}%
             </span>
-            <span className="text-sm text-muted-foreground">{t("home.aiDashboard.reviews.positive")}</span>
+            <span className="text-xs text-muted-foreground">{t("home.aiDashboard.reviews.positive")}</span>
           </div>
         </div>
       </div>

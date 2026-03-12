@@ -4,6 +4,7 @@
 export const dynamic = 'force-static';
 
 import Hero from "@/components/Hero";
+import ProblemSection from "@/components/ProblemSection";
 import HowRoomieWorks from "@/components/HowRoomieWorks";
 import IntegrationTicker from "@/components/IntegrationTicker";
 import IndustryImpactSection from "@/components/IndustryImpactSection";
@@ -28,6 +29,7 @@ export default function Home() {
             />
             <Hero />
             <LLMSummary />
+            <ProblemSection />
             <HowRoomieWorks />
             <IntegrationTicker />
             <IndustryImpactSection />
