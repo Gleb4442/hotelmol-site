@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-export function formatTelegramMessage(data: any, geoInfo: string, ip: string) {
+function formatTelegramMessage(data: any, geoInfo: string, ip: string) {
   const { role, language, userAgent, referrer, path, isSkip } = data;
   const emoji = isSkip ? "⏩" : "👤";
   const status = isSkip ? "Пропустил выбор" : `Выбрал роль: *${role}*`;
