@@ -41,7 +41,7 @@ const allIntegrations = [
   {
     name: "EasyMS", icon: () => (
       <img src="/assets/image_1764952914052.png" alt="EasyMS" className="w-10 h-10 object-contain" />
-    ), color: "#2563eb", comingSoon: true, hideOnDesktop: false
+    ), color: "#2563eb", comingSoon: false, hideOnDesktop: false
   },
   {
     name: "Mews", icon: () => (
@@ -56,7 +56,7 @@ const allIntegrations = [
   { name: "WhatsApp", icon: SiWhatsapp, color: "#25d366", comingSoon: true, hideOnDesktop: false },
   { name: "Instagram", icon: SiInstagram, color: "#e4405f", comingSoon: true, hideOnDesktop: false },
   {
-    name: "SMS", icon: MessageIntegrationIcon, color: "#34C759", comingSoon: true, hideOnDesktop: false
+    name: "SMS", icon: MessageIntegrationIcon, color: "#34C759", comingSoon: false, hideOnDesktop: false
   },
 ];
 
