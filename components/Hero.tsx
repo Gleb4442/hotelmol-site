@@ -57,11 +57,11 @@ export default function Hero() {
 
       // Human-like speed logic
       if (isDeleting) {
-        // Deleting: 17 chars per second -> ~58ms per character
-        setSpeed(58);
+        // Deleting: 22 chars per second -> ~45ms per character
+        setSpeed(45);
       } else {
-        // Typing: 10 chars per second -> 100ms per character
-        setSpeed(100);
+        // Typing: 13 chars per second -> ~77ms per character
+        setSpeed(77);
       }
     };
 

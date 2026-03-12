@@ -6,6 +6,7 @@ import { Plus, DollarSign, Play, Bot, ChevronDown, ChevronUp, Globe } from "luci
 import { FaWhatsapp, FaViber, FaFacebookMessenger } from "react-icons/fa";
 import { useTranslation } from "@/lib/TranslationContext";
 import { usePathname } from "next/navigation";
+import { useCookieBanner } from "@/lib/CookieBannerContext";
 
 // Custom Telegram Icon from Contact Page
 const TelegramIcon = ({ className }: { className?: string }) => (
@@ -22,11 +23,12 @@ const TelegramIcon = ({ className }: { className?: string }) => (
 export default function MobileBottomNav() {
     const { language, setLanguage, t } = useTranslation();
     const pathname = usePathname();
+    const { isCookieBannerVisible } = useCookieBanner();
     const [isOpen, setIsOpen] = useState(false);
     const [isLangOpen, setIsLangOpen] = useState(false);
 
-    // Hide on contact page if needed
-    if (pathname === "/contact") return null;
+    // Hide on contact page or when cookie banner is visible
+    if (pathname === "/contact" || isCookieBannerVisible) return null;
 
     const languages = [
         { code: "en", label: "English" },
@@ -126,20 +128,28 @@ export default function MobileBottomNav() {
                             </div>
                         </motion.a>
 
-                        {/* Demo */}
-                        <motion.a
-                            href="https://demo.hotelmol.com"
-                            target="_blank"
+                        {/* App Tour */}
+                        <motion.div
                             initial={{ x: 20, opacity: 0 }}
                             animate={{ x: 0, opacity: 1 }}
                             transition={{ delay: 0.25 }}
-                            className="flex items-center gap-2 bg-[#0752A0] text-white pr-4 pl-3 py-2 rounded-full shadow-lg border border-[#0752A0]/10 font-bold"
+                            className="relative"
                         >
-                            <span className="text-sm">{t("button.tryDemo")}</span>
-                            <div className="bg-white/20 p-1.5 rounded-full">
-                                <Play className="w-4 h-4" />
-                            </div>
-                        </motion.a>
+                            <a
+                                href="https://tour.hotelmol.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-2 bg-[#0752A0] text-white pr-4 pl-3 py-2 rounded-full shadow-lg border border-[#0752A0]/10 font-bold"
+                            >
+                                <span className="text-sm">App tour</span>
+                                <div className="bg-white/20 p-1.5 rounded-full">
+                                    <Bot className="w-4 h-4" />
+                                </div>
+                            </a>
+                            <span className="absolute -top-1 -right-1 z-10 bg-blue-400 text-white text-[8px] uppercase font-bold px-1.5 py-0.5 rounded-full shadow-lg border border-white/20">
+                                new
+                            </span>
+                        </motion.div>
 
                         {/* Collapsible Language Selector */}
                         <motion.div

@@ -1,17 +1,37 @@
 "use client";
-import { useState, useMemo } from "react";
-import { Calculator, ArrowRight, TrendingUp, Utensils, BedDouble, Info } from "lucide-react";
+import { useState, useMemo, useEffect } from "react";
+import { Calculator, ArrowRight, TrendingUp, Utensils, BedDouble, Info, CheckCircle2 } from "lucide-react";
 import { useTranslation } from "@/lib/TranslationContext";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { motion, AnimatePresence, useSpring, useTransform } from "framer-motion";
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
+
+// Custom Counter Component for "rolling" numbers
+function Counter({ value, decimal = 0, prefix = "", suffix = "" }: { value: number, decimal?: number, prefix?: string, suffix?: string }) {
+  const springValue = useSpring(0, { stiffness: 40, damping: 20 });
+  const [displayValue, setDisplayValue] = useState(0);
+
+  useEffect(() => {
+    springValue.set(value);
+  }, [value, springValue]);
+
+  useEffect(() => {
+    return springValue.on("change", (latest) => {
+      setDisplayValue(latest);
+    });
+  }, [springValue]);
+
+  return (
+    <span>
+      {prefix}{displayValue.toLocaleString(undefined, { minimumFractionDigits: decimal, maximumFractionDigits: decimal })}{suffix}
+    </span>
+  );
+}
 
 export default function ROIEstimate() {
   const { t, language } = useTranslation();
   const [rooms, setRooms] = useState<number>(50);
-  const [showBreakdown, setShowBreakdown] = useState<boolean>(false);
-
-  // Parse rooms from input
-  const parsedRooms = isNaN(rooms) || rooms < 1 ? 0 : rooms;
+  const [showBreakdown, setShowBreakdown] = useState<boolean>(true); // Default to true for better "wow" effect
 
   // Base values from CSV
   const OTA_SAVINGS_PER_ROOM = 53;
@@ -19,10 +39,15 @@ export default function ROIEstimate() {
   const UPSELL_PER_ROOM = 50;
   const TOTAL_PER_ROOM = OTA_SAVINGS_PER_ROOM + FB_ONLINE_PER_ROOM + UPSELL_PER_ROOM;
 
-  const monthlyIncome = parsedRooms * TOTAL_PER_ROOM;
+  const monthlyIncome = rooms * TOTAL_PER_ROOM;
   const annualIncome = monthlyIncome * 12;
 
-  // Formatter for currency
+  const chartData = useMemo(() => [
+    { name: t("roi.calculator.source1"), value: OTA_SAVINGS_PER_ROOM * rooms, color: '#6366f1' },
+    { name: t("roi.calculator.source2"), value: FB_ONLINE_PER_ROOM * rooms, color: '#8b5cf6' },
+    { name: t("roi.calculator.source3"), value: UPSELL_PER_ROOM * rooms, color: '#ec4899' },
+  ], [rooms, t]);
+
   const formatCurrency = (value: number) => {
     return new Intl.NumberFormat(language === 'en' ? 'en-US' : 'ru-RU', {
       style: 'currency',
@@ -32,146 +57,247 @@ export default function ROIEstimate() {
   };
 
   return (
-    <section className="py-16 lg:py-28 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-primary/95" />
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl" />
+    <section className="py-20 lg:py-32 relative overflow-hidden bg-[#0a0a0b]">
+      {/* Premium Background with Mesh Gradient */}
+      <div className="absolute inset-0 opacity-40">
+        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-primary/30 blur-[120px] animate-pulse" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-purple-500/20 blur-[120px] animate-pulse" style={{ animationDelay: '1s' }} />
       </div>
 
       <div className="container mx-auto px-4 relative z-10 w-full max-w-6xl">
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-white/10 backdrop-blur-md mb-6 shadow-xl">
-            <Calculator className="h-10 w-10 text-white" />
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 mb-6 shadow-2xl">
+            <Calculator className="h-8 w-8 text-primary" />
           </div>
-          <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-white tracking-tight">
+          <h2 className="font-serif text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 text-white tracking-tight leading-tight">
             {t("roi.title")}
           </h2>
-          <p className="text-xl text-white/90 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-white/60 max-w-2xl mx-auto font-light leading-relaxed">
             {t("roi.subtitle")}
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start mt-12 bg-white/5 p-6 lg:p-10 rounded-3xl backdrop-blur-sm border border-white/10 shadow-2xl relative">
-          <a
-            href="/explanation.pdf"
-            download
-            className="absolute top-4 right-4 lg:top-8 lg:right-8 p-3 rounded-full bg-white/20 hover:bg-white/30 text-white shadow-xl border border-white/20 transition-all duration-300 z-50 group"
-            title={language === 'ru' ? "Скачать пояснение расчетов" : language === 'ua' ? "Завантажити пояснення розрахунків" : language === 'pl' ? "Pobierz wyjaśнение obliczeń" : "Download calculation explanation"}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch pt-4">
+          {/* Controls Section */}
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="col-span-1 lg:col-span-5 space-y-8"
           >
-            <Info className="w-6 h-6" />
-            <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-white/90 text-primary px-3 py-1.5 rounded-lg text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-xl">
-              {t("roi.calculator.downloadExplanation")}
-            </span>
-          </a>
-          {/* Input Section */}
-          <div className="col-span-1 lg:col-span-5 flex flex-col justify-center h-full space-y-6">
-            <div className="bg-white/10 p-6 rounded-2xl border border-white/20">
-              <label htmlFor="roomsInput" className="block text-xl font-medium text-white mb-4">
-                {t("roi.calculator.roomsLabel")}
-              </label>
-              <div className="relative">
-                <Input
-                  id="roomsInput"
-                  type="number"
-                  min="1"
-                  value={rooms || ""}
-                  onChange={(e) => setRooms(parseInt(e.target.value) || 0)}
-                  className="w-full text-3xl font-bold h-16 bg-white/10 border-white/30 text-white placeholder:text-white/40 focus:ring-white rounded-xl ps-6"
-                  placeholder="50"
-                  style={{ fontSize: '1.5rem' }}
+            <div className="relative group overflow-hidden bg-white/5 backdrop-blur-2xl p-8 rounded-[2rem] border border-white/10 shadow-[0_0_50px_-12px_rgba(0,0,0,0.5)] transition-all duration-500 hover:border-white/20">
+              <div className="flex justify-between items-end mb-8">
+                <div>
+                  <label htmlFor="roomsSlider" className="text-sm font-medium text-white/40 uppercase tracking-[0.2em] mb-2 block">
+                    {t("roi.calculator.roomsLabel")}
+                  </label>
+                  <div className="text-5xl font-bold text-white tabular-nums flex items-baseline gap-2">
+                    {rooms}
+                    <span className="text-xl font-light text-white/30 lowercase">rooms</span>
+                  </div>
+                </div>
+                <div className="bg-primary/20 text-primary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border border-primary/20">
+                  Live ROI
+                </div>
+              </div>
+
+              <div className="relative h-12 flex items-center mb-4">
+                <input
+                  id="roomsSlider"
+                  type="range"
+                  min="5"
+                  max="500"
+                  step="5"
+                  value={rooms}
+                  onChange={(e) => setRooms(parseInt(e.target.value))}
+                  className="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-primary group-hover:accent-primary/80 transition-all duration-300"
+                  style={{
+                    background: `linear-gradient(to right, #6366f1 0%, #6366f1 ${(rooms - 5) / (500 - 5) * 100}%, rgba(255,255,255,0.1) ${(rooms - 5) / (500 - 5) * 100}%, rgba(255,255,255,0.1) 100%)`
+                  }}
                 />
               </div>
+
+              <div className="flex justify-between text-[10px] font-bold text-white/20 uppercase tracking-widest px-1">
+                <span>5 Rooms</span>
+                <span>250 Rooms</span>
+                <span>500 Rooms</span>
+              </div>
             </div>
 
-            <div className="bg-gradient-to-br from-white/10 to-white/5 p-6 rounded-2xl border border-white/10 flex flex-col space-y-2">
-              <span className="text-white/80 text-lg uppercase tracking-wider font-semibold text-center mt-2">{t("roi.calculator.monthlyIncome")}</span>
-              <span className="text-5xl lg:text-6xl font-bold text-white text-center drop-shadow-md py-4">
-                {formatCurrency(monthlyIncome)}
-              </span>
-              <span className="text-white text-center font-medium bg-white/20 py-2 rounded-lg mx-4">
-                {t("roi.calculator.annualIncome")}: {formatCurrency(annualIncome)}
-              </span>
+            <div className="bg-gradient-to-br from-primary/20 via-primary/10 to-transparent backdrop-blur-3xl p-10 rounded-[2.5rem] border border-primary/20 shadow-2xl relative overflow-hidden group">
+              <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                <TrendingUp className="w-32 h-32 text-white rotate-12" />
+              </div>
+              
+              <div className="relative z-10 flex flex-col items-center text-center">
+                <span className="text-sm font-medium text-primary uppercase tracking-[0.3em] mb-4">Total Impact</span>
+                <div className="text-6xl lg:text-7xl font-black text-white mb-6 drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+                  <Counter value={monthlyIncome} prefix="€" />
+                </div>
+                <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-6 py-3 rounded-2xl border border-white/10 mb-2">
+                  <span className="text-white/40 text-sm font-medium uppercase tracking-wider">{t("roi.calculator.annualIncome")}</span>
+                  <span className="text-white font-bold text-lg">
+                    <Counter value={annualIncome} prefix="€" />
+                  </span>
+                </div>
+                <p className="text-white/40 text-xs mt-6 uppercase tracking-widest font-bold">Additional potential revenue</p>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Visualization Section */}
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="col-span-1 lg:col-span-7 bg-white/5 backdrop-blur-2xl rounded-[2.5rem] border border-white/10 p-8 lg:p-12 shadow-2xl flex flex-col"
+          >
+            <div className="flex justify-between items-start mb-8">
+              <div>
+                <h3 className="text-2xl font-bold text-white mb-2">Revenue Breakdown</h3>
+                <p className="text-white/40 text-sm">Where your growth comes from</p>
+              </div>
+              <a
+                href="/explanation.pdf"
+                download
+                className="p-3 rounded-2xl bg-white/5 hover:bg-white/10 text-white/60 hover:text-white border border-white/10 transition-all duration-300 group relative"
+              >
+                <Info className="w-5 h-5" />
+                <span className="absolute right-0 top-full mt-3 bg-white text-black px-3 py-1.5 rounded-lg text-[10px] font-bold opacity-0 group-hover:opacity-100 transition-all whitespace-nowrap pointer-events-none translate-y-2 group-hover:translate-y-0">
+                  {t("roi.calculator.downloadExplanation")}
+                </span>
+              </a>
             </div>
 
-            <Button
-              variant="outline"
-              onClick={() => setShowBreakdown(!showBreakdown)}
-              className="mt-4 w-full bg-white/10 text-white border-white/20 hover:bg-white/20"
-            >
-              {showBreakdown ? "Скрыть детали" : "Показать детали"}
-            </Button>
-          </div>
-
-          {/* Breakdown Section */}
-          {showBreakdown && (
-            <div className="col-span-1 lg:col-span-7 flex flex-col space-y-4">
-              <h3 className="text-2xl text-white font-serif font-bold mb-2 ml-2">Breakdown</h3>
-
-              {/* Source 1 */}
-              <div className="bg-white/10 hover:bg-white/15 transition-colors p-5 rounded-2xl border border-white/10 flex items-center shadow-lg">
-                <div className="bg-white/20 p-4 rounded-xl mr-5">
-                  <TrendingUp className="w-8 h-8 text-white" />
-                </div>
-                <div className="flex-1">
-                  <h4 className="text-xl text-white font-semibold">{t("roi.calculator.source1")}</h4>
-                  <p className="text-white/70">{t("roi.calculator.perRoom")}: €{OTA_SAVINGS_PER_ROOM}</p>
-                </div>
-                <div className="text-right">
-                  <span className="text-2xl text-white font-bold block">{formatCurrency(OTA_SAVINGS_PER_ROOM * parsedRooms)}</span>
-                  <span className="text-white/60 text-sm">/ mo</span>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center flex-1">
+              <div className="h-[280px] w-full relative">
+                <ResponsiveContainer width="100%" height="100%">
+                  <PieChart>
+                    <Pie
+                      data={chartData}
+                      cx="50%"
+                      cy="50%"
+                      innerRadius={85}
+                      outerRadius={110}
+                      paddingAngle={8}
+                      dataKey="value"
+                      stroke="none"
+                    >
+                      {chartData.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={entry.color} />
+                      ))}
+                    </Pie>
+                    <Tooltip 
+                      contentStyle={{ backgroundColor: '#1a1a1b', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px', color: '#fff' }}
+                      itemStyle={{ color: '#fff' }}
+                    />
+                  </PieChart>
+                </ResponsiveContainer>
+                <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+                  <span className="text-[10px] font-bold text-white/30 uppercase tracking-[0.2em] mb-1">Estimated ROI</span>
+                  <span className="text-2xl font-bold text-white">+{Math.round((TOTAL_PER_ROOM / 500) * 100)}%</span>
+                  <span className="text-[10px] text-primary font-bold uppercase mt-1">Growth</span>
                 </div>
               </div>
 
-              {/* Source 2 */}
-              <div className="bg-white/10 hover:bg-white/15 transition-colors p-5 rounded-2xl border border-white/10 flex items-center shadow-lg">
-                <div className="bg-white/20 p-4 rounded-xl mr-5">
-                  <Utensils className="w-8 h-8 text-white" />
-                </div>
-                <div className="flex-1">
-                  <h4 className="text-xl text-white font-semibold">{t("roi.calculator.source2")}</h4>
-                  <p className="text-white/70">{t("roi.calculator.perRoom")}: €{FB_ONLINE_PER_ROOM}</p>
-                </div>
-                <div className="text-right">
-                  <span className="text-2xl text-white font-bold block">{formatCurrency(FB_ONLINE_PER_ROOM * parsedRooms)}</span>
-                  <span className="text-white/60 text-sm">/ mo</span>
-                </div>
-              </div>
-
-              {/* Source 3 */}
-              <div className="bg-white/10 hover:bg-white/15 transition-colors p-5 rounded-2xl border border-white/10 flex items-center shadow-lg">
-                <div className="bg-white/20 p-4 rounded-xl mr-5">
-                  <BedDouble className="w-8 h-8 text-white" />
-                </div>
-                <div className="flex-1">
-                  <h4 className="text-xl text-white font-semibold">{t("roi.calculator.source3")}</h4>
-                  <p className="text-white/70">{t("roi.calculator.perRoom")}: €{UPSELL_PER_ROOM}</p>
-                </div>
-                <div className="text-right">
-                  <span className="text-2xl text-white font-bold block">{formatCurrency(UPSELL_PER_ROOM * parsedRooms)}</span>
-                  <span className="text-white/60 text-sm">/ mo</span>
-                </div>
+              <div className="space-y-6">
+                {chartData.map((source, idx) => (
+                  <motion.div 
+                    key={idx}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: idx * 0.1 }}
+                    className="flex items-center gap-4 bg-white/5 p-4 rounded-2xl border border-white/5 hover:border-white/20 transition-all duration-300 group"
+                  >
+                    <div className="w-1.5 h-10 rounded-full" style={{ backgroundColor: source.color }} />
+                    <div className="flex-1 min-w-0">
+                      <h4 className="text-sm font-bold text-white truncate group-hover:text-primary transition-colors">{source.name}</h4>
+                      <p className="text-[10px] text-white/40 uppercase tracking-widest">{t("roi.calculator.perRoom")}: €{[OTA_SAVINGS_PER_ROOM, FB_ONLINE_PER_ROOM, UPSELL_PER_ROOM][idx]}</p>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-md font-bold text-white">
+                        <Counter value={source.value} prefix="€" />
+                      </div>
+                      <div className="text-[10px] text-white/30 truncate">/ MONTH</div>
+                    </div>
+                  </motion.div>
+                ))}
               </div>
             </div>
-          )}
+          </motion.div>
         </div>
+
+        {/* Dynamic CTA */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-20 relative p-12 lg:p-16 rounded-[3rem] bg-gradient-to-r from-primary/40 to-purple-600/40 backdrop-blur-3xl border border-white/20 overflow-hidden text-center group"
+        >
+          {/* Decorative Elements */}
+          <div className="absolute -top-24 -left-24 w-64 h-64 bg-white/10 rounded-full blur-[80px] group-hover:bg-white/20 transition-all duration-700" />
+          <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-primary/20 rounded-full blur-[80px] group-hover:bg-primary/30 transition-all duration-700" />
+
+          <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center">
+            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-6 leading-tight">
+              Ready to unlock your potential revenue?
+            </h3>
+            <p className="text-lg text-white/80 mb-10 font-light max-w-xl">
+              Get a detailed, personalized breakdown for your specific hotel needs from our expert team.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 w-full justify-center">
+              <Button
+                size="lg"
+                asChild
+                className="h-16 px-12 bg-white text-black hover:bg-white/90 text-lg font-bold shadow-[0_20px_40px_-15px_rgba(255,255,255,0.3)] rounded-2xl transform hover:-translate-y-1 transition-all duration-300"
+              >
+                <a href="https://cal.com/gleb.gosha/30min" target="_blank" rel="noopener noreferrer" className="flex items-center">
+                  Talk to a Human <ArrowRight className="ml-3 w-6 h-6" />
+                </a>
+              </Button>
+              <div className="flex items-center justify-center gap-2 px-6 py-4 rounded-2xl bg-white/10 border border-white/10 backdrop-blur-md">
+                <CheckCircle2 className="w-5 h-5 text-green-400" />
+                <span className="text-white font-medium text-sm">{t("text.callFree")}</span>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
 
-      <div className="flex flex-col items-center justify-center relative mt-16 pt-8 border-t border-white/10">
-        <p className="text-white/90 text-xl font-medium mb-6 mt-4">Ready to unlock your potential revenue?</p>
-        <Button
-          size="lg"
-          asChild
-          className="w-full sm:w-auto h-16 px-10 bg-white text-primary hover:bg-white/90 text-xl font-bold shadow-2xl rounded-full transform hover:scale-105 transition-all duration-300"
-        >
-          <a href="https://cal.com/gleb.gosha/30min" target="_blank" rel="noopener noreferrer" className="flex items-center">
-            Talk to a Human <ArrowRight className="ml-3 w-6 h-6" />
-          </a>
-        </Button>
-        <p className="mt-4 text-white/70 text-sm font-medium">
-          {t("text.callFree")}
-        </p>
-      </div>
+      <style jsx global>{`
+        input[type='range']::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          appearance: none;
+          width: 24px;
+          height: 24px;
+          background: #ffffff;
+          border-radius: 50%;
+          cursor: pointer;
+          border: 4px solid #6366f1;
+          box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+          transition: all 0.2s ease-in-out;
+        }
+        input[type='range']::-webkit-slider-thumb:hover {
+          transform: scale(1.1);
+          box-shadow: 0 0 25px rgba(99, 102, 241, 0.6);
+        }
+        input[type='range']::-moz-range-thumb {
+          width: 24px;
+          height: 24px;
+          background: #ffffff;
+          border-radius: 50%;
+          cursor: pointer;
+          border: 4px solid #6366f1;
+          box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+          transition: all 0.2s ease-in-out;
+        }
+      `}</style>
     </section>
   );
 }

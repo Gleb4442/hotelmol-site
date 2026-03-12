@@ -1,31 +1,34 @@
 "use client";
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { CircleDollarSign, Users, UserRoundX } from "lucide-react";
 import { useTranslation } from "@/lib/TranslationContext";
 
 export default function ProblemSection() {
   const { t } = useTranslation();
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const problems = [
     {
       icon: CircleDollarSign,
       text: t("home.problem.point1"),
-      color: "text-red-500",
-      bg: "bg-red-500/10",
     },
     {
       icon: Users,
       text: t("home.problem.point2"),
-      color: "text-orange-500",
-      bg: "bg-orange-500/10",
     },
     {
       icon: UserRoundX,
       text: t("home.problem.point3"),
-      color: "text-destructive",
-      bg: "bg-destructive/10",
     },
   ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % problems.length);
+    }, 2500);
+    return () => clearInterval(timer);
+  }, [problems.length]);
 
   return (
     <section className="py-24 bg-background relative overflow-hidden">
@@ -36,39 +39,87 @@ export default function ProblemSection() {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl mx-auto text-center mb-16">
+        <div className="max-w-4xl mx-auto text-center mb-16 px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-3xl lg:text-5xl font-serif font-semibold mb-6">
+            <h2 className="text-3xl lg:text-6xl font-serif font-bold mb-6">
               {t("home.problem.title")}
             </h2>
           </motion.div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {problems.map((problem, index) => (
-            <motion.div
+        <div className="relative h-[300px] flex items-center justify-center max-w-5xl mx-auto mt-12 mb-20">
+          <div className="relative flex items-center justify-center w-full">
+            {problems.map((problem, index) => {
+              // Calculate relative position (-1, 0, 1)
+              let position = index - activeIndex;
+              if (position < -1) position += problems.length;
+              if (position > 1) position -= problems.length;
+
+              const isActive = position === 0;
+              const isLeft = position === -1;
+              const isRight = position === 1;
+
+              return (
+                <motion.div
+                  key={index}
+                  initial={false}
+                  animate={{
+                    x: position * 200, // Distance between cards
+                    scale: isActive ? 1.15 : 0.85,
+                    zIndex: isActive ? 20 : 10,
+                    opacity: isActive ? 1 : 0.5,
+                    backgroundColor: isActive ? "#EF4444" : "#FFFFFF",
+                    color: isActive ? "#FFFFFF" : "#1F2937",
+                  }}
+                  transition={{ 
+                    duration: 0.6, 
+                    ease: [0.32, 0.72, 0, 1] 
+                  }}
+                  className={`absolute w-full max-w-[340px] p-10 rounded-[2.5rem] shadow-2xl border border-black/5 flex flex-col items-center text-center cursor-pointer`}
+                  onClick={() => setActiveIndex(index)}
+                >
+                  <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-colors duration-500 ${isActive ? "bg-white/20" : "bg-red-50"}`}>
+                    <problem.icon className={`w-8 h-8 ${isActive ? "text-white" : "text-red-500"}`} />
+                  </div>
+                  <p className="text-xl lg:text-2xl font-serif font-bold leading-tight">
+                    {problem.text}
+                  </p>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Carousel Indicators */}
+        <div className="flex justify-center gap-3 mt-8">
+          {problems.map((_, index) => (
+            <button
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group p-7 rounded-2xl bg-secondary/50 border border-border/50 backdrop-blur-sm hover:border-destructive/30 hover:bg-secondary/80 transition-all duration-300"
-            >
-              <div className={`w-14 h-14 rounded-2xl ${problem.bg} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300`}>
-                <problem.icon className={`w-7 h-7 ${problem.color}`} />
-              </div>
-              <p className="text-lg lg:text-xl font-serif leading-tight">
-                {problem.text}
-              </p>
-            </motion.div>
+              onClick={() => setActiveIndex(index)}
+              className={`h-2 rounded-full transition-all duration-300 ${
+                activeIndex === index ? "w-10 bg-red-500" : "w-2 bg-slate-200"
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
           ))}
         </div>
       </div>
+
+      <style jsx>{`
+        @media (max-width: 640px) {
+          .relative > div > div {
+            max-width: 280px;
+          }
+          .absolute {
+             transform: scale(0.8);
+          }
+        }
+      `}</style>
     </section>
   );
 }
