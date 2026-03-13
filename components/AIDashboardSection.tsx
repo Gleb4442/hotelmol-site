@@ -31,7 +31,7 @@ export default function AIDashboardSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="rounded-2xl overflow-hidden shadow-2xl border border-border"
+          className="rounded-2xl overflow-hidden shadow-2xl border border-border max-w-3xl mx-auto"
         >
           <img
             src="/hotel-dashboard.png"
