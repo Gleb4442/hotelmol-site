@@ -143,7 +143,7 @@ const HotelmolIs = () => {
           </PhoneFrame>
 
           {/* Screen 3: Loyalty Program (index.html5) */}
-          <PhoneFrame caption="Программа лояльности которая работает на возвращаемость ваших гостей">
+          <PhoneFrame caption="Программа лояльности">
             <div className="flex flex-col h-full bg-white font-sans text-slate-900 text-[10px]">
                 <header className="pt-8 px-4 pb-2 border-b border-slate-100 flex items-center justify-between">
                     <ArrowLeft className="size-4 text-slate-600" />
@@ -162,24 +162,46 @@ const HotelmolIs = () => {
                         </div>
                     </div>
                     
-                    <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-amber-50 to-amber-200 p-3 ring-1 ring-amber-300">
-                        <div className="flex justify-between mb-2">
-                            <span className="bg-white/60 px-2 rounded-full text-[7px] font-bold">Active Now</span>
-                            <h3 className="text-amber-900 text-lg font-black italic">Gold</h3>
+                    <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#FDF4F0] to-[#E7D0C5] p-3 shadow-sm">
+                        <div className="flex justify-between items-center mb-2">
+                            <span className="bg-white/40 px-2 rounded-full text-[6px] font-black uppercase tracking-widest text-orange-900 border border-white/50">Level 01</span>
+                            <h3 className="text-orange-950 text-sm font-black">Bronze</h3>
                         </div>
                         <div className="space-y-1">
-                            <div className="flex items-center gap-1 text-amber-900/60"><CheckCircle2 className="size-2" /> <span>All Silver Benefits</span></div>
-                            <div className="flex items-center gap-1 text-amber-900/60"><CheckCircle2 className="size-2" /> <span>Late Checkout (2 PM)</span></div>
+                            <div className="flex items-center gap-1 text-orange-900"><CheckCircle2 className="size-2 opacity-50" /> <span className="text-[8px] font-semibold">Standard Free Wi-Fi</span></div>
+                            <div className="flex items-center gap-1 text-orange-900"><CheckCircle2 className="size-2 opacity-50" /> <span className="text-[8px] font-semibold">Member-Only Rates</span></div>
                         </div>
                     </div>
 
-                    <div className="relative overflow-hidden rounded-2xl bg-slate-50 p-3 opacity-60">
-                        <div className="flex justify-between mb-2">
-                            <span className="text-[7px] font-bold">Level 04</span>
+                    <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#F1F2F4] to-[#E2E4E9] p-3 shadow-sm">
+                        <div className="flex justify-between items-center mb-2">
+                            <span className="bg-white/40 px-2 rounded-full text-[6px] font-black uppercase tracking-widest text-slate-700 border border-white/50">Level 02</span>
+                            <h3 className="text-slate-900 text-sm font-black">Silver</h3>
+                        </div>
+                        <div className="space-y-1">
+                            <div className="flex items-center gap-1 text-slate-700"><CheckCircle2 className="size-2 opacity-50" /> <span className="text-[8px] font-bold">All Bronze Benefits</span></div>
+                            <div className="flex items-center gap-1 text-slate-700"><CheckCircle2 className="size-2 opacity-50" /> <span className="text-[8px] font-semibold">High-Speed Wi-Fi</span></div>
+                        </div>
+                    </div>
+
+                    <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-amber-50 to-amber-200 p-3 ring-1 ring-amber-300 shadow-md">
+                        <div className="flex justify-between items-center mb-2">
+                            <span className="bg-white/70 px-2 rounded-full text-[6px] font-black uppercase tracking-widest text-amber-900 border border-white/80">Active Now</span>
+                            <h3 className="text-amber-950 text-lg font-black">Gold</h3>
+                        </div>
+                        <div className="space-y-1">
+                            <div className="flex items-center gap-1 text-amber-950"><CheckCircle2 className="size-2 opacity-60" /> <span className="text-[8px] font-bold">All Silver Benefits</span></div>
+                            <div className="flex items-center gap-1 text-amber-950"><CheckCircle2 className="size-2 opacity-60" /> <span className="text-[8px] font-semibold">Late Checkout (2 PM)</span></div>
+                        </div>
+                    </div>
+
+                    <div className="relative overflow-hidden rounded-2xl bg-slate-50 p-3 opacity-80 border border-slate-100">
+                        <div className="flex justify-between items-center mb-2">
+                            <span className="text-[6px] font-black uppercase tracking-widest text-slate-500">Level 04</span>
                             <h3 className="text-slate-800 text-sm font-black">Platinum</h3>
                         </div>
-                        <div className="h-1 w-full bg-slate-200 rounded-full">
-                            <div className="h-full bg-blue-600 w-2/3"></div>
+                        <div className="h-1 w-full bg-slate-200 rounded-full mt-2">
+                            <div className="h-full bg-blue-600 w-[63%] rounded-full"></div>
                         </div>
                     </div>
                 </main>
