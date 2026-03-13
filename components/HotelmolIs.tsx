@@ -28,7 +28,7 @@ const HotelmolIs = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 place-items-center">
           
           {/* Screen 1: Online Menu (index.html3) */}
-          <PhoneFrame caption="онлайн меню">
+          <PhoneFrame caption="Онлайн меню">
             <div className="flex flex-col h-full font-sans text-slate-900 text-[10px]">
                 <div className="pt-8 px-3 pb-2 border-b border-slate-100 flex items-center gap-2">
                     <div className="size-6 rounded-full bg-slate-100 flex items-center justify-center">
