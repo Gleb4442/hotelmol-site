@@ -81,11 +81,13 @@ const HotelmolIs = () => {
                         <span className="font-bold">$210.00</span>
                     </div>
                 </div>
-                <div className="p-2 border-t border-slate-100 flex justify-around">
-                    <Home className="size-4 text-slate-400" />
-                    <BellRing className="size-4 text-blue-600" />
-                    <Receipt className="size-4 text-slate-400" />
-                    <User className="size-4 text-slate-400" />
+                <div className="p-3 pb-4">
+                    <div className="bg-white/80 backdrop-blur-md rounded-full shadow-lg border border-slate-100 p-2 flex justify-around">
+                        <Home className="size-4 text-slate-400" />
+                        <BellRing className="size-4 text-blue-600" />
+                        <Receipt className="size-4 text-slate-400" />
+                        <User className="size-4 text-slate-400" />
+                    </div>
                 </div>
             </div>
           </PhoneFrame>
