@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Gourmet Menu - Roomie Guest</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "brand-blue": "#1052D5",
+                        "vibrant-blue": "#1A66FF",
+                        "background-light": "#f8f9fa",
+                        "background-dark": "#101622",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1e2430",
+                        "text-main": "#0f172a",
+                        "text-sub": "#64748b",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "1.5rem",
+                        "xl": "2rem",
+                        "2xl": "2.5rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        "glass": "0 4px 30px rgba(0, 0, 0, 0.1)",
+                        "soft": "0 10px 40px -10px rgba(0,0,0,0.06)",
+                        "card-hover": "0 20px 50px -12px rgba(0,0,0,0.12)",
+                        "liquid": "0 12px 40px 0 rgba(26, 102, 255, 0.45)",
+                        "inner-glow": "inset 0 1px 1px rgba(255, 255, 255, 0.4)"
+                    }
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        .glass {
+            @apply bg-white/70 backdrop-blur-md dark:bg-surface-dark/70;
+        }
+        .liquid-glass-vibrant {
+            background: linear-gradient(135deg, rgba(26, 102, 255, 0.95) 0%, rgba(13, 75, 201, 0.85) 100%);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+    <style>
+        /* Фон презентации (за пределами телефона) */
+        body {
+            background-color: #f1f5f9; /* Принудительно светлый фон */
+            background-image: radial-gradient(#cbd5e1 1px, transparent 0);
+            background-size: 24px 24px; /* Приятный точечный паттерн */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100dvh;
+            margin: 0;
+            padding: 2rem 0;
+        }
+
+        /* Корпус телефона */
+        .phone-frame {
+            width: 100%;
+            max-width: 390px;
+            height: 844px; 
+            background-color: #f8f9fa; 
+            border: 14px solid #18181b; /* Темная рамка корпуса */
+            border-radius: 3.5rem; 
+            position: relative;
+            overflow: hidden; 
+            box-shadow: 
+                0 0 0 2px #d4d4d8, /* Светлая металлическая окантовка корпуса */
+                0 25px 50px -12px rgba(0, 0, 0, 0.3); /* Глубокая тень на столе */
+            flex-shrink: 0;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .phone-frame { background-color: #101622; }
+        }
+
+        /* Вырез камеры / Dynamic Island */
+        .dynamic-island {
+            position: absolute;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 32px;
+            background-color: #101622;
+            border-radius: 20px;
+            z-index: 100;
+        }
+
+        /* Область контента приложения со скроллом */
+        .app-content {
+            height: 100%;
+            width: 100%;
+            overflow-y: auto;
+            position: relative;
+        }
+    </style>
+</head>
+<body class="font-display text-text-main antialiased selection:bg-primary/20">
+
+    <!-- Рамка смартфона -->
+    <div class="phone-frame dark:bg-background-dark bg-background-light">
+        
+        <!-- Челка / Dynamic Island -->
+        <div class="dynamic-island"></div>
+        
+        <!-- Внутренний контейнер со скроллом -->
+        <div class="app-content no-scrollbar flex flex-col">
+            
+            <header class="sticky top-0 z-30 w-full bg-white dark:bg-surface-dark border-b border-gray-100 dark:border-gray-800/50 px-4 pt-14 pb-4 flex items-center gap-3">
+                <button class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors text-text-main dark:text-white">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                </button>
+                <div class="flex-1 relative">
+                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                        <span class="material-symbols-outlined text-text-sub text-xl">search</span>
+                    </div>
+                    <input class="block w-full pl-10 pr-4 py-2.5 bg-gray-100/80 dark:bg-surface-dark border-none rounded-xl text-text-main dark:text-white placeholder-text-sub focus:ring-2 focus:ring-primary/30 transition-all duration-300 text-sm" placeholder="Search dishes..." type="text"/>
+                </div>
+            </header>
+
+            <!-- top-[112px] учитывает увеличенный pt-14 хедера -->
+            <div class="sticky top-[112px] z-20 bg-transparent pb-4 pt-2 pointer-events-none">
+                <div class="pl-4 py-2 w-full overflow-x-auto no-scrollbar pointer-events-auto">
+                    <div class="flex gap-2.5 pr-4">
+                        <button class="flex-shrink-0 px-6 py-2 rounded-full bg-primary text-white font-semibold text-sm shadow-md shadow-primary/25 transition-transform active:scale-95">
+                            All Dishes
+                        </button>
+                        <button class="flex-shrink-0 px-6 py-2 rounded-full bg-white dark:bg-surface-dark text-text-sub dark:text-gray-300 font-medium text-sm border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                            Appetizers
+                        </button>
+                        <button class="flex-shrink-0 px-6 py-2 rounded-full bg-white dark:bg-surface-dark text-text-sub dark:text-gray-300 font-medium text-sm border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                            Main Course
+                        </button>
+                        <button class="flex-shrink-0 px-6 py-2 rounded-full bg-white dark:bg-surface-dark text-text-sub dark:text-gray-300 font-medium text-sm border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                            Desserts
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <main class="flex-1 px-4 pb-40">
+                <div class="flex flex-col gap-6 pt-2">
+                    <!-- Item 1 -->
+                    <div class="group flex flex-col bg-white dark:bg-surface-dark rounded-[2rem] overflow-hidden shadow-soft hover:shadow-card-hover transition-all duration-500">
+                        <div class="relative w-full aspect-[16/10] overflow-hidden">
+                            <img alt="Gourmet truffle risotto on plate" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC720mJdCE3xcT7c8owH7jUbAL8aHSB09xsGRmtBtCDOB2VX5Fe82NYo8mgKp31eJycx-MpG7uQfo_XOD2BrjEB8_NM_WAcvlhvGWOI2lI_OT8c3WwakHabxBxmrMSiyFA841322c7pcLb4tb5JEIr7pDerg3o1WVpDQ8usT68WppyVlRH3JijH1rhainiyIT4-tQ_TbR7antRnNs3AtfhNJU8MN-_WwSm6zdB3D_reAkwio3zV4xMOhp7LvDQMAkH2Bf-5k4nsNNu4"/>
+                            <button class="absolute bottom-4 right-4 w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center shadow-xl hover:scale-110 active:scale-95 transition-transform">
+                                <span class="material-symbols-outlined">add</span>
+                            </button>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-1">
+                                <h3 class="text-xl font-bold text-text-main dark:text-white">Truffle Risotto</h3>
+                                <p class="text-xl font-bold text-primary">$45.00</p>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-sm font-medium text-text-sub dark:text-gray-400">Signature Italian</span>
+                                <span class="w-1 h-1 rounded-full bg-gray-300"></span>
+                                <span class="text-sm font-medium text-text-sub dark:text-gray-400">25-30 min</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="group flex flex-col bg-white dark:bg-surface-dark rounded-[2rem] overflow-hidden shadow-soft hover:shadow-card-hover transition-all duration-500">
+                        <div class="relative w-full aspect-[16/10] overflow-hidden">
+                            <img alt="Premium wagyu steak cooked medium rare" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9q1q1DB9m_4trG-Bycj-ZBPnD1hG5DDOEfBBcAqXtKYMn-8alPqrpzWw-vhs18lid7WgpO2lAeFgRbNPC0CiDkTDE9pCyr_IUHGsqwd-ZsYFDTyGFvEjWo7W9KcLu_C_kj6JklICIZpDy22cQs8TjDeZ4Cl98EcUo6bGhVk1qKc6MOKuzVp7jTFHtbeMDY1eI2nCGnwC-Dl0jfot9r_KP7GFes2GRYmeqhMHSi5RvDoK85oASlF-v5GzdZndZNVQZZxUz26gGmQ-7"/>
+                            <button class="absolute bottom-4 right-4 w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center shadow-xl hover:scale-110 active:scale-95 transition-transform">
+                                <span class="material-symbols-outlined">add</span>
+                            </button>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-1">
+                                <h3 class="text-xl font-bold text-text-main dark:text-white">A5 Wagyu Steak</h3>
+                                <p class="text-xl font-bold text-primary">$120.00</p>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-sm font-medium text-text-sub dark:text-gray-400">Premium Grill</span>
+                                <span class="w-1 h-1 rounded-full bg-gray-300"></span>
+                                <span class="text-sm font-medium text-text-sub dark:text-gray-400">35-40 min</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="group flex flex-col bg-white dark:bg-surface-dark rounded-[2rem] overflow-hidden shadow-soft hover:shadow-card-hover transition-all duration-500">
+                        <div class="relative w-full aspect-[16/10] overflow-hidden">
+                            <img alt="Seared scallops with garnish" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoelgNvrBi-WtNBkRNlQGgexYCtWUaCR7iEaUtv8IMPwJojroZIp6HY1v30LAHpYGqrjo4yWPAzVpXLy7I2I_hjEvclJtKVBKnbF0wPkxAdA0C25cMbHjgtYsaFub6EN_UNrdcSycJ7NRBcWLZ0yvy5b9M_r9c5l6rpF7lMiQZ9a8KTwRMGrhz-I4WI3U-9_lMPKMXIp-oyK3HcnTmVqrs0GQ7xUhste40N1VayeQbrs0r62dvlqxTB_mOma5vwva9qcokwWzXLFqL"/>
+                            <button class="absolute bottom-4 right-4 w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center shadow-xl hover:scale-110 active:scale-95 transition-transform">
+                                <span class="material-symbols-outlined">add</span>
+                            </button>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-1">
+                                <h3 class="text-xl font-bold text-text-main dark:text-white">Hokkaido Scallops</h3>
+                                <p class="text-xl font-bold text-primary">$55.00</p>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-sm font-medium text-text-sub dark:text-gray-400">Fresh Seafood</span>
+                                <span class="w-1 h-1 rounded-full bg-gray-300"></span>
+                                <span class="text-sm font-medium text-text-sub dark:text-gray-400">20-25 min</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Корзина (Уменьшена высота, шрифты и отступы) -->
+        <div class="absolute bottom-[96px] inset-x-0 flex justify-center z-40 pointer-events-none px-6">
+            <button class="liquid-glass-vibrant w-full max-w-xs h-12 rounded-full flex items-center justify-between px-5 shadow-liquid shadow-inner-glow pointer-events-auto active:scale-95 transition-all duration-200">
+                <div class="flex items-center gap-2">
+                    <div class="relative flex items-center justify-center">
+                        <span class="material-symbols-outlined text-white text-[20px]">shopping_basket</span>
+                    </div>
+                    <span class="text-white font-medium text-sm">3 items</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <div class="h-5 w-[1px] bg-white/40 mr-1.5"></div>
+                    <span class="text-white font-bold text-base tracking-tight">$210.00</span>
+                </div>
+            </button>
+        </div>
+
+        <!-- Навигация (Уменьшены внутренние отступы, отступы между элементами и иконки) -->
+        <div class="absolute bottom-6 inset-x-0 flex justify-center z-40 pointer-events-none px-6">
+            <nav class="bg-white/90 dark:bg-surface-dark/90 rounded-full px-6 py-2.5 shadow-2xl border border-white/20 dark:border-white/5 flex items-center gap-8 pointer-events-auto backdrop-blur-xl ring-1 ring-black/5">
+                <a class="flex flex-col items-center gap-0.5 group" href="#">
+                    <span class="material-symbols-outlined text-[22px] text-gray-400 dark:text-gray-500 group-hover:text-primary transition-colors">home</span>
+                    <span class="text-[9px] font-medium text-gray-400 dark:text-gray-500 group-hover:text-primary">Home</span>
+                </a>
+                <a class="flex flex-col items-center gap-0.5 group" href="#">
+                    <span class="material-symbols-outlined text-[22px] text-primary group-hover:scale-110 transition-transform">room_service</span>
+                    <span class="text-[9px] font-bold text-primary">Services</span>
+                </a>
+                <a class="flex flex-col items-center gap-0.5 group" href="#">
+                    <span class="material-symbols-outlined text-[22px] text-gray-400 dark:text-gray-500 group-hover:text-primary transition-colors">shopping_bag</span>
+                    <span class="text-[9px] font-medium text-gray-400 dark:text-gray-500 group-hover:text-primary transition-colors">Orders</span>
+                </a>
+                <a class="flex flex-col items-center gap-0.5 group" href="#">
+                    <span class="material-symbols-outlined text-[22px] text-gray-400 dark:text-gray-500 group-hover:text-primary transition-colors">person</span>
+                    <span class="text-[9px] font-medium text-gray-400 dark:text-gray-500 group-hover:text-primary transition-colors">Profile</span>
+                </a>
+            </nav>
+        </div>
+
+    </div>
+</body>
+</html>

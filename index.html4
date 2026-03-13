@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Housekeeping Items Selected - Roomie Guest</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1052d5",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer components {
+            .liquid-glass {
+                background: rgba(255, 255, 255, 0.7);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                border: 1px solid rgba(255, 255, 255, 0.3);
+                box-shadow: 0 8px 32px 0 rgba(16, 82, 213, 0.1);
+            }
+            .ai-pulse {
+                box-shadow: 0 0 0 0 rgba(16, 82, 213, 0.4);
+                animation: pulse 2s infinite;
+            }
+            @keyframes pulse {
+                0% { box-shadow: 0 0 0 0 rgba(16, 82, 213, 0.4); }
+                70% { box-shadow: 0 0 0 15px rgba(16, 82, 213, 0); }
+                100% { box-shadow: 0 0 0 0 rgba(16, 82, 213, 0); }
+            }
+            .custom-scrollbar::-webkit-scrollbar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="bg-[#e5e7eb] dark:bg-slate-900 min-h-screen flex items-center justify-center p-4 antialiased font-display">
+
+    <!-- Device Frame (New iPhone Pro Style based on Screenshot) -->
+    <div class="relative w-[393px] h-[852px] bg-[#f4f5f7] dark:bg-slate-900 rounded-[3.5rem] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.3)] border-[14px] border-[#131722] dark:border-black overflow-hidden shrink-0">
+        
+        <!-- Dynamic Island -->
+        <div class="absolute top-3 left-1/2 -translate-x-1/2 w-[114px] h-[32px] bg-[#131722] dark:bg-black rounded-full z-50"></div>
+
+        <!-- App Container -->
+        <div class="relative flex h-full w-full flex-col overflow-hidden text-slate-900 dark:text-slate-100">
+            
+            <header class="flex items-center justify-between px-6 pt-16 pb-2 z-40 relative">
+                <button class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-200/50 dark:bg-slate-800/50 text-slate-900 dark:text-slate-100 transition-colors hover:bg-slate-300/50">
+                    <span class="material-symbols-outlined text-lg">arrow_back_ios_new</span>
+                </button>
+                <h1 class="text-xl font-bold tracking-tight text-center uppercase text-primary">Housekeeping</h1>
+                <div class="flex h-10 w-10 items-center justify-center rounded-full text-slate-500">
+                    <span class="material-symbols-outlined">help_outline</span>
+                </div>
+            </header>
+
+            <main class="flex-1 overflow-y-auto custom-scrollbar px-6 pb-52 relative z-10">
+                <div class="space-y-4 mt-4">
+                    <!-- Selected Item -->
+                    <div class="flex items-center justify-between p-4 bg-white dark:bg-slate-800 border-2 border-primary/20 rounded-[1.5rem] shadow-sm transition-all cursor-pointer">
+                        <div class="flex items-center gap-4">
+                            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                                <span class="material-symbols-outlined">layers</span>
+                            </div>
+                            <div>
+                                <p class="font-bold text-lg text-slate-900 dark:text-white">Fresh Towels</p>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 font-medium mt-0.5">Set of 2 Cotton Towels</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-center w-8 h-8 rounded-full bg-emerald-500 text-white shadow-sm">
+                            <span class="material-symbols-outlined text-[18px] font-bold">check</span>
+                        </div>
+                    </div>
+
+                    <!-- Unselected Item -->
+                    <div class="flex items-center justify-between p-4 bg-white dark:bg-slate-800 rounded-[1.5rem] shadow-sm transition-all hover:shadow-md cursor-pointer border border-transparent">
+                        <div class="flex items-center gap-4">
+                            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-300">
+                                <span class="material-symbols-outlined">auto_fix_high</span>
+                            </div>
+                            <div>
+                                <p class="font-bold text-lg text-slate-900 dark:text-white">Room Cleaning</p>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 font-medium mt-0.5">Complete deep clean</p>
+                            </div>
+                        </div>
+                        <button class="flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-primary hover:text-white transition-colors">
+                            <span class="material-symbols-outlined text-[18px]">add</span>
+                        </button>
+                    </div>
+
+                    <!-- Selected Item -->
+                    <div class="flex items-center justify-between p-4 bg-white dark:bg-slate-800 border-2 border-primary/20 rounded-[1.5rem] shadow-sm transition-all cursor-pointer">
+                        <div class="flex items-center gap-4">
+                            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                                <span class="material-symbols-outlined">bedroom_parent</span>
+                            </div>
+                            <div>
+                                <p class="font-bold text-lg text-slate-900 dark:text-white">Extra Pillows</p>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 font-medium mt-0.5">Hypoallergenic foam</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-center w-8 h-8 rounded-full bg-emerald-500 text-white shadow-sm">
+                            <span class="material-symbols-outlined text-[18px] font-bold">check</span>
+                        </div>
+                    </div>
+
+                    <!-- Unselected Item -->
+                    <div class="flex items-center justify-between p-4 bg-white dark:bg-slate-800 rounded-[1.5rem] shadow-sm transition-all hover:shadow-md cursor-pointer border border-transparent">
+                        <div class="flex items-center gap-4">
+                            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-300">
+                                <span class="material-symbols-outlined">sanitizer</span>
+                            </div>
+                            <div>
+                                <p class="font-bold text-lg text-slate-900 dark:text-white">Toiletries Refill</p>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 font-medium mt-0.5">Luxury soaps & shampoos</p>
+                            </div>
+                        </div>
+                        <button class="flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-primary hover:text-white transition-colors">
+                            <span class="material-symbols-outlined text-[18px]">add</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="mt-10 mb-4 flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary text-xl">psychology_alt</span>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white">Ask AI Agent</h3>
+                </div>
+                
+                <div class="relative w-full rounded-full mb-8">
+                    <div class="liquid-glass rounded-full flex items-center px-5 py-3 border border-white/50 dark:border-slate-700/50 dark:bg-slate-800/80 shadow-sm">
+                        <input class="w-full bg-transparent border-none focus:ring-0 outline-none text-slate-800 dark:text-white placeholder:text-slate-400 placeholder:font-medium font-medium text-sm" placeholder="Tell our AI what you need..." type="text"/>
+                        <button class="ml-2 flex items-center justify-center h-10 w-10 shrink-0 rounded-full bg-primary text-white hover:bg-blue-700 transition-colors shadow-md">
+                            <span class="material-symbols-outlined text-sm">send</span>
+                        </button>
+                    </div>
+                    <p class="mt-4 px-4 text-[11px] text-center text-slate-400 font-medium italic">Try: "I need 5 more hangers..."</p>
+                </div>
+            </main>
+
+            <!-- Bottom Floating UI (Action + Navigation matched to screenshot) -->
+            <div class="absolute bottom-5 left-0 right-0 px-5 z-50 pointer-events-none flex flex-col gap-3">
+                
+                <!-- Floating Action Button Area -->
+                <div class="pointer-events-auto">
+                    <button class="w-full bg-white dark:bg-slate-800 text-slate-900 dark:text-white p-3 px-5 rounded-2xl font-bold flex items-center justify-between shadow-[0_8px_30px_rgb(0,0,0,0.08)] active:scale-[0.98] transition-all border border-slate-100 dark:border-slate-700">
+                        <div class="flex flex-col items-start gap-0.5">
+                            <span class="text-[10px] text-slate-500 font-semibold uppercase tracking-wider leading-none">Cart Total</span>
+                            <span class="text-base leading-none mt-0.5">2 Items</span>
+                        </div>
+                        <div class="flex items-center justify-center bg-primary text-white px-4 py-2.5 rounded-full shadow-md shadow-primary/30">
+                            <span class="mr-1.5 text-xs tracking-wide">Place Order</span>
+                            <span class="material-symbols-outlined text-[16px] font-bold">arrow_forward</span>
+                        </div>
+                    </button>
+                </div>
+
+                <!-- Floating Bottom Navigation -->
+                <div class="pointer-events-auto">
+                    <nav class="flex h-16 w-full items-center justify-between rounded-full bg-white/95 dark:bg-slate-800/95 backdrop-blur-xl shadow-[0_10px_40px_rgba(0,0,0,0.1)] border border-slate-100 dark:border-slate-700 px-2 py-1.5">
+                        <a class="flex flex-col items-center justify-center gap-0.5 w-[60px] text-slate-400 dark:text-slate-500 hover:text-slate-700 transition-colors" href="#">
+                            <span class="material-symbols-outlined text-[22px]">home</span>
+                            <span class="text-[8px] font-bold tracking-wider">HOME</span>
+                        </a>
+                        <!-- Active Pill matched to screenshot -->
+                        <a class="flex flex-col items-center justify-center gap-0.5 bg-primary text-white rounded-full px-4 h-[44px] min-w-[84px] shadow-lg shadow-primary/20" href="#">
+                            <span class="material-symbols-outlined text-fill text-[20px]">room_service</span>
+                            <span class="text-[9px] font-bold tracking-wider">SERVICES</span>
+                        </a>
+                        <a class="flex flex-col items-center justify-center gap-0.5 w-[60px] text-slate-400 dark:text-slate-500 hover:text-slate-700 transition-colors" href="#">
+                            <span class="material-symbols-outlined text-[22px]">receipt_long</span>
+                            <span class="text-[8px] font-bold tracking-wider">ORDERS</span>
+                        </a>
+                        <a class="flex flex-col items-center justify-center gap-0.5 w-[60px] text-slate-400 dark:text-slate-500 hover:text-slate-700 transition-colors" href="#">
+                            <span class="material-symbols-outlined text-[22px]">person</span>
+                            <span class="text-[8px] font-bold tracking-wider">ACCOUNT</span>
+                        </a>
+                    </nav>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>v

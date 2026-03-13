@@ -11,12 +11,13 @@ import IndustryImpactSection from "@/components/IndustryImpactSection";
 import HotelQRBenefits from "@/components/HotelQRBenefits";
 import ValueProposition from "@/components/ValueProposition";
 import AIDashboardSection from "@/components/AIDashboardSection";
-import ROIEstimate from "@/components/ROIEstimate";
+import ROIEstimateLight from "@/components/ROIEstimateLight";
 import PresentationSection from "@/components/PresentationSection";
 import ChatFAQSection from "@/components/ChatFAQSection";
 import LLMSummary from "@/components/LLMSummary";
 import SEO, { organizationSchema } from "@/components/SEO";
 import Onboarding from "@/components/Onboarding";
+import HotelmolIs from "@/components/HotelmolIs";
 
 export default function Home() {
     return (
@@ -34,10 +35,11 @@ export default function Home() {
             <IntegrationTicker />
             <IndustryImpactSection />
             <HotelQRBenefits />
+            <HotelmolIs />
             <ValueProposition />
             <AIDashboardSection />
             <ChatFAQSection />
-            <ROIEstimate />
+            <ROIEstimateLight />
             <PresentationSection />
         </>
     );
