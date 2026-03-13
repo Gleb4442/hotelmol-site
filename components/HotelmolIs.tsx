@@ -1,6 +1,6 @@
 "use client";
 import React from 'react';
-import { Smartphone, UtensilsCrossed, ClipboardList, Award, CheckCircle2, Search, ArrowLeft, ShoppingBasket, Home, BellRing, Receipt, User } from 'lucide-react';
+import { Smartphone, UtensilsCrossed, ClipboardList, Award, CheckCircle2, Search, ArrowLeft, ShoppingBasket, Home, BellRing, Receipt, User, Bed, Droplets, Plus } from 'lucide-react';
 
 const PhoneFrame = ({ children, caption }: { children: React.ReactNode, caption: string }) => (
   <div className="flex flex-col items-center gap-6">
@@ -114,7 +114,33 @@ const HotelmolIs = () => {
                                 <p className="text-[8px] text-slate-400">Complete deep clean</p>
                             </div>
                         </div>
-                        <div className="size-4 rounded-full bg-slate-100"></div>
+                        <div className="size-4 rounded-full bg-slate-100 flex items-center justify-center"><Plus className="size-3 text-slate-400" /></div>
+                    </div>
+                    
+                    <div className="bg-white p-3 rounded-xl flex items-center justify-between border-2 border-blue-100 shadow-sm">
+                        <div className="flex items-center gap-2">
+                            <div className="size-8 bg-blue-50 rounded-lg flex items-center justify-center text-blue-600">
+                                <Bed className="size-4" />
+                            </div>
+                            <div>
+                                <p className="font-bold">Extra Pillows</p>
+                                <p className="text-[8px] text-slate-400">Hypoallergenic foam</p>
+                            </div>
+                        </div>
+                        <CheckCircle2 className="size-4 text-emerald-500" />
+                    </div>
+
+                    <div className="bg-white p-3 rounded-xl flex items-center justify-between shadow-sm">
+                        <div className="flex items-center gap-2">
+                            <div className="size-8 bg-slate-50 rounded-lg flex items-center justify-center text-slate-400">
+                                <Droplets className="size-4" />
+                            </div>
+                            <div>
+                                <p className="font-bold">Toiletries Refill</p>
+                                <p className="text-[8px] text-slate-400">Luxury soaps & shampoos</p>
+                            </div>
+                        </div>
+                        <div className="size-4 rounded-full bg-slate-100 flex items-center justify-center"><Plus className="size-3 text-slate-400" /></div>
                     </div>
                     <div className="mt-8">
                         <h3 className="font-bold mb-2">Ask AI Agent</h3>
