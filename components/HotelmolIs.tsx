@@ -62,6 +62,15 @@ const HotelmolIs = () => {
                             </div>
                         </div>
                     </div>
+                    <div className="rounded-2xl overflow-hidden border border-slate-100 shadow-sm shrink-0">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoelgNvrBi-WtNBkRNlQGgexYCtWUaCR7iEaUtv8IMPwJojroZIp6HY1v30LAHpYGqrjo4yWPAzVpXLy7I2I_hjEvclJtKVBKnbF0wPkxAdA0C25cMbHjgtYsaFub6EN_UNrdcSycJ7NRBcWLZ0yvy5b9M_r9c5l6rpF7lMiQZ9a8KTwRMGrhz-I4WI3U-9_lMPKMXIp-oyK3HcnTmVqrs0GQ7xUhste40N1VayeQbrs0r62dvlqxTB_mOma5vwva9qcokwWzXLFqL" className="w-full h-24 object-cover" />
+                        <div className="p-2">
+                            <div className="flex justify-between font-bold">
+                                <span>Hokkaido Scallops</span>
+                                <span className="text-blue-600">$55.00</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div className="mt-auto p-3">
                     <div className="bg-blue-600 text-white rounded-xl p-2 flex justify-between items-center shadow-lg shadow-blue-200">
