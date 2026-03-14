@@ -66,7 +66,7 @@ export default function HowRoomieWorks() {
             }
           }
         });
-      }, { threshold: 0.6, rootMargin: "-10% 0px -10% 0px" });
+      }, { threshold: 1.0, rootMargin: "-15% 0px -45% 0px" });
 
       stepRefs.current.forEach((step) => {
         if (step) observer.observe(step);

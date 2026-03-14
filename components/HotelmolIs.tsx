@@ -39,7 +39,7 @@ const HotelmolIs = () => {
                         <span className="text-slate-400">Search...</span>
                     </div>
                 </div>
-                <div className="p-3 space-y-4 overflow-y-auto no-scrollbar">
+                <div className="p-3 space-y-4 overflow-hidden no-scrollbar">
                     <div className="flex gap-2 overflow-x-auto no-scrollbar pb-1">
                         <span className="px-3 py-1 bg-blue-600 text-white rounded-full whitespace-nowrap">All Dishes</span>
                         <span className="px-3 py-1 bg-white border border-slate-200 rounded-full whitespace-nowrap">Appetizers</span>

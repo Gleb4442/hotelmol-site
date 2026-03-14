@@ -259,7 +259,7 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="fixed inset-0 z-[100] bg-black/20 backdrop-blur-sm md:hidden"
+              className="fixed inset-0 z-[100] bg-black/40 md:hidden"
             />
 
             {/* Menu Content (Bottom Sheet Style) */}
@@ -279,10 +279,10 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
                   return (
                     <motion.div
                       key={item.name}
-                      initial={{ opacity: 0, y: 20, scale: 0.9 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: 20, scale: 0.9 }}
-                      transition={{ delay: 0.05 * (navigation.length - 1 - idx) }}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
+                      transition={{ duration: 0.2, delay: 0.03 * (navigation.length - 1 - idx) }}
                       className="w-full flex justify-end"
                     >
                       <Link
@@ -302,10 +302,10 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
 
                 {/* Talk to a human button */}
                 <motion.div
-                  initial={{ opacity: 0, y: 20, scale: 0.9 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: 20, scale: 0.9 }}
-                  transition={{ delay: 0.05 * navigation.length }}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  transition={{ duration: 0.2, delay: 0.03 * navigation.length }}
                   className="w-full flex justify-end"
                 >
                   <a
@@ -322,10 +322,10 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
 
               {/* Close Button */}
               <motion.button
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ delay: 0.3 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2, delay: 0.15 }}
                 onClick={(e) => {
                   e.stopPropagation();
                   setIsMobileMenuOpen(false);
