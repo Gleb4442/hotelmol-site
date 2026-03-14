@@ -6,17 +6,17 @@ const HotelQRBenefits = () => {
     const tableData = [
         {
             id: 1,
-            caseName: "Hilton Fugu (Китай)",
-            usage: "Развернуто в 160+ отелях",
-            orders: "4.8/5.0",
-            ordersDesc: "рейтинг удовлетворенности",
+            caseName: "Mandarin Oriental",
+            usage: "20 отелей глобально",
+            orders: "+39%",
+            ordersDesc: "к объёму мобильных заказов",
             revenueLabel: "Выручка",
             revenueIcon: <Wallet className="w-4 h-4" />,
-            revenue: "+30%",
-            revenueDesc: "y/o/y рост выручки In-Room",
-            effect: "Рост чека визуальным апселлом",
-            icon: <img src="/assets/hilton-logo.svg" alt="Hilton logo" className="w-auto h-8 max-h-[32px] object-contain filter grayscale opacity-70" />,
-            glowColor: "from-blue-50 to-indigo-50"
+            revenue: "+54%",
+            revenueDesc: "к выручке F&B room service",
+            effect: "Значительный рост доходности сервиса в номерах",
+            icon: <img src="/assets/mandarin-oriental-logo.png" alt="Mandarin Oriental logo" className="w-auto h-14 max-h-[56px] object-contain filter grayscale opacity-70" />,
+            glowColor: "from-orange-50 to-amber-50"
         },
         {
             id: 2,
@@ -29,7 +29,7 @@ const HotelQRBenefits = () => {
             revenue: "Снижение",
             revenueDesc: "ошибок в заказах и ускорение обработки",
             effect: "Больше времени на персонализированный сервис",
-            icon: <img src="/assets/radisson-blu-logo.svg" alt="Radisson Blu logo" className="w-auto h-8 max-h-[32px] object-contain filter grayscale opacity-70" />,
+            icon: <img src="/assets/radisson-blu-logo.svg" alt="Radisson Blu logo" className="w-auto h-14 max-h-[56px] object-contain filter grayscale opacity-70" />,
             glowColor: "from-cyan-50 to-blue-50"
         },
         {
@@ -43,22 +43,22 @@ const HotelQRBenefits = () => {
             revenue: "+72.5%",
             revenueDesc: "к выручке in-room",
             effect: "23–32% заказов через цифру",
-            icon: <img src="/assets/fairmont-logo.svg" alt="Fairmont logo" className="w-auto h-8 max-h-[32px] object-contain filter grayscale opacity-70" />,
+            icon: <img src="/assets/fairmont-logo.svg" alt="Fairmont logo" className="w-auto h-14 max-h-[56px] object-contain filter grayscale opacity-70" />,
             glowColor: "from-sky-50 to-blue-50"
         },
         {
             id: 4,
-            caseName: "Общий тренд F&B",
-            usage: "Рестораны и F&B-зоны",
-            orders: "До 30%",
-            ordersDesc: "рост выручки",
+            caseName: "Ritz-Carlton Dubai",
+            usage: "Роскошный сервис",
+            orders: "+106%",
+            ordersDesc: "к объёму мобильных заказов YoY",
             revenueLabel: "Выручка",
             revenueIcon: <Wallet className="w-4 h-4" />,
-            revenue: "Upsell",
-            revenueDesc: "рост среднего чека",
-            effect: "Повышение оборачиваемости, нет очередей",
-            icon: <UtensilsCrossed className="w-6 h-6 text-slate-400" />,
-            glowColor: "from-indigo-50 to-purple-50"
+            revenue: "+128%",
+            revenueDesc: "к F&B-выручке YoY",
+            effect: "Экспоненциальный рост мобильных заказов",
+            icon: <img src="/assets/ritz-carlton-logo.png" alt="Ritz-Carlton logo" className="w-auto h-14 max-h-[56px] object-contain filter grayscale opacity-70" />,
+            glowColor: "from-slate-50 to-blue-50"
         }
     ];
 
@@ -112,7 +112,7 @@ const HotelQRBenefits = () => {
                             <div className="relative z-10">
                                 {/* Шапка карточки */}
                                 <div className="flex flex-col md:flex-row md:items-center gap-6 mb-8">
-                                    <div className="p-5 bg-white rounded-3xl shadow-sm border border-slate-100 flex items-center justify-center w-20 h-20 shrink-0">
+                                    <div className="p-2 bg-white rounded-3xl shadow-sm border border-slate-100 flex items-center justify-center w-20 h-20 shrink-0">
                                         {activeCase.icon}
                                     </div>
                                     <div className="space-y-1">
@@ -172,14 +172,14 @@ const HotelQRBenefits = () => {
                         <button
                             key={item.id}
                             onClick={() => setActiveIndex(index)}
-                            className={`group relative flex items-center justify-center p-3 rounded-2xl transition-all duration-300 border-2
+                            className={`group relative flex items-center justify-center p-1 rounded-2xl transition-all duration-300 border-2
                                 ${activeIndex === index
                                     ? 'bg-white border-[#0752A0] shadow-md scale-110'
                                     : 'bg-white/50 border-transparent hover:border-slate-300 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-105'
                                 }
                             `}
                         >
-                            <div className="w-12 h-12 flex items-center justify-center overflow-hidden">
+                            <div className="w-16 h-16 flex items-center justify-center overflow-hidden">
                                 {React.cloneElement(item.icon as React.ReactElement, {
                                     className: `w-full h-full object-contain transition-all duration-300 ${activeIndex === index ? 'filter-none opacity-100' : ''}`
                                 })}
