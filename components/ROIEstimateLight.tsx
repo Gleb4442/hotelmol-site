@@ -31,6 +31,18 @@ function Counter({ value, decimal = 0, prefix = "", suffix = "" }: { value: numb
 export default function ROIEstimateLight() {
   const { t, language } = useTranslation();
   const [rooms, setRooms] = useState<number>(50);
+  const [isEditingRooms, setIsEditingRooms] = useState(false);
+  const [roomInput, setRoomInput] = useState(rooms.toString());
+
+  const handleRoomSubmit = () => {
+    const val = parseInt(roomInput);
+    if (!isNaN(val) && val >= 5 && val <= 500) {
+      setRooms(val);
+    } else {
+      setRoomInput(rooms.toString());
+    }
+    setIsEditingRooms(false);
+  };
 
   // Base values from CSV
   const OTA_SAVINGS_PER_ROOM = 53;
@@ -88,7 +100,30 @@ export default function ROIEstimateLight() {
                     {t("roi.calculator.roomsLabel")}
                   </label>
                   <div className="text-5xl font-bold text-[#111111] tabular-nums flex items-baseline gap-2">
-                    {rooms}
+                    {isEditingRooms ? (
+                      <input
+                        type="number"
+                        value={roomInput}
+                        onChange={(e) => setRoomInput(e.target.value)}
+                        onBlur={handleRoomSubmit}
+                        onKeyDown={(e) => e.key === "Enter" && handleRoomSubmit()}
+                        autoFocus
+                        className="w-32 bg-transparent border-b-2 border-[#0752A0] outline-none focus:ring-0 p-0 text-5xl font-bold text-[#111111]"
+                        min="5"
+                        max="500"
+                      />
+                    ) : (
+                      <span 
+                        onClick={() => {
+                          setRoomInput(rooms.toString());
+                          setIsEditingRooms(true);
+                        }}
+                        className="cursor-pointer hover:text-[#0752A0] transition-colors decoration-dotted decoration-[#0752A0]/30 hover:underline underline-offset-8"
+                        title="Click to edit"
+                      >
+                        {rooms}
+                      </span>
+                    )}
                     <span className="text-xl font-light text-[#8A8A8A] lowercase">rooms</span>
                   </div>
                 </div>
