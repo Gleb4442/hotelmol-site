@@ -121,7 +121,10 @@ export default function IndustryImpactSection() {
                             <img
                                 src={hotel.logo}
                                 alt={t(hotel.nameKey as any)}
-                                className="w-[60px] md:w-[77.2px] h-auto object-contain relative z-10 mix-blend-multiply grayscale brightness-0 opacity-80"
+                                className={cn(
+                                    "w-[60px] md:w-[77.2px] h-auto object-contain relative z-10 mix-blend-multiply grayscale brightness-0 opacity-80",
+                                    hotel.id === "fourSeasons" && "translate-y-[-2px]"
+                                )}
                             />
                             {activeHotel.id === hotel.id && (
                                 <motion.div
