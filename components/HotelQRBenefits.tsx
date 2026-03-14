@@ -72,7 +72,7 @@ const HotelQRBenefits = () => {
             <div className="relative z-10 max-w-6xl w-full">
                 {/* Заголовок */}
                 <div className="text-center mb-12 opacity-100">
-                    <h2 className="text-4xl md:text-5xl font-extrabold text-slate-800 mb-4 tracking-tight drop-shadow-sm">
+                    <h2 className="text-4xl lg:text-[45px] font-extrabold text-slate-800 mb-4 tracking-tight drop-shadow-sm">
                         Эффективность онлайн-меню
                     </h2>
                     <p className="text-slate-600 max-w-2xl mx-auto text-lg md:text-xl font-light">

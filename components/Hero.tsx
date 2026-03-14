@@ -77,7 +77,7 @@ export default function Hero() {
 
         <div className="relative z-10 container mx-auto px-6 pt-32 pb-20 lg:py-24">
           <div className="max-w-5xl mx-auto text-center">
-            <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-[4.75rem] font-bold tracking-tighter sm:tracking-tight text-white mb-6 leading-tight pl-[3px] sm:pl-0 pb-2" style={{ marginLeft: "-8px" }}>
+            <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-[61.25px] font-bold tracking-tighter sm:tracking-tight text-white mb-6 leading-tight pl-[3px] sm:pl-0 pb-2" style={{ marginLeft: "-8px" }}>
               <span className="inline-block ml-[-7px] sm:ml-[-10px]">
                 {t("home.hero.title")}&nbsp;
               </span>

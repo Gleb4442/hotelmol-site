@@ -74,7 +74,7 @@ export default function ROIEstimate() {
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 mb-6 shadow-2xl">
             <Calculator className="h-8 w-8 text-primary" />
           </div>
-          <h2 className="font-serif text-4xl sm:text-5xl lg:text-[47.5px] font-bold mb-6 text-white tracking-tight leading-tight">
+          <h2 className="font-serif text-4xl sm:text-5xl lg:text-[45px] font-bold mb-6 text-white tracking-tight leading-tight">
             {t("roi.title")}
           </h2>
           <p className="text-lg sm:text-xl text-white/60 max-w-2xl mx-auto font-light leading-relaxed">

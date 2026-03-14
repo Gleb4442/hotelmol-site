@@ -65,7 +65,7 @@ export default function ROIEstimateLight() {
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#F6F6F4] border border-grey/10 mb-6 shadow-sm">
             <Calculator className="h-8 w-8 text-[#0752A0]" />
           </div>
-          <h2 className="font-serif text-4xl sm:text-5xl lg:text-[47.5px] font-bold mb-6 text-[#111111] tracking-tight leading-tight">
+          <h2 className="font-serif text-4xl sm:text-5xl lg:text-[45px] font-bold mb-6 text-[#111111] tracking-tight leading-tight">
             {t("roi.title")}
           </h2>
           <p className="text-lg sm:text-xl text-[#8A8A8A] max-w-2xl mx-auto font-light leading-relaxed">

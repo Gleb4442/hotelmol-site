@@ -18,7 +18,7 @@ export default function AIDashboardSection() {
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="font-serif text-3xl lg:text-4xl font-bold text-foreground mb-4">
+          <h2 className="font-serif text-3xl lg:text-[45px] font-bold text-foreground mb-4">
             {t("home.aiDashboard.title")}
           </h2>
           <p className="text-base text-muted-foreground max-w-3xl mx-auto">

@@ -21,7 +21,7 @@ const HotelmolIs = () => {
   return (
     <section className="py-24 bg-[#F7F6F2] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-extrabold text-slate-800 text-center mb-16 tracking-tight">
+        <h2 className="text-4xl lg:text-[45px] font-extrabold text-slate-800 text-center mb-16 tracking-tight">
           hotelmol — это...
         </h2>
 

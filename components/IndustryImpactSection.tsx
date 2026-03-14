@@ -88,7 +88,7 @@ export default function IndustryImpactSection() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="font-serif text-2xl md:text-4xl font-bold tracking-tight mb-5"
+                        className="font-serif text-2xl md:text-3xl lg:text-[45px] font-bold tracking-tight mb-5"
                     >
                         {t("industryImpact.title")}
                     </motion.h2>

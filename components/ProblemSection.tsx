@@ -46,7 +46,7 @@ export default function ProblemSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-3xl lg:text-6xl font-serif font-bold mb-6">
+            <h2 className="text-3xl lg:text-[45px] font-serif font-bold mb-6">
               {t("home.problem.title")}
             </h2>
           </motion.div>

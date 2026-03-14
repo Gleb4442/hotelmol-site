@@ -59,7 +59,7 @@ export default function ValueProposition() {
         <section className="py-16 relative overflow-hidden bg-[#F7F6F2] dark:bg-zinc-950/50">
             <div className="container mx-auto px-4 relative z-10">
                 <div className="text-center mb-16">
-                    <h2 className="text-2xl md:text-4xl font-bold text-zinc-900 dark:text-white mb-5">
+                    <h2 className="text-2xl lg:text-[45px] font-bold text-zinc-900 dark:text-white mb-5">
                         Какую ценность мы даем
                     </h2>
                     <p className="text-base text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
