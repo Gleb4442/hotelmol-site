@@ -15,7 +15,7 @@ const HotelQRBenefits = () => {
             revenue: "+54%",
             revenueDesc: "к выручке F&B room service",
             effect: "Значительный рост доходности сервиса в номерах",
-            icon: <img src="/assets/mandarin-oriental-logo.png" alt="Mandarin Oriental logo" className="w-auto h-14 max-h-[56px] object-contain filter grayscale opacity-70" />,
+            icon: <img src="/assets/mandarin-oriental-logo.png" alt="Mandarin Oriental logo" />,
             glowColor: "from-orange-50 to-amber-50"
         },
         {
@@ -29,7 +29,7 @@ const HotelQRBenefits = () => {
             revenue: "Снижение",
             revenueDesc: "ошибок в заказах и ускорение обработки",
             effect: "Больше времени на персонализированный сервис",
-            icon: <img src="/assets/radisson-blu-logo.svg" alt="Radisson Blu logo" className="w-auto h-14 max-h-[56px] object-contain filter grayscale opacity-70" />,
+            icon: <img src="/assets/radisson-blu-logo.svg" alt="Radisson Blu logo" />,
             glowColor: "from-cyan-50 to-blue-50"
         },
         {
@@ -43,7 +43,7 @@ const HotelQRBenefits = () => {
             revenue: "+72.5%",
             revenueDesc: "к выручке in-room",
             effect: "23–32% заказов через цифру",
-            icon: <img src="/assets/fairmont-logo.svg" alt="Fairmont logo" className="w-auto h-14 max-h-[56px] object-contain filter grayscale opacity-70" />,
+            icon: <img src="/assets/fairmont-logo.svg" alt="Fairmont logo" />,
             glowColor: "from-sky-50 to-blue-50"
         },
         {
@@ -57,7 +57,7 @@ const HotelQRBenefits = () => {
             revenue: "+128%",
             revenueDesc: "к F&B-выручке YoY",
             effect: "Экспоненциальный рост мобильных заказов",
-            icon: <img src="/assets/ritz-carlton-logo.png" alt="Ritz-Carlton logo" className="w-auto h-14 max-h-[56px] object-contain filter grayscale opacity-70" />,
+            icon: <img src="/assets/ritz-carlton-logo.png" alt="Ritz-Carlton logo" />,
             glowColor: "from-slate-50 to-blue-50"
         }
     ];
@@ -113,7 +113,9 @@ const HotelQRBenefits = () => {
                                 {/* Шапка карточки */}
                                 <div className="flex flex-col md:flex-row md:items-center gap-6 mb-8">
                                     <div className="p-2 bg-white rounded-3xl shadow-sm border border-slate-100 flex items-center justify-center w-20 h-20 shrink-0">
-                                        {activeCase.icon}
+                                        {React.cloneElement(activeCase.icon as React.ReactElement, {
+                                            className: "w-auto h-14 max-h-[56px] object-contain grayscale opacity-90"
+                                        })}
                                     </div>
                                     <div className="space-y-1">
                                         <h3 className="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight">
@@ -181,7 +183,7 @@ const HotelQRBenefits = () => {
                         >
                             <div className="w-16 h-16 flex items-center justify-center overflow-hidden">
                                 {React.cloneElement(item.icon as React.ReactElement, {
-                                    className: `w-full h-full object-contain transition-all duration-300 ${activeIndex === index ? 'filter-none opacity-100' : ''}`
+                                    className: `w-full h-full object-contain grayscale transition-all duration-300 ${activeIndex === index ? 'opacity-100' : 'opacity-40'}`
                                 })}
                             </div>
 

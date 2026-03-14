@@ -1,6 +1,7 @@
 "use client";
 import React from 'react';
 import { Smartphone, UtensilsCrossed, ClipboardList, Award, CheckCircle2, Search, ArrowLeft, ShoppingBasket, Home, BellRing, Receipt, User, Bed, Droplets, Plus } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const PhoneFrame = ({ children, caption }: { children: React.ReactNode, caption: string }) => (
   <div className="flex flex-col items-center gap-6">
@@ -11,7 +12,7 @@ const PhoneFrame = ({ children, caption }: { children: React.ReactNode, caption:
         {children}
       </div>
     </div>
-    <p className="text-slate-600 text-center font-bold text-lg max-w-[280px]">
+    <p className="text-white text-center font-bold text-lg max-w-[280px]">
       {caption}
     </p>
   </div>
@@ -19,9 +20,38 @@ const PhoneFrame = ({ children, caption }: { children: React.ReactNode, caption:
 
 const HotelmolIs = () => {
   return (
-    <section className="py-24 bg-[#F7F6F2] overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-4xl lg:text-[45px] font-extrabold text-slate-800 text-center mb-16 tracking-tight">
+    <section className="py-24 bg-[#0752A0] relative overflow-hidden">
+      {/* Starfield Background */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        {[...Array(40)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute bg-white rounded-full opacity-30"
+            style={{
+              width: Math.random() * 2 + 1 + 'px',
+              height: Math.random() * 2 + 1 + 'px',
+              left: Math.random() * 100 + '%',
+              top: Math.random() * 100 + '%',
+            }}
+            animate={{
+              x: [0, Math.random() * 100 - 50],
+              y: [0, Math.random() * 100 - 50],
+              opacity: [0.1, 0.4, 0.1],
+            }}
+            transition={{
+              duration: Math.random() * 20 + 20,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          />
+        ))}
+        {/* Subtle glow layers */}
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-blue-900/50 to-transparent" />
+        <div className="absolute bottom-0 left-0 w-full h-full bg-gradient-to-t from-[#053a70] to-transparent" />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4">
+        <h2 className="text-4xl lg:text-[45px] font-extrabold text-white text-center mb-16 tracking-tight">
           hotelmol — это...
         </h2>
 
