@@ -80,7 +80,7 @@ export default function IndustryImpactSection() {
     const [activeHotel, setActiveHotel] = useState<HotelData>(hotelConfig[0]);
 
     return (
-        <section className="py-16 md:py-24 bg-white overflow-hidden">
+        <section className="py-16 md:py-24 bg-[#F7F6F2] overflow-hidden">
             <div className="container mx-auto px-4">
                 {/* Header */}
                 <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">

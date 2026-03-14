@@ -60,7 +60,7 @@ export default function ROIEstimateLight() {
   ], [rooms, t]);
 
   return (
-    <section className="py-20 lg:py-32 relative overflow-hidden bg-[#FFFFFF]">
+    <section className="py-20 lg:py-32 relative overflow-hidden bg-[#F7F6F2]">
       {/* Premium Background with Subtle Gradient */}
       <div className="absolute inset-0 opacity-30 pointer-events-none">
         <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-[#0752A0]/10 blur-[120px]" />

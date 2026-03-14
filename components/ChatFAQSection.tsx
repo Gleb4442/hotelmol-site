@@ -52,7 +52,7 @@ export default function ChatFAQSection() {
     };
 
     return (
-        <section className="py-16 md:py-24 bg-slate-50/50">
+        <section className="py-16 md:py-24 bg-[#F7F6F2]">
             <script
                 id="faq-schema"
                 type="application/ld+json"

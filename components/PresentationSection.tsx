@@ -6,7 +6,7 @@ export default function PresentationSection() {
   const { t } = useTranslation();
 
   return (
-    <section className="py-12 md:py-16">
+    <section className="py-12 md:py-16 bg-[#F7F6F2]">
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center text-center">
           <div className="flex items-stretch justify-center gap-4">

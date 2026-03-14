@@ -7,7 +7,7 @@ export default function AIDashboardSection() {
 
   return (
     <section
-      className="py-12 md:py-16 lg:py-20 bg-background"
+      className="py-12 md:py-16 lg:py-20 bg-[#F7F6F2]"
       data-testid="section-ai-dashboard"
     >
       <div className="container mx-auto px-4">
