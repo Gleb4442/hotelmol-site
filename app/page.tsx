@@ -9,7 +9,7 @@ import HowRoomieWorks from "@/components/HowRoomieWorks";
 import IntegrationTicker from "@/components/IntegrationTicker";
 import IndustryImpactSection from "@/components/IndustryImpactSection";
 import HotelQRBenefits from "@/components/HotelQRBenefits";
-import ValueProposition from "@/components/ValueProposition";
+import SolutionsBlogSection from "@/components/SolutionsBlogSection";
 import AIDashboardSection from "@/components/AIDashboardSection";
 import ROIEstimateLight from "@/components/ROIEstimateLight";
 import PresentationSection from "@/components/PresentationSection";
@@ -36,8 +36,8 @@ export default function Home() {
             <HowRoomieWorks />
             <IntegrationTicker />
             <HotelmolIs />
-            <ValueProposition />
             <AIDashboardSection />
+            <SolutionsBlogSection />
             <ChatFAQSection />
             <ROIEstimateLight />
             <PresentationSection />

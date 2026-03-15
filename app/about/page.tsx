@@ -11,6 +11,7 @@ import Link from "next/link";
 import SEO, { organizationSchema } from "@/components/SEO";
 import { useTranslation } from "@/lib/TranslationContext";
 import AiReviewSection from "@/components/AiReviewSection";
+import ValueProposition from "@/components/ValueProposition";
 import Image from "next/image";
 
 export default function About() {
@@ -58,6 +59,8 @@ export default function About() {
                     </div>
                 </div>
             </section>
+
+            <ValueProposition />
 
             <section className="pt-[46px] pb-24 md:pb-12 min-h-[600px] flex flex-col justify-center" style={{ backgroundColor: "#F7F5F1" }}>
                 <div className="container mx-auto px-4">

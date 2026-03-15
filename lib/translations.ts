@@ -304,7 +304,15 @@ const translationsBase = {
     "success.messageSent": "Message sent!",
     "success.messageReceived": "We'll get back to you within 24 hours.",
 
-
+    // Blog
+    "blog.empty": "No articles published yet",
+    "blog.readMore": "Read More",
+    "blog.notFound": "Article not found",
+    "blog.backToBlog": "Back to Blog",
+    "blog.aiSummary": "Brief Summary",
+    "blog.summaryTitle": "AI Article Overview",
+    "blog.keyPoints": "Key Takeaways",
+    "blog.share": "Share",
 
     // Home - How Roomie Works
     "home.howWorks.badge": "The Process",
