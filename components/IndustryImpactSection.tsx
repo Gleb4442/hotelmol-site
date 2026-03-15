@@ -112,10 +112,10 @@ export default function IndustryImpactSection() {
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             className={cn(
-                                "relative w-20 h-20 md:w-28 md:h-28 rounded-full flex items-center justify-center transition-all duration-500 border overflow-hidden",
+                                "relative w-20 h-20 md:w-28 md:h-28 rounded-full flex items-center justify-center transition-all duration-500 overflow-hidden",
                                 activeHotel.id === hotel.id
-                                    ? "bg-[#F7F5F1] border-[#0752A0]/20 shadow-[0_20px_40px_rgba(7,82,160,0.12)] opacity-100"
-                                    : "bg-white border-slate-100 hover:border-slate-200 shadow-[0_4px_20px_rgba(0,0,0,0.03)] opacity-60 hover:opacity-100"
+                                    ? "bg-white shadow-[0_20px_40px_rgba(7,82,160,0.08)] opacity-100"
+                                    : "bg-white/50 hover:bg-white shadow-[0_4px_20px_rgba(0,0,0,0.02)] opacity-60 hover:opacity-100"
                             )}
                         >
                             <img
@@ -129,7 +129,7 @@ export default function IndustryImpactSection() {
                             {activeHotel.id === hotel.id && (
                                 <motion.div
                                     layoutId="active-pill-shadow"
-                                    className="absolute inset-0 rounded-full bg-gradient-to-b from-white/20 to-transparent pointer-events-none"
+                                    className="absolute inset-0 rounded-full bg-gradient-to-b from-primary/5 to-transparent pointer-events-none"
                                 />
                             )}
                         </motion.button>
@@ -141,13 +141,17 @@ export default function IndustryImpactSection() {
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={activeHotel.id}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -20 }}
-                            transition={{ duration: 0.4, ease: "easeInOut" }}
+                            initial={{ opacity: 0, scale: 0.98, filter: "blur(10px)" }}
+                            animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                            exit={{ opacity: 0, scale: 1.02, filter: "blur(10px)" }}
+                            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                             className="max-w-3xl mx-auto"
                         >
-                            <div className="bg-slate-50/50 rounded-3xl p-7 md:p-10 lg:p-12 border border-slate-100 shadow-sm">
+                            <div className="relative bg-white/30 backdrop-blur-xl rounded-[48px] p-8 md:p-12 lg:p-16 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.05)]">
+                                {/* Subtle decorative glow */}
+                                <div className="absolute -top-24 -right-24 w-64 h-64 bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
+                                <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
+                                
                                 {activeHotel.sections.map((section, idx) => {
                                     const title = t(`industryImpact.${activeHotel.id}.${section.key}.title` as any);
                                     const items = t(`industryImpact.${activeHotel.id}.${section.key}.items` as any) as unknown as string[];
@@ -158,26 +162,30 @@ export default function IndustryImpactSection() {
                                     return (
                                         <div
                                             key={section.key}
-                                            className="space-y-8"
+                                            className="space-y-10"
                                         >
-                                            <div className="flex items-center gap-5">
-                                                <div className="w-14 h-14 rounded-2xl bg-white shadow-md flex items-center justify-center text-primary border border-slate-100">
-                                                    <Icon size={28} />
+                                            <div className="flex items-center gap-6">
+                                                <div className="w-16 h-16 rounded-2xl bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex items-center justify-center text-primary">
+                                                    <Icon size={32} />
                                                 </div>
-                                                <h3 className="text-xl md:text-2xl font-bold font-serif">{title}</h3>
+                                                <h3 className="text-2xl md:text-3xl font-bold font-serif tracking-tight">{title}</h3>
                                             </div>
 
-                                            <ul className="space-y-5">
+                                            <ul className="space-y-6">
                                                 {items.map((item, i) => (
                                                     <motion.li
                                                         key={i}
-                                                        initial={{ opacity: 0, x: -10 }}
-                                                        animate={{ opacity: 1, x: 0 }}
-                                                        transition={{ delay: 0.2 + i * 0.1 }}
-                                                        className="flex gap-4 text-slate-600 leading-relaxed group"
+                                                        initial={{ opacity: 0, y: 10, filter: "blur(4px)" }}
+                                                        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                                                        transition={{ 
+                                                            delay: 0.3 + i * 0.1,
+                                                            duration: 0.5,
+                                                            ease: "easeOut"
+                                                        }}
+                                                        className="flex gap-5 text-slate-600 leading-relaxed group"
                                                     >
-                                                        <div className="mt-2.5 w-2 h-2 rounded-full bg-primary/40 shrink-0 group-hover:bg-primary transition-colors" />
-                                                        <span className="text-base md:text-lg font-medium text-slate-700">{item}</span>
+                                                        <div className="mt-3 w-2 h-2 rounded-full bg-primary/30 shrink-0 group-hover:bg-primary transition-all duration-300 group-hover:scale-125" />
+                                                        <span className="text-lg md:text-xl font-medium text-slate-700/90 tracking-tight">{item}</span>
                                                     </motion.li>
                                                 ))}
                                             </ul>

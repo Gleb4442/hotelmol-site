@@ -31,10 +31,10 @@ export default function Home() {
             <Hero />
             <LLMSummary />
             <ProblemSection />
-            <HowRoomieWorks />
-            <IntegrationTicker />
             <IndustryImpactSection />
             <HotelQRBenefits />
+            <HowRoomieWorks />
+            <IntegrationTicker />
             <HotelmolIs />
             <ValueProposition />
             <AIDashboardSection />
