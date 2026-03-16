@@ -7,6 +7,7 @@ import { CheckCircle, MessageSquare, Brain, Zap, Shield, BarChart3, Globe2, Arro
 
 import SalesAIAgentSection from "@/components/SalesAIAgentSection";
 import ConsultationForm from "@/components/ConsultationForm";
+import ChatFAQSection from "@/components/ChatFAQSection";
 import { useTranslation } from "@/lib/TranslationContext";
 import SEO, { productSchema } from "@/components/SEO";
 
@@ -154,6 +155,7 @@ export default function Roomie() {
             </section>
 
             <SalesAIAgentSection />
+            <ChatFAQSection variant="roomie" />
             <ConsultationForm />
             {/* <DemoRequestModal open={demoModalOpen} onOpenChange={setDemoModalOpen} /> */}
         </div>

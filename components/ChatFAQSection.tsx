@@ -13,22 +13,46 @@ interface FAQItem {
     answer: string;
 }
 
-export default function ChatFAQSection() {
+type ChatFAQSectionVariant = "roomie" | "hotelier";
+
+interface ChatFAQSectionProps {
+    variant?: ChatFAQSectionVariant;
+}
+
+export default function ChatFAQSection({ variant = "roomie" }: ChatFAQSectionProps) {
     const { t } = useTranslation();
     const [revealedAnswers, setRevealedAnswers] = useState<number[]>([]);
 
-    // We'll likely fetch these from translations, but defining structure here
-    const faqs: FAQItem[] = [
-        { question: t("home.faq.q1"), answer: t("home.faq.a1") },
-        { question: t("home.faq.q2"), answer: t("home.faq.a2") },
+    const { titleKey, subtitleKey, faqs } = (() => {
+        if (variant === "hotelier") {
+            return {
+                titleKey: "home.hotelierFaq.title" as const,
+                subtitleKey: "home.hotelierFaq.subtitle" as const,
+                faqs: [
+                    { question: t("home.hotelierFaq.q1"), answer: t("home.hotelierFaq.a1") },
+                    { question: t("home.hotelierFaq.q2"), answer: t("home.hotelierFaq.a2") },
+                    { question: t("home.hotelierFaq.q3"), answer: t("home.hotelierFaq.a3") },
+                    { question: t("home.hotelierFaq.q4"), answer: t("home.hotelierFaq.a4") },
+                    { question: t("home.hotelierFaq.q5"), answer: t("home.hotelierFaq.a5") },
+                ] satisfies FAQItem[],
+            };
+        }
 
-        { question: t("home.faq.q4"), answer: t("home.faq.a4") },
-        { question: t("home.faq.q5"), answer: t("home.faq.a5") },
-        { question: t("home.faq.q6"), answer: t("home.faq.a6") },
-        { question: t("home.faq.q7"), answer: t("home.faq.a7") },
-        { question: t("home.faq.q8"), answer: t("home.faq.a8") },
-        { question: t("home.faq.q9"), answer: t("home.faq.a9") }
-    ];
+        return {
+            titleKey: "home.faq.title" as const,
+            subtitleKey: "home.faq.subtitle" as const,
+            faqs: [
+                { question: t("home.faq.q1"), answer: t("home.faq.a1") },
+                { question: t("home.faq.q2"), answer: t("home.faq.a2") },
+                { question: t("home.faq.q4"), answer: t("home.faq.a4") },
+                { question: t("home.faq.q5"), answer: t("home.faq.a5") },
+                { question: t("home.faq.q6"), answer: t("home.faq.a6") },
+                { question: t("home.faq.q7"), answer: t("home.faq.a7") },
+                { question: t("home.faq.q8"), answer: t("home.faq.a8") },
+                { question: t("home.faq.q9"), answer: t("home.faq.a9") },
+            ] satisfies FAQItem[],
+        };
+    })();
 
     const toggleReveal = (index: number) => {
         if (revealedAnswers.includes(index)) {
@@ -62,10 +86,10 @@ export default function ChatFAQSection() {
             <div className="container mx-auto px-4">
                 <div className="text-center mb-16">
                     <h2 className="font-serif text-3xl md:text-4xl lg:text-[45px] font-bold tracking-tight mb-4">
-                        {t("home.faq.title")}
+                        {t(titleKey)}
                     </h2>
                     <p className="text-lg text-muted-foreground">
-                        {t("home.faq.subtitle")}
+                        {t(subtitleKey)}
                     </p>
                 </div>
 
@@ -157,7 +181,7 @@ export default function ChatFAQSection() {
                                                     !isRevealed && "opacity-40 blur-[2px] select-none line-clamp-2"
                                                 )}>
                                                     {faq.answer.includes("[PRICING_BTN]") ? (
-                                                        faq.answer.split(/\[PRICING_BTN\](.*?)\[\/PRICING_BTN\]/g).map((part, i) => {
+                                                        faq.answer.split(/\[PRICING_BTN\](.*?)\[\/PRICING_BTN\]/g).map((part: string, i: number) => {
                                                             if (i % 2 === 1) {
                                                                 return (
                                                                     <a

@@ -38,7 +38,7 @@ export default function Home() {
             <HotelmolIs />
             <AIDashboardSection />
             <SolutionsBlogSection />
-            <ChatFAQSection />
+            <ChatFAQSection variant="hotelier" />
             <ROIEstimateLight />
             <PresentationSection />
         </>

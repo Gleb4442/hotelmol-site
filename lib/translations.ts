@@ -187,13 +187,26 @@ const translationsBase = {
 
     "home.faq.q7": "How is the AI trained and configured for my hotel?",
     "home.faq.a7": "You choose the information your agent will use as its knowledge base. The hotel can set all instructions and rules independently or fully trust our manager with the setup. You have 100% control over the regulations and powers of your agent.",
-
     // Security
     "home.faq.q8": "How are hotel and guest data protected?",
     "home.faq.a8": "Data security is our priority. We use encrypted data transfer protocols (SSL/TLS) and work via official APIs. The system requests only the minimum necessary information to process the request, ensuring the confidentiality of guests' personal data.",
 
     "home.faq.q9": "What if the AI doesn't know the answer to a complex request?",
     "home.faq.a9": "The system features a hybrid operation mode. If the AI encounters a non-standard situation, it instantly transfers the dialogue to human administrator who can continue the conversation in the same chat window.",
+
+    // FAQ for Hoteliers
+    "home.hotelierFaq.title": "FAQ for Hoteliers: Partnership with HotelMol",
+    "home.hotelierFaq.subtitle": "Everything you need to know about Roomie and HotelMol",
+    "home.hotelierFaq.q1": "Why should we connect to the Roomie app if we planned to make our own hotel app? Won't you take our guests to competitors?",
+    "home.hotelierFaq.a1": "Practice shows that guests are extremely reluctant to download separate apps for a 2-3 day stay in one hotel (conversion is usually below 10%). Roomie solves this problem by acting as a universal 'loyalty wallet' for the traveler. \n\nWe don't take guests away; we give them a convenient tool so they return specifically to you. As soon as your guest crosses the hotel threshold, the Roomie interface completely mimics your brand (your colors, logo, service menu). And our built-in status system ties the guest to your hotel, stimulating them to book their next visit directly, bypassing Booking.com and other OTAs.",
+    "home.hotelierFaq.q2": "Will implementing HotelMol create additional load on my staff? Will we have to learn another complex program?",
+    "home.hotelierFaq.a2": "On the contrary, HotelMol was created to relieve your reception. \n\nYou don't need to hire an administrator for this app. Our autonomous AI agent handles up to 80% of routine guest questions (Wi-Fi password, breakfast time, parking rules). And we can route room service or cleaning requests where it's already convenient for your staff to work: to the kitchen tablet, email, or directly to the administrator's Telegram chat.",
+    "home.hotelierFaq.q3": "What if the AI agent makes a mistake or promises the guest a free service we don't have?",
+    "home.hotelierFaq.a3": "Our AI doesn't hallucinate or take information from the open internet. It works within the strict framework of a closed knowledge base (Walled Garden), where we only upload your rules, regulations, and menus. \n\nIf the AI doesn't know the exact answer or if the request is related to finances/complaints, it elegantly transfers the dialogue to a live hotel employee. Additionally, your B2B dashboard has an Agent Activity Feed — you can see what the AI is talking about with guests at any time, understand its logic, and maintain full control.",
+    "home.hotelierFaq.q4": "Many of our guests prefer live communication at the reception. Won't digitalization scare them away?",
+    "home.hotelierFaq.a4": "We're not asking you to give up empathy and classic hospitality. Roomie is an option enthusiastically accepted by young and business audiences accustomed to solving issues in two clicks without calls. \n\nBy automatically covering the needs of this active part of guests, Roomie frees up your administrators' precious time. Now they can give maximum sincere, live attention to those guests who truly value a personal approach and conversation at the reception desk.",
+    "home.hotelierFaq.q5": "How quickly will the investment in the HotelMol platform pay off?",
+    "home.hotelierFaq.a5": "You'll see real money from the first weeks of operation. Your dashboard features a conversion tracker (OTA → Direct Conversion). \n\nThe economics are absolutely transparent: if a guest initially came to you through an aggregator (where you paid a 15–20% commission), downloaded Roomie for a comfortable stay, and booked the next visit directly through our app — you saved that commission. Typically, saving the commission from just 3–4 such loyal guests fully covers the monthly subscription cost. All other direct bookings are your pure additional profit.",
 
     // Hotels Interact
     "interact.title": "Content Factory For Hotels",
@@ -1010,10 +1023,25 @@ const translationsBase = {
 
     // General
     "home.faq.q1": "Что такое Roomie AI и как он помогает отелю?",
-    "home.faq.a1": "Roomie AI — это интеллектуальный ассистент, который берет на себя общение с гостями 24/7. Система автоматизирует ответы на повторяющиеся вопросы, помогает с бронированием и предлагает дополнительные услуги. Это позволяет разгрузить рецепцию и увеличить количество прямых продаж через сайт и мессенджеры.",
+    "home.faq.a1": "Roomie AI — это интеллектуальный ассистент, который берет на себя коммуникацию с гостями 24/7. Система автоматизирует ответы на повторяющиеся вопросы, помогает с бронированием и предлагает дополнительные услуги. Это разгружает рецепцию и увеличивает прямые продажи через сайт и мессенджеры.",
 
     "home.faq.q2": "На каких языках общается Roomie AI?",
-    "home.faq.a2": "Система полностью мультиязычна. ИИ автоматически распознает язык гостя и отвечает на нем, обеспечивая комфортное общение без языковых барьеров.",
+    "home.faq.a2": "Система полностью многоязычна. ИИ автоматически распознает язык гостя и отвечает на нем, обеспечивая комфортное общение без языковых барьеров.",
+
+
+    // FAQ для Отельеров
+    "home.hotelierFaq.title": "FAQ для Отельеров: Партнерство с HotelMol",
+    "home.hotelierFaq.subtitle": "Все, что вам нужно знать о Roomie и HotelMol",
+    "home.hotelierFaq.q1": "Зачем нам подключаться к приложению Roomie, если мы планировали сделать собственное приложение отеля? Не уведете ли вы наших гостей к конкурентам?",
+    "home.hotelierFaq.a1": "Практика показывает, что гости крайне неохотно скачивают отдельные приложения ради 2-3 дней проживания в одном отеле (конверсия обычно ниже 10%). Roomie решает эту проблему, выступая универсальным «кошельком лояльности» для путешественника. \n\nМы не уводим гостей, мы даем им удобный инструмент, чтобы они возвращались именно к вам. Как только ваш гость переступает порог отеля, интерфейс Roomie полностью мимикрирует под ваш бренд (ваши цвета, логотип, меню услуг). А наша встроенная система статусов привязывает гостя к вашему отелю, стимулируя бронировать следующий визит напрямую, минуя Booking.com и другие OTA.",
+    "home.hotelierFaq.q2": "Создаст ли внедрение HotelMol дополнительную нагрузку на мой персонал? Нам придется учить еще одну сложную программу?",
+    "home.hotelierFaq.a2": "Наоборот, HotelMol создавался для того, чтобы разгрузить вашу рецепцию. \n\nВам не нужно нанимать администратора для этого приложения. Наш автономный AI-агент берет на себя до 80% рутинных вопросов гостей (пароль от Wi-Fi, время завтрака, правила парковки). А запросы на рум-сервис или уборку мы можем маршрутизировать туда, где вашему персоналу уже удобно работать: на планшет кухни, на email или прямо в Telegram-чат администратора.",
+    "home.hotelierFaq.q3": "Что если ИИ-агент ошибется или пообещает гостю бесплатную услугу, которой у нас нет?",
+    "home.hotelierFaq.a3": "Наш искусственный интеллект не фантазирует и не берет информацию из открытого интернета. Он работает в строгих рамках закрытой базы знаний (Walled Garden), куда мы загружаем только ваши правила, регламенты и меню. \n\nЕсли ИИ не знает точного ответа или запрос связан с финансами/жалобами, он элегантно переводит диалог на живого сотрудника отеля. Кроме того, в вашем B2B-дашборде есть лента активности агента (Agent Activity Feed) — вы в любой момент видите, о чем ИИ говорит с гостями, понимаете его логику и сохраняете полный контроль.",
+    "home.hotelierFaq.q4": "Многие наши гости предпочитают живое общение на ресепшн. Не отпугнет ли их цифровизация?",
+    "home.hotelierFaq.a4": "Мы не заставляем вас отказываться от эмпатии и классического гостеприимства. Roomie — это опция, которую с восторгом принимает молодая и бизнес-аудитория, привыкшая решать вопросы в два клика без звонков. \n\nАвтоматически закрывая потребности этой активной части гостей, Roomie высвобождает драгоценное время ваших администраторов. Теперь они могут уделить максимум искреннего, живого внимания тем гостям, которые действительно ценят личный подход и беседу у стойки ресепшн.",
+    "home.hotelierFaq.q5": "Как быстро окупятся инвестиции в платформу HotelMol?",
+    "home.hotelierFaq.a5": "Вы увидите реальные деньги с первых недель работы. В вашем дашборде находится трекер конверсии (OTA → Direct Conversion). \n\nЭкономика абсолютно прозрачна: если гость изначально пришел к вам через агрегатор (где вы заплатили 15–20% комиссии), скачал Roomie для комфортного проживания, а следующий визит забронировал уже напрямую через наше приложение — вы сэкономили эту комиссию. Как правило, возврат комиссии всего с 3–4 таких лояльных гостей полностью окупает месячную стоимость подписки на нашу платформу. Все остальные прямые бронирования — это ваша чистая дополнительная прибыль.",
 
 
 
