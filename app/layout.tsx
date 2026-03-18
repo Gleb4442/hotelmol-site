@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Poppins } from "next/font/google";
+import { Inter, Poppins, Fraunces } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/Providers";
 import ClientLayout from "@/components/ClientLayout";
@@ -9,6 +9,10 @@ const poppins = Poppins({
     subsets: ["latin"],
     weight: ["400", "500", "600", "700", "800"],
     variable: "--font-poppins"
+});
+const fraunces = Fraunces({
+    subsets: ["latin"],
+    variable: "--font-serif",
 });
 
 export const metadata: Metadata = {
@@ -52,7 +56,7 @@ export default function RootLayout({
             <head>
                 <meta name="theme-color" content="#0752A0" />
             </head>
-            <body className={`${inter.variable} ${poppins.variable} font-sans antialiased`}>
+            <body className={`${inter.variable} ${poppins.variable} ${fraunces.variable} font-sans antialiased`}>
                 <Providers>
                     <ClientLayout>
                         {children}
