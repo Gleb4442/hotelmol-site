@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
@@ -253,113 +253,76 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
       </div>
 
       {/* Mobile Menu Overlay */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <div className="md:hidden fixed inset-0 z-[100] flex flex-col items-center">
-            {/* Backdrop */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-            />
+      <div
+        className={`md:hidden fixed inset-0 z-[100] ${isMobileMenuOpen ? "pointer-events-auto" : "pointer-events-none"}`}
+        aria-hidden={!isMobileMenuOpen}
+      >
+        <div
+          onClick={() => setIsMobileMenuOpen(false)}
+          className={`absolute inset-0 bg-black/40 transition-opacity duration-200 ease-out ${isMobileMenuOpen ? "opacity-100" : "opacity-0"}`}
+        />
 
-            {/* Modal */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: -20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: -20 }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="relative w-[calc(100%-48px)] max-w-md bg-[#F7F5F1] rounded-[32px] mt-24 p-8 shadow-2xl overflow-hidden"
-            >
-              {/* Modal Header */}
-              <div className="flex items-center justify-between mb-12">
-                <div className="flex items-center gap-2 text-slate-900">
-                  <div className="w-5 h-5">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-                      <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-                    </svg>
-                  </div>
-                  <span className="font-serif font-bold text-lg">Hotelmol</span>
-                </div>
-                <button
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="p-2 -mr-2 text-slate-400 hover:text-slate-900 transition-colors"
-                >
-                  <X className="w-6 h-6" />
-                </button>
-              </div>
+        <div className="absolute inset-x-0 bottom-24 px-4 flex justify-end">
+          <div
+            className={`mobile-menu-surface w-full max-w-[320px] rounded-[30px] border border-black/5 bg-[#F7F5F1] shadow-[0_12px_36px_rgba(15,23,42,0.14)] transition-[opacity,transform] duration-200 ease-out transform-gpu will-change-transform ${
+              isMobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+            }`}
+          >
+            <div className="flex items-center justify-between px-5 pt-5 pb-3">
+              <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500">
+                Menu
+              </span>
+              <button
+                type="button"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-black/5 bg-white text-slate-500 transition-colors hover:text-[#0752A0] active:scale-95"
+                aria-label="Close mobile menu"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
 
-              {/* Navigation Links */}
-              <nav className="space-y-6 mb-16">
-                {navigation.map((item) => (
+            <nav className="px-3 pb-3">
+              {mobileMenuLinks.map((item) => {
+                const isActive = !item.external && pathname === item.href;
+                const itemClasses = `flex w-full items-center justify-between rounded-2xl px-4 py-3 text-sm font-semibold transition-colors active:scale-[0.99] ${
+                  isActive
+                    ? "bg-[#0752A0] text-white"
+                    : item.external
+                      ? "bg-[#0752A0]/8 text-[#0752A0]"
+                      : "text-slate-700 hover:bg-white"
+                }`;
+
+                if (item.external) {
+                  return (
+                    <a
+                      key={item.name}
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className={itemClasses}
+                    >
+                      <span>{item.name}</span>
+                    </a>
+                  );
+                }
+
+                return (
                   <Link
-                    key={item.href}
+                    key={item.name}
                     href={item.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="block font-serif text-[32px] font-bold text-slate-800 hover:text-[#0752A0] transition-colors leading-tight"
+                    className={itemClasses}
                   >
-                    {item.name}
+                    <span>{item.name}</span>
                   </Link>
-                ))}
-                <a
-                  href="https://cal.com/gleb.gosha/30min"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="block font-serif text-[32px] font-bold text-slate-800 hover:text-[#0752A0] transition-colors leading-tight"
-                >
-                  {t("button.talkToHuman")}
-                </a>
-              </nav>
-
-              {/* Modal Footer */}
-              <div className="grid grid-cols-2 gap-8 pt-8">
-                <div>
-                  <h4 className="text-[10px] uppercase font-bold tracking-widest text-[#0752A0] mb-4">
-                    {t("nav.connect")}
-                  </h4>
-                  <div className="space-y-2">
-                    <a href="#" className="block text-[#111111] font-serif text-lg">{t("nav.social.linkedin")}</a>
-                    <a href="#" className="block text-[#111111] font-serif text-lg">{t("nav.social.twitter")}</a>
-                  </div>
-                </div>
-                <div>
-                  <h4 className="text-[10px] uppercase font-bold tracking-widest text-[#0752A0] mb-4">
-                    {t("nav.locations")}
-                  </h4>
-                  <div className="space-y-2">
-                    <span className="block text-[#111111] font-serif text-lg">{t("nav.location.newyork")}</span>
-                    <span className="block text-[#111111] font-serif text-lg">{t("nav.location.london")}</span>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Book Demo Button below Modal */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 10 }}
-              transition={{ delay: 0.1 }}
-              className="mt-8"
-            >
-              <button
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  onDemoClick?.();
-                }}
-                className="flex items-center gap-3 bg-[#A3A26F] text-[#424128] font-bold px-8 py-4 rounded-full shadow-lg active:scale-95 transition-all text-xs uppercase tracking-widest"
-              >
-                <div className="w-2 h-2 rounded-full bg-[#111111]" />
-                {t("button.requestDemo")}
-              </button>
-            </motion.div>
+                );
+              })}
+            </nav>
           </div>
-        )}
-      </AnimatePresence>
+        </div>
+      </div>
 
       <style dangerouslySetInnerHTML={{
         __html: `

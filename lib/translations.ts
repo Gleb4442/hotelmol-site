@@ -9,12 +9,6 @@ const translationsBase = {
 
     "nav.about": "About",
     "nav.contact": "Contact",
-    "nav.connect": "Connect",
-    "nav.locations": "Locations",
-    "nav.social.linkedin": "LinkedIn",
-    "nav.social.twitter": "X (Twitter)",
-    "nav.location.newyork": "New York",
-    "nav.location.london": "London",
     "aiWidget.welcome": "Hello! I am your AI assistant. How can I help you?",
     "nav.hotelsInteract": "Hotels Interact",
     "nav.comingSoon": "Coming Soon",
