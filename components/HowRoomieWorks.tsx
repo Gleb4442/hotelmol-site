@@ -4,6 +4,8 @@ import { useTranslation } from "@/lib/TranslationContext";
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
+import PremiumBackground from "./PremiumBackground";
+
 export default function HowRoomieWorks() {
   const { t } = useTranslation();
   const [animState, setAnimState] = useState({ pos: 0, jump: false });
@@ -96,7 +98,7 @@ export default function HowRoomieWorks() {
   }, []);
 
   return (
-    <section className="py-12 md:py-20 lg:py-28 bg-[#F7F6F2]">
+    <PremiumBackground className="py-12 md:py-20 lg:py-28 bg-[#F7F6F2]">
       <div className="container mx-auto px-4">
         <div className="text-center mb-20">
 
@@ -182,6 +184,6 @@ export default function HowRoomieWorks() {
           </div>
         </div>
       </div>
-    </section>
+    </PremiumBackground>
   );
 }

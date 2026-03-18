@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { SiTelegram, SiWordpress, SiInstagram, SiWhatsapp, SiWix } from "react-icons/si";
 import { useTranslation } from "@/lib/TranslationContext";
 import { MessageIntegrationIcon } from "@/client/src/components/MessageIntegrationIcon";
+import PremiumBackground from "./PremiumBackground";
 const allIntegrations = [
   { name: "Telegram", icon: SiTelegram, color: "#0088cc", comingSoon: false, hideOnDesktop: false },
   {
@@ -135,7 +136,7 @@ export default function IntegrationTicker() {
   const allRow2 = [...row2Integrations, ...row2Integrations, ...row2Integrations];
 
   return (
-    <section className="py-12 md:py-16 border-y bg-[#F7F6F2]">
+    <PremiumBackground className="py-12 md:py-16 border-y bg-[#F7F6F2]">
       <div className="container mx-auto px-4">
         <h3 className="text-center text-sm font-semibold text-primary mb-8 md:mb-10 uppercase tracking-wider">
           {t("home.integrations.title")}
@@ -176,6 +177,6 @@ export default function IntegrationTicker() {
           </div>
         </div>
       </div>
-    </section>
+    </PremiumBackground>
   );
 }

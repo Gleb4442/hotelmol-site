@@ -50,7 +50,7 @@ const SolutionsBlogSection = () => {
   };
 
   return (
-    <section className="py-24 bg-[#F7F6F2] overflow-hidden">
+    <PremiumBackground className="py-24 bg-[#F7F6F2] overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center mb-16">
           <motion.h2 

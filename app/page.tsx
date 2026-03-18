@@ -33,10 +33,10 @@ export default function Home() {
             <ProblemSection />
             <IndustryImpactSection />
             <HotelQRBenefits />
-            <HowRoomieWorks />
-            <IntegrationTicker />
             <HotelmolIs />
+            <HowRoomieWorks />
             <AIDashboardSection />
+            <IntegrationTicker />
             <SolutionsBlogSection />
             <ChatFAQSection variant="hotelier" />
             <ROIEstimateLight />
