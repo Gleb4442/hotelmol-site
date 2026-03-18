@@ -1,9 +1,8 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useQuery } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
 import { Globe, Menu } from "lucide-react";
 import { useTranslation } from "@/lib/TranslationContext";
@@ -15,13 +14,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { X } from "lucide-react";
-import {
-  Dialog,
-  DialogContent,
-  DialogTrigger,
-  DialogTitle,
-  DialogClose,
-} from "@/components/ui/dialog";
 
 const NavPill = ({ navigation, pathname }: { navigation: Array<{ name: string; href: string; badge?: string }>; pathname: string }) => {
   const [activeRect, setActiveRect] = useState({ left: 0, width: 0, opacity: 0 });
@@ -149,6 +141,17 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
     { name: t("nav.about"), href: "/about" },
     { name: t("nav.contact"), href: "/contact" },
   ];
+  const mobileMenuLinks = [
+    ...navigation.map((item) => ({
+      ...item,
+      external: false,
+    })),
+    {
+      name: t("button.talkToHuman"),
+      href: "https://cal.com/gleb.gosha/30min",
+      external: true,
+    },
+  ];
 
   const cloudStyle = "bg-[#F7F5F1]/95 backdrop-blur-md shadow-[0_4px_24px_rgba(7,82,160,0.4)] border border-white/20 rounded-full transition-all duration-300";
 
@@ -228,7 +231,7 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
       </div>
 
       {/* --- MOBILE VIEW (Fixed Top Bar) --- */}
-      <div className="md:hidden pointer-events-auto fixed top-0 left-0 right-0 h-[60px] bg-[#F7F5F1]/95 backdrop-blur-md border-b border-black/5 shadow-sm flex items-center justify-between px-4 z-[60] overflow-visible">
+      <div className="mobile-header-surface md:hidden pointer-events-auto fixed top-0 left-0 right-0 h-[60px] flex items-center justify-between px-4 z-[60] overflow-visible">
 
         {/* Mobile Left: Logo */}
         <Link href="/" className="flex items-center h-full relative w-[160px]" data-testid="link-home-mobile">
@@ -250,96 +253,76 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
       </div>
 
       {/* Mobile Menu Overlay */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <>
-            {/* Backdrop */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="fixed inset-0 z-[100] bg-black/40 md:hidden"
-            />
+      <div
+        className={`md:hidden fixed inset-0 z-[100] ${isMobileMenuOpen ? "pointer-events-auto" : "pointer-events-none"}`}
+        aria-hidden={!isMobileMenuOpen}
+      >
+        <div
+          onClick={() => setIsMobileMenuOpen(false)}
+          className={`absolute inset-0 bg-black/40 transition-opacity duration-200 ease-out ${isMobileMenuOpen ? "opacity-100" : "opacity-0"}`}
+        />
 
-            {/* Menu Content (Bottom Sheet Style) */}
-            <div className="fixed bottom-24 left-0 right-0 z-[101] flex flex-col items-end px-4 gap-3 md:hidden pointer-events-none">
-              {/* Close Button (Optional, maybe not needed if backdrop closes, but good for accessibility/visuals) 
-                    The user said "exactly like contact button", contact button turns into a close button.
-                    The hamburger is at the top. Moving the close button to the bottom might be confusing or helpful.
-                    For now, I'll rely on backdrop click to close, similar to standard bottom sheets, OR add a specific close pill at the bottom?
-                    The contact menu has a trigger button in the same place that toggles.
-                    The hamburger is far away.
-                    Let's just show the links.
-                */}
-
-              <div className="flex flex-col gap-3 items-end w-full pointer-events-auto">
-                {navigation.map((item, idx) => {
-                  const isActive = pathname === item.href;
-                  return (
-                    <motion.div
-                      key={item.name}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 10 }}
-                      transition={{ duration: 0.2, delay: 0.03 * (navigation.length - 1 - idx) }}
-                      className="w-full flex justify-end"
-                    >
-                      <Link
-                        href={item.href}
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        className={`flex items-center gap-3 pr-6 pl-6 py-3 rounded-full shadow-lg border font-bold text-sm transition-transform active:scale-95
-                                    ${isActive
-                            ? "bg-[#0752A0] text-white border-[#0752A0]/20"
-                            : "bg-[#F7F5F1] text-[#0752A0] border-white/20"
-                          }`}
-                      >
-                        {item.name}
-                      </Link>
-                    </motion.div>
-                  );
-                })}
-
-                {/* Talk to a human button */}
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 10 }}
-                  transition={{ duration: 0.2, delay: 0.03 * navigation.length }}
-                  className="w-full flex justify-end"
-                >
-                  <a
-                    href="https://cal.com/gleb.gosha/30min"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="flex items-center gap-3 pr-6 pl-6 py-3 rounded-full shadow-lg border font-bold text-sm transition-transform active:scale-95 bg-[#0752A0] text-white border-[#0752A0]/20"
-                  >
-                    {t("button.talkToHuman")}
-                  </a>
-                </motion.div>
-              </div>
-
-              {/* Close Button */}
-              <motion.button
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.2, delay: 0.15 }}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setIsMobileMenuOpen(false);
-                }}
-                className="w-12 h-12 rounded-full bg-[#F7F5F1] shadow-lg border border-black/5 flex items-center justify-center mt-2 active:scale-95 transition-transform z-[102] cursor-pointer"
-                style={{ pointerEvents: 'auto' }}
+        <div className="absolute inset-x-0 bottom-24 px-4 flex justify-end">
+          <div
+            className={`mobile-menu-surface w-full max-w-[320px] rounded-[30px] border border-black/5 bg-[#F7F5F1] shadow-[0_12px_36px_rgba(15,23,42,0.14)] transition-[opacity,transform] duration-200 ease-out transform-gpu will-change-transform ${
+              isMobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+            }`}
+          >
+            <div className="flex items-center justify-between px-5 pt-5 pb-3">
+              <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500">
+                Menu
+              </span>
+              <button
+                type="button"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-black/5 bg-white text-slate-500 transition-colors hover:text-[#0752A0] active:scale-95"
+                aria-label="Close mobile menu"
               >
-                <X className="w-6 h-6 text-slate-400" />
-              </motion.button>
+                <X className="h-5 w-5" />
+              </button>
             </div>
 
-          </>
-        )}
-      </AnimatePresence>
+            <nav className="px-3 pb-3">
+              {mobileMenuLinks.map((item) => {
+                const isActive = !item.external && pathname === item.href;
+                const itemClasses = `flex w-full items-center justify-between rounded-2xl px-4 py-3 text-sm font-semibold transition-colors active:scale-[0.99] ${
+                  isActive
+                    ? "bg-[#0752A0] text-white"
+                    : item.external
+                      ? "bg-[#0752A0]/8 text-[#0752A0]"
+                      : "text-slate-700 hover:bg-white"
+                }`;
+
+                if (item.external) {
+                  return (
+                    <a
+                      key={item.name}
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className={itemClasses}
+                    >
+                      <span>{item.name}</span>
+                    </a>
+                  );
+                }
+
+                return (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={itemClasses}
+                  >
+                    <span>{item.name}</span>
+                  </Link>
+                );
+              })}
+            </nav>
+          </div>
+        </div>
+      </div>
 
       <style dangerouslySetInnerHTML={{
         __html: `

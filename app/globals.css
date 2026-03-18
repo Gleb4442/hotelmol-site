@@ -272,6 +272,17 @@ html {
     visibility: hidden !important;
     pointer-events: none !important;
   }
+
+  .mobile-header-surface {
+    background: rgba(247, 245, 241, 0.96);
+    border-bottom: 1px solid rgba(15, 23, 42, 0.05);
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+    contain: layout paint;
+  }
+
+  .mobile-menu-surface {
+    contain: layout paint style;
+  }
 }
 
 @media (max-width: 768px) {
@@ -279,5 +290,10 @@ html {
   html,
   body {
     overflow-x: hidden;
+  }
+
+  .mobile-header-surface {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
   }
 }
