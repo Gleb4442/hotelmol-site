@@ -62,6 +62,7 @@ export default function CookieBanner() {
         body: JSON.stringify({
           language,
           categories,
+          path: window.location.pathname,
         }),
       });
 

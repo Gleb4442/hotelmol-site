@@ -101,10 +101,36 @@ export default function Onboarding() {
             >
                 {/* Background Mesh/Blur */}
                 <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-                    <div className="absolute top-0 left-0 w-full h-full bg-[#fdfdfe]" />
-                    <div className="absolute top-32 left-[10%] w-64 h-64 bg-blue-600/5 rounded-full blur-[100px]" />
-                    <div className="absolute bottom-20 right-[5%] w-80 h-80 bg-blue-600/5 rounded-full blur-[120px]" />
-                    <div className="absolute inset-0 bg-[radial-gradient(at_0%_0%,rgba(4,75,147,0.05)_0px,transparent_50%),radial-gradient(at_100%_100%,rgba(4,75,147,0.03)_0px,transparent_50%)]" />
+                    <div className="absolute top-0 left-0 w-full h-full bg-[#FAF9F6]" />
+                    {/* Animated Glows */}
+                    <motion.div 
+                        animate={{ 
+                            scale: [1, 1.2, 1],
+                            opacity: [0.05, 0.08, 0.05],
+                            x: [0, 50, 0],
+                            y: [0, 30, 0]
+                        }}
+                        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+                        className="absolute -top-20 -left-20 w-[600px] h-[600px] bg-blue-600 rounded-full blur-[140px]" 
+                    />
+                    <motion.div 
+                        animate={{ 
+                            scale: [1, 1.3, 1],
+                            opacity: [0.03, 0.06, 0.03],
+                            x: [0, -40, 0],
+                            y: [0, -60, 0]
+                        }}
+                        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+                        className="absolute -bottom-40 -right-20 w-[700px] h-[700px] bg-indigo-500 rounded-full blur-[160px]" 
+                    />
+                    
+                    {/* Grid Pattern */}
+                    <div className="absolute inset-0 opacity-[0.03]" 
+                        style={{ 
+                            backgroundImage: `linear-gradient(#044B93 1px, transparent 1px), linear-gradient(90deg, #044B93 1px, transparent 1px)`,
+                            backgroundSize: '40px 40px' 
+                        }}
+                    />
                 </div>
 
                 {/* Header */}
@@ -174,9 +200,25 @@ export default function Onboarding() {
                             >
                                 <div className="flex flex-col md:flex-row items-center md:items-start text-center md:text-left space-y-6 md:space-y-0 md:space-x-8">
                                     <div className="flex-shrink-0">
-                                        <div className="w-16 h-16 rounded-full bg-[#044B93] flex items-center justify-center shadow-lg shadow-blue-900/20 relative">
-                                            <Sparkles className="w-8 h-8 text-white" />
-                                            <div className="absolute bottom-0.5 right-0.5 w-4 h-4 bg-emerald-500 border-[3px] border-white rounded-full"></div>
+                                        <div className="w-20 h-20 rounded-[2rem] bg-gradient-to-br from-[#044B93] via-[#0A63BD] to-[#2E8BF0] flex items-center justify-center shadow-2xl shadow-blue-900/30 relative overflow-hidden group/icon transition-transform hover:scale-105 duration-500">
+                                            {/* Liquid Glass Effects */}
+                                            <div className="absolute inset-0 bg-gradient-to-tr from-white/20 to-transparent opacity-60"></div>
+                                            <div className="absolute inset-0 shadow-[inset_0_4px_12px_rgba(255,255,255,0.4),inset_0_-4px_8px_rgba(0,0,0,0.2)] rounded-[2rem]"></div>
+                                            <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-white/10 to-transparent opacity-50"></div>
+                                            
+                                            {/* Shine Animation */}
+                                            <motion.div 
+                                                animate={{ x: ['-100%', '200%'] }}
+                                                transition={{ duration: 3, repeat: Infinity, ease: "linear", repeatDelay: 4 }}
+                                                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12"
+                                            />
+
+                                            <Sparkles className="w-10 h-10 text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)] z-10" />
+                                            
+                                            {/* Status Badge */}
+                                            <div className="absolute bottom-2 right-2 w-5 h-5 bg-emerald-500 border-[3.5px] border-white rounded-full shadow-lg z-20">
+                                                <div className="absolute inset-0 bg-white/20 animate-pulse rounded-full"></div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div className="space-y-3">
@@ -213,14 +255,21 @@ export default function Onboarding() {
                                     <button
                                         key={role.id}
                                         onClick={() => handleComplete(role.id)}
-                                        className="group p-8 md:p-10 rounded-[1.5rem] bg-white/40 backdrop-blur-2xl hover:bg-white transition-all duration-300 border border-white/60 hover:shadow-xl hover:shadow-blue-900/5 hover:-translate-y-1.5 flex flex-col items-center space-y-6"
+                                        className="group relative p-8 md:p-10 rounded-[2.5rem] bg-white/40 backdrop-blur-2xl hover:bg-white transition-all duration-500 border border-white/60 hover:border-blue-200/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_25px_60px_rgba(4,75,147,0.12)] hover:-translate-y-2 flex flex-col items-center space-y-6 overflow-hidden"
                                     >
-                                        <div className="w-20 h-20 rounded-2xl bg-white shadow-sm flex items-center justify-center group-hover:bg-[#044B93] group-hover:shadow-blue-900/20 transition-all duration-300">
-                                            <role.icon className="w-10 h-10 text-slate-400 group-hover:text-white transition-colors" />
+                                        {/* Hover Gradient Background */}
+                                        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/0 via-transparent to-blue-50/0 group-hover:from-blue-50/80 group-hover:via-transparent group-hover:to-blue-50/30 transition-all duration-700"></div>
+
+                                        <div className="relative z-10 w-20 h-20 rounded-[1.75rem] bg-white shadow-[0_4px_20px_rgba(0,0,0,0.04)] flex items-center justify-center group-hover:bg-[#044B93] group-hover:shadow-[0_15px_35px_rgba(4,75,147,0.35)] transition-all duration-500 group-hover:scale-110 group-hover:rotate-3">
+                                            <role.icon className="w-10 h-10 text-slate-400 group-hover:text-white transition-all duration-500" />
                                         </div>
-                                        <span className="text-lg font-extrabold text-slate-600 group-hover:text-blue-900 tracking-tight transition-colors text-center leading-tight">
+                                        
+                                        <span className="relative z-10 text-lg font-extrabold text-slate-600 group-hover:text-blue-900 tracking-tight transition-colors text-center leading-tight">
                                             {role.label}
                                         </span>
+
+                                        {/* Subtle Border Glow on Hover */}
+                                        <div className="absolute inset-0 border border-transparent group-hover:border-white/50 rounded-[2.5rem] transition-all duration-500 pointer-events-none"></div>
                                     </button>
                                 ))}
                             </div>
