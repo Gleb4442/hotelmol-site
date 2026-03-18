@@ -2,11 +2,13 @@
 import { useTranslation } from "@/lib/TranslationContext";
 import { Download } from "lucide-react";
 
+import PremiumBackground from "./PremiumBackground";
+
 export default function PresentationSection() {
   const { t } = useTranslation();
 
   return (
-    <section className="py-12 md:py-16 bg-[#F7F6F2]">
+    <PremiumBackground className="py-12 md:py-16">
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center text-center">
           <div className="flex items-stretch justify-center gap-4">
@@ -27,6 +29,6 @@ export default function PresentationSection() {
           </div>
         </div>
       </div>
-    </section>
+    </PremiumBackground>
   );
 }

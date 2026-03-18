@@ -28,6 +28,8 @@ function Counter({ value, decimal = 0, prefix = "", suffix = "" }: { value: numb
   );
 }
 
+import PremiumBackground from "./PremiumBackground";
+
 export default function ROIEstimateLight() {
   const { t, language } = useTranslation();
   const [rooms, setRooms] = useState<number>(50);
@@ -324,6 +326,6 @@ export default function ROIEstimateLight() {
           transition: all 0.2s ease-in-out;
         }
       `}</style>
-    </section>
-  );
+        </PremiumBackground>
+    );
 }

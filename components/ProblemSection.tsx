@@ -4,6 +4,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { CircleDollarSign, Users, UserRoundX } from "lucide-react";
 import { useTranslation } from "@/lib/TranslationContext";
 
+import PremiumBackground from './PremiumBackground';
+
 export default function ProblemSection() {
   const { t } = useTranslation();
   const [activeIndex, setActiveIndex] = useState(0);
@@ -31,12 +33,7 @@ export default function ProblemSection() {
   }, [problems.length]);
 
   return (
-    <section className="py-24 bg-[#F7F6F2] relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none overflow-hidden">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-destructive/5 blur-[120px] rounded-full" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-primary/5 blur-[120px] rounded-full" />
-      </div>
+    <PremiumBackground className="py-24 overflow-hidden">
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center mb-16 px-4">
@@ -120,6 +117,6 @@ export default function ProblemSection() {
           }
         }
       `}</style>
-    </section>
+    </PremiumBackground>
   );
 }

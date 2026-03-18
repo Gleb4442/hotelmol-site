@@ -7,6 +7,7 @@ import { useTranslation } from "@/lib/TranslationContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, HelpCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
+import PremiumBackground from "./PremiumBackground";
 
 interface FAQItem {
     question: string;
@@ -211,6 +212,6 @@ export default function ChatFAQSection({ variant = "roomie" }: ChatFAQSectionPro
                     })}
                 </div>
             </div>
-        </section>
+        </PremiumBackground>
     );
 }

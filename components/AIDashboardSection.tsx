@@ -2,12 +2,14 @@
 import { motion } from "framer-motion";
 import { useTranslation } from "@/lib/TranslationContext";
 
+import PremiumBackground from "./PremiumBackground";
+
 export default function AIDashboardSection() {
   const { t } = useTranslation();
 
   return (
-    <section
-      className="py-12 md:py-16 lg:py-20 bg-[#F7F6F2]"
+    <PremiumBackground
+      className="py-12 md:py-16 lg:py-20"
       data-testid="section-ai-dashboard"
     >
       <div className="container mx-auto px-4">
@@ -50,6 +52,6 @@ export default function AIDashboardSection() {
           {t("home.aiDashboard.subtitle")}
         </motion.p>
       </div>
-    </section>
+    </PremiumBackground>
   );
 }

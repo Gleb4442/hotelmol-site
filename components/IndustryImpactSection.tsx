@@ -5,16 +5,7 @@ import { useTranslation } from "@/lib/TranslationContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import {
-    Building2,
-    TrendingUp,
-    Wallet,
-    Target,
-    MessageSquare,
-    Globe,
-    Smartphone,
-    CheckCircle2,
-    Award,
-    Zap
+    Star
 } from "lucide-react";
 
 interface CaseStudySection {
@@ -38,7 +29,7 @@ const hotelConfig: HotelData[] = [
         nameKey: "industryImpact.hilton.name",
         logo: "/assets/neutral/hilton.png",
         sections: [
-            { key: "metrics", icon: TrendingUp },
+            { key: "metrics", icon: Star },
         ]
     },
     {
@@ -46,7 +37,7 @@ const hotelConfig: HotelData[] = [
         nameKey: "industryImpact.marriott.name",
         logo: "/assets/neutral/marriott.png",
         sections: [
-            { key: "metrics", icon: TrendingUp },
+            { key: "metrics", icon: Star },
         ]
     },
     {
@@ -54,7 +45,7 @@ const hotelConfig: HotelData[] = [
         nameKey: "industryImpact.hyatt.name",
         logo: "/assets/neutral/hyatt.png",
         sections: [
-            { key: "metrics", icon: TrendingUp },
+            { key: "metrics", icon: Star },
         ]
     },
     {
@@ -62,7 +53,7 @@ const hotelConfig: HotelData[] = [
         nameKey: "industryImpact.accor.name",
         logo: "/assets/neutral/accor.png",
         sections: [
-            { key: "metrics", icon: TrendingUp },
+            { key: "metrics", icon: Star },
         ]
     },
     {
@@ -70,17 +61,19 @@ const hotelConfig: HotelData[] = [
         nameKey: "industryImpact.fourSeasons.name",
         logo: "/assets/neutral/fourseasons.png",
         sections: [
-            { key: "metrics", icon: TrendingUp },
+            { key: "metrics", icon: Star },
         ]
     },
 ];
+
+import PremiumBackground from './PremiumBackground';
 
 export default function IndustryImpactSection() {
     const { t } = useTranslation();
     const [activeHotel, setActiveHotel] = useState<HotelData>(hotelConfig[0]);
 
     return (
-        <section className="py-16 md:py-24 bg-[#F7F6F2] overflow-hidden">
+        <PremiumBackground className="py-16 md:py-24 overflow-hidden">
             <div className="container mx-auto px-4">
                 {/* Header */}
                 <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
@@ -155,7 +148,6 @@ export default function IndustryImpactSection() {
                                 {activeHotel.sections.map((section, idx) => {
                                     const title = t(`industryImpact.${activeHotel.id}.${section.key}.title` as any);
                                     const items = t(`industryImpact.${activeHotel.id}.${section.key}.items` as any) as unknown as string[];
-                                    const Icon = section.icon;
 
                                     if (!items || !Array.isArray(items)) return null;
 
@@ -165,8 +157,46 @@ export default function IndustryImpactSection() {
                                             className="space-y-10"
                                         >
                                             <div className="flex items-center gap-6">
-                                                <div className="w-16 h-16 rounded-2xl bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex items-center justify-center text-primary">
-                                                    <Icon size={32} />
+                                                <div className="relative group">
+                                                    {/* Glowing background */}
+                                                    <motion.div
+                                                        animate={{ 
+                                                            scale: [1, 1.25, 1],
+                                                            opacity: [0.3, 0.6, 0.3],
+                                                        }}
+                                                        transition={{
+                                                            duration: 4,
+                                                            repeat: Infinity,
+                                                            ease: "easeInOut"
+                                                        }}
+                                                        className="absolute inset-x-[-15px] inset-y-[-15px] bg-amber-400/25 blur-2xl rounded-full"
+                                                    />
+                                                    <div className="relative z-10 w-16 h-16 flex items-center justify-center">
+                                                        <svg
+                                                            width="48"
+                                                            height="48"
+                                                            viewBox="0 0 24 24"
+                                                            fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            className="drop-shadow-[0_4px_12px_rgba(251,191,36,0.5)]"
+                                                        >
+                                                            <defs>
+                                                                <linearGradient id="star-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                                                    <stop offset="0%" stopColor="#FDE68A" />
+                                                                    <stop offset="50%" stopColor="#FBBF24" />
+                                                                    <stop offset="100%" stopColor="#D97706" />
+                                                                </linearGradient>
+                                                            </defs>
+                                                            <path
+                                                                d="M12 2.5l2.76 5.6 6.18.9-4.47 4.36 1.05 6.16L12 16.6l-5.52 2.92 1.05-6.16-4.47-4.36 6.18-.9L12 2.5z"
+                                                                fill="url(#star-gradient)"
+                                                                stroke="#B45309"
+                                                                strokeWidth="0.5"
+                                                                strokeLinejoin="round"
+                                                                strokeLinecap="round"
+                                                            />
+                                                        </svg>
+                                                    </div>
                                                 </div>
                                                 <h3 className="text-2xl md:text-3xl font-bold font-serif tracking-tight">{title}</h3>
                                             </div>
@@ -197,6 +227,6 @@ export default function IndustryImpactSection() {
                     </AnimatePresence>
                 </div>
             </div>
-        </section>
+        </PremiumBackground>
     );
 }

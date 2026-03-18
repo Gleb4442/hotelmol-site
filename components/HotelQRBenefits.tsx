@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { QrCode, Smartphone, Award, UtensilsCrossed, MousePointerClick, Wallet, Zap, Users } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import PremiumBackground from './PremiumBackground';
 
 const HotelQRBenefits = () => {
     const tableData = [
@@ -74,10 +75,7 @@ const HotelQRBenefits = () => {
     const activeCase = tableData[activeIndex];
 
     return (
-        <div className="relative min-h-[70vh] bg-[#F7F6F2] overflow-hidden flex items-center justify-center p-4 md:p-8 font-sans selection:bg-blue-200 selection:text-blue-900 border-y border-slate-200/50 -mb-6">
-            {/* Анимированный фон */}
-            <div className="absolute top-1/4 left-1/4 w-72 md:w-96 h-72 md:h-96 bg-blue-200/40 rounded-full mix-blend-multiply filter blur-[80px] md:blur-[120px] opacity-70"></div>
-            <div className="absolute top-1/3 right-1/4 w-72 md:w-96 h-72 md:h-96 bg-cyan-200/40 rounded-full mix-blend-multiply filter blur-[80px] md:blur-[120px] opacity-70"></div>
+        <PremiumBackground className="py-16 md:py-24 overflow-hidden flex items-center justify-center p-4 md:p-8 font-sans selection:bg-blue-200 selection:text-blue-900 border-y border-slate-200/50 -mb-6">
 
             <div className="relative z-10 max-w-4xl w-full flex flex-col items-center">
                 {/* Заголовок */}
@@ -199,7 +197,7 @@ const HotelQRBenefits = () => {
                     ))}
                 </div>
             </div>
-        </div>
+        </PremiumBackground>
     );
 };
 

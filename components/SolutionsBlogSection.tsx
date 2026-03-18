@@ -7,6 +7,8 @@ import { cn } from "@/lib/utils";
 import { ArrowRight, Building2, Hotel } from "lucide-react";
 import Image from "next/image";
 
+import PremiumBackground from "./PremiumBackground";
+
 const SolutionsBlogSection = () => {
   const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState<"single" | "chain">("single");
@@ -153,7 +155,7 @@ const SolutionsBlogSection = () => {
           </AnimatePresence>
         </div>
       </div>
-    </section>
+    </PremiumBackground>
   );
 };
 

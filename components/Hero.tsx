@@ -6,6 +6,7 @@ import { useTranslation } from "@/lib/TranslationContext";
 import DemoRequestModal from "./DemoRequestModal";
 import { translations } from "@/lib/translations";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
+import HeroBackground from "@/components/HeroBackground";
 
 export default function Hero() {
   const [demoModalOpen, setDemoModalOpen] = useState(false);
@@ -72,8 +73,7 @@ export default function Hero() {
   return (
     <>
       <section ref={heroRef} className="relative min-h-[500px] sm:min-h-[700px] lg:min-h-[calc(80vh+80px)] flex items-start lg:items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/90 to-primary/80" />
-
+        <HeroBackground />
 
         <div className="relative z-10 container mx-auto px-6 pt-32 pb-20 lg:py-24">
           <div className="max-w-5xl mx-auto text-center">
