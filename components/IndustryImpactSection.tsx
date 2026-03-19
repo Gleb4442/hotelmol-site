@@ -158,42 +158,86 @@ export default function IndustryImpactSection() {
                                         >
                                             <div className="flex items-center gap-6">
                                                 <div className="relative group">
-                                                    {/* Glowing background */}
+                                                    {/* Dynamic multi-layered glow */}
                                                     <motion.div
                                                         animate={{ 
                                                             scale: [1, 1.25, 1],
-                                                            opacity: [0.3, 0.6, 0.3],
+                                                            opacity: [0.1, 0.3, 0.1],
+                                                            rotate: [0, 90, 0]
                                                         }}
                                                         transition={{
-                                                            duration: 4,
+                                                            duration: 10,
                                                             repeat: Infinity,
-                                                            ease: "easeInOut"
+                                                            ease: "linear"
                                                         }}
-                                                        className="absolute inset-x-[-15px] inset-y-[-15px] bg-amber-400/25 blur-2xl rounded-full"
+                                                        className="absolute inset-x-[-25px] inset-y-[-25px] bg-gradient-to-br from-[#0752A0]/20 via-sky-400/10 to-transparent blur-3xl rounded-full"
                                                     />
-                                                    <div className="relative z-10 w-16 h-16 flex items-center justify-center">
+                                                    
+                                                    <div className="relative z-10 w-20 h-20 flex items-center justify-center bg-white/10 backdrop-blur-[24px] rounded-[28px] border border-white/40 shadow-[0_12px_48px_rgba(7,82,160,0.08)] group-hover:bg-white/20 transition-all duration-700 overflow-hidden">
+                                                        {/* Animated surface highlight */}
+                                                        <motion.div 
+                                                            animate={{ 
+                                                                x: [-120, 120],
+                                                                opacity: [0, 0.4, 0]
+                                                            }}
+                                                            transition={{
+                                                                duration: 3,
+                                                                repeat: Infinity,
+                                                                ease: "easeInOut",
+                                                                repeatDelay: 2
+                                                            }}
+                                                            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-[-25deg] pointer-events-none"
+                                                        />
+                                                        
                                                         <svg
-                                                            width="48"
-                                                            height="48"
+                                                            width="40"
+                                                            height="40"
                                                             viewBox="0 0 24 24"
                                                             fill="none"
                                                             xmlns="http://www.w3.org/2000/svg"
-                                                            className="drop-shadow-[0_4px_12px_rgba(251,191,36,0.5)]"
+                                                            className="relative z-10"
                                                         >
                                                             <defs>
-                                                                <linearGradient id="star-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                                                    <stop offset="0%" stopColor="#FDE68A" />
-                                                                    <stop offset="50%" stopColor="#FBBF24" />
-                                                                    <stop offset="100%" stopColor="#D97706" />
+                                                                <linearGradient id="liquid-glass-main" x1="0%" y1="0%" x2="100%" y2="100%">
+                                                                    <stop offset="0%" stopColor="#7DD3FC" />
+                                                                    <stop offset="50%" stopColor="#0752A0" />
+                                                                    <stop offset="100%" stopColor="#0EA5E9" />
                                                                 </linearGradient>
+                                                                <filter id="liquid-glow" x="-20%" y="-20%" width="140%" height="140%">
+                                                                    <feGaussianBlur in="SourceGraphic" stdDeviation="0.8" />
+                                                                </filter>
                                                             </defs>
+                                                            
+                                                            {/* Base "Deep" Layer */}
                                                             <path
                                                                 d="M12 2.5l2.76 5.6 6.18.9-4.47 4.36 1.05 6.16L12 16.6l-5.52 2.92 1.05-6.16-4.47-4.36 6.18-.9L12 2.5z"
-                                                                fill="url(#star-gradient)"
-                                                                stroke="#B45309"
+                                                                fill="#0752A0"
+                                                                fillOpacity="0.2"
+                                                                transform="translate(0.5, 0.5)"
+                                                            />
+                                                            
+                                                            {/* Main Fluid Layer */}
+                                                            <path
+                                                                d="M12 2.5l2.76 5.6 6.18.9-4.47 4.36 1.05 6.16L12 16.6l-5.52 2.92 1.05-6.16-4.47-4.36 6.18-.9L12 2.5z"
+                                                                fill="url(#liquid-glass-main)"
+                                                                fillOpacity="0.85"
+                                                                stroke="#0752A0"
                                                                 strokeWidth="0.5"
                                                                 strokeLinejoin="round"
                                                                 strokeLinecap="round"
+                                                                style={{ filter: 'url(#liquid-glow)' }}
+                                                            />
+                                                            
+                                                            {/* Reflection Highlights */}
+                                                            <path
+                                                                d="M12 5L13.5 8.5L17.5 9L14.5 12L15 16L12 14L9 16L9.5 12L6.5 9L10.5 8.5L12 5Z"
+                                                                fill="white"
+                                                                fillOpacity="0.3"
+                                                            />
+                                                            <path
+                                                                d="M12 6.5L12.8 8.5H15L13.2 10L13.8 12L12 10.8L10.2 12L10.8 10L9 8.5H11.2L12 6.5Z"
+                                                                fill="white"
+                                                                fillOpacity="0.4"
                                                             />
                                                         </svg>
                                                     </div>
@@ -214,7 +258,7 @@ export default function IndustryImpactSection() {
                                                         }}
                                                         className="flex gap-5 text-slate-600 leading-relaxed group"
                                                     >
-                                                        <div className="mt-3 w-2 h-2 rounded-full bg-primary/30 shrink-0 group-hover:bg-primary transition-all duration-300 group-hover:scale-125" />
+                                                        <div className="mt-3 w-5 h-[1.5px] bg-gradient-to-r from-[#0752A0]/40 to-transparent shrink-0 group-hover:from-[#0752A0] transition-all duration-500" />
                                                         <span className="text-lg md:text-xl font-medium text-slate-700/90 tracking-tight">{item}</span>
                                                     </motion.li>
                                                 ))}
