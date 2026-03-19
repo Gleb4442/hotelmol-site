@@ -882,7 +882,7 @@ export const translations = {
     "home.hero.watchDemo": "Смотреть обзор",
 
     // AI Dashboard Section
-    "home.aiDashboard.title": "Централизованный AI-дашборд по всей сети",
+    "home.aiDashboard.title": "Ваш автономный Ai CRM",
     "home.aiDashboard.subtitle": "Расширенная аналитика для вас и вашей команды",
     "home.aiDashboard.description": "Бронирования, допродажи, отзывы гостей — всё в одном месте.",
     "home.aiDashboard.bookings.title": "Бронирований за месяц",
@@ -1294,7 +1294,7 @@ export const translations = {
     "about.results.costs": "затрат на найм и обучение администраторов",
     "about.results.bookings": "прямых бронирований",
     "about.results.upsells": "продаж дополнительных услуг",
-    "about.results.dashboard.title": "Централизованный AI-дашборд по всей сети",
+    "about.results.dashboard.title": "Ваш автономный Ai CRM",
     "about.results.dashboard.description": "Эмоции гостей, типы запросов, тренды отзывов, проблемные зоны — всё в одном месте.",
     "about.results.disclaimer": "Оценено отраслевыми источниками; точные цифры подтверждаются пилотом.",
     "about.problemSolution.problem": "Проблема",
