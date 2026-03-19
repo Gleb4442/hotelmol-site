@@ -75,7 +75,7 @@ const HotelQRBenefits = () => {
     const activeCase = tableData[activeIndex];
 
     return (
-        <PremiumBackground className="py-16 md:py-24 overflow-hidden flex items-center justify-center p-4 md:p-8 font-sans selection:bg-blue-200 selection:text-blue-900 border-y border-slate-200/50 -mb-6">
+        <PremiumBackground className="py-16 md:py-24 overflow-hidden flex items-center justify-center p-4 md:p-8 font-sans selection:bg-blue-200 selection:text-blue-900">
 
             <div className="relative z-10 max-w-4xl w-full flex flex-col items-center">
                 {/* Заголовок */}

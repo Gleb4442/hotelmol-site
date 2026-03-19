@@ -18,7 +18,7 @@ const PremiumBackground: React.FC<PremiumBackgroundProps> = ({
   showLines = true,
 }) => {
   return (
-    <div className={`relative overflow-hidden bg-[#FAF9F6] ${className}`}>
+    <div className={`relative overflow-hidden bg-background ${className}`}>
       {/* Base Layer */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         
