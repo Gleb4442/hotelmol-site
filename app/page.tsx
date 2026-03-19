@@ -37,9 +37,9 @@ export default function Home() {
             <HowRoomieWorks />
             <AIDashboardSection />
             <IntegrationTicker />
+            <ROIEstimateLight />
             <SolutionsBlogSection />
             <ChatFAQSection variant="hotelier" />
-            <ROIEstimateLight />
             <PresentationSection />
         </>
     );

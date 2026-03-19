@@ -162,19 +162,19 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
       <div className="hidden md:flex items-center justify-between">
 
         {/* 1. Left Cloud: Logo */}
-        <div className={`pointer-events-auto flex items-center justify-center px-4 xl:px-6 h-[72px] ${cloudStyle} hide-on-menu-open`}>
+        <div className={`pointer-events-auto flex items-center justify-center px-4 xl:px-6 h-[52px] ${cloudStyle} hide-on-menu-open`}>
           <Link href="/" className="flex items-center h-full" data-testid="link-home">
-            <img src="/assets/hotelmol-logo-vector.svg" alt="HotelMol" className="h-[130px] md:h-[150px] mt-1 object-contain" />
+            <img src="/assets/hotelmol-logo-vector.svg" alt="HotelMol" className="h-[82px] md:h-[92px] mt-1 object-contain" />
           </Link>
         </div>
 
         {/* 2. Center Cloud: Navigation (Desktop Only) */}
-        <div className={`hidden md:flex pointer-events-auto items-center justify-center px-2 lg:px-4 xl:px-[18px] h-[72px] ${cloudStyle}`}>
+        <div className={`hidden md:flex pointer-events-auto items-center justify-center px-2 lg:px-4 xl:px-[18px] h-[52px] ${cloudStyle}`}>
           <NavPill navigation={navigation} pathname={pathname} />
         </div>
 
         {/* 3. Right Cloud: Actions */}
-        <div className={`pointer-events-auto flex items-center gap-2 xl:gap-3 px-3 xl:px-5 h-[72px] ${cloudStyle} hide-on-menu-open`}>
+        <div className={`pointer-events-auto flex items-center gap-2 xl:gap-3 px-3 xl:px-5 h-[52px] ${cloudStyle} hide-on-menu-open`}>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" size="icon" className="hidden md:inline-flex rounded-full hover:bg-slate-100" data-testid="button-language">
@@ -231,11 +231,11 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
       </div>
 
       {/* --- MOBILE VIEW (Fixed Top Bar) --- */}
-      <div className="mobile-header-surface md:hidden pointer-events-auto fixed top-0 left-0 right-0 h-[60px] flex items-center justify-between px-4 z-[60] overflow-visible">
+      <div className="mobile-header-surface md:hidden pointer-events-auto fixed top-0 left-0 right-0 h-[52px] flex items-center justify-between px-4 z-[60] overflow-visible">
 
         {/* Mobile Left: Logo */}
-        <Link href="/" className="flex items-center h-full relative w-[160px]" data-testid="link-home-mobile">
-          <img src="/assets/hotelmol-logo-vector.svg" alt="HotelMol" className="h-[120px] object-contain absolute top-[-30px] left-0" />
+        <Link href="/" className="flex items-center h-full relative w-[140px]" data-testid="link-home-mobile">
+          <img src="/assets/hotelmol-logo-vector.svg" alt="HotelMol" className="h-[96px] object-contain absolute top-[-22px] left-0" />
         </Link>
 
         {/* Mobile Center title/placeholder if needed (optional) */}
