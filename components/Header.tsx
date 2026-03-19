@@ -164,7 +164,7 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
         {/* 1. Left Cloud: Logo */}
         <div className={`pointer-events-auto flex items-center justify-center px-4 xl:px-6 h-[52px] ${cloudStyle} hide-on-menu-open`}>
           <Link href="/" className="flex items-center h-full" data-testid="link-home">
-            <img src="/assets/hotelmol-logo-vector.svg" alt="HotelMol" className="h-[92px] mt-1 object-contain" />
+            <img src="/assets/hotelmol-logo-vector.svg" alt="HotelMol" className="h-[102px] mt-1 object-contain" />
           </Link>
         </div>
 
@@ -235,7 +235,7 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
 
         {/* Mobile Left: Logo */}
         <Link href="/" className="flex items-center h-full relative w-[140px]" data-testid="link-home-mobile">
-          <img src="/assets/hotelmol-logo-vector.svg" alt="HotelMol" className="h-[92px] object-contain absolute top-[-20px] left-0" />
+          <img src="/assets/hotelmol-logo-vector.svg" alt="HotelMol" className="h-[102px] object-contain absolute top-[-25px] left-0" />
         </Link>
 
         {/* Mobile Center title/placeholder if needed (optional) */}
