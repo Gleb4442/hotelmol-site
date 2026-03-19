@@ -40,7 +40,7 @@ export default function Home() {
             <ROIEstimateLight />
             <SolutionsBlogSection />
             <ChatFAQSection variant="hotelier" />
-            <PresentationSection />
+            <PresentationSection titleKey="presentation.app.title" />
         </>
     );
 }

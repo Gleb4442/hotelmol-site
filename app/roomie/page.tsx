@@ -10,6 +10,8 @@ import ConsultationForm from "@/components/ConsultationForm";
 import ChatFAQSection from "@/components/ChatFAQSection";
 import { useTranslation } from "@/lib/TranslationContext";
 import SEO, { productSchema } from "@/components/SEO";
+import PresentationSection from "@/components/PresentationSection";
+
 
 export default function Roomie() {
     const { t } = useTranslation();
@@ -157,6 +159,8 @@ export default function Roomie() {
             <SalesAIAgentSection />
             <ChatFAQSection variant="roomie" />
             <ConsultationForm />
+            <PresentationSection />
+
             {/* <DemoRequestModal open={demoModalOpen} onOpenChange={setDemoModalOpen} /> */}
         </div>
     );

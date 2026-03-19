@@ -91,7 +91,9 @@ const translationsBase = {
     "home.salesAgent.subtitle": "Maximize revenue with intelligent, personalized service recommendations",
 
     // Presentation Section
-    "presentation.title": "Roomie Presentation",
+    "presentation.title": "Roomie Ai Presentation",
+    "presentation.app.title": "Roomie App Presentation",
+
 
     "presentation.download": "Download Presentation",
 
@@ -985,7 +987,9 @@ const translationsBase = {
     "home.salesAgent.subtitle": "Максимизируйте доход с помощью умных и персонализированных рекомендаций",
 
     // Presentation Section
-    "presentation.title": "Презентация Roomie",
+    "presentation.title": "Презентация Roomie Ai",
+    "presentation.app.title": "Презентация Roomie App",
+
 
     "presentation.download": "Скачать презентацию",
 
@@ -1813,7 +1817,9 @@ const translationsBase = {
     "home.salesAgent.subtitle": "Максимізуйте дохід за допомогою розумних та персоналізованих рекомендацій",
 
     // Presentation Section
-    "presentation.title": "Презентація Roomie",
+    "presentation.title": "Презентація Roomie Ai",
+    "presentation.app.title": "Презентація Roomie App",
+
 
     "presentation.download": "Завантажити презентацію",
 
@@ -2598,7 +2604,9 @@ const translationsBase = {
     "home.salesAgent.subtitle": "Maksymalizuj przychody dzięki inteligentnym, spersonalizowanym rekomendacjom usług",
 
     // Presentation Section
-    "presentation.title": "Prezentacja Roomie",
+    "presentation.title": "Prezentacja Roomie Ai",
+    "presentation.app.title": "Prezentacja Roomie App",
+
 
     "presentation.download": "Pobierz Prezentację",
 
