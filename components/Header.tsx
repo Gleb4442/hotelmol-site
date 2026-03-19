@@ -50,7 +50,7 @@ const NavPill = ({ navigation, pathname }: { navigation: Array<{ name: string; h
   }, [pathname, navigation]);
 
   return (
-    <nav className="relative flex items-center gap-1" ref={navRef}>
+    <nav className="relative flex items-center gap-1 h-full" ref={navRef}>
       <motion.span
         className="absolute top-0 bottom-0 bg-[#0752A0] shadow-sm rounded-full -z-10"
         initial={false}
@@ -67,7 +67,7 @@ const NavPill = ({ navigation, pathname }: { navigation: Array<{ name: string; h
           <Link
             key={item.name}
             href={item.href}
-            className={`relative px-2 lg:px-2.5 xl:px-4 py-2 rounded-full text-sm xl:text-[15px] font-medium transition-all duration-300 flex items-center gap-2
+            className={`relative px-2 lg:px-2.5 xl:px-4 h-full rounded-full text-sm xl:text-[15px] font-medium transition-all duration-300 flex items-center gap-2
               ${isActive
                 ? "text-white"
                 : "text-slate-600 hover:text-[#0752A0] hover:bg-slate-100/50"
@@ -169,7 +169,7 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
         </div>
 
         {/* 2. Center Cloud: Navigation (Desktop Only) */}
-        <div className={`hidden md:flex pointer-events-auto items-center justify-center px-2 lg:px-4 xl:px-[18px] h-[52px] ${cloudStyle}`}>
+        <div className={`hidden md:flex pointer-events-auto items-center justify-center p-1 h-[52px] ${cloudStyle}`}>
           <NavPill navigation={navigation} pathname={pathname} />
         </div>
 
