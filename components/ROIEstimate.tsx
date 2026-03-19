@@ -251,19 +251,22 @@ export default function ROIEstimate() {
               Get a detailed, personalized breakdown for your specific hotel needs from our expert team.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 w-full justify-center">
-              <Button
-                size="lg"
-                asChild
-                className="h-16 px-12 bg-white text-black hover:bg-white/90 text-lg font-bold shadow-[0_20px_40px_-15px_rgba(255,255,255,0.3)] rounded-2xl transform hover:-translate-y-1 transition-all duration-300"
-              >
-                <a href="https://cal.com/gleb.gosha/30min" target="_blank" rel="noopener noreferrer" className="flex items-center">
-                  Talk to a Human <ArrowRight className="ml-3 w-6 h-6" />
-                </a>
-              </Button>
-              <div className="flex items-center justify-center gap-2 px-6 py-4 rounded-2xl bg-white/10 border border-white/10 backdrop-blur-md">
-                <CheckCircle2 className="w-5 h-5 text-green-400" />
-                <span className="text-white font-medium text-sm">{t("text.callFree")}</span>
+            <div className="flex flex-col items-center gap-6 w-full justify-center">
+              <div className="flex flex-col items-center gap-4">
+                <Button
+                  size="lg"
+                  asChild
+                  className="h-16 px-12 bg-white text-black hover:bg-white/90 text-lg font-bold shadow-[0_20px_40px_-15px_rgba(255,255,255,0.3)] rounded-2xl transform hover:-translate-y-1 transition-all duration-300"
+                >
+                  <a href="https://cal.com/gleb.gosha/30min" target="_blank" rel="noopener noreferrer" className="flex items-center">
+                    Talk to a Human <ArrowRight className="ml-3 w-6 h-6" />
+                  </a>
+                </Button>
+                
+                <div className="flex items-center gap-2 opacity-60">
+                  <CheckCircle2 className="w-4 h-4 text-green-400" />
+                  <span className="text-white font-medium text-sm tracking-wide">{t("text.callFree")}</span>
+                </div>
               </div>
             </div>
           </div>

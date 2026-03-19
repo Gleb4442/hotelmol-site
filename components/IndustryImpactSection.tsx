@@ -198,46 +198,38 @@ export default function IndustryImpactSection() {
                                                             className="relative z-10"
                                                         >
                                                             <defs>
-                                                                <linearGradient id="liquid-glass-main" x1="0%" y1="0%" x2="100%" y2="100%">
-                                                                    <stop offset="0%" stopColor="#7DD3FC" />
-                                                                    <stop offset="50%" stopColor="#0752A0" />
-                                                                    <stop offset="100%" stopColor="#0EA5E9" />
+                                                                <linearGradient id="premium-blue-star" x1="0%" y1="0%" x2="100%" y2="100%">
+                                                                    <stop offset="0%" stopColor="#3B82F6" />
+                                                                    <stop offset="50%" stopColor="#2563EB" />
+                                                                    <stop offset="100%" stopColor="#1E40AF" />
                                                                 </linearGradient>
-                                                                <filter id="liquid-glow" x="-20%" y="-20%" width="140%" height="140%">
-                                                                    <feGaussianBlur in="SourceGraphic" stdDeviation="0.8" />
+                                                                <filter id="star-glow" x="-50%" y="-50%" width="200%" height="200%">
+                                                                    <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" />
                                                                 </filter>
                                                             </defs>
                                                             
-                                                            {/* Base "Deep" Layer */}
+                                                            {/* Glow Layer */}
                                                             <path
-                                                                d="M12 2.5l2.76 5.6 6.18.9-4.47 4.36 1.05 6.16L12 16.6l-5.52 2.92 1.05-6.16-4.47-4.36 6.18-.9L12 2.5z"
-                                                                fill="#0752A0"
-                                                                fillOpacity="0.2"
-                                                                transform="translate(0.5, 0.5)"
+                                                                d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
+                                                                fill="#3B82F6"
+                                                                fillOpacity="0.3"
+                                                                style={{ filter: 'url(#star-glow)' }}
                                                             />
                                                             
-                                                            {/* Main Fluid Layer */}
+                                                            {/* Main Star */}
                                                             <path
-                                                                d="M12 2.5l2.76 5.6 6.18.9-4.47 4.36 1.05 6.16L12 16.6l-5.52 2.92 1.05-6.16-4.47-4.36 6.18-.9L12 2.5z"
-                                                                fill="url(#liquid-glass-main)"
-                                                                fillOpacity="0.85"
-                                                                stroke="#0752A0"
+                                                                d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
+                                                                fill="url(#premium-blue-star)"
+                                                                stroke="#1E40AF"
                                                                 strokeWidth="0.5"
                                                                 strokeLinejoin="round"
-                                                                strokeLinecap="round"
-                                                                style={{ filter: 'url(#liquid-glow)' }}
                                                             />
                                                             
-                                                            {/* Reflection Highlights */}
+                                                            {/* Highlight */}
                                                             <path
-                                                                d="M12 5L13.5 8.5L17.5 9L14.5 12L15 16L12 14L9 16L9.5 12L6.5 9L10.5 8.5L12 5Z"
+                                                                d="M12 4L13.5 8L17 8.5L14.5 11L15 14.5L12 13L9 14.5L9.5 11L7 8.5L10.5 8L12 4Z"
                                                                 fill="white"
-                                                                fillOpacity="0.3"
-                                                            />
-                                                            <path
-                                                                d="M12 6.5L12.8 8.5H15L13.2 10L13.8 12L12 10.8L10.2 12L10.8 10L9 8.5H11.2L12 6.5Z"
-                                                                fill="white"
-                                                                fillOpacity="0.4"
+                                                                fillOpacity="0.2"
                                                             />
                                                         </svg>
                                                     </div>
