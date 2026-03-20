@@ -93,6 +93,12 @@ export const translations = {
     "roi.calculator.source3": "Upsell (upgrades, parking, etc.)",
     "roi.calculator.perRoom": "per room/month",
     "roi.calculator.downloadExplanation": "Download Calculation Explanation",
+    "roi.calculator.showDetails": "Show Details",
+    "roi.calculator.hideDetails": "Hide Details",
+    "roi.calculator.breakdownTitle": "Breakdown",
+    "roi.calculator.ctaTitle": "Ready to unlock your potential revenue?",
+    "roi.calculator.ctaButton": "Talk to a Human",
+    "roi.calculator.callFree": "This call is absolutely free",
 
     // Demo Modal
     "demo.title": "Request a Demo",
@@ -952,6 +958,12 @@ export const translations = {
     "roi.calculator.source3": "Upsell (апгрейды, парковка и др.)",
     "roi.calculator.perRoom": "за номер/мес",
     "roi.calculator.downloadExplanation": "Скачать пояснение расчетов",
+    "roi.calculator.showDetails": "Показать детали",
+    "roi.calculator.hideDetails": "Скрыть детали",
+    "roi.calculator.breakdownTitle": "Детализация",
+    "roi.calculator.ctaTitle": "Готовы увеличить доход вашего отеля?",
+    "roi.calculator.ctaButton": "Поговорить с человеком",
+    "roi.calculator.callFree": "Этот звонок абсолютно бесплатный",
 
     // Demo Modal
     "demo.title": "Запросить демо",
@@ -1654,6 +1666,12 @@ export const translations = {
     "roi.calculator.source3": "Upsell (апгрейди, паркування тощо)",
     "roi.calculator.perRoom": "на номер/місяць",
     "roi.calculator.downloadExplanation": "Завантажити пояснення розрахунків",
+    "roi.calculator.showDetails": "Показати деталі",
+    "roi.calculator.hideDetails": "Сховати деталі",
+    "roi.calculator.breakdownTitle": "Деталізація",
+    "roi.calculator.ctaTitle": "Готові збільшити дохід вашого готелю?",
+    "roi.calculator.ctaButton": "Поговорити з людиною",
+    "roi.calculator.callFree": "Цей дзвінок абсолютно безкоштовний",
 
     // Demo Modal
     "demo.title": "Запросити демо",
@@ -2356,6 +2374,12 @@ export const translations = {
     "roi.calculator.source3": "Upsell (upgrade, parking itp.)",
     "roi.calculator.perRoom": "za pokój/miesiąc",
     "roi.calculator.downloadExplanation": "Pobierz wyjaśnienie obliczeń",
+    "roi.calculator.showDetails": "Pokaż szczegóły",
+    "roi.calculator.hideDetails": "Ukryj szczegóły",
+    "roi.calculator.breakdownTitle": "Rozliczenie",
+    "roi.calculator.ctaTitle": "Gotowy na zwiększenie przychodów swojego hotelu?",
+    "roi.calculator.ctaButton": "Porozmawiaj z człowiekiem",
+    "roi.calculator.callFree": "Ta rozmowa jest całkowicie bezpłatna",
 
     // Demo Modal
     "demo.title": "Poproś o demo",

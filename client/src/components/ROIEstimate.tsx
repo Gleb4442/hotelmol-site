@@ -99,14 +99,14 @@ export default function ROIEstimate() {
               onClick={() => setShowBreakdown(!showBreakdown)}
               className="mt-4 w-full bg-white/10 text-white border-white/20 hover:bg-white/20"
             >
-              {showBreakdown ? "Скрыть детали" : "Показать детали"}
+              {showBreakdown ? t("roi.calculator.hideDetails") : t("roi.calculator.showDetails")}
             </Button>
           </div>
 
           {/* Breakdown Section */}
           {showBreakdown && (
             <div className="col-span-1 lg:col-span-7 flex flex-col space-y-4">
-              <h3 className="text-2xl text-white font-serif font-bold mb-2 ml-2">Breakdown</h3>
+              <h3 className="text-2xl text-white font-serif font-bold mb-2 ml-2">{t("roi.calculator.breakdownTitle")}</h3>
 
               {/* Source 1 */}
               <div className="bg-white/10 hover:bg-white/15 transition-colors p-5 rounded-2xl border border-white/10 flex items-center shadow-lg">
@@ -158,19 +158,19 @@ export default function ROIEstimate() {
       </div>
 
       <div className="flex flex-col items-center justify-center relative mt-16 pt-8 border-t border-white/10">
-        <p className="text-white/90 text-xl font-medium mb-6 mt-4">Ready to unlock your potential revenue?</p>
+        <p className="text-white/90 text-xl font-medium mb-8 mt-4 text-center">{t("roi.calculator.ctaTitle")}</p>
         <Button
           size="lg"
           asChild
           className="w-full sm:w-auto h-16 px-10 bg-white text-primary hover:bg-white/90 text-xl font-bold shadow-2xl rounded-full transform hover:scale-105 transition-all duration-300"
         >
           <a href="https://cal.com/gleb.gosha/30min" target="_blank" rel="noopener noreferrer" className="flex items-center">
-            Talk to a Human <ArrowRight className="ml-3 w-6 h-6" />
+            {t("roi.calculator.ctaButton")} <ArrowRight className="ml-3 w-6 h-6" />
           </a>
         </Button>
-        <p className="mt-4 text-white/70 text-sm font-medium text-center">
-          {t("text.callFree")}
-        </p>
+        <div className="mt-6 bg-white/10 backdrop-blur-md px-6 py-2 rounded-full border border-white/20 text-white/90 text-sm font-medium shadow-lg animate-in fade-in slide-in-from-bottom-4 duration-700">
+          {t("roi.calculator.callFree")}
+        </div>
       </div>
     </section>
   );
