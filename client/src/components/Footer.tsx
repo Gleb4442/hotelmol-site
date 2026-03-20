@@ -17,8 +17,9 @@ export default function Footer() {
   ];
 
   const legal = [
-    { nameKey: "footer.privacy", href: "https://docs.google.com/document/d/1Ejy6rwEZinKKrt26F2ShF6yBL6VZSyK8DDaNj4xKOms/edit?usp=sharing", external: true },
-    { nameKey: "footer.cookies", href: "https://docs.google.com/document/d/1e-Qf_fqJuANZ6nGuhyXyh9I_WyullsyBgvnhSnWO5Ts/edit?usp=sharing", external: true },
+    { nameKey: "footer.terms", href: "/terms", native: true },
+    { nameKey: "footer.privacy", href: "/privacy", native: true },
+    { nameKey: "footer.cookies", href: "/cookies" },
   ];
 
   return (
@@ -81,6 +82,10 @@ export default function Footer() {
                 <li key={item.nameKey}>
                   {item.external ? (
                     <a href={item.href} target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground">
+                      {t(item.nameKey as any)}
+                    </a>
+                  ) : item.native ? (
+                    <a href={item.href} className="text-sm text-muted-foreground hover:text-foreground">
                       {t(item.nameKey as any)}
                     </a>
                   ) : (

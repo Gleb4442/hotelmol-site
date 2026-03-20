@@ -7,123 +7,129 @@ export default function PrivacyPolicy() {
     return (
         <div className="min-h-screen bg-background">
             <SEO
-                title="Terms of Service | Roomie"
-                description="Terms of Service and Privacy Policy for Roomie by hotelmol."
+                title="Privacy Policy | Roomie by hotelmol"
+                description="Privacy Policy for Roomie — the mobile app by hotelmol. Learn how we collect, use, and protect your personal data."
             />
 
             <section className="pt-[148px] pb-20">
                 <div className="container mx-auto px-4">
                     <div className="max-w-4xl mx-auto">
                         <h1 className="font-serif text-5xl lg:text-6xl font-semibold tracking-tight mb-6">
-                            Terms of Service
+                            Privacy Policy
                         </h1>
                         <p className="text-lg text-muted-foreground mb-12">
-                            Effective Date: 11.03.2026
+                            Effective Date: March 20, 2026
                         </p>
 
                         <Card className="p-8 mb-8">
                             <p className="text-lg leading-relaxed">
-                                Welcome to Roomie, a mobile application developed and operated by hotelmol (hereinafter "Company", "we", "us", or "our").
+                                Welcome to Roomie, a mobile application developed and operated by hotelmol (hereinafter "Company", "we", "us", or "our"). This Privacy Policy explains how we collect, use, share, and protect your personal information when you use the Roomie mobile application and related services (collectively, the "Services").
                             </p>
                             <p className="text-lg leading-relaxed mt-4">
-                                These Terms of Service (hereinafter "Terms") govern your access to and use of the Roomie mobile application, the hotelmol.com website, and related services (collectively, the "Services"). Please read these Terms carefully before using the App.
-                            </p>
-                            <p className="text-lg leading-relaxed mt-4">
-                                By using our Services, you confirm that you have read, understood, and agree to be bound by these Terms. If you do not agree, you may not use our App.
+                                By using our Services, you acknowledge that you have read and understood this Privacy Policy.
                             </p>
                         </Card>
 
                         <div className="space-y-8">
                             <Card className="p-8">
-                                <h2 className="font-serif text-2xl font-semibold mb-4">1. The Role of the Roomie Platform</h2>
+                                <h2 className="font-serif text-2xl font-semibold mb-4">1. Information We Collect</h2>
                                 <div className="space-y-4 text-muted-foreground leading-relaxed">
-                                    <p><strong>1.1. Roomie as an Information Intermediary.</strong> The Roomie App provides a technology platform that enables users (guests) to discover hotels, make reservations, manage their stay, and communicate with the hotel.</p>
-                                    <p><strong>1.2. No Liability for Hotel Services.</strong> The company hotelmol does not own, manage, or control the hotels listed in the App. All services related to accommodation, food and beverage, and housekeeping are provided directly by the hotel. Any claims regarding the quality of these services must be directed to the management of the respective hotel.</p>
+                                    <p>We collect the following categories of information:</p>
+                                    <p><strong>1.1. Account Information.</strong> When you register, we collect your name, email address, phone number, and password (stored in hashed form).</p>
+                                    <p><strong>1.2. Booking and Stay Data.</strong> When you make a reservation or use hotel services through the App, we collect booking dates, room type, number of guests, special requests, payment transaction records (processed by third-party providers — we do not store full card numbers), and stay history.</p>
+                                    <p><strong>1.3. AI Concierge Interactions.</strong> We collect the messages and requests you send to the AI Concierge in order to generate responses. These interactions may be logged for quality assurance and service improvement purposes.</p>
+                                    <p><strong>1.4. Loyalty Program Data.</strong> We collect your Roomie Coins balance, transaction history (points earned and redeemed), and related activity.</p>
+                                    <p><strong>1.5. Device and Usage Data.</strong> We automatically collect information about your device (device model, operating system version, unique device identifiers), app usage logs, crash reports, and analytics data (e.g., screens visited, features used).</p>
+                                    <p><strong>1.6. Location Data.</strong> We do not collect precise background location data. If a location-based feature is enabled (e.g., hotel map, nearby services), we access your location only at the moment of use and only with your explicit permission.</p>
                                 </div>
                             </Card>
 
                             <Card className="p-8">
-                                <h2 className="font-serif text-2xl font-semibold mb-4">2. Registration and Account</h2>
+                                <h2 className="font-serif text-2xl font-semibold mb-4">2. How We Use Your Information</h2>
                                 <div className="space-y-4 text-muted-foreground leading-relaxed">
-                                    <p><strong>2.1. Age Restrictions.</strong> To use the Services, you must be at least 18 years old and possess the legal capacity to enter into binding contracts.</p>
-                                    <p><strong>2.2. Security.</strong> You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account. You agree to notify us immediately of any unauthorized use of your profile.</p>
-                                </div>
-                            </Card>
-
-                            <Card className="p-8">
-                                <h2 className="font-serif text-2xl font-semibold mb-4">3. Booking, Payments, and Cancellation</h2>
-                                <div className="space-y-4 text-muted-foreground leading-relaxed">
-                                    <p><strong>3.1. Payment Processing.</strong> When booking a room or ordering additional services through the App, payments are processed securely through third-party payment gateways (e.g., Stripe). You agree to the terms of service of these payment processors.</p>
-                                    <p><strong>3.2. Cancellation Policy.</strong> The conditions for booking cancellations, refunds, and no-show penalties are established exclusively by the specific partner hotel and are displayed at the time of booking. hotelmol is not responsible for any penalties withheld by the hotel.</p>
-                                    <p><strong>3.3. Third-Party Links (WebView).</strong> The App may contain embedded links (WebView) to restaurant menus or hotel service catalogs. We do not control these third-party resources and are not responsible for their content or the payment processes on their end.</p>
-                                </div>
-                            </Card>
-
-                            <Card className="p-8">
-                                <h2 className="font-serif text-2xl font-semibold mb-4">4. Use of AI Concierge (Artificial Intelligence)</h2>
-                                <div className="space-y-4 text-muted-foreground leading-relaxed">
-                                    <p>4.1. The App integrates an AI assistant designed to answer frequently asked questions and provide recommendations.</p>
-                                    <p>4.2. Limitation of AI Accuracy. While we strive to provide accurate information, the AI assistant's responses are generated algorithmically and may contain errors or inaccuracies.</p>
-                                    <p>4.3. Any promises, discounts, or confirmations issued by the AI assistant are not legally binding until they are confirmed in your booking profile or by an official representative of the hotel.</p>
-                                </div>
-                            </Card>
-
-                            <Card className="p-8">
-                                <h2 className="font-serif text-2xl font-semibold mb-4">5. Loyalty Program (Roomie Coins)</h2>
-                                <div className="space-y-4 text-muted-foreground leading-relaxed">
-                                    <p>5.1. The App may offer a loyalty program allowing you to earn points ("Roomie Coins") for bookings.</p>
-                                    <p>5.2. Points have no cash value, cannot be exchanged for cash, and cannot be transferred to other users.</p>
-                                    <p>5.3. The company hotelmol reserves the right to change the rules for earning points, or to suspend or terminate the loyalty program entirely at any time, with prior notice to users.</p>
-                                </div>
-                            </Card>
-
-                            <Card className="p-8">
-                                <h2 className="font-serif text-2xl font-semibold mb-4">6. Acceptable Use</h2>
-                                <div className="space-y-4 text-muted-foreground leading-relaxed">
-                                    <p>You agree not to use the App to:</p>
+                                    <p>We use your information to:</p>
                                     <ul className="list-disc pl-5 space-y-2">
-                                        <li>Violate any applicable local, state, national, or international laws.</li>
-                                        <li>Send abusive, threatening, or discriminatory messages through the AI chat or to hotel staff.</li>
-                                        <li>Attempt to hack, reverse-engineer, or circumvent the security systems of the App.</li>
+                                        <li>Provide, operate, and maintain the Services (process bookings, authenticate your account, deliver AI Concierge responses).</li>
+                                        <li>Process payments and send booking confirmations and receipts.</li>
+                                        <li>Manage your Roomie Coins loyalty balance.</li>
+                                        <li>Improve and personalize the Services, including training and refining AI features using aggregated and anonymized interaction data.</li>
+                                        <li>Send transactional notifications (booking confirmation, check-in reminders, stay updates).</li>
+                                        <li>Send marketing communications — only with your consent, and you may opt out at any time.</li>
+                                        <li>Ensure security, detect fraud, and enforce our policies.</li>
+                                        <li>Comply with legal obligations.</li>
                                     </ul>
                                 </div>
                             </Card>
 
                             <Card className="p-8">
-                                <h2 className="font-serif text-2xl font-semibold mb-4">7. Intellectual Property</h2>
-                                <p className="text-muted-foreground leading-relaxed">
-                                    All content, design, text, graphics, interfaces, and code of the App, as well as the trademarks "Roomie" and "hotelmol", are the exclusive property of the Company. You are granted a limited, non-exclusive, non-transferable license to use the App solely for your personal, non-commercial purposes.
-                                </p>
-                            </Card>
-
-                            <Card className="p-8">
-                                <h2 className="font-serif text-2xl font-semibold mb-4">8. Limitation of Liability</h2>
-                                <div className="space-y-4 text-muted-foreground leading-relaxed uppercase">
-                                    <p>TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, HOTELMOL SHALL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, OR PUNITIVE DAMAGES (INCLUDING, BUT NOT LIMITED TO, LOSS OF DATA, LOST PROFITS, OR PERSONAL INJURY) ARISING OUT OF:</p>
-                                    <p>(A) YOUR USE OR INABILITY TO USE THE APP;</p>
-                                    <p>(B) ANY ACTS OR OMISSIONS OF PARTNER HOTELS OR THEIR STAFF;</p>
-                                    <p>(C) UNAUTHORIZED ACCESS TO YOUR DATA.</p>
+                                <h2 className="font-serif text-2xl font-semibold mb-4">3. Sharing and Disclosure</h2>
+                                <div className="space-y-4 text-muted-foreground leading-relaxed">
+                                    <p>We may share your information with:</p>
+                                    <p><strong>3.1. Partner Hotels.</strong> We share your booking details (name, dates, room type, special requests) with the hotel where you have made a reservation. This transfer is necessary to fulfill your booking.</p>
+                                    <p><strong>3.2. Payment Processors.</strong> Payments are processed by third-party providers (e.g., Stripe). These providers operate under their own privacy policies and security standards. We do not store full payment card details.</p>
+                                    <p><strong>3.3. AI Service Providers.</strong> AI Concierge functionality may be powered by third-party AI providers (such as OpenAI or Google). Messages sent to the AI Concierge may be processed by these providers in accordance with their data processing agreements with us.</p>
+                                    <p><strong>3.4. Analytics Providers.</strong> We may use third-party analytics services (e.g., Firebase) to understand App usage. These providers receive anonymized or pseudonymized data.</p>
+                                    <p><strong>3.5. Legal Requirements.</strong> We may disclose your information if required by law, court order, or to protect the rights and safety of our users, the Company, or third parties.</p>
+                                    <p>We do not sell your personal information to third parties.</p>
                                 </div>
                             </Card>
 
                             <Card className="p-8">
-                                <h2 className="font-serif text-2xl font-semibold mb-4">9. Dispute Resolution and Governing Law</h2>
+                                <h2 className="font-serif text-2xl font-semibold mb-4">4. Data Retention</h2>
                                 <p className="text-muted-foreground leading-relaxed">
-                                    These Terms shall be governed by the laws of Ukraine, without regard to its conflict of law provisions. Any disputes arising out of these Terms shall be resolved in the competent courts in the jurisdiction where the Company is registered.
+                                    We retain your account and booking data for as long as your account is active, and for up to 3 years after your last activity, unless a longer retention period is required by law. AI Concierge interaction logs are retained for up to 12 months. You may request deletion of your data at any time (see Section 6).
                                 </p>
                             </Card>
 
                             <Card className="p-8">
-                                <h2 className="font-serif text-2xl font-semibold mb-4">10. Changes to the Terms</h2>
+                                <h2 className="font-serif text-2xl font-semibold mb-4">5. Data Security</h2>
                                 <p className="text-muted-foreground leading-relaxed">
-                                    We reserve the right to modify these Terms at any time. The updated version becomes effective immediately upon its publication in the App or on the website. Your continued use of the Services constitutes your acceptance of the new terms.
+                                    We implement industry-standard technical and organizational measures to protect your information, including encrypted data transmission (TLS/HTTPS), hashed passwords, and access controls. However, no method of electronic transmission or storage is 100% secure, and we cannot guarantee absolute security.
                                 </p>
                             </Card>
 
                             <Card className="p-8">
-                                <h2 className="font-serif text-2xl font-semibold mb-4">11. Contact Information</h2>
+                                <h2 className="font-serif text-2xl font-semibold mb-4">6. Your Rights</h2>
+                                <div className="space-y-4 text-muted-foreground leading-relaxed">
+                                    <p>Depending on your jurisdiction, you may have the following rights regarding your personal data:</p>
+                                    <ul className="list-disc pl-5 space-y-2">
+                                        <li><strong>Access:</strong> Request a copy of the personal data we hold about you.</li>
+                                        <li><strong>Correction:</strong> Request correction of inaccurate or incomplete data.</li>
+                                        <li><strong>Deletion:</strong> Request deletion of your personal data ("right to be forgotten").</li>
+                                        <li><strong>Portability:</strong> Request your data in a structured, machine-readable format.</li>
+                                        <li><strong>Objection / Restriction:</strong> Object to or request restriction of certain processing activities.</li>
+                                        <li><strong>Withdraw Consent:</strong> Withdraw consent for marketing communications at any time via the unsubscribe link in any email or through App settings.</li>
+                                    </ul>
+                                    <p>To exercise any of these rights, contact us at: <strong>legal@hotelmol.com</strong>. We will respond within 30 days.</p>
+                                </div>
+                            </Card>
+
+                            <Card className="p-8">
+                                <h2 className="font-serif text-2xl font-semibold mb-4">7. Children's Privacy</h2>
                                 <p className="text-muted-foreground leading-relaxed">
-                                    If you have any questions regarding these Terms, please contact us:<br />
+                                    The Services are not directed to children under the age of 18. We do not knowingly collect personal information from minors. If you believe a minor has provided us with personal data, please contact us and we will promptly delete it.
+                                </p>
+                            </Card>
+
+                            <Card className="p-8">
+                                <h2 className="font-serif text-2xl font-semibold mb-4">8. International Data Transfers</h2>
+                                <p className="text-muted-foreground leading-relaxed">
+                                    Your data may be processed and stored on servers located outside your country of residence. We ensure that any such transfers are protected by appropriate safeguards (such as standard contractual clauses or equivalent mechanisms).
+                                </p>
+                            </Card>
+
+                            <Card className="p-8">
+                                <h2 className="font-serif text-2xl font-semibold mb-4">9. Changes to This Privacy Policy</h2>
+                                <p className="text-muted-foreground leading-relaxed">
+                                    We may update this Privacy Policy from time to time. When we do, we will update the Effective Date at the top of this page. If changes are material, we will notify you through the App or by email at least 14 days before the changes take effect. Your continued use of the Services after the effective date constitutes acceptance of the updated Policy.
+                                </p>
+                            </Card>
+
+                            <Card className="p-8">
+                                <h2 className="font-serif text-2xl font-semibold mb-4">10. Contact Information</h2>
+                                <p className="text-muted-foreground leading-relaxed">
+                                    If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:<br />
+                                    <strong>hotelmol</strong><br />
                                     Email: <a href="mailto:legal@hotelmol.com" className="text-primary hover:underline">legal@hotelmol.com</a>
                                 </p>
                             </Card>

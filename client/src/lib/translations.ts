@@ -210,7 +210,7 @@ export const translations = {
     "footer.terms": "Terms of Service",
     "footer.dataProcessing": "Data Processing",
     "footer.cookies": "Cookie Policy",
-    "footer.rights": "© 2025 hotelmol. All rights reserved.",
+    "footer.rights": "© 2026 hotelmol. All rights reserved.",
 
     // Error messages
     "error.agreementRequired": "Agreement Required",
@@ -1075,7 +1075,7 @@ export const translations = {
     "footer.terms": "Условия использования",
     "footer.dataProcessing": "Обработка данных",
     "footer.cookies": "Политика cookie",
-    "footer.rights": "© 2025 hotelmol. Все права защищены.",
+    "footer.rights": "© 2026 hotelmol. Все права защищены.",
 
     // Error messages
     "error.agreementRequired": "Требуется согласие",
@@ -1783,7 +1783,7 @@ export const translations = {
     "footer.terms": "Умови використання",
     "footer.dataProcessing": "Обробка даних",
     "footer.cookies": "Політика cookie",
-    "footer.rights": "© 2025 hotelmol. Усі права захищені.",
+    "footer.rights": "© 2026 hotelmol. Усі права захищені.",
 
     // Error messages
     "error.agreementRequired": "Потрібна згода",
@@ -2491,7 +2491,7 @@ export const translations = {
     "footer.terms": "Warunki korzystania z usługi",
     "footer.dataProcessing": "Przetwarzanie danych",
     "footer.cookies": "Polityka plików cookie",
-    "footer.rights": "© 2025 hotelmol. Wszelkie prawa zastrzeżone.",
+    "footer.rights": "© 2026 hotelmol. Wszelkie prawa zastrzeżone.",
 
     // Error messages
     "error.agreementRequired": "Wymagana zgoda",
