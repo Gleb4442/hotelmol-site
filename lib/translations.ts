@@ -860,6 +860,7 @@ const translationsBase = {
     "notFound.suggestion": "Here are some helpful links:",
     "notFound.home": "Go to Homepage",
     "notFound.contact": "Contact Us",
+    "common.back": "← Back",
     "about.aiReview.title": "See what AI thinks about our company",
     "industryImpact.title": "Industry Leaders Performance",
     "industryImpact.subtitle": "How global brands leverage digital transformation for growth",
@@ -1692,6 +1693,7 @@ const translationsBase = {
     "notFound.suggestion": "Вот несколько полезных ссылок:",
     "notFound.home": "Перейти на главную",
     "notFound.contact": "Связаться с нами",
+    "common.back": "← Назад",
     "industryImpact.title": "Показатели лидеров индустрии",
     "industryImpact.subtitle": "Как мировые отельные группы используют цифровую трансформацию для роста",
     "industryImpact.hilton.name": "Hilton Honors",
@@ -2518,6 +2520,7 @@ const translationsBase = {
     "notFound.suggestion": "Ось кілька корисних посилань:",
     "notFound.home": "Повернутися на головну",
     "notFound.contact": "Зв'язатися з нами",
+    "common.back": "← Назад",
   },
   pl: {
 
@@ -3444,6 +3447,7 @@ const translationsBase = {
     "notFound.suggestion": "Oto kilka przydatnych linków:",
     "notFound.home": "Idź do Strony Głównej",
     "notFound.contact": "Skontaktuj się z Nami",
+    "common.back": "← Wróć",
 
     // Common
     "common.learnMore": "Dowiedz się więcej",
