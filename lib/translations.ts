@@ -860,7 +860,6 @@ const translationsBase = {
     "notFound.suggestion": "Here are some helpful links:",
     "notFound.home": "Go to Homepage",
     "notFound.contact": "Contact Us",
-    "notFound.solutions": "View Solutions",
     "about.aiReview.title": "See what AI thinks about our company",
     "industryImpact.title": "Industry Leaders Performance",
     "industryImpact.subtitle": "How global brands leverage digital transformation for growth",
@@ -1690,7 +1689,9 @@ const translationsBase = {
     "notFound.title": "Страница не найдена",
     "notFound.error": "404",
     "notFound.message": "К сожалению, страница, которую вы ищете, не существует или была перемещена.",
-    "notFound.solutions": "Посмотреть решения",
+    "notFound.suggestion": "Вот несколько полезных ссылок:",
+    "notFound.home": "Перейти на главную",
+    "notFound.contact": "Связаться с нами",
     "industryImpact.title": "Показатели лидеров индустрии",
     "industryImpact.subtitle": "Как мировые отельные группы используют цифровую трансформацию для роста",
     "industryImpact.hilton.name": "Hilton Honors",
@@ -2517,7 +2518,6 @@ const translationsBase = {
     "notFound.suggestion": "Ось кілька корисних посилань:",
     "notFound.home": "Повернутися на головну",
     "notFound.contact": "Зв'язатися з нами",
-    "notFound.solutions": "Переглянути рішення",
   },
   pl: {
 
@@ -3444,7 +3444,6 @@ const translationsBase = {
     "notFound.suggestion": "Oto kilka przydatnych linków:",
     "notFound.home": "Idź do Strony Głównej",
     "notFound.contact": "Skontaktuj się z Nami",
-    "notFound.solutions": "Zobacz Rozwiązania",
 
     // Common
     "common.learnMore": "Dowiedz się więcej",

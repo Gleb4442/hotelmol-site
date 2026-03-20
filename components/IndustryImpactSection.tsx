@@ -4,9 +4,6 @@ import { useState } from "react";
 import { useTranslation } from "@/lib/TranslationContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
-import {
-    Star
-} from "lucide-react";
 
 interface CaseStudySection {
     title: string;
@@ -19,7 +16,6 @@ interface HotelData {
     logo: string;
     sections: {
         key: string;
-        icon: any;
     }[];
 }
 
@@ -29,7 +25,7 @@ const hotelConfig: HotelData[] = [
         nameKey: "industryImpact.hilton.name",
         logo: "/assets/neutral/hilton.png",
         sections: [
-            { key: "metrics", icon: Star },
+            { key: "metrics" },
         ]
     },
     {
@@ -37,7 +33,7 @@ const hotelConfig: HotelData[] = [
         nameKey: "industryImpact.marriott.name",
         logo: "/assets/neutral/marriott.png",
         sections: [
-            { key: "metrics", icon: Star },
+            { key: "metrics" },
         ]
     },
     {
@@ -45,7 +41,7 @@ const hotelConfig: HotelData[] = [
         nameKey: "industryImpact.hyatt.name",
         logo: "/assets/neutral/hyatt.png",
         sections: [
-            { key: "metrics", icon: Star },
+            { key: "metrics" },
         ]
     },
     {
@@ -53,7 +49,7 @@ const hotelConfig: HotelData[] = [
         nameKey: "industryImpact.accor.name",
         logo: "/assets/neutral/accor.png",
         sections: [
-            { key: "metrics", icon: Star },
+            { key: "metrics" },
         ]
     },
     {
@@ -61,7 +57,7 @@ const hotelConfig: HotelData[] = [
         nameKey: "industryImpact.fourSeasons.name",
         logo: "/assets/neutral/fourseasons.png",
         sections: [
-            { key: "metrics", icon: Star },
+            { key: "metrics" },
         ]
     },
 ];
@@ -156,86 +152,7 @@ export default function IndustryImpactSection() {
                                             key={section.key}
                                             className="space-y-10"
                                         >
-                                            <div className="flex items-center gap-6">
-                                                <div className="relative group">
-                                                    {/* Dynamic multi-layered glow */}
-                                                    <motion.div
-                                                        animate={{ 
-                                                            scale: [1, 1.25, 1],
-                                                            opacity: [0.1, 0.3, 0.1],
-                                                            rotate: [0, 90, 0]
-                                                        }}
-                                                        transition={{
-                                                            duration: 10,
-                                                            repeat: Infinity,
-                                                            ease: "linear"
-                                                        }}
-                                                        className="absolute inset-x-[-25px] inset-y-[-25px] bg-gradient-to-br from-[#0752A0]/20 via-sky-400/10 to-transparent blur-3xl rounded-full"
-                                                    />
-                                                    
-                                                    <div className="relative z-10 w-20 h-20 flex items-center justify-center bg-white/10 backdrop-blur-[24px] rounded-[28px] border border-white/40 shadow-[0_12px_48px_rgba(7,82,160,0.08)] group-hover:bg-white/20 transition-all duration-700 overflow-hidden">
-                                                        {/* Animated surface highlight */}
-                                                        <motion.div 
-                                                            animate={{ 
-                                                                x: [-120, 120],
-                                                                opacity: [0, 0.4, 0]
-                                                            }}
-                                                            transition={{
-                                                                duration: 3,
-                                                                repeat: Infinity,
-                                                                ease: "easeInOut",
-                                                                repeatDelay: 2
-                                                            }}
-                                                            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-[-25deg] pointer-events-none"
-                                                        />
-                                                        
-                                                        <svg
-                                                            width="40"
-                                                            height="40"
-                                                            viewBox="0 0 24 24"
-                                                            fill="none"
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            className="relative z-10"
-                                                        >
-                                                            <defs>
-                                                                <linearGradient id="premium-blue-star" x1="0%" y1="0%" x2="100%" y2="100%">
-                                                                    <stop offset="0%" stopColor="#3B82F6" />
-                                                                    <stop offset="50%" stopColor="#2563EB" />
-                                                                    <stop offset="100%" stopColor="#1E40AF" />
-                                                                </linearGradient>
-                                                                <filter id="star-glow" x="-50%" y="-50%" width="200%" height="200%">
-                                                                    <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" />
-                                                                </filter>
-                                                            </defs>
-                                                            
-                                                            {/* Glow Layer */}
-                                                            <path
-                                                                d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
-                                                                fill="#3B82F6"
-                                                                fillOpacity="0.3"
-                                                                style={{ filter: 'url(#star-glow)' }}
-                                                            />
-                                                            
-                                                            {/* Main Star */}
-                                                            <path
-                                                                d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
-                                                                fill="url(#premium-blue-star)"
-                                                                stroke="#1E40AF"
-                                                                strokeWidth="0.5"
-                                                                strokeLinejoin="round"
-                                                            />
-                                                            
-                                                            {/* Highlight */}
-                                                            <path
-                                                                d="M12 4L13.5 8L17 8.5L14.5 11L15 14.5L12 13L9 14.5L9.5 11L7 8.5L10.5 8L12 4Z"
-                                                                fill="white"
-                                                                fillOpacity="0.2"
-                                                            />
-                                                        </svg>
-                                                    </div>
-                                                </div>
-                                                <h3 className="text-2xl md:text-3xl font-bold font-serif tracking-tight">{title}</h3>
-                                            </div>
+                                            <h3 className="text-2xl md:text-3xl font-bold font-serif tracking-tight">{title}</h3>
 
                                             <ul className="space-y-6">
                                                 {items.map((item, i) => (
