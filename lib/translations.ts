@@ -197,7 +197,7 @@ const translationsBase = {
     "home.faq.a9": "The system features a hybrid operation mode. If the AI encounters a non-standard situation, it instantly transfers the dialogue to human administrator who can continue the conversation in the same chat window.",
 
     // FAQ for Hoteliers
-    "home.hotelierFaq.title": "FAQ for Hoteliers: Partnership with HotelMol",
+    "home.hotelierFaq.title": "FAQ",
     "home.hotelierFaq.subtitle": "Everything you need to know about Roomie and HotelMol",
     "home.hotelierFaq.q1": "Why should we connect to the Roomie app if we planned to make our own hotel app? Won't you take our guests to competitors?",
     "home.hotelierFaq.a1": "Practice shows that guests are extremely reluctant to download separate apps for a 2-3 day stay in one hotel (conversion is usually below 10%). Roomie solves this problem by acting as a universal 'loyalty wallet' for the traveler. \n\nWe don't take guests away; we give them a convenient tool so they return specifically to you. As soon as your guest crosses the hotel threshold, the Roomie interface completely mimics your brand (your colors, logo, service menu). And our built-in status system ties the guest to your hotel, stimulating them to book their next visit directly, bypassing Booking.com and other OTAs.",
@@ -1886,6 +1886,7 @@ const translationsBase = {
 
     "home.faq.q9": "Що робити, якщо ШІ не знає відповіді на складний запит?",
     "home.faq.a9": "У системі передбачено гібридний режим роботи. Якщо ШІ стикається з нестандартною ситуацією, він миттєво передає діалог живому адміністратору, який може продовжити спілкування в тому ж вікні чату.",
+    "home.hotelierFaq.title": "FAQ",
 
     // Consultation Form
     "consultation.title": "Залишились питання?",
@@ -2673,6 +2674,7 @@ const translationsBase = {
 
     "home.faq.q9": "Co zrobić, jeśli AI nie zna odpowiedzi na skomplikowane zapytanie?",
     "home.faq.a9": "System posiada hybrydowy tryb pracy. Jeśli AI napotka niestandardową sytuację, natychmiast przekazuje dialog żywemu administratorowi, który może kontynuować rozmowę w tym samym oknie czatu.",
+    "home.hotelierFaq.title": "FAQ",
 
     // Consultation Form
     "consultation.title": "Masz pytania?",
@@ -3504,6 +3506,7 @@ const translationsBase = {
     ],
     "home.hero.subtitle": "Menschen für Menschen, für alles andere gibt es Roomie KI",
     "home.hero.watchDemo": "Demo ansehen",
+    "home.hotelierFaq.title": "FAQ",
   },
 } as const;
 
