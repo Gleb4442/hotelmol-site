@@ -35,12 +35,6 @@ export default function Footer() {
                   partnerships@hotelmol.com
                 </a>
               </div>
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                <Phone className="h-4 w-4" />
-                <a href="tel:+380931603830" className="hover:text-foreground">
-                  +380 93 160 38 30
-                </a>
-                <span>{t("contact.phoneNote")}</span>
               </div>
             </div>
           </div>

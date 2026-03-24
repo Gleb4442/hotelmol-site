@@ -296,19 +296,10 @@ export default function Contact() {
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <Phone className="w-6 h-6 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-medium mb-1">{t("contact.phoneLabel")}</h3>
-                      <p className="text-muted-foreground">
-                        <a href="tel:+380931603830" className="hover:text-primary transition-colors">
-                          +380 93 160 38 30
-                        </a>
-                      </p>
                     </div>
                   </div>
+                </div>
+              </div>
                 </div>
               </div>
 
@@ -333,28 +324,6 @@ export default function Contact() {
                   >
                     <a href="https://t.me/hotelmolmanager" target="_blank" rel="noopener noreferrer">
                       <FaTelegram className="h-7 w-7 text-[#0088cc]" />
-                    </a>
-                  </Button>
-                  <Button 
-                    variant="outline" 
-                    size="icon" 
-                    className="h-14 w-14" 
-                    asChild 
-                    data-testid="button-whatsapp"
-                  >
-                    <a href="https://wa.me/380931603830" target="_blank" rel="noopener noreferrer">
-                      <FaWhatsapp className="h-7 w-7 text-[#25D366]" />
-                    </a>
-                  </Button>
-                  <Button 
-                    variant="outline" 
-                    size="icon" 
-                    className="h-14 w-14" 
-                    asChild 
-                    data-testid="button-viber"
-                  >
-                    <a href="viber://chat?number=%2B380931603830" target="_blank" rel="noopener noreferrer">
-                      <FaViber className="h-7 w-7 text-[#7360f2]" />
                     </a>
                   </Button>
                 </div>
