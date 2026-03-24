@@ -40,9 +40,7 @@ export default function Footer() {
                   partnerships@hotelmol.com
                 </a>
               </div>
-              </div>
             </div>
-          </div>
 
           <div>
             <h3 className="font-semibold mb-4">{t("footer.solutions")}</h3>
