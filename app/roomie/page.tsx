@@ -4,6 +4,7 @@ import { MessageSquare, Brain, Zap, Shield, BarChart3, Globe2, ArrowRight, Check
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
+import MainFunctions from "@/components/MainFunctions";
 import BookingShowcase from "@/components/BookingShowcase";
 import SalesAIAgentSection from "@/components/SalesAIAgentSection";
 import TaskManagementShowcase from "@/components/TaskManagementShowcase";
@@ -16,15 +17,6 @@ import SEO, { productSchema } from "@/components/SEO";
 
 export default function Roomie() {
     const { t } = useTranslation();
-
-    const features = [
-        { icon: <MessageSquare className="w-6 h-6 text-primary" />, title: t("roomie.features.conversations.title"), description: t("roomie.features.conversations.description") },
-        { icon: <BarChart3 className="w-6 h-6 text-primary" />, title: t("roomie.features.revenue.title"), description: t("roomie.features.revenue.description") },
-        { icon: <Zap className="w-6 h-6 text-primary" />, title: t("roomie.features.response.title"), description: t("roomie.features.response.description") },
-        { icon: <Shield className="w-6 h-6 text-primary" />, title: t("roomie.features.security.title"), description: t("roomie.features.security.description") },
-        { icon: <Brain className="w-6 h-6 text-primary" />, title: t("roomie.features.intelligence.title"), description: t("roomie.features.intelligence.description") },
-        { icon: <Globe2 className="w-6 h-6 text-primary" />, title: t("roomie.features.omnichannel.title"), description: t("roomie.features.omnichannel.description") },
-    ];
 
     return (
         <div className="min-h-screen bg-background">
@@ -117,26 +109,7 @@ export default function Roomie() {
             </section>
 
             {/* === MAIN FUNCTIONS / CORE FEATURES === */}
-            <section className="py-20">
-                <div className="container mx-auto px-4">
-                    <div className="text-center mb-16">
-                        <h2 className="font-serif text-4xl font-semibold mb-4">{t("roomie.features.title")}</h2>
-                        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                            {t("roomie.features.subtitle")}
-                        </p>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                        {features.map((f, i) => (
-                            <Card key={i} className="p-6 hover-elevate">
-                                <div className="mb-4">{f.icon}</div>
-                                <h3 className="text-xl font-semibold mb-3">{f.title}</h3>
-                                <p className="text-muted-foreground">{f.description}</p>
-                            </Card>
-                        ))}
-                    </div>
-                </div>
-            </section>
+            <MainFunctions />
 
             {/* === BOOKING SHOWCASE === */}
             <BookingShowcase />
