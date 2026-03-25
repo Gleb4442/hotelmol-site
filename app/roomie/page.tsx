@@ -1,52 +1,29 @@
 "use client";
 
-import { useState } from "react";
+import { MessageSquare, Brain, Zap, Shield, BarChart3, Globe2, ArrowRight, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { CheckCircle, MessageSquare, Brain, Zap, Shield, BarChart3, Globe2, ArrowRight } from "lucide-react";
 
+import BookingShowcase from "@/components/BookingShowcase";
 import SalesAIAgentSection from "@/components/SalesAIAgentSection";
-import ConsultationForm from "@/components/ConsultationForm";
+import TaskManagementShowcase from "@/components/TaskManagementShowcase";
 import ChatFAQSection from "@/components/ChatFAQSection";
+import ConsultationForm from "@/components/ConsultationForm";
+import PresentationSection from "@/components/PresentationSection";
 import { useTranslation } from "@/lib/TranslationContext";
 import SEO, { productSchema } from "@/components/SEO";
-import PresentationSection from "@/components/PresentationSection";
 
 
 export default function Roomie() {
     const { t } = useTranslation();
-    // const [demoModalOpen, setDemoModalOpen] = useState(false); // No longer needed locally if handled by layout, but wait.
-    // The ClientLayout has its own demoModal.
-    // But this page triggers it via a button in the content: <Button size="lg" onClick={() => setDemoModalOpen(true)}>
-    // This button needs to open the modal.
-    // The ClientLayout manages the modal for the Header button.
-    // The page content buttons also need to open a modal.
-    // We can either:
-    // 1. Move the state to Context (best for sharing)
-    // 2. Keep a local modal for page content (simplest, duplicates modal but works)
-    // 3. Expose the layout's modal via context?
-    // Let's look at the plan. The plan says "ClientLayout... Manages the demoModalOpen state".
-    // If I keep a local modal here, it will work for the page button.
-    // The ClientLayout modal is for the Header button.
-    // So for now, I will keep the local state and modal in this page for the page's own button.
-    // But checking the file, it imports DemoRequestModal.
-    // So I will KEEP DemoRequestModal and state here for the "Request Demo" button in the Hero/Content.
-    // I will ONLY remove Header and Footer.
-
-
 
     const features = [
         { icon: <MessageSquare className="w-6 h-6 text-primary" />, title: t("roomie.features.conversations.title"), description: t("roomie.features.conversations.description") },
-        { icon: <Brain className="w-6 h-6 text-primary" />, title: t("roomie.features.intelligence.title"), description: t("roomie.features.intelligence.description") },
+        { icon: <BarChart3 className="w-6 h-6 text-primary" />, title: t("roomie.features.revenue.title"), description: t("roomie.features.revenue.description") },
         { icon: <Zap className="w-6 h-6 text-primary" />, title: t("roomie.features.response.title"), description: t("roomie.features.response.description") },
         { icon: <Shield className="w-6 h-6 text-primary" />, title: t("roomie.features.security.title"), description: t("roomie.features.security.description") },
-        { icon: <BarChart3 className="w-6 h-6 text-primary" />, title: t("roomie.features.revenue.title"), description: t("roomie.features.revenue.description") },
+        { icon: <Brain className="w-6 h-6 text-primary" />, title: t("roomie.features.intelligence.title"), description: t("roomie.features.intelligence.description") },
         { icon: <Globe2 className="w-6 h-6 text-primary" />, title: t("roomie.features.omnichannel.title"), description: t("roomie.features.omnichannel.description") },
-    ];
-
-    const capabilities = [
-        t("roomie.capabilities.1"), t("roomie.capabilities.2"), t("roomie.capabilities.3"), t("roomie.capabilities.4"),
-        t("roomie.capabilities.5"), t("roomie.capabilities.6"), t("roomie.capabilities.7"), t("roomie.capabilities.8"),
     ];
 
     return (
@@ -57,6 +34,7 @@ export default function Roomie() {
                 structuredData={productSchema}
             />
 
+            {/* === HERO SECTION === */}
             <section className="relative pt-[106px] pb-20 bg-gradient-to-br from-primary/10 via-primary/5 to-background">
                 <div className="container mx-auto px-4">
                     <div className="max-w-4xl mx-auto text-center mb-16 mt-[25px]">
@@ -66,6 +44,7 @@ export default function Roomie() {
                     </div>
 
                     <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+                        {/* Left: Description */}
                         <div>
                             <h2 className="font-serif text-3xl font-semibold mb-6">{t("roomie.whyWorks.title")}</h2>
                             <p className="text-lg text-muted-foreground mb-8">{t("roomie.whyWorks.description")}</p>
@@ -88,11 +67,56 @@ export default function Roomie() {
                                 </Button>
                             </div>
                         </div>
-                        <img src="/assets/Gemini_Generated_Image_borpdeborpdeborp-Photoroom_1764493985974.png" alt="Roomie AI" className="w-full h-auto rounded-xl" />
+
+                        {/* Right: Video Demo Placeholder */}
+                        <div className="relative">
+                            <div className="relative rounded-2xl overflow-hidden border border-slate-200/60 shadow-xl bg-slate-900 aspect-video flex items-center justify-center group cursor-pointer">
+                                {/* Gradient overlay */}
+                                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-primary/10 to-transparent" />
+                                
+                                {/* Play button */}
+                                <div className="relative z-10 flex flex-col items-center gap-3">
+                                    <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                                        <svg className="w-7 h-7 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M8 5v14l11-7z" />
+                                        </svg>
+                                    </div>
+                                    <p className="text-white/80 text-sm font-medium">
+                                        {t("roomie.hero.videoPlaceholder" as any)}
+                                    </p>
+                                </div>
+
+                                {/* Roomie mascot (fallback image) */}
+                                <img
+                                    src="/assets/Gemini_Generated_Image_borpdeborpdeborp-Photoroom_1764493985974.png"
+                                    alt="Roomie AI"
+                                    className="absolute inset-0 w-full h-full object-cover opacity-30"
+                                />
+                            </div>
+
+                            {/* Platform icons */}
+                            <div className="flex items-center justify-center gap-4 mt-6">
+                                {[
+                                    { label: t("roomie.platforms.website" as any), icon: "🌐" },
+                                    { label: "Telegram", icon: "✈️" },
+                                    { label: "WhatsApp", icon: "💬" },
+                                    { label: "App", icon: "📱" },
+                                ].map((platform) => (
+                                    <div
+                                        key={platform.label}
+                                        className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/80 border border-slate-200/60 shadow-sm text-xs font-medium text-slate-600"
+                                    >
+                                        <span>{platform.icon}</span>
+                                        <span>{platform.label}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
 
+            {/* === MAIN FUNCTIONS / CORE FEATURES === */}
             <section className="py-20">
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-16">
@@ -114,54 +138,21 @@ export default function Roomie() {
                 </div>
             </section>
 
-            <section className="py-20 bg-muted/30">
-                <div className="container mx-auto px-4">
-                    <div className="max-w-4xl mx-auto">
-                        <div className="neon-border-wrapper relative">
-                            <Card className="p-12 bg-gradient-to-br from-background to-muted/50 relative z-10">
-                                <h2 className="font-serif text-4xl font-semibold mb-8">{t("roomie.capabilities.title")}</h2>
-                                <div className="grid md:grid-cols-2 gap-6">
-                                    {capabilities.map((capability, index) => (
-                                        <div key={index} className="flex items-start gap-3">
-                                            <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
-                                            <span className="text-base text-foreground">{capability}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                            </Card>
-                        </div>
+            {/* === BOOKING SHOWCASE === */}
+            <BookingShowcase />
 
-                        <style>{`
-                            .neon-border-wrapper {
-                                padding: 0;
-                            }
-                            .neon-border-wrapper::after {
-                                content: '';
-                                position: absolute;
-                                inset: 0;
-                                border-radius: 0.5625rem;
-                                background: radial-gradient(circle at center, hsl(207, 83%, 52%) 0%, hsl(207, 83%, 32%) 100%);
-                                animation: neonPulse 2s ease-in-out infinite;
-                                opacity: 0.3;
-                                filter: blur(12px);
-                                z-index: 0;
-                            }
-                            @keyframes neonPulse {
-                                0% { opacity: 0.15; transform: scale(0.98); }
-                                50% { opacity: 0.5; transform: scale(1.02); }
-                                100% { opacity: 0.15; transform: scale(0.98); }
-                            }
-                        `}</style>
-                    </div>
-                </div>
-            </section>
-
+            {/* === AI SALES AGENT === */}
             <SalesAIAgentSection />
+
+            {/* === TASK MANAGEMENT === */}
+            <TaskManagementShowcase />
+
+            {/* === FAQ === */}
             <ChatFAQSection variant="roomie" />
+
+            {/* === CONSULTATION + PRESENTATION === */}
             <ConsultationForm />
             <PresentationSection />
-
-            {/* <DemoRequestModal open={demoModalOpen} onOpenChange={setDemoModalOpen} /> */}
         </div>
     );
 }
