@@ -77,7 +77,12 @@ export default function ChatFAQSection({ variant = "roomie" }: ChatFAQSectionPro
     };
 
     return (
-        <PremiumBackground className="py-16 md:py-24">
+        <PremiumBackground 
+            className="py-16 md:py-24" 
+            showGrid={false} 
+            showGlows={false} 
+            showLines={false}
+        >
             <script
                 id="faq-schema"
                 type="application/ld+json"

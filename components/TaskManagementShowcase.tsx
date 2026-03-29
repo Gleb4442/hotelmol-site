@@ -15,7 +15,7 @@ export default function TaskManagementShowcase() {
   return (
     <section
       ref={sectionRef}
-      className="py-20 lg:py-28 bg-gradient-to-b from-background via-muted/30 to-background"
+      className="py-20 lg:py-28 bg-background"
       data-testid="section-task-management"
     >
       <div className="container mx-auto px-4">

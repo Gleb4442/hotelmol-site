@@ -8,11 +8,7 @@ export default function ConsultationForm() {
     const { t } = useTranslation();
 
     return (
-        <section className="py-24 bg-gradient-to-br from-primary/5 via-background to-primary/5 relative overflow-hidden">
-            {/* Background decorative elements */}
-            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
-            <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
-
+        <section className="py-24 bg-background relative overflow-hidden">
             <div className="container mx-auto px-4 relative z-10">
                 <div className="max-w-3xl mx-auto text-center">
 

@@ -78,9 +78,6 @@ export default function MainFunctions() {
 
   return (
     <section className="py-24 bg-background overflow-hidden relative">
-      {/* Background radial glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] pointer-events-none -z-10" />
-      
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-20">
           <motion.h2 

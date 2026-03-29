@@ -14,7 +14,7 @@ export default function BookingShowcase() {
   return (
     <section
       ref={sectionRef}
-      className="py-20 lg:py-28 bg-gradient-to-b from-background via-primary/[0.03] to-background"
+      className="py-20 lg:py-28 bg-background"
       data-testid="section-booking-showcase"
     >
       <div className="container mx-auto px-4">

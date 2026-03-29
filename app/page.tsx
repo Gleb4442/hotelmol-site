@@ -9,10 +9,8 @@ import HowRoomieWorks from "@/components/HowRoomieWorks";
 import IntegrationTicker from "@/components/IntegrationTicker";
 import IndustryImpactSection from "@/components/IndustryImpactSection";
 import HotelQRBenefits from "@/components/HotelQRBenefits";
-import SolutionsBlogSection from "@/components/SolutionsBlogSection";
 import AIDashboardSection from "@/components/AIDashboardSection";
 import ROIEstimateLight from "@/components/ROIEstimateLight";
-import PresentationSection from "@/components/PresentationSection";
 import ChatFAQSection from "@/components/ChatFAQSection";
 import LLMSummary from "@/components/LLMSummary";
 import SEO, { organizationSchema } from "@/components/SEO";
@@ -38,9 +36,7 @@ export default function Home() {
             <AIDashboardSection />
             <IntegrationTicker />
             <ROIEstimateLight />
-            <SolutionsBlogSection />
             <ChatFAQSection variant="hotelier" />
-            <PresentationSection titleKey="presentation.app.title" />
         </>
     );
 }

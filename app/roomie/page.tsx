@@ -10,7 +10,6 @@ import SalesAIAgentSection from "@/components/SalesAIAgentSection";
 import TaskManagementShowcase from "@/components/TaskManagementShowcase";
 import ChatFAQSection from "@/components/ChatFAQSection";
 import ConsultationForm from "@/components/ConsultationForm";
-import PresentationSection from "@/components/PresentationSection";
 import { useTranslation } from "@/lib/TranslationContext";
 import SEO, { productSchema } from "@/components/SEO";
 
@@ -27,7 +26,7 @@ export default function Roomie() {
             />
 
             {/* === HERO SECTION === */}
-            <section className="relative pt-[106px] pb-20 bg-gradient-to-br from-primary/10 via-primary/5 to-background">
+            <section className="relative pt-[106px] pb-20 bg-background">
                 <div className="container mx-auto px-4">
                     <div className="max-w-4xl mx-auto text-center mb-16 mt-[25px]">
                         <h1 className="text-5xl lg:text-6xl font-bold tracking-tight mb-2">{t("roomie.title")}</h1>
@@ -123,9 +122,8 @@ export default function Roomie() {
             {/* === FAQ === */}
             <ChatFAQSection variant="roomie" />
 
-            {/* === CONSULTATION + PRESENTATION === */}
+            {/* === CONSULTATION === */}
             <ConsultationForm />
-            <PresentationSection />
         </div>
     );
 }

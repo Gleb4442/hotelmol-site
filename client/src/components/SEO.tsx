@@ -94,7 +94,6 @@ export const organizationSchema = {
   "logo": "https://hotelmol.com/logo.png",
   "contactPoint": {
     "@type": "ContactPoint",
-    "telephone": "+380 93 160 3830",
     "contactType": "Customer Service",
     "email": "partnerships@hotelmol.com",
     "availableLanguage": ["English", "Russian", "Ukrainian"]
