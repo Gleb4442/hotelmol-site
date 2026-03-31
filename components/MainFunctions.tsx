@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "@/lib/TranslationContext";
-import { Plus, Minus } from "lucide-react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
 export default function MainFunctions() {
   const { t } = useTranslation();
@@ -65,26 +65,40 @@ export default function MainFunctions() {
           </motion.p>
         </div>
 
-        <div className="max-w-3xl mx-auto border-t border-slate-200">
+        <div className="max-w-4xl mx-auto space-y-4">
           {features.map((feature, index) => {
             const isExpanded = expandedKey === feature.key;
             return (
-              <div 
+              <motion.div 
                 key={feature.key}
-                className="border-b border-slate-200"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className={`group rounded-3xl border transition-all duration-300 ${
+                  isExpanded 
+                    ? "bg-white border-primary/20 shadow-[0_20px_50px_rgba(7,82,160,0.08)]" 
+                    : "bg-slate-50/50 border-slate-200/60 hover:bg-white hover:border-primary/20 hover:shadow-[0_15px_40px_rgba(0,0,0,0.04)]"
+                }`}
               >
                 <button
                   onClick={() => toggleFeature(feature.key)}
-                  className="w-full py-8 flex items-center justify-between group transition-colors hover:text-primary outline-none focus-visible:text-primary"
+                  className="w-full px-8 py-8 flex items-center justify-between group outline-none focus-visible:ring-2 focus-visible:ring-primary/20 rounded-3xl"
                 >
-                  <span className="text-xl md:text-2xl font-medium text-left transition-colors">
+                  <span className={`text-xl md:text-2xl font-bold text-left transition-colors ${
+                    isExpanded ? "text-primary" : "text-slate-900 group-hover:text-primary"
+                  }`}>
                     {feature.title}
                   </span>
-                  <div className="flex-shrink-0 ml-4">
+                  <div className={`flex-shrink-0 ml-4 w-10 h-10 rounded-full border flex items-center justify-center transition-all duration-300 ${
+                    isExpanded 
+                      ? "bg-primary border-primary text-white" 
+                      : "bg-white border-slate-200 text-slate-400 group-hover:border-primary/30 group-hover:text-primary"
+                  }`}>
                     {isExpanded ? (
-                      <Minus className="w-5 h-5 text-primary" />
+                      <ChevronUp className="w-5 h-5" />
                     ) : (
-                      <Plus className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                      <ChevronDown className="w-5 h-5" />
                     )}
                   </div>
                 </button>
@@ -95,18 +109,19 @@ export default function MainFunctions() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
                       className="overflow-hidden"
                     >
-                      <div className="pb-8 pr-12">
-                        <p className="text-lg text-muted-foreground leading-relaxed">
+                      <div className="px-8 pb-8">
+                        <div className="h-px w-12 bg-primary/20 mb-6" />
+                        <p className="text-lg text-slate-600 leading-relaxed max-w-2xl">
                           {feature.description}
                         </p>
                       </div>
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </div>
+              </motion.div>
             );
           })}
         </div>

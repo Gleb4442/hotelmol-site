@@ -86,19 +86,25 @@ export default function Roomie() {
                             </div>
 
                             {/* Platform icons */}
-                            <div className="flex items-center justify-center gap-4 mt-6">
+                            <div className="flex flex-wrap items-center justify-center gap-4 mt-6">
                                 {[
-                                    { label: t("roomie.platforms.website" as any), icon: "🌐" },
-                                    { label: "Telegram", icon: "✈️" },
-                                    { label: "WhatsApp", icon: "💬" },
-                                    { label: "App", icon: "📱" },
+                                    { key: "website", icon: "🌐" },
+                                    { key: "telegram", icon: "✈️", isSoon: true },
+                                    { key: "whatsapp", icon: "💬", isSoon: true },
+                                    { key: "messenger", icon: "🔵", isSoon: true },
+                                    { key: "app", icon: "📱" },
                                 ].map((platform) => (
                                     <div
-                                        key={platform.label}
-                                        className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/80 border border-slate-200/60 shadow-sm text-xs font-medium text-slate-600"
+                                        key={platform.key}
+                                        className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/80 border border-slate-200/60 shadow-sm text-xs font-medium text-slate-600 transition-all duration-300 hover:shadow-md"
                                     >
                                         <span>{platform.icon}</span>
-                                        <span>{platform.label}</span>
+                                        <span>{t(`roomie.platforms.${platform.key}` as any)}</span>
+                                        {platform.isSoon && (
+                                            <span className="ml-0.5 px-1.5 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider">
+                                                {t("roomie.platforms.soon" as any)}
+                                            </span>
+                                        )}
                                     </div>
                                 ))}
                             </div>
