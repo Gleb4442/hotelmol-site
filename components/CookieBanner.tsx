@@ -19,19 +19,25 @@ export default function CookieBanner() {
 
   useEffect(() => {
     // Check if user has already given consent
-    try {
-      const consent = localStorage.getItem("cookieConsent");
-      if (!consent) {
-        setCookieBannerVisible(true);
+    const checkConsent = () => {
+      try {
+        const consent = localStorage.getItem("cookieConsent");
+        const onboardingCompleted = localStorage.getItem("onboarding_completed");
+        
+        // Show only if no consent AND (onboarding finished OR not on home page where onboarding exists)
+        // Actually, simpler: show if no consent AND onboarding finished.
+        if (!consent && onboardingCompleted === "true") {
+          setCookieBannerVisible(true);
+        }
+      } catch (e) {
+        console.error("Local storage access denied", e);
       }
-    } catch (e) {
-      console.error("Local storage access denied", e);
-      // If we can't read consent, assume no consent -> show banner? Or assume consent? Safer to show banner or default to hidden to avoid annoyance?
-      // Usually if storage is disabled, persistence is impossible. Showing banner every time is annoying.
-      // But hiding it means no consent collected.
-      // Let's show it to be compliant, or handle gracefully.
-      setCookieBannerVisible(true);
-    }
+    };
+
+    checkConsent();
+    
+    // Listen for storage changes in case onboarding completes in another tab (unlikely but good practice)
+    // and also we'll manually trigger it from Onboarding.tsx
   }, [setCookieBannerVisible]);
 
   const handleAcceptAll = async () => {
@@ -176,13 +182,13 @@ export default function CookieBanner() {
                 <Button
                   variant="outline"
                   onClick={() => setShowCustomize(true)}
-                  className="rounded-full h-12 px-6 text-sm font-bold border-slate-200 text-slate-600 hover:bg-slate-50 hover:border-slate-300 transition-all"
+                  className="rounded-full h-10 px-5 text-xs font-bold border-slate-200 text-slate-500 hover:bg-slate-50 hover:border-slate-300 hover:text-slate-700 transition-all"
                 >
                   {t("cookie.banner.customize")}
                 </Button>
                 <Button
                   onClick={handleAcceptAll}
-                  className="flex-1 rounded-full h-12 px-8 text-sm font-extrabold bg-primary text-white hover:bg-primary/90 shadow-lg shadow-primary/20 transition-all active:scale-[0.98]"
+                  className="flex-1 rounded-full h-14 px-10 text-base font-extrabold bg-primary text-white hover:bg-primary/90 shadow-lg shadow-primary/30 transition-all active:scale-[0.98] border-2 border-white/20"
                 >
                   {t("cookie.banner.acceptAll")}
                 </Button>

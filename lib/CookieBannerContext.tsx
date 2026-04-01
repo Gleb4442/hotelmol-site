@@ -12,17 +12,9 @@ const CookieBannerContext = createContext<CookieBannerContextType | undefined>(u
 export function CookieBannerProvider({ children }: { children: React.ReactNode }) {
   const [isCookieBannerVisible, setIsCookieBannerVisible] = useState(false);
 
+  // Initial visibility is false. The CookieBanner component will check localStorage on mount.
   useEffect(() => {
-    // Check if user has already given consent
-    if (typeof window !== "undefined") {
-      try {
-        const consent = localStorage.getItem("cookieConsent");
-        setIsCookieBannerVisible(!consent);
-      } catch (e) {
-        console.error("Local storage access denied", e);
-        setIsCookieBannerVisible(true); // Default to showing banner if access fails
-      }
-    }
+    // We can keep it simple here.
   }, []);
 
   return (

@@ -13,6 +13,7 @@ import {
     Building2,
     Handshake
 } from "lucide-react";
+import { useCookieBanner } from "@/lib/CookieBannerContext";
 
 export default function Onboarding() {
     const { t, language, setLanguage } = useTranslation();
@@ -20,6 +21,7 @@ export default function Onboarding() {
     const [displayedText, setDisplayedText] = useState("");
     const [isTypingComplete, setIsTypingComplete] = useState(false);
     const [isLangOpen, setIsLangOpen] = useState(false);
+    const { setCookieBannerVisible } = useCookieBanner();
 
     const languages = [
         { code: "en", label: "English" },
@@ -87,6 +89,12 @@ export default function Onboarding() {
         trackOnboarding(roleId, isSkip);
         localStorage.setItem("onboarding_completed", "true");
         setIsVisible(false);
+        
+        // Show cookie banner after onboarding is closed, if consent not already given
+        const consent = localStorage.getItem("cookieConsent");
+        if (!consent) {
+            setCookieBannerVisible(true);
+        }
     };
 
     if (!isVisible) return null;
