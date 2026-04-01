@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { Mail, Phone } from "lucide-react";
+import { Mail } from "lucide-react";
 import { useTranslation } from "@/lib/TranslationContext";
 
 export default function Footer() {

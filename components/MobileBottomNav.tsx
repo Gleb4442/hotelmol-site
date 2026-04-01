@@ -39,6 +39,8 @@ export default function MobileBottomNav() {
 
     const messengers = [
         { name: "Telegram", icon: TelegramIcon, color: undefined, href: "https://t.me/hotelmolmanager" },
+        { name: "WhatsApp", icon: FaWhatsapp, color: "#25D366", href: "https://wa.me/380931603830" },
+        { name: "Viber", icon: FaViber, color: "#7360F2", href: "viber://chat?number=%2B380931603830" },
         { name: "Messenger", icon: FaFacebookMessenger, color: "#0084FF", href: "https://m.me/hotelmolmanager" },
     ];
 
