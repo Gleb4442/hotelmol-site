@@ -4,7 +4,6 @@ import { MessageSquare, Brain, Zap, Shield, BarChart3, Globe2, ArrowRight, Check
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
-import MainFunctions from "@/components/MainFunctions";
 import BookingShowcase from "@/components/BookingShowcase";
 import SalesAIAgentSection from "@/components/SalesAIAgentSection";
 import TaskManagementShowcase from "@/components/TaskManagementShowcase";
@@ -89,7 +88,7 @@ export default function Roomie() {
                             <div className="flex flex-wrap items-center justify-center gap-4 mt-6">
                                 {[
                                     { key: "website", icon: "🌐" },
-                                    { key: "telegram", icon: "✈️", isSoon: true },
+                                    { key: "telegram", icon: "✈️" },
                                     { key: "whatsapp", icon: "💬", isSoon: true },
                                     { key: "messenger", icon: "🔵", isSoon: true },
                                     { key: "app", icon: "📱" },
@@ -112,9 +111,6 @@ export default function Roomie() {
                     </div>
                 </div>
             </section>
-
-            {/* === MAIN FUNCTIONS / CORE FEATURES === */}
-            <MainFunctions />
 
             {/* === BOOKING SHOWCASE === */}
             <BookingShowcase />
