@@ -16,7 +16,7 @@ const translationsBase = {
     "button.tryDemo": "Try the Demo",
     "button.requestDemo": "Request a Demo",
     "button.details": "Details",
-    "button.hideDetails": "Hide Details",
+
     "button.askQuestion": "Ask Question",
     "menu.title": "MENU",
     "aiWidget.button": "Ask AI",
@@ -938,7 +938,7 @@ const translationsBase = {
     "button.tryDemo": "Попробовать демо",
     "button.requestDemo": "Запросить демо",
     "button.details": "Подробнее",
-    "button.hideDetails": "Скрыть подробности",
+
     "button.askQuestion": "Задать вопрос",
     "menu.title": "МЕНЮ",
     "aiWidget.button": "Спросить ИИ",
@@ -1790,7 +1790,7 @@ const translationsBase = {
     "button.tryDemo": "Спробувати демо",
     "button.requestDemo": "Запросити демо",
     "button.details": "Детальніше",
-    "button.hideDetails": "Приховати деталі",
+
     "button.askQuestion": "Задати питання",
     "menu.title": "МЕНЮ",
     "aiWidget.button": "Запитати ШІ",
@@ -2600,7 +2600,7 @@ const translationsBase = {
     "button.tryDemo": "Wypróbuj demo",
     "button.requestDemo": "Poproś o demo",
     "button.details": "Szczegóły",
-    "button.hideDetails": "Ukryj szczegóły",
+
     "button.askQuestion": "Zadaj pytanie",
     "menu.title": "MENU",
     "aiWidget.button": "Zapytaj AI",
@@ -3556,7 +3556,7 @@ const translationsBase = {
     "button.tryDemo": "Demo ausprobieren",
     "button.requestDemo": "Demo anfordern",
     "button.details": "Details",
-    "button.hideDetails": "Details ausblenden",
+
     "button.askQuestion": "Frage stellen",
     "menu.title": "MENÜ",
     "aiWidget.button": "KI fragen",

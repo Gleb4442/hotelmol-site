@@ -14,6 +14,8 @@ export const translations = {
     "button.pricing": "Pricing",
     "button.tryDemo": "Try the Demo",
     "button.requestDemo": "Request a Demo",
+    "button.details": "Details",
+
 
     // Home Hero
     "home.hero.badge": "Trusted by 500+ hotels worldwide",
@@ -879,6 +881,8 @@ export const translations = {
     "button.pricing": "Цены",
     "button.tryDemo": "Попробовать демо",
     "button.requestDemo": "Запросить демо",
+    "button.details": "Подробнее",
+
 
     // Home Hero
     "home.hero.badge": "Нам доверяют более 500 отелей по всему миру",
@@ -1587,6 +1591,8 @@ export const translations = {
     "button.pricing": "Ціни",
     "button.tryDemo": "Спробувати демо",
     "button.requestDemo": "Запросити демо",
+    "button.details": "Детальніше",
+
 
     // Home Hero
     "home.hero.badge": "Нам довіряють понад 500 готелів по всьому світу",

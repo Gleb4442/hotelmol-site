@@ -2,8 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { CheckCircle, MessageSquare, Brain, Zap, Shield, BarChart3, Clock, Globe2, ArrowRight, Smartphone, MessageCircle, Info } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { CheckCircle, MessageSquare, Brain, Zap, Shield, BarChart3, Clock, Globe2, ArrowRight } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import DemoRequestModal from "@/components/DemoRequestModal";
@@ -14,15 +13,6 @@ import SEO, { productSchema } from "@/components/SEO";
 export default function Roomie() {
   const { t } = useTranslation();
   const [demoModalOpen, setDemoModalOpen] = useState(false);
-  const [isExpanded, setIsExpanded] = useState(false);
-
-  const platformButtons = [
-    { icon: <Globe2 className="w-4 h-4" />, label: t("roomie.platforms.website") },
-    { icon: <MessageSquare className="w-4 h-4" />, label: t("roomie.platforms.telegram") },
-    { icon: <MessageCircle className="w-4 h-4" />, label: t("roomie.platforms.whatsapp") },
-    { icon: <MessageSquare className="w-4 h-4" />, label: t("roomie.platforms.messenger") },
-    { icon: <Smartphone className="w-4 h-4" />, label: t("roomie.platforms.app") },
-  ];
 
   const features = [
     {
@@ -77,7 +67,7 @@ export default function Roomie() {
       />
       <Header />
       
-      <section className="relative pt-36 pb-20 bg-gradient-to-br from-primary/10 via-primary/5 to-background overflow-hidden">
+      <section className="relative pt-36 pb-20 bg-gradient-to-br from-primary/10 via-primary/5 to-background">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-16 mt-[25px]">
             <h1 className="font-rounded text-5xl lg:text-6xl font-bold tracking-tight mb-2 text-black dark:text-white">
@@ -91,116 +81,60 @@ export default function Roomie() {
             </p>
           </div>
 
-          <div className={`flex flex-col ${isExpanded ? 'lg:flex-row' : 'items-center'} gap-12 max-w-6xl mx-auto transition-all duration-500`}>
-            <AnimatePresence mode="wait">
-              {isExpanded && (
-                <motion.div 
-                  initial={{ opacity: 0, x: -50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -50 }}
-                  transition={{ duration: 0.5 }}
-                  className="lg:w-1/2"
-                >
-                  <h2 className="font-serif text-3xl font-semibold mb-6">{t("roomie.whyWorks.title")}</h2>
-                  <p className="text-lg text-muted-foreground mb-8">
-                    {t("roomie.whyWorks.description")}
-                  </p>
-                  
-                  <div className="space-y-4">
-                    <div className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                      <div>
-                        <h3 className="font-medium mb-1">{t("roomie.whyWorks.point1.title")}</h3>
-                        <p className="text-sm text-muted-foreground">
-                          {t("roomie.whyWorks.point1.description")}
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                      <div>
-                        <h3 className="font-medium mb-1">{t("roomie.whyWorks.point2.title")}</h3>
-                        <p className="text-sm text-muted-foreground">
-                          {t("roomie.whyWorks.point2.description")}
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                      <div>
-                        <h3 className="font-medium mb-1">{t("roomie.whyWorks.point3.title")}</h3>
-                        <p className="text-sm text-muted-foreground">
-                          {t("roomie.whyWorks.point3.description")}
-                        </p>
-                      </div>
-                    </div>
+          <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+            <div>
+              <h2 className="font-serif text-3xl font-semibold mb-6">{t("roomie.whyWorks.title")}</h2>
+              <p className="text-lg text-muted-foreground mb-8">
+                {t("roomie.whyWorks.description")}
+              </p>
+              
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-medium mb-1">{t("roomie.whyWorks.point1.title")}</h3>
+                    <p className="text-sm text-muted-foreground">
+                      {t("roomie.whyWorks.point1.description")}
+                    </p>
                   </div>
-
-                  <Button 
-                    size="lg" 
-                    className="mt-8"
-                    onClick={() => setDemoModalOpen(true)}
-                    data-testid="button-request-demo-product"
-                  >
-                    {t("button.requestDemo")}
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Button>
-                </motion.div>
-              )}
-            </AnimatePresence>
-
-            <motion.div 
-              layout
-              className={`${isExpanded ? 'lg:w-1/2' : 'max-w-2xl w-full text-center'} flex flex-col items-center justify-center`}
-              transition={{ duration: 0.5, ease: "easeInOut" }}
-            >
-              <div className="relative group w-full">
-                <img 
-                  src={new URL("@assets/Gemini_Generated_Image_borpdeborpdeborp-Photoroom_1764493985974.png", import.meta.url).href}
-                  alt="Roomie AI Assistant" 
-                  className="w-full h-auto rounded-xl shadow-2xl transition-transform duration-300 group-hover:scale-[1.02]"
-                  data-testid="img-roomie-assistant"
-                />
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="w-16 h-16 bg-primary/80 rounded-full flex items-center justify-center text-white">
-                    <Zap className="w-8 h-8 fill-current" />
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-medium mb-1">{t("roomie.whyWorks.point2.title")}</h3>
+                    <p className="text-sm text-muted-foreground">
+                      {t("roomie.whyWorks.point2.description")}
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-medium mb-1">{t("roomie.whyWorks.point3.title")}</h3>
+                    <p className="text-sm text-muted-foreground">
+                      {t("roomie.whyWorks.point3.description")}
+                    </p>
                   </div>
                 </div>
               </div>
 
-              {/* Platform Buttons */}
-              <div className="flex flex-wrap justify-center gap-3 mt-6">
-                {platformButtons.map((platform, idx) => (
-                  <div key={idx} className="flex items-center gap-2 px-3 py-1.5 bg-background/50 backdrop-blur-sm border border-primary/10 rounded-full text-xs font-medium text-muted-foreground hover:text-primary transition-colors">
-                    {platform.icon}
-                    <span>{platform.label}</span>
-                  </div>
-                ))}
-              </div>
+              <Button 
+                size="lg" 
+                className="mt-8"
+                onClick={() => setDemoModalOpen(true)}
+                data-testid="button-request-demo-product"
+              >
+                {t("button.requestDemo")}
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </div>
 
-              {/* Details Toggle Button */}
-              {!isExpanded && (
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => setIsExpanded(true)}
-                  className="mt-8 gap-2 hover:bg-primary hover:text-primary-foreground transition-all duration-300"
-                >
-                  <Info className="w-4 h-4" />
-                  {t("button.details")}
-                </Button>
-              )}
-              {isExpanded && (
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => setIsExpanded(false)}
-                  className="mt-4 gap-2 text-muted-foreground hover:text-primary"
-                >
-                  {t("button.hideDetails")}
-                </Button>
-              )}
-            </motion.div>
+            <img 
+              src={new URL("@assets/Gemini_Generated_Image_borpdeborpdeborp-Photoroom_1764493985974.png", import.meta.url).href}
+              alt="Roomie AI Assistant" 
+              className="w-full h-auto rounded-xl"
+              data-testid="img-roomie-assistant"
+            />
           </div>
         </div>
       </section>
