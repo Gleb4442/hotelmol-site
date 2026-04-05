@@ -75,20 +75,19 @@ export default function Roomie() {
 
                         {/* Right: Video Demo Placeholder */}
                         <div className={`relative ${!isExpanded ? "max-w-2xl mx-auto w-full" : "w-full"}`}>
-                            {/* Details Button (Collapsed mode only) */}
-                            {!isExpanded && (
-                                <button
-                                    onClick={() => setIsExpanded(true)}
-                                    className="absolute -left-4 lg:-left-24 top-1/2 -translate-y-1/2 z-20 flex flex-col items-center gap-2 group transition-all duration-300 hover:scale-105"
-                                >
-                                    <div className="w-12 h-12 rounded-full bg-white shadow-lg border border-slate-200 flex items-center justify-center group-hover:border-primary transition-colors">
-                                        <ArrowRight className="w-5 h-5 text-primary" />
-                                    </div>
-                                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 group-hover:text-primary transition-colors">
-                                        {t("button.details")}
-                                    </span>
-                                </button>
-                            )}
+                            {/* Toggle Button */}
+                            <button
+                                onClick={() => setIsExpanded(!isExpanded)}
+                                className={`absolute -left-4 lg:-left-24 top-1/2 -translate-y-1/2 z-20 flex flex-col items-center gap-2 group transition-all duration-300 hover:scale-105`}
+                            >
+                                <div className={`w-12 h-12 rounded-full bg-white shadow-lg border border-slate-200 flex items-center justify-center group-hover:border-primary transition-all duration-500 ${isExpanded ? "rotate-180" : ""}`}>
+                                    <ArrowRight className="w-5 h-5 text-primary" />
+                                </div>
+                                <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 group-hover:text-primary transition-colors">
+                                    {isExpanded ? t("button.close") : t("button.details")}
+                                </span>
+                            </button>
+
 
                             <div className="relative rounded-2xl overflow-hidden border border-slate-200/60 shadow-xl bg-slate-900 aspect-video flex items-center justify-center group cursor-pointer">
                                 {/* Gradient overlay */}

@@ -16,8 +16,10 @@ const translationsBase = {
     "button.tryDemo": "Try the Demo",
     "button.requestDemo": "Request a Demo",
     "button.details": "Details",
+    "button.close": "Hide",
 
     "button.askQuestion": "Ask Question",
+
     "menu.title": "MENU",
     "aiWidget.button": "Ask AI",
     "aiWidget.headerTitle": "hotelmol assistant",
@@ -938,8 +940,10 @@ const translationsBase = {
     "button.tryDemo": "Попробовать демо",
     "button.requestDemo": "Запросить демо",
     "button.details": "Подробнее",
+    "button.close": "Свернуть",
 
     "button.askQuestion": "Задать вопрос",
+
     "menu.title": "МЕНЮ",
     "aiWidget.button": "Спросить ИИ",
     "aiWidget.headerTitle": "hotelmol ассистент",
@@ -1790,8 +1794,10 @@ const translationsBase = {
     "button.tryDemo": "Спробувати демо",
     "button.requestDemo": "Запросити демо",
     "button.details": "Детальніше",
+    "button.close": "Згорнути",
 
     "button.askQuestion": "Задати питання",
+
     "menu.title": "МЕНЮ",
     "aiWidget.button": "Запитати ШІ",
     "aiWidget.headerTitle": "hotelmol асистент",
@@ -2600,6 +2606,8 @@ const translationsBase = {
     "button.tryDemo": "Wypróbuj demo",
     "button.requestDemo": "Poproś o demo",
     "button.details": "Szczegóły",
+    "button.close": "Zwiń",
+
 
     "button.askQuestion": "Zadaj pytanie",
     "menu.title": "MENU",
@@ -3556,6 +3564,8 @@ const translationsBase = {
     "button.tryDemo": "Demo ausprobieren",
     "button.requestDemo": "Demo anfordern",
     "button.details": "Details",
+    "button.close": "Schließen",
+
 
     "button.askQuestion": "Frage stellen",
     "menu.title": "MENÜ",
