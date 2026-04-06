@@ -60,6 +60,28 @@ export default function About() {
 
             <ValueProposition />
 
+            <section className="py-24 bg-background">
+                <div className="container mx-auto px-4">
+                    <div className="max-w-3xl mx-auto flex flex-col gap-6">
+                        {/* Right Message (Question) */}
+                        <div className="flex justify-end">
+                            <div className="max-w-[85%] md:max-w-[75%] bg-slate-100/90 backdrop-blur-sm text-slate-800 px-6 py-4 rounded-3xl rounded-br-sm shadow-sm border border-slate-200/50">
+                                <p className="text-lg md:text-xl font-medium">{t("about.mascot.question")}</p>
+                            </div>
+                        </div>
+                        
+                        {/* Left Message (Answer) */}
+                        <div className="flex justify-start">
+                            <div className="max-w-[95%] md:max-w-[85%] bg-[#0752A0] text-white px-5 py-5 md:px-7 md:py-6 rounded-3xl rounded-bl-sm shadow-md">
+                                <p className="text-base md:text-[19px] leading-relaxed whitespace-pre-wrap">
+                                    {t("about.mascot.quote")}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <section className="pt-[46px] pb-24 md:pb-12 min-h-[600px] flex flex-col justify-center" style={{ backgroundColor: "#F7F5F1" }}>
                 <div className="container mx-auto px-4">
                     <div className="max-w-6xl mx-auto">
@@ -81,19 +103,6 @@ export default function About() {
                         <p className="text-lg text-slate-600 leading-relaxed md:mb-[15px]">
                             {t("about.dna.description4")}
                         </p>
-                    </div>
-                </div>
-            </section>
-
-            <section className="py-24" style={{ backgroundColor: "#20629B" }}>
-                <div className="container mx-auto px-4">
-                    <div className="max-w-4xl mx-auto">
-                        <div className="text-center px-2">
-                            <h3 className="text-3xl font-bold text-white mb-6">{t("about.mascot.title")}</h3>
-                            <blockquote className="text-base md:text-lg lg:text-[21.6px] text-slate-300 leading-relaxed italic break-words whitespace-pre-wrap">
-                                {t("about.mascot.quote")}
-                            </blockquote>
-                        </div>
                     </div>
                 </div>
             </section>
