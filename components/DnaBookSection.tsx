@@ -119,12 +119,11 @@ export default function DnaBookSection() {
         /* ─── Book stage (perspective container) ──────────────────── */
         .dna-book-stage {
           position: absolute;
-          right: -60px;
+          right: 16px;
           top: 50%;
           transform: translateY(-50%);
           perspective: 1400px;
           perspective-origin: 30% 50%;
-          /* Allow book to overflow right edge */
           overflow: visible;
           z-index: 1;
         }
@@ -383,16 +382,13 @@ export default function DnaBookSection() {
 
         /* ─── Responsive ───────────────────────────────────────────── */
 
-        /* Large desktop: book is fully visible + slightly larger */
+        /* Large desktop: slightly larger pages, keep text fully visible */
         @media (min-width: 1200px) {
           .dna-book-stage {
-            right: -80px;
+            right: 20px;
           }
           .dna-page-left { width: 260px; }
           .dna-page-right { width: 380px; }
-          .dna-book {
-            rotateY(-10deg);
-          }
         }
 
         /* Tablet */
