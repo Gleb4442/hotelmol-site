@@ -99,7 +99,7 @@ export default function Hero() {
                 className="text-base px-7 h-12 bg-white text-primary hover:bg-white/90 shadow-xl rounded-2xl"
                 data-testid="button-request-demo"
               >
-                <a href="https://cal.com/gleb.gosha/30min" target="_blank" rel="noopener noreferrer">
+                <a href="https://cal.com/hotelmol.team" target="_blank" rel="noopener noreferrer">
                   {t("button.bookWebCall")}
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </a>

@@ -10,6 +10,7 @@ import SEO, { organizationSchema } from "@/components/SEO";
 import { useTranslation } from "@/lib/TranslationContext";
 import AiReviewSection from "@/components/AiReviewSection";
 import ValueProposition from "@/components/ValueProposition";
+import DnaBookSection from "@/components/DnaBookSection";
 import Image from "next/image";
 
 export default function About() {
@@ -40,7 +41,7 @@ export default function About() {
 
                         <div className="flex flex-col sm:flex-row gap-9 justify-center items-center">
                             <a
-                                href="https://cal.com/gleb.gosha/30min"
+                                href="https://cal.com/hotelmol.team"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center justify-center px-8 py-4 bg-[#0752A0] text-white text-lg font-semibold rounded-full hover:bg-[#064080] transition-all shadow-lg hover:shadow-xl w-full sm:w-auto"
@@ -91,30 +92,7 @@ export default function About() {
                 </div>
             </section>
 
-            <section className="pt-[46px] pb-24 md:pb-12 min-h-[600px] flex flex-col justify-center" style={{ backgroundColor: "#F7F5F1" }}>
-                <div className="container mx-auto px-4">
-                    <div className="max-w-6xl mx-auto">
-                        <span className="text-lg font-semibold uppercase tracking-widest mb-4 block" style={{ color: "#0752A0" }}>
-                            {t("about.dna.label")}
-                        </span>
-                        <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
-                            {t("about.dna.title")}
-                        </h2>
-                        <p className="text-lg text-slate-600 leading-relaxed mb-6">
-                            {t("about.dna.description1")}
-                        </p>
-                        <p className="text-lg text-slate-600 leading-relaxed mb-6">
-                            {t("about.dna.description2")}
-                        </p>
-                        <p className="text-lg text-slate-600 leading-relaxed mb-6">
-                            {t("about.dna.description3")}
-                        </p>
-                        <p className="text-lg text-slate-600 leading-relaxed md:mb-[15px]">
-                            {t("about.dna.description4")}
-                        </p>
-                    </div>
-                </div>
-            </section>
+            <DnaBookSection />
 
         </div>
     );

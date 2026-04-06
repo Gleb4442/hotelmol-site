@@ -26,7 +26,7 @@ export default function ConsultationForm() {
                             asChild
                             className="h-16 px-10 text-lg font-bold rounded-full bg-[#0752A0] hover:bg-[#0752A0]/90 text-white shadow-[0_10px_30px_rgba(7,82,160,0.3)] hover:shadow-[0_15px_40px_rgba(7,82,160,0.4)] transition-all duration-300 active:scale-95"
                         >
-                            <a href="https://cal.com/gleb.gosha/30min" target="_blank" rel="noopener noreferrer">
+                            <a href="https://cal.com/hotelmol.team" target="_blank" rel="noopener noreferrer">
                                 {t("button.talkToHuman")}
                             </a>
                         </Button>

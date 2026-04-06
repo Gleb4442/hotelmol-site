@@ -36,7 +36,7 @@ export default function Contact() {
                                 <h3 className="font-serif text-xl font-semibold mb-6 text-center">{t("contact.bookVideoCall")}</h3>
                                 <div className="flex flex-col items-center justify-center py-2">
                                     <a
-                                        href="https://cal.com/gleb.gosha/30min"
+                                        href="https://cal.com/hotelmol.team"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="inline-flex items-center justify-center px-8 py-4 bg-[#0752A0] text-white text-lg font-semibold rounded-full hover:bg-[#064080] transition-all shadow-lg hover:shadow-xl group"

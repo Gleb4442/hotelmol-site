@@ -258,7 +258,7 @@ export default function ROIEstimate() {
                   asChild
                   className="h-16 px-12 bg-white text-black hover:bg-white/90 text-lg font-bold shadow-[0_20px_40px_-15px_rgba(255,255,255,0.3)] rounded-2xl transform hover:-translate-y-1 transition-all duration-300"
                 >
-                  <a href="https://cal.com/gleb.gosha/30min" target="_blank" rel="noopener noreferrer" className="flex items-center">
+                  <a href="https://cal.com/hotelmol.team" target="_blank" rel="noopener noreferrer" className="flex items-center">
                     Talk to a Human <ArrowRight className="ml-3 w-6 h-6" />
                   </a>
                 </Button>

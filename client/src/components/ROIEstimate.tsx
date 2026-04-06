@@ -164,7 +164,7 @@ export default function ROIEstimate() {
           asChild
           className="w-full sm:w-auto h-16 px-10 bg-white text-primary hover:bg-white/90 text-xl font-bold shadow-2xl rounded-full transform hover:scale-105 transition-all duration-300"
         >
-          <a href="https://cal.com/gleb.gosha/30min" target="_blank" rel="noopener noreferrer" className="flex items-center">
+          <a href="https://cal.com/hotelmol.team" target="_blank" rel="noopener noreferrer" className="flex items-center">
             {t("roi.calculator.ctaButton")} <ArrowRight className="ml-3 w-6 h-6" />
           </a>
         </Button>

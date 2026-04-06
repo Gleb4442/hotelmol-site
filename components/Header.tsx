@@ -148,7 +148,7 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
     })),
     {
       name: t("button.talkToHuman"),
-      href: "https://cal.com/gleb.gosha/30min",
+      href: "https://cal.com/hotelmol.team",
       external: true,
     },
   ];
