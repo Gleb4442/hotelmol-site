@@ -60,22 +60,37 @@ export default function About() {
 
             <ValueProposition />
 
-            <section className="py-24 bg-background">
+            <section className="py-24 bg-background relative z-0">
                 <div className="container mx-auto px-4">
-                    <div className="max-w-3xl mx-auto flex flex-col gap-6">
+                    <div className="max-w-2xl mx-auto flex flex-col">
                         {/* Right Message (Question) */}
-                        <div className="flex justify-end">
-                            <div className="max-w-[85%] md:max-w-[75%] bg-slate-100/90 backdrop-blur-sm text-slate-800 px-6 py-4 rounded-3xl rounded-br-sm shadow-sm border border-slate-200/50">
-                                <p className="text-lg md:text-xl font-medium">{t("about.mascot.question")}</p>
+                        <div className="flex justify-end mb-6">
+                            <div className="relative max-w-[85%] md:max-w-[75%] bg-[#34C759] text-white px-5 py-3 rounded-[20px] rounded-br-[10px]">
+                                <p className="text-[17px] font-medium leading-snug">{t("about.mascot.question")}</p>
+                                {/* Apple-like Tail Right */}
+                                <div className="absolute bottom-0 right-[-8px] w-[20px] h-[20px] bg-[#34C759]" style={{ borderBottomLeftRadius: '16px', zIndex: -1 }}></div>
+                                <div className="absolute bottom-[-2px] right-[-12px] w-[20px] h-[20px] bg-background" style={{ borderBottomLeftRadius: '16px', zIndex: -1 }}></div>
                             </div>
                         </div>
                         
-                        {/* Left Message (Answer) */}
-                        <div className="flex justify-start">
-                            <div className="max-w-[95%] md:max-w-[85%] bg-[#0752A0] text-white px-5 py-5 md:px-7 md:py-6 rounded-3xl rounded-bl-sm shadow-md">
-                                <p className="text-base md:text-[19px] leading-relaxed whitespace-pre-wrap">
-                                    {t("about.mascot.quote")}
+                        {/* Left Message 1 (First part of the quote) */}
+                        <div className="flex justify-start mb-[4px]">
+                            <div className="relative max-w-[85%] md:max-w-[75%] bg-[#0B93F6] text-white px-5 py-3 rounded-[20px] rounded-bl-[4px]">
+                                <p className="text-[17px] leading-snug">
+                                    {t("about.mascot.quote1")}
                                 </p>
+                            </div>
+                        </div>
+
+                        {/* Left Message 2 (Second part of the quote, with tail) */}
+                        <div className="flex justify-start">
+                            <div className="relative max-w-[85%] md:max-w-[75%] bg-[#0B93F6] text-white px-5 py-3 rounded-[20px] rounded-bl-[10px]">
+                                <p className="text-[17px] leading-snug whitespace-pre-wrap">
+                                    {t("about.mascot.quote2")}
+                                </p>
+                                {/* Apple-like Tail Left */}
+                                <div className="absolute bottom-0 left-[-8px] w-[20px] h-[20px] bg-[#0B93F6]" style={{ borderBottomRightRadius: '16px', zIndex: -1 }}></div>
+                                <div className="absolute bottom-[-2px] left-[-12px] w-[20px] h-[20px] bg-background" style={{ borderBottomRightRadius: '16px', zIndex: -1 }}></div>
                             </div>
                         </div>
                     </div>
