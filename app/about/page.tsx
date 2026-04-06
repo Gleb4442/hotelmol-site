@@ -60,29 +60,29 @@ export default function About() {
 
             <ValueProposition />
 
-            <section className="py-24 bg-background relative z-0">
+            <section className="py-24 bg-background">
                 <div className="container mx-auto px-4">
                     <div className="max-w-2xl mx-auto flex flex-col">
-                        {/* Right Message (Question) */}
+                        {/* Right Message (Question) — white bubble */}
                         <div className="flex justify-end mb-6">
-                            <div className="max-w-[85%] md:max-w-[75%] bg-white text-slate-900 border border-slate-100 shadow-sm px-5 py-3 rounded-[20px] rounded-br-[10px]">
+                            <div className="max-w-[85%] md:max-w-[75%] bg-white text-slate-900 px-5 py-3 rounded-[20px] shadow-sm border border-slate-200">
                                 <p className="text-[17px] font-medium leading-snug">{t("about.mascot.question")}</p>
                             </div>
                         </div>
                         
-                        {/* Left Message 1 (First part of the quote) */}
+                        {/* Left Message 1 */}
                         <div className="flex justify-start mb-[4px]">
-                            <div className="max-w-[85%] md:max-w-[75%] bg-[#0752A0] text-white px-5 py-3 rounded-[20px] rounded-bl-[4px] shadow-sm">
+                            <div className="max-w-[85%] md:max-w-[75%] bg-[#0752A0] text-white px-5 py-3 rounded-[20px]">
                                 <p className="text-[17px] leading-snug">
                                     {t("about.mascot.quote1")}
                                 </p>
                             </div>
                         </div>
 
-                        {/* Left Message 2 (Second part of the quote) */}
+                        {/* Left Message 2 */}
                         <div className="flex justify-start">
-                            <div className="max-w-[85%] md:max-w-[75%] bg-[#0752A0] text-white px-5 py-3 rounded-[20px] rounded-bl-[10px] shadow-sm">
-                                <p className="text-[17px] leading-snug whitespace-pre-wrap">
+                            <div className="max-w-[85%] md:max-w-[75%] bg-[#0752A0] text-white px-5 py-3 rounded-[20px]">
+                                <p className="text-[17px] leading-snug">
                                     {t("about.mascot.quote2")}
                                 </p>
                             </div>
