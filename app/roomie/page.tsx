@@ -1,5 +1,6 @@
 "use client";
 import { MessageSquare, Brain, Zap, Shield, BarChart3, Globe2, ArrowRight, CheckCircle } from "lucide-react";
+import { SiTelegram, SiWhatsapp, SiMessenger, SiAppstore } from "react-icons/si";
 
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -65,17 +66,17 @@ export default function Roomie() {
                             {/* Platform icons */}
                             <div className="flex flex-wrap items-center justify-center gap-4 mt-6">
                                 {[
-                                    { key: "website", icon: "🌐" },
-                                    { key: "telegram", icon: "✈️" },
-                                    { key: "whatsapp", icon: "💬", isSoon: true },
-                                    { key: "messenger", icon: "🔵", isSoon: true },
-                                    { key: "app", icon: "📱" },
+                                    { key: "website", icon: <Globe2 className="w-4 h-4 text-slate-500" /> },
+                                    { key: "telegram", icon: <SiTelegram className="w-4 h-4 text-[#0088cc]" /> },
+                                    { key: "whatsapp", icon: <SiWhatsapp className="w-4 h-4 text-[#25D366]" />, isSoon: true },
+                                    { key: "messenger", icon: <SiMessenger className="w-4 h-4 text-[#0084FF]" />, isSoon: true },
+                                    { key: "app", icon: <SiAppstore className="w-4 h-4 text-[#007AFF]" /> },
                                 ].map((platform) => (
                                     <div
                                         key={platform.key}
                                         className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/80 border border-slate-200/60 shadow-sm text-xs font-medium text-slate-600 transition-all duration-300 hover:shadow-md"
                                     >
-                                        <span>{platform.icon}</span>
+                                        <span className="flex items-center justify-center">{platform.icon}</span>
                                         <span>{t(`roomie.platforms.${platform.key}` as any)}</span>
                                         {platform.isSoon && (
                                             <span className="ml-0.5 px-1.5 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider">
