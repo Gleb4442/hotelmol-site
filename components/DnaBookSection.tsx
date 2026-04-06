@@ -111,9 +111,10 @@ export default function DnaBookSection() {
           font-family: 'Poppins', sans-serif;
           font-size: clamp(1.6rem, 3vw, 2.4rem);
           font-weight: 700;
-          line-height: 1.2;
+          line-height: 1.25;
           color: #1a1a1a;
           margin: 0;
+          white-space: pre-line;
         }
 
         /* ─── Book stage (perspective container) ──────────────────── */
