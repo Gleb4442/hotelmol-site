@@ -472,6 +472,7 @@ export const translations = {
     "about.dna.title": "Technology with Business Empathy",
     "about.dna.description1": "We created hotelmol (Roomie) because we saw how the industry loses millions on missed calls and human error. We believe that administrators should care for guests, while AI should handle the routine.",
     "about.dna.description2": "Another insight was that over 50% of hotel revenue comes from additional services (spa treatments, transfers, late checkout, etc.) But in none of the hotels we worked with did we find an established system for selling these additional services, not even basic scripts. That's why we created an agent for selling hotel upsells.",
+    "about.mascot.title": "Mission",
     "about.mascot.subtitle": "The AI Face of hotelmol",
     "about.mascot.quote": "We don't sell chatbots. We sell the confidence that no guest will be left without attention, even when there's a queue at reception.",
 
@@ -1341,6 +1342,7 @@ export const translations = {
     "about.dna.title": "Технологии с эмпатией к бизнесу",
     "about.dna.description1": "Мы создали hotelmol (Roomie), потому что видели, как индустрия теряет миллионы на пропущенных звонках и человеческом факторе. Мы верим, что администраторы должны заботиться о гостях, а рутину должен брать на себя ИИ.",
     "about.dna.description2": "Другим нашим инсайтом было то, что более 50% доходов отели зарабатывают с дополнительных услуг (спа процедуры, трансфер, поздний выезд и так далее). Но ни в одном отеле с которым мы работали мы не обнаружили налаженной системы продаж этих самых дополнительных услуг, даже банально скриптов. Поэтому мы создали агента по продажам доп услуг в отеле.",
+    "about.mascot.title": "Миссия",
     "about.mascot.subtitle": "The AI Face of hotelmol",
     "about.mascot.quote": "Мы не продаем чат-ботов. Мы продаем уверенность отеля в том, что ни один гость не останется без внимания, даже если на рецепции очередь.",
 
@@ -2053,6 +2055,7 @@ export const translations = {
     "about.dna.title": "Технології з емпатією до бізнесу",
     "about.dna.description1": "Ми створили hotelmol (Roomie), тому що бачили, як індустрія втрачає мільйони на пропущених дзвінках і людському факторі. Ми віримо, що адміністратори повинні піклуватися про гостей, а рутину має брати на себе ШІ.",
     "about.dna.description2": "Іншим нашим інсайтом було те, що понад 50% доходів готелі заробляють з додаткових послуг (спа процедури, трансфер, пізній виїзд тощо). Але в жодному готелі, з яким ми працювали, ми не виявили налагодженої системи продажів цих самих додаткових послуг, навіть банально скриптів. Тому ми створили агента з продажів додаткових послуг в готелі.",
+    "about.mascot.title": "Місія",
     "about.mascot.subtitle": "The AI Face of hotelmol",
     "about.mascot.quote": "Ми не продаємо чат-ботів. Ми продаємо впевненість готелю в тому, що жоден гість не залишиться без уваги, навіть якщо на ресепшені черга.",
 
@@ -2762,6 +2765,7 @@ export const translations = {
     "about.dna.title": "Technologia z empatią biznesową",
     "about.dna.description1": "Stworzyliśmy hotelmol (Roomie), ponieważ widzieliśmy, jak branża traci miliony na nieodebranych połączeniach i błędach ludzkich. Wierzymy, że administratorzy powinni dbać o gości, podczas gdy AI powinna zajmować się rutyną.",
     "about.dna.description2": "Innym spostrzeżeniem było to, że ponad 50% przychodów hotelu pochodzi z dodatkowych usług (zabiegi spa, transfery, późne wymeldowanie itp.). Ale w żadnym z hoteli, z którymi współpracowaliśmy, nie znaleźliśmy ustalonego systemu sprzedaży tych dodatkowych usług, nawet podstawowych skryptów. Dlatego stworzyliśmy agenta do sprzedaży dodatkowych usług hotelowych.",
+    "about.mascot.title": "Misja",
     "about.mascot.subtitle": "Twarz AI hotelmol",
     "about.mascot.quote": "Nie sprzedajemy chatbotów. Sprzedajemy pewność, że żaden gość nie zostanie bez uwagi, nawet gdy w recepcji jest kolejka.",
 
