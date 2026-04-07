@@ -370,8 +370,39 @@ html {
   pointer-events: none;
 }
 
+/* Integration ticker — GPU-composited CSS scroll */
+@keyframes ticker-scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes ticker-scroll-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+.ticker-scroll-left {
+  animation: ticker-scroll-left 30s linear infinite;
+}
+.ticker-scroll-right {
+  animation: ticker-scroll-right 30s linear infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .hero-sheen {
+  .hero-sheen,
+  .ticker-scroll-left,
+  .ticker-scroll-right,
+  .blue-shimmer-block::before,
+  .animate-border-beam,
+  .animate-ping,
+  .animate-pulse {
     animation: none !important;
+  }
+
+  /* Disable Framer Motion transitions globally */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

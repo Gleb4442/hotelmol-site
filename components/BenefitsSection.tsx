@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Card } from "@/components/ui/card";
 import { TrendingUp, Users, Globe, Clock, BarChart3, Zap } from "lucide-react";
 import { useTranslation } from "@/lib/TranslationContext";
@@ -7,11 +7,25 @@ import { cn } from "@/lib/utils";
 
 function AnimatedCounter({ value }: { value: string }) {
   const [count, setCount] = useState(0);
+  const [hasStarted, setHasStarted] = useState(false);
+  const ref = useRef<HTMLSpanElement>(null);
   const isNumber = /^\+?\d+/.test(value);
   const numericValue = parseInt(value.match(/\d+/)?.[0] || "0");
 
   useEffect(() => {
-    if (!isNumber) return;
+    if (!ref.current) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setHasStarted(true);
+        observer.disconnect();
+      }
+    }, { threshold: 0.5 });
+    observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isNumber || !hasStarted) return;
 
     const interval = setInterval(() => {
       setCount((prev) => {
@@ -24,11 +38,11 @@ function AnimatedCounter({ value }: { value: string }) {
     }, 50);
 
     return () => clearInterval(interval);
-  }, [isNumber, numericValue]);
+  }, [isNumber, numericValue, hasStarted]);
 
   if (!isNumber) return <>{value}</>;
 
-  return <>{value.replace(/\d+/, count.toString())}</>;
+  return <span ref={ref}>{value.replace(/\d+/, count.toString())}</span>;
 }
 
 export default function BenefitsSection() {

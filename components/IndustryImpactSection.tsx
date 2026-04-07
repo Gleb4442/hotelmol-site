@@ -130,10 +130,10 @@ export default function IndustryImpactSection() {
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={activeHotel.id}
-                            initial={{ opacity: 0, scale: 0.98, filter: "blur(10px)" }}
-                            animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                            exit={{ opacity: 0, scale: 1.02, filter: "blur(10px)" }}
-                            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                            initial={{ opacity: 0, scale: 0.96 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 1.02 }}
+                            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                             className="max-w-3xl mx-auto"
                         >
                             <div className="relative bg-white/30 backdrop-blur-xl rounded-[48px] p-8 md:p-12 lg:p-16 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.05)]">
@@ -158,8 +158,8 @@ export default function IndustryImpactSection() {
                                                 {items.map((item, i) => (
                                                     <motion.li
                                                         key={i}
-                                                        initial={{ opacity: 0, y: 10, filter: "blur(4px)" }}
-                                                        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                                                        initial={{ opacity: 0, y: 10 }}
+                                                        animate={{ opacity: 1, y: 0 }}
                                                         transition={{ 
                                                             delay: 0.3 + i * 0.1,
                                                             duration: 0.5,

@@ -108,27 +108,9 @@ export default function Onboarding() {
                 {/* Background Mesh/Blur */}
                 <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
                     <div className="absolute top-0 left-0 w-full h-full bg-[#FAF9F6]" />
-                    {/* Animated Glows */}
-                    <motion.div 
-                        animate={{ 
-                            scale: [1, 1.2, 1],
-                            opacity: [0.05, 0.08, 0.05],
-                            x: [0, 50, 0],
-                            y: [0, 30, 0]
-                        }}
-                        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-                        className="absolute -top-20 -left-20 w-[600px] h-[600px] bg-blue-600 rounded-full blur-[140px]" 
-                    />
-                    <motion.div 
-                        animate={{ 
-                            scale: [1, 1.3, 1],
-                            opacity: [0.03, 0.06, 0.03],
-                            x: [0, -40, 0],
-                            y: [0, -60, 0]
-                        }}
-                        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-                        className="absolute -bottom-40 -right-20 w-[700px] h-[700px] bg-indigo-500 rounded-full blur-[160px]" 
-                    />
+                    {/* Static Glows — motion imperceptible at 3-6% opacity behind 140-160px blur */}
+                    <div className="absolute -top-20 -left-20 w-[600px] h-[600px] bg-blue-600 rounded-full blur-[140px] opacity-[0.06]" />
+                    <div className="absolute -bottom-40 -right-20 w-[700px] h-[700px] bg-indigo-500 rounded-full blur-[160px] opacity-[0.04]" />
                     
                     {/* Grid Pattern */}
                     <div className="absolute inset-0 opacity-[0.03]" 
@@ -212,12 +194,8 @@ export default function Onboarding() {
                                             <div className="absolute inset-0 shadow-[inset_0_4px_12px_rgba(255,255,255,0.4),inset_0_-4px_8px_rgba(0,0,0,0.2)] rounded-[2rem]"></div>
                                             <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-white/10 to-transparent opacity-50"></div>
                                             
-                                            {/* Shine Animation */}
-                                            <motion.div 
-                                                animate={{ x: ['-100%', '200%'] }}
-                                                transition={{ duration: 3, repeat: Infinity, ease: "linear", repeatDelay: 4 }}
-                                                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12"
-                                            />
+                                            {/* Static shine highlight */}
+                                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12" />
 
                                             <Sparkles className="w-10 h-10 text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)] z-10" />
                                         </div>

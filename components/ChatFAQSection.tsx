@@ -165,14 +165,12 @@ export default function ChatFAQSection({ variant = "roomie" }: ChatFAQSectionPro
                                                 <AnimatePresence>
                                                     {!isRevealed && (
                                                         <motion.div
-                                                            initial={{ opacity: 1, backdropFilter: "blur(8px)" }}
+                                                            initial={{ opacity: 1 }}
                                                             exit={{
                                                                 opacity: 0,
-                                                                backdropFilter: "blur(0px)",
-                                                                transition: { duration: 0.8, ease: "easeInOut" }
+                                                                transition: { duration: 0.4, ease: "easeInOut" }
                                                             }}
-                                                            className="absolute inset-0 z-10 flex items-center justify-center bg-white/40"
-                                                            style={{ backdropFilter: "blur(6px)" }}
+                                                            className="absolute inset-0 z-10 flex items-center justify-center bg-white/40 backdrop-blur-sm"
                                                         >
                                                             <span className="text-xs font-medium uppercase tracking-widest text-primary/80 bg-white/80 px-3 py-1 rounded-full shadow-sm">
                                                                 Tap to Reveal

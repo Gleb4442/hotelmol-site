@@ -1,5 +1,4 @@
 "use client";
-import { useEffect, useRef } from "react";
 import { Badge } from "@/components/ui/badge";
 import { SiTelegram, SiWordpress, SiInstagram, SiWhatsapp, SiWix } from "react-icons/si";
 import { useTranslation } from "@/lib/TranslationContext";
@@ -95,45 +94,9 @@ function IntegrationItem({ integration, compact = false }: { integration: typeof
 
 export default function IntegrationTicker() {
   const { t } = useTranslation();
-  const mobileRow1Ref = useRef<HTMLDivElement>(null);
-  const mobileRow2Ref = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const scrollContainer = mobileRow1Ref.current;
-    if (!scrollContainer) return;
-
-    const scroll = () => {
-      if (scrollContainer.scrollLeft >= scrollContainer.scrollWidth / 2) {
-        scrollContainer.scrollLeft = 0;
-      } else {
-        scrollContainer.scrollLeft += 1;
-      }
-    };
-
-    const interval = setInterval(scroll, 25);
-    return () => clearInterval(interval);
-  }, []);
-
-  useEffect(() => {
-    const scrollContainer = mobileRow2Ref.current;
-    if (!scrollContainer) return;
-
-    scrollContainer.scrollLeft = scrollContainer.scrollWidth / 2;
-
-    const scroll = () => {
-      if (scrollContainer.scrollLeft <= 0) {
-        scrollContainer.scrollLeft = scrollContainer.scrollWidth / 2;
-      } else {
-        scrollContainer.scrollLeft -= 1;
-      }
-    };
-
-    const interval = setInterval(scroll, 25);
-    return () => clearInterval(interval);
-  }, []);
-
-  const allRow1 = [...row1Integrations, ...row1Integrations, ...row1Integrations];
-  const allRow2 = [...row2Integrations, ...row2Integrations, ...row2Integrations];
+  const allRow1 = [...row1Integrations, ...row1Integrations];
+  const allRow2 = [...row2Integrations, ...row2Integrations];
 
   return (
     <PremiumBackground className="py-12 md:py-16">
@@ -153,27 +116,29 @@ export default function IntegrationTicker() {
           ))}
         </div>
 
-        {/* Mobile: two rows moving in opposite directions */}
+        {/* Mobile: two rows moving in opposite directions via CSS animation */}
         <div className="md:hidden space-y-4">
           <div
-            ref={mobileRow1Ref}
-            className="flex gap-4 overflow-hidden"
+            className="flex overflow-hidden"
             role="list"
             aria-label="Integration partners row 1"
           >
-            {allRow1.map((integration, index) => (
-              <IntegrationItem key={`row1-${integration.name}-${index}`} integration={integration} compact />
-            ))}
+            <div className="flex gap-4 ticker-scroll-left">
+              {allRow1.map((integration, index) => (
+                <IntegrationItem key={`row1-${integration.name}-${index}`} integration={integration} compact />
+              ))}
+            </div>
           </div>
           <div
-            ref={mobileRow2Ref}
-            className="flex gap-4 overflow-hidden"
+            className="flex overflow-hidden"
             role="list"
             aria-label="Integration partners row 2"
           >
-            {allRow2.map((integration, index) => (
-              <IntegrationItem key={`row2-${integration.name}-${index}`} integration={integration} compact />
-            ))}
+            <div className="flex gap-4 ticker-scroll-right">
+              {allRow2.map((integration, index) => (
+                <IntegrationItem key={`row2-${integration.name}-${index}`} integration={integration} compact />
+              ))}
+            </div>
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { QrCode, Smartphone, Award, UtensilsCrossed, MousePointerClick, Wallet, Zap, Users } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import PremiumBackground from './PremiumBackground';
@@ -64,20 +64,32 @@ const HotelQRBenefits = () => {
     ];
 
     const [activeIndex, setActiveIndex] = useState(0);
+    const sectionRef = useRef<HTMLDivElement>(null);
+    const [isInView, setIsInView] = useState(false);
 
     useEffect(() => {
+        if (!sectionRef.current) return;
+        const observer = new IntersectionObserver(([entry]) => {
+            setIsInView(entry.isIntersecting);
+        }, { threshold: 0.2 });
+        observer.observe(sectionRef.current);
+        return () => observer.disconnect();
+    }, []);
+
+    useEffect(() => {
+        if (!isInView) return;
         const interval = setInterval(() => {
             setActiveIndex((current) => (current + 1) % tableData.length);
         }, 3000);
         return () => clearInterval(interval);
-    }, [tableData.length]);
+    }, [tableData.length, isInView]);
 
     const activeCase = tableData[activeIndex];
 
     return (
         <PremiumBackground className="py-16 md:py-24 overflow-hidden flex items-center justify-center p-4 md:p-8 font-sans selection:bg-blue-200 selection:text-blue-900">
 
-            <div className="relative z-10 max-w-4xl w-full flex flex-col items-center">
+            <div ref={sectionRef} className="relative z-10 max-w-4xl w-full flex flex-col items-center">
                 {/* Заголовок */}
                 <div className="text-center mb-10">
                     <h2 className="text-3xl lg:text-[45px] font-extrabold text-slate-800 mb-4 tracking-tight">

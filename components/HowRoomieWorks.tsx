@@ -39,6 +39,17 @@ export default function HowRoomieWorks() {
   ];
 
   const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [isSectionVisible, setIsSectionVisible] = useState(false);
+
+  useEffect(() => {
+    if (!sectionRef.current) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      setIsSectionVisible(entry.isIntersecting);
+    }, { threshold: 0.1 });
+    observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -47,6 +58,7 @@ export default function HowRoomieWorks() {
     const mediaQuery = window.matchMedia('(min-width: 1024px)');
 
     const handleDesktop = () => {
+      if (!isSectionVisible) return;
       const interval = setInterval(() => {
         setAnimState((prev) => {
           if (prev.pos === 4) {
@@ -95,11 +107,11 @@ export default function HowRoomieWorks() {
       if (cleanup) cleanup();
       mediaQuery.removeEventListener('change', init);
     };
-  }, []);
+  }, [isSectionVisible]);
 
   return (
     <PremiumBackground className="py-12 md:py-20 lg:py-28">
-      <div className="container mx-auto px-4">
+      <div ref={sectionRef} className="container mx-auto px-4">
         <div className="text-center mb-20">
 
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-[45px] font-bold mb-5 tracking-tight">

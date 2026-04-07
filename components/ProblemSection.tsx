@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CircleDollarSign, Users, UserRoundX } from "lucide-react";
 import { useTranslation } from "@/lib/TranslationContext";
@@ -9,6 +9,8 @@ import PremiumBackground from './PremiumBackground';
 export default function ProblemSection() {
   const { t } = useTranslation();
   const [activeIndex, setActiveIndex] = useState(0);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [isInView, setIsInView] = useState(false);
 
   const problems = [
     {
@@ -26,16 +28,26 @@ export default function ProblemSection() {
   ];
 
   useEffect(() => {
+    if (!sectionRef.current) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      setIsInView(entry.isIntersecting);
+    }, { threshold: 0.2 });
+    observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isInView) return;
     const timer = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % problems.length);
     }, 2500);
     return () => clearInterval(timer);
-  }, [problems.length]);
+  }, [problems.length, isInView]);
 
   return (
     <PremiumBackground className="py-24 overflow-hidden">
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div ref={sectionRef} className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center mb-16 px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -66,18 +78,18 @@ export default function ProblemSection() {
                   key={index}
                   initial={false}
                   animate={{
-                    x: position * 200, // Distance between cards
+                    x: position * 200,
                     scale: isActive ? 1.15 : 0.85,
-                    zIndex: isActive ? 20 : 10,
                     opacity: isActive ? 1 : 0.5,
-                    backgroundColor: isActive ? "#EF4444" : "#FFFFFF",
-                    color: isActive ? "#FFFFFF" : "#1F2937",
                   }}
-                  transition={{ 
-                    duration: 0.6, 
-                    ease: [0.32, 0.72, 0, 1] 
+                  transition={{
+                    duration: 0.6,
+                    ease: [0.32, 0.72, 0, 1]
                   }}
-                  className={`absolute w-full max-w-[340px] p-10 rounded-[2.5rem] shadow-2xl border border-black/5 flex flex-col items-center text-center cursor-pointer`}
+                  style={{ zIndex: isActive ? 20 : 10 }}
+                  className={`absolute w-full max-w-[340px] p-10 rounded-[2.5rem] shadow-2xl border border-black/5 flex flex-col items-center text-center cursor-pointer transition-colors duration-500 ${
+                    isActive ? "bg-red-500 text-white" : "bg-white text-gray-800"
+                  }`}
                   onClick={() => setActiveIndex(index)}
                 >
                   <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-colors duration-500 ${isActive ? "bg-white/20" : "bg-red-50"}`}>
@@ -107,16 +119,6 @@ export default function ProblemSection() {
         </div>
       </div>
 
-      <style jsx>{`
-        @media (max-width: 640px) {
-          .relative > div > div {
-            max-width: 280px;
-          }
-          .absolute {
-             transform: scale(0.8);
-          }
-        }
-      `}</style>
     </PremiumBackground>
   );
 }

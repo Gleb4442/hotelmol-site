@@ -81,7 +81,7 @@ const NavPill = ({ navigation, pathname }: { navigation: Array<{ name: string; h
                 <span className={`inline-block px-2 py-0.5 text-[10px] uppercase font-bold tracking-wide rounded-full ml-1
                       ${isActive
                     ? "bg-white text-[#0752A0]"
-                    : "bg-[#0752A0] text-white animate-gradient bg-gradient-to-r from-[#0752A0] via-blue-500 to-[#0752A0] bg-[length:200%_100%]"
+                    : "bg-[#0752A0] text-white"
                   }
                     `}>
                   {item.badge}
@@ -324,17 +324,6 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
         </div>
       </div>
 
-      <style dangerouslySetInnerHTML={{
-        __html: `
-        @keyframes gradient {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-        .animate-gradient {
-          animation: gradient 3s ease infinite;
-        }
-      `}} />
     </header >
   );
 }

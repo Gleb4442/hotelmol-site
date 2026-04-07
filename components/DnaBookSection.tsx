@@ -140,10 +140,10 @@ export default function DnaBookSection() {
           transform-style: preserve-3d;
           filter: drop-shadow(0 24px 48px rgba(0,0,0,0.18)) drop-shadow(0 6px 16px rgba(0,0,0,0.10));
           transition: filter 0.5s ease;
-          will-change: transform;
         }
 
         .dna-book:hover {
+          will-change: transform;
           filter: drop-shadow(0 28px 56px rgba(0,0,0,0.22)) drop-shadow(0 8px 20px rgba(0,0,0,0.12));
         }
 
