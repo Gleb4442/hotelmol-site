@@ -7,7 +7,6 @@ import {
     Languages,
     ChevronRight,
     Sparkles,
-    User,
     ShieldCheck,
     TrendingUp,
     Building2,
@@ -32,7 +31,6 @@ export default function Onboarding() {
     ] as const;
 
     const roles = [
-        { id: "guest", label: t("onboarding.role.guest"), icon: User },
         { id: "manager", label: t("onboarding.role.manager"), icon: ShieldCheck },
         { id: "marketer", label: t("onboarding.role.marketer"), icon: TrendingUp },
         { id: "owner", label: t("onboarding.role.owner"), icon: Building2 },
@@ -252,7 +250,7 @@ export default function Onboarding() {
                                 <div className="h-[1px] w-12 bg-slate-200"></div>
                             </div>
 
-                            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
+                            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
                                 {roles.map((role) => (
                                     <button
                                         key={role.id}

@@ -101,9 +101,6 @@ export default function ROIEstimate() {
                     <span className="text-xl font-light text-white/30 lowercase">rooms</span>
                   </div>
                 </div>
-                <div className="bg-primary/20 text-primary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border border-primary/20">
-                  Live ROI
-                </div>
               </div>
 
               <div className="relative h-12 flex items-center mb-4">
@@ -263,10 +260,7 @@ export default function ROIEstimate() {
                   </a>
                 </Button>
                 
-                <div className="flex items-center gap-2 opacity-60">
-                  <CheckCircle2 className="w-4 h-4 text-green-400" />
-                  <span className="text-white font-medium text-sm tracking-wide">{t("text.callFree")}</span>
-                </div>
+
               </div>
             </div>
           </div>

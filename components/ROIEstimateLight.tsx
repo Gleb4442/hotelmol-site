@@ -129,9 +129,6 @@ export default function ROIEstimateLight() {
                     <span className="text-xl font-light text-[#8A8A8A] lowercase">rooms</span>
                   </div>
                 </div>
-                <div className="bg-[#0752A0]/10 text-[#0752A0] px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border border-[#0752A0]/20">
-                  Live ROI
-                </div>
               </div>
 
               <div className="relative h-12 flex items-center mb-4">
@@ -289,10 +286,7 @@ export default function ROIEstimateLight() {
                   Talk to a Human <ArrowRight className="ml-3 w-6 h-6" />
                 </a>
               </Button>
-              <div className="flex items-center justify-center gap-2 px-6 py-4 rounded-2xl bg-white/10 border border-white/10 backdrop-blur-md">
-                <CheckCircle2 className="w-5 h-5 text-green-300" />
-                <span className="text-white font-medium text-sm">{t("text.callFree")}</span>
-              </div>
+
             </div>
           </div>
         </motion.div>

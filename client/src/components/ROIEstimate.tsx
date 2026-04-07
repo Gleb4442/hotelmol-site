@@ -168,9 +168,7 @@ export default function ROIEstimate() {
             {t("roi.calculator.ctaButton")} <ArrowRight className="ml-3 w-6 h-6" />
           </a>
         </Button>
-        <div className="mt-6 bg-white/10 backdrop-blur-md px-6 py-2 rounded-full border border-white/20 text-white/90 text-sm font-medium shadow-lg animate-in fade-in slide-in-from-bottom-4 duration-700">
-          {t("roi.calculator.callFree")}
-        </div>
+
       </div>
     </section>
   );

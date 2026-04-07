@@ -104,18 +104,6 @@ export default function Hero() {
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </a>
               </Button>
-              <Button
-                size="lg"
-                variant="ghost"
-                className="text-base px-7 h-12 backdrop-blur-md bg-white/5 border border-white/20 text-white hover:bg-white/10 rounded-2xl"
-                asChild
-                data-testid="button-watch-demo"
-              >
-                <a href="https://demo.hotelmol.com/" target="_blank" rel="noopener noreferrer">
-                  <Play className="mr-2 h-5 w-5" />
-                  {t("home.hero.watchDemo")}
-                </a>
-              </Button>
             </div>
           </div>
         </div>

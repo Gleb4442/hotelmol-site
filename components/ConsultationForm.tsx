@@ -31,9 +31,7 @@ export default function ConsultationForm() {
                             </a>
                         </Button>
 
-                        <p className="mt-6 text-sm text-muted-foreground font-medium">
-                            {t("text.callFree")}
-                        </p>
+
                     </div>
                 </div>
             </div>
