@@ -231,28 +231,30 @@ export default function CookieBanner() {
                 </Button>
               </>
             ) : (
-              <>
-                <Button
-                  variant="outline"
-                  onClick={() => setShowCustomize(true)}
-                  className="rounded-full h-10 px-5 text-xs font-bold border-slate-200 text-slate-500 hover:bg-slate-50 hover:border-slate-300 hover:text-slate-700 transition-all"
-                >
-                  {t("cookie.banner.customize")}
-                </Button>
-                <Button
-                  variant="outline"
-                  onClick={handleRejectNonEssential}
-                  className="rounded-full h-10 px-5 text-xs font-bold border-slate-200 text-slate-500 hover:bg-slate-50 hover:border-slate-300 hover:text-slate-700 transition-all"
-                >
-                  {t("cookie.banner.rejectAll")}
-                </Button>
+              <div className="flex flex-col gap-3 w-full">
                 <Button
                   onClick={handleAcceptAll}
-                  className="flex-1 rounded-full h-14 px-10 text-base font-extrabold bg-primary text-white hover:bg-primary/90 shadow-lg shadow-primary/30 transition-all active:scale-[0.98] border-2 border-white/20"
+                  className="w-full rounded-full h-14 px-10 text-base font-extrabold bg-primary text-white hover:bg-primary/90 shadow-lg shadow-primary/30 transition-all active:scale-[0.98] border-2 border-white/20"
                 >
                   {t("cookie.banner.acceptAll")}
                 </Button>
-              </>
+                <div className="flex gap-3">
+                  <Button
+                    variant="outline"
+                    onClick={() => setShowCustomize(true)}
+                    className="flex-1 rounded-full h-10 px-5 text-xs font-bold border-slate-200 text-slate-500 hover:bg-slate-50 hover:border-slate-300 hover:text-slate-700 transition-all"
+                  >
+                    {t("cookie.banner.customize")}
+                  </Button>
+                  <Button
+                    variant="outline"
+                    onClick={handleRejectNonEssential}
+                    className="flex-1 rounded-full h-10 px-5 text-xs font-bold border-slate-200 text-slate-500 hover:bg-slate-50 hover:border-slate-300 hover:text-slate-700 transition-all"
+                  >
+                    {t("cookie.banner.rejectAll")}
+                  </Button>
+                </div>
+              </div>
             )}
           </div>
         </div>
