@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { createHash } from "crypto";
-import { supabaseAdmin } from "@/utils/supabase/admin";
+import { getSupabaseAdmin } from "@/utils/supabase/admin";
 import { cookieConsentInputSchema } from "@/shared/schema";
 
 export async function POST(request: Request) {
@@ -38,7 +38,7 @@ export async function POST(request: Request) {
       .digest("hex");
 
     // 5. Insert — append-only, never update
-    const { data, error } = await supabaseAdmin
+    const { data, error } = await getSupabaseAdmin()
       .from("cookie_consents")
       .insert({
         session_id,
