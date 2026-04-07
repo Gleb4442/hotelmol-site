@@ -1,5 +1,5 @@
 import { sql } from "drizzle-orm";
-import { pgTable, text, varchar, timestamp, boolean, serial, integer, jsonb } from "drizzle-orm/pg-core";
+import { pgTable, text, varchar, char, timestamp, boolean, serial, integer, jsonb, uuid } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -29,12 +29,17 @@ export const leadSubmissions = pgTable("lead_submissions", {
 });
 
 export const cookieConsents = pgTable("cookie_consents", {
-  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
-  consentedAt: timestamp("consented_at").defaultNow().notNull(),
-  language: text("language").default('en'),
-  categories: jsonb("categories").notNull(), // { essential: true, analytics: boolean, marketing: boolean }
-  ipHash: text("ip_hash"), // hashed IP for GDPR compliance
+  id: uuid("id").primaryKey().default(sql`gen_random_uuid()`),
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+  action: text("action").notNull(), // 'accepted' | 'rejected' | 'partial' | 'withdrawn'
+  sessionId: text("session_id").notNull(),
+  userId: uuid("user_id"),
+  ipHash: text("ip_hash"),
   userAgent: text("user_agent"),
+  country: char("country", { length: 2 }),
+  policyVersion: text("policy_version").notNull(),
+  consents: jsonb("consents").notNull().default({}), // { necessary, analytics, marketing, functional }
+  bannerTextHash: text("banner_text_hash"),
 });
 
 export const waitlistSubmissions = pgTable("waitlist_submissions", {
@@ -56,18 +61,19 @@ export const insertLeadSchema = createInsertSchema(leadSubmissions).omit({
 
 export const insertCookieConsentSchema = createInsertSchema(cookieConsents).omit({
   id: true,
-  consentedAt: true,
+  createdAt: true,
 });
 
-export const cookieConsentSchema = z.object({
-  language: z.string().default('en'),
-  categories: z.object({
-    essential: z.boolean().default(true),
+export const cookieConsentInputSchema = z.object({
+  session_id: z.string().uuid(),
+  policy_version: z.string(),
+  action: z.enum(["accepted", "rejected", "partial", "withdrawn"]),
+  consents: z.object({
+    necessary: z.boolean().refine((v) => v === true, { message: "necessary must be true" }),
     analytics: z.boolean(),
     marketing: z.boolean(),
+    functional: z.boolean(),
   }),
-  ipHash: z.string().optional(),
-  userAgent: z.string().optional(),
 });
 
 export const roiLeadSchema = z.object({
@@ -158,7 +164,7 @@ export type ConsultationLead = z.infer<typeof consultationLeadSchema>;
 export type DemoLead = z.infer<typeof demoLeadSchema>;
 export type InsertCookieConsent = z.infer<typeof insertCookieConsentSchema>;
 export type CookieConsent = typeof cookieConsents.$inferSelect;
-export type CookieConsentInput = z.infer<typeof cookieConsentSchema>;
+export type CookieConsentInput = z.infer<typeof cookieConsentInputSchema>;
 export type WaitlistSubmission = typeof waitlistSubmissions.$inferSelect;
 export type InsertWaitlist = z.infer<typeof insertWaitlistSchema>;
 export type Waitlist = z.infer<typeof waitlistSchema>;

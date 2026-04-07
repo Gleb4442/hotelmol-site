@@ -1,7 +1,7 @@
 import type { Express, Request, Response, NextFunction } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage.js";
-import { roiLeadSchema, contactLeadSchema, demoLeadSchema, cookieConsentSchema, integrationLeadSchema, consultationLeadSchema } from "../shared/schema.js";
+import { roiLeadSchema, contactLeadSchema, demoLeadSchema, cookieConsentInputSchema, integrationLeadSchema, consultationLeadSchema } from "../shared/schema.js";
 import { createHash } from "crypto";
 import { db } from "./db.js";
 
@@ -173,14 +173,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   app.post("/api/cookie-consents", async (req, res) => {
     try {
-      const validatedData = cookieConsentSchema.parse(req.body);
+      const validatedData = cookieConsentInputSchema.parse(req.body);
       const clientIP = req.ip || req.headers['x-forwarded-for'] as string || 'unknown';
       const ipHash = clientIP !== 'unknown' ? hashIP(clientIP) : null;
       const userAgent = (req.headers['user-agent'] || null) as string | null;
 
       const consent = await storage.createCookieConsent({
-        language: validatedData.language,
-        categories: validatedData.categories,
+        action: validatedData.action,
+        sessionId: validatedData.session_id,
+        policyVersion: validatedData.policy_version,
+        consents: validatedData.consents,
         ipHash: ipHash,
         userAgent: userAgent,
       });

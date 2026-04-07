@@ -877,6 +877,10 @@ const translationsBase = {
     "cookie.banner.essentialDesc": "Required for site functionality",
     "cookie.banner.analyticsDesc": "Help us improve our website",
     "cookie.banner.marketingDesc": "Personalized advertisements",
+    "cookie.banner.functional": "Functional",
+    "cookie.banner.functionalDesc": "Enhanced features and personalization",
+    "cookie.banner.rejectAll": "Reject Non-Essential",
+    "footer.cookiePreferences": "Cookie Preferences",
 
     // 404 Page
     "notFound.title": "Page Not Found",
@@ -1735,6 +1739,10 @@ const translationsBase = {
     "cookie.banner.essentialDesc": "Необходимы для работы сайта",
     "cookie.banner.analyticsDesc": "Помогают улучшить веб-сайт",
     "cookie.banner.marketingDesc": "Персонализированные объявления",
+    "cookie.banner.functional": "Функциональные",
+    "cookie.banner.functionalDesc": "Расширенные функции и персонализация",
+    "cookie.banner.rejectAll": "Отклонить необязательные",
+    "footer.cookiePreferences": "Настройки cookie",
 
     // 404 Page
     "notFound.title": "Страница не найдена",
@@ -2590,6 +2598,10 @@ const translationsBase = {
     "cookie.banner.essentialDesc": "Необхідні для роботи сайту",
     "cookie.banner.analyticsDesc": "Допомагають покращити веб-сайт",
     "cookie.banner.marketingDesc": "Персоналізовані рекламні оголошення",
+    "cookie.banner.functional": "Функціональні",
+    "cookie.banner.functionalDesc": "Розширені функції та персоналізація",
+    "cookie.banner.rejectAll": "Відхилити необов'язкові",
+    "footer.cookiePreferences": "Налаштування cookie",
 
     // 404 Page
     "notFound.title": "Сторінку не знайдено",
@@ -3545,6 +3557,10 @@ const translationsBase = {
     "cookie.banner.essentialDesc": "Wymagane do funkcjonowania strony",
     "cookie.banner.analyticsDesc": "Pomagają nam ulepszać naszą stronę",
     "cookie.banner.marketingDesc": "Spersonalizowane reklamy",
+    "cookie.banner.functional": "Funkcjonalne",
+    "cookie.banner.functionalDesc": "Ulepszone funkcje i personalizacja",
+    "cookie.banner.rejectAll": "Odrzuć opcjonalne",
+    "footer.cookiePreferences": "Ustawienia cookie",
 
     // 404 Page
     "notFound.title": "Strona Nie Znaleziona",
@@ -3621,6 +3637,23 @@ const translationsBase = {
     "roomie.platforms.messenger": "Messenger",
     "roomie.platforms.soon": "Bald",
     "home.hotelierFaq.title": "FAQ",
+
+    // Cookie Banner
+    "cookie.banner.title": "Wir verwenden Cookies",
+    "cookie.banner.description": "Wir verwenden Cookies, um Ihr Erlebnis auf unserer Website zu verbessern. Durch Klicken auf \"Alle akzeptieren\" stimmen Sie der Verwendung ALLER Cookies zu.",
+    "cookie.banner.acceptAll": "Alle akzeptieren",
+    "cookie.banner.customize": "Anpassen",
+    "cookie.banner.save": "Einstellungen speichern",
+    "cookie.banner.essential": "Erforderlich",
+    "cookie.banner.analytics": "Analytisch",
+    "cookie.banner.marketing": "Marketing",
+    "cookie.banner.essentialDesc": "Erforderlich für die Website-Funktionalität",
+    "cookie.banner.analyticsDesc": "Helfen uns, unsere Website zu verbessern",
+    "cookie.banner.marketingDesc": "Personalisierte Werbung",
+    "cookie.banner.functional": "Funktional",
+    "cookie.banner.functionalDesc": "Erweiterte Funktionen und Personalisierung",
+    "cookie.banner.rejectAll": "Optionale ablehnen",
+    "footer.cookiePreferences": "Cookie-Einstellungen",
   },
 } as const;
 

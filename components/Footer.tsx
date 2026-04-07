@@ -2,9 +2,11 @@
 import Link from "next/link";
 import { Mail } from "lucide-react";
 import { useTranslation } from "@/lib/TranslationContext";
+import { useCookieBanner } from "@/lib/CookieBannerContext";
 
 export default function Footer() {
   const { t } = useTranslation();
+  const { withdrawConsent } = useCookieBanner();
 
 
   const company = [
@@ -70,6 +72,12 @@ export default function Footer() {
                   </li>
                 ))}
               </ul>
+              <button
+                onClick={withdrawConsent}
+                className="mt-3 text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+              >
+                {t("footer.cookiePreferences")}
+              </button>
             </div>
 
             <div className="mt-12 lg:mt-auto pt-4">

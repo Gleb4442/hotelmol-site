@@ -89,7 +89,7 @@ export default function Onboarding() {
         setIsVisible(false);
         
         // Show cookie banner after onboarding is closed, if consent not already given
-        const consent = localStorage.getItem("cookieConsent");
+        const consent = localStorage.getItem("cookie_consent_given");
         if (!consent) {
             setCookieBannerVisible(true);
         }

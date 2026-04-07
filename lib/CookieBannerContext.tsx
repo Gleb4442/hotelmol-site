@@ -1,24 +1,45 @@
 "use client";
 
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState, ReactNode } from "react";
+import { useCookieConsent, Consents } from "@/hooks/useCookieConsent";
 
 interface CookieBannerContextType {
   isCookieBannerVisible: boolean;
   setCookieBannerVisible: (visible: boolean) => void;
+  hasConsented: boolean;
+  currentConsents: Consents | null;
+  submitConsent: (
+    action: "accepted" | "rejected" | "partial",
+    consents: Consents
+  ) => Promise<void>;
+  withdrawConsent: () => Promise<void>;
 }
 
-const CookieBannerContext = createContext<CookieBannerContextType | undefined>(undefined);
+const CookieBannerContext = createContext<CookieBannerContextType | undefined>(
+  undefined
+);
 
-export function CookieBannerProvider({ children }: { children: React.ReactNode }) {
+export function CookieBannerProvider({ children }: { children: ReactNode }) {
   const [isCookieBannerVisible, setIsCookieBannerVisible] = useState(false);
+  const { hasConsented, currentConsents, submitConsent, withdrawConsent } =
+    useCookieConsent();
 
-  // Initial visibility is false. The CookieBanner component will check localStorage on mount.
-  useEffect(() => {
-    // We can keep it simple here.
-  }, []);
+  const handleWithdraw = async () => {
+    await withdrawConsent();
+    setIsCookieBannerVisible(true);
+  };
 
   return (
-    <CookieBannerContext.Provider value={{ isCookieBannerVisible, setCookieBannerVisible: setIsCookieBannerVisible }}>
+    <CookieBannerContext.Provider
+      value={{
+        isCookieBannerVisible,
+        setCookieBannerVisible: setIsCookieBannerVisible,
+        hasConsented,
+        currentConsents,
+        submitConsent,
+        withdrawConsent: handleWithdraw,
+      }}
+    >
       {children}
     </CookieBannerContext.Provider>
   );

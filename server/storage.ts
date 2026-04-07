@@ -121,7 +121,7 @@ export class PostgresStorage implements IStorage {
   }
 
   async getCookieConsents(): Promise<CookieConsent[]> {
-    return await db.select().from(cookieConsents).orderBy(desc(cookieConsents.consentedAt));
+    return await db.select().from(cookieConsents).orderBy(desc(cookieConsents.createdAt));
   }
 
   async createWaitlistSubmission(insertWaitlist: InsertWaitlist): Promise<WaitlistSubmission> {
