@@ -222,15 +222,9 @@ export default function Onboarding() {
                                             />
 
                                             <Sparkles className="w-10 h-10 text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)] z-10" />
-                                            
-                                            {/* Status Badge */}
-                                            <div className="absolute bottom-2 right-2 w-5 h-5 bg-emerald-500 border-[3.5px] border-white rounded-full shadow-lg z-20">
-                                                <div className="absolute inset-0 bg-white/20 animate-pulse rounded-full"></div>
-                                            </div>
                                         </div>
                                     </div>
-                                    <div className="space-y-3">
-                                        <h2 className="text-[10px] font-black uppercase tracking-[0.4em] text-blue-900/70">{t("onboarding.agentName")}</h2>
+                                    <div className="flex flex-col justify-center">
                                         <p className="text-xl md:text-2xl leading-relaxed font-semibold text-slate-800">
                                             {displayedText.split("Roomie").map((part, i, arr) => (
                                                 <span key={i}>
