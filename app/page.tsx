@@ -3,19 +3,22 @@
 // Force static generation for better caching
 export const dynamic = 'force-static';
 
+import dynamicImport from "next/dynamic";
 import Hero from "@/components/Hero";
-import ProblemSection from "@/components/ProblemSection";
-import HowRoomieWorks from "@/components/HowRoomieWorks";
-import IntegrationTicker from "@/components/IntegrationTicker";
-import IndustryImpactSection from "@/components/IndustryImpactSection";
-import HotelQRBenefits from "@/components/HotelQRBenefits";
-import AIDashboardSection from "@/components/AIDashboardSection";
-import ROIEstimateLight from "@/components/ROIEstimateLight";
 import ChatFAQSection from "@/components/ChatFAQSection";
 import LLMSummary from "@/components/LLMSummary";
 import SEO, { organizationSchema } from "@/components/SEO";
 import Onboarding from "@/components/Onboarding";
-import HotelmolIs from "@/components/HotelmolIs";
+import LazyOnView from "@/components/LazyOnView";
+
+const ProblemSection = dynamicImport(() => import("@/components/ProblemSection"), { ssr: false });
+const IndustryImpactSection = dynamicImport(() => import("@/components/IndustryImpactSection"), { ssr: false });
+const HotelQRBenefits = dynamicImport(() => import("@/components/HotelQRBenefits"), { ssr: false });
+const HotelmolIs = dynamicImport(() => import("@/components/HotelmolIs"), { ssr: false });
+const HowRoomieWorks = dynamicImport(() => import("@/components/HowRoomieWorks"), { ssr: false });
+const AIDashboardSection = dynamicImport(() => import("@/components/AIDashboardSection"), { ssr: false });
+const IntegrationTicker = dynamicImport(() => import("@/components/IntegrationTicker"), { ssr: false });
+const ROIEstimateLight = dynamicImport(() => import("@/components/ROIEstimateLight"), { ssr: false });
 
 export default function Home() {
     return (
@@ -28,14 +31,30 @@ export default function Home() {
             />
             <Hero />
             <LLMSummary />
-            <ProblemSection />
-            <IndustryImpactSection />
-            <HotelQRBenefits />
-            <HotelmolIs />
-            <HowRoomieWorks />
-            <AIDashboardSection />
-            <IntegrationTicker />
-            <ROIEstimateLight />
+            <LazyOnView minHeight={620}>
+                <ProblemSection />
+            </LazyOnView>
+            <LazyOnView minHeight={760}>
+                <IndustryImpactSection />
+            </LazyOnView>
+            <LazyOnView minHeight={720}>
+                <HotelQRBenefits />
+            </LazyOnView>
+            <LazyOnView minHeight={680}>
+                <HotelmolIs />
+            </LazyOnView>
+            <LazyOnView minHeight={680}>
+                <HowRoomieWorks />
+            </LazyOnView>
+            <LazyOnView minHeight={520}>
+                <AIDashboardSection />
+            </LazyOnView>
+            <LazyOnView minHeight={260}>
+                <IntegrationTicker />
+            </LazyOnView>
+            <LazyOnView minHeight={720}>
+                <ROIEstimateLight />
+            </LazyOnView>
             <ChatFAQSection variant="hotelier" />
         </>
     );

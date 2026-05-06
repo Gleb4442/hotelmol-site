@@ -98,7 +98,7 @@ const HotelmolIs = () => {
                     </div>
                 </div>
                 <div className="p-3 pb-4">
-                    <div className="bg-white/80 backdrop-blur-md rounded-full shadow-lg border border-slate-100 p-2 flex justify-around">
+                    <div className="bg-white/95 rounded-full shadow-lg border border-slate-100 p-2 flex justify-around">
                         <Home className="size-4 text-slate-400" />
                         <BellRing className="size-4 text-blue-600" />
                         <Receipt className="size-4 text-slate-400" />
@@ -171,7 +171,7 @@ const HotelmolIs = () => {
                     </div>
                     <div className="mt-8">
                         <h3 className="font-bold mb-2">Ask AI Agent</h3>
-                        <div className="bg-white/80 backdrop-blur-sm rounded-full p-2 border border-slate-200 flex items-center">
+                        <div className="bg-white/95 rounded-full p-2 border border-slate-200 flex items-center">
                             <span className="text-slate-400 flex-1 px-2">Tell AI what you need...</span>
                             <div className="size-6 bg-blue-600 rounded-full flex items-center justify-center text-white">→</div>
                         </div>
@@ -259,7 +259,7 @@ const HotelmolIs = () => {
                     </div>
                 </main>
                 <div className="mt-auto p-4">
-                    <div className="bg-white/80 backdrop-blur-md rounded-full shadow-lg border border-slate-100 p-2 flex justify-around">
+                    <div className="bg-white/95 rounded-full shadow-lg border border-slate-100 p-2 flex justify-around">
                         <Home className="size-4 text-slate-400" />
                         <BellRing className="size-4 text-slate-400" />
                         <Receipt className="size-4 text-slate-400" />

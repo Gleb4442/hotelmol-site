@@ -64,10 +64,13 @@ export default function ROIEstimateLight() {
   return (
     <PremiumBackground className="py-20 lg:py-32 relative overflow-hidden">
       {/* Premium Background with Subtle Gradient */}
-      <div className="absolute inset-0 opacity-30 pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-[#0752A0]/10 blur-[120px]" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-[#ACCAE0]/20 blur-[120px]" />
-      </div>
+      <div
+        className="absolute inset-0 opacity-60 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(640px 360px at 0% 0%, rgba(7,82,160,0.055), transparent 70%), radial-gradient(640px 360px at 100% 100%, rgba(172,202,224,0.12), transparent 72%)",
+        }}
+      />
 
       <div className="container mx-auto px-4 relative z-10 w-full max-w-6xl">
         <motion.div 
@@ -154,7 +157,7 @@ export default function ROIEstimateLight() {
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-[#0752A0]/10 via-[#0752A0]/5 to-transparent backdrop-blur-3xl p-10 rounded-[2.5rem] border border-[#0752A0]/10 shadow-sm relative overflow-hidden group">
+            <div className="bg-gradient-to-br from-[#0752A0]/10 via-[#0752A0]/5 to-transparent p-10 rounded-[2.5rem] border border-[#0752A0]/10 shadow-sm relative overflow-hidden group">
               <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
                 <TrendingUp className="w-32 h-32 text-[#0752A0] rotate-12" />
               </div>
@@ -262,11 +265,16 @@ export default function ROIEstimateLight() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-20 relative p-12 lg:p-16 rounded-[3rem] bg-gradient-to-r from-[#0752A0]/80 to-[#4778A8]/80 backdrop-blur-3xl border border-white/20 overflow-hidden text-center group shadow-xl"
+          className="mt-20 relative p-12 lg:p-16 rounded-[3rem] bg-gradient-to-r from-[#0752A0]/85 to-[#4778A8]/85 border border-white/20 overflow-hidden text-center group shadow-xl"
         >
           {/* Decorative Elements */}
-          <div className="absolute -top-24 -left-24 w-64 h-64 bg-white/10 rounded-full blur-[80px] group-hover:bg-white/20 transition-all duration-700" />
-          <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-[#ACCAE0]/20 rounded-full blur-[80px] group-hover:bg-[#ACCAE0]/30 transition-all duration-700" />
+          <div
+            className="absolute inset-0 opacity-80 transition-opacity duration-700 group-hover:opacity-100"
+            style={{
+              background:
+                "radial-gradient(360px 220px at 0% 0%, rgba(255,255,255,0.12), transparent 72%), radial-gradient(360px 220px at 100% 100%, rgba(172,202,224,0.22), transparent 72%)",
+            }}
+          />
 
           <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center">
             <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-6 leading-tight">

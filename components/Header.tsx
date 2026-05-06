@@ -19,6 +19,7 @@ const NavPill = ({ navigation, pathname }: { navigation: Array<{ name: string; h
   const [activeRect, setActiveRect] = useState({ left: 0, width: 0, opacity: 0 });
   const navRef = useRef<HTMLElement>(null);
   const rafRef = useRef<number | null>(null);
+  const navKey = navigation.map((item) => `${item.href}:${item.name}:${item.badge ?? ""}`).join("|");
 
   useEffect(() => {
     const updatePill = () => {
@@ -61,20 +62,19 @@ const NavPill = ({ navigation, pathname }: { navigation: Array<{ name: string; h
       }
       clearTimeout(timeout);
     };
-  }, [pathname, navigation]);
+  }, [pathname, navKey]);
 
   return (
-    <nav className="relative flex items-center gap-1 h-full" ref={navRef}>
+    <nav className="relative z-0 flex items-center gap-1 h-full overflow-hidden rounded-full" ref={navRef}>
       <motion.span
-        className="absolute top-0 bottom-0 left-0 w-px origin-left bg-[#0752A0] shadow-sm rounded-full -z-10"
+        className="absolute inset-y-0 left-0 z-0 rounded-full bg-[#0752A0] shadow-sm pointer-events-none"
         initial={false}
         animate={{
           x: activeRect.left,
-          scaleX: Math.max(activeRect.width, 1),
           opacity: activeRect.opacity
         }}
         transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-        style={{ willChange: "transform, opacity" }}
+        style={{ width: activeRect.width, willChange: "transform, opacity" }}
       />
       {navigation.map((item) => {
         const isActive = pathname === item.href;
@@ -82,7 +82,7 @@ const NavPill = ({ navigation, pathname }: { navigation: Array<{ name: string; h
           <Link
             key={item.name}
             href={item.href}
-            className={`relative px-2 lg:px-2.5 xl:px-4 h-full rounded-full text-sm xl:text-[15px] font-medium transition-all duration-300 flex items-center gap-2
+            className={`relative z-10 px-2 lg:px-2.5 xl:px-4 h-full rounded-full text-sm xl:text-[15px] font-medium transition-colors duration-300 flex items-center gap-2
               ${isActive
                 ? "text-white"
                 : "text-slate-600 hover:text-[#0752A0] hover:bg-slate-100/50"
@@ -168,7 +168,7 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
     },
   ];
 
-  const cloudStyle = "bg-[#F7F5F1]/95 backdrop-blur-md shadow-[0_4px_24px_rgba(7,82,160,0.4)] border border-white/20 rounded-full transition-all duration-300";
+  const cloudStyle = "bg-[#F7F5F1]/98 shadow-[0_4px_20px_rgba(7,82,160,0.22)] border border-white/40 rounded-full transition-colors duration-300";
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 w-full pointer-events-none md:max-w-[1440px] md:mx-auto md:mt-4 md:px-6">
@@ -229,7 +229,7 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
             <Button
               size="default"
               variant="ghost"
-              className="relative rounded-full px-4 backdrop-blur-md bg-blue-500/10 border border-blue-400/30 text-[#0752A0] hover:bg-blue-500/20 shadow-[0_0_10px_rgba(59,130,246,0.2)] transition-all overflow-hidden group"
+              className="relative rounded-full px-4 bg-blue-500/10 border border-blue-400/30 text-[#0752A0] hover:bg-blue-500/20 shadow-[0_0_10px_rgba(59,130,246,0.16)] transition-colors overflow-hidden group"
               asChild
               data-testid="button-app-tour-header"
             >

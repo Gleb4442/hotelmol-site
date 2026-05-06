@@ -110,6 +110,8 @@ export default function IndustryImpactSection() {
                             <img
                                 src={hotel.logo}
                                 alt={t(hotel.nameKey as any)}
+                                loading="lazy"
+                                decoding="async"
                                 className={cn(
                                     "w-[60px] md:w-[77.2px] h-auto object-contain relative z-10 mix-blend-multiply grayscale brightness-0 opacity-80",
                                     hotel.id === "fourSeasons" && "translate-y-[-2px]"
@@ -136,10 +138,15 @@ export default function IndustryImpactSection() {
                             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                             className="max-w-3xl mx-auto"
                         >
-                            <div className="relative bg-white/30 backdrop-blur-xl rounded-[48px] p-8 md:p-12 lg:p-16 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.05)]">
-                                {/* Subtle decorative glow */}
-                                <div className="absolute -top-24 -right-24 w-64 h-64 bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
-                                <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
+                            <div className="relative overflow-hidden bg-white/70 rounded-[48px] p-8 md:p-12 lg:p-16 shadow-[0_24px_54px_-18px_rgba(0,0,0,0.06)] border border-white/70">
+                                {/* Subtle decorative glow without animated blur surfaces. */}
+                                <div
+                                    className="absolute inset-0 pointer-events-none"
+                                    style={{
+                                        background:
+                                            "radial-gradient(360px 220px at 100% 0%, rgba(7,82,160,0.045), transparent 72%), radial-gradient(360px 220px at 0% 100%, rgba(7,82,160,0.035), transparent 72%)",
+                                    }}
+                                />
                                 
                                 {activeHotel.sections.map((section, idx) => {
                                     const title = t(`industryImpact.${activeHotel.id}.${section.key}.title` as any);

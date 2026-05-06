@@ -1,17 +1,17 @@
 "use client";
-import { MessageSquare, Brain, Zap, Shield, BarChart3, Globe2, ArrowRight, CheckCircle } from "lucide-react";
+import dynamicImport from "next/dynamic";
+import { Globe2 } from "lucide-react";
 import { SiTelegram, SiWhatsapp, SiMessenger, SiAppstore } from "react-icons/si";
 
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-
-import BookingShowcase from "@/components/BookingShowcase";
-import SalesAIAgentSection from "@/components/SalesAIAgentSection";
-import TaskManagementShowcase from "@/components/TaskManagementShowcase";
-import ChatFAQSection from "@/components/ChatFAQSection";
-import ConsultationForm from "@/components/ConsultationForm";
 import { useTranslation } from "@/lib/TranslationContext";
 import SEO, { productSchema } from "@/components/SEO";
+import LazyOnView from "@/components/LazyOnView";
+
+const BookingShowcase = dynamicImport(() => import("@/components/BookingShowcase"), { ssr: false });
+const SalesAIAgentSection = dynamicImport(() => import("@/components/SalesAIAgentSection"), { ssr: false });
+const TaskManagementShowcase = dynamicImport(() => import("@/components/TaskManagementShowcase"), { ssr: false });
+const ChatFAQSection = dynamicImport(() => import("@/components/ChatFAQSection"), { ssr: false });
+const ConsultationForm = dynamicImport(() => import("@/components/ConsultationForm"), { ssr: false });
 
 
 export default function Roomie() {
@@ -45,7 +45,7 @@ export default function Roomie() {
                                 
                                 {/* Play button */}
                                 <div className="relative z-10 flex flex-col items-center gap-3">
-                                    <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                                    <div className="w-16 h-16 rounded-full bg-white/25 border border-white/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
                                         <svg className="w-7 h-7 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
                                             <path d="M8 5v14l11-7z" />
                                         </svg>
@@ -59,6 +59,7 @@ export default function Roomie() {
                                 <img
                                     src="/assets/Gemini_Generated_Image_borpdeborpdeborp-Photoroom_1764493985974.png"
                                     alt="Roomie AI"
+                                    decoding="async"
                                     className="absolute inset-0 w-full h-full object-cover opacity-30"
                                 />
                             </div>
@@ -93,19 +94,29 @@ export default function Roomie() {
             </section>
 
             {/* === BOOKING SHOWCASE === */}
-            <BookingShowcase />
+            <LazyOnView minHeight={760}>
+                <BookingShowcase />
+            </LazyOnView>
 
             {/* === AI SALES AGENT === */}
-            <SalesAIAgentSection />
+            <LazyOnView minHeight={760}>
+                <SalesAIAgentSection />
+            </LazyOnView>
 
             {/* === TASK MANAGEMENT === */}
-            <TaskManagementShowcase />
+            <LazyOnView minHeight={720}>
+                <TaskManagementShowcase />
+            </LazyOnView>
 
             {/* === FAQ === */}
-            <ChatFAQSection variant="roomie" />
+            <LazyOnView minHeight={620}>
+                <ChatFAQSection variant="roomie" />
+            </LazyOnView>
 
             {/* === CONSULTATION === */}
-            <ConsultationForm />
+            <LazyOnView minHeight={680}>
+                <ConsultationForm />
+            </LazyOnView>
         </div>
     );
 }
