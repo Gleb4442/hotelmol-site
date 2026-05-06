@@ -129,26 +129,6 @@ export default function MobileBottomNav() {
                             </div>
                         </motion.a>
 
-                        {/* App Tour */}
-                        <motion.div
-                            initial={{ opacity: 0, x: 10 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.2, delay: 0.2 }}
-                            className="relative"
-                        >
-                            <a
-                                href="https://tour.hotelmol.com"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center gap-2 bg-blue-500/10 text-[#0752A0] px-4 py-2 rounded-full shadow-[0_0_10px_rgba(59,130,246,0.15)] border border-blue-400/30 font-bold"
-                            >
-                                <span className="text-sm">App tour</span>
-                            </a>
-                            <span className="absolute -top-2 -right-1 z-10 bg-blue-500 text-white text-[9px] uppercase font-bold px-1.5 py-0.5 rounded-full shadow-[0_0_8px_rgba(59,130,246,0.6)]">
-                                new
-                            </span>
-                        </motion.div>
-
                         {/* Collapsible Language Selector */}
                         <motion.div
                             initial={{ opacity: 0, x: 10 }}
@@ -172,10 +152,12 @@ export default function MobileBottomNav() {
                             <AnimatePresence>
                                 {isLangOpen && (
                                     <motion.div
-                                        initial={{ height: 0, opacity: 0 }}
-                                        animate={{ height: "auto", opacity: 1 }}
-                                        exit={{ height: 0, opacity: 0 }}
-                                        className="flex flex-col bg-white"
+                                        initial={{ scaleY: 0, opacity: 0 }}
+                                        animate={{ scaleY: 1, opacity: 1 }}
+                                        exit={{ scaleY: 0, opacity: 0 }}
+                                        transition={{ duration: 0.2, ease: "easeOut" }}
+                                        className="flex flex-col bg-white origin-top"
+                                        style={{ willChange: "transform, opacity" }}
                                     >
                                         {languages.filter(l => l.code !== language).map((lang) => (
                                             <button

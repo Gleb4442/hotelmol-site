@@ -110,11 +110,15 @@ export default function ProblemSection() {
             <button
               key={index}
               onClick={() => setActiveIndex(index)}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                activeIndex === index ? "w-10 bg-red-500" : "w-2 bg-slate-200"
-              }`}
+              className="h-2 w-10 rounded-full"
               aria-label={`Go to slide ${index + 1}`}
-            />
+            >
+              <span
+                className={`block h-full w-full rounded-full transition-[transform,background-color] duration-300 ${
+                  activeIndex === index ? "scale-x-100 bg-red-500" : "scale-x-20 bg-slate-200"
+                }`}
+              />
+            </button>
           ))}
         </div>
       </div>

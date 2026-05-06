@@ -141,14 +141,15 @@ function BookingsWidget() {
             <div key={data.month} className="flex flex-col items-center flex-1">
               <div className="w-full flex flex-col justify-end h-20">
                 <motion.div
-                  className="w-full bg-primary rounded-t-sm"
-                  initial={{ height: 0 }}
-                  animate={isInView ? { height: `${data.height}%` } : { height: 0 }}
+                  className="w-full h-full bg-primary rounded-t-sm origin-bottom"
+                  initial={{ scaleY: 0 }}
+                  animate={isInView ? { scaleY: data.height / 100 } : { scaleY: 0 }}
                   transition={{ 
                     duration: 0.8, 
                     delay: 0.2 + index * 0.08, 
                     ease: [0.25, 0.1, 0.25, 1] 
                   }}
+                  style={{ willChange: "transform" }}
                   data-testid={`bar-${data.month.toLowerCase()}`}
                 />
               </div>

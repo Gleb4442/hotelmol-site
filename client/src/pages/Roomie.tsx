@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -13,6 +13,18 @@ import SEO, { productSchema } from "@/components/SEO";
 export default function Roomie() {
   const { t } = useTranslation();
   const [demoModalOpen, setDemoModalOpen] = useState(false);
+  const capabilitiesRef = useRef<HTMLDivElement>(null);
+  const [isCapabilitiesVisible, setIsCapabilitiesVisible] = useState(false);
+
+  useEffect(() => {
+    if (!capabilitiesRef.current) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      setIsCapabilitiesVisible(entry.isIntersecting);
+    }, { threshold: 0.1, rootMargin: "120px 0px" });
+
+    observer.observe(capabilitiesRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   const features = [
     {
@@ -163,7 +175,10 @@ export default function Roomie() {
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="neon-border-wrapper relative">
+            <div
+              ref={capabilitiesRef}
+              className={`neon-border-wrapper relative ${isCapabilitiesVisible ? "" : "animation-paused"}`}
+            >
               <Card className="p-12 bg-gradient-to-br from-background to-muted/50 relative z-10">
                 <h2 className="font-serif text-4xl font-semibold mb-8">{t("roomie.capabilities.title")}</h2>
                 <div className="grid md:grid-cols-2 gap-6">
@@ -192,6 +207,7 @@ export default function Roomie() {
                 opacity: 0.3;
                 filter: blur(12px);
                 z-index: 0;
+                will-change: transform, opacity;
               }
 
               @keyframes neonPulse {

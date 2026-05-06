@@ -421,7 +421,36 @@
     transparent 100%
   );
   animation: shimmer-sweep 2.5s linear infinite;
+  transform: translateZ(0);
+  will-change: transform;
   pointer-events: none;
+}
+
+.animation-paused,
+.animation-paused * {
+  animation-play-state: paused !important;
+}
+
+@keyframes ticker-scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes ticker-scroll-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.ticker-scroll-left {
+  animation: ticker-scroll-left 30s linear infinite;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.ticker-scroll-right {
+  animation: ticker-scroll-right 30s linear infinite;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 .dark .blue-shimmer-block {

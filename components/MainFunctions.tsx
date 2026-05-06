@@ -106,11 +106,12 @@ export default function MainFunctions() {
                 <AnimatePresence>
                   {isExpanded && (
                     <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
+                      initial={{ scaleY: 0, opacity: 0 }}
+                      animate={{ scaleY: 1, opacity: 1 }}
+                      exit={{ scaleY: 0, opacity: 0 }}
                       transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
-                      className="overflow-hidden"
+                      className="overflow-hidden origin-top"
+                      style={{ willChange: "transform, opacity" }}
                     >
                       <div className="px-8 pb-8">
                         <div className="h-px w-12 bg-primary/20 mb-6" />

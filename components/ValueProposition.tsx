@@ -105,11 +105,12 @@ export default function ValueProposition() {
                                 <AnimatePresence initial={false}>
                                     {isActive && (
                                         <motion.div
-                                            initial={{ height: 0, opacity: 0 }}
-                                            animate={{ height: "auto", opacity: 1 }}
-                                            exit={{ height: 0, opacity: 0 }}
+                                            initial={{ scaleY: 0, opacity: 0 }}
+                                            animate={{ scaleY: 1, opacity: 1 }}
+                                            exit={{ scaleY: 0, opacity: 0 }}
                                             transition={{ duration: 0.3, ease: "easeInOut" }}
-                                            className="overflow-hidden"
+                                            className="overflow-hidden origin-top"
+                                            style={{ willChange: "transform, opacity" }}
                                         >
                                             <div className="bg-zinc-50 dark:bg-zinc-950/30 p-5 md:p-7 border-t border-zinc-100 dark:border-zinc-800">
                                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

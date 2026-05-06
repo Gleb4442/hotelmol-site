@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
-import { Globe, Menu, X } from "lucide-react";
+import { Globe, Menu } from "lucide-react";
 import { useTranslation } from "@/lib/TranslationContext";
 import type { Language } from "@/lib/translations";
 import {
@@ -12,6 +12,13 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import logoImage from "@assets/hotelmol-logo.png";
+
+const languages: { code: Language; label: string; flag: string }[] = [
+  { code: "en", label: "English", flag: "🇬🇧" },
+  { code: "ru", label: "Русский", flag: "🇷🇺" },
+  { code: "ua", label: "Українська", flag: "🇺🇦" },
+  { code: "pl", label: "Polski", flag: "🇵🇱" },
+];
 
 interface HeaderProps {
   onDemoClick?: () => void;
@@ -27,6 +34,15 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
   });
 
   const blogEnabled = blogEnabledData?.value !== "false";
+
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileMenuOpen]);
 
   const allNavigation: Array<{ name: string; href: string; badge?: string }> = [
     { name: t("nav.roomie"), href: "/roomie" },
@@ -131,37 +147,89 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
             variant="ghost"
             size="icon"
             className="md:hidden w-16 h-16"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            onClick={() => setMobileMenuOpen(true)}
             data-testid="button-mobile-menu"
           >
-            {mobileMenuOpen ? <X className="h-10 w-10 stroke-[3]" /> : <Menu className="h-10 w-10 stroke-[3]" />}
+            <Menu className="h-10 w-10 stroke-[3]" />
           </Button>
         </div>
       </div>
 
+      {/* Mobile bottom sheet menu */}
       {mobileMenuOpen && (
-        <div className="border-t md:hidden rounded-b-2xl">
-          <nav className="flex flex-col gap-4 p-4">
-            {navigation.map((item) => {
-              const isActive = location === item.href;
-              return (
-                <Link 
-                  key={item.name} 
-                  href={item.href}
-                  className={`text-sm font-medium transition-colors hover:text-primary flex items-center gap-2 ${isActive ? "text-primary" : ""}`}
-                  onClick={() => setMobileMenuOpen(false)}
-                  data-testid={`mobile-link-${item.name.toLowerCase().replace(' ', '-')}`}
-                >
-                  {item.name}
-                  {item.badge && (
-                    <span className="inline-block px-2 py-0.5 text-xs font-semibold text-white bg-gradient-to-r from-primary via-blue-600 to-primary bg-[length:200%_100%] animate-gradient rounded-full">
-                      {item.badge}
-                    </span>
-                  )}
-                </Link>
-              );
-            })}
-          </nav>
+        <div className="fixed inset-0 z-[100] md:hidden" onClick={() => setMobileMenuOpen(false)}>
+          {/* Backdrop */}
+          <div
+            className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+            style={{ animation: "mobileMenuFadeIn 0.2s ease-out" }}
+          />
+          {/* Sheet */}
+          <div
+            className="absolute bottom-4 left-4 right-4"
+            onClick={(e) => e.stopPropagation()}
+            style={{ animation: "mobileMenuSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1)" }}
+          >
+            <div className="rounded-2xl bg-white/95 dark:bg-neutral-900/95 backdrop-blur-xl shadow-2xl overflow-hidden border border-white/20 dark:border-white/10">
+              {/* Drag handle */}
+              <div className="flex justify-center pt-3 pb-1">
+                <div className="w-10 h-1 rounded-full bg-neutral-300 dark:bg-neutral-600" />
+              </div>
+
+              {/* Navigation links */}
+              <nav className="px-4 pb-2">
+                {navigation.map((item) => {
+                  const isActive = location === item.href;
+                  return (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      className={`flex items-center gap-3 px-4 py-3.5 rounded-xl text-base font-medium transition-colors ${isActive ? "text-primary bg-primary/8" : "text-foreground hover:bg-muted/60"}`}
+                      onClick={() => setMobileMenuOpen(false)}
+                      data-testid={`mobile-link-${item.name.toLowerCase().replace(' ', '-')}`}
+                    >
+                      {item.name}
+                      {item.badge && (
+                        <span className="inline-block px-2 py-0.5 text-xs font-semibold text-white bg-gradient-to-r from-primary via-blue-600 to-primary bg-[length:200%_100%] animate-gradient rounded-full">
+                          {item.badge}
+                        </span>
+                      )}
+                    </Link>
+                  );
+                })}
+              </nav>
+
+              {/* Divider */}
+              <div className="mx-6 border-t border-neutral-200 dark:border-neutral-700" />
+
+              {/* Language selector */}
+              <div className="px-6 py-3 flex gap-2">
+                {languages.map((lang) => (
+                  <button
+                    key={lang.code}
+                    onClick={() => { setLanguage(lang.code); }}
+                    className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${language === lang.code ? "bg-primary/10 text-primary" : "text-muted-foreground hover:bg-muted/60"}`}
+                    data-testid={`mobile-option-${lang.code}`}
+                  >
+                    {lang.flag} {lang.code.toUpperCase()}
+                  </button>
+                ))}
+              </div>
+
+              {/* Action buttons */}
+              <div className="px-4 pb-4 flex gap-3">
+                <Button variant="outline" className="flex-1" asChild>
+                  <a href="https://pricing.hotelmol.com/#yearly" target="_blank" rel="noopener noreferrer">
+                    {t("button.pricing")}
+                  </a>
+                </Button>
+                <Button className="flex-1" asChild>
+                  <a href="https://demo.hotelmol.com" target="_blank" rel="noopener noreferrer">
+                    {t("button.tryDemo")}
+                  </a>
+                </Button>
+              </div>
+            </div>
+          </div>
         </div>
       )}
       
@@ -177,17 +245,42 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
 
         @keyframes shimmer-glow {
           0%, 100% {
-            box-shadow: 0 0 0 0 rgba(173, 216, 230, 0.2);
-            filter: brightness(1);
+            opacity: 0;
+            transform: scale(1);
           }
           50% {
-            box-shadow: 0 0 12px 4px rgba(173, 216, 230, 0.4);
-            filter: brightness(1.1);
+            opacity: 1;
+            transform: scale(1.03);
           }
         }
 
         .shimmer-button {
+          position: relative;
+          isolation: isolate;
+          transform: translateZ(0);
+        }
+
+        .shimmer-button::after {
+          content: "";
+          position: absolute;
+          inset: -2px;
+          border-radius: inherit;
+          box-shadow: 0 0 12px 4px rgba(173, 216, 230, 0.4);
+          opacity: 0;
+          pointer-events: none;
+          z-index: -1;
           animation: shimmer-glow 4s ease-in-out infinite;
+          will-change: transform, opacity;
+        }
+
+        @keyframes mobileMenuFadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+
+        @keyframes mobileMenuSlideUp {
+          from { transform: translateY(100%); opacity: 0; }
+          to { transform: translateY(0); opacity: 1; }
         }
       `}</style>
     </header>

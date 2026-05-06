@@ -33,10 +33,11 @@ const HotelmolIs = () => {
             hotelmol — это...
           </motion.h2>
           <motion.div 
-            className="w-24 h-1 bg-blue-600/20 mx-auto rounded-full"
-            initial={{ width: 0 }}
-            whileInView={{ width: 96 }}
+            className="w-24 h-1 bg-blue-600/20 mx-auto rounded-full origin-center"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
+            style={{ willChange: "transform" }}
           />
         </div>
 

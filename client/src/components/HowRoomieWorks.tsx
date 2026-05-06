@@ -1,11 +1,15 @@
 import { MessageSquare, Brain, Sparkles, TrendingUp, CheckCircle } from "lucide-react";
 import { useTranslation } from "@/lib/TranslationContext";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function HowRoomieWorks() {
   const { t } = useTranslation();
   const [animState, setAnimState] = useState({ pos: 0, jump: false });
+  const sectionRef = useRef<HTMLElement>(null);
+  const progressLineRef = useRef<HTMLDivElement>(null);
+  const [isSectionVisible, setIsSectionVisible] = useState(false);
+  const [progressLineWidth, setProgressLineWidth] = useState(0);
 
   const steps = [
     {
@@ -36,6 +40,31 @@ export default function HowRoomieWorks() {
   ];
 
   useEffect(() => {
+    if (!sectionRef.current) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      setIsSectionVisible(entry.isIntersecting);
+    }, { threshold: 0.1 });
+
+    observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!progressLineRef.current) return;
+
+    const updateWidth = () => {
+      setProgressLineWidth(progressLineRef.current?.clientWidth ?? 0);
+    };
+    const observer = new ResizeObserver(updateWidth);
+
+    updateWidth();
+    observer.observe(progressLineRef.current);
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isSectionVisible) return;
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) return;
 
@@ -48,10 +77,10 @@ export default function HowRoomieWorks() {
       });
     }, 4000);
     return () => clearInterval(interval);
-  }, []);
+  }, [isSectionVisible]);
 
   return (
-    <section className="py-24 lg:py-40">
+    <section ref={sectionRef} className="py-24 lg:py-40">
       <div className="container mx-auto px-4">
         <div className="text-center mb-20">
           <div className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
@@ -67,28 +96,25 @@ export default function HowRoomieWorks() {
 
         <div className="relative max-w-7xl mx-auto">
           {/* Progress Line */}
-          <div className="hidden lg:block absolute top-32 left-[10%] right-[10%] h-0.5 z-20">
+          <div ref={progressLineRef} className="hidden lg:block absolute top-32 left-[10%] right-[10%] h-0.5 z-20">
             <div className="h-full bg-gradient-to-r from-primary/20 via-primary/40 to-primary/20" />
 
             {/* Animated Ball */}
             <motion.div
               key="process-ball"
-              className="absolute bg-primary rounded-full shadow-[0_0_20px_rgba(7,82,160,1)] z-40"
+              className="absolute left-0 top-1/2 h-5 w-5 bg-primary rounded-full shadow-[0_0_20px_rgba(7,82,160,1)] z-40"
               initial={false}
               animate={{
-                left: `${animState.pos * 25}%`,
-                top: "50%",
-                x: "-50%",
+                x: progressLineWidth ? (progressLineWidth * animState.pos) / 4 - 10 : -10,
                 y: "-50%",
-                width: 20,
-                height: 20,
               }}
               transition={{
                 duration: animState.jump ? 0 : 1.5,
                 ease: animState.jump ? "linear" : "easeInOut"
               }}
               style={{
-                boxShadow: '0 0 15px rgba(7, 82, 160, 0.8), 0 0 30px rgba(7, 82, 160, 0.4)'
+                boxShadow: '0 0 15px rgba(7, 82, 160, 0.8), 0 0 30px rgba(7, 82, 160, 0.4)',
+                willChange: "transform"
               }}
             >
               <div className="absolute inset-0 rounded-full animate-ping bg-primary/30" />

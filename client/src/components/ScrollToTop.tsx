@@ -9,12 +9,23 @@ export default function ScrollToTop() {
   const { isCookieBannerVisible } = useCookieBanner();
 
   useEffect(() => {
+    let frameId: number | null = null;
+
     const toggleVisibility = () => {
-      setIsVisible(window.scrollY > 300);
+      if (frameId !== null) return;
+      frameId = requestAnimationFrame(() => {
+        setIsVisible(window.scrollY > 300);
+        frameId = null;
+      });
     };
 
-    window.addEventListener("scroll", toggleVisibility);
-    return () => window.removeEventListener("scroll", toggleVisibility);
+    window.addEventListener("scroll", toggleVisibility, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", toggleVisibility);
+      if (frameId !== null) {
+        cancelAnimationFrame(frameId);
+      }
+    };
   }, []);
 
   const scrollToTop = () => {

@@ -1,7 +1,6 @@
-import { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useTranslation } from "@/lib/TranslationContext";
 import DemoRequestModal from "./DemoRequestModal";
 import { translations } from "@/lib/translations";
@@ -33,6 +32,7 @@ export default function Hero() {
   useEffect(() => {
     // If not visible, do not run the animation loop
     if (!isVisible) return;
+    let pauseTimer: ReturnType<typeof setTimeout> | undefined;
 
     const handleType = () => {
       const currentWord = typewriterKeys[wordIndex % typewriterKeys.length];
@@ -40,7 +40,7 @@ export default function Hero() {
       const isStarting = isDeleting && displayText === "";
 
       if (isFinishing) {
-        setTimeout(() => setIsDeleting(true), 2000);
+        pauseTimer = setTimeout(() => setIsDeleting(true), 2000);
         return;
       }
 
@@ -67,13 +67,16 @@ export default function Hero() {
     };
 
     const timer = setTimeout(handleType, speed);
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      if (pauseTimer) clearTimeout(pauseTimer);
+    };
   }, [displayText, isDeleting, wordIndex, typewriterKeys, speed, isVisible]);
 
   return (
     <>
       <section ref={heroRef} className="relative min-h-[500px] sm:min-h-[700px] lg:min-h-[calc(80vh+80px)] flex items-start lg:items-center justify-center overflow-hidden">
-        <HeroBackground />
+        <HeroBackground isActive={isVisible} />
 
         <div className="relative z-10 container mx-auto px-6 pt-32 pb-20 lg:py-24">
           <div className="max-w-5xl mx-auto text-center">

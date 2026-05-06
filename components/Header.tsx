@@ -18,33 +18,47 @@ import { X } from "lucide-react";
 const NavPill = ({ navigation, pathname }: { navigation: Array<{ name: string; href: string; badge?: string }>; pathname: string }) => {
   const [activeRect, setActiveRect] = useState({ left: 0, width: 0, opacity: 0 });
   const navRef = useRef<HTMLElement>(null);
+  const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
     const updatePill = () => {
-      if (!navRef.current) return;
-      const activeLink = navRef.current.querySelector<HTMLAnchorElement>(`a[href="${pathname}"]`);
-      if (activeLink) {
-        setActiveRect({
-          left: activeLink.offsetLeft,
-          width: activeLink.offsetWidth,
-          opacity: 1
-        });
-      } else {
-        setActiveRect(prev => ({ ...prev, opacity: 0 }));
+      if (rafRef.current !== null) {
+        cancelAnimationFrame(rafRef.current);
       }
+
+      rafRef.current = requestAnimationFrame(() => {
+        if (!navRef.current) {
+          rafRef.current = null;
+          return;
+        }
+        const activeLink = navRef.current.querySelector<HTMLAnchorElement>(`a[href="${pathname}"]`);
+        if (activeLink) {
+          setActiveRect({
+            left: activeLink.offsetLeft,
+            width: activeLink.offsetWidth,
+            opacity: 1
+          });
+        } else {
+          setActiveRect(prev => ({ ...prev, opacity: 0 }));
+        }
+        rafRef.current = null;
+      });
     };
 
     // Initial update
     updatePill();
 
     // Update on resize
-    window.addEventListener('resize', updatePill);
+    window.addEventListener('resize', updatePill, { passive: true });
 
     // Tiny timeout to catch layout shifts if any (optional but safe)
     const timeout = setTimeout(updatePill, 50);
 
     return () => {
       window.removeEventListener('resize', updatePill);
+      if (rafRef.current !== null) {
+        cancelAnimationFrame(rafRef.current);
+      }
       clearTimeout(timeout);
     };
   }, [pathname, navigation]);
@@ -52,14 +66,15 @@ const NavPill = ({ navigation, pathname }: { navigation: Array<{ name: string; h
   return (
     <nav className="relative flex items-center gap-1 h-full" ref={navRef}>
       <motion.span
-        className="absolute top-0 bottom-0 bg-[#0752A0] shadow-sm rounded-full -z-10"
+        className="absolute top-0 bottom-0 left-0 w-px origin-left bg-[#0752A0] shadow-sm rounded-full -z-10"
         initial={false}
         animate={{
-          left: activeRect.left,
-          width: activeRect.width,
+          x: activeRect.left,
+          scaleX: Math.max(activeRect.width, 1),
           opacity: activeRect.opacity
         }}
         transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+        style={{ willChange: "transform, opacity" }}
       />
       {navigation.map((item) => {
         const isActive = pathname === item.href;

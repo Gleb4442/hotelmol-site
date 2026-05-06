@@ -1,9 +1,11 @@
 "use client";
+import { useMemo } from "react";
 import { Badge } from "@/components/ui/badge";
 import { SiTelegram, SiWordpress, SiInstagram, SiWhatsapp, SiWix } from "react-icons/si";
 import { useTranslation } from "@/lib/TranslationContext";
 import { MessageIntegrationIcon } from "@/client/src/components/MessageIntegrationIcon";
 import PremiumBackground from "./PremiumBackground";
+import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 const allIntegrations = [
   { name: "Telegram", icon: SiTelegram, color: "#0088cc", comingSoon: false, hideOnDesktop: false },
   {
@@ -94,6 +96,8 @@ function IntegrationItem({ integration, compact = false }: { integration: typeof
 
 export default function IntegrationTicker() {
   const { t } = useTranslation();
+  const observerOptions = useMemo(() => ({ threshold: 0.05, rootMargin: "120px 0px" }), []);
+  const [tickerRef, isTickerVisible] = useIntersectionObserver<HTMLDivElement>(observerOptions);
 
   const allRow1 = [...row1Integrations, ...row1Integrations];
   const allRow2 = [...row2Integrations, ...row2Integrations];
@@ -117,13 +121,13 @@ export default function IntegrationTicker() {
         </div>
 
         {/* Mobile: two rows moving in opposite directions via CSS animation */}
-        <div className="md:hidden space-y-4">
+        <div ref={tickerRef} className="md:hidden space-y-4">
           <div
             className="flex overflow-hidden"
             role="list"
             aria-label="Integration partners row 1"
           >
-            <div className="flex gap-4 ticker-scroll-left">
+            <div className={`flex gap-4 ticker-scroll-left ${isTickerVisible ? "" : "animation-paused"}`}>
               {allRow1.map((integration, index) => (
                 <IntegrationItem key={`row1-${integration.name}-${index}`} integration={integration} compact />
               ))}
@@ -134,7 +138,7 @@ export default function IntegrationTicker() {
             role="list"
             aria-label="Integration partners row 2"
           >
-            <div className="flex gap-4 ticker-scroll-right">
+            <div className={`flex gap-4 ticker-scroll-right ${isTickerVisible ? "" : "animation-paused"}`}>
               {allRow2.map((integration, index) => (
                 <IntegrationItem key={`row2-${integration.name}-${index}`} integration={integration} compact />
               ))}

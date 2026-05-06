@@ -7,7 +7,8 @@ import { ShoppingCart, Zap, TrendingUp } from "lucide-react";
 export default function SalesAIAgentSection() {
   const { t } = useTranslation();
   const sectionRef = useRef<HTMLElement>(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
+  const isInView = useInView(sectionRef, { amount: 0.3 });
+  const [hasEnteredView, setHasEnteredView] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   useEffect(() => {
@@ -20,6 +21,12 @@ export default function SalesAIAgentSection() {
     mediaQuery.addEventListener("change", handleChange);
     return () => mediaQuery.removeEventListener("change", handleChange);
   }, []);
+
+  useEffect(() => {
+    if (isInView) setHasEnteredView(true);
+  }, [isInView]);
+
+  const shouldFloat = !prefersReducedMotion && isInView;
 
   const containerVariants = {
     hidden: {},
@@ -60,7 +67,7 @@ export default function SalesAIAgentSection() {
       <motion.div
         className="container mx-auto px-4"
         initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
+        animate={hasEnteredView ? "visible" : "hidden"}
         variants={containerVariants}
       >
         {/* Header */}
@@ -132,21 +139,22 @@ export default function SalesAIAgentSection() {
             {/* Floating Info Clouds */}
             {/* Cloud 1 - Top Left */}
             <motion.div
-              className="absolute top-0 left-0 max-w-xs"
+              className="absolute top-0 left-0 max-w-xs transform-gpu"
               variants={floatingVariants}
               animate={
-                !prefersReducedMotion && isInView
+                shouldFloat
                   ? {
                       y: [0, -10, 0],
                       x: [0, -8, 0],
                     }
-                  : {}
+                  : { x: 0, y: 0 }
               }
-              transition={{
+              transition={shouldFloat ? {
                 duration: 4,
                 repeat: Infinity,
                 ease: "easeInOut",
-              }}
+              } : { duration: 0.2 }}
+              style={{ willChange: "transform, opacity" }}
             >
               <Card className="p-4 bg-white dark:bg-slate-900 shadow-lg border border-primary/20">
                 <p className="text-xs font-semibold text-primary mb-1">{t("home.salesAgent.cloud1.label")}</p>
@@ -156,22 +164,23 @@ export default function SalesAIAgentSection() {
 
             {/* Cloud 2 - Top Right */}
             <motion.div
-              className="absolute top-8 right-0 max-w-xs"
+              className="absolute top-8 right-0 max-w-xs transform-gpu"
               variants={floatingVariants}
               animate={
-                !prefersReducedMotion && isInView
+                shouldFloat
                   ? {
                       y: [0, 12, 0],
                       x: [0, 10, 0],
                     }
-                  : {}
+                  : { x: 0, y: 0 }
               }
-              transition={{
+              transition={shouldFloat ? {
                 duration: 5,
                 repeat: Infinity,
                 ease: "easeInOut",
                 delay: 0.5,
-              }}
+              } : { duration: 0.2 }}
+              style={{ willChange: "transform, opacity" }}
             >
               <Card className="p-4 bg-white dark:bg-slate-900 shadow-lg border border-primary/20">
                 <p className="text-xs font-semibold text-primary mb-1">{t("home.salesAgent.cloud2.label")}</p>
@@ -181,22 +190,23 @@ export default function SalesAIAgentSection() {
 
             {/* Cloud 3 - Bottom Left */}
             <motion.div
-              className="absolute bottom-0 left-4 max-w-xs"
+              className="absolute bottom-0 left-4 max-w-xs transform-gpu"
               variants={floatingVariants}
               animate={
-                !prefersReducedMotion && isInView
+                shouldFloat
                   ? {
                       y: [0, 15, 0],
                       x: [0, -12, 0],
                     }
-                  : {}
+                  : { x: 0, y: 0 }
               }
-              transition={{
+              transition={shouldFloat ? {
                 duration: 4.5,
                 repeat: Infinity,
                 ease: "easeInOut",
                 delay: 1,
-              }}
+              } : { duration: 0.2 }}
+              style={{ willChange: "transform, opacity" }}
             >
               <Card className="p-4 bg-white dark:bg-slate-900 shadow-lg border border-primary/20">
                 <p className="text-xs font-semibold text-primary mb-1">{t("home.salesAgent.cloud3.label")}</p>
@@ -206,22 +216,23 @@ export default function SalesAIAgentSection() {
 
             {/* Cloud 4 - Bottom Right */}
             <motion.div
-              className="absolute bottom-8 right-4 max-w-xs"
+              className="absolute bottom-8 right-4 max-w-xs transform-gpu"
               variants={floatingVariants}
               animate={
-                !prefersReducedMotion && isInView
+                shouldFloat
                   ? {
                       y: [0, -12, 0],
                       x: [0, 8, 0],
                     }
-                  : {}
+                  : { x: 0, y: 0 }
               }
-              transition={{
+              transition={shouldFloat ? {
                 duration: 5.5,
                 repeat: Infinity,
                 ease: "easeInOut",
                 delay: 1.5,
-              }}
+              } : { duration: 0.2 }}
+              style={{ willChange: "transform, opacity" }}
             >
               <Card className="p-4 bg-white dark:bg-slate-900 shadow-lg border border-primary/20">
                 <p className="text-xs font-semibold text-primary mb-1">{t("home.salesAgent.cloud4.label")}</p>
