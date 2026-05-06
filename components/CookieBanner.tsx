@@ -114,32 +114,37 @@ export default function CookieBanner() {
       role="dialog"
       aria-modal="true"
       aria-label={t("cookie.banner.title") as string}
-      className="fixed bottom-3 left-1/2 z-[100] w-[calc(100%-1.5rem)] max-w-5xl -translate-x-1/2 animate-in fade-in slide-in-from-bottom-4 duration-500 sm:bottom-4 sm:w-[calc(100%-2rem)]"
+      className={`fixed bottom-4 left-1/2 z-[100] w-[calc(100%-2rem)] -translate-x-1/2 animate-in fade-in slide-in-from-bottom-4 duration-500 sm:bottom-5 ${
+        showCustomize ? "max-w-[920px]" : "max-w-[760px]"
+      }`}
     >
-      <Card className="relative overflow-hidden rounded-[28px] border-white/60 bg-white/95 px-3 py-2.5 shadow-[0_14px_36px_rgba(15,23,42,0.12)] sm:px-4">
+      <Card className="relative overflow-hidden rounded-[34px] border border-slate-200/70 bg-white/95 px-3.5 py-3 shadow-[0_10px_30px_rgba(15,23,42,0.13)] sm:px-4">
         {/* Subtle decorative glow */}
         <div
-          className="pointer-events-none absolute inset-0 opacity-80"
+          className="pointer-events-none absolute inset-0 opacity-70"
           style={{
             background:
-              "radial-gradient(260px 120px at 100% 0%, rgba(7,82,160,0.06), transparent 70%)",
+              "radial-gradient(240px 100px at 100% 0%, rgba(7,82,160,0.055), transparent 72%)",
           }}
         />
 
-        <div className={`relative z-10 ${showCustomize ? "" : "md:flex md:items-center md:gap-5"}`}>
-          <div className={`flex min-w-0 flex-col gap-0.5 ${showCustomize ? "mb-2" : "mb-2 md:mb-0 md:flex-1"}`}>
-            <h3 className="font-serif text-sm font-bold tracking-tight text-slate-900 md:text-base">
-              {t("cookie.banner.title")}
-            </h3>
-            <p className="text-[11px] font-medium leading-snug text-slate-600/90 md:text-xs">
+        <div className={`relative z-10 ${showCustomize ? "" : "md:grid md:grid-cols-[minmax(0,1fr)_auto] md:items-center md:gap-4"}`}>
+          <div className={`min-w-0 ${showCustomize ? "mb-2.5" : "mb-2 md:mb-0"}`}>
+            <div className="mb-0.5 flex items-center gap-2">
+              <h3 className="font-serif text-[13px] font-bold tracking-tight text-slate-900">
+                {t("cookie.banner.title")}
+              </h3>
+              <span className="hidden h-1 w-1 rounded-full bg-primary/40 sm:block" />
+            </div>
+            <p className="text-[11px] font-medium leading-snug text-slate-600/90 sm:line-clamp-1">
               {t("cookie.banner.description")}
             </p>
           </div>
 
           {showCustomize && (
-            <div className="mb-2 grid gap-2 animate-in fade-in slide-in-from-top-2 duration-300 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mb-2.5 grid gap-2 animate-in fade-in slide-in-from-top-2 duration-300 sm:grid-cols-2 lg:grid-cols-4">
               {/* Necessary — always on */}
-              <div className="flex items-start gap-2 rounded-2xl border border-slate-100/70 bg-slate-50/70 p-2">
+              <div className="flex items-start gap-2 rounded-[18px] border border-slate-100/70 bg-slate-50/70 p-2">
                 <Checkbox
                   id="necessary"
                   checked={true}
@@ -157,7 +162,7 @@ export default function CookieBanner() {
               </div>
 
               {/* Analytics */}
-              <div className="flex items-start gap-2 rounded-2xl border border-slate-100 bg-white/60 p-2">
+              <div className="flex items-start gap-2 rounded-[18px] border border-slate-100 bg-white/60 p-2">
                 <Checkbox
                   id="analytics"
                   checked={preferences.analytics}
@@ -177,7 +182,7 @@ export default function CookieBanner() {
               </div>
 
               {/* Marketing */}
-              <div className="flex items-start gap-2 rounded-2xl border border-slate-100 bg-white/60 p-2">
+              <div className="flex items-start gap-2 rounded-[18px] border border-slate-100 bg-white/60 p-2">
                 <Checkbox
                   id="marketing"
                   checked={preferences.marketing}
@@ -197,7 +202,7 @@ export default function CookieBanner() {
               </div>
 
               {/* Functional */}
-              <div className="flex items-start gap-2 rounded-2xl border border-slate-100 bg-white/60 p-2">
+              <div className="flex items-start gap-2 rounded-[18px] border border-slate-100 bg-white/60 p-2">
                 <Checkbox
                   id="functional"
                   checked={preferences.functional}
@@ -218,7 +223,7 @@ export default function CookieBanner() {
             </div>
           )}
 
-          <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-end">
+          <div className="flex flex-col gap-1.5 md:flex-row md:items-center md:justify-end">
             {showCustomize ? (
               <>
                 <Button
@@ -236,24 +241,24 @@ export default function CookieBanner() {
                 </Button>
               </>
             ) : (
-              <div className="flex w-full flex-col gap-2 md:w-auto md:flex-row md:items-center">
+              <div className="grid w-full grid-cols-2 gap-1.5 md:w-auto md:grid-cols-none md:flex md:items-center">
                 <Button
                   variant="outline"
                   onClick={() => setShowCustomize(true)}
-                  className="h-8 rounded-full border-slate-200 px-4 text-[11px] font-bold text-slate-500 transition-all hover:border-slate-300 hover:bg-slate-50 hover:text-slate-700"
+                  className="h-8 rounded-full border-slate-200 px-3 text-[11px] font-bold text-slate-500 transition-all hover:border-slate-300 hover:bg-slate-50 hover:text-slate-700 md:px-4"
                 >
                   {t("cookie.banner.customize")}
                 </Button>
                 <Button
                   variant="outline"
                   onClick={handleRejectNonEssential}
-                  className="h-8 rounded-full border-slate-200 px-4 text-[11px] font-bold text-slate-500 transition-all hover:border-slate-300 hover:bg-slate-50 hover:text-slate-700"
+                  className="h-8 rounded-full border-slate-200 px-3 text-[11px] font-bold text-slate-500 transition-all hover:border-slate-300 hover:bg-slate-50 hover:text-slate-700 md:px-4"
                 >
                   {t("cookie.banner.rejectAll")}
                 </Button>
                 <Button
                   onClick={handleAcceptAll}
-                  className="h-8 rounded-full border border-white/20 bg-primary px-5 text-[11px] font-extrabold text-white shadow-md shadow-primary/20 transition-all hover:bg-primary/90 active:scale-[0.98] md:min-w-[140px]"
+                  className="col-span-2 h-8 rounded-full border border-white/20 bg-primary px-5 text-[11px] font-extrabold text-white shadow-md shadow-primary/20 transition-all hover:bg-primary/90 active:scale-[0.98] md:col-span-1 md:min-w-[132px]"
                 >
                   {t("cookie.banner.acceptAll")}
                 </Button>
