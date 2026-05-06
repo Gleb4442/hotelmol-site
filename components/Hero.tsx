@@ -24,21 +24,54 @@ export default function Hero() {
       "берет рутину на себя"
     ];
 
+  const [displayText, setDisplayText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
   const [wordIndex, setWordIndex] = useState(0);
+  const [speed, setSpeed] = useState(150);
 
   useEffect(() => {
-    if (!isVisible || typewriterKeys.length <= 1) return;
-    const timer = window.setInterval(() => {
-      setWordIndex((prev) => (prev + 1) % typewriterKeys.length);
-    }, 3200);
-    return () => window.clearInterval(timer);
-  }, [isVisible, typewriterKeys.length]);
+    // If not visible, do not run the animation loop
+    if (!isVisible) return;
+    let pauseTimer: ReturnType<typeof setTimeout> | undefined;
 
-  useEffect(() => {
-    setWordIndex(0);
-  }, [language]);
+    const handleType = () => {
+      const currentWord = typewriterKeys[wordIndex % typewriterKeys.length];
+      const isFinishing = !isDeleting && displayText === currentWord;
+      const isStarting = isDeleting && displayText === "";
 
-  const currentPhrase = typewriterKeys[wordIndex % typewriterKeys.length] ?? "";
+      if (isFinishing) {
+        pauseTimer = setTimeout(() => setIsDeleting(true), 2000);
+        return;
+      }
+
+      if (isStarting) {
+        setIsDeleting(false);
+        setWordIndex((prev) => (prev + 1) % typewriterKeys.length);
+        return;
+      }
+
+      const nextText = isDeleting
+        ? currentWord.substring(0, displayText.length - 1)
+        : currentWord.substring(0, displayText.length + 1);
+
+      setDisplayText(nextText);
+
+      // Human-like speed logic
+      if (isDeleting) {
+        // Deleting: 22 chars per second -> ~45ms per character
+        setSpeed(45);
+      } else {
+        // Typing: 13 chars per second -> ~77ms per character
+        setSpeed(77);
+      }
+    };
+
+    const timer = setTimeout(handleType, speed);
+    return () => {
+      clearTimeout(timer);
+      if (pauseTimer) clearTimeout(pauseTimer);
+    };
+  }, [displayText, isDeleting, wordIndex, typewriterKeys, speed, isVisible]);
 
   return (
     <>
@@ -53,7 +86,8 @@ export default function Hero() {
               </span>
               <br />
               <span className="bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent inline break-words">
-                {currentPhrase}
+                {displayText}
+                <span className="inline-block w-[3px] h-[0.9em] bg-white ml-[1px] animate-pulse align-middle" />
               </span>
             </h1>
 

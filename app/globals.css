@@ -384,14 +384,11 @@ html {
 .ticker-scroll-left {
   animation: ticker-scroll-left 30s linear infinite;
   transform: translateZ(0);
+  will-change: transform;
 }
 .ticker-scroll-right {
   animation: ticker-scroll-right 30s linear infinite;
   transform: translateZ(0);
-}
-
-.ticker-scroll-left:not(.animation-paused),
-.ticker-scroll-right:not(.animation-paused) {
   will-change: transform;
 }
 
