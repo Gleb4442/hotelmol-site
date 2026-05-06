@@ -16,7 +16,7 @@ const HotelQRBenefits = () => {
             revenue: "+54%",
             revenueDesc: "к выручке F&B room service",
             effect: "Значительный рост доходности сервиса в номерах",
-            icon: <img src="/assets/mandarin-oriental-logo.png" alt="Mandarin Oriental logo" loading="lazy" decoding="async" />,
+            icon: <img src="/assets/mandarin-oriental-logo.png" alt="Mandarin Oriental logo" />,
             glowColor: "from-orange-50 to-amber-50"
         },
         {
@@ -30,7 +30,7 @@ const HotelQRBenefits = () => {
             revenue: "Снижение",
             revenueDesc: "ошибок в заказах и ускорение обработки",
             effect: "Больше времени на персонализированный сервис",
-            icon: <img src="/assets/radisson-blu-logo.svg" alt="Radisson Blu logo" loading="lazy" decoding="async" />,
+            icon: <img src="/assets/radisson-blu-logo.svg" alt="Radisson Blu logo" />,
             glowColor: "from-cyan-50 to-blue-50"
         },
         {
@@ -44,7 +44,7 @@ const HotelQRBenefits = () => {
             revenue: "+72.5%",
             revenueDesc: "к выручке in-room",
             effect: "23–32% заказов через цифру",
-            icon: <img src="/assets/fairmont-logo.svg" alt="Fairmont logo" loading="lazy" decoding="async" />,
+            icon: <img src="/assets/fairmont-logo.svg" alt="Fairmont logo" />,
             glowColor: "from-sky-50 to-blue-50"
         },
         {
@@ -58,7 +58,7 @@ const HotelQRBenefits = () => {
             revenue: "+128%",
             revenueDesc: "к F&B-выручке YoY",
             effect: "Экспоненциальный рост мобильных заказов",
-            icon: <img src="/assets/ritz-carlton-logo.png" alt="Ritz-Carlton logo" loading="lazy" decoding="async" />,
+            icon: <img src="/assets/ritz-carlton-logo.png" alt="Ritz-Carlton logo" />,
             glowColor: "from-slate-50 to-blue-50"
         }
     ];
@@ -139,7 +139,7 @@ const HotelQRBenefits = () => {
                                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
                                     {/* Метрика 1 */}
-                                    <div className="bg-white/75 rounded-2xl p-5 border border-white/60 shadow-sm">
+                                    <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-5 border border-white/50 shadow-sm">
                                         <div className="flex items-center gap-2 mb-3 text-slate-400">
                                             <MousePointerClick className="w-4 h-4" />
                                             <span className="text-[10px] uppercase tracking-widest font-bold">Удовлетворенность</span>
@@ -151,7 +151,7 @@ const HotelQRBenefits = () => {
                                     </div>
 
                                     {/* Метрика 2 */}
-                                    <div className="bg-white/75 rounded-2xl p-5 border border-white/60 shadow-sm">
+                                    <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-5 border border-white/50 shadow-sm">
                                         <div className="flex items-center gap-2 mb-3 text-slate-400">
                                             {activeCase.revenueIcon}
                                             <span className="text-[10px] uppercase tracking-widest font-bold">{activeCase.revenueLabel}</span>
@@ -163,7 +163,7 @@ const HotelQRBenefits = () => {
                                     </div>
 
                                     {/* Эффект */}
-                                    <div className="sm:col-span-2 lg:col-span-1 bg-white/75 rounded-2xl p-5 border border-white/60 shadow-sm flex flex-col justify-center">
+                                    <div className="sm:col-span-2 lg:col-span-1 bg-white/60 backdrop-blur-sm rounded-2xl p-5 border border-white/50 shadow-sm flex flex-col justify-center">
                                         <div className="flex items-center gap-2 mb-3 text-slate-400">
                                             <Zap className="w-4 h-4" />
                                             <span className="text-[10px] uppercase tracking-widest font-bold">Эффект</span>

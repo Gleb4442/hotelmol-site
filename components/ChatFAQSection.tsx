@@ -170,7 +170,7 @@ export default function ChatFAQSection({ variant = "roomie" }: ChatFAQSectionPro
                                                                 opacity: 0,
                                                                 transition: { duration: 0.4, ease: "easeInOut" }
                                                             }}
-                                                            className="absolute inset-0 z-10 flex items-center justify-center bg-white/85"
+                                                            className="absolute inset-0 z-10 flex items-center justify-center bg-white/40 backdrop-blur-sm"
                                                         >
                                                             <span className="text-xs font-medium uppercase tracking-widest text-primary/80 bg-white/80 px-3 py-1 rounded-full shadow-sm">
                                                                 Tap to Reveal
@@ -182,7 +182,7 @@ export default function ChatFAQSection({ variant = "roomie" }: ChatFAQSectionPro
                                                 {/* Actual Content */}
                                                 <p className={cn(
                                                     "text-sm md:text-base text-slate-700 leading-relaxed transition-all duration-700 whitespace-pre-line",
-                                                    !isRevealed && "opacity-20 select-none line-clamp-2"
+                                                    !isRevealed && "opacity-40 blur-[2px] select-none line-clamp-2"
                                                 )}>
                                                     {faq.answer.includes("[PRICING_BTN]") ? (
                                                         faq.answer.split(/\[PRICING_BTN\](.*?)\[\/PRICING_BTN\]/g).map((part: string, i: number) => {

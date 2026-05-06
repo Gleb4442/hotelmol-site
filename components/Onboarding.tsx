@@ -17,6 +17,8 @@ import { useCookieBanner } from "@/lib/CookieBannerContext";
 export default function Onboarding() {
     const { t, language, setLanguage } = useTranslation();
     const [isVisible, setIsVisible] = useState(false);
+    const [displayedText, setDisplayedText] = useState("");
+    const [isTypingComplete, setIsTypingComplete] = useState(false);
     const [isLangOpen, setIsLangOpen] = useState(false);
     const { setCookieBannerVisible } = useCookieBanner();
 
@@ -35,7 +37,7 @@ export default function Onboarding() {
         { id: "company", label: t("onboarding.role.company"), icon: Handshake },
     ];
 
-    const fullText = String(t("onboarding.welcome"));
+    const fullText = t("onboarding.welcome");
 
     useEffect(() => {
         const hasCompleted = localStorage.getItem("onboarding_completed");
@@ -43,6 +45,23 @@ export default function Onboarding() {
             setIsVisible(true);
         }
     }, []);
+
+    useEffect(() => {
+        if (!isVisible) return;
+
+        let index = 0;
+        const interval = setInterval(() => {
+            if (index < (fullText?.length || 0)) {
+                setDisplayedText(fullText.slice(0, index + 1));
+                index++;
+            } else {
+                setIsTypingComplete(true);
+                clearInterval(interval);
+            }
+        }, 30);
+
+        return () => clearInterval(interval);
+    }, [isVisible, fullText]);
 
     const trackOnboarding = async (roleId: string, isSkip: boolean = false) => {
         try {
@@ -86,16 +105,12 @@ export default function Onboarding() {
                 exit={{ opacity: 0 }}
                 className="fixed inset-0 z-[100] bg-white text-slate-800 font-sans selection:bg-blue-600/10 overflow-y-auto"
             >
-                {/* Background Mesh */}
+                {/* Background Mesh/Blur */}
                 <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
                     <div className="absolute top-0 left-0 w-full h-full bg-[#FAF9F6]" />
-                    <div
-                        className="absolute inset-0 opacity-70"
-                        style={{
-                            background:
-                                "radial-gradient(700px 420px at 12% 0%, rgba(4,75,147,0.08), transparent 65%), radial-gradient(760px 460px at 92% 100%, rgba(46,139,240,0.06), transparent 68%)",
-                        }}
-                    />
+                    {/* Static Glows — motion imperceptible at 3-6% opacity behind 140-160px blur */}
+                    <div className="absolute -top-20 -left-20 w-[600px] h-[600px] bg-blue-600 rounded-full blur-[140px] opacity-[0.06]" />
+                    <div className="absolute -bottom-40 -right-20 w-[700px] h-[700px] bg-indigo-500 rounded-full blur-[160px] opacity-[0.04]" />
                     
                     {/* Grid Pattern */}
                     <div className="absolute inset-0 opacity-[0.03]" 
@@ -111,7 +126,7 @@ export default function Onboarding() {
                     <div className="relative">
                         <button
                             onClick={() => setIsLangOpen(!isLangOpen)}
-                            className="flex items-center justify-center w-10 h-10 rounded-full bg-white/90 border border-white shadow-sm hover:bg-white transition-colors group"
+                            className="flex items-center justify-center w-10 h-10 rounded-full bg-white/70 backdrop-blur-2xl border border-white/80 shadow-sm hover:bg-white transition-all group"
                         >
                             <Languages className="w-5 h-5 text-slate-600 group-hover:text-blue-700 transition-colors" />
                         </button>
@@ -122,7 +137,7 @@ export default function Onboarding() {
                                     initial={{ opacity: 0, y: 10, scale: 0.95 }}
                                     animate={{ opacity: 1, y: 0, scale: 1 }}
                                     exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                                    className="absolute right-0 mt-3 w-40 bg-white/95 border border-white rounded-2xl shadow-xl shadow-blue-900/10 overflow-hidden"
+                                    className="absolute right-0 mt-3 w-40 bg-white/90 backdrop-blur-3xl border border-white/90 rounded-2xl shadow-2xl shadow-blue-900/10 overflow-hidden"
                                 >
                                     <div className="py-2">
                                         {languages.map((lang) => (
@@ -131,6 +146,8 @@ export default function Onboarding() {
                                                 onClick={() => {
                                                     setLanguage(lang.code as any);
                                                     setIsLangOpen(false);
+                                                    setDisplayedText("");
+                                                    setIsTypingComplete(false);
                                                 }}
                                                 className={`w-full px-5 py-3 text-left text-sm font-bold transition-colors flex items-center justify-between ${
                                                     language === lang.code 
@@ -150,7 +167,7 @@ export default function Onboarding() {
 
                     <button
                         onClick={() => handleComplete("skip", true)}
-                        className="text-[10px] font-bold text-slate-500 hover:text-blue-700 transition-colors uppercase tracking-[0.15em] flex items-center group bg-white/90 border border-white shadow-sm px-5 py-2.5 rounded-full"
+                        className="text-[10px] font-bold text-slate-500 hover:text-blue-700 transition-colors uppercase tracking-[0.15em] flex items-center group bg-white/70 backdrop-blur-2xl border border-white/80 shadow-sm px-5 py-2.5 rounded-full"
                     >
                         {t("onboarding.skip")}
                         <ChevronRight className="w-4 h-4 ml-1.5 group-hover:translate-x-0.5 transition-transform" />
@@ -167,7 +184,7 @@ export default function Onboarding() {
                                 initial={{ y: 20, opacity: 0 }}
                                 animate={{ y: 0, opacity: 1 }}
                                 transition={{ delay: 0.2 }}
-                                className="bg-white/90 border border-white p-8 md:p-10 rounded-[2.5rem] shadow-xl shadow-blue-900/5 relative overflow-hidden"
+                                className="bg-white/70 backdrop-blur-2xl border border-white/90 p-10 md:p-12 rounded-[2.5rem] shadow-2xl shadow-blue-900/5 relative overflow-hidden"
                             >
                                 <div className="flex flex-col md:flex-row items-center md:items-start text-center md:text-left space-y-6 md:space-y-0 md:space-x-8">
                                     <div className="flex-shrink-0">
@@ -185,12 +202,13 @@ export default function Onboarding() {
                                     </div>
                                     <div className="flex flex-col justify-center">
                                         <p className="text-xl md:text-2xl leading-relaxed font-semibold text-slate-800">
-                                            {fullText.split("Roomie").map((part, i, arr) => (
+                                            {displayedText.split("Roomie").map((part, i, arr) => (
                                                 <span key={i}>
                                                     {part}
                                                     {i < arr.length - 1 && <span className="text-[#044B93] font-extrabold">Roomie</span>}
                                                 </span>
                                             ))}
+                                            {!isTypingComplete && <span className="inline-block w-1.5 h-6 bg-blue-600 animate-pulse ml-1 align-middle" />}
                                         </p>
                                     </div>
                                 </div>
@@ -215,12 +233,12 @@ export default function Onboarding() {
                                     <button
                                         key={role.id}
                                         onClick={() => handleComplete(role.id)}
-                                        className="group relative p-8 md:p-10 rounded-[2.5rem] bg-white/72 hover:bg-white transition-[background-color,border-color,box-shadow,transform] duration-300 border border-white hover:border-blue-200/50 shadow-[0_8px_24px_rgba(0,0,0,0.04)] hover:shadow-[0_18px_44px_rgba(4,75,147,0.10)] hover:-translate-y-1 flex flex-col items-center space-y-6 overflow-hidden"
+                                        className="group relative p-8 md:p-10 rounded-[2.5rem] bg-white/40 backdrop-blur-2xl hover:bg-white transition-all duration-500 border border-white/60 hover:border-blue-200/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_25px_60px_rgba(4,75,147,0.12)] hover:-translate-y-2 flex flex-col items-center space-y-6 overflow-hidden"
                                     >
                                         {/* Hover Gradient Background */}
                                         <div className="absolute inset-0 bg-gradient-to-br from-blue-50/0 via-transparent to-blue-50/0 group-hover:from-blue-50/80 group-hover:via-transparent group-hover:to-blue-50/30 transition-all duration-700"></div>
 
-                                        <div className="relative z-10 w-20 h-20 rounded-[1.75rem] bg-white shadow-[0_4px_18px_rgba(0,0,0,0.04)] flex items-center justify-center group-hover:bg-[#044B93] group-hover:shadow-[0_12px_28px_rgba(4,75,147,0.22)] transition-[background-color,box-shadow,transform] duration-300 group-hover:scale-105 group-hover:rotate-2">
+                                        <div className="relative z-10 w-20 h-20 rounded-[1.75rem] bg-white shadow-[0_4px_20px_rgba(0,0,0,0.04)] flex items-center justify-center group-hover:bg-[#044B93] group-hover:shadow-[0_15px_35px_rgba(4,75,147,0.35)] transition-all duration-500 group-hover:scale-110 group-hover:rotate-3">
                                             <role.icon className="w-10 h-10 text-slate-400 group-hover:text-white transition-all duration-500" />
                                         </div>
                                         

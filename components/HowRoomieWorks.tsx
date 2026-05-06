@@ -161,7 +161,7 @@ export default function HowRoomieWorks() {
                 willChange: "transform"
               }}
             >
-              {isSectionVisible && <div className="absolute inset-0 rounded-full animate-ping bg-primary/30" />}
+              <div className="absolute inset-0 rounded-full animate-ping bg-primary/30" />
             </motion.div>
           </div>
 
@@ -180,12 +180,12 @@ export default function HowRoomieWorks() {
                   className="relative flex flex-col items-center text-center group"
                   ref={(el) => { stepRefs.current[index] = el; }}
                 >
-                  <div className={`relative z-10 mb-4 lg:mb-8 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-primary/80 text-primary-foreground shadow-xl transition-[box-shadow,transform] duration-700 ${isActive ? 'shadow-[0_14px_34px_rgba(7,82,160,0.30)] ring-4 ring-primary/20' : 'group-hover:shadow-2xl'}`}>
+                  <div className={`relative z-10 mb-4 lg:mb-8 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-primary/80 text-primary-foreground shadow-xl transition-all duration-700 ${isActive ? 'shadow-[0_20px_50px_rgba(7,82,160,0.4)] ring-4 ring-primary/20' : 'group-hover:shadow-2xl'}`}>
                     <Icon className={`h-9 w-9 transition-all duration-700 ${isActive ? 'scale-110' : ''}`} />
                     <AnimatePresence>
-                      {isActive && isSectionVisible && (
+                      {isActive && (
                         <motion.div
-                          className="absolute inset-0 rounded-2xl bg-primary/10"
+                          className="absolute inset-0 rounded-2xl bg-primary/20 blur-xl"
                           initial={{ opacity: 0, scale: 0.8 }}
                           animate={{ opacity: 1, scale: 1.2 }}
                           exit={{ opacity: 0, scale: 0.8 }}

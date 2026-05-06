@@ -37,15 +37,12 @@ const PremiumBackground: React.FC<PremiumBackgroundProps> = ({
           />
         )}
 
-        {/* Glow Layer — radial gradients avoid expensive large CSS blur surfaces. */}
+        {/* Glow Layer — static, no animation (imperceptible at 3-4% opacity behind 160px blur) */}
         {showGlows && (
-          <div
-            className="absolute inset-0 opacity-80"
-            style={{
-              background:
-                "radial-gradient(720px 420px at 0% 12%, rgba(56,189,248,0.035), transparent 68%), radial-gradient(680px 400px at 100% 88%, rgba(14,165,233,0.03), transparent 70%)",
-            }}
-          />
+          <>
+            <div className="absolute top-[5%] left-[-5%] w-[50%] h-[50%] bg-[#38BDF8] rounded-full blur-[160px] opacity-[0.04]" />
+            <div className="absolute bottom-[5%] right-[-5%] w-[45%] h-[45%] bg-[#0EA5E9] rounded-full blur-[160px] opacity-[0.03]" />
+          </>
         )}
 
         {/* Structural Lines Layer */}

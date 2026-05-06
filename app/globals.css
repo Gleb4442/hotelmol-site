@@ -237,6 +237,7 @@ html {
     position: relative;
     overflow: hidden;
     background: linear-gradient(135deg, rgba(224, 242, 254, 0.9) 0%, rgba(186, 230, 253, 0.7) 50%, rgba(224, 242, 254, 0.9) 100%);
+    backdrop-filter: blur(10px);
     border: 1px solid rgba(56, 189, 248, 0.3);
   }
 
@@ -338,7 +339,7 @@ html {
     radial-gradient(1200px 520px at 50% 20%, rgba(255, 255, 255, 0.18), transparent 60%),
     radial-gradient(900px 420px at 20% 10%, rgba(56, 189, 248, 0.14), transparent 55%),
     radial-gradient(900px 420px at 85% 18%, rgba(99, 102, 241, 0.12), transparent 55%);
-  opacity: 0.78;
+  mix-blend-mode: soft-light;
   pointer-events: none;
 }
 
@@ -353,6 +354,8 @@ html {
     rgba(255, 255, 255, 0.00) 62%,
     transparent 100%
   );
+  filter: blur(6px);
+  mix-blend-mode: overlay;
   will-change: transform, opacity;
   opacity: 0;
   animation: hero-sheen-sweep 14s ease-in-out infinite;
@@ -381,24 +384,17 @@ html {
 .ticker-scroll-left {
   animation: ticker-scroll-left 30s linear infinite;
   transform: translateZ(0);
+  will-change: transform;
 }
 .ticker-scroll-right {
   animation: ticker-scroll-right 30s linear infinite;
   transform: translateZ(0);
-}
-
-.ticker-scroll-left:not(.animation-paused),
-.ticker-scroll-right:not(.animation-paused) {
   will-change: transform;
 }
 
 .animation-paused,
 .animation-paused * {
   animation-play-state: paused !important;
-}
-
-.animation-paused .hero-sheen {
-  will-change: auto;
 }
 
 @media (prefers-reduced-motion: reduce) {
