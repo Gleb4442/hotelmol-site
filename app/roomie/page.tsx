@@ -1,17 +1,16 @@
 "use client";
-import { MessageSquare, Brain, Zap, Shield, BarChart3, Globe2, ArrowRight, CheckCircle } from "lucide-react";
+import dynamicImport from "next/dynamic";
+import { Globe2 } from "lucide-react";
 import { SiTelegram, SiWhatsapp, SiMessenger, SiAppstore } from "react-icons/si";
 
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-
-import BookingShowcase from "@/components/BookingShowcase";
-import SalesAIAgentSection from "@/components/SalesAIAgentSection";
-import TaskManagementShowcase from "@/components/TaskManagementShowcase";
-import ChatFAQSection from "@/components/ChatFAQSection";
-import ConsultationForm from "@/components/ConsultationForm";
 import { useTranslation } from "@/lib/TranslationContext";
 import SEO, { productSchema } from "@/components/SEO";
+
+const BookingShowcase = dynamicImport(() => import("@/components/BookingShowcase"));
+const SalesAIAgentSection = dynamicImport(() => import("@/components/SalesAIAgentSection"));
+const TaskManagementShowcase = dynamicImport(() => import("@/components/TaskManagementShowcase"));
+const ChatFAQSection = dynamicImport(() => import("@/components/ChatFAQSection"));
+const ConsultationForm = dynamicImport(() => import("@/components/ConsultationForm"));
 
 
 export default function Roomie() {

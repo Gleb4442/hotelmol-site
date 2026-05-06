@@ -158,10 +158,10 @@ export default function HowRoomieWorks() {
               }}
               style={{
                 boxShadow: '0 0 15px rgba(7, 82, 160, 0.8), 0 0 30px rgba(7, 82, 160, 0.4)',
-                willChange: "transform"
+                willChange: isSectionVisible ? "transform" : "auto"
               }}
             >
-              <div className="absolute inset-0 rounded-full animate-ping bg-primary/30" />
+              {isSectionVisible && <div className="absolute inset-0 rounded-full animate-ping bg-primary/30" />}
             </motion.div>
           </div>
 

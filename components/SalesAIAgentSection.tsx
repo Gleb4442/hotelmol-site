@@ -155,7 +155,7 @@ export default function SalesAIAgentSection() {
                 repeat: Infinity,
                 ease: "easeInOut",
               } : { duration: 0.2 }}
-              style={{ willChange: "transform, opacity" }}
+              style={shouldFloat ? { willChange: "transform, opacity" } : undefined}
             >
               <Card className="p-4 bg-white dark:bg-slate-900 shadow-lg border border-primary/20">
                 <p className="text-xs font-semibold text-primary mb-1">{t("home.salesAgent.cloud1.label")}</p>
@@ -181,7 +181,7 @@ export default function SalesAIAgentSection() {
                 ease: "easeInOut",
                 delay: 0.5,
               } : { duration: 0.2 }}
-              style={{ willChange: "transform, opacity" }}
+              style={shouldFloat ? { willChange: "transform, opacity" } : undefined}
             >
               <Card className="p-4 bg-white dark:bg-slate-900 shadow-lg border border-primary/20">
                 <p className="text-xs font-semibold text-primary mb-1">{t("home.salesAgent.cloud2.label")}</p>
@@ -207,7 +207,7 @@ export default function SalesAIAgentSection() {
                 ease: "easeInOut",
                 delay: 1,
               } : { duration: 0.2 }}
-              style={{ willChange: "transform, opacity" }}
+              style={shouldFloat ? { willChange: "transform, opacity" } : undefined}
             >
               <Card className="p-4 bg-white dark:bg-slate-900 shadow-lg border border-primary/20">
                 <p className="text-xs font-semibold text-primary mb-1">{t("home.salesAgent.cloud3.label")}</p>
@@ -233,7 +233,7 @@ export default function SalesAIAgentSection() {
                 ease: "easeInOut",
                 delay: 1.5,
               } : { duration: 0.2 }}
-              style={{ willChange: "transform, opacity" }}
+              style={shouldFloat ? { willChange: "transform, opacity" } : undefined}
             >
               <Card className="p-4 bg-white dark:bg-slate-900 shadow-lg border border-primary/20">
                 <p className="text-xs font-semibold text-primary mb-1">{t("home.salesAgent.cloud4.label")}</p>

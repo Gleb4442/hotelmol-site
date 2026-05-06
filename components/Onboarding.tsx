@@ -17,8 +17,6 @@ import { useCookieBanner } from "@/lib/CookieBannerContext";
 export default function Onboarding() {
     const { t, language, setLanguage } = useTranslation();
     const [isVisible, setIsVisible] = useState(false);
-    const [displayedText, setDisplayedText] = useState("");
-    const [isTypingComplete, setIsTypingComplete] = useState(false);
     const [isLangOpen, setIsLangOpen] = useState(false);
     const { setCookieBannerVisible } = useCookieBanner();
 
@@ -37,7 +35,7 @@ export default function Onboarding() {
         { id: "company", label: t("onboarding.role.company"), icon: Handshake },
     ];
 
-    const fullText = t("onboarding.welcome");
+    const fullText = String(t("onboarding.welcome"));
 
     useEffect(() => {
         const hasCompleted = localStorage.getItem("onboarding_completed");
@@ -45,23 +43,6 @@ export default function Onboarding() {
             setIsVisible(true);
         }
     }, []);
-
-    useEffect(() => {
-        if (!isVisible) return;
-
-        let index = 0;
-        const interval = setInterval(() => {
-            if (index < (fullText?.length || 0)) {
-                setDisplayedText(fullText.slice(0, index + 1));
-                index++;
-            } else {
-                setIsTypingComplete(true);
-                clearInterval(interval);
-            }
-        }, 30);
-
-        return () => clearInterval(interval);
-    }, [isVisible, fullText]);
 
     const trackOnboarding = async (roleId: string, isSkip: boolean = false) => {
         try {
@@ -146,8 +127,6 @@ export default function Onboarding() {
                                                 onClick={() => {
                                                     setLanguage(lang.code as any);
                                                     setIsLangOpen(false);
-                                                    setDisplayedText("");
-                                                    setIsTypingComplete(false);
                                                 }}
                                                 className={`w-full px-5 py-3 text-left text-sm font-bold transition-colors flex items-center justify-between ${
                                                     language === lang.code 
@@ -202,13 +181,12 @@ export default function Onboarding() {
                                     </div>
                                     <div className="flex flex-col justify-center">
                                         <p className="text-xl md:text-2xl leading-relaxed font-semibold text-slate-800">
-                                            {displayedText.split("Roomie").map((part, i, arr) => (
+                                            {fullText.split("Roomie").map((part, i, arr) => (
                                                 <span key={i}>
                                                     {part}
                                                     {i < arr.length - 1 && <span className="text-[#044B93] font-extrabold">Roomie</span>}
                                                 </span>
                                             ))}
-                                            {!isTypingComplete && <span className="inline-block w-1.5 h-6 bg-blue-600 animate-pulse ml-1 align-middle" />}
                                         </p>
                                     </div>
                                 </div>

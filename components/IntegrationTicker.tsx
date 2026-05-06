@@ -10,49 +10,49 @@ const allIntegrations = [
   { name: "Telegram", icon: SiTelegram, color: "#0088cc", comingSoon: false, hideOnDesktop: false },
   {
     name: "Servio", icon: () => (
-      <img src="/assets/image_1760225380507.png" alt="Servio" className="w-10 h-10 object-contain" />
+      <img src="/assets/image_1760225380507.png" alt="Servio" className="w-10 h-10 object-contain" loading="lazy" decoding="async" />
     ), color: "#2563eb", comingSoon: false, hideOnDesktop: false
   },
   {
     name: "Tilda", icon: () => (
-      <img src="/assets/image_1760225370940.png" alt="Tilda" className="w-10 h-10 object-contain" />
+      <img src="/assets/image_1760225370940.png" alt="Tilda" className="w-10 h-10 object-contain" loading="lazy" decoding="async" />
     ), color: "#ff6347", comingSoon: false, hideOnDesktop: true
   },
   { name: "WordPress", icon: SiWordpress, color: "#21759b", comingSoon: false, hideOnDesktop: true },
   { name: "Wix", icon: SiWix, color: "#0c6ebd", comingSoon: false, hideOnDesktop: true },
   {
     name: "Messenger", icon: () => (
-      <img src="/assets/messenger-logo.png" alt="Messenger" className="w-10 h-10 object-contain" />
+      <img src="/assets/messenger-logo.png" alt="Messenger" className="w-10 h-10 object-contain" loading="lazy" decoding="async" />
     ), color: "#0084FF", comingSoon: false, hideOnDesktop: false
   },
   {
     name: "Protel", icon: () => (
-      <img src="/assets/protel-logo.png" alt="Protel" className="w-10 h-10 object-contain" />
+      <img src="/assets/protel-logo.png" alt="Protel" className="w-10 h-10 object-contain" loading="lazy" decoding="async" />
     ), color: "#E63946", comingSoon: false, hideOnDesktop: false
   },
   {
     name: "Poster", icon: () => (
-      <img src="/assets/poster-logo.png" alt="Poster" className="w-10 h-10 object-contain rounded-[8px] scale-150" />
+      <img src="/assets/poster-logo.png" alt="Poster" className="w-10 h-10 object-contain rounded-[8px] scale-150" loading="lazy" decoding="async" />
     ), color: "#E6A869", comingSoon: false, hideOnDesktop: false
   },
   {
     name: "Exely", icon: () => (
-      <img src="/assets/image_1764952906072.png" alt="Exely" className="w-10 h-10 object-contain" />
+      <img src="/assets/image_1764952906072.png" alt="Exely" className="w-10 h-10 object-contain" loading="lazy" decoding="async" />
     ), color: "#7C3AED", comingSoon: true, hideOnDesktop: false
   },
   {
     name: "EasyMS", icon: () => (
-      <img src="/assets/image_1764952914052.png" alt="EasyMS" className="w-10 h-10 object-contain" />
+      <img src="/assets/image_1764952914052.png" alt="EasyMS" className="w-10 h-10 object-contain" loading="lazy" decoding="async" />
     ), color: "#2563eb", comingSoon: true, hideOnDesktop: false
   },
   {
     name: "Mews", icon: () => (
-      <img src="/assets/mews-logo.png" alt="Mews" className="w-10 h-10 object-contain" />
+      <img src="/assets/mews-logo.png" alt="Mews" className="w-10 h-10 object-contain" loading="lazy" decoding="async" />
     ), color: "#FFFFFF", comingSoon: true, hideOnDesktop: true
   },
   {
     name: "Cloudbeds", icon: () => (
-      <img src="/assets/cloudbeds-logo.png" alt="Cloudbeds" className="w-10 h-10 object-contain" />
+      <img src="/assets/cloudbeds-logo.png" alt="Cloudbeds" className="w-10 h-10 object-contain" loading="lazy" decoding="async" />
     ), color: "#4F6FED", comingSoon: true, hideOnDesktop: true
   },
   { name: "WhatsApp", icon: SiWhatsapp, color: "#25d366", comingSoon: true, hideOnDesktop: false },

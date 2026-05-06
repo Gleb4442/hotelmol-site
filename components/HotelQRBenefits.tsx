@@ -16,7 +16,7 @@ const HotelQRBenefits = () => {
             revenue: "+54%",
             revenueDesc: "к выручке F&B room service",
             effect: "Значительный рост доходности сервиса в номерах",
-            icon: <img src="/assets/mandarin-oriental-logo.png" alt="Mandarin Oriental logo" />,
+            icon: <img src="/assets/mandarin-oriental-logo.png" alt="Mandarin Oriental logo" loading="lazy" decoding="async" />,
             glowColor: "from-orange-50 to-amber-50"
         },
         {
@@ -30,7 +30,7 @@ const HotelQRBenefits = () => {
             revenue: "Снижение",
             revenueDesc: "ошибок в заказах и ускорение обработки",
             effect: "Больше времени на персонализированный сервис",
-            icon: <img src="/assets/radisson-blu-logo.svg" alt="Radisson Blu logo" />,
+            icon: <img src="/assets/radisson-blu-logo.svg" alt="Radisson Blu logo" loading="lazy" decoding="async" />,
             glowColor: "from-cyan-50 to-blue-50"
         },
         {
@@ -44,7 +44,7 @@ const HotelQRBenefits = () => {
             revenue: "+72.5%",
             revenueDesc: "к выручке in-room",
             effect: "23–32% заказов через цифру",
-            icon: <img src="/assets/fairmont-logo.svg" alt="Fairmont logo" />,
+            icon: <img src="/assets/fairmont-logo.svg" alt="Fairmont logo" loading="lazy" decoding="async" />,
             glowColor: "from-sky-50 to-blue-50"
         },
         {
@@ -58,7 +58,7 @@ const HotelQRBenefits = () => {
             revenue: "+128%",
             revenueDesc: "к F&B-выручке YoY",
             effect: "Экспоненциальный рост мобильных заказов",
-            icon: <img src="/assets/ritz-carlton-logo.png" alt="Ritz-Carlton logo" />,
+            icon: <img src="/assets/ritz-carlton-logo.png" alt="Ritz-Carlton logo" loading="lazy" decoding="async" />,
             glowColor: "from-slate-50 to-blue-50"
         }
     ];

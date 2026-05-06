@@ -38,6 +38,8 @@ export default function AIDashboardSection() {
           <img
             src="/hotel-dashboard.png"
             alt="Hotel Dashboard — централізована AI-панель"
+            loading="lazy"
+            decoding="async"
             className="w-full h-auto block"
           />
         </motion.div>

@@ -3,19 +3,21 @@
 // Force static generation for better caching
 export const dynamic = 'force-static';
 
+import dynamicImport from "next/dynamic";
 import Hero from "@/components/Hero";
-import ProblemSection from "@/components/ProblemSection";
-import HowRoomieWorks from "@/components/HowRoomieWorks";
-import IntegrationTicker from "@/components/IntegrationTicker";
-import IndustryImpactSection from "@/components/IndustryImpactSection";
-import HotelQRBenefits from "@/components/HotelQRBenefits";
-import AIDashboardSection from "@/components/AIDashboardSection";
-import ROIEstimateLight from "@/components/ROIEstimateLight";
 import ChatFAQSection from "@/components/ChatFAQSection";
 import LLMSummary from "@/components/LLMSummary";
 import SEO, { organizationSchema } from "@/components/SEO";
 import Onboarding from "@/components/Onboarding";
-import HotelmolIs from "@/components/HotelmolIs";
+
+const ProblemSection = dynamicImport(() => import("@/components/ProblemSection"));
+const IndustryImpactSection = dynamicImport(() => import("@/components/IndustryImpactSection"));
+const HotelQRBenefits = dynamicImport(() => import("@/components/HotelQRBenefits"));
+const HotelmolIs = dynamicImport(() => import("@/components/HotelmolIs"));
+const HowRoomieWorks = dynamicImport(() => import("@/components/HowRoomieWorks"));
+const AIDashboardSection = dynamicImport(() => import("@/components/AIDashboardSection"));
+const IntegrationTicker = dynamicImport(() => import("@/components/IntegrationTicker"));
+const ROIEstimateLight = dynamicImport(() => import("@/components/ROIEstimateLight"));
 
 export default function Home() {
     return (

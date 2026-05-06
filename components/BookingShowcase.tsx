@@ -115,7 +115,7 @@ export default function BookingShowcase() {
               className="absolute -right-4 top-1/4 z-20 transform-gpu"
               animate={isInView ? { y: [0, -8, 0] } : { y: 0 }}
               transition={isInView ? { duration: 3, repeat: Infinity, ease: "easeInOut" } : { duration: 0.2 }}
-              style={{ willChange: "transform" }}
+              style={isInView ? { willChange: "transform" } : undefined}
             >
               <Card className="px-3 py-2 bg-white/95 backdrop-blur-sm shadow-lg border border-primary/20 rounded-xl">
                 <p className="text-xs font-semibold text-primary">
@@ -128,7 +128,7 @@ export default function BookingShowcase() {
               className="absolute -left-4 bottom-1/3 z-20 transform-gpu"
               animate={isInView ? { y: [0, 10, 0] } : { y: 0 }}
               transition={isInView ? { duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 } : { duration: 0.2 }}
-              style={{ willChange: "transform" }}
+              style={isInView ? { willChange: "transform" } : undefined}
             >
               <Card className="px-3 py-2 bg-white/95 backdrop-blur-sm shadow-lg border border-primary/20 rounded-xl">
                 <p className="text-xs font-semibold text-primary">
