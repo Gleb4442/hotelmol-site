@@ -114,20 +114,11 @@ export default function CookieBanner() {
       role="dialog"
       aria-modal="true"
       aria-label={t("cookie.banner.title") as string}
-      className={`fixed bottom-4 left-1/2 z-[100] w-[calc(100%-2rem)] -translate-x-1/2 animate-in fade-in slide-in-from-bottom-4 duration-500 sm:bottom-5 ${
+      className={`fixed bottom-3 left-1/2 z-[100] w-[calc(100%-1.5rem)] -translate-x-1/2 animate-in fade-in slide-in-from-bottom-4 duration-500 sm:bottom-5 sm:w-[calc(100%-2rem)] ${
         showCustomize ? "max-w-[920px]" : "max-w-[760px]"
       }`}
     >
-      <Card className="relative overflow-hidden rounded-[34px] border border-slate-200/70 bg-white/95 px-3.5 py-3 shadow-[0_10px_30px_rgba(15,23,42,0.13)] sm:px-4">
-        {/* Subtle decorative glow */}
-        <div
-          className="pointer-events-none absolute inset-0 opacity-70"
-          style={{
-            background:
-              "radial-gradient(240px 100px at 100% 0%, rgba(7,82,160,0.055), transparent 72%)",
-          }}
-        />
-
+      <Card className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white px-4 py-3.5 shadow-[0_12px_28px_rgba(15,23,42,0.12)] sm:rounded-[24px] sm:px-4">
         <div className={`relative z-10 ${showCustomize ? "" : "md:grid md:grid-cols-[minmax(0,1fr)_auto] md:items-center md:gap-4"}`}>
           <div className={`min-w-0 ${showCustomize ? "mb-2.5" : "mb-2 md:mb-0"}`}>
             <div className="mb-0.5 flex items-center gap-2">
@@ -136,7 +127,7 @@ export default function CookieBanner() {
               </h3>
               <span className="hidden h-1 w-1 rounded-full bg-primary/40 sm:block" />
             </div>
-            <p className="text-[11px] font-medium leading-snug text-slate-600/90 sm:line-clamp-1">
+            <p className="text-[11px] font-medium leading-snug text-slate-600 sm:line-clamp-1">
               {t("cookie.banner.description")}
             </p>
           </div>
@@ -144,7 +135,7 @@ export default function CookieBanner() {
           {showCustomize && (
             <div className="mb-2.5 grid gap-2 animate-in fade-in slide-in-from-top-2 duration-300 sm:grid-cols-2 lg:grid-cols-4">
               {/* Necessary — always on */}
-              <div className="flex items-start gap-2 rounded-[18px] border border-slate-100/70 bg-slate-50/70 p-2">
+              <div className="flex items-start gap-2 rounded-2xl border border-slate-100 bg-slate-50 p-2">
                 <Checkbox
                   id="necessary"
                   checked={true}
@@ -162,7 +153,7 @@ export default function CookieBanner() {
               </div>
 
               {/* Analytics */}
-              <div className="flex items-start gap-2 rounded-[18px] border border-slate-100 bg-white/60 p-2">
+              <div className="flex items-start gap-2 rounded-2xl border border-slate-100 bg-white p-2">
                 <Checkbox
                   id="analytics"
                   checked={preferences.analytics}
@@ -182,7 +173,7 @@ export default function CookieBanner() {
               </div>
 
               {/* Marketing */}
-              <div className="flex items-start gap-2 rounded-[18px] border border-slate-100 bg-white/60 p-2">
+              <div className="flex items-start gap-2 rounded-2xl border border-slate-100 bg-white p-2">
                 <Checkbox
                   id="marketing"
                   checked={preferences.marketing}
@@ -202,7 +193,7 @@ export default function CookieBanner() {
               </div>
 
               {/* Functional */}
-              <div className="flex items-start gap-2 rounded-[18px] border border-slate-100 bg-white/60 p-2">
+              <div className="flex items-start gap-2 rounded-2xl border border-slate-100 bg-white p-2">
                 <Checkbox
                   id="functional"
                   checked={preferences.functional}

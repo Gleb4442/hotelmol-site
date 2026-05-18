@@ -11,6 +11,7 @@ export default function ProblemSection() {
   const [activeIndex, setActiveIndex] = useState(0);
   const sectionRef = useRef<HTMLDivElement>(null);
   const [isInView, setIsInView] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const problems = [
     {
@@ -34,6 +35,16 @@ export default function ProblemSection() {
     }, { threshold: 0.2 });
     observer.observe(sectionRef.current);
     return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const updateViewport = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+
+    updateViewport();
+    window.addEventListener("resize", updateViewport);
+    return () => window.removeEventListener("resize", updateViewport);
   }, []);
 
   useEffect(() => {
@@ -61,7 +72,7 @@ export default function ProblemSection() {
           </motion.div>
         </div>
 
-        <div className="relative h-[300px] flex items-center justify-center max-w-5xl mx-auto mt-12 mb-20">
+        <div className="relative h-[260px] sm:h-[300px] flex items-center justify-center max-w-5xl mx-auto mt-8 sm:mt-12 mb-14 sm:mb-20">
           <div className="relative flex items-center justify-center w-full">
             {problems.map((problem, index) => {
               // Calculate relative position (-1, 0, 1)
@@ -78,8 +89,8 @@ export default function ProblemSection() {
                   key={index}
                   initial={false}
                   animate={{
-                    x: position * 200,
-                    scale: isActive ? 1.15 : 0.85,
+                    x: position * (isMobile ? 112 : 200),
+                    scale: isActive ? (isMobile ? 1 : 1.15) : (isMobile ? 0.82 : 0.85),
                     opacity: isActive ? 1 : 0.5,
                   }}
                   transition={{
@@ -87,15 +98,15 @@ export default function ProblemSection() {
                     ease: [0.32, 0.72, 0, 1]
                   }}
                   style={{ zIndex: isActive ? 20 : 10 }}
-                  className={`absolute w-full max-w-[340px] p-10 rounded-[2.5rem] shadow-2xl border border-black/5 flex flex-col items-center text-center cursor-pointer transition-colors duration-500 ${
+                  className={`absolute flex aspect-square w-[74vw] max-w-[256px] flex-col items-center justify-center rounded-[1.75rem] border border-black/5 p-6 text-center shadow-2xl transition-colors duration-500 sm:aspect-auto sm:w-full sm:max-w-[340px] sm:p-10 sm:rounded-[2.5rem] ${
                     isActive ? "bg-red-500 text-white" : "bg-white text-gray-800"
                   }`}
                   onClick={() => setActiveIndex(index)}
                 >
-                  <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-colors duration-500 ${isActive ? "bg-white/20" : "bg-red-50"}`}>
-                    <problem.icon className={`w-8 h-8 ${isActive ? "text-white" : "text-red-500"}`} />
+                  <div className={`mb-5 flex h-14 w-14 items-center justify-center rounded-2xl transition-colors duration-500 sm:mb-6 sm:h-16 sm:w-16 ${isActive ? "bg-white/20" : "bg-red-50"}`}>
+                    <problem.icon className={`h-7 w-7 sm:h-8 sm:w-8 ${isActive ? "text-white" : "text-red-500"}`} />
                   </div>
-                  <p className="text-xl lg:text-2xl font-serif font-bold leading-tight">
+                  <p className="text-[18px] font-serif font-bold leading-tight sm:text-xl lg:text-2xl">
                     {problem.text}
                   </p>
                 </motion.div>
