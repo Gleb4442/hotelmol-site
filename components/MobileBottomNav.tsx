@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import type { CSSProperties } from "react";
-import { Plus, DollarSign, ChevronDown, ChevronUp, Globe, MessageCircle, PhoneCall } from "lucide-react";
+import { Plus, ChevronDown, ChevronUp, Globe, MessageCircle, PhoneCall } from "lucide-react";
 import { useTranslation } from "@/lib/TranslationContext";
 import { usePathname } from "next/navigation";
 import { useCookieBanner } from "@/lib/CookieBannerContext";
@@ -33,7 +33,7 @@ const MessengerIcon = ({ className }: IconProps) => (
 );
 
 export default function MobileBottomNav() {
-    const { language, setLanguage, t } = useTranslation();
+    const { language, setLanguage } = useTranslation();
     const pathname = usePathname();
     const { isCookieBannerVisible } = useCookieBanner();
     const [isOpen, setIsOpen] = useState(false);
@@ -101,19 +101,6 @@ export default function MobileBottomNav() {
                         </span>
                         <div className="bg-slate-100 p-1.5 rounded-full w-8 h-8 relative flex items-center justify-center">
                             <img src="/assets/chatgpt-logo.png" alt="ChatGPT" className="w-5 h-5 object-contain" />
-                        </div>
-                    </a>
-
-                    <a
-                        href="https://pricing.hotelmol.com/#yearly"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 bg-white text-[#0752A0] pr-4 pl-3 py-2 rounded-full shadow-lg border border-[#0752A0]/10 font-bold animate-in fade-in slide-in-from-right-2 duration-200"
-                        style={{ animationDelay: "160ms" }}
-                    >
-                        <span className="text-sm">{t("button.pricing")}</span>
-                        <div className="bg-[#0752A0]/10 p-1.5 rounded-full">
-                            <DollarSign className="w-4 h-4" />
                         </div>
                     </a>
 
