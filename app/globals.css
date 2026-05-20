@@ -397,6 +397,13 @@ html {
   animation-play-state: paused !important;
 }
 
+@supports (content-visibility: auto) {
+  .section-render-gate {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 760px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-sheen,
   .ticker-scroll-left,

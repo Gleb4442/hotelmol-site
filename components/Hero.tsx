@@ -3,21 +3,20 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { useTranslation } from "@/lib/TranslationContext";
 import DemoRequestModal from "./DemoRequestModal";
-import { translations } from "@/lib/translations";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 import HeroBackground from "@/components/HeroBackground";
 
 export default function Hero() {
   const [demoModalOpen, setDemoModalOpen] = useState(false);
-  const { t, language } = useTranslation();
+  const { t } = useTranslation();
 
   // Ref for intersection observer
   const [heroRef, isVisible] = useIntersectionObserver<HTMLElement>({
     threshold: 0.1, // Trigger when 10% of the component is visible
   });
 
-  const typewriterKeys = (translations[language] as any)?.["home.hero.typewriterKeys"] ||
-    (translations["en"] as any)?.["home.hero.typewriterKeys"] || [
+  const translatedTypewriterKeys = t("home.hero.typewriterKeys");
+  const typewriterKeys = Array.isArray(translatedTypewriterKeys) ? translatedTypewriterKeys : [
       "доводит до бронирования",
       "увеличивает средний чек",
       "продает ваши доп услуги",

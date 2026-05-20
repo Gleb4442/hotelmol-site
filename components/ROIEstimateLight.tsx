@@ -1,25 +1,43 @@
 "use client";
-import { useState, useMemo, useEffect } from "react";
-import { Calculator, ArrowRight, TrendingUp, Info, CheckCircle2 } from "lucide-react";
+import { useState, useMemo, useEffect, useRef } from "react";
+import { Calculator, ArrowRight, TrendingUp, Info } from "lucide-react";
 import { useTranslation } from "@/lib/TranslationContext";
 import { Button } from "@/components/ui/button";
-import { motion, useSpring } from "framer-motion";
-import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
 
 // Custom Counter Component for "rolling" numbers
 function Counter({ value, decimal = 0, prefix = "", suffix = "" }: { value: number, decimal?: number, prefix?: string, suffix?: string }) {
-  const springValue = useSpring(0, { stiffness: 40, damping: 20 });
-  const [displayValue, setDisplayValue] = useState(0);
+  const [displayValue, setDisplayValue] = useState(value);
+  const previousValue = useRef(value);
 
   useEffect(() => {
-    springValue.set(value);
-  }, [value, springValue]);
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      previousValue.current = value;
+      setDisplayValue(value);
+      return;
+    }
 
-  useEffect(() => {
-    return springValue.on("change", (latest) => {
-      setDisplayValue(latest);
-    });
-  }, [springValue]);
+    const startValue = previousValue.current;
+    const delta = value - startValue;
+    const duration = 500;
+    let frame = 0;
+    let startTime: number | null = null;
+
+    const animate = (time: number) => {
+      if (startTime === null) startTime = time;
+      const progress = Math.min((time - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setDisplayValue(startValue + delta * eased);
+
+      if (progress < 1) {
+        frame = requestAnimationFrame(animate);
+      } else {
+        previousValue.current = value;
+      }
+    };
+
+    frame = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(frame);
+  }, [value]);
 
   return (
     <span>
@@ -28,10 +46,31 @@ function Counter({ value, decimal = 0, prefix = "", suffix = "" }: { value: numb
   );
 }
 
+function DonutChart({ data }: { data: Array<{ value: number; color: string }> }) {
+  const total = data.reduce((sum, item) => sum + item.value, 0) || 1;
+  let cursor = 0;
+  const segments = data.map((item) => {
+    const start = cursor;
+    const end = cursor + (item.value / total) * 360;
+    cursor = end;
+    return `${item.color} ${start.toFixed(2)}deg ${end.toFixed(2)}deg`;
+  });
+
+  return (
+    <div
+      className="absolute inset-7 rounded-full shadow-[inset_0_0_0_1px_rgba(255,255,255,0.8)]"
+      style={{ background: `conic-gradient(${segments.join(", ")})` }}
+      aria-hidden
+    >
+      <div className="absolute inset-[34px] rounded-full bg-[#F6F6F4] shadow-[inset_0_0_0_1px_rgba(0,0,0,0.04)]" />
+    </div>
+  );
+}
+
 import PremiumBackground from "./PremiumBackground";
 
 export default function ROIEstimateLight() {
-  const { t, language } = useTranslation();
+  const { t } = useTranslation();
   const [rooms, setRooms] = useState<number>(50);
   const [isEditingRooms, setIsEditingRooms] = useState(false);
   const [roomInput, setRoomInput] = useState(rooms.toString());
@@ -64,18 +103,11 @@ export default function ROIEstimateLight() {
   return (
     <PremiumBackground className="py-20 lg:py-32 relative overflow-hidden">
       {/* Premium Background with Subtle Gradient */}
-      <div className="absolute inset-0 opacity-30 pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-[#0752A0]/10 blur-[120px]" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-[#ACCAE0]/20 blur-[120px]" />
+      <div className="absolute inset-0 opacity-40 pointer-events-none bg-[radial-gradient(circle_at_10%_10%,rgba(7,82,160,0.08),transparent_34%),radial-gradient(circle_at_90%_90%,rgba(172,202,224,0.18),transparent_32%)]">
       </div>
 
       <div className="container mx-auto px-4 relative z-10 w-full max-w-6xl">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-16">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#F6F6F4] border border-grey/10 mb-6 shadow-sm">
             <Calculator className="h-8 w-8 text-[#0752A0]" />
           </div>
@@ -85,16 +117,11 @@ export default function ROIEstimateLight() {
           <p className="text-lg sm:text-xl text-[#8A8A8A] max-w-2xl mx-auto font-light leading-relaxed">
             {t("roi.subtitle")}
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch pt-4">
           {/* Controls Section */}
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="col-span-1 lg:col-span-5 space-y-8"
-          >
+          <div className="col-span-1 lg:col-span-5 space-y-8">
             <div className="relative group overflow-hidden bg-[#F6F6F4] p-8 rounded-[2rem] border border-grey/10 shadow-sm transition-all duration-500 hover:border-grey/20">
               <div className="flex justify-between items-end mb-8">
                 <div>
@@ -154,7 +181,7 @@ export default function ROIEstimateLight() {
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-[#0752A0]/10 via-[#0752A0]/5 to-transparent backdrop-blur-3xl p-10 rounded-[2.5rem] border border-[#0752A0]/10 shadow-sm relative overflow-hidden group">
+            <div className="bg-gradient-to-br from-[#0752A0]/10 via-[#0752A0]/5 to-transparent p-10 rounded-[2.5rem] border border-[#0752A0]/10 shadow-sm relative overflow-hidden group">
               <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
                 <TrendingUp className="w-32 h-32 text-[#0752A0] rotate-12" />
               </div>
@@ -173,15 +200,10 @@ export default function ROIEstimateLight() {
                 <p className="text-[#8A8A8A] text-xs mt-6 uppercase tracking-widest font-bold">Additional potential revenue</p>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Visualization Section */}
-          <motion.div 
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="col-span-1 lg:col-span-7 bg-[#F6F6F4] rounded-[2.5rem] border border-grey/10 p-8 lg:p-12 shadow-sm flex flex-col"
-          >
+          <div className="col-span-1 lg:col-span-7 bg-[#F6F6F4] rounded-[2.5rem] border border-grey/10 p-8 lg:p-12 shadow-sm flex flex-col">
             <div className="flex justify-between items-start mb-8">
               <div>
                 <h3 className="text-2xl font-bold text-[#111111] mb-2">Revenue Breakdown</h3>
@@ -201,28 +223,7 @@ export default function ROIEstimateLight() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center flex-1">
               <div className="h-[280px] w-full relative">
-                <ResponsiveContainer width="100%" height="100%">
-                  <PieChart>
-                    <Pie
-                      data={chartData}
-                      cx="50%"
-                      cy="50%"
-                      innerRadius={85}
-                      outerRadius={110}
-                      paddingAngle={8}
-                      dataKey="value"
-                      stroke="none"
-                    >
-                      {chartData.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={entry.color} />
-                      ))}
-                    </Pie>
-                    <Tooltip 
-                      contentStyle={{ backgroundColor: '#ffffff', border: '1px solid rgba(0,0,0,0.1)', borderRadius: '12px', color: '#111111' }}
-                      itemStyle={{ color: '#111111' }}
-                    />
-                  </PieChart>
-                </ResponsiveContainer>
+                <DonutChart data={chartData} />
                 <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
                   <span className="text-[10px] font-bold text-[#8A8A8A] uppercase tracking-[0.2em] mb-1">Estimated ROI</span>
                   <span className="text-2xl font-bold text-[#111111]">+{Math.round((TOTAL_PER_ROOM / 500) * 100)}%</span>
@@ -232,11 +233,8 @@ export default function ROIEstimateLight() {
 
               <div className="space-y-6">
                 {chartData.map((source, idx) => (
-                  <motion.div 
+                  <div
                     key={idx}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: idx * 0.1 }}
                     className="flex items-center gap-4 bg-white p-4 rounded-2xl border border-grey/5 hover:border-[#0752A0]/20 transition-all duration-300 group"
                   >
                     <div className="w-1.5 h-10 rounded-full" style={{ backgroundColor: source.color }} />
@@ -250,23 +248,17 @@ export default function ROIEstimateLight() {
                       </div>
                       <div className="text-[10px] text-[#8A8A8A] truncate">/ MONTH</div>
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
 
         {/* Dynamic CTA */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-20 relative p-12 lg:p-16 rounded-[3rem] bg-gradient-to-r from-[#0752A0]/80 to-[#4778A8]/80 backdrop-blur-3xl border border-white/20 overflow-hidden text-center group shadow-xl"
-        >
+        <div className="mt-20 relative p-12 lg:p-16 rounded-[3rem] bg-gradient-to-r from-[#0752A0]/80 to-[#4778A8]/80 border border-white/20 overflow-hidden text-center group shadow-xl">
           {/* Decorative Elements */}
-          <div className="absolute -top-24 -left-24 w-64 h-64 bg-white/10 rounded-full blur-[80px] group-hover:bg-white/20 transition-all duration-700" />
-          <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-[#ACCAE0]/20 rounded-full blur-[80px] group-hover:bg-[#ACCAE0]/30 transition-all duration-700" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_15%,rgba(255,255,255,0.16),transparent_32%),radial-gradient(circle_at_85%_85%,rgba(172,202,224,0.22),transparent_30%)]" />
 
           <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center">
             <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-6 leading-tight">
@@ -289,7 +281,7 @@ export default function ROIEstimateLight() {
 
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
 
       <style jsx global>{`

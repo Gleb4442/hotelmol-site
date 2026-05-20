@@ -1,7 +1,8 @@
 "use client";
 
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
-import { translations, TranslationKey } from "./translations";
+import { translationsCore } from "./translations-core";
+import type { TranslationKey } from "./translations";
 
 export type Language = "en" | "ru" | "ua" | "pl" | "de";
 
@@ -31,6 +32,7 @@ const getBrowserLanguage = (): Language => {
 
 export function TranslationProvider({ children }: { children: ReactNode }) {
   const [language, setLanguageState] = useState<Language>("en");
+  const [dictionary, setDictionary] = useState(translationsCore);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -49,6 +51,24 @@ export function TranslationProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
+  useEffect(() => {
+    let cancelled = false;
+    const timeout = window.setTimeout(() => {
+      import("./translations")
+        .then(({ translations }) => {
+          if (!cancelled) setDictionary(translations);
+        })
+        .catch((e) => {
+          console.error("Failed to load full translations", e);
+        });
+    }, 900);
+
+    return () => {
+      cancelled = true;
+      window.clearTimeout(timeout);
+    };
+  }, []);
+
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
     if (typeof window !== "undefined") {
@@ -61,7 +81,7 @@ export function TranslationProvider({ children }: { children: ReactNode }) {
   };
 
   const t = (key: TranslationKey): any => {
-    const translation = translations[language]?.[key] || translations["en"]?.[key] || key;
+    const translation = dictionary[language]?.[key] || dictionary["en"]?.[key] || key;
     return translation;
   };
 

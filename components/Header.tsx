@@ -1,10 +1,9 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Globe, Menu } from "lucide-react";
+import { ArrowUpRight, Globe, Menu, X } from "lucide-react";
 import { useTranslation } from "@/lib/TranslationContext";
 import type { Language } from "@/lib/translations";
 import {
@@ -13,7 +12,6 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { X } from "lucide-react";
 
 const NavPill = ({ navigation, pathname }: { navigation: Array<{ name: string; href: string; badge?: string }>; pathname: string }) => {
   const [activeRect, setActiveRect] = useState({ left: 0, width: 0, opacity: 0 });
@@ -65,16 +63,12 @@ const NavPill = ({ navigation, pathname }: { navigation: Array<{ name: string; h
 
   return (
     <nav className="relative flex items-center gap-1 h-full" ref={navRef}>
-      <motion.span
-        className="absolute top-0 bottom-0 left-0 w-px origin-left bg-[#0752A0] shadow-sm rounded-full -z-10"
-        initial={false}
-        animate={{
-          x: activeRect.left,
-          scaleX: Math.max(activeRect.width, 1),
-          opacity: activeRect.opacity
+      <span
+        className="absolute top-0 bottom-0 left-0 w-px origin-left bg-[#0752A0] shadow-sm rounded-full -z-10 transition-[transform,opacity] duration-300 ease-out transform-gpu"
+        style={{
+          opacity: activeRect.opacity,
+          transform: `translate3d(${activeRect.left}px, 0, 0) scaleX(${Math.max(activeRect.width, 1)})`,
         }}
-        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-        style={{ willChange: "transform, opacity" }}
       />
       {navigation.map((item) => {
         const isActive = pathname === item.href;
@@ -161,14 +155,20 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
       ...item,
       external: false,
     })),
+  ];
+
+  const mobileActions = [
     {
-      name: t("button.talkToHuman"),
-      href: "https://cal.com/hotelmol.team",
-      external: true,
+      name: t("button.pricing"),
+      href: "https://pricing.hotelmol.com/#yearly",
+    },
+    {
+      name: "App tour",
+      href: "https://tour.hotelmol.com",
     },
   ];
 
-  const cloudStyle = "bg-[#F7F5F1]/95 backdrop-blur-md shadow-[0_4px_24px_rgba(7,82,160,0.4)] border border-white/20 rounded-full transition-all duration-300";
+  const cloudStyle = "bg-[#F7F5F1]/95 shadow-[0_4px_24px_rgba(7,82,160,0.28)] border border-white/40 rounded-full transition-all duration-300";
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 w-full pointer-events-none md:max-w-[1440px] md:mx-auto md:mt-4 md:px-6">
@@ -229,7 +229,7 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
             <Button
               size="default"
               variant="ghost"
-              className="relative rounded-full px-4 backdrop-blur-md bg-blue-500/10 border border-blue-400/30 text-[#0752A0] hover:bg-blue-500/20 shadow-[0_0_10px_rgba(59,130,246,0.2)] transition-all overflow-hidden group"
+              className="relative rounded-full px-4 bg-blue-500/10 border border-blue-400/30 text-[#0752A0] hover:bg-blue-500/20 shadow-[0_0_10px_rgba(59,130,246,0.2)] transition-all overflow-hidden group"
               asChild
               data-testid="button-app-tour-header"
             >
@@ -260,68 +260,45 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
           variant="ghost"
           size="icon"
           className="rounded-full hover:bg-slate-100 -mr-2"
-          onClick={() => setIsMobileMenuOpen(true)}
+          onClick={() => setIsMobileMenuOpen((open) => !open)}
+          aria-expanded={isMobileMenuOpen}
+          aria-controls="mobile-header-menu"
+          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
           data-testid="button-mobile-menu"
         >
-          <Menu className="!h-[24px] !w-[24px] stroke-[2] text-[#0752A0]" />
+          {isMobileMenuOpen ? (
+            <X className="!h-[24px] !w-[24px] stroke-[2] text-[#0752A0]" />
+          ) : (
+            <Menu className="!h-[24px] !w-[24px] stroke-[2] text-[#0752A0]" />
+          )}
         </Button>
       </div>
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`md:hidden fixed inset-0 z-[100] ${isMobileMenuOpen ? "pointer-events-auto" : "pointer-events-none"}`}
+        id="mobile-header-menu"
+        className={`md:hidden fixed inset-0 z-[55] ${isMobileMenuOpen ? "pointer-events-auto" : "pointer-events-none"}`}
         aria-hidden={!isMobileMenuOpen}
       >
         <div
           onClick={() => setIsMobileMenuOpen(false)}
-          className={`absolute inset-0 bg-black/40 transition-opacity duration-200 ease-out ${isMobileMenuOpen ? "opacity-100" : "opacity-0"}`}
+          className={`absolute inset-0 bg-slate-950/[0.28] transition-opacity duration-200 ease-out ${isMobileMenuOpen ? "opacity-100" : "opacity-0"}`}
         />
 
-        <div className="absolute inset-x-0 bottom-24 px-4 flex justify-end">
+        <div className="absolute inset-x-0 top-[60px] px-3 flex justify-end">
           <div
-            className={`mobile-menu-surface w-full max-w-[320px] rounded-[30px] border border-black/5 bg-[#F7F5F1] shadow-[0_12px_36px_rgba(15,23,42,0.14)] transition-[opacity,transform] duration-200 ease-out transform-gpu will-change-transform ${
-              isMobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+            className={`mobile-menu-surface w-full max-w-[360px] rounded-[28px] border border-white/70 bg-[#F7F5F1] shadow-[0_18px_50px_rgba(15,23,42,0.16)] transition-[opacity,transform] duration-200 ease-out transform-gpu ${
+              isMobileMenuOpen ? "translate-y-0 opacity-100" : "-translate-y-2 opacity-0"
             }`}
           >
-            <div className="flex items-center justify-between px-5 pt-5 pb-3">
-              <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500">
-                Menu
-              </span>
-              <button
-                type="button"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-black/5 bg-white text-slate-500 transition-colors hover:text-[#0752A0] active:scale-95"
-                aria-label="Close mobile menu"
-              >
-                <X className="h-5 w-5" />
-              </button>
-            </div>
-
-            <nav className="px-3 pb-3">
+            <nav className="px-2.5 pt-2.5 pb-2">
               {mobileMenuLinks.map((item) => {
                 const isActive = !item.external && pathname === item.href;
-                const itemClasses = `flex w-full items-center justify-between rounded-2xl px-4 py-3 text-sm font-semibold transition-colors active:scale-[0.99] ${
+                const itemClasses = `flex w-full items-center justify-between rounded-full px-4 py-3 text-[15px] font-semibold transition-colors active:scale-[0.99] ${
                   isActive
-                    ? "bg-[#0752A0] text-white"
-                    : item.external
-                      ? "bg-[#0752A0]/8 text-[#0752A0]"
-                      : "text-slate-700 hover:bg-white"
+                    ? "bg-[#0752A0] text-white shadow-sm"
+                    : "text-slate-700 hover:bg-white/80"
                 }`;
-
-                if (item.external) {
-                  return (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className={itemClasses}
-                    >
-                      <span>{item.name}</span>
-                    </a>
-                  );
-                }
 
                 return (
                   <Link
@@ -331,10 +308,41 @@ export default function Header({ onDemoClick }: HeaderProps = {}) {
                     className={itemClasses}
                   >
                     <span>{item.name}</span>
+                    {isActive && <span className="h-1.5 w-1.5 rounded-full bg-white" />}
                   </Link>
                 );
               })}
             </nav>
+
+            <div className="mx-4 h-px bg-slate-900/[0.08]" />
+
+            <div className="space-y-2 p-3">
+              <a
+                href="https://cal.com/hotelmol.team"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="flex h-11 w-full items-center justify-center gap-2 rounded-full bg-[#0752A0] px-4 text-sm font-bold text-white shadow-[0_10px_24px_rgba(7,82,160,0.18)] transition-colors hover:bg-[#064987] active:scale-[0.99]"
+              >
+                {t("button.talkToHuman")}
+                <ArrowUpRight className="h-4 w-4" />
+              </a>
+
+              <div className="grid grid-cols-2 gap-2">
+                {mobileActions.map((item) => (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="flex h-10 items-center justify-center rounded-full border border-slate-200 bg-white/70 px-3 text-xs font-bold text-slate-700 transition-colors hover:border-[#0752A0]/30 hover:text-[#0752A0] active:scale-[0.99]"
+                  >
+                    {item.name}
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>

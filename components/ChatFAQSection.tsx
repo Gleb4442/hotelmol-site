@@ -4,7 +4,6 @@
 import { useState } from "react";
 
 import { useTranslation } from "@/lib/TranslationContext";
-import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, HelpCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import PremiumBackground from "./PremiumBackground";
@@ -153,7 +152,7 @@ export default function ChatFAQSection({ variant = "roomie" }: ChatFAQSectionPro
                                                 </g>
                                             </svg>
                                         </div>
-                                        <motion.div
+                                        <div
                                             className={cn(
                                                 "group relative overflow-hidden bg-white px-5 py-3.5 rounded-[22px] rounded-tl-[4px] shadow-md border border-slate-200/60 cursor-pointer transition-all duration-300 w-fit max-w-[82%] break-words",
                                                 !isRevealed && "hover:shadow-md hover:border-primary/20"
@@ -162,22 +161,13 @@ export default function ChatFAQSection({ variant = "roomie" }: ChatFAQSectionPro
                                         >
                                             <div className="relative">
                                                 {/* Blurred Overlay */}
-                                                <AnimatePresence>
-                                                    {!isRevealed && (
-                                                        <motion.div
-                                                            initial={{ opacity: 1 }}
-                                                            exit={{
-                                                                opacity: 0,
-                                                                transition: { duration: 0.4, ease: "easeInOut" }
-                                                            }}
-                                                            className="absolute inset-0 z-10 flex items-center justify-center bg-white/40 backdrop-blur-sm"
-                                                        >
-                                                            <span className="text-xs font-medium uppercase tracking-widest text-primary/80 bg-white/80 px-3 py-1 rounded-full shadow-sm">
-                                                                Tap to Reveal
-                                                            </span>
-                                                        </motion.div>
-                                                    )}
-                                                </AnimatePresence>
+                                                {!isRevealed && (
+                                                    <div className="absolute inset-0 z-10 flex items-center justify-center bg-white/60">
+                                                        <span className="text-xs font-medium uppercase tracking-widest text-primary/80 bg-white/90 px-3 py-1 rounded-full shadow-sm">
+                                                            Tap to Reveal
+                                                        </span>
+                                                    </div>
+                                                )}
 
                                                 {/* Actual Content */}
                                                 <p className={cn(
@@ -207,7 +197,7 @@ export default function ChatFAQSection({ variant = "roomie" }: ChatFAQSectionPro
                                                     )}
                                                 </p>
                                             </div>
-                                        </motion.div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

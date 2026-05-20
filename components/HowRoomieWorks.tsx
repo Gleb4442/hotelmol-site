@@ -2,7 +2,6 @@
 import { MessageSquare, Brain, Sparkles, TrendingUp, CheckCircle } from "lucide-react";
 import { useTranslation } from "@/lib/TranslationContext";
 import { useEffect, useState, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 
 import PremiumBackground from "./PremiumBackground";
 
@@ -144,25 +143,17 @@ export default function HowRoomieWorks() {
             <div className="h-full bg-gradient-to-r from-primary/20 via-primary/40 to-primary/20" />
 
             {/* Animated Ball */}
-            <motion.div
+            <div
               key="process-ball"
               className="absolute left-0 top-1/2 h-5 w-5 bg-primary rounded-full shadow-[0_0_20px_rgba(7,82,160,1)] z-40"
-              initial={false}
-              animate={{
-                x: progressLineWidth ? (progressLineWidth * animState.pos) / 4 - 10 : -10,
-                y: "-50%",
-              }}
-              transition={{
-                duration: animState.jump ? 0 : 0.5,
-                ease: animState.jump ? "linear" : "easeInOut"
-              }}
               style={{
                 boxShadow: '0 0 15px rgba(7, 82, 160, 0.8), 0 0 30px rgba(7, 82, 160, 0.4)',
-                willChange: "transform"
+                transform: `translate3d(${progressLineWidth ? (progressLineWidth * animState.pos) / 4 - 10 : -10}px, -50%, 0)`,
+                transition: animState.jump ? "none" : "transform 500ms ease-in-out",
               }}
             >
               <div className="absolute inset-0 rounded-full animate-ping bg-primary/30" />
-            </motion.div>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-12 lg:gap-6">
@@ -170,40 +161,31 @@ export default function HowRoomieWorks() {
               const Icon = step.icon;
               const isActive = animState.pos === index;
               return (
-                <motion.div
+                <div
                   key={index}
-                  initial={false}
-                  animate={{
-                    scale: isActive ? 1.05 : 1,
-                    opacity: isActive ? 1 : 0.7
+                  style={{
+                    opacity: isActive ? 1 : 0.7,
+                    transform: `scale(${isActive ? 1.05 : 1})`,
                   }}
-                  className="relative flex flex-col items-center text-center group"
+                  className="relative flex flex-col items-center text-center group transition-[transform,opacity] duration-500 ease-out"
                   ref={(el) => { stepRefs.current[index] = el; }}
                 >
                   <div className={`relative z-10 mb-4 lg:mb-8 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-primary/80 text-primary-foreground shadow-xl transition-all duration-700 ${isActive ? 'shadow-[0_20px_50px_rgba(7,82,160,0.4)] ring-4 ring-primary/20' : 'group-hover:shadow-2xl'}`}>
                     <Icon className={`h-9 w-9 transition-all duration-700 ${isActive ? 'scale-110' : ''}`} />
-                    <AnimatePresence>
-                      {isActive && (
-                        <motion.div
-                          className="absolute inset-0 rounded-2xl bg-primary/20 blur-xl"
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          animate={{ opacity: 1, scale: 1.2 }}
-                          exit={{ opacity: 0, scale: 0.8 }}
-                        />
-                      )}
-                    </AnimatePresence>
+                    {isActive && (
+                      <div className="absolute inset-0 rounded-2xl bg-primary/20 blur-xl scale-110 animate-in fade-in duration-300" />
+                    )}
                   </div>
                   <div className="space-y-4 mt-2 lg:mt-8 px-4">
-                    <motion.div
-                      animate={{ color: isActive ? "#0752A0" : "rgba(7, 82, 160, 0.6)" }}
-                      className="text-sm font-bold"
+                    <div
+                      className={`text-sm font-bold transition-colors duration-300 ${isActive ? "text-[#0752A0]" : "text-[#0752A0]/60"}`}
                     >
                       {t("home.howWorks.step")} {index + 1}
-                    </motion.div>
+                    </div>
                     <h3 className="font-semibold text-base lg:text-lg">{step.title}</h3>
                     <p className="text-sm text-muted-foreground leading-relaxed transition-opacity duration-500">{step.description}</p>
                   </div>
-                </motion.div>
+                </div>
               );
             })}
           </div>

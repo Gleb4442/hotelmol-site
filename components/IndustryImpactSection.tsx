@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { useTranslation } from "@/lib/TranslationContext";
-import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 interface CaseStudySection {
@@ -73,35 +72,26 @@ export default function IndustryImpactSection() {
             <div className="container mx-auto px-4">
                 {/* Header */}
                 <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
-                    <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
+                    <h2
                         className="font-serif text-2xl md:text-3xl lg:text-[45px] font-bold tracking-tight mb-5"
                     >
                         {t("industryImpact.title")}
-                    </motion.h2>
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.1 }}
+                    </h2>
+                    <p
                         className="text-base md:text-lg text-muted-foreground leading-relaxed"
                     >
                         {t("industryImpact.subtitle")}
-                    </motion.p>
+                    </p>
                 </div>
 
                 {/* Logo Navigation */}
                 <div className="flex flex-wrap justify-center gap-4 md:gap-6 mb-16 lg:mb-24">
                     {hotelConfig.map((hotel) => (
-                        <motion.button
+                        <button
                             key={hotel.id}
                             onClick={() => setActiveHotel(hotel)}
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
                             className={cn(
-                                "relative w-20 h-20 md:w-28 md:h-28 rounded-full flex items-center justify-center transition-all duration-500 overflow-hidden",
+                                "relative w-20 h-20 md:w-28 md:h-28 rounded-full flex items-center justify-center transition-all duration-300 overflow-hidden hover:scale-[1.04] active:scale-95",
                                 activeHotel.id === hotel.id
                                     ? "bg-white shadow-[0_20px_40px_rgba(7,82,160,0.08)] opacity-100"
                                     : "bg-white/50 hover:bg-white shadow-[0_4px_20px_rgba(0,0,0,0.02)] opacity-60 hover:opacity-100"
@@ -110,36 +100,28 @@ export default function IndustryImpactSection() {
                             <img
                                 src={hotel.logo}
                                 alt={t(hotel.nameKey as any)}
+                                loading="lazy"
+                                decoding="async"
                                 className={cn(
                                     "w-[60px] md:w-[77.2px] h-auto object-contain relative z-10 mix-blend-multiply grayscale brightness-0 opacity-80",
                                     hotel.id === "fourSeasons" && "translate-y-[-2px]"
                                 )}
                             />
                             {activeHotel.id === hotel.id && (
-                                <motion.div
-                                    layoutId="active-pill-shadow"
-                                    className="absolute inset-0 rounded-full bg-gradient-to-b from-primary/5 to-transparent pointer-events-none"
-                                />
+                                <div className="absolute inset-0 rounded-full bg-gradient-to-b from-primary/5 to-transparent pointer-events-none" />
                             )}
-                        </motion.button>
+                        </button>
                     ))}
                 </div>
 
                 {/* Content Area */}
                 <div className="relative min-h-[400px]">
-                    <AnimatePresence mode="wait">
-                        <motion.div
+                        <div
                             key={activeHotel.id}
-                            initial={{ opacity: 0, scale: 0.96 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0, scale: 1.02 }}
-                            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                            className="max-w-3xl mx-auto"
+                            className="max-w-3xl mx-auto animate-in fade-in zoom-in-95 duration-300"
                         >
-                            <div className="relative bg-white/30 backdrop-blur-xl rounded-[48px] p-8 md:p-12 lg:p-16 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.05)]">
-                                {/* Subtle decorative glow */}
-                                <div className="absolute -top-24 -right-24 w-64 h-64 bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
-                                <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
+                            <div className="relative overflow-hidden bg-white/70 rounded-[48px] p-8 md:p-12 lg:p-16 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.05)]">
+                                <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_0%,rgba(7,82,160,0.05),transparent_32%),radial-gradient(circle_at_0%_100%,rgba(7,82,160,0.04),transparent_30%)] pointer-events-none" />
                                 
                                 {activeHotel.sections.map((section, idx) => {
                                     const title = t(`industryImpact.${activeHotel.id}.${section.key}.title` as any);
@@ -156,28 +138,20 @@ export default function IndustryImpactSection() {
 
                                             <ul className="space-y-6">
                                                 {items.map((item, i) => (
-                                                    <motion.li
+                                                    <li
                                                         key={i}
-                                                        initial={{ opacity: 0, y: 10 }}
-                                                        animate={{ opacity: 1, y: 0 }}
-                                                        transition={{ 
-                                                            delay: 0.3 + i * 0.1,
-                                                            duration: 0.5,
-                                                            ease: "easeOut"
-                                                        }}
                                                         className="flex gap-5 text-slate-600 leading-relaxed group"
                                                     >
                                                         <div className="mt-3 w-5 h-[1.5px] bg-gradient-to-r from-[#0752A0]/40 to-transparent shrink-0 group-hover:from-[#0752A0] transition-all duration-500" />
                                                         <span className="text-lg md:text-xl font-medium text-slate-700/90 tracking-tight">{item}</span>
-                                                    </motion.li>
+                                                    </li>
                                                 ))}
                                             </ul>
                                         </div>
                                     );
                                 })}
                             </div>
-                        </motion.div>
-                    </AnimatePresence>
+                        </div>
                 </div>
             </div>
         </PremiumBackground>

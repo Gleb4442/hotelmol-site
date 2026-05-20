@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { CircleDollarSign, Users, UserRoundX } from "lucide-react";
 import { useTranslation } from "@/lib/TranslationContext";
 
@@ -60,16 +59,11 @@ export default function ProblemSection() {
 
       <div ref={sectionRef} className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center mb-16 px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
+          <div>
             <h2 className="text-3xl lg:text-[45px] font-serif font-bold mb-6">
               {t("home.problem.title")}
             </h2>
-          </motion.div>
+          </div>
         </div>
 
         <div className="relative h-[260px] sm:h-[300px] flex items-center justify-center max-w-5xl mx-auto mt-8 sm:mt-12 mb-14 sm:mb-20">
@@ -85,20 +79,14 @@ export default function ProblemSection() {
               const isRight = position === 1;
 
               return (
-                <motion.div
+                <div
                   key={index}
-                  initial={false}
-                  animate={{
-                    x: position * (isMobile ? 112 : 200),
-                    scale: isActive ? (isMobile ? 1 : 1.15) : (isMobile ? 0.82 : 0.85),
+                  style={{
+                    zIndex: isActive ? 20 : 10,
                     opacity: isActive ? 1 : 0.5,
+                    transform: `translate3d(${position * (isMobile ? 112 : 200)}px, 0, 0) scale(${isActive ? (isMobile ? 1 : 1.15) : (isMobile ? 0.82 : 0.85)})`,
                   }}
-                  transition={{
-                    duration: 0.6,
-                    ease: [0.32, 0.72, 0, 1]
-                  }}
-                  style={{ zIndex: isActive ? 20 : 10 }}
-                  className={`absolute flex aspect-square w-[74vw] max-w-[256px] flex-col items-center justify-center rounded-[1.75rem] border border-black/5 p-6 text-center shadow-2xl transition-colors duration-500 sm:aspect-auto sm:w-full sm:max-w-[340px] sm:p-10 sm:rounded-[2.5rem] ${
+                  className={`absolute flex aspect-square w-[74vw] max-w-[256px] flex-col items-center justify-center rounded-[1.75rem] border border-black/5 p-6 text-center shadow-2xl transition-[transform,opacity,background-color,color] duration-500 ease-out sm:aspect-auto sm:w-full sm:max-w-[340px] sm:p-10 sm:rounded-[2.5rem] ${
                     isActive ? "bg-red-500 text-white" : "bg-white text-gray-800"
                   }`}
                   onClick={() => setActiveIndex(index)}
@@ -109,7 +97,7 @@ export default function ProblemSection() {
                   <p className="text-[18px] font-serif font-bold leading-tight sm:text-xl lg:text-2xl">
                     {problem.text}
                   </p>
-                </motion.div>
+                </div>
               );
             })}
           </div>

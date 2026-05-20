@@ -16,7 +16,7 @@ const PremiumBackground: React.FC<PremiumBackgroundProps> = ({
   showLines = true,
 }) => {
   return (
-    <div className={`relative overflow-hidden bg-background ${className}`}>
+    <div className={`section-render-gate relative overflow-hidden bg-background ${className}`}>
       {/* Base Layer with Masking to avoid harsh section breaks */}
       <div
         className="absolute inset-0 z-0 pointer-events-none"
@@ -37,12 +37,9 @@ const PremiumBackground: React.FC<PremiumBackgroundProps> = ({
           />
         )}
 
-        {/* Glow Layer — static, no animation (imperceptible at 3-4% opacity behind 160px blur) */}
+        {/* Glow Layer — static radial gradients are cheaper than large blurred DOM nodes */}
         {showGlows && (
-          <>
-            <div className="absolute top-[5%] left-[-5%] w-[50%] h-[50%] bg-[#38BDF8] rounded-full blur-[160px] opacity-[0.04]" />
-            <div className="absolute bottom-[5%] right-[-5%] w-[45%] h-[45%] bg-[#0EA5E9] rounded-full blur-[160px] opacity-[0.03]" />
-          </>
+          <div className="absolute inset-0 opacity-70 bg-[radial-gradient(circle_at_8%_16%,rgba(56,189,248,0.05),transparent_34%),radial-gradient(circle_at_92%_84%,rgba(14,165,233,0.04),transparent_32%)]" />
         )}
 
         {/* Structural Lines Layer */}

@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { QrCode, Smartphone, Award, UtensilsCrossed, MousePointerClick, Wallet, Zap, Users } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
 import PremiumBackground from './PremiumBackground';
 
 const HotelQRBenefits = () => {
@@ -16,7 +15,7 @@ const HotelQRBenefits = () => {
             revenue: "+54%",
             revenueDesc: "к выручке F&B room service",
             effect: "Значительный рост доходности сервиса в номерах",
-            icon: <img src="/assets/mandarin-oriental-logo.png" alt="Mandarin Oriental logo" />,
+            icon: <img src="/assets/mandarin-oriental-logo.png" alt="Mandarin Oriental logo" loading="lazy" decoding="async" />,
             glowColor: "from-orange-50 to-amber-50"
         },
         {
@@ -30,7 +29,7 @@ const HotelQRBenefits = () => {
             revenue: "Снижение",
             revenueDesc: "ошибок в заказах и ускорение обработки",
             effect: "Больше времени на персонализированный сервис",
-            icon: <img src="/assets/radisson-blu-logo.svg" alt="Radisson Blu logo" />,
+            icon: <img src="/assets/radisson-blu-logo.svg" alt="Radisson Blu logo" loading="lazy" decoding="async" />,
             glowColor: "from-cyan-50 to-blue-50"
         },
         {
@@ -44,7 +43,7 @@ const HotelQRBenefits = () => {
             revenue: "+72.5%",
             revenueDesc: "к выручке in-room",
             effect: "23–32% заказов через цифру",
-            icon: <img src="/assets/fairmont-logo.svg" alt="Fairmont logo" />,
+            icon: <img src="/assets/fairmont-logo.svg" alt="Fairmont logo" loading="lazy" decoding="async" />,
             glowColor: "from-sky-50 to-blue-50"
         },
         {
@@ -58,7 +57,7 @@ const HotelQRBenefits = () => {
             revenue: "+128%",
             revenueDesc: "к F&B-выручке YoY",
             effect: "Экспоненциальный рост мобильных заказов",
-            icon: <img src="/assets/ritz-carlton-logo.png" alt="Ritz-Carlton logo" />,
+            icon: <img src="/assets/ritz-carlton-logo.png" alt="Ritz-Carlton logo" loading="lazy" decoding="async" />,
             glowColor: "from-slate-50 to-blue-50"
         }
     ];
@@ -102,19 +101,9 @@ const HotelQRBenefits = () => {
 
                 {/* Основной контейнер карусели */}
                 <div className="relative w-full min-h-[380px] md:min-h-[320px] flex items-center justify-center mb-12">
-                    <AnimatePresence mode='wait'>
-                        <motion.div
+                        <div
                             key={activeCase.id}
-                            initial={{ opacity: 0, scale: 0.92, y: 20 }}
-                            animate={{ opacity: 1, scale: 1, y: 0 }}
-                            exit={{ opacity: 0, scale: 0.95, y: -20 }}
-                            transition={{
-                                type: "spring",
-                                stiffness: 300,
-                                damping: 30,
-                                opacity: { duration: 0.3 }
-                            }}
-                            className="w-full relative rounded-[32px] p-8 md:p-10 bg-white shadow-[0_20px_60px_-15px_rgba(7,82,160,0.08)] border border-slate-200/60 overflow-hidden"
+                            className="w-full relative rounded-[32px] p-8 md:p-10 bg-white shadow-[0_20px_60px_-15px_rgba(7,82,160,0.08)] border border-slate-200/60 overflow-hidden animate-in fade-in zoom-in-95 slide-in-from-bottom-3 duration-300"
                         >
                             {/* Градиентный фон внутри карточки */}
                             <div className={`absolute inset-0 bg-gradient-to-br ${activeCase.glowColor} opacity-40`} />
@@ -139,7 +128,7 @@ const HotelQRBenefits = () => {
                                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
                                     {/* Метрика 1 */}
-                                    <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-5 border border-white/50 shadow-sm">
+                                    <div className="bg-white/70 rounded-2xl p-5 border border-white/50 shadow-sm">
                                         <div className="flex items-center gap-2 mb-3 text-slate-400">
                                             <MousePointerClick className="w-4 h-4" />
                                             <span className="text-[10px] uppercase tracking-widest font-bold">Удовлетворенность</span>
@@ -151,7 +140,7 @@ const HotelQRBenefits = () => {
                                     </div>
 
                                     {/* Метрика 2 */}
-                                    <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-5 border border-white/50 shadow-sm">
+                                    <div className="bg-white/70 rounded-2xl p-5 border border-white/50 shadow-sm">
                                         <div className="flex items-center gap-2 mb-3 text-slate-400">
                                             {activeCase.revenueIcon}
                                             <span className="text-[10px] uppercase tracking-widest font-bold">{activeCase.revenueLabel}</span>
@@ -163,7 +152,7 @@ const HotelQRBenefits = () => {
                                     </div>
 
                                     {/* Эффект */}
-                                    <div className="sm:col-span-2 lg:col-span-1 bg-white/60 backdrop-blur-sm rounded-2xl p-5 border border-white/50 shadow-sm flex flex-col justify-center">
+                                    <div className="sm:col-span-2 lg:col-span-1 bg-white/70 rounded-2xl p-5 border border-white/50 shadow-sm flex flex-col justify-center">
                                         <div className="flex items-center gap-2 mb-3 text-slate-400">
                                             <Zap className="w-4 h-4" />
                                             <span className="text-[10px] uppercase tracking-widest font-bold">Эффект</span>
@@ -174,8 +163,7 @@ const HotelQRBenefits = () => {
                                     </div>
                                 </div>
                             </div>
-                        </motion.div>
-                    </AnimatePresence>
+                        </div>
                 </div>
 
                 {/* Ряд бейджей снизу */}
@@ -199,11 +187,7 @@ const HotelQRBenefits = () => {
 
                             {/* Индикатор прогресса для активного бейджа */}
                             {activeIndex === index && (
-                                <motion.div
-                                    layoutId="badge-indicator"
-                                    className="absolute -bottom-1 left-2 right-2 h-1 bg-[#0752A0] rounded-full"
-                                    initial={false}
-                                />
+                                <div className="absolute -bottom-1 left-2 right-2 h-1 bg-[#0752A0] rounded-full" />
                             )}
                         </button>
                     ))}
