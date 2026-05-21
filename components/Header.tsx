@@ -13,6 +13,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
+const isCurrentRoute = (pathname: string, href: string) => pathname === href || pathname.startsWith(`${href}/`);
+
 const NavPill = ({ navigation, pathname }: { navigation: Array<{ name: string; href: string; badge?: string }>; pathname: string }) => {
   const [activeRect, setActiveRect] = useState({ left: 0, width: 0, opacity: 0 });
   const navRef = useRef<HTMLElement>(null);
@@ -29,7 +31,7 @@ const NavPill = ({ navigation, pathname }: { navigation: Array<{ name: string; h
           rafRef.current = null;
           return;
         }
-        const activeLink = navRef.current.querySelector<HTMLAnchorElement>(`a[href="${pathname}"]`);
+        const activeLink = navRef.current.querySelector<HTMLAnchorElement>('[aria-current="page"]');
         if (activeLink) {
           setActiveRect({
             left: activeLink.offsetLeft,
@@ -62,24 +64,26 @@ const NavPill = ({ navigation, pathname }: { navigation: Array<{ name: string; h
   }, [pathname, navigation]);
 
   return (
-    <nav className="relative flex items-center gap-1 h-full" ref={navRef}>
+    <nav className="relative z-0 flex h-full items-center gap-1" ref={navRef}>
       <span
-        className="absolute top-0 bottom-0 left-0 w-px origin-left bg-[#0752A0] shadow-sm rounded-full -z-10 transition-[transform,opacity] duration-300 ease-out transform-gpu"
+        className="nav-pill-indicator pointer-events-none absolute inset-y-0 left-0 z-0 rounded-full border border-[#0752A0]/20 bg-[#0752A0] shadow-[0_10px_24px_rgba(7,82,160,0.24),inset_0_1px_0_rgba(255,255,255,0.22)] transform-gpu"
         style={{
           opacity: activeRect.opacity,
-          transform: `translate3d(${activeRect.left}px, 0, 0) scaleX(${Math.max(activeRect.width, 1)})`,
+          width: activeRect.width,
+          transform: `translate3d(${activeRect.left}px, 0, 0)`,
         }}
       />
       {navigation.map((item) => {
-        const isActive = pathname === item.href;
+        const isActive = isCurrentRoute(pathname, item.href);
         return (
           <Link
             key={item.name}
             href={item.href}
-            className={`relative px-2 lg:px-2.5 xl:px-4 h-full rounded-full text-sm xl:text-[15px] font-medium transition-all duration-300 flex items-center gap-2
+            aria-current={isActive ? "page" : undefined}
+            className={`nav-pill-link relative z-10 flex h-full items-center gap-2 rounded-full px-2 text-sm font-medium active:scale-[0.97] lg:px-2.5 xl:px-4 xl:text-[15px]
               ${isActive
                 ? "text-white"
-                : "text-slate-600 hover:text-[#0752A0] hover:bg-slate-100/50"
+                : "text-slate-600 hover:bg-white/45 hover:text-[#0752A0]"
               }
             `}
             data-testid={`link-${item.name.toLowerCase().replace(' ', '-')}`}
@@ -89,7 +93,7 @@ const NavPill = ({ navigation, pathname }: { navigation: Array<{ name: string; h
               {item.badge && (
                 <span className={`inline-block px-2 py-0.5 text-[10px] uppercase font-bold tracking-wide rounded-full ml-1
                       ${isActive
-                    ? "bg-white text-[#0752A0]"
+                    ? "bg-[#0752A0] text-white"
                     : "bg-[#0752A0] text-white"
                   }
                     `}>
